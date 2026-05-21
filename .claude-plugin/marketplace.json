@@ -1,0 +1,14 @@
+{
+  "name": "evolvehq",
+  "owner": {
+    "name": "EvolveHQ",
+    "url": "https://github.com/EvolveHQ"
+  },
+  "plugins": [
+    {
+      "name": "project-bootstrap",
+      "source": "./",
+      "description": "Scaffold or retrofit documentation-led conventions (AGENTS.md, ADR catalogue, plan/ queue, _agent/ coordination) into any repo."
+    }
+  ]
+}

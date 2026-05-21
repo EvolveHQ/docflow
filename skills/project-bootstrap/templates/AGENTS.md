@@ -1,0 +1,95 @@
+# AGENTS.md
+
+This file provides guidance to coding agents working in this repository.
+
+## What this repository is
+
+<One paragraph. Project purpose, current baseline, what the artefacts in
+this repo represent.>
+
+## Repository structure
+
+- `adr/0000-template.md` — canonical ADR template.
+<!-- If technology-ADR split (Q2): also include `adr/NNNN-template.md` for technology ADRs. -->
+- `adr/NNNN-<kebab-slug>.md` — one ADR per decision, contiguous
+  numbering, no gaps.
+- `INDEX.md` — table regenerated from every ADR's metadata block.
+- `CONVENTIONS.md` — authoring rules (read before editing anything).
+- `plan/todo/NNNN-<slug>.md` — pending work, lower numbers run first.
+- `plan/done/<YYYY-MM-DD>-<slug>.md` — shipped work, chronological.
+- `_agent/` — multi-agent coordination: `ROLES.md`, `LOCKS.md`,
+  `WORKLOG.md`, `CURRENT_FOCUS.md`, `HANDOFF.md`, `prompts/`.
+<!-- If GLOSSARY.md (Q7): also include `GLOSSARY.md` — shared terms. -->
+<!-- If domains/ (Q7): also include `domains/<slug>/README.md`. -->
+
+## Hard rules when editing ADRs
+
+These come from `CONVENTIONS.md` and override default behaviour:
+
+- **One decision per ADR.** Splits become new ADRs that supersede;
+  never expand scope inside an existing one.
+- **Status lifecycle:** `<from Q3>`.
+- **Capability ADR section order:** metadata → Context → Capability
+  statement → User stories / scenarios → Acceptance criteria → Out of
+  scope → Open questions → References → Revision History → Approvals.
+<!-- If technology-ADR split (Q2): -->
+- **Technology ADR section order:** metadata → Context → Decision →
+  Rationale → Consequences → Acceptance criteria → Out of scope → Open
+  questions → References → Revision History → Approvals. Rationale must
+  name alternatives considered with specific rejection reasons.
+- **Acceptance criteria are testable and numbered.**
+<!-- Insert any Q10 domain-specific hard rules here as additional bullets. -->
+
+## Implementation work
+
+- Start from the ADRs. Identify which ADRs a code change implements or
+  affects before changing behaviour.
+- If implementation reveals a capability gap or changed decision, update
+  the relevant ADR rather than silently diverging.
+- Add or update tests for implemented behaviour. Map tests back to ADR
+  acceptance criteria where practical.
+
+## Audit trail and revision discipline
+
+- Substantive ADR changes append a row to the Revision History table.
+  Editorial changes (typos, formatting, link fixes) are excluded but
+  flagged `editorial` in the commit message.
+- Approvals table populates when an ADR is Accepted and updates on each
+  later substantive revision.
+- Regenerate `INDEX.md` from ADR metadata after any ADR status change
+  or new ADR.
+
+## Multi-agent workflow
+
+<!-- Single agent (Q5): -->
+A single agent owns this repo. The `_agent/` directory tracks live
+state and history; LOCKS discipline is optional.
+
+<!-- Multi-agent (Q5): -->
+<!--
+Work is partitioned across named agents (see `_agent/ROLES.md`). Before
+editing a file, claim it in `_agent/LOCKS.md` by appending
+`<agent-id> | <path> | <ISO-8601 timestamp>`, and remove the line on
+commit. Append to `_agent/WORKLOG.md` on commit. Check
+`_agent/CURRENT_FOCUS.md` for the active phase.
+-->
+
+## Plan folder
+
+- A pending item gets a `plan/todo/NNNN-<slug>.md` file BEFORE work
+  starts, naming the owning ADR(s), scope, and exit criteria.
+- The completion event is: `<from Q4 — e.g. merge to main, deploy +
+  smoke passes, release tag>`. On completion, `git mv` the file to
+  `plan/done/<YYYY-MM-DD>-<slug>.md` with a footer naming the HEAD SHA
+  and any artefact id.
+- The owning ADR(s) advance `Accepted → Implemented` on the same
+  commit. Regenerate `INDEX.md`.
+
+## Git contract
+
+- Commit messages follow **Conventional Commits**.
+- Mandatory `Rationale:` footer on any commit touching an ADR.
+- <Signed commits: yes/no per Q6.>
+- <ADR-revision tags `adr-NNNN-rN`: yes/no per Q6.>
+- <Co-Authored-By trailer: yes/no per Q6 — default no.>
+- Cross-references between ADRs use relative paths (`adr/NNNN-*.md`).

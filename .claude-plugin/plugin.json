@@ -1,0 +1,9 @@
+{
+  "name": "project-bootstrap",
+  "description": "Scaffold or retrofit documentation-led conventions (AGENTS.md, ADR catalogue, plan/ queue, _agent/ coordination) into a repo.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Eugenio Minardi",
+    "email": "eugenio.minardi@evolvehq.io"
+  }
+}
