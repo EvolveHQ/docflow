@@ -76,16 +76,33 @@ _agent/ layout"*. The skill auto-triggers on those phrasings.
 The skill will:
 
 1. Detect whether the repo is fresh or existing, and state which.
-2. Ask 10 assessment questions to tune the conventions to the project.
+2. Ask 10 assessment questions to tune the conventions to the project
+   — one at a time, with a recommended option for each.
 3. Summarise the resulting plan and ask for sign-off.
 4. Write (or Edit, for existing repos) the files.
 5. Commit each logical group with a Conventional Commit message.
+6. **On existing repos**, offer to backfill ADRs, `plan/done/`, and
+   `CONVENTIONS.md` additions from the existing code and git history
+   — drafts only, approved in batches before anything commits.
+
+## Updating
+
+Recipients refresh installations with:
+
+```
+/plugin marketplace update evolvehq
+/plugin install project-bootstrap@evolvehq
+```
+
+See [USAGE.md §Updating the plugin](USAGE.md#8-updating-the-plugin)
+for the author-side flow (version bumps, release tags) and recipient
+options including `/reload-plugins` for live sessions.
 
 ## Full usage and customisation guide
 
 See [USAGE.md](USAGE.md) for the assessment questions, what each
-answer changes, the file-by-file output, and how to extend or override
-the templates.
+answer changes, the file-by-file output, the backfill flow, and how
+to extend or override the templates.
 
 ## Layout
 

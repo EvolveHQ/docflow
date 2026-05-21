@@ -198,3 +198,70 @@ no `Co-Authored-By` trailer unless Q6 asked for one.
 
 For an existing repo, prefer Edit over Write where files exist, and
 call out every merge decision in the commit message.
+
+## Step 6 — Offer backfill (existing repos only)
+
+Once the scaffolding commit has landed, **offer to backfill** the ADR
+catalogue, the plan folder, and `CONVENTIONS.md` from the existing
+code and git history. Skip this step entirely on a fresh repo.
+
+Phrase the offer like this:
+
+> The scaffolding is in. Want me to backfill ADRs, plan/done entries,
+> and CONVENTIONS additions from the existing code and commit history?
+> I'll propose drafts; you approve in batches before anything lands.
+
+If the user accepts, run the backfill in four passes. Each pass
+produces drafts the user reviews before they are committed.
+
+1. **Scan inputs (read-only).**
+   - `git log --oneline --reverse main` (or the default branch) — the
+     decision and shipped-work trail.
+   - Major modules / packages / top-level source directories — the
+     surface of what exists.
+   - Any existing docs (`README`, `docs/`, design notes, RFCs) — prior
+     decision records, even informal ones.
+   - `package.json` / `pyproject.toml` / `go.mod` etc. — declared
+     dependencies often map to technology decisions.
+
+2. **Propose ADRs.** For each distinguishable decision or capability
+   evident from the scan, draft an ADR using the appropriate template.
+   - Capabilities (what the system does) → capability ADR, status
+     `Implemented` (the code already exists), Revision History row
+     citing the commit(s) that introduced the behaviour.
+   - Technology choices (framework, persistence, deployment target) →
+     technology ADR, status `Accepted` or `Implemented` as appropriate,
+     Rationale section reconstructed from commit messages and code
+     comments — flag any speculative rationale clearly so the human
+     can correct it.
+   - Number contiguously from `0001`. Show the user the proposed list
+     (number + title + status + one-line scope) before writing files.
+
+3. **Propose plan/done entries.** For each ADR drafted as
+   `Implemented`, generate a corresponding `plan/done/<date>-<slug>.md`
+   file using the commit date of the implementing commit (or the
+   merge commit) as the date prefix. Body: short summary, owning ADR,
+   "Shipped at HEAD `<sha>`" footer. Group these into a single
+   approval prompt — they are mechanical once the ADRs are agreed.
+
+4. **Propose CONVENTIONS additions.** Identify patterns in the existing
+   repo that should be promoted to written conventions: commit-message
+   style, branch naming, test layout, file-naming rules, language /
+   tooling choices that are de-facto standards. Draft additions to
+   `CONVENTIONS.md` (and corresponding bullets in `AGENTS.md` §Hard
+   rules if they should be enforced). Show the diff before applying.
+
+After each pass, commit the approved drafts with a Conventional Commit
+(`docs(adr): backfill ADRs 0001-00NN from code and history`,
+`docs(plan): backfill plan/done from shipped commits`,
+`docs: backfill conventions from de-facto patterns`). Regenerate
+`INDEX.md` after the ADR pass.
+
+**Important guardrails.**
+- The backfill produces *drafts*. Every commit is reviewable; the user
+  is the authority on whether an inferred decision is real.
+- If commit history is sparse or unclear, say so and stop — do not
+  invent rationale to fill gaps.
+- If the user declines the backfill, the scaffolding is still
+  complete; the queue is just empty until the first hand-authored ADR
+  lands.

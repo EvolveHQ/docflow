@@ -59,6 +59,44 @@ optionally `_agent/prompts/autonomous.md`). For existing repos it
 prefers `Edit` over `Write` where files already exist, and calls out
 every merge decision in the commit message.
 
+### Phase D — Backfill (existing repos only)
+
+Once the scaffolding has landed, the skill **offers** to backfill
+ADRs, `plan/done/` entries, and `CONVENTIONS.md` additions from the
+existing code and git history. Skipped on fresh repos.
+
+If accepted, the backfill runs in four passes, each producing drafts
+you review before they commit:
+
+1. **Scan** (read-only): `git log`, top-level source dirs, existing
+   docs, dependency manifests.
+2. **Propose ADRs.** One per distinguishable decision or capability.
+   Capabilities go in as capability ADRs with status `Implemented`
+   (code already exists), Revision History citing the commits that
+   introduced the behaviour. Technology choices go in as technology
+   ADRs with reconstructed Rationale — anything speculative is flagged
+   so you can correct it. You see the proposed list (number + title +
+   status + scope) before any file is written.
+3. **Propose `plan/done/` entries.** One per ADR drafted as
+   `Implemented`, dated by the implementing commit's date. Approved as
+   a batch.
+4. **Propose `CONVENTIONS.md` additions.** De-facto patterns in the
+   repo (commit-message style, branch naming, test layout, file-naming
+   rules, tooling defaults) promoted to written rules. Diff shown
+   before applying.
+
+Each accepted pass commits with a Conventional Commit:
+`docs(adr): backfill ADRs 0001-00NN from code and history`,
+`docs(plan): backfill plan/done from shipped commits`,
+`docs: backfill conventions from de-facto patterns`. `INDEX.md` is
+regenerated after the ADR pass.
+
+**Guardrails.** Everything is a draft; you approve each pass. If
+history is sparse or unclear, the skill stops rather than invent
+rationale. Declining the backfill is fine — the scaffolding is
+already complete and the queue is just empty until the first
+hand-authored ADR.
+
 ## 3. The 10 assessment questions
 
 Each question's answer changes specific files. Knowing the
@@ -139,7 +177,53 @@ repo that already has scaffolded files will trigger the "existing
 repo" path and ask Q9 about conflicts. Use it intentionally — to add
 the parts you skipped the first time, not to wipe and rebuild.
 
-## 8. Troubleshooting
+## 8. Updating the plugin
+
+### As a recipient (someone who installed the plugin)
+
+When the plugin author pushes changes, refresh your installation:
+
+```
+/plugin marketplace update evolvehq
+/plugin install project-bootstrap@evolvehq
+```
+
+The first command pulls the latest marketplace listing (a `git fetch`
+behind the scenes against the marketplace repo). The second reinstalls
+the plugin at its now-current version. To pick up the changes in an
+*already-running* Claude Code session, run `/reload-plugins` instead
+of restarting.
+
+To check what's installed and the resolved version:
+
+```
+/plugin list
+```
+
+To remove the plugin entirely:
+
+```
+/plugin uninstall project-bootstrap@evolvehq
+```
+
+### As the author (you, maintaining this repo)
+
+1. Edit the skill body (`skills/project-bootstrap/SKILL.md`), templates
+   (`skills/project-bootstrap/templates/*.md`), or supporting docs.
+2. Bump the `version` field in `.claude-plugin/plugin.json` following
+   semver — patch for fixes, minor for new questions / templates,
+   major for breaking changes to the skill flow.
+3. Update this `USAGE.md` and `README.md` if behaviour changed.
+4. Commit with a Conventional Commit message
+   (`feat(skill): ...`, `fix(template): ...`, `docs: ...`).
+5. Push to `origin/main`. Recipients refresh per the section above.
+
+If you tag releases, use `git tag vX.Y.Z` matching `plugin.json`.
+Tags help recipients pin to a specific version via
+`/plugin install project-bootstrap@evolvehq@vX.Y.Z` (when supported by
+their Claude Code version).
+
+## 9. Troubleshooting
 
 - **Skill not appearing in the available-skills list.** Confirm the
   plugin is installed (`/plugin list`) or `--plugin-dir` was passed.
