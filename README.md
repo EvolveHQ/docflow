@@ -10,6 +10,10 @@ files.
 
 ## Skills
 
+Slash commands below are the **Claude Code** form. On the **pi** coding
+agent the same skills are invoked as `/skill:<name>` (e.g.
+`/skill:bootstrap`, `/skill:new-adr`). See [Install](#install).
+
 | Skill | Slash command | Purpose |
 |-------|---------------|---------|
 | bootstrap | `/bootstrap` | Scaffold or retrofit the whole convention set. Start here. |
@@ -59,14 +63,38 @@ rather than overwriting them).
 
 ## Install
 
-### From this marketplace
+docflow ships for two coding agents from the **same** skill files — only
+the manifest differs (`.claude-plugin/` for Claude Code, `package.json`
+for pi).
+
+### Claude Code — from this marketplace
 
 ```
 /plugin marketplace add EvolveHQ/docflow
 /plugin install docflow@evolvehq
 ```
 
-### Local development (no install)
+Invoke with `/bootstrap`, `/new-adr`, `/ship-item`, … (auto-triggers on
+matching requests too).
+
+### pi coding agent
+
+```
+pi install git:github.com/EvolveHQ/docflow
+```
+
+or, once published to npm, `pi install npm:@evolvehq/docflow`. Pi
+auto-discovers the `skills/` directory via the `pi` key in
+`package.json`. Invoke with `/skill:bootstrap`, `/skill:new-adr`,
+`/skill:ship-item`, … Pi does **not** auto-trigger skills from their
+descriptions the way Claude Code does — invoke them explicitly (the
+agent will also load a skill on-demand when a task clearly matches).
+
+The scaffolded output (`AGENTS.md`, `CONVENTIONS.md`, the ADR catalogue,
+`plan/`, `_agent/`) is plain Markdown and is read natively by pi's
+hierarchical `AGENTS.md` loading — no porting needed.
+
+### Claude Code — local development (no install)
 
 ```
 claude --plugin-dir <path-to-this-repo>
@@ -130,8 +158,9 @@ to extend or override the templates.
 ```
 docflow/
   .claude-plugin/
-    plugin.json          # plugin manifest
-    marketplace.json     # marketplace listing (this repo is its own marketplace)
+    plugin.json          # Claude Code plugin manifest
+    marketplace.json     # Claude Code marketplace listing (repo is its own marketplace)
+  package.json           # pi package manifest (pi.skills -> ./skills) + npm metadata
   skills/
     bootstrap/
       SKILL.md           # bootstrap: assessment + output sequence + backfill
