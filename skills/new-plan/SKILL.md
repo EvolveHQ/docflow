@@ -23,7 +23,7 @@ Add one item to the implementation queue.
 - Normally a queue item tracks an **Accepted** ADR. If the named ADR is
   still `Proposed`, warn — you can queue ahead of acceptance, but the
   work is not yet authorised. If it has no ADR at all, suggest running
-  `/new-adr` first; plan items should trace to a decision.
+  the **new-adr** skill first; plan items should trace to a decision.
 
 ## Step 2 — Pick number and position
 

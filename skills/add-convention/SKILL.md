@@ -40,7 +40,8 @@ Decide the home, and explain the choice:
 - **Shared term / definition** → `GLOSSARY.md` (if the repo has one).
 - **It is actually a decision, not a convention** (an architectural,
   product, or technology choice with alternatives and consequences) →
-  this is an ADR. Stop and offer `/new-adr`; do not bury a decision in
+  this is an ADR. Stop and offer the **new-adr** skill; do not bury a
+  decision in
   CONVENTIONS.
 
 If a convention is a triage/process rule (e.g. how incoming work is

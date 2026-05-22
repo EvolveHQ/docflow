@@ -8,12 +8,12 @@ description: Decompose a problem, feature, or goal into candidate ADRs and plan 
 Turn a fuzzy problem into a structured set of candidate ADRs and plan
 items. This skill is **generative and read/propose-only** — it never
 writes ADRs or plan files directly. On approval it hands each candidate
-to `/new-adr` and `/new-plan`.
+to the **new-adr** and **new-plan** skills.
 
 ## Step 0 — Preconditions and context
 
 1. Confirm the repo is bootstrapped (or note that the output can seed a
-   fresh `/bootstrap`).
+   fresh run of the **bootstrap** skill).
 2. Read `CONVENTIONS.md` for ADR shape and lifecycle, and skim
    `INDEX.md` + existing ADRs so candidates don't duplicate or
    contradict what already exists, and so dependencies point at real
@@ -41,13 +41,14 @@ revision, say that instead of proposing a new number.
 
 Propose a plan ordering (which `plan/todo/` items, in what sequence)
 respecting the dependency edges. Note where work can parallelise (useful
-input for `/agent-wave`).
+input for the **agent-wave** skill).
 
 ## Step 4 — Review and hand off
 
 Present the full set as a reviewable outline (candidates + dependencies
 + ordering). Take edits. **Write nothing yet.** Once the user approves,
-create them by invoking `/new-adr` per candidate and `/new-plan` per
+create them by invoking the **new-adr** skill per candidate and the
+**new-plan** skill per
 queued item — or hand the approved outline to those skills.
 
 Guardrail: if the problem is too vague to decompose without inventing
