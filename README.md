@@ -1,5 +1,7 @@
 # docflow
 
+![docflow — ADR-driven documentation workflow](docs/preview.png)
+
 A plugin for **ADR-driven, documentation-led projects**, working on both
 the **pi** and **Claude Code** coding agents from the same skill files.
 It installs a `bootstrap` skill that scaffolds (or retrofits) an
