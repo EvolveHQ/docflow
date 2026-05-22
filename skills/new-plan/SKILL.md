@@ -1,6 +1,6 @@
 ---
 name: new-plan
-description: Add a work item to the plan/todo queue in a documentation-led repo — name the owning ADR(s), scope, exit criteria mapped to acceptance criteria, dependencies, and queue position. Use when the user says "add a plan item", "queue this work", "create a todo for ADR X", "new plan", or invokes /new-plan.
+description: Queue a UNIT OF WORK in the plan/todo queue of a documentation-led repo, tracing to an existing ADR — names the owning ADR(s), scope, exit criteria mapped to acceptance criteria, dependencies, and queue position. Use when the user says "add a plan item", "queue this work", "create a todo for ADR X", "new plan", "put this on the backlog", or invokes /new-plan. NOT for recording the decision itself (use /new-adr) and NOT for shipping/completing an item already queued (use /ship-item).
 ---
 
 # new-plan

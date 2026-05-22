@@ -1,6 +1,6 @@
 ---
 name: add-convention
-description: Assess and add a convention to a documentation-led repo — decides FIRST whether it is worth codifying at all, then routes it to the right home (AGENTS.md hard rule, CONVENTIONS.md guidance, GLOSSARY term, or an ADR if it is really a decision). Pushes back on premature or duplicate conventions. Use when the user says "add a convention", "make this a rule", "document this practice", "we should always X", or invokes /add-convention.
+description: Assess and add a CONVENTION (a reusable rule, practice, or naming/process standard) to a documentation-led repo — decides FIRST whether it is worth codifying at all, then routes it to the right home (AGENTS.md hard rule, CONVENTIONS.md guidance, GLOSSARY term, or to /new-adr if it is really a one-off decision). Pushes back on premature or duplicate conventions. Use when the user says "add a convention", "make this a rule", "document this practice", "we should always X", or invokes /add-convention. NOT for recording a single architectural/product decision (use /new-adr) and NOT for queueing work (use /new-plan).
 ---
 
 # add-convention
