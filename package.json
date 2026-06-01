@@ -16,6 +16,9 @@
     "url": "git+https://github.com/EvolveHQ/docflow.git"
   },
   "homepage": "https://github.com/EvolveHQ/docflow",
+  "scripts": {
+    "verify": "node scripts/verify.mjs"
+  },
   "files": [
     "skills/",
     "docs/preview.png",
