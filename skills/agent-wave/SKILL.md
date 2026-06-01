@@ -53,8 +53,25 @@ every merge.
 - Read `plan/todo/`; take the lowest-numbered N items with no unmet
   dependencies. Two agents must never get the same item or items that
   edit the same files — partition by item and, in mode 2, by LOCKS.
+- **Reserve identifiers before spawning.** Parallel worktrees that each
+  author an ADR or a `plan/` item will otherwise collide on the same
+  next number — each worktree computes "next" against its own checkout,
+  so two will pick the same one and break the contiguous-numbering
+  invariant at merge. Before the wave:
+  - Compute the current highest ADR number and `plan/todo` slot.
+  - Hand each agent a **disjoint reserved block** — e.g. agent A may
+    create ADRs `0042+` and plan slots `0007+`, agent B `0043+` /
+    `0008+`, interleaved so no two blocks overlap. Most queue items
+    implement an existing ADR and need none — reserve only for items
+    that will author new ADRs/plans.
+  - An agent uses only its reserved identifiers; if it needs more than
+    reserved, it stops and reports rather than guessing.
+- **Single writer per artefact.** An ADR body (or a given `plan/` item)
+  is edited by at most one worktree per wave. Never put two items that
+  both edit the same ADR in one wave — a `merge=union` would silently
+  concatenate contradictory edits into an incoherent document.
 - Record the assignment in `_agent/IN_FLIGHT.md` (mode 3) so the wave is
-  visible.
+  visible — including each agent's reserved identifier block.
 
 ## Step 3 — Spawn the wave
 

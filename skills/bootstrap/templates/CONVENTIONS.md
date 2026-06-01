@@ -110,6 +110,17 @@ Each agent works in its own worktree / PR branch.
 - `_agent/CURRENT_FOCUS.md` is gitignored (local-only per worktree);
   the committed cross-worktree dashboard is `_agent/IN_FLIGHT.md` —
   one row per active worktree.
+- **Identifier reservation.** Before parallel worktrees are spawned,
+  each is assigned a disjoint block of ADR numbers / `plan/todo` slots
+  (recorded in `_agent/IN_FLIGHT.md`). An agent creates new ADRs/plans
+  only from its reserved block, so two worktrees never claim the same
+  next number. `agent-wave` performs the reservation.
+- **Single writer per artefact.** An ADR body or a given `plan/` item
+  is edited by at most one worktree at a time (its owner, per
+  `_agent/IN_FLIGHT.md`). Contradictory edits to one ADR across two
+  worktrees must never happen — `merge=union` would concatenate them
+  silently. `/audit` flags duplicate numbers, duplicate plan ownership,
+  and the same ADR edited on two unmerged branches.
 - Regenerate `INDEX.md` after any ADR status change or new ADR.
 -->
 

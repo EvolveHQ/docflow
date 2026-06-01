@@ -25,3 +25,13 @@ Maps to adr/0010-worktree-conflict-reconciliation.md acceptance criteria:
 
 Independent of items 0001/0002. Resolve the open question (committed
 registry vs orchestrator-computed) during implementation.
+
+---
+
+**Shipped** at HEAD `pending` (2026-06-01). `agent-wave` Step 2 now
+reserves disjoint ADR-number / plan-slot blocks per worktree and enforces
+single-writer-per-artefact; `_agent-IN_FLIGHT.md` template gains
+**Reserved IDs** + **Owns** columns; the mode-3 block of the
+`CONVENTIONS.md` template documents reservation + single-writer.
+Open question resolved: orchestrator-computed reservation (no committed
+registry file), recorded in `_agent/IN_FLIGHT.md`.

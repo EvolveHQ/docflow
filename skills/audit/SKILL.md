@@ -1,6 +1,6 @@
 ---
 name: audit
-description: Audit a documentation-led repo against its own conventions — contiguous ADR numbering, INDEX sync, plan/ coverage, required sections, status validity, cross-reference resolution, language mandate, and ADR-privacy leaks into user-visible code. Reports a punch list and offers to fix the mechanical issues. Use when the user says "audit the ADRs", "lint the conventions", "check repo consistency", "are the ADRs in sync", or invokes /audit.
+description: Audit a documentation-led repo against its own conventions — contiguous ADR numbering, INDEX sync, plan/ coverage, required sections, status validity, cross-reference resolution, language mandate, ADR-privacy leaks into user-visible code, and cross-worktree collisions (duplicate numbers, duplicate plan ownership, same ADR edited on two branches). Reports a punch list and offers to fix the mechanical issues. Use when the user says "audit the ADRs", "lint the conventions", "check repo consistency", "are the ADRs in sync", or invokes /audit.
 ---
 
 # audit
@@ -46,6 +46,20 @@ relevant):
    Report each suspect; this rule is easy to violate by reflex.
 10. **Coordination hygiene.** `_agent/LOCKS.md` has no stale claims
     (mode 2); `_agent/IN_FLIGHT.md` rows match live worktrees (mode 3).
+11. **Cross-worktree collisions** (mode 3, or when auditing across
+    unmerged branches). These catch semantic conflicts that a
+    line-level git merge cannot:
+    - **Duplicate ADR numbers** — two ADR files (across branches/
+      worktrees) claiming the same `NNNN`. Distinct from check 1, which
+      only sees one tree.
+    - **Duplicate plan ownership** — two `plan/todo/` items naming the
+      same owning ADR for the same scope, i.e. two worktrees building
+      the same thing.
+    - **Same ADR edited on two unmerged branches** — compare ADR files
+      across the live worktrees / open PRs; flag any ADR modified in
+      more than one. A `merge=union` would concatenate them silently.
+    Cross-check against `_agent/IN_FLIGHT.md`: every collision should
+    correspond to a reservation/ownership violation recorded there.
 
 ## Step 2 — Report
 

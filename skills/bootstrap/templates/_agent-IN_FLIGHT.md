@@ -12,5 +12,12 @@ gitignored under this mode and stays local to each worktree.
 If this file disagrees with reality, reality wins — check
 `git worktree list` and the live PRs, then correct here.
 
-| Agent | Worktree branch | Queue item | Started (ISO-8601) | PR link |
-|-------|-----------------|------------|---------------------|---------|
+The **Reserved IDs** column records the disjoint block of ADR numbers /
+`plan/todo` slots an agent may create this wave (assigned by `agent-wave`
+before spawning), so two worktrees never claim the same next number. The
+**Owns** column names the ADR(s) / plan item(s) that worktree is the
+single writer of — no other worktree edits those artefacts until the row
+clears.
+
+| Agent | Worktree branch | Queue item | Reserved IDs | Owns | Started (ISO-8601) | PR link |
+|-------|-----------------|------------|--------------|------|---------------------|---------|

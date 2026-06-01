@@ -1,7 +1,7 @@
 ---
 adr: 0010
 title: Content-level conflict reconciliation across worktrees
-status: Accepted
+status: Implemented
 date: 2026-06-01
 owner: Eugenio Minardi
 supersedes:
@@ -83,8 +83,9 @@ beyond git's line-level merge:
 
 ## Open questions
 
-- Should reservation be a committed registry file or computed by the
-  orchestrator at spawn time? Resolve during implementation.
+- ~~Should reservation be a committed registry file or computed by the
+  orchestrator at spawn time?~~ Resolved: orchestrator-computed at spawn
+  time, recorded in `_agent/IN_FLIGHT.md` (no separate registry file).
 
 ## References / cross-links
 
@@ -96,6 +97,7 @@ beyond git's line-level merge:
 | Date | Revision | Author | Change |
 |------|----------|--------|--------|
 | 2026-06-01 | r1 | Eugenio Minardi | Initial decision. |
+| 2026-06-01 | r2 | Eugenio Minardi | Implemented (plan items 0003, 0004): agent-wave reservation + single-writer, IN_FLIGHT columns, audit check 11, CONVENTIONS template. Open question resolved (orchestrator-computed). Status Accepted → Implemented. |
 
 ## Approvals
 

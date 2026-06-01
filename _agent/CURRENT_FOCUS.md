@@ -17,8 +17,10 @@ file.
 
 ## Last shipped
 
-0541a15 — add gallery preview image (pi.image) and show it in README.
+ADRs 0010 (worktree conflict reconciliation) and 0011 (static verify
+gate) Implemented; plan items 0001, 0003, 0004 shipped to `plan/done/`.
 
 ## Next item
 
-`ls plan/todo/` for the queue; the lowest-numbered file runs next.
+`plan/todo/0002-e2e-fixture-harness.md` (ADR 0012) — blocked on the
+headless-agent runner decision (ADR 0012 open question). Not yet started.

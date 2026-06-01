@@ -23,3 +23,11 @@ criteria:
 Pairs with item 0003 (same owning ADR). Can be done after or alongside
 0003; the duplicate-number and duplicate-owner checks are independent of
 the reservation mechanism.
+
+---
+
+**Shipped** at HEAD `pending` (2026-06-01). `audit` skill gains check 11
+(cross-worktree collisions): duplicate ADR numbers across branches,
+duplicate plan ownership, and the same ADR edited on two unmerged
+branches — cross-checked against `_agent/IN_FLIGHT.md`. Reflected in the
+skill description.
