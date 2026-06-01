@@ -57,7 +57,7 @@ contiguous 0013 + INDEX row → `verify.mjs` exit 0).
 
 ---
 
-**Shipped** at HEAD `pending` (2026-06-02). The behavioural suite was run
+**Shipped** at HEAD `e0a6bd3` (2026-06-02). The behavioural suite was run
 against current local HEAD via three worktree subagents (worktrees cut
 from HEAD, since the committed-state caveat means origin would be stale):
 
