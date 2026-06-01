@@ -22,5 +22,7 @@ gate) Implemented; plan items 0001, 0003, 0004 shipped to `plan/done/`.
 
 ## Next item
 
-`plan/todo/0002-e2e-fixture-harness.md` (ADR 0012) — blocked on the
-headless-agent runner decision (ADR 0012 open question). Not yet started.
+`plan/todo/0002-e2e-fixture-harness.md` (ADR 0012) — deterministic
+scaffold landed under `evals/` (`npm run evals`: self-check PASS, agent
+cases SKIP). Remaining work blocked on the headless-agent runner decision
+(ADR 0012 open question). Stays in todo; ADR 0012 still Accepted.

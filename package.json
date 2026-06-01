@@ -17,7 +17,8 @@
   },
   "homepage": "https://github.com/EvolveHQ/docflow",
   "scripts": {
-    "verify": "node scripts/verify.mjs"
+    "verify": "node scripts/verify.mjs",
+    "evals": "node evals/run.mjs"
   },
   "files": [
     "skills/",
