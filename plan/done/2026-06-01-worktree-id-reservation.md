@@ -28,7 +28,7 @@ registry vs orchestrator-computed) during implementation.
 
 ---
 
-**Shipped** at HEAD `pending` (2026-06-01). `agent-wave` Step 2 now
+**Shipped** at HEAD `b05293e` (2026-06-01). `agent-wave` Step 2 now
 reserves disjoint ADR-number / plan-slot blocks per worktree and enforces
 single-writer-per-artefact; `_agent-IN_FLIGHT.md` template gains
 **Reserved IDs** + **Owns** columns; the mode-3 block of the

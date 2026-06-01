@@ -26,7 +26,7 @@ the reservation mechanism.
 
 ---
 
-**Shipped** at HEAD `pending` (2026-06-01). `audit` skill gains check 11
+**Shipped** at HEAD `b05293e` (2026-06-01). `audit` skill gains check 11
 (cross-worktree collisions): duplicate ADR numbers across branches,
 duplicate plan ownership, and the same ADR edited on two unmerged
 branches — cross-checked against `_agent/IN_FLIGHT.md`. Reflected in the
