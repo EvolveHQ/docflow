@@ -1,7 +1,7 @@
 ---
 adr: 0012
 title: Behavioural and end-to-end evaluation of skill outcomes
-status: Accepted
+status: Implemented
 date: 2026-06-01
 owner: Eugenio Minardi
 supersedes:
@@ -99,6 +99,7 @@ before evaluating.
 |------|----------|--------|--------|
 | 2026-06-01 | r1 | Eugenio Minardi | Initial decision. |
 | 2026-06-02 | r2 | Eugenio Minardi | Resolved runner open question: host subagent mechanism (worktree Agent/Workflow), no external CLI/pinned model. Noted committed-state worktree consequence. Demonstrated via a new-adr subagent eval. |
+| 2026-06-02 | r3 | Eugenio Minardi | Implemented (plan item 0002): evals/ deterministic layer + behavioural.workflow.mjs; all three subagent evals (new-adr, ship-item, bootstrap) PASS against HEAD. Status Accepted → Implemented. |
 
 ## Approvals
 

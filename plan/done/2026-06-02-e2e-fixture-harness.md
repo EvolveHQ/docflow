@@ -54,3 +54,21 @@ contiguous 0013 + INDEX row → `verify.mjs` exit 0).
    green (tune the `ship-item` / `bootstrap` prompts if a case flakes).
 3. Then `git mv` this item to `plan/done`, advance ADR 0012, regenerate
    INDEX, WORKLOG.
+
+---
+
+**Shipped** at HEAD `pending` (2026-06-02). The behavioural suite was run
+against current local HEAD via three worktree subagents (worktrees cut
+from HEAD, since the committed-state caveat means origin would be stale):
+
+- `new-adr` → PASS: contiguous `0013` + INDEX row; `verify.mjs` exit 0
+  (`OK …, 8 skills, 13 ADRs`).
+- `ship-item` → PASS: item moved todo→done, owning ADR → Implemented;
+  `verify.mjs` exit 0.
+- `bootstrap` → PASS: fresh repo got all 8 required paths; mode-1
+  omissions (no LOCKS, no autonomous prompt) correct.
+
+All AC met: AC1 (skill→fixture→assert), AC2 (all three skills), AC3
+(runnable on demand; `evals/behavioural.workflow.mjs` for repeatable
+runs), AC4 (strict structural assertions). The runner is the subagent
+mechanism — no external CLI/key/model.

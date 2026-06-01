@@ -17,12 +17,12 @@ file.
 
 ## Last shipped
 
-ADRs 0010 (worktree conflict reconciliation) and 0011 (static verify
-gate) Implemented; plan items 0001, 0003, 0004 shipped to `plan/done/`.
+ADRs 0010, 0011, 0012 all Implemented; plan items 0001–0004 shipped to
+`plan/done/`. **Queue empty** — no work in flight.
 
 ## Next item
 
-`plan/todo/0002-e2e-fixture-harness.md` (ADR 0012) — deterministic
-scaffold landed under `evals/` (`npm run evals`: self-check PASS, agent
-cases SKIP). Remaining work blocked on the headless-agent runner decision
-(ADR 0012 open question). Stays in todo; ADR 0012 still Accepted.
+`plan/todo/` is empty. The next hand-authored ADR or `/new-plan` item
+runs next. Behavioural evals: `Workflow evals/behavioural.workflow.mjs`
+(subagent runner) as a release gate; `npm run evals` for the deterministic
+self-check.
