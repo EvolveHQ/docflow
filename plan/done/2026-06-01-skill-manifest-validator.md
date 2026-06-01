@@ -26,3 +26,12 @@ Maps to adr/0011-static-skill-validation.md acceptance criteria:
 ## Dependencies
 
 None (folds in existing `scripts/verify.mjs`). Do first.
+
+---
+
+**Shipped** at HEAD `59f6e15` (2026-06-01). Implemented in
+`scripts/verify.mjs`: manifest + version-sync checks, per-skill
+frontmatter / H1 / agent-neutral-body validation, ADR catalogue
+contiguity + INDEX-sync, and real-catalogue ADR-privacy leak detection
+in user-visible surfaces. CRLF-tolerant. Negative-tested against all four
+violation classes. Wired as `npm run verify`.

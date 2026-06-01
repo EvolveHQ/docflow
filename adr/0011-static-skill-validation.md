@@ -1,7 +1,7 @@
 ---
 adr: 0011
 title: Static structural validation of skills and manifests
-status: Accepted
+status: Implemented
 date: 2026-06-01
 owner: Eugenio Minardi
 supersedes:
@@ -82,6 +82,7 @@ runs before every push.
 | Date | Revision | Author | Change |
 |------|----------|--------|--------|
 | 2026-06-01 | r1 | Eugenio Minardi | Initial decision. |
+| 2026-06-01 | r2 | Eugenio Minardi | Implemented in scripts/verify.mjs (plan item 0001). Status Accepted → Implemented. |
 
 ## Approvals
 
