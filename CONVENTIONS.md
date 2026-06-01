@@ -65,6 +65,23 @@ Bump them together in the same commit. The verify gate
 (`node scripts/verify.mjs`) fails if they diverge. The git tag
 `vX.Y.Z` and the published npm version must match this same number.
 
+## Skill Authoring
+
+The product is the `skills/` tree. When adding or editing a skill:
+
+- **Agent-neutral prose.** Skill bodies must not hard-code one agent's
+  invocation syntax. Refer to other skills by name; put agent-specific
+  forms (`/name` for Claude Code, `/skill:name` for pi) in `README.md`.
+- **Disjoint auto-trigger descriptions.** On agents that auto-trigger
+  skills from their `description`, the trigger boundaries must not
+  overlap. The authoring skills explicitly delimit their scope
+  (new-adr = a decision, new-plan = a unit of work, add-convention = a
+  reusable rule) so the wrong skill does not fire. State what each skill
+  is NOT for.
+- **Only `bootstrap` carries `templates/`.** The lifecycle skills act on
+  the copies the bootstrap wrote into the target repo; they ship no
+  templates of their own.
+
 ## ADR Privacy
 
 ADRs are internal artefacts. ADR numbers, ADR titles, and the
