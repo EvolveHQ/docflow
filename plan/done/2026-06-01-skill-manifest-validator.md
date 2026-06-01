@@ -29,7 +29,7 @@ None (folds in existing `scripts/verify.mjs`). Do first.
 
 ---
 
-**Shipped** at HEAD `59f6e15` (2026-06-01). Implemented in
+**Shipped** at HEAD `9582a14` (2026-06-01). Implemented in
 `scripts/verify.mjs`: manifest + version-sync checks, per-skill
 frontmatter / H1 / agent-neutral-body validation, ADR catalogue
 contiguity + INDEX-sync, and real-catalogue ADR-privacy leak detection
