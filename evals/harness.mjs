@@ -1,54 +1,35 @@
-// Behavioural eval harness (ADR 0012) — SCAFFOLD.
+// Eval harness (ADR 0012).
 //
-// An eval case runs a skill against a fixture repository with scripted
-// inputs and asserts the resulting state. The deterministic pieces
-// (fixtures, assertions) are implemented; the one missing piece is the
-// RUNNER — the thing that actually drives a coding agent through a skill
-// headlessly. That choice is ADR 0012's open question; until it is made,
-// `runAgent` throws and agent-dependent cases report SKIPPED.
+// Two layers, by design:
 //
-// To finish item 0002: implement `runAgent` against the chosen runner
-// (e.g. a non-interactive CLI invocation that loads this plugin, runs the
-// named skill with the scripted answers, and commits), then flip the
-// case results from SKIPPED to PASS/FAIL.
-
-export class RunnerNotConfigured extends Error {
-  constructor() {
-    super(
-      'No headless agent runner configured (ADR 0012 open question). ' +
-      'Implement runAgent() in evals/harness.mjs to enable agent-dependent ' +
-      'eval cases. Until then they report SKIPPED.',
-    );
-    this.name = 'RunnerNotConfigured';
-  }
-}
-
-// Pluggable seam. Given a fixture repo path, a skill name, and scripted
-// inputs, drive the agent through the skill end-to-end. Returns when the
-// skill has finished and committed. Replace the throw with a real runner.
+// 1. DETERMINISTIC (this file + assertions.mjs, run via `node`): the
+//    self-check and assertion helpers. No agent, no model. A subagent
+//    calls these inside its worktree to verify an outcome, and CI can run
+//    the self-check directly.
 //
-// eslint-disable-next-line no-unused-vars
-export async function runAgent({ repo, skill, inputs }) {
-  throw new RunnerNotConfigured();
-}
+// 2. BEHAVIOURAL (evals/behavioural.workflow.mjs, run via the Workflow
+//    tool): the runner is the host's SUBAGENT mechanism. One
+//    worktree-isolated subagent per case runs the named skill against the
+//    fixture, then runs the deterministic layer and reports PASS/FAIL.
+//    A plain `node` process cannot spawn subagents, so the behavioural
+//    suite is a Workflow, not a `node` script — see that file.
+//
+// `runCase` below executes only the deterministic cases. Agent-dependent
+// cases are marked and reported as "run via the behavioural workflow".
 
-// Run one eval case: optional setup → runAgent → assert. Returns a result
-// record; never throws (so one case cannot abort the suite).
+// Run one deterministic case: assert(repo) over already-existing state.
+// Never throws — returns a result record so one case can't abort the run.
 export async function runCase(testCase) {
-  const { name, skill } = testCase;
+  const { name } = testCase;
+  if (testCase.agentDependent !== false) {
+    return {
+      name,
+      status: 'SKIPPED',
+      reason: 'behavioural — run via Workflow evals/behavioural.workflow.mjs',
+    };
+  }
   try {
-    const repo = testCase.setup ? await testCase.setup() : testCase.repo;
-    if (testCase.agentDependent !== false) {
-      try {
-        await runAgent({ repo, skill, inputs: testCase.inputs });
-      } catch (e) {
-        if (e instanceof RunnerNotConfigured) {
-          return { name, status: 'SKIPPED', reason: 'runner not configured' };
-        }
-        throw e;
-      }
-    }
-    await testCase.assert(repo);
+    await testCase.assert(testCase.repo);
     return { name, status: 'PASS' };
   } catch (e) {
     return { name, status: 'FAIL', reason: e.message };

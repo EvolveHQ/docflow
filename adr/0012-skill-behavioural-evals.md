@@ -39,9 +39,21 @@ evals:
   advance.
 
 The eval harness reuses the fixtures and assertion helpers from the
-static tier where possible, and may build on the existing skill-creator
-eval/benchmarking tooling. It runs as a release-gating suite rather than
+static tier where possible. It runs as a release-gating suite rather than
 on every push.
+
+**Runner.** The agent that drives a skill is the host's own **subagent
+mechanism** — an in-session worktree subagent (the `Agent` tool), or a
+`Workflow` that fans one subagent out per case — not an external headless
+CLI and not a pinned API model. Each case spawns a worktree-isolated
+subagent that runs the named skill against the fixture, then the
+deterministic layer (`scripts/verify.mjs` plus `evals/assertions.mjs`)
+verifies the resulting worktree state. This needs no API key or CI model
+budget; the orchestrating agent already exists. Consequence: a worktree
+subagent sees **committed state** (its worktree is cut from a committed
+ref, e.g. `origin/main`), so behavioural evals validate committed/pushed
+skills, not uncommitted local edits — commit (and, for shared runs, push)
+before evaluating.
 
 ## User stories / scenarios
 
@@ -69,8 +81,12 @@ on every push.
 
 ## Open questions
 
-- Which runner executes the agent in CI headlessly, and whether evals run
-  against a pinned model — resolve during implementation.
+- ~~Which runner executes the agent in CI headlessly, and whether evals
+  run against a pinned model?~~ Resolved: the runner is the host's
+  subagent mechanism (worktree `Agent`/`Workflow`), not an external
+  headless CLI or pinned model. Demonstrated by running `new-adr` through
+  a worktree subagent and verifying with the static gate. See Capability
+  statement §Runner.
 
 ## References / cross-links
 
@@ -82,6 +98,7 @@ on every push.
 | Date | Revision | Author | Change |
 |------|----------|--------|--------|
 | 2026-06-01 | r1 | Eugenio Minardi | Initial decision. |
+| 2026-06-02 | r2 | Eugenio Minardi | Resolved runner open question: host subagent mechanism (worktree Agent/Workflow), no external CLI/pinned model. Noted committed-state worktree consequence. Demonstrated via a new-adr subagent eval. |
 
 ## Approvals
 

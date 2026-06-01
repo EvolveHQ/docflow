@@ -24,8 +24,9 @@ const skip = results.filter((r) => r.status === 'SKIPPED').length;
 console.log(`\n${pass} passed, ${fail} failed, ${skip} skipped`);
 if (skip) {
   console.log(
-    'SKIPPED cases need a headless agent runner — see evals/harness.mjs ' +
-    'runAgent() and plan/todo/0002 (ADR 0012).',
+    'SKIPPED cases are behavioural (agent-driven) — run them via the ' +
+    'Workflow tool: evals/behavioural.workflow.mjs. The runner is a ' +
+    'worktree subagent per case (ADR 0012).',
   );
 }
 process.exit(fail ? 1 : 0);

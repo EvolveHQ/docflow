@@ -37,10 +37,20 @@ stays Accepted):
 - `evals/harness.mjs` + `evals/run.mjs` — runner; `npm run evals`. The
   self-check PASSes today; agent-dependent cases SKIP. → AC3 (wiring).
 
-**Blocked / remaining for AC1:** the `runAgent()` seam in
-`evals/harness.mjs` throws `RunnerNotConfigured`. Implementing it needs
-the **headless agent runner** decision — ADR 0012's open question (which
-non-interactive runner drives a skill, and whether evals pin a model).
-Once decided: implement `runAgent`, add per-case `setup()` fixtures + real
-`inputs`, flip cases SKIPPED → PASS/FAIL, then ship (ADR 0012 →
-Implemented).
+## Update (2026-06-02) — runner resolved, runner = subagents
+
+ADR 0012's open question is resolved: the runner is the host **subagent
+mechanism**, not an external CLI. `evals/behavioural.workflow.mjs` is the
+subagent-driven suite — one worktree subagent per case (`new-adr`,
+`ship-item`, `bootstrap`) runs the skill then the static gate and reports
+PASS/FAIL. The `new-adr` path was demonstrated live (worktree subagent →
+contiguous 0013 + INDEX row → `verify.mjs` exit 0).
+
+**Remaining to ship 0002 / ADR 0012 → Implemented:**
+
+1. Commit + push these skills (worktree subagents see committed/pushed
+   state, so they must include current work).
+2. Run `Workflow evals/behavioural.workflow.mjs` and get all three cases
+   green (tune the `ship-item` / `bootstrap` prompts if a case flakes).
+3. Then `git mv` this item to `plan/done`, advance ADR 0012, regenerate
+   INDEX, WORKLOG.

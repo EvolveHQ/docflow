@@ -9,34 +9,41 @@ Two tiers of testing back this plugin:
   through a coding agent against a fixture repo and asserts the result.
   Model-in-the-loop; a release gate, not a per-push gate.
 
-## Status: scaffold
+## The runner is the subagent mechanism
 
-The deterministic pieces are done and runnable:
+There is **no external headless runner, API key, or pinned model**. The
+agent that drives a skill is the host's own subagent mechanism: one
+worktree-isolated subagent per case runs the named skill, then runs the
+deterministic layer (`scripts/verify.mjs` + `assertions.mjs`) inside its
+worktree and reports PASS/FAIL.
 
-- `assertions.mjs` — assertion helpers (tree, contiguous numbering,
-  INDEX sync, ADR status, plan shipped). CRLF-tolerant.
-- `cases.mjs` — eval case definitions for `bootstrap`, `new-adr`,
-  `ship-item`, plus a **self-check** that asserts this repo (a valid
-  bootstrapped fixture) satisfies its own invariants.
-- `harness.mjs` / `run.mjs` — the runner.
+A plain `node` process cannot spawn subagents, so the suite splits in two:
 
-The one missing piece is the **headless agent runner** — how an agent is
-driven through a skill non-interactively. That is ADR 0012's open
-question. Until it is chosen and `runAgent()` in `harness.mjs` is
-implemented, agent-dependent cases report **SKIPPED**; the self-check
-still runs and must pass.
+| Layer | File | How to run |
+|-------|------|------------|
+| Deterministic self-check + assertion helpers | `assertions.mjs`, `cases.mjs`, `harness.mjs`, `run.mjs` | `npm run evals` |
+| Behavioural (subagent-driven) suite | `behavioural.workflow.mjs` | the Workflow tool (opt-in) |
 
 ```
-npm run evals
+npm run evals                                  # deterministic; self-check PASS, behavioural cases SKIP
+Workflow({ scriptPath: 'evals/behavioural.workflow.mjs' })   # spawns a worktree subagent per skill case
 ```
 
-## Finishing item 0002
+### Caveat: evals see committed state
 
-1. Decide the runner (e.g. a non-interactive CLI that loads this plugin
-   and runs a named skill with scripted answers) and whether evals pin a
-   model — see `plan/todo/0002-e2e-fixture-harness.md`.
-2. Implement `runAgent({ repo, skill, inputs })` in `harness.mjs`.
-3. Give each agent-dependent case a `setup()` that builds its fixture
-   repo and real `inputs`.
-4. Flip the cases from SKIPPED to PASS/FAIL and designate `npm run evals`
-   a release gate.
+A worktree subagent's checkout is cut from a **committed ref** (e.g.
+`origin/main`), so the behavioural suite evaluates committed/pushed
+skills — not uncommitted local edits. Commit (and push, for shared runs)
+before evaluating. This was confirmed empirically: an early `new-adr`
+subagent eval ran against `origin/main` and so saw the pre-expansion
+`verify.mjs`.
+
+## Status
+
+- Deterministic layer: **done**. `npm run evals` self-check passes
+  against this repo as a fixture.
+- Behavioural layer: **authored** as `behavioural.workflow.mjs` with
+  cases for `new-adr`, `ship-item`, `bootstrap`. The `new-adr` path has
+  been demonstrated live (a worktree subagent produced a contiguous ADR +
+  INDEX row; the static gate passed). Running the full suite as a green
+  release gate is the remaining step for plan item 0002.

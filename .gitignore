@@ -13,6 +13,7 @@ desktop.ini
 
 # Claude Code local state
 .claude/settings.local.json
+.claude/worktrees/
 
 # Logs and temp files
 *.log
