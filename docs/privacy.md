@@ -14,7 +14,7 @@ _Last updated: 2 June 2026_
 limited company registered in Estonia. EvolveHQ OÜ is the data controller for
 the purposes of this policy.
 
-- Contact: <a href="mailto:eugenio.minardi@evolvehq.io">eugenio.minardi@evolvehq.io</a>
+- Contact: <a href="mailto:docflow@evolvehq.io">docflow@evolvehq.io</a>
 <!-- registry code and registered address to be inserted here -->
 
 ## What docflow is
@@ -62,7 +62,7 @@ reflected by the "Last updated" date above.
 
 ## Contact
 
-Questions about this policy: <a href="mailto:eugenio.minardi@evolvehq.io">eugenio.minardi@evolvehq.io</a>.
+Questions about this policy: <a href="mailto:docflow@evolvehq.io">docflow@evolvehq.io</a>.
 
 ---
 
