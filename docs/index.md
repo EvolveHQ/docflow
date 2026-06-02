@@ -63,4 +63,4 @@ handover. It works on fresh repos (scaffolds from zero) and existing ones
 
 ---
 
-MIT licensed · maintained by [EvolveHQ](https://github.com/EvolveHQ)
+MIT licensed · maintained by [EvolveHQ](https://github.com/EvolveHQ) · [Privacy Policy](privacy/)
