@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page.url == "/" %}docflow — ADR-driven documentation workflow{% else %}{{ page.title }} · docflow{% endif %}</title>
+  <meta name="description" content="{{ site.description }}">
+  <link rel="icon" href="{{ '/assets/favicon.svg' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+</head>
+<body>
+  <header class="hero{% if page.url != '/' %} hero--slim{% endif %}">
+    <div class="wrap">
+      <a class="brand" href="{{ '/' | relative_url }}">
+        <span class="brand-mark" aria-hidden="true"></span>docflow
+      </a>
+      {% if page.url == "/" %}
+        <p class="tagline">{{ site.description }}</p>
+        <div class="cta">
+          <a class="btn btn--primary" href="https://github.com/EvolveHQ/docflow">View on GitHub</a>
+          <a class="btn" href="#install">Install</a>
+        </div>
+      {% endif %}
+    </div>
+  </header>
+
+  <main class="wrap content">
+    {{ content }}
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>MIT licensed · maintained by <a href="https://github.com/EvolveHQ">EvolveHQ</a></span>
+      <span class="footer-links">
+        <a href="{{ '/' | relative_url }}">Home</a>
+        <a href="{{ '/privacy/' | relative_url }}">Privacy</a>
+        <a href="https://github.com/EvolveHQ/docflow">GitHub</a>
+      </span>
+    </div>
+  </footer>
+</body>
+</html>

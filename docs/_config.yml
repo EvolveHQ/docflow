@@ -3,6 +3,9 @@ description: >-
   ADR-driven, documentation-led workflow — scaffold an Architecture Decision
   Record (ADR) catalogue, a plan/ work queue, and AGENTS.md conventions into
   any repo, then author, queue, ship, and audit ADRs with lifecycle skills.
-  Works on Claude Code and the pi coding agent.
-theme: jekyll-theme-cayman
-show_downloads: false
+baseurl: "/docflow"
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
