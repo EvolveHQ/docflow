@@ -10,3 +10,4 @@ Append one row per commit. Newest at the bottom.
 | 2026-06-02 | 7769f99 | main | plan 0005 / ADR 0013 | Assessment Step 0.5 added to new-adr/new-plan/add-convention/brainstorm; verify green; ADR 0013 stays Accepted (0006 pending). |
 | 2026-06-02 | e50d7b6 | main | plan 0006 / ADR 0013 | agent-wave Step 0.5 + merge-strategy question; verify green; ADR 0013 → Implemented. Queue empty. |
 | 2026-06-02 | pending | main | plan 0007 / ADR 0014 | Conditional concurrency-guardrails (G1/G2/G3) in templates + bootstrap/agent-wave/audit; verify green; ADR 0014 stays Accepted (0008 pending). |
+| 2026-06-02 | pending | main | plan 0008 / ADR 0014 | USAGE + site docs for the guardrails; verify green; ADR 0014 → Implemented. Queue empty. |

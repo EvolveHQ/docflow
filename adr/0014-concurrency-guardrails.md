@@ -1,7 +1,7 @@
 ---
 adr: 0014
 title: Concurrency guardrails for ADR and plan creation
-status: Accepted
+status: Implemented
 date: 2026-06-02
 owner: Eugenio Minardi
 supersedes:
@@ -116,6 +116,7 @@ merging and G3 enforces at the gate.
 | Date | Revision | Author | Change |
 |------|----------|--------|--------|
 | 2026-06-02 | r1 | Eugenio Minardi | Initial decision. Process guardrails for concurrent ADR/plan numbering; mechanism alternatives (slug/opaque-id/merge-rewrite) considered and rejected. |
+| 2026-06-02 | r2 | Eugenio Minardi | Implemented (plan items 0007, 0008): conditional guardrails in templates + bootstrap/agent-wave/audit, docs in USAGE + site. Status Accepted → Implemented. |
 
 ## Approvals
 

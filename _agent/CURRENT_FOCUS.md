@@ -17,8 +17,8 @@ file.
 
 ## Last shipped
 
-ADRs 0010–0013 all Implemented (0013 supersedes 0002); plan items
-0001–0006 shipped to `plan/done/`. **Queue empty** — no work in flight.
+ADRs 0010–0014 all Implemented (0013 supersedes 0002); plan items
+0001–0008 shipped to `plan/done/`. **Queue empty** — no work in flight.
 
 ## Next item
 

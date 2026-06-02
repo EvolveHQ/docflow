@@ -233,6 +233,32 @@ it no longer applies); to make it enforceable, add the test command to
 the verify gate. Any other "we should always X" practice is enabled the
 same way — `/add-convention` is the single path.
 
+### Concurrent ADR/plan creation (the numbering race)
+
+ADR and `plan/todo` numbers are contiguous and chosen at authoring time,
+so two branches/worktrees can both grab the same "next" number and
+collide at merge. docflow keeps the numbers (they stay short, ordered,
+and the stable cross-reference key — no UUIDs, no rename-breaks-refs) and
+closes the race with **process guardrails** instead of a new identity
+scheme:
+
+- **G1 — decide before do** *(recommended):* prefer to land an ADR + its
+  plan items on `main` before implementation work begins.
+- **G2 — check before merge** *(primary defence):* before integrating,
+  sync onto the current `main` and run the audit; if your number now
+  clashes with what landed, renumber locally **before** merging — a
+  trivial change (a new ADR/plan names its own number only in its file
+  and `INDEX.md`).
+- **G3 — gate backstop:** the single-threaded merge gate rejects a
+  duplicate; the later author renumbers.
+
+`bootstrap` **pre-wires** these into `CONVENTIONS.md` + an `AGENTS.md`
+hard rule **only** for multi-agent (mode 2/3) or PR-based repos.
+**Single-agent / direct-to-main repos have no race by construction** and
+get none of this ceremony. Numbers are immutable once merged. (For
+orchestrated runs, `agent-wave` additionally *reserves* disjoint number
+blocks up front, so G2/G3 rarely fire.)
+
 ## 6. Customising or extending
 
 The templates are deliberately small and self-contained. To customise:
