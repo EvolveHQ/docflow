@@ -1,7 +1,7 @@
 ---
 adr: 0013
 title: Standard interactive assessment protocol for skills
-status: Accepted
+status: Implemented
 date: 2026-06-02
 owner: Eugenio Minardi
 supersedes: ["0002"]
@@ -103,6 +103,7 @@ fast-forward, PR-based, or other).
 | Date | Revision | Author | Change |
 |------|----------|--------|--------|
 | 2026-06-02 | r1 | Eugenio Minardi | Initial decision. Generalises and supersedes ADR 0002 (bootstrap assessment) into a shared protocol for all interactive skills. |
+| 2026-06-02 | r2 | Eugenio Minardi | Implemented (plan items 0005, 0006): Step 0.5 assessment in new-adr/new-plan/add-convention/brainstorm/agent-wave, plus agent-wave parallelism + merge-strategy questions. Status Accepted → Implemented. |
 
 ## Approvals
 

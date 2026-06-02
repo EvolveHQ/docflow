@@ -28,3 +28,11 @@ Maps to adr/0013-interactive-assessment-protocol.md acceptance criteria:
 
 Independent of 0005. Reads adr/0006-integration-model.md for the merge
 default.
+
+---
+
+**Shipped** at HEAD `pending` (2026-06-02). Added the Step 0.5 assessment
+block to `agent-wave` and a 4th Step 1 parameter — **merge / integration
+strategy** (default = the repo's integration model per ADR 0006; override
+local fast-forward / PR-based / other). With 0005, this completes ADR
+0013, which advances Accepted → Implemented. verify green.

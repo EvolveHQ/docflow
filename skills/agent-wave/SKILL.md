@@ -32,6 +32,25 @@ you there rather than pretending to be it.
    - **Mode 3 (worktrees):** the intended mode. Each subagent works in
      its own isolated worktree.
 
+## Step 0.5 — Assessment (run first)
+
+Run the shared assessment protocol before spawning anything:
+
+- **Opt-out gate first.** Ask whether to run the assessment or proceed on
+  recommended defaults. Recommend **running** it when the request arrived
+  with little or no context (e.g. a bare "fan out the queue"); recommend
+  **skipping** when width, budget, supervision, and merge strategy were
+  all specified.
+- The Step 1 parameters **are** the assessment questions: ask them **one
+  at a time**, each with a **recommended option** and a one-line reason;
+  wait for each answer.
+- Use **structured selection** (single- or multiple-choice). If the host
+  exposes a structured single-/multi-select question tool, use it and
+  mark the recommended option; otherwise list options A/B/C in plain text
+  and name the recommended one. Use free text only where unavoidable.
+- **The operator decides.** Never spawn a wave without confirmed
+  parameters, and never guess when invoked with no context.
+
 ## Step 1 — Ask the wave parameters (one at a time, recommend)
 
 1. **Wave width N** — how many agents per wave.
@@ -42,6 +61,11 @@ you there rather than pretending to be it.
    continue) or **continuous** (run wave after wave until budget/queue
    exhausted).
    *Recommended: checkpoint* for the first run on a repo.
+4. **Merge / integration strategy** — how each shipped item lands.
+   *Recommended: follow the repo's integration model* (read it from
+   `CONVENTIONS.md`). Override options: **local fast-forward**,
+   **PR-based**, or **other**. This sets how each subagent integrates in
+   Step 3 and what "shipped" means for the wave.
 
 Cross-check: **continuous + direct-to-main** is risky — nothing gates
 each merge. If the repo is direct-to-main, recommend either switching

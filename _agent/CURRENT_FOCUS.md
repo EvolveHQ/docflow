@@ -17,12 +17,12 @@ file.
 
 ## Last shipped
 
-ADRs 0010, 0011, 0012 all Implemented; plan items 0001–0004 shipped to
-`plan/done/`. **Queue empty** — no work in flight.
+ADRs 0010–0013 all Implemented (0013 supersedes 0002); plan items
+0001–0006 shipped to `plan/done/`. **Queue empty** — no work in flight.
 
 ## Next item
 
-`plan/todo/` is empty. The next hand-authored ADR or `/new-plan` item
-runs next. Behavioural evals: `Workflow evals/behavioural.workflow.mjs`
-(subagent runner) as a release gate; `npm run evals` for the deterministic
-self-check.
+`plan/todo/` is empty. The next hand-authored ADR or new plan item runs
+next. The interactive skills now run a Step 0.5 assessment (ADR 0013).
+Gates: `npm run verify` (static); `Workflow evals/behavioural.workflow.mjs`
+(subagent behavioural evals).
