@@ -6,7 +6,7 @@ ADR change.
 | ADR | Title | Status | Date | Depends on |
 |-----|-------|--------|------|------------|
 | [0001](adr/0001-adr-driven-workflow.md) | Documentation-led, ADR-driven workflow as the product | Implemented | 2026-05-21 | — |
-| [0002](adr/0002-assessment-driven-bootstrap.md) | Interactive assessment-driven bootstrap | Implemented | 2026-05-21 | 0001 |
+| [0002](adr/0002-assessment-driven-bootstrap.md) | Interactive assessment-driven bootstrap | Superseded | 2026-05-21 | 0001 |
 | [0003](adr/0003-backfill-retrofit.md) | Retrofit existing repos via backfill from code and history | Implemented | 2026-05-21 | 0001, 0002 |
 | [0004](adr/0004-adr-privacy.md) | ADRs are internal artefacts, never user-visible | Implemented | 2026-05-21 | 0001 |
 | [0005](adr/0005-multi-agent-coordination.md) | Configurable multi-agent coordination modes | Implemented | 2026-05-21 | 0001 |
@@ -17,3 +17,4 @@ ADR change.
 | [0010](adr/0010-worktree-conflict-reconciliation.md) | Content-level conflict reconciliation across worktrees | Implemented | 2026-06-01 | 0005, 0007 |
 | [0011](adr/0011-static-skill-validation.md) | Static structural validation of skills and manifests | Implemented | 2026-06-01 | 0001, 0007, 0008 |
 | [0012](adr/0012-skill-behavioural-evals.md) | Behavioural and end-to-end evaluation of skill outcomes | Implemented | 2026-06-01 | 0001, 0011 |
+| [0013](adr/0013-interactive-assessment-protocol.md) | Standard interactive assessment protocol for skills | Accepted | 2026-06-02 | 0006, 0007 |

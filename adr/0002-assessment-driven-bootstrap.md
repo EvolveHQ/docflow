@@ -1,11 +1,11 @@
 ---
 adr: 0002
 title: Interactive assessment-driven bootstrap
-status: Implemented
+status: Superseded
 date: 2026-05-21
 owner: Eugenio Minardi
 supersedes:
-superseded-by:
+superseded-by: ["0013"]
 depends-on: ["0001"]
 tags: [bootstrap, ux]
 ---
@@ -53,6 +53,11 @@ recommendation depends on the multi-agent mode chosen first).
 - Backfilling existing repos after the scaffold lands (see
   adr/0003-backfill-retrofit.md).
 
+> **Superseded by adr/0013-interactive-assessment-protocol.md.** The
+> assessment pattern recorded here is generalised into a shared protocol
+> for all interactive skills (bootstrap included). Bootstrap's behaviour
+> is unchanged; the governing decision is now ADR 0013.
+
 ## Open questions
 
 - None.
@@ -67,6 +72,7 @@ recommendation depends on the multi-agent mode chosen first).
 | Date | Revision | Author | Change |
 |------|----------|--------|--------|
 | 2026-05-21 | r1 | Eugenio Minardi | Backfilled from commits 17286a3, 49f0b47 (one-at-a-time questions with recommended option). |
+| 2026-06-02 | r2 | Eugenio Minardi | Superseded by ADR 0013 (assessment protocol generalised to all interactive skills). Status Implemented → Superseded. |
 
 ## Approvals
 
