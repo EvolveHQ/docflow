@@ -195,6 +195,44 @@ It requires a multi-agent mode (Q5 mode 2 or 3) and works best in mode
 Continuous-unsupervised runs are recommended only with PR-based
 integration, so CI gates each merge.
 
+### Enabling an optional convention later (worked example: TDD)
+
+docflow's bootstrap is deliberately lean — practices such as
+test-driven development are **not** baked in. You enable them whenever
+you want with `/add-convention`; there is no dedicated command per
+practice, and you don't have to re-bootstrap.
+
+Say *"add a convention: implement plan items test-first"* (or just run
+`/add-convention` and describe the rule). The skill will:
+
+1. **Assess** whether it is worth codifying. TDD passes — it is a
+   durable, repo-wide rule, not a one-off, a duplicate, or churn-prone.
+2. **Route** it to the right home: a short **hard rule** in `AGENTS.md`
+   plus the detail in `CONVENTIONS.md`. (It would not make this a
+   GLOSSARY term, and it is not a single decision, so not an ADR.)
+3. **Write** it, agent-neutral, so it holds on Claude Code and pi alike.
+
+A typical result — a new `CONVENTIONS.md` section:
+
+> ## Test-Driven Development
+> Implement each `plan/todo` item test-first. For every numbered
+> acceptance criterion in the owning ADR, write a failing test before
+> the code that satisfies it, then make it pass, then refactor. An item
+> is not shippable until its criteria have passing tests mapped back to
+> them.
+
+and a matching `AGENTS.md` hard-rule bullet:
+
+> - **TDD:** write the failing test for an acceptance criterion before
+>   implementing it; map tests back to the owning ADR's criteria.
+
+This rides docflow's existing rule that *acceptance criteria are
+testable and numbered* — TDD simply fixes the order (test → code). To
+turn it off, delete those sections (or re-run `/add-convention` and say
+it no longer applies); to make it enforceable, add the test command to
+the verify gate. Any other "we should always X" practice is enabled the
+same way — `/add-convention` is the single path.
+
 ## 6. Customising or extending
 
 The templates are deliberately small and self-contained. To customise:
