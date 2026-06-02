@@ -28,7 +28,7 @@ Independent of 0007.
 
 ---
 
-**Shipped** at HEAD `pending` (2026-06-02). Added a "Concurrent ADR/plan
+**Shipped** at HEAD `cb54799` (2026-06-02). Added a "Concurrent ADR/plan
 creation" section to `USAGE.md` (the race, G1/G2/G3, single-agent repos
 need none of it) and a pointer note on the site's Examples page. With
 0007, this completes ADR 0014, which advances Accepted → Implemented.

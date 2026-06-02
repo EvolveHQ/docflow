@@ -40,7 +40,7 @@ Independent of 0008 (docs). Touches templates + skills.
 
 ---
 
-**Shipped** at HEAD `pending` (2026-06-02). Added a conditional
+**Shipped** at HEAD `0548d6c` (2026-06-02). Added a conditional
 "Concurrency Guardrails" section to `templates/CONVENTIONS.md` + a
 hard-rule bullet to `templates/AGENTS.md` (G1 recommended / G2 / G3),
 written by `bootstrap` only for mode 2/3 or PR-based repos; `bootstrap`
