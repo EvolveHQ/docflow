@@ -30,3 +30,12 @@ Maps to adr/0013-interactive-assessment-protocol.md acceptance criteria:
 ## Dependencies
 
 Independent of 0006. Parallelisable (disjoint skill files).
+
+---
+
+**Shipped** at HEAD `pending` (2026-06-02). Added a "Step 0.5 —
+Assessment" block (opt-out gate · one-at-a-time · recommended option ·
+structured single-/multi-select with A/B/C fallback · operator decides ·
+mandatory when no context) plus a skill-specific question list to
+`new-adr`, `new-plan`, `add-convention`, and `brainstorm`. verify green.
+Owning ADR 0013 stays Accepted until 0006 also ships.

@@ -18,6 +18,33 @@ Author one new ADR, consistent with this repo's conventions.
    groupings exist, and the multi-agent mode.
 3. Read `INDEX.md` and `ls adr/` to learn existing numbers and titles.
 
+## Step 0.5 — Assessment (run first)
+
+Run the shared assessment protocol before authoring:
+
+- **Opt-out gate first.** Ask whether to run the assessment or skip
+  straight to authoring. Recommend **running** it when the request
+  arrived with little or no context; recommend **skipping** when the
+  decision is already fully specified.
+- Ask the questions below **one at a time**, each with a **recommended
+  option** and a one-line reason; wait for each answer.
+- Use **structured selection** (single- or multiple-choice). If the host
+  exposes a structured single-/multi-select question tool, use it and
+  mark the recommended option; otherwise list options A/B/C in plain text
+  and name the recommended one. Use **free text only** where an
+  enumerable set is impossible (e.g. the title).
+- **The operator decides.** Never proceed past a question without an
+  answer, and never guess scope when invoked with no context.
+
+Questions (skip any the request already answers):
+1. **Shape** — capability or technology (only if the repo splits shapes;
+   single-shape repos skip this). *Recommended: per the request's intent.*
+2. **Supersede?** — none, or select the ADR(s) this replaces.
+   *Recommended: none.*
+3. **Initial status** — Proposed or Accepted. *Recommended: Proposed.*
+4. **Create a plan item now?** — yes / no. *Recommended: yes when Accepted.*
+5. **Title** — free text (the one unavoidable open answer).
+
 ## Step 1 — Determine shape and number
 
 - **Shape.** If the repo uses a single ADR shape, use

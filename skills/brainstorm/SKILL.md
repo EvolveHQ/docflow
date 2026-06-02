@@ -19,6 +19,34 @@ to the **new-adr** and **new-plan** skills.
    contradict what already exists, and so dependencies point at real
    ADRs.
 
+## Step 0.5 — Assessment (run first)
+
+Run the shared assessment protocol before decomposing:
+
+- **Opt-out gate first.** Ask whether to run the assessment or go
+  straight to decomposing. Recommend **running** it when the request
+  arrived with little or no context; recommend **skipping** when the goal
+  and scope are already clear.
+- Ask the questions below **one at a time**, each with a **recommended
+  option** and a one-line reason; wait for each answer.
+- Use **structured selection** (single- or multiple-choice). If the host
+  exposes a structured single-/multi-select question tool, use it and
+  mark the recommended option; otherwise list options A/B/C in plain text
+  and name the recommended one. Use **free text only** where an
+  enumerable set is impossible (e.g. the goal statement).
+- **The operator decides.** Never proceed past a question without an
+  answer, and never guess scope when invoked with no context.
+
+Questions (skip any the request already answers):
+1. **Goal / problem** — free text (the unavoidable open answer) if not
+   already given.
+2. **Output** — candidate ADRs only, or ADRs + plan items.
+   *Recommended: ADRs + plan items.*
+3. **Depth** — quick (top candidates) or thorough (full decomposition).
+   *Recommended: quick first, expand on request.*
+
+This skill still **writes nothing** until you approve the outline.
+
 ## Step 1 — Understand the problem
 
 Ask for the goal/feature/problem if not given. Probe for scope

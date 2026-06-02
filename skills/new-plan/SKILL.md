@@ -16,6 +16,34 @@ Add one item to the implementation queue.
    completion event, and `plan/README.md` if present.
 3. `ls plan/todo/` to learn existing numbers and priority ordering.
 
+## Step 0.5 — Assessment (run first)
+
+Run the shared assessment protocol before queueing:
+
+- **Opt-out gate first.** Ask whether to run the assessment or skip to
+  writing the item. Recommend **running** it when the request arrived
+  with little or no context; recommend **skipping** when the item is
+  already fully specified.
+- Ask the questions below **one at a time**, each with a **recommended
+  option** and a one-line reason; wait for each answer.
+- Use **structured selection** (single- or multiple-choice). If the host
+  exposes a structured single-/multi-select question tool, use it and
+  mark the recommended option; otherwise list options A/B/C in plain text
+  and name the recommended one. Use **free text only** where an
+  enumerable set is impossible (e.g. the scope summary).
+- **The operator decides.** Never proceed past a question without an
+  answer, and never guess scope when invoked with no context.
+
+Questions (skip any the request already answers):
+1. **Owning ADR(s)** — select from the catalogue (single or multiple).
+   *Recommended: the ADR named in the request.*
+2. **Dependencies** — none, or select the plan items / ADRs that must
+   land first. *Recommended: none.*
+3. **Priority / position** — next number, or insert ahead of existing
+   items. *Recommended: next number.*
+4. **Scope & exit criteria** — free text, mapped to the owning ADR's
+   numbered acceptance criteria where possible.
+
 ## Step 1 — Identify the owning ADR(s)
 
 - Ask which ADR(s) this work implements. Validate they exist in

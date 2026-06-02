@@ -15,6 +15,36 @@ stenographer.
 2. Read `CONVENTIONS.md` and `AGENTS.md` in full so you can detect
    overlap with existing rules and judge fit.
 
+## Step 0.5 — Assessment (run first)
+
+Run the shared assessment protocol; the triage (Step 1) and routing
+(Step 2) questions are asked under it:
+
+- **Opt-out gate first.** Ask whether to run the assessment or skip to
+  drafting. Recommend **running** it when the request arrived with little
+  or no context; recommend **skipping** when the convention and its home
+  are already clear.
+- Ask questions **one at a time**, each with a **recommended option** and
+  a one-line reason; wait for each answer.
+- Use **structured selection** (single- or multiple-choice). If the host
+  exposes a structured single-/multi-select question tool, use it and
+  mark the recommended option; otherwise list options A/B/C in plain text
+  and name the recommended one. Use **free text only** where an
+  enumerable set is impossible (e.g. the exact wording).
+- **The operator decides.** Never proceed past a question without an
+  answer, and never guess scope when invoked with no context.
+
+Questions (skip any the request already answers):
+1. **Worth codifying?** — yes (recurring, stable, testable) or no
+   (one-off, duplicate, churn-prone, vague). *Recommended: per the Step 1
+   triage; this question gates the rest.*
+2. **Home** — `AGENTS.md` hard rule / `CONVENTIONS.md` guidance /
+   `GLOSSARY.md` term / actually a decision (hand off to the **new-adr**
+   skill). *Recommended: per the rule's nature (see Step 2).*
+3. **Enforce in the verify gate?** — yes / no. *Recommended: no, unless
+   the rule is mechanically checkable.*
+4. **Wording** — free text (the rule statement itself).
+
 ## Step 1 — Assess: is this worth codifying?
 
 Apply triage. Recommend **against** adding when:
