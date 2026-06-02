@@ -40,11 +40,15 @@ const CASES = [
     key: 'ship-item',
     prompt:
       'Behavioural eval of the docflow `ship-item` skill. Work ONLY in your worktree; do NOT push. ' +
-      'Pick the lowest-numbered plan/todo item whose owning ADR is Accepted. Following skills/ship-item/SKILL.md, ' +
-      'run the completion event for it: git mv todo->done with a shipped footer, advance the owning ADR(s) ' +
-      'Accepted->Implemented, regenerate INDEX.md, append WORKLOG. Then run `node scripts/verify.mjs`. PASS only ' +
-      'if exit 0 AND the item is now under plan/done AND its owning ADR reads Implemented. Report what moved, the ' +
-      'ADR status change, and the exact verify.mjs output + exit code.',
+      'FIRST set up a fixture to ship (the queue may be empty): author a minimal ADR ' +
+      'adr/<next-contiguous-number>-eval-ship.md with status Accepted (fill the capability template briefly), ' +
+      'regenerate INDEX.md, and create a matching plan/todo/<same-number>-eval-ship.md naming that ADR as owner. ' +
+      'THEN, following skills/ship-item/SKILL.md, run the completion event for that item: git mv it to ' +
+      'plan/done/<date>-eval-ship.md with a shipped footer, advance the owning ADR Accepted->Implemented, ' +
+      'regenerate INDEX.md, append a WORKLOG row. Then run `node scripts/verify.mjs`. PASS only if exit 0 AND the ' +
+      'item is under plan/done AND its owning ADR reads Implemented. You MAY use git mv/add within your worktree ' +
+      'but do NOT commit or push. Report what you created, what moved, the ADR status change, and the exact ' +
+      'verify.mjs output + exit code.',
   },
   {
     key: 'bootstrap',
