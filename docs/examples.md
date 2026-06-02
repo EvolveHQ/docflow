@@ -219,6 +219,15 @@ New work now follows the same loop: `/new-adr` → `/new-plan` → `/ship-item`.
 3. *"make 'no secrets in code' a rule"* → the skill **pushes back**: already
    enforced by lint/CI, so it declines to add a duplicate rule (gatekeeper, not
    stenographer).
+4. *"don't commit automatically at the end of a cycle — wait for operator
+   input"* → assessed as a durable workflow rule → an `AGENTS.md` hard rule plus
+   a `CONVENTIONS.md` §Git Contract note:
+
+   ```
+   AGENTS.md §Hard rules:
+   - Never commit automatically at cycle end. Pause and wait for explicit
+     operator approval before each commit (and before any push).
+   ```
 
 ### audit
 
