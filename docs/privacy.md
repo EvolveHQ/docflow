@@ -66,4 +66,4 @@ Questions about this policy: <a href="mailto:docflow@evolvehq.io">docflow@evolve
 
 ---
 
-[← Back to docflow](./)
+[← Back to docflow](../)
