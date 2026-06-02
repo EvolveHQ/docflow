@@ -42,6 +42,18 @@ footer required on any commit touching an ADR.
 
 ## Step 6 — Integrate
 
+<!-- Concurrency guardrail G2 (multi-agent / PR-based repos) — keep this
+step if CONVENTIONS.md has a §Concurrency Guardrails section; drop it for
+single-agent direct-to-main repos:
+
+- **Check before merge (G2).** Sync onto the current `main`
+  (`git fetch` + rebase, or pull in a shared checkout) and run `/audit`.
+  If your new ADR or `plan/todo` number now clashes with what landed on
+  `main`, renumber locally — in your ADR/plan file and `INDEX.md` —
+  before integrating. The merge gate (G3) rejects a duplicate as the
+  backstop.
+-->
+
 <!-- Integration model per Q4b — keep ONE of the two blocks below,
 delete the other. -->
 

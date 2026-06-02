@@ -49,9 +49,11 @@ relevant):
 11. **Cross-worktree collisions** (mode 3, or when auditing across
     unmerged branches). These catch semantic conflicts that a
     line-level git merge cannot:
-    - **Duplicate ADR numbers** — two ADR files (across branches/
-      worktrees) claiming the same `NNNN`. Distinct from check 1, which
-      only sees one tree.
+    - **Duplicate ADR or plan/todo numbers** — two ADR files, or two
+      `plan/todo/` items, (across branches/worktrees) claiming the same
+      `NNNN`. Distinct from check 1, which only sees one tree. This is the
+      collision the concurrency guardrails (G2 pre-merge / G3 gate) guard
+      against; flag it so the later author renumbers.
     - **Duplicate plan ownership** — two `plan/todo/` items naming the
       same owning ADR for the same scope, i.e. two worktrees building
       the same thing.

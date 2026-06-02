@@ -240,8 +240,12 @@ template, fill its placeholders from the assessment answers, then
 write it into the repo.
 
 1. `CONVENTIONS.md` — from `templates/CONVENTIONS.md`. Spec other files
-   reference.
-2. `AGENTS.md` — from `templates/AGENTS.md`.
+   reference. Include the **§Concurrency Guardrails** section only if Q5
+   is mode 2/3 **or** Q4b is PR-based; omit it for single-agent
+   direct-to-main repos (no numbering race).
+2. `AGENTS.md` — from `templates/AGENTS.md`. Include the concurrency
+   guardrails hard-rule bullet (G2/G3) under the same condition as the
+   CONVENTIONS section above; omit otherwise.
 3. `CLAUDE.md` — from `templates/CLAUDE.md` (single line `@AGENTS.md`).
 4. `adr/0000-template.md` — from `templates/adr-capability.md`.
 5. `adr/NNNN-template.md` — from `templates/adr-technology.md`, only if

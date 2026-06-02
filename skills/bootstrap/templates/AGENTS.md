@@ -118,6 +118,18 @@ Coordination rules:
   Add your row when you start, remove it when the worktree closes.
 -->
 
+<!-- Concurrency guardrails hard rule — bootstrap INCLUDES this bullet
+ONLY for multi-agent (mode 2/3) OR PR-based repos (omit for single-agent
+direct-to-main). See CONVENTIONS.md §Concurrency Guardrails.
+
+- **Before integrating, check for number collisions (G2/G3).** Sync onto
+  the current `main` and run `/audit`; if your ADR or `plan/todo` number
+  now clashes with what landed on `main`, renumber locally before
+  integrating. The single-threaded merge gate rejects a duplicate as the
+  backstop. Numbers are immutable once merged. (G1 — landing the ADR
+  before implementation — is recommended guidance, in CONVENTIONS.md.)
+-->
+
 ## Plan folder
 
 - A pending item gets a `plan/todo/NNNN-<slug>.md` file BEFORE work

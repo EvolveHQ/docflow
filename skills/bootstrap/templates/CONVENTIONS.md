@@ -139,6 +139,34 @@ When a `plan/todo/` item ships, the file moves to `plan/done/` AND the
 owning ADR(s)' `status:` advances from `Accepted` to `Implemented`.
 `INDEX.md` is regenerated to match.
 
+<!-- Concurrency Guardrails — bootstrap INCLUDES this section (uncommented)
+ONLY for multi-agent (mode 2/3) OR PR-based repos. Single-agent
+direct-to-main repos have no numbering race by construction and OMIT it.
+Adapt "integrate" to the integration model (PR merge / ff-push / pull
+before commit in a shared checkout).
+
+## Concurrency Guardrails
+
+ADR and `plan/todo` numbers are contiguous and assigned at authoring
+time, so concurrent branches can pick the same next number. These
+guardrails keep numbering collision-free **without changing the identity
+scheme** — the number stays the stable cross-reference key, immutable
+once merged:
+
+- **G1 — decide before do (recommended).** Prefer to merge an ADR and its
+  plan items to `main` before implementation work begins, so work
+  branches start from a `main` that already carries the numbered ADR.
+- **G2 — check before merge.** Before integrating, sync onto the current
+  `main` (`git fetch` + rebase, or pull in a shared checkout) and run
+  `/audit`. If your ADR number or `plan/todo` slot now clashes with what
+  landed on `main`, renumber locally **before** integrating — a trivial,
+  local change (a new ADR/plan names its own number only in its own file
+  and `INDEX.md`).
+- **G3 — gate backstop.** Integration is single-threaded; it rejects a
+  duplicate number as the last line of defence, and the later author
+  renumbers.
+-->
+
 ## Audit Trail Policy
 
 Every substantive change to an Accepted ADR appends a new row to its

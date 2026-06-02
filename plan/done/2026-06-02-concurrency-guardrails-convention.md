@@ -37,3 +37,14 @@ Maps to adr/0014-concurrency-guardrails.md acceptance criteria:
 ## Dependencies
 
 Independent of 0008 (docs). Touches templates + skills.
+
+---
+
+**Shipped** at HEAD `pending` (2026-06-02). Added a conditional
+"Concurrency Guardrails" section to `templates/CONVENTIONS.md` + a
+hard-rule bullet to `templates/AGENTS.md` (G1 recommended / G2 / G3),
+written by `bootstrap` only for mode 2/3 or PR-based repos; `bootstrap`
+Step 5 carries the condition. G2 pre-merge check added to
+`templates/_agent-prompts-autonomous.md` and `agent-wave` Step 3; `audit`
+check 11 now covers duplicate ADR **and** plan/todo numbers. verify green.
+ADR 0014 stays Accepted until 0008 ships.

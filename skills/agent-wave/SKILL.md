@@ -102,9 +102,14 @@ every merge.
 Spawn N subagents in parallel, each in an isolated worktree
 (`isolation: worktree`). Brief each with: its assigned queue item, the
 instruction to follow `_agent/prompts/autonomous.md` end-to-end for that
-one item (orient → implement → verify → integrate per the repo's model →
-ship), and to report back a structured result (item, pass/fail, HEAD or
-PR link, any blocker).
+one item (orient → implement → verify → **check before merge (G2)** →
+integrate per the repo's model → ship), and to report back a structured
+result (item, pass/fail, HEAD or PR link, any blocker). The G2 step:
+before integrating, sync onto the current `main` and run the **audit**
+skill; if the item's new ADR/plan number now clashes with what landed,
+renumber locally
+before merging. (Reservation in Step 2 makes this rare; G2 catches what
+slips through, e.g. an out-of-band ADR landing mid-wave.)
 
 ## Step 4 — Collect and checkpoint
 
