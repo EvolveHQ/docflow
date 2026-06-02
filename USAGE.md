@@ -164,12 +164,33 @@ The repo is now ready for ADR-driven work. Typical first steps:
 ## 5a. Lifecycle skills
 
 The manual workflow in §5 is exactly what the lifecycle skills
-automate. They all share three properties: they **read `CONVENTIONS.md`
-first** and honour the repo's recorded choices (ADR shape, status
-lifecycle, integration model, multi-agent mode); they **refuse on an
-un-bootstrapped repo** and point at `/bootstrap`; and they keep
-`INDEX.md` and the `_agent/` coordination files in sync as a side
-effect.
+automate. They all share four properties: they **run a short assessment
+first** (see below); they **read `CONVENTIONS.md` first** and honour the
+repo's recorded choices (ADR shape, status lifecycle, integration model,
+multi-agent mode); they **refuse on an un-bootstrapped repo** and point
+at `/bootstrap`; and they keep `INDEX.md` and the `_agent/` coordination
+files in sync as a side effect.
+
+**The assessment protocol.** `new-adr`, `new-plan`, `add-convention`,
+`brainstorm`, and `agent-wave` each open with a brief assessment before
+acting — the same pattern bootstrap uses (§3):
+
+- An **opt-out gate** first: *run the assessment, or skip it?* The
+  recommended default flips on context — *run* when you invoked the skill
+  with little detail, *skip* when your request already specifies
+  everything.
+- Questions are asked **one at a time**, each with a **recommended
+  option** you can accept, override, or replace.
+- Answers use **scroll-to-select** (single- or multiple-choice) where the
+  host exposes a selection tool (Claude Code's `AskUserQuestion`), falling
+  back to plain `A/B/C` lists otherwise. Free text is used only where an
+  enumerable set is impossible (e.g. an ADR title).
+- **You decide** — a skill never proceeds past a question without your
+  input, and never guesses scope when invoked with no context.
+
+`agent-wave` additionally asks the wave parallelism and the merge /
+integration strategy. So a bare *"new ADR"* leads with a couple of quick
+picks; a fully-specified request lets you skip straight through.
 
 | Skill | Replaces these manual steps |
 |-------|------------------------------|

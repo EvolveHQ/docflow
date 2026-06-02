@@ -172,6 +172,13 @@ New work now follows the same loop: `/new-adr` → `/new-plan` → `/ship-item`.
 
 ## 3. Skill-by-skill examples
 
+> **Heads-up — skills assess first.** `new-adr`, `new-plan`,
+> `add-convention`, `brainstorm`, and `agent-wave` open with a brief
+> assessment: an opt-out gate, then one scroll-to-select question at a time,
+> each with a recommended option — you decide, and a fully-specified request
+> lets you skip straight through. The examples below show the *intent*; in
+> practice the skill confirms scope with you first.
+
 ### bootstrap
 
 1. `/bootstrap` on a fresh repo → 10 questions → full scaffold (see Flow 1).
