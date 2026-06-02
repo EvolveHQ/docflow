@@ -33,7 +33,7 @@ Independent of 0006. Parallelisable (disjoint skill files).
 
 ---
 
-**Shipped** at HEAD `pending` (2026-06-02). Added a "Step 0.5 —
+**Shipped** at HEAD `7769f99` (2026-06-02). Added a "Step 0.5 —
 Assessment" block (opt-out gate · one-at-a-time · recommended option ·
 structured single-/multi-select with A/B/C fallback · operator decides ·
 mandatory when no context) plus a skill-specific question list to

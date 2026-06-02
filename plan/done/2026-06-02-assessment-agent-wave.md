@@ -31,7 +31,7 @@ default.
 
 ---
 
-**Shipped** at HEAD `pending` (2026-06-02). Added the Step 0.5 assessment
+**Shipped** at HEAD `e50d7b6` (2026-06-02). Added the Step 0.5 assessment
 block to `agent-wave` and a 4th Step 1 parameter — **merge / integration
 strategy** (default = the repo's integration model per ADR 0006; override
 local fast-forward / PR-based / other). With 0005, this completes ADR
