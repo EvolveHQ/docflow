@@ -33,7 +33,7 @@ Independent of 0010 (verification).
 
 ---
 
-**Shipped** at HEAD `pending` (2026-06-03). README Install rewritten:
+**Shipped** at HEAD `b2c7399` (2026-06-03). README Install rewritten:
 multi-target intro + support matrix (Claude Code, Cowork, pi, Codex,
 OpenCode) + per-host sections (Cowork = the Claude Code plugin; Codex →
 `~/.agents/skills/`; OpenCode auto-discovers `.claude`/`.agents`/
