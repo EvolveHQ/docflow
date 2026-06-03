@@ -5,21 +5,58 @@ what each of the 10 assessment questions actually changes in the
 output, and how to customise or extend the templates. The lifecycle
 skills are covered in §5a.
 
-For installation, see the [README](README.md).
+## Install (per platform)
 
-## 1. Triggering the bootstrap skill
+docflow runs from **one `skills/` tree** on five coding agents. The
+scaffolded **output** (`AGENTS.md`, the ADR catalogue, `plan/`, `_agent/`)
+is plain Markdown read natively by any agent that loads `AGENTS.md`; the
+**skills** are `SKILL.md` files the host discovers.
 
-Once the plugin is installed (or `--plugin-dir`'d) into a Claude Code
-session, the skill is available in any repo. Three ways to trigger:
+| Agent | Install | Invoke |
+|-------|---------|--------|
+| **Claude Code** | `/plugin marketplace add EvolveHQ/docflow` then `/plugin install docflow@evolvehq` | `/bootstrap` |
+| **Claude Cowork** | the **same** Claude Code plugin (`/plugin marketplace add …`) — Cowork shares the plugin system | `/bootstrap` |
+| **pi** | `pi install npm:@evolvehq/docflow` (or `pi install git:github.com/EvolveHQ/docflow`) | `/skill:bootstrap` |
+| **Codex** | `codex plugin marketplace add EvolveHQ/docflow` then `codex plugin install docflow` (native plugin) | `$bootstrap` / `/skills` |
+| **OpenCode** | auto-discovers `.claude`/`.agents`/`.opencode` skills (so a Claude Code / Codex install is picked up), or symlink into `~/.config/opencode/skills` | auto, by description |
 
-1. **Slash command:** `/bootstrap`.
-2. **Natural language** matching the skill's description, e.g.
-   - "set up documentation-led conventions in this repo"
-   - "bootstrap ADRs and a plan queue"
-   - "scaffold AGENTS.md and the _agent/ layout"
-   - "retrofit this existing repo with the documentation conventions"
-3. **From another agent's prompt** — name the skill explicitly:
-   *"invoke the `bootstrap` skill on this repository."*
+Notes:
+
+- **Codex** ships a native plugin (`.codex-plugin/`), so it's a one-command
+  install like Claude Code. **OpenCode** has no marketplace command for
+  `SKILL.md` skills (its plugin system is npm JS plugins), so it relies on
+  skills-directory auto-discovery or a symlink.
+- A **shared skills directory** can serve two agents: `~/.agents/skills/`
+  is read by Codex and OpenCode; `~/.claude/skills/` by Claude Code and
+  OpenCode.
+- The scaffolded output needs no porting on any of them — it is read
+  natively wherever `AGENTS.md` is the instruction file.
+
+See the [README](README.md#install) for the full matrix, Windows paths,
+and local-development options.
+
+## 1. Triggering the skills
+
+Once docflow is installed (per the table above), the skills are available
+in any repo. Invocation differs per agent:
+
+| Agent | Slash / mention | Auto-trigger from description |
+|-------|-----------------|-------------------------------|
+| Claude Code / Cowork | `/bootstrap`, `/new-adr`, … | yes |
+| pi | `/skill:bootstrap`, `/skill:new-adr`, … | no — invoke explicitly |
+| Codex | `$bootstrap` / `/skills` | yes |
+| OpenCode | (loaded by name) | yes, by description |
+
+On agents that **auto-trigger**, natural-language matching the skill's
+description also works, e.g.:
+
+- "set up documentation-led conventions in this repo"
+- "bootstrap ADRs and a plan queue"
+- "scaffold AGENTS.md and the _agent/ layout"
+- "retrofit this existing repo with the documentation conventions"
+
+Or, on any agent, name the skill explicitly: *"invoke the `bootstrap`
+skill on this repository."*
 
 ## 2. The flow
 
@@ -339,6 +376,16 @@ To remove the plugin entirely:
 ```
 /plugin uninstall docflow@evolvehq
 ```
+
+**Other agents:**
+
+- **Cowork** — same as Claude Code (`/plugin marketplace update` →
+  install).
+- **pi** — re-run `pi install npm:@evolvehq/docflow` (or the `git:` form).
+- **Codex** — `codex plugin marketplace upgrade` then `codex plugin
+  install docflow`.
+- **OpenCode** — if installed via a clone/symlink, `git pull` the clone;
+  skills reload on the next session.
 
 ### As the author (you, maintaining this repo)
 

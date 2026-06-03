@@ -50,9 +50,9 @@ Invoke as `/skill:bootstrap`, `/skill:new-adr`, …
 ### Also: Claude Cowork, Codex, OpenCode
 
 docflow runs from the same skill files on **Claude Cowork** (the Claude
-Code plugin), **Codex** (copy `skills/*` into `~/.agents/skills/`; invoke
-`$bootstrap`), and **OpenCode** (reads `.claude`/`.agents`/`.opencode`
-skills — auto-discovered). See the
+Code plugin), **Codex** (`codex plugin marketplace add EvolveHQ/docflow`;
+invoke `$bootstrap`), and **OpenCode** (reads `.claude`/`.agents`/
+`.opencode` skills — auto-discovered). See the
 [full install matrix](https://github.com/EvolveHQ/docflow#install).
 
 ## Why
