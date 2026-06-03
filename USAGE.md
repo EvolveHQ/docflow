@@ -17,7 +17,7 @@ is plain Markdown read natively by any agent that loads `AGENTS.md`; the
 | **Claude Code** | `/plugin marketplace add EvolveHQ/docflow` then `/plugin install docflow@evolvehq` | `/bootstrap` |
 | **Claude Cowork** | the **same** Claude Code plugin (`/plugin marketplace add …`) — Cowork shares the plugin system | `/bootstrap` |
 | **pi** | `pi install npm:@evolvehq/docflow` (or `pi install git:github.com/EvolveHQ/docflow`) | `/skill:bootstrap` |
-| **Codex** | `codex plugin marketplace add EvolveHQ/docflow` then `codex plugin install docflow` (native plugin) | `$bootstrap` / `/skills` |
+| **Codex** | `codex plugin marketplace add EvolveHQ/docflow` then `codex plugin add docflow@evolvehq` (native plugin) | `$bootstrap` / `/skills` |
 | **OpenCode** | auto-discovers `.claude`/`.agents`/`.opencode` skills (so a Claude Code / Codex install is picked up), or symlink into `~/.config/opencode/skills` | auto, by description |
 
 Notes:
@@ -382,8 +382,8 @@ To remove the plugin entirely:
 - **Cowork** — same as Claude Code (`/plugin marketplace update` →
   install).
 - **pi** — re-run `pi install npm:@evolvehq/docflow` (or the `git:` form).
-- **Codex** — `codex plugin marketplace upgrade` then `codex plugin
-  install docflow`.
+- **Codex** — `codex plugin marketplace upgrade`, then re-add with
+  `codex plugin add docflow@evolvehq`.
 - **OpenCode** — if installed via a clone/symlink, `git pull` the clone;
   skills reload on the next session.
 

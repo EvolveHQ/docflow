@@ -125,7 +125,7 @@ install from this repo's marketplace:
 
 ```
 codex plugin marketplace add EvolveHQ/docflow
-codex plugin install docflow
+codex plugin add docflow@evolvehq
 ```
 
 Codex reads the scaffolded `AGENTS.md` natively. Invoke with `$bootstrap`

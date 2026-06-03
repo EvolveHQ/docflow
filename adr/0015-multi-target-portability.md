@@ -45,7 +45,7 @@ Per-target packaging / install:
 | Claude Code | native | `/plugin marketplace add EvolveHQ/docflow` → install (`.claude-plugin/`) | `/bootstrap` |
 | Claude Cowork | native | **same Claude Code plugin** (Cowork shares the plugin/marketplace system) | `/bootstrap` |
 | pi | native | `pi install npm:@evolvehq/docflow` (`package.json` `pi.skills`) | `/skill:bootstrap` |
-| Codex | native | **native plugin** — `codex plugin marketplace add EvolveHQ/docflow` → `codex plugin install docflow` (`.codex-plugin/` + `.agents/plugins/marketplace.json`) | `$bootstrap` / `/skills` |
+| Codex | native | **native plugin** — `codex plugin marketplace add EvolveHQ/docflow` → `codex plugin add docflow@evolvehq` (`.codex-plugin/` + `.agents/plugins/marketplace.json`) | `$bootstrap` / `/skills` |
 | OpenCode | native | reads `.claude/skills` · `.agents/skills` · `.opencode/skills` — auto-discovers a Claude Code / Codex install, or copy into `.opencode/skills/` | auto-load by description |
 
 Note: `~/.agents/skills/` is read by **both** Codex and OpenCode, and
