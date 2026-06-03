@@ -1,10 +1,19 @@
 {
   "name": "evolvehq",
+  "owner": {
+    "name": "EvolveHQ",
+    "url": "https://github.com/EvolveHQ"
+  },
+  "metadata": {
+    "description": "EvolveHQ plugins for documentation-led, ADR-driven development."
+  },
   "plugins": [
     {
       "name": "docflow",
+      "source": "./",
       "description": "ADR-driven documentation workflow — scaffold (or retrofit) an Architecture Decision Record (ADR) catalogue, a plan/ queue, and AGENTS.md conventions into any repo, then author, queue, ship, and audit ADRs with lifecycle skills.",
-      "source": { "source": "local", "path": "." }
+      "category": "Productivity",
+      "license": "MIT"
     }
   ]
 }
