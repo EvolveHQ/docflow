@@ -12,4 +12,4 @@ Append one row per commit. Newest at the bottom.
 | 2026-06-02 | 0548d6c | main | plan 0007 / ADR 0014 | Conditional concurrency-guardrails (G1/G2/G3) in templates + bootstrap/agent-wave/audit; verify green; ADR 0014 stays Accepted (0008 pending). |
 | 2026-06-02 | cb54799 | main | plan 0008 / ADR 0014 | USAGE + site docs for the guardrails; verify green; ADR 0014 → Implemented. Queue empty. |
 | 2026-06-03 | b2c7399 | main | plan 0009 / ADR 0015 | Multi-target install docs + support matrix (Cowork/Codex/OpenCode) in README + site; verify green; ADR 0015 stays Accepted (0010 verification pending). |
-| 2026-06-03 | pending | main | plan 0011 / ADR 0015 | Native Codex plugin (.codex-plugin + .agents/plugins); 3-manifest version-sync; clean README Codex/OpenCode install (ADR 0015 r2). verify green. |
+| 2026-06-03 | 104a8a6 | main | plan 0011 / ADR 0015 | Native Codex plugin (.codex-plugin + .agents/plugins); 3-manifest version-sync; clean README Codex/OpenCode install (ADR 0015 r2). verify green. |

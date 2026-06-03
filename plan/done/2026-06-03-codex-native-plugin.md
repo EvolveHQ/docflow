@@ -37,7 +37,7 @@ confirmed under plan 0010 (verification on a real Codex install).
 
 ---
 
-**Shipped** at HEAD `pending` (2026-06-03). Added `.codex-plugin/
+**Shipped** at HEAD `104a8a6` (2026-06-03). Added `.codex-plugin/
 plugin.json` + `.agents/plugins/marketplace.json`; extended verify.mjs to
 version-sync three manifests + check both marketplaces; updated
 CONVENTIONS + AGENTS version-sync rule; rewrote the README Codex section
