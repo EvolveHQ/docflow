@@ -55,15 +55,18 @@ defect until the other agent is handled too.
 
 ## Version-Sync Invariant
 
-The package version is declared in two places and they must always
+The package version is declared in three manifests and they must always
 agree:
 
-- `package.json` → `version`
-- `.claude-plugin/plugin.json` → `version`
+- `package.json` → `version` (npm / pi)
+- `.claude-plugin/plugin.json` → `version` (Claude Code / Cowork)
+- `.codex-plugin/plugin.json` → `version` (Codex)
 
 Bump them together in the same commit. The verify gate
-(`node scripts/verify.mjs`) fails if they diverge. The git tag
-`vX.Y.Z` and the published npm version must match this same number.
+(`node scripts/verify.mjs`) fails if any diverge. The git tag `vX.Y.Z`
+and the published npm version must match this same number. Each
+marketplace manifest (`.claude-plugin/marketplace.json`,
+`.agents/plugins/marketplace.json`) must list the plugin by name.
 
 ## Skill Authoring
 

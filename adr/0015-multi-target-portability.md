@@ -45,7 +45,7 @@ Per-target packaging / install:
 | Claude Code | native | `/plugin marketplace add EvolveHQ/docflow` → install (`.claude-plugin/`) | `/bootstrap` |
 | Claude Cowork | native | **same Claude Code plugin** (Cowork shares the plugin/marketplace system) | `/bootstrap` |
 | pi | native | `pi install npm:@evolvehq/docflow` (`package.json` `pi.skills`) | `/skill:bootstrap` |
-| Codex | native | copy `skills/*` into `~/.agents/skills/` (or `.agents/skills/`) | `$bootstrap` / `/skills` |
+| Codex | native | **native plugin** — `codex plugin marketplace add EvolveHQ/docflow` → `codex plugin install docflow` (`.codex-plugin/` + `.agents/plugins/marketplace.json`) | `$bootstrap` / `/skills` |
 | OpenCode | native | reads `.claude/skills` · `.agents/skills` · `.opencode/skills` — auto-discovers a Claude Code / Codex install, or copy into `.opencode/skills/` | auto-load by description |
 
 Note: `~/.agents/skills/` is read by **both** Codex and OpenCode, and
@@ -72,17 +72,21 @@ installs the existing Claude Code plugin.
    gate enforces).
 3. Cowork is documented as covered by the existing Claude Code plugin
    packaging (no separate manifest).
-4. Codex (`.agents/skills/`) and OpenCode (`.opencode/skills/` /
-   auto-discovery of `.claude`/`.agents`) install paths are documented.
+4. Codex ships a **native plugin** (`.codex-plugin/plugin.json` +
+   `.agents/plugins/marketplace.json`) installable via `codex plugin
+   marketplace add`; OpenCode install (auto-discovery / symlink) is
+   documented. The verify gate version-syncs all three plugin manifests.
 5. **Behavioural verification:** `bootstrap` plus one lifecycle skill run
    successfully on Codex, OpenCode, and Cowork, with the result recorded.
 6. ADR 0008 is superseded by this ADR.
 
 ## Out of scope
 
-- A one-command installer for Codex/OpenCode — those agents install by
-  copying into a discovery directory; a convenience helper is a possible
-  later addition, not part of this decision.
+- A native one-command installer for **OpenCode** — it has no marketplace
+  command for `SKILL.md` skills (its plugin system is npm JS plugins), so
+  it installs by auto-discovery of a shared skills directory or a symlink.
+  (**Codex** *does* have a plugin marketplace, so docflow ships a Codex
+  plugin — see r2 below.)
 - Targets beyond the five named (Cursor, Gemini CLI, Aider, …) — their
   output surface likely works via `AGENTS.md`, but skill support is
   per-host and out of scope here.
@@ -102,6 +106,7 @@ installs the existing Claude Code plugin.
 | Date | Revision | Author | Change |
 |------|----------|--------|--------|
 | 2026-06-03 | r1 | Eugenio Minardi | Initial decision. Generalises and supersedes ADR 0008 (dual-target) to multi-target: Claude Code, Cowork, pi, Codex, OpenCode from one skill source. |
+| 2026-06-03 | r2 | Eugenio Minardi | Codex has a native plugin marketplace (initial r1 wrongly scoped a one-command Codex installer out). Add a native Codex plugin (`.codex-plugin/` + `.agents/plugins/marketplace.json`); verify gate version-syncs three manifests; AC4 + Out-of-scope revised. |
 
 ## Approvals
 

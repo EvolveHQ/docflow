@@ -61,10 +61,11 @@ These come from `CONVENTIONS.md` and override default behaviour:
   and pi (`package.json`). Skill prose stays agent-neutral; put
   agent-specific invocation forms (`/name` vs `/skill:name`) in
   `README.md`, not in skill bodies.
-- **Version-sync invariant.** `package.json` `version` and
-  `.claude-plugin/plugin.json` `version` must always match. Bump them
-  together in the same commit. The git tag `vX.Y.Z` and the published
-  npm version track the same number. `scripts/verify.mjs` enforces this.
+- **Version-sync invariant.** The `version` in `package.json`,
+  `.claude-plugin/plugin.json`, and `.codex-plugin/plugin.json` must
+  always match. Bump them together in the same commit. The git tag
+  `vX.Y.Z` and the published npm version track the same number.
+  `scripts/verify.mjs` enforces this.
 
 ## Implementation work
 

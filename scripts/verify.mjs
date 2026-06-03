@@ -39,23 +39,36 @@ function frontmatter(text) {
 }
 
 // ── A. Manifests + version sync (folds in the original verify gate) ──
+// Three manifests carry the version — Claude Code, npm/pi, and Codex —
+// and must all match (CONVENTIONS.md §Version-Sync Invariant).
 const pkg = readJSON('package.json');
 const plugin = readJSON('.claude-plugin/plugin.json');
 const marketplace = readJSON('.claude-plugin/marketplace.json');
+const codexPlugin = readJSON('.codex-plugin/plugin.json');
+const codexMarket = readJSON('.agents/plugins/marketplace.json');
 
-if (pkg && plugin && pkg.version !== plugin.version) {
+const versioned = [
+  ['package.json', pkg],
+  ['.claude-plugin/plugin.json', plugin],
+  ['.codex-plugin/plugin.json', codexPlugin],
+].filter(([, m]) => m);
+const versions = [...new Set(versioned.map(([, m]) => m.version))];
+if (versions.length > 1) {
   fail(
-    `version mismatch: package.json=${pkg.version} ` +
-    `.claude-plugin/plugin.json=${plugin.version} — bump them together`,
+    'version mismatch across manifests — bump them together: ' +
+    versioned.map(([f, m]) => `${f}=${m.version}`).join(' '),
   );
 }
-if (plugin && marketplace) {
-  const names = (marketplace.plugins ?? []).map((p) => p.name);
-  if (!names.includes(plugin.name)) {
-    fail(
-      `marketplace.json lists ${JSON.stringify(names)} but plugin.json ` +
-      `name is "${plugin.name}"`,
-    );
+// Each marketplace must list its plugin by name.
+for (const [mfile, mkt, pluginName] of [
+  ['.claude-plugin/marketplace.json', marketplace, plugin?.name],
+  ['.agents/plugins/marketplace.json', codexMarket, codexPlugin?.name],
+]) {
+  if (mkt && pluginName) {
+    const names = (mkt.plugins ?? []).map((p) => p.name);
+    if (!names.includes(pluginName)) {
+      fail(`${mfile} lists ${JSON.stringify(names)} but plugin name is "${pluginName}"`);
+    }
   }
 }
 

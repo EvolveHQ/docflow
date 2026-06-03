@@ -78,12 +78,11 @@ read natively by any agent that loads `AGENTS.md`; the **skills** are
 | Claude Code | native | ✅ | marketplace (below) | `/bootstrap` |
 | Claude Cowork | native | ✅ | same Claude Code plugin | `/bootstrap` |
 | pi | native | ✅ | `pi install npm:@evolvehq/docflow` | `/skill:bootstrap` |
-| Codex | native | ✅ | copy into `~/.agents/skills/` | `$bootstrap` / `/skills` |
-| OpenCode | native | ✅ | reads `.claude`/`.agents`/`.opencode` skills | auto, by description |
+| Codex | native | ✅ | `codex plugin marketplace add EvolveHQ/docflow` | `$bootstrap` / `/skills` |
+| OpenCode | native | ✅ | auto-discovered, or symlink into `~/.config/opencode/skills` | auto, by description |
 
-Handy: `~/.agents/skills/` is read by **both Codex and OpenCode**, and
-`~/.claude/skills/` by **both Claude Code and OpenCode** — so one install
-often serves two agents.
+Handy: OpenCode also reads `~/.claude/skills/` and `~/.agents/skills/`, so
+a shared skills directory can serve it alongside another agent.
 
 ### Claude Code — from this marketplace
 
@@ -121,29 +120,36 @@ hierarchical `AGENTS.md` loading — no porting needed.
 
 ### Codex (OpenAI)
 
-Codex reads `AGENTS.md` natively and discovers skills from `.agents/skills`.
-Copy docflow's skills into a path Codex scans:
+docflow ships a Codex plugin (`.codex-plugin/`), so it's a one-command
+install from this repo's marketplace:
 
 ```
-# user-wide (all projects), from a clone of this repo:
-mkdir -p ~/.agents/skills && cp -r <docflow>/skills/* ~/.agents/skills/
-# or from npm:
-npm install @evolvehq/docflow
-cp -r node_modules/@evolvehq/docflow/skills/* ~/.agents/skills/
+codex plugin marketplace add EvolveHQ/docflow
+codex plugin install docflow
 ```
 
-On Windows, copy `skills\*` into `%USERPROFILE%\.agents\skills\`. Invoke
-with `$bootstrap` / `/skills`, or just describe the task (Codex
-auto-triggers from the skill description). The structured assessment
-questions fall back to plain `A/B/C` text where there is no select tool.
+Codex reads the scaffolded `AGENTS.md` natively. Invoke with `$bootstrap`
+/ `/skills`, or just describe the task (Codex auto-triggers from the skill
+description); the assessment questions fall back to plain `A/B/C` text
+where there is no select tool. Update later with `codex plugin
+marketplace upgrade`.
 
 ### OpenCode (sst)
 
-OpenCode scans `.opencode/skills/`, **`.claude/skills/`, and
-`.agents/skills/`** (project and global), so a Claude Code or Codex
-install is **picked up automatically** — or copy `skills/*` into
-`~/.config/opencode/skills/` (or per-project `.opencode/skills/`). Skills
-auto-load by description.
+OpenCode auto-discovers skills from `.claude/skills`, `.agents/skills`,
+and `.opencode/skills` (project and global) — so **if you already run
+docflow on Claude Code or Codex via a shared skills directory, OpenCode
+picks it up with no extra step.** Standalone, symlink the skills into
+OpenCode's global directory (one command, stays in sync with the clone):
+
+```
+git clone https://github.com/EvolveHQ/docflow ~/.docflow-src
+ln -s ~/.docflow-src/skills/* ~/.config/opencode/skills/
+```
+
+OpenCode has no marketplace command for `SKILL.md` skills (its plugin
+system is for npm JS plugins), so a shared skills directory is the clean
+path. Skills auto-load by description.
 
 ### Claude Code — local development (no install)
 
@@ -209,10 +215,14 @@ to extend or override the templates.
 ```
 docflow/
   .claude-plugin/
-    plugin.json          # Claude Code plugin manifest
+    plugin.json          # Claude Code / Cowork plugin manifest
     marketplace.json     # Claude Code marketplace listing (repo is its own marketplace)
+  .codex-plugin/
+    plugin.json          # Codex plugin manifest (skills -> ./skills)
+  .agents/plugins/
+    marketplace.json     # Codex marketplace listing
   package.json           # pi package manifest (pi.skills -> ./skills) + npm metadata
-  skills/
+  skills/                # the one skill source, shared by every target
     bootstrap/
       SKILL.md           # bootstrap: assessment + output sequence + backfill
       templates/         # files the bootstrap reads and writes into target repos
