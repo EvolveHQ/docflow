@@ -1,11 +1,11 @@
 ---
 adr: 0008
 title: Dual-target packaging from one skill source
-status: Implemented
+status: Superseded
 date: 2026-05-22
 owner: Eugenio Minardi
 supersedes:
-superseded-by:
+superseded-by: ["0015"]
 depends-on: ["0001", "0007"]
 tags: [packaging, portability]
 ---
@@ -69,6 +69,7 @@ consequence captured as the version-sync convention in `CONVENTIONS.md`).
 | Date | Revision | Author | Change |
 |------|----------|--------|--------|
 | 2026-05-22 | r1 | Eugenio Minardi | Backfilled from commits 042786e (dual-target packaging), 65193f0 (rename to docflow), 034f52c (agent-neutral inter-skill references), 990de2a (acknowledge pi). |
+| 2026-06-03 | r2 | Eugenio Minardi | Superseded by ADR 0015 (generalised dual-target → multi-target: + Cowork, Codex, OpenCode). The agent-neutral-prose rule it set still holds. Status Implemented → Superseded. |
 
 ## Approvals
 
