@@ -30,7 +30,7 @@ const CASES = [
     key: 'new-adr',
     prompt:
       'Behavioural eval of the docflow `new-adr` skill. Work ONLY in your worktree; do NOT commit or push. ' +
-      'Read skills/new-adr/SKILL.md and CONVENTIONS.md, then author ONE new ADR titled "Eval smoke-test decision": ' +
+      'Read plugins/docflow/skills/new-adr/SKILL.md and CONVENTIONS.md, then author ONE new ADR titled "Eval smoke-test decision": ' +
       'next contiguous number after the existing catalogue, capability template filled with placeholder content, ' +
       'status Proposed, owner eval-bot, date 2026-06-02; regenerate INDEX.md to include it (keep existing rows). ' +
       'Then run `node scripts/verify.mjs`. PASS only if exit code is 0. Report the new ADR filename, the exact ' +
@@ -43,7 +43,7 @@ const CASES = [
       'FIRST set up a fixture to ship (the queue may be empty): author a minimal ADR ' +
       'adr/<next-contiguous-number>-eval-ship.md with status Accepted (fill the capability template briefly), ' +
       'regenerate INDEX.md, and create a matching plan/todo/<same-number>-eval-ship.md naming that ADR as owner. ' +
-      'THEN, following skills/ship-item/SKILL.md, run the completion event for that item: git mv it to ' +
+      'THEN, following plugins/docflow/skills/ship-item/SKILL.md, run the completion event for that item: git mv it to ' +
       'plan/done/<date>-eval-ship.md with a shipped footer, advance the owning ADR Accepted->Implemented, ' +
       'regenerate INDEX.md, append a WORKLOG row. Then run `node scripts/verify.mjs`. PASS only if exit 0 AND the ' +
       'item is under plan/done AND its owning ADR reads Implemented. You MAY use git mv/add within your worktree ' +
@@ -54,7 +54,7 @@ const CASES = [
     key: 'bootstrap',
     prompt:
       'Behavioural eval of the docflow `bootstrap` skill. Work ONLY in your worktree; do NOT push. ' +
-      'Create a fresh scratch repo in a temp subdirectory (git init), then following skills/bootstrap/SKILL.md ' +
+      'Create a fresh scratch repo in a temp subdirectory (git init), then following plugins/docflow/skills/bootstrap/SKILL.md ' +
       'scaffold it using these scripted answers: en-GB; single ADR shape; full lifecycle; use plan folder; ' +
       'single agent; direct-to-main; default git contract; defer optional artefacts; verify gate = manual; ' +
       'no domain hard rules. Do NOT ask questions interactively — use those answers. PASS only if the scratch ' +

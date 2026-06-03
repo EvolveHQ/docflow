@@ -4,23 +4,27 @@ This file provides guidance to coding agents working in this repository.
 
 ## What this repository is
 
-docflow is a dual-target plugin that scaffolds (and retrofits)
+docflow is a multi-target plugin that scaffolds (and retrofits)
 ADR-driven, documentation-led conventions into other repositories, plus
 a set of lifecycle skills to author, queue, ship, and audit ADRs. It
-ships the **same** `skills/` directory to two coding agents — Claude
-Code (via `.claude-plugin/`) and the pi coding agent (via
-`package.json`). This repo now also **dogfoods its own conventions**:
-the ADR catalogue, plan queue, and `_agent/` coordination below describe
-how docflow itself is built and maintained.
+ships the **same** `plugins/docflow/skills/` directory to five coding
+agents — Claude Code, Claude Cowork, pi, Codex, and OpenCode — from one
+source (see ADR 0015). This repo now also **dogfoods its own
+conventions**: the ADR catalogue, plan queue, and `_agent/` coordination
+below describe how docflow itself is built and maintained.
 
 ## Repository structure
 
-- `skills/` — the product. `bootstrap/` (with `templates/`) plus the
-  lifecycle skills (`new-adr`, `new-plan`, `ship-item`, `add-convention`,
-  `audit`, `brainstorm`, `agent-wave`). This is what gets installed.
-- `.claude-plugin/` — Claude Code manifests (`plugin.json`,
-  `marketplace.json`).
-- `package.json` — pi manifest (`pi.skills → ./skills`) + npm metadata.
+- `plugins/docflow/skills/` — **the product**. `bootstrap/` (with
+  `templates/`) plus the lifecycle skills (`new-adr`, `new-plan`,
+  `ship-item`, `add-convention`, `audit`, `brainstorm`, `agent-wave`).
+  This is what gets installed. One source for every target.
+- `plugins/docflow/.claude-plugin/plugin.json` — Claude Code / Cowork
+  plugin manifest; `plugins/docflow/.codex-plugin/plugin.json` — Codex.
+- `.claude-plugin/marketplace.json` + `.agents/plugins/marketplace.json`
+  — the marketplaces (root), each pointing at `./plugins/docflow`.
+- `package.json` — pi manifest (`pi.skills → ./plugins/docflow/skills`)
+  + npm metadata.
 - `README.md`, `USAGE.md`, `docs/` — user-facing documentation.
 - `adr/0000-template.md` — canonical ADR template.
 - `adr/NNNN-<kebab-slug>.md` — one ADR per decision, contiguous
@@ -47,7 +51,7 @@ These come from `CONVENTIONS.md` and override default behaviour:
 - **ADRs are internal artefacts — never user-visible.** ADR numbers,
   ADR titles, and the existence of the ADR catalogue must NEVER appear
   in any user-visible surface. For docflow the user-visible surfaces are
-  the `skills/*/SKILL.md` bodies, the scaffold `templates/`, `README.md`,
+  the `plugins/docflow/skills/*/SKILL.md` bodies, the scaffold `templates/`, `README.md`,
   `USAGE.md`, and `docs/`. References ARE allowed in: code/template
   comments (`<!-- see adr/0003-foo.md -->`), commit messages, PR
   descriptions, internal docs, `AGENTS.md`, `CONVENTIONS.md`, `INDEX.md`,

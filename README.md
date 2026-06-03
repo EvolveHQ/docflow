@@ -67,8 +67,8 @@ rather than overwriting them).
 
 ## Install
 
-docflow ships from **one `skills/` tree** to five coding agents — only
-the packaging differs. Two surfaces: the scaffolded **output**
+docflow ships from **one skill source** (`plugins/docflow/skills/`) to
+five coding agents — only the packaging differs. Two surfaces: the scaffolded **output**
 (`AGENTS.md`, the ADR catalogue, `plan/`, `_agent/`) is plain Markdown
 read natively by any agent that loads `AGENTS.md`; the **skills** are
 `SKILL.md` files the host discovers.
@@ -108,7 +108,7 @@ pi install git:github.com/EvolveHQ/docflow
 ```
 
 or, once published to npm, `pi install npm:@evolvehq/docflow`. Pi
-auto-discovers the `skills/` directory via the `pi` key in
+auto-discovers the skills via the `pi.skills` key in
 `package.json`. Invoke with `/skill:bootstrap`, `/skill:new-adr`,
 `/skill:ship-item`, … Pi does **not** auto-trigger skills from their
 descriptions the way Claude Code does — invoke them explicitly (the
@@ -160,12 +160,12 @@ claude --plugin-dir <path-to-this-repo>
 ### Direct skill clone (no plugin lifecycle)
 
 ```
-git clone https://github.com/EvolveHQ/docflow ~/.claude/skills/docflow-src
-ln -s ~/.claude/skills/docflow-src/skills/bootstrap ~/.claude/skills/bootstrap
+git clone https://github.com/EvolveHQ/docflow ~/.docflow-src
+ln -s ~/.docflow-src/plugins/docflow/skills/* ~/.claude/skills/
 ```
 
-On Windows, copy `skills/bootstrap/` (and the other `skills/*` dirs you
-want) into `%USERPROFILE%\.claude\skills\` instead of symlinking.
+On Windows, copy `plugins\docflow\skills\*` into
+`%USERPROFILE%\.claude\skills\` instead of symlinking.
 
 ## Quick start
 
@@ -214,30 +214,28 @@ to extend or override the templates.
 
 ```
 docflow/
-  .claude-plugin/
-    plugin.json          # Claude Code / Cowork plugin manifest
-    marketplace.json     # Claude Code marketplace listing (repo is its own marketplace)
-  .codex-plugin/
-    plugin.json          # Codex plugin manifest (skills -> ./skills)
-  .agents/plugins/
-    marketplace.json     # Codex marketplace listing
-  package.json           # pi package manifest (pi.skills -> ./skills) + npm metadata
-  skills/                # the one skill source, shared by every target
-    bootstrap/
-      SKILL.md           # bootstrap: assessment + output sequence + backfill
-      templates/         # files the bootstrap reads and writes into target repos
-    new-adr/SKILL.md     # lifecycle skills — operate on a bootstrapped repo,
-    new-plan/SKILL.md    #   read CONVENTIONS.md, honour its choices
-    ship-item/SKILL.md
-    add-convention/SKILL.md
-    audit/SKILL.md
-    brainstorm/SKILL.md
-    agent-wave/SKILL.md
+  .claude-plugin/marketplace.json   # Claude Code / Cowork marketplace (-> ./plugins/docflow)
+  .agents/plugins/marketplace.json  # Codex marketplace (-> ./plugins/docflow)
+  package.json                      # pi manifest (pi.skills -> ./plugins/docflow/skills) + npm
+  plugins/docflow/                  # the plugin — one source, every target
+    .claude-plugin/plugin.json      #   Claude Code / Cowork plugin manifest
+    .codex-plugin/plugin.json       #   Codex plugin manifest (skills -> ./skills)
+    skills/                         #   the one skill source
+      bootstrap/
+        SKILL.md                    #   bootstrap: assessment + output sequence + backfill
+        templates/                  #   files the bootstrap reads and writes into target repos
+      new-adr/SKILL.md              #   lifecycle skills — operate on a bootstrapped repo,
+      new-plan/SKILL.md             #     read CONVENTIONS.md, honour its choices
+      ship-item/SKILL.md
+      add-convention/SKILL.md
+      audit/SKILL.md
+      brainstorm/SKILL.md
+      agent-wave/SKILL.md
   README.md
   USAGE.md
 ```
 
-Only the `bootstrap` skill uses `skills/bootstrap/templates/`. The
+Only the `bootstrap` skill uses `plugins/docflow/skills/bootstrap/templates/`. The
 lifecycle skills act on the copies the bootstrap wrote into the target
 repo (e.g. its `adr/0000-template.md`), so they carry no templates of
 their own.

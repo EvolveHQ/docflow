@@ -23,7 +23,8 @@ docs shipped, verification pending). 0002/0008 Superseded. Plan items
 
 ## Next item
 
-`plan/todo/0010-multi-target-verification.md` (ADR 0015) — run `bootstrap`
-+ a lifecycle skill on Codex, OpenCode, and Cowork and record the result.
-**Blocked** on access to those installs (operator-run; not runnable from a
-Claude Code session). When it ships, ADR 0015 → Implemented.
+`plan/todo/0010-multi-target-verification.md` (ADR 0015). **Codex
+packaging verified** (restructured to `plugins/docflow/`; `marketplace
+add` → `plugin add docflow@evolvehq` installs all 8 skills — ADR 0015 r3).
+Remaining: a behavioural `bootstrap` run on Codex, plus OpenCode and
+Cowork verification. When 0010 ships, ADR 0015 → Implemented.

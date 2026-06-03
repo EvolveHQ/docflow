@@ -21,7 +21,7 @@
     "evals": "node evals/run.mjs"
   },
   "files": [
-    "skills/",
+    "plugins/docflow/skills/",
     "docs/preview.png",
     "README.md",
     "USAGE.md",
@@ -31,7 +31,7 @@
     "access": "public"
   },
   "pi": {
-    "skills": ["./skills"],
+    "skills": ["./plugins/docflow/skills"],
     "image": "https://raw.githubusercontent.com/EvolveHQ/docflow/main/docs/preview.png"
   }
 }

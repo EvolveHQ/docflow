@@ -8,7 +8,7 @@
   "plugins": [
     {
       "name": "docflow",
-      "source": "./",
+      "source": "./plugins/docflow",
       "description": "ADR-driven documentation workflow: scaffold an Architecture Decision Record (ADR) catalogue, a plan/ queue, and AGENTS.md conventions into any repo, then author, queue, ship, and audit ADRs with lifecycle skills."
     }
   ]

@@ -10,8 +10,9 @@
   "plugins": [
     {
       "name": "docflow",
-      "source": "./",
+      "source": { "source": "local", "path": "./plugins/docflow" },
       "description": "ADR-driven documentation workflow — scaffold (or retrofit) an Architecture Decision Record (ADR) catalogue, a plan/ queue, and AGENTS.md conventions into any repo, then author, queue, ship, and audit ADRs with lifecycle skills.",
+      "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
       "category": "Productivity",
       "license": "MIT"
     }

@@ -13,3 +13,4 @@ Append one row per commit. Newest at the bottom.
 | 2026-06-02 | cb54799 | main | plan 0008 / ADR 0014 | USAGE + site docs for the guardrails; verify green; ADR 0014 → Implemented. Queue empty. |
 | 2026-06-03 | b2c7399 | main | plan 0009 / ADR 0015 | Multi-target install docs + support matrix (Cowork/Codex/OpenCode) in README + site; verify green; ADR 0015 stays Accepted (0010 verification pending). |
 | 2026-06-03 | 104a8a6 | main | plan 0011 / ADR 0015 | Native Codex plugin (.codex-plugin + .agents/plugins); 3-manifest version-sync; clean README Codex/OpenCode install (ADR 0015 r2). verify green. |
+| 2026-06-04 | pending | main | ADR 0015 r3 | Restructure to plugins/docflow/ (skills inside the plugin dir) — Codex needs a subdir. Both marketplaces → ./plugins/docflow; verify/package.json/evals/docs repointed. Verified on real Codex: marketplace add → plugin add docflow@evolvehq → 8 skills installed. verify + evals green. |

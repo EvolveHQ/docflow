@@ -42,15 +42,15 @@ function frontmatter(text) {
 // Three manifests carry the version — Claude Code, npm/pi, and Codex —
 // and must all match (CONVENTIONS.md §Version-Sync Invariant).
 const pkg = readJSON('package.json');
-const plugin = readJSON('.claude-plugin/plugin.json');
+const plugin = readJSON('plugins/docflow/.claude-plugin/plugin.json');
 const marketplace = readJSON('.claude-plugin/marketplace.json');
-const codexPlugin = readJSON('.codex-plugin/plugin.json');
+const codexPlugin = readJSON('plugins/docflow/.codex-plugin/plugin.json');
 const codexMarket = readJSON('.agents/plugins/marketplace.json');
 
 const versioned = [
   ['package.json', pkg],
-  ['.claude-plugin/plugin.json', plugin],
-  ['.codex-plugin/plugin.json', codexPlugin],
+  ['plugins/docflow/.claude-plugin/plugin.json', plugin],
+  ['plugins/docflow/.codex-plugin/plugin.json', codexPlugin],
 ].filter(([, m]) => m);
 const versions = [...new Set(versioned.map(([, m]) => m.version))];
 if (versions.length > 1) {
@@ -73,7 +73,7 @@ for (const [mfile, mkt, pluginName] of [
 }
 
 // ── B. Skills: frontmatter, body shape, dual-target parity ──
-const skillsDir = join(root, 'skills');
+const skillsDir = join(root, 'plugins/docflow/skills');
 const skillDirs = readdirSync(skillsDir, { withFileTypes: true })
   .filter((d) => d.isDirectory())
   .map((d) => d.name);
@@ -84,7 +84,7 @@ const SKILL_NAMES = skillDirs.join('|');
 const invocationRe = new RegExp(`(^|\\s)/(?:skill:)?(?:${SKILL_NAMES})\\b`);
 
 for (const name of skillDirs) {
-  const rel = `skills/${name}/SKILL.md`;
+  const rel = `plugins/docflow/skills/${name}/SKILL.md`;
   if (!existsSync(join(root, rel))) {
     fail(`${rel}: missing SKILL.md`);
     continue;
@@ -171,13 +171,13 @@ function scanLeaks(rel) {
   }
 }
 for (const name of skillDirs) {
-  scanLeaks(`skills/${name}/SKILL.md`);
+  scanLeaks(`plugins/docflow/skills/${name}/SKILL.md`);
 }
 for (const f of ['README.md', 'USAGE.md']) scanLeaks(f);
 // Bootstrap templates are user-visible (they ship into target repos).
-const tplDir = join(root, 'skills/bootstrap/templates');
+const tplDir = join(root, 'plugins/docflow/skills/bootstrap/templates');
 if (existsSync(tplDir)) {
-  for (const f of readdirSync(tplDir)) scanLeaks(`skills/bootstrap/templates/${f}`);
+  for (const f of readdirSync(tplDir)) scanLeaks(`plugins/docflow/skills/bootstrap/templates/${f}`);
 }
 
 // ── Report ──

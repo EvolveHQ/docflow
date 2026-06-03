@@ -7,7 +7,8 @@ skills are covered in §5a.
 
 ## Install (per platform)
 
-docflow runs from **one `skills/` tree** on five coding agents. The
+docflow runs from **one skill source** (`plugins/docflow/skills/`) on
+five coding agents. The
 scaffolded **output** (`AGENTS.md`, the ADR catalogue, `plan/`, `_agent/`)
 is plain Markdown read natively by any agent that loads `AGENTS.md`; the
 **skills** are `SKILL.md` files the host discovers.
@@ -321,11 +322,11 @@ blocks up front, so G2/G3 rarely fire.)
 
 The templates are deliberately small and self-contained. To customise:
 
-- **Edit a template.** Files in `skills/bootstrap/templates/` are read
+- **Edit a template.** Files in `plugins/docflow/skills/bootstrap/templates/` are read
   verbatim by the `bootstrap` skill, then placeholders are filled from
   the assessment answers. Change the template, the next bootstrap
   reflects it.
-- **Add a new template.** Put it in `skills/bootstrap/templates/` and
+- **Add a new template.** Put it in `plugins/docflow/skills/bootstrap/templates/` and
   reference it from `bootstrap/SKILL.md` §Step 5 (Output sequence).
 - **Tighten a skill's auto-trigger.** Edit the `description:`
   frontmatter in that skill's `SKILL.md`. Skills match user requests
@@ -333,7 +334,7 @@ The templates are deliberately small and self-contained. To customise:
   scope. With several skills in one plugin, watch for trigger collision
   (e.g. "add a convention" vs. "add an ADR") and keep descriptions
   distinct; the slash commands are the unambiguous entry point.
-- **Add a new lifecycle skill.** Create `skills/<name>/SKILL.md`. Follow
+- **Add a new lifecycle skill.** Create `plugins/docflow/skills/<name>/SKILL.md`. Follow
   the shared pattern: a Step 0 that checks the repo is bootstrapped and
   reads `CONVENTIONS.md`, then act in a way that honours the recorded
   choices. Lifecycle skills act on the target repo's own files (e.g. its
@@ -389,8 +390,8 @@ To remove the plugin entirely:
 
 ### As the author (you, maintaining this repo)
 
-1. Edit a skill body (`skills/<name>/SKILL.md`), the bootstrap templates
-   (`skills/bootstrap/templates/*.md`), or supporting docs.
+1. Edit a skill body (`plugins/docflow/skills/<name>/SKILL.md`), the bootstrap templates
+   (`plugins/docflow/skills/bootstrap/templates/*.md`), or supporting docs.
 2. Bump the `version` field in `.claude-plugin/plugin.json` following
    semver — patch for fixes, minor for new questions / templates,
    major for breaking changes to the skill flow.

@@ -43,7 +43,7 @@ questions, References, Revision History, Approvals.
 ## Dual-Target Parity
 
 docflow ships for two coding agents — Claude Code and the pi coding
-agent — from the **same** skill files under `skills/`. Only the
+agent — from the **same** skill files under `plugins/docflow/skills/`. Only the
 manifests differ: `.claude-plugin/plugin.json` + `marketplace.json`
 for Claude Code, `package.json` (`pi.skills`) for pi.
 
@@ -70,7 +70,7 @@ marketplace manifest (`.claude-plugin/marketplace.json`,
 
 ## Skill Authoring
 
-The product is the `skills/` tree. When adding or editing a skill:
+The product is the `plugins/docflow/skills/` tree. When adding or editing a skill:
 
 - **Agent-neutral prose.** Skill bodies must not hard-code one agent's
   invocation syntax. Refer to other skills by name; put agent-specific
@@ -94,7 +94,7 @@ customer-visible log lines, public documentation, release notes,
 marketing copy, or support communications.
 
 For docflow specifically, the **user-visible surfaces are the
-`skills/*/SKILL.md` bodies, `README.md`, `USAGE.md`, and the scaffold
+`plugins/docflow/skills/*/SKILL.md` bodies, `README.md`, `USAGE.md`, and the scaffold
 templates** — these reach end users of the plugin. Keep this repo's own
 ADR numbers out of them. The ADR catalogue describes how docflow itself
 is built; it is not part of what docflow installs into a target repo.
