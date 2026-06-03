@@ -17,12 +17,13 @@ file.
 
 ## Last shipped
 
-ADRs 0010–0014 all Implemented (0013 supersedes 0002); plan items
-0001–0008 shipped to `plan/done/`. **Queue empty** — no work in flight.
+ADRs 0010–0014 Implemented; **0015 Accepted** (multi-target portability —
+docs shipped, verification pending). 0002/0008 Superseded. Plan items
+0001–0009 shipped.
 
 ## Next item
 
-`plan/todo/` is empty. The next hand-authored ADR or new plan item runs
-next. The interactive skills now run a Step 0.5 assessment (ADR 0013).
-Gates: `npm run verify` (static); `Workflow evals/behavioural.workflow.mjs`
-(subagent behavioural evals).
+`plan/todo/0010-multi-target-verification.md` (ADR 0015) — run `bootstrap`
++ a lifecycle skill on Codex, OpenCode, and Cowork and record the result.
+**Blocked** on access to those installs (operator-run; not runnable from a
+Claude Code session). When it ships, ADR 0015 → Implemented.

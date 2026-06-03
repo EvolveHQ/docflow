@@ -30,3 +30,13 @@ Maps to adr/0015-multi-target-portability.md acceptance criteria:
 ## Dependencies
 
 Independent of 0010 (verification).
+
+---
+
+**Shipped** at HEAD `pending` (2026-06-03). README Install rewritten:
+multi-target intro + support matrix (Claude Code, Cowork, pi, Codex,
+OpenCode) + per-host sections (Cowork = the Claude Code plugin; Codex →
+`~/.agents/skills/`; OpenCode auto-discovers `.claude`/`.agents`/
+`.opencode`). Top framing updated; site landing gains the three new
+targets + a link to the matrix. ADR 0015 stays Accepted until 0010
+(verification) ships.

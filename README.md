@@ -2,8 +2,9 @@
 
 ![docflow — ADR-driven documentation workflow](docs/preview.png)
 
-A plugin for **ADR-driven, documentation-led projects**, working on both
-the **pi** and **Claude Code** coding agents from the same skill files.
+A plugin for **ADR-driven, documentation-led projects**, working on
+**Claude Code, Claude Cowork, pi, Codex, and OpenCode** from the same
+skill files (see [Install](#install)).
 It installs a `bootstrap` skill that scaffolds (or retrofits) an
 **Architecture Decision Record (ADR)** catalogue, a plan queue, and
 `AGENTS.md` conventions into any repository, plus a set of **lifecycle
@@ -66,9 +67,23 @@ rather than overwriting them).
 
 ## Install
 
-docflow ships for two coding agents from the **same** skill files — only
-the manifest differs (`.claude-plugin/` for Claude Code, `package.json`
-for pi).
+docflow ships from **one `skills/` tree** to five coding agents — only
+the packaging differs. Two surfaces: the scaffolded **output**
+(`AGENTS.md`, the ADR catalogue, `plan/`, `_agent/`) is plain Markdown
+read natively by any agent that loads `AGENTS.md`; the **skills** are
+`SKILL.md` files the host discovers.
+
+| Agent | Output | Skills | Install | Invoke |
+|-------|:------:|:------:|---------|--------|
+| Claude Code | native | ✅ | marketplace (below) | `/bootstrap` |
+| Claude Cowork | native | ✅ | same Claude Code plugin | `/bootstrap` |
+| pi | native | ✅ | `pi install npm:@evolvehq/docflow` | `/skill:bootstrap` |
+| Codex | native | ✅ | copy into `~/.agents/skills/` | `$bootstrap` / `/skills` |
+| OpenCode | native | ✅ | reads `.claude`/`.agents`/`.opencode` skills | auto, by description |
+
+Handy: `~/.agents/skills/` is read by **both Codex and OpenCode**, and
+`~/.claude/skills/` by **both Claude Code and OpenCode** — so one install
+often serves two agents.
 
 ### Claude Code — from this marketplace
 
@@ -79,6 +94,13 @@ for pi).
 
 Invoke with `/bootstrap`, `/new-adr`, `/ship-item`, … (auto-triggers on
 matching requests too).
+
+### Claude Cowork
+
+Cowork uses the **same plugin system** as Claude Code, so install the
+docflow plugin exactly as above (`/plugin marketplace add
+EvolveHQ/docflow`, then install) — or from Anthropic's community
+marketplace once listed. No separate packaging.
 
 ### pi coding agent
 
@@ -96,6 +118,32 @@ agent will also load a skill on-demand when a task clearly matches).
 The scaffolded output (`AGENTS.md`, `CONVENTIONS.md`, the ADR catalogue,
 `plan/`, `_agent/`) is plain Markdown and is read natively by pi's
 hierarchical `AGENTS.md` loading — no porting needed.
+
+### Codex (OpenAI)
+
+Codex reads `AGENTS.md` natively and discovers skills from `.agents/skills`.
+Copy docflow's skills into a path Codex scans:
+
+```
+# user-wide (all projects), from a clone of this repo:
+mkdir -p ~/.agents/skills && cp -r <docflow>/skills/* ~/.agents/skills/
+# or from npm:
+npm install @evolvehq/docflow
+cp -r node_modules/@evolvehq/docflow/skills/* ~/.agents/skills/
+```
+
+On Windows, copy `skills\*` into `%USERPROFILE%\.agents\skills\`. Invoke
+with `$bootstrap` / `/skills`, or just describe the task (Codex
+auto-triggers from the skill description). The structured assessment
+questions fall back to plain `A/B/C` text where there is no select tool.
+
+### OpenCode (sst)
+
+OpenCode scans `.opencode/skills/`, **`.claude/skills/`, and
+`.agents/skills/`** (project and global), so a Claude Code or Codex
+install is **picked up automatically** — or copy `skills/*` into
+`~/.config/opencode/skills/` (or per-project `.opencode/skills/`). Skills
+auto-load by description.
 
 ### Claude Code — local development (no install)
 
