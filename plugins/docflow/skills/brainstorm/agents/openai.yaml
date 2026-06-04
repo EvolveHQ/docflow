@@ -1,0 +1,4 @@
+interface:
+  display_name: "docflow: brainstorm"
+  short_description: "Decompose a problem into candidate ADRs and plan items with dependency edges; proposes drafts, writes nothing until approved."
+  default_prompt: "Break this problem into candidate ADRs and plan items."

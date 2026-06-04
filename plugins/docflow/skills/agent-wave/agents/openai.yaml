@@ -1,0 +1,4 @@
+interface:
+  display_name: "docflow: agent-wave"
+  short_description: "Orchestrate a wave of parallel worktree subagents over the plan/todo queue."
+  default_prompt: "Run the plan queue with a wave of parallel agents."

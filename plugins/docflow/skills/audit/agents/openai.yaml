@@ -1,0 +1,4 @@
+interface:
+  display_name: "docflow: audit"
+  short_description: "Lint the repo against its own conventions — ADR numbering, INDEX sync, plan coverage, privacy leaks, and more."
+  default_prompt: "Audit this repository against its documentation conventions."

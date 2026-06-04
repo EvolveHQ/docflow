@@ -1,0 +1,4 @@
+interface:
+  display_name: "docflow: new-plan"
+  short_description: "Queue a unit of work in plan/todo, tracing to an owning ADR."
+  default_prompt: "Queue a plan item for an existing ADR."

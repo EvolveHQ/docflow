@@ -1,0 +1,4 @@
+interface:
+  display_name: "docflow: add-convention"
+  short_description: "Assess whether a convention is worth codifying, then route it to the right home (AGENTS.md, CONVENTIONS.md, GLOSSARY, or an ADR)."
+  default_prompt: "Add a convention to this repository."

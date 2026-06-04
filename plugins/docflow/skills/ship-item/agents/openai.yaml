@@ -1,0 +1,4 @@
+interface:
+  display_name: "docflow: ship-item"
+  short_description: "Run the completion event for a plan item: verify, integrate, todo→done, advance the owning ADR."
+  default_prompt: "Ship the next plan item."

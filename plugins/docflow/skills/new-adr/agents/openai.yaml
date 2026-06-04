@@ -1,0 +1,4 @@
+interface:
+  display_name: "docflow: new-adr"
+  short_description: "Author one ADR — next contiguous number, right shape, INDEX wiring, supersede linkage."
+  default_prompt: "Record a new architecture decision as an ADR."

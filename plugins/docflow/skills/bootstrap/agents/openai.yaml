@@ -1,0 +1,4 @@
+interface:
+  display_name: "docflow: bootstrap"
+  short_description: "Scaffold (or retrofit) ADR-driven documentation conventions — an ADR catalogue, a plan/ queue, AGENTS.md, and _agent/ coordination — into a repo."
+  default_prompt: "Set up documentation-led ADR conventions in this repository."
