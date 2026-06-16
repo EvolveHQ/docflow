@@ -144,7 +144,7 @@ OpenCode's global directory (one command, stays in sync with the clone):
 
 ```
 git clone https://github.com/EvolveHQ/docflow ~/.docflow-src
-ln -s ~/.docflow-src/skills/* ~/.config/opencode/skills/
+ln -s ~/.docflow-src/plugins/docflow/skills/* ~/.config/opencode/skills/
 ```
 
 OpenCode has no marketplace command for `SKILL.md` skills (its plugin
