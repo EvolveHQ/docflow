@@ -82,7 +82,7 @@ member's catalogue into one product-wide view, and `audit` gains
 cross-repo checks (membership, identity collisions, dangling references,
 roll-up drift). No tool writes across a repo boundary; consistency is
 declared at the edges and enforced by audit. See the
-[methodology](https://evolvehq.github.io/docflow/methodology/#4-scaling-to-many-repositories)
+[methodology](https://evolvehq.github.io/docflow/methodology/#5-scaling-to-many-repositories)
 for the full model.
 
 ## Install
