@@ -1,7 +1,7 @@
 ---
 adr: 0024
 title: Federated roll-up catalogue
-status: Proposed
+status: Accepted
 date: 2026-06-22
 owner: Eugenio Minardi
 supersedes:
@@ -48,6 +48,12 @@ federation-unique identity.
 5. Each roll-up entry records the owning repo and the ADR's
    federation-unique identity
    (adr/0021-cross-repo-identity-numbering.md).
+6. The generator is an **agent-run lifecycle skill** (not CI), mirroring
+   how `INDEX.md` is regenerated. It reads each member's `INDEX.md` from
+   the local checkouts named by the member index.
+7. The generator is **tolerant**: a member that is not checked out
+   locally is listed in the roll-up as "not aggregated this run" rather
+   than failing or being silently dropped.
 
 ## Out of scope
 
@@ -57,8 +63,8 @@ federation-unique identity.
 
 ## Open questions
 
-- Who runs the generator (a manual lifecycle skill vs CI) and whether it
-  requires all member repos checked out locally.
+- None. (Resolved on acceptance: an agent-run lifecycle skill, tolerant of
+  members not checked out locally — see AC6, AC7.)
 
 ## References / cross-links
 
@@ -71,8 +77,10 @@ federation-unique identity.
 | Date | Revision | Author | Change |
 |------|----------|--------|--------|
 | 2026-06-22 | r1 | Eugenio Minardi | Initial draft. Derived, read-only roll-up catalogue generated from the member index; per-repo INDEX stays authoritative. |
+| 2026-06-23 | r2 | Eugenio Minardi | Accepted. Resolved open question: generator is an agent-run lifecycle skill (not CI), tolerant of members not checked out locally (AC6/AC7). |
 
 ## Approvals
 
 | Role | Name | Date | Signature |
 |------|------|------|-----------|
+| Maintainer | Eugenio Minardi | 2026-06-23 | — |
