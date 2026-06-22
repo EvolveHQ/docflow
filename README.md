@@ -28,6 +28,7 @@ agent the same skills are invoked as `/skill:<name>` (e.g.
 | audit | `/audit` | Lint the repo against its own conventions — numbering, INDEX sync, plan coverage, **ADR-privacy leaks**, more. |
 | brainstorm | `/brainstorm` | Decompose a problem into candidate ADRs + plan items (proposes drafts; writes nothing until approved). |
 | agent-wave | `/agent-wave` | Orchestrate a wave of parallel worktree subagents over the queue, with checkpoint or continuous supervision. |
+| rollup | `/rollup` | For a multi-repo product: aggregate every member repo's ADRs into one derived, product-wide roll-up (run from the home repo). |
 
 The lifecycle skills all **read `CONVENTIONS.md` first** and honour the
 choices the bootstrap recorded (ADR shape, status lifecycle, integration
@@ -231,6 +232,7 @@ docflow/
       audit/SKILL.md
       brainstorm/SKILL.md
       agent-wave/SKILL.md
+      rollup/SKILL.md
   README.md
   USAGE.md
 ```

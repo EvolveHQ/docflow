@@ -1,0 +1,4 @@
+interface:
+  display_name: "docflow: rollup"
+  short_description: "Aggregate every member repo's ADRs into one product-wide federation roll-up (run from the home repo)."
+  default_prompt: "Generate the federation roll-up catalogue across the member repos."
