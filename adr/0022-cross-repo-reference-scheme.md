@@ -1,12 +1,12 @@
 ---
 adr: 0022
 title: Cross-repo reference scheme
-status: Proposed
+status: Accepted
 date: 2026-06-22
 owner: Eugenio Minardi
 supersedes:
 superseded-by:
-depends-on: ["0021"]
+depends-on: ["0021", "0023"]
 tags: [conventions, multirepo, references]
 ---
 
@@ -22,10 +22,14 @@ survives the repo boundary while leaving same-repo links untouched.
 
 ## Capability statement
 
-Cross-repo references use a **stable, repo-qualified identifier** built on
-the federation identity (adr/0021-cross-repo-identity-numbering.md);
-**same-repo references stay relative paths**, unchanged. `supersedes:` and
-`superseded-by:` linkage may point across repos.
+Cross-repo references use the **logical federation identity**
+(adr/0021-cross-repo-identity-numbering.md) and resolve through the
+**member index**, which maps `repo-id → location`. References therefore
+**survive a target repo move** (edit one index row, not every link).
+**Same-repo references stay relative paths**, unchanged. `supersedes:` and
+`superseded-by:` linkage may point across repos. When the target repo is
+not checked out, the reference stays well-formed and audit flags it as
+unreachable.
 
 ## User stories / scenarios
 
@@ -38,15 +42,16 @@ the federation identity (adr/0021-cross-repo-identity-numbering.md);
 
 ## Acceptance criteria
 
-1. A reference to an ADR in another repo resolves via a stable
-   repo-qualified identifier, not a bare relative path.
+1. A reference to an ADR in another repo uses the logical federation
+   identity and resolves through the member index (`repo-id → location`),
+   not a bare relative path.
 2. Same-repo references remain relative paths and are unchanged.
 3. `supersedes:` / `superseded-by:` metadata may point across repos.
-4. The reference form survives a target repo move/rename via the
-   configured identity, or the limitation is documented.
-5. The scheme exposes enough information for audit
-   (adr/0028-cross-repo-audit.md) to flag a dangling cross-repo
-   reference.
+4. The reference survives a target repo move/rename by updating the
+   member-index row, with no edit to the referencing ADRs.
+5. When the target repo is not checked out locally, the reference stays
+   well-formed and audit (adr/0028-cross-repo-audit.md) flags it
+   unreachable rather than treating it as malformed.
 
 ## Out of scope
 
@@ -56,13 +61,14 @@ the federation identity (adr/0021-cross-repo-identity-numbering.md);
 
 ## Open questions
 
-- Whether the reference is a resolvable URL or a logical id resolved
-  against the member index, and how it resolves when the target repo is
-  not checked out locally.
+- None. (Resolved on acceptance: a logical id resolved against the member
+  index; an uncheckedout target stays well-formed and audit flags it
+  unreachable — see AC1, AC5.)
 
 ## References / cross-links
 
 - adr/0021-cross-repo-identity-numbering.md
+- adr/0023-federation-config-membership-index.md
 - CONVENTIONS.md (relative-path cross-reference rule, revised for
   cross-repo edges)
 
@@ -71,8 +77,10 @@ the federation identity (adr/0021-cross-repo-identity-numbering.md);
 | Date | Revision | Author | Change |
 |------|----------|--------|--------|
 | 2026-06-22 | r1 | Eugenio Minardi | Initial draft. Repo-qualified cross-repo references; local links stay relative; cross-repo supersede/deprecate. |
+| 2026-06-22 | r2 | Eugenio Minardi | Accepted. Resolved open question: logical id resolved via the member index, surviving repo moves; uncheckedout target flagged unreachable by audit (AC1/AC4/AC5). Added depends-on 0023. |
 
 ## Approvals
 
 | Role | Name | Date | Signature |
 |------|------|------|-----------|
+| Maintainer | Eugenio Minardi | 2026-06-22 | — |

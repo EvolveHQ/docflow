@@ -1,12 +1,12 @@
 ---
 adr: 0021
 title: Cross-repo ADR identity and numbering
-status: Proposed
+status: Accepted
 date: 2026-06-22
 owner: Eugenio Minardi
 supersedes:
 superseded-by:
-depends-on: ["0019"]
+depends-on: ["0019", "0023"]
 tags: [conventions, multirepo, numbering]
 ---
 
@@ -24,10 +24,12 @@ numbers.
 ## Capability statement
 
 ADRs in a federation carry an identity that is **unique across the
-federation**, formed from the owning repo's identity plus its local
-number. The "contiguous, no gaps" rule is **relaxed to per-repo
-contiguity**: each repo numbers its own ADRs contiguously; standalone
-repos keep today's global contiguity.
+federation**. The **scheme is selected at federation establishment**
+(bootstrap) and recorded in the federation config; the **default** is the
+owning repo's identity plus its local number — a repo-prefixed slug
+(`<repo-id>/NNNN-slug`). The "contiguous, no gaps" rule is **relaxed to
+per-repo contiguity**: each repo numbers its own ADRs contiguously;
+standalone repos keep today's global contiguity.
 
 ## User stories / scenarios
 
@@ -48,6 +50,9 @@ repos keep today's global contiguity.
    federated repos; standalone repos retain global contiguity.
 5. Home/product-wide ADRs follow the same identity scheme as member-local
    ADRs.
+6. The identity scheme is selected at federation establishment (bootstrap)
+   and recorded in the federation config; the default is the repo-prefixed
+   slug `<repo-id>/NNNN-slug` (repo-id from the federation config).
 
 ## Out of scope
 
@@ -57,13 +62,14 @@ repos keep today's global contiguity.
 
 ## Open questions
 
-- The identity scheme itself: repo-prefixed slug (`web/0019-…`), a
-  central allocator handing out global numbers, or non-sequential ids.
-  Each trades local readability against collision-resistance.
+- None. (Resolved on acceptance: the scheme is a bootstrap-establishment
+  choice recorded in the federation config; default repo-prefixed slug —
+  see AC6.)
 
 ## References / cross-links
 
 - adr/0019-multirepo-topology.md
+- adr/0023-federation-config-membership-index.md
 - CONVENTIONS.md (the contiguous-numbering rule this ADR relaxes)
 
 ## Revision History
@@ -71,8 +77,10 @@ repos keep today's global contiguity.
 | Date | Revision | Author | Change |
 |------|----------|--------|--------|
 | 2026-06-22 | r1 | Eugenio Minardi | Initial draft. Federation-unique ADR identity; relax contiguous numbering to per-repo contiguity. |
+| 2026-06-22 | r2 | Eugenio Minardi | Accepted. Resolved open question: identity scheme is a bootstrap-establishment choice recorded in the federation config, default repo-prefixed slug (AC6). Added depends-on 0023. |
 
 ## Approvals
 
 | Role | Name | Date | Signature |
 |------|------|------|-----------|
+| Maintainer | Eugenio Minardi | 2026-06-22 | — |
