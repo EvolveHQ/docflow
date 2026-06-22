@@ -17,14 +17,16 @@ file.
 
 ## Last shipped
 
-ADRs 0010–0014 Implemented; **0015 Accepted** (multi-target portability —
-docs shipped, verification pending). 0002/0008 Superseded. Plan items
-0001–0009 shipped.
+Multi-repo federation foundation (commit 69fca8b): ADRs **0019/0020/0023
+Implemented** — bootstrap now asks the topology (A/B/C, default C),
+branches establish/join, and writes `federation.md` + `federation-index.md`.
+Earlier: ADRs 0010–0014 Implemented; 0015 Accepted (multi-target
+portability — verification pending). 0002/0008 Superseded.
 
 ## Next item
 
-`plan/todo/0010-multi-target-verification.md` (ADR 0015). **Codex
-packaging verified** (restructured to `plugins/docflow/`; `marketplace
-add` → `plugin add docflow@evolvehq` installs all 8 skills — ADR 0015 r3).
-Remaining: a behavioural `bootstrap` run on Codex, plus OpenCode and
-Cowork verification. When 0010 ships, ADR 0015 → Implemented.
+Multi-repo follow-on, all **Proposed**: 0021 cross-repo identity/numbering
+and 0022 references are the next tier (they carry the open mechanism
+questions); then 0024 roll-up, 0025/0026 plan+status, 0027 propagation,
+0028 cross-repo audit. Also still open: `plan/todo/0010-multi-target-verification.md`
+(ADR 0015) — bootstrap behavioural run on Codex, plus OpenCode/Cowork.

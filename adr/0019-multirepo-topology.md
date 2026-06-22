@@ -1,7 +1,7 @@
 ---
 adr: 0019
 title: Multirepo topology for a single product
-status: Accepted
+status: Implemented
 date: 2026-06-22
 owner: Eugenio Minardi
 supersedes:
@@ -57,8 +57,13 @@ exactly as today; the topology question is never asked.
 
 1. When the operator declares a repo part of a multi-repo product,
    bootstrap offers topologies A, B, and C, with **C as the default**.
-2. The chosen topology is recorded in a federation-readable location and
-   every lifecycle skill resolves behaviour against it.
+2. The chosen topology is recorded in a federation-readable location —
+   the federation config — which is the single source lifecycle skills
+   read to resolve cross-repo behaviour. (Per-skill consumption of that
+   source — numbering, references, audit — is owned by the dependent
+   decisions adr/0021-cross-repo-identity-numbering.md,
+   adr/0022-cross-repo-reference-scheme.md, and
+   adr/0028-cross-repo-audit.md.)
 3. Under topology C exactly one repo is the home repo; product-wide ADRs
    live there and purely-local ADRs stay in each member repo.
 4. A repo declared standalone is unaffected: no topology question, no
@@ -96,6 +101,7 @@ exactly as today; the topology question is never asked.
 |------|----------|--------|--------|
 | 2026-06-22 | r1 | Eugenio Minardi | Initial draft. Configurable multirepo topology (A/B/C) for one product across many repos; C the recommended default. |
 | 2026-06-22 | r2 | Eugenio Minardi | Accepted. Resolved open question: all three topologies ship in v1 (AC6); C remains the default. |
+| 2026-06-22 | r3 | Eugenio Minardi | Implemented in bootstrap (commit 69fca8b). Tightened AC2 scope: the federation config is the single readable source; per-skill consumption is owned by the dependent decisions (0021/0022/0028). |
 
 ## Approvals
 

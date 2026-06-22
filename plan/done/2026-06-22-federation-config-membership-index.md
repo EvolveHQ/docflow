@@ -40,3 +40,10 @@ criteria:
 Depends on 0015 (topology) and 0016 (establish flow creates the index this
 item formalises). The bidirectional consistency check is deferred to
 adr/0028-cross-repo-audit.md (not in this item).
+
+---
+
+Shipped at HEAD `69fca8b` on 2026-06-22. `federation.md` (back-pointer) and
+`federation-index.md` (member index) templates added to the bootstrap
+skill, both Markdown; member index hand-maintained. ADR 0023 →
+Implemented.

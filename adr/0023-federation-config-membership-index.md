@@ -1,7 +1,7 @@
 ---
 adr: 0023
 title: Federation config and membership index
-status: Accepted
+status: Implemented
 date: 2026-06-22
 owner: Eugenio Minardi
 supersedes:
@@ -87,6 +87,7 @@ own bootstrap. No lifecycle skill writes across repos to update either.
 |------|----------|--------|--------|
 | 2026-06-22 | r1 | Eugenio Minardi | Initial draft. Per-repo back-pointer config plus hand-maintained authoritative member index in the home repo; no cross-repo writes. |
 | 2026-06-22 | r2 | Eugenio Minardi | Accepted. Resolved open question: both artefacts are Markdown (AC6). |
+| 2026-06-22 | r3 | Eugenio Minardi | Implemented in bootstrap (commit 69fca8b): federation.md back-pointer + federation-index.md member-index templates (Markdown), written on establish/join; member index hand-maintained. |
 
 ## Approvals
 

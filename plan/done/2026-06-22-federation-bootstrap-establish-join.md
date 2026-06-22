@@ -36,3 +36,10 @@ criteria:
 
 Depends on 0015 (topology must exist to record and to choose at
 establish). Establish creates the artefact that 0017 formalises.
+
+---
+
+Shipped at HEAD `69fca8b` on 2026-06-22. Establish/join branch (Q11) added
+to the bootstrap assessment; join writes only its own back-pointer with an
+operator-confirmed home pointer, topology inherited. ADR 0020 →
+Implemented.

@@ -37,3 +37,10 @@ Maps to adr/0019-multirepo-topology.md acceptance criteria:
 
 Foundational — gates 0016 (establish/join bootstrap) and 0017 (federation
 config + member index). No prerequisites.
+
+---
+
+Shipped at HEAD `69fca8b` on 2026-06-22. Topology A/B/C selection (default
+C) implemented in the bootstrap skill; recorded in the federation config.
+ADR 0019 → Implemented (AC2 scope tightened in r3 — per-skill consumption
+owned by 0021/0022/0028).
