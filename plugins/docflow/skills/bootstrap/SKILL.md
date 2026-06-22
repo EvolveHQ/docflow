@@ -53,7 +53,15 @@ questions.
     CURRENT_FOCUS.md     # slim live snapshot
     HANDOFF.md           # fresh-agent entry point
     prompts/autonomous.md  # only if a verify gate exists (see Q8)
+  federation.md          # multi-repo only (Q11): this repo's back-pointer
+  federation-index.md    # multi-repo only (Q11): member index — home repo only
 ```
+
+For a **multi-repo product** (one product spread across several repos —
+see Q11), two extra files appear: `federation.md`, a small back-pointer
+every member repo carries, and `federation-index.md`, the authoritative
+member list that lives only in the home/establishing repo. A standalone
+repo has neither.
 
 ## Step 3 — Conventions to install
 
@@ -112,7 +120,7 @@ questions.
     doubt, ask whether a non-builder would ever see this string — if
     yes, the ADR reference comes out.
 
-## Step 4 — Assessment (10 questions)
+## Step 4 — Assessment (10 questions, plus an optional federation question)
 
 **Ask the questions one at a time, not in a batch.** For each question,
 state a **recommended** option (label it "Recommended") with one short
@@ -125,7 +133,7 @@ option with the literal "(Recommended)" suffix in its label. Otherwise
 ask in plain text, listing options as A/B/C and naming the recommended
 one.
 
-After all 10 answers are in, summarise the resulting plan in 5–10
+After the answers are in, summarise the resulting plan in 5–10
 lines and ask for sign-off before writing any files.
 
 1. **Project identity.** Name, one-line description, doc language
@@ -214,6 +222,32 @@ lines and ask for sign-off before writing any files.
     mandatory user-story personas, separated audit streams?
     **Recommended: none from day one** — add later when a concrete
     requirement appears; pre-emptive hard rules accumulate as cruft.
+11. **Multi-repo product (optional).** Is this repo part of a product
+    that spans several repos? **Recommended: No** — most repos are
+    standalone; skip the federation setup entirely. If **yes**, two
+    sub-answers:
+
+    **Q11a — Establish or join?** Are you **establishing** a new
+    federation (this is the first repo) or **joining** an existing one?
+
+    **Q11b — Topology (establish only).** Where do product-wide
+    decisions live?
+    - **A — central decisions repo:** a dedicated repo holds all
+      product-wide decisions; code repos reference it, never duplicate.
+    - **B — distributed + federation:** each repo owns its own
+      decisions; a roll-up aggregates them.
+    - **(Recommended) C — home repo + local:** one repo is the home for
+      product-wide decisions; each repo also keeps purely-local ones.
+
+    **Establish** designates this repo as the home/central repo, writes
+    the member index here, and records the topology in the federation
+    config. **Join** asks for the home pointer — **you confirm it; the
+    skill performs no cross-repo read and no host API call** — then
+    writes **only this repo's** back-pointer config and inherits the
+    topology without re-asking it. Joining never writes into any other
+    repo; adding this repo to the member index is a deliberate edit in
+    the home repo. A standalone repo (Q11 = No) writes none of these
+    files and behaves exactly as a single-repo bootstrap.
 
 ## Step 4.5 — Cross-check before sign-off
 
@@ -232,6 +266,9 @@ plan summary. Surface each, take the correction, then proceed:
   runs, or downgrade the completion event.
 - **Q2 single ADR shape + Q7 technology-ADR template requested.**
   Contradiction — pick one.
+- **Q11 = join but no confirmable home pointer.** Joining needs a
+  home/federation pointer you can confirm. If none exists yet, you are
+  really *establishing* — switch Q11a to establish.
 
 ## Step 5 — Output sequence (after sign-off)
 
@@ -276,6 +313,19 @@ write it into the repo.
     **direct-to-main** variant (`git merge --ff-only` then push) or
     the **PR-based** variant (`gh pr create --draft` → wait for CI →
     mark ready → `gh pr merge`). Drop the unused variant.
+14. **Federation files** — **only if Q11 = yes.** Place both at the
+    configured artefact root (repository root by default).
+    - **Establish:** write `federation-index.md` (the member index, a
+      Markdown table) from `templates/federation-index.md` into this
+      repo, seeded with this repo as the home member; and write
+      `federation.md` from `templates/federation-config.md` with
+      `Role: home` and the chosen topology.
+    - **Join:** write **only** `federation.md` from
+      `templates/federation-config.md` with `Role: member`, the
+      confirmed home pointer, and the topology inherited from the
+      federation. Write nothing into any other repo, and do **not**
+      create a member index. Tell the user to add this repo to the home
+      repo's `federation-index.md` (a deliberate edit there).
 
 Commit each file (or logical group) with a Conventional Commit message;
 no `Co-Authored-By` trailer unless Q6 asked for one.
