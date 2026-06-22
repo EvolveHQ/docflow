@@ -10,7 +10,9 @@ It installs a `bootstrap` skill that scaffolds (or retrofits) an
 `AGENTS.md` conventions into any repository, plus a set of **lifecycle
 skills** that author, queue, ship, and audit ADRs — so the project can
 be driven by both humans and coding agents from a small set of canonical
-files.
+files. For the formal definition of the conventions — why they help and
+where they fall short — see the
+[methodology](https://evolvehq.github.io/docflow/methodology/).
 
 ## Skills
 
@@ -65,6 +67,23 @@ the repo with no oral handover.
 It works equally well on **fresh repos** (scaffolds from zero) and on
 **existing repos** (retrofits, preserving and merging existing files
 rather than overwriting them).
+
+## Multi-repo products
+
+A single product spread across several repositories can run as a
+**federation**. At bootstrap a repo declares whether it is standalone or
+part of a multi-repo product, and whether it is **establishing** a new
+federation or **joining** one — a joining repo only ever writes its own
+back-pointer, never into another repo. You pick a **topology** (central
+decisions repo · distributed · home-repo-plus-local), and the convention
+set keeps numbering contiguous **per repo** while a federation-wide
+identity is the cross-repo key. The `rollup` skill aggregates every
+member's catalogue into one product-wide view, and `audit` gains
+cross-repo checks (membership, identity collisions, dangling references,
+roll-up drift). No tool writes across a repo boundary; consistency is
+declared at the edges and enforced by audit. See the
+[methodology](https://evolvehq.github.io/docflow/methodology/#4-scaling-to-many-repositories)
+for the full model.
 
 ## Install
 
