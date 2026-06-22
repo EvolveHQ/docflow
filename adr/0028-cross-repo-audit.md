@@ -1,7 +1,7 @@
 ---
 adr: 0028
 title: Cross-repo audit
-status: Proposed
+status: Accepted
 date: 2026-06-22
 owner: Eugenio Minardi
 supersedes:
@@ -50,6 +50,11 @@ the same punch-list, with mechanical fixes offered where safe.
    not exist (adr/0022-cross-repo-reference-scheme.md).
 5. Audit detects roll-up drift — the roll-up out of sync with member
    `INDEX.md` metadata (adr/0024-federated-rollup-catalogue.md).
+6. Audit reaches sibling repos via the **local checkouts** named in the
+   member index, **tolerant** of members not available: an unreachable
+   member is reported as **unverified this run** (so its checks are not
+   silently passed), not a hard failure — consistent with the roll-up
+   skill (adr/0024-federated-rollup-catalogue.md).
 
 ## Out of scope
 
@@ -57,8 +62,9 @@ the same punch-list, with mechanical fixes offered where safe.
 
 ## Open questions
 
-- How audit reaches sibling repos — requires them checked out locally, or a
-  path map / host API.
+- None. (Resolved on acceptance: audit reaches siblings via local checkouts
+  named in the member index, tolerant of unavailable members — see AC6,
+  consistent with the roll-up skill.)
 
 ## References / cross-links
 
@@ -71,8 +77,10 @@ the same punch-list, with mechanical fixes offered where safe.
 | Date | Revision | Author | Change |
 |------|----------|--------|--------|
 | 2026-06-22 | r1 | Eugenio Minardi | Initial draft. Cross-repo audit checks: bidirectional membership, identity collisions, dangling references, roll-up drift. |
+| 2026-06-23 | r2 | Eugenio Minardi | Accepted. Resolved open question: audit reaches siblings via local checkouts named in the member index, tolerant of unavailable members reported as "unverified this run" (AC6), consistent with 0024. |
 
 ## Approvals
 
 | Role | Name | Date | Signature |
 |------|------|------|-----------|
+| Maintainer | Eugenio Minardi | 2026-06-23 | — |

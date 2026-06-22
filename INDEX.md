@@ -32,4 +32,4 @@ ADR change.
 | [0025](adr/0025-cross-repo-plan-ownership.md) | Cross-repo plan ownership | Proposed | 2026-06-22 | 0021 |
 | [0026](adr/0026-cross-repo-status-completion.md) | Cross-repo status and completion | Proposed | 2026-06-22 | 0025 |
 | [0027](adr/0027-convention-template-propagation.md) | Convention and template propagation across the federation | Proposed | 2026-06-22 | 0019, 0023 |
-| [0028](adr/0028-cross-repo-audit.md) | Cross-repo audit | Proposed | 2026-06-22 | 0022, 0023, 0024 |
+| [0028](adr/0028-cross-repo-audit.md) | Cross-repo audit | Accepted | 2026-06-22 | 0022, 0023, 0024 |
