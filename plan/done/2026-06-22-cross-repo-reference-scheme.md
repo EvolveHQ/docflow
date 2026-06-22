@@ -33,3 +33,10 @@ Maps to adr/0022-cross-repo-reference-scheme.md acceptance criteria:
 
 Depends on 0018 (an identity must exist to reference). Dangling-reference
 detection is delivered with adr/0028-cross-repo-audit.md, not here.
+
+---
+
+Shipped at HEAD `e01cd96` on 2026-06-22. Cross-repo references use the
+logical identity resolved via the member index (same-repo stays relative);
+cross-repo supersede; codified in §Federation + new-adr. ADR 0022 →
+Implemented. Active unreachable-target detection deferred to 0028.

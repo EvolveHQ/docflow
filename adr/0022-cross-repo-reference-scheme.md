@@ -1,7 +1,7 @@
 ---
 adr: 0022
 title: Cross-repo reference scheme
-status: Accepted
+status: Implemented
 date: 2026-06-22
 owner: Eugenio Minardi
 supersedes:
@@ -49,9 +49,10 @@ unreachable.
 3. `supersedes:` / `superseded-by:` metadata may point across repos.
 4. The reference survives a target repo move/rename by updating the
    member-index row, with no edit to the referencing ADRs.
-5. When the target repo is not checked out locally, the reference stays
-   well-formed and audit (adr/0028-cross-repo-audit.md) flags it
-   unreachable rather than treating it as malformed.
+5. When the target repo is not checked out locally, the reference remains
+   well-formed and resolvable-on-presence via the member index. (Actively
+   detecting an unreachable target is delivered by
+   adr/0028-cross-repo-audit.md, not by this scheme.)
 
 ## Out of scope
 
@@ -78,6 +79,7 @@ unreachable.
 |------|----------|--------|--------|
 | 2026-06-22 | r1 | Eugenio Minardi | Initial draft. Repo-qualified cross-repo references; local links stay relative; cross-repo supersede/deprecate. |
 | 2026-06-22 | r2 | Eugenio Minardi | Accepted. Resolved open question: logical id resolved via the member index, surviving repo moves; uncheckedout target flagged unreachable by audit (AC1/AC4/AC5). Added depends-on 0023. |
+| 2026-06-22 | r3 | Eugenio Minardi | Implemented (commit e01cd96): §Federation reference rule in scaffold CONVENTIONS + new-adr cross-repo linkage. Tightened AC5: the scheme owns well-formed/resolvable-on-presence; active unreachable detection is owned by 0028. |
 
 ## Approvals
 

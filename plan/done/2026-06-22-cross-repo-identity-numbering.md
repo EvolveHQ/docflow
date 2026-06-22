@@ -33,3 +33,11 @@ Maps to adr/0021-cross-repo-identity-numbering.md acceptance criteria:
 Depends on the shipped foundation (topology, establish flow, federation
 config + member index). Gates 0019 (references need an identity to point
 at).
+
+---
+
+Shipped at HEAD `e01cd96` on 2026-06-22. Identity scheme asked at
+establishment (Q11c, default repo-prefixed slug) and recorded in the
+federation config; conditional §Federation in scaffold CONVENTIONS;
+new-adr applies per-repo numbering + logical identity. ADR 0021 →
+Implemented.

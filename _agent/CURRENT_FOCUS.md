@@ -17,16 +17,18 @@ file.
 
 ## Last shipped
 
-Multi-repo federation foundation (commit 69fca8b): ADRs **0019/0020/0023
-Implemented** — bootstrap now asks the topology (A/B/C, default C),
-branches establish/join, and writes `federation.md` + `federation-index.md`.
-Earlier: ADRs 0010–0014 Implemented; 0015 Accepted (multi-target
-portability — verification pending). 0002/0008 Superseded.
+Multi-repo federation, foundation + identity tier **Implemented**: ADRs
+**0019/0020/0023** (commit 69fca8b — topology, establish/join, config +
+member index) and **0021/0022** (commit e01cd96 — federated identity
+scheme + cross-repo references). Earlier: ADRs 0010–0014 Implemented; 0015
+Accepted (multi-target portability — verification pending). 0002/0008
+Superseded.
 
 ## Next item
 
-Multi-repo follow-on, all **Proposed**: 0021 cross-repo identity/numbering
-and 0022 references are the next tier (they carry the open mechanism
-questions); then 0024 roll-up, 0025/0026 plan+status, 0027 propagation,
-0028 cross-repo audit. Also still open: `plan/todo/0010-multi-target-verification.md`
-(ADR 0015) — bootstrap behavioural run on Codex, plus OpenCode/Cowork.
+Multi-repo follow-on, all **Proposed**: 0024 roll-up catalogue (both deps
+now Implemented — the natural next accept), then 0025/0026 plan+status,
+0027 propagation, 0028 cross-repo audit (also carries the deferred
+unreachable-reference detection). Still open:
+`plan/todo/0010-multi-target-verification.md` (ADR 0015) — bootstrap
+behavioural run on Codex, plus OpenCode/Cowork.

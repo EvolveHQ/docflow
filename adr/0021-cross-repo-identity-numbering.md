@@ -1,7 +1,7 @@
 ---
 adr: 0021
 title: Cross-repo ADR identity and numbering
-status: Accepted
+status: Implemented
 date: 2026-06-22
 owner: Eugenio Minardi
 supersedes:
@@ -78,6 +78,7 @@ standalone repos keep today's global contiguity.
 |------|----------|--------|--------|
 | 2026-06-22 | r1 | Eugenio Minardi | Initial draft. Federation-unique ADR identity; relax contiguous numbering to per-repo contiguity. |
 | 2026-06-22 | r2 | Eugenio Minardi | Accepted. Resolved open question: identity scheme is a bootstrap-establishment choice recorded in the federation config, default repo-prefixed slug (AC6). Added depends-on 0023. |
+| 2026-06-22 | r3 | Eugenio Minardi | Implemented (commit e01cd96): Q11c identity-scheme question + config field; conditional §Federation in scaffold CONVENTIONS (per-repo contiguity, logical identity); new-adr applies per-repo numbering + logical identity. |
 
 ## Approvals
 
