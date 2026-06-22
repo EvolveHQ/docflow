@@ -28,7 +28,7 @@ ADR change.
 | [0021](adr/0021-cross-repo-identity-numbering.md) | Cross-repo ADR identity and numbering | Implemented | 2026-06-22 | 0019, 0023 |
 | [0022](adr/0022-cross-repo-reference-scheme.md) | Cross-repo reference scheme | Implemented | 2026-06-22 | 0021, 0023 |
 | [0023](adr/0023-federation-config-membership-index.md) | Federation config and membership index | Implemented | 2026-06-22 | 0017, 0019, 0020 |
-| [0024](adr/0024-federated-rollup-catalogue.md) | Federated roll-up catalogue | Accepted | 2026-06-22 | 0021, 0022, 0023 |
+| [0024](adr/0024-federated-rollup-catalogue.md) | Federated roll-up catalogue | Implemented | 2026-06-22 | 0021, 0022, 0023 |
 | [0025](adr/0025-cross-repo-plan-ownership.md) | Cross-repo plan ownership | Proposed | 2026-06-22 | 0021 |
 | [0026](adr/0026-cross-repo-status-completion.md) | Cross-repo status and completion | Proposed | 2026-06-22 | 0025 |
 | [0027](adr/0027-convention-template-propagation.md) | Convention and template propagation across the federation | Proposed | 2026-06-22 | 0019, 0023 |

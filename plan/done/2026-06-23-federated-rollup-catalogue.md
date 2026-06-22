@@ -37,3 +37,12 @@ Maps to adr/0024-federated-rollup-catalogue.md acceptance criteria:
 Depends on the shipped identity (0018) and reference (0019) work and the
 member index (federation config). Aggregate **status** reporting is out of
 scope here — owned by adr/0026-cross-repo-status-completion.md.
+
+---
+
+Shipped at HEAD `f6d07db` on 2026-06-23. New agent-run `rollup` skill (9th
+skill) aggregates each available member's INDEX into a derived product-wide
+roll-up, listing uncheckedout members as "not aggregated this run". ADR
+0024 → Implemented. verify green (9 skills); no manual skill-count update
+needed (verify derives it). Structural verification only — no member repos
+in this dogfood repo to aggregate end-to-end.
