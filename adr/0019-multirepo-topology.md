@@ -1,7 +1,7 @@
 ---
 adr: 0019
 title: Multirepo topology for a single product
-status: Proposed
+status: Accepted
 date: 2026-06-22
 owner: Eugenio Minardi
 supersedes:
@@ -66,6 +66,8 @@ exactly as today; the topology question is never asked.
 5. The topology is chosen once at federation establishment and is **not**
    re-asked when other repos join (see
    adr/0020-federation-bootstrap-establish-join.md).
+6. Topologies A, B, and C are all implemented and selectable in v1; C is
+   the default, not the only supported mode.
 
 ## Out of scope
 
@@ -79,8 +81,8 @@ exactly as today; the topology question is never asked.
 
 ## Open questions
 
-- Whether v1 implements all three topologies or ships **C** with A and B
-  documented as selectable modes to be hardened later.
+- None. (Resolved on acceptance: all three topologies ship in v1; C is the
+  default.)
 
 ## References / cross-links
 
@@ -93,8 +95,10 @@ exactly as today; the topology question is never asked.
 | Date | Revision | Author | Change |
 |------|----------|--------|--------|
 | 2026-06-22 | r1 | Eugenio Minardi | Initial draft. Configurable multirepo topology (A/B/C) for one product across many repos; C the recommended default. |
+| 2026-06-22 | r2 | Eugenio Minardi | Accepted. Resolved open question: all three topologies ship in v1 (AC6); C remains the default. |
 
 ## Approvals
 
 | Role | Name | Date | Signature |
 |------|------|------|-----------|
+| Maintainer | Eugenio Minardi | 2026-06-22 | — |

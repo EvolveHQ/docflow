@@ -1,7 +1,7 @@
 ---
 adr: 0020
 title: Federation bootstrap — establish vs join
-status: Proposed
+status: Accepted
 date: 2026-06-22
 owner: Eugenio Minardi
 supersedes:
@@ -61,6 +61,8 @@ or joining an existing one?"*
    other repo.
 5. **Join** does not re-ask the topology; it reads the topology recorded
    for the federation.
+6. The home pointer is validated by **operator confirmation** in v1; the
+   join step performs no cross-repo read and no org/host API call.
 
 ## Out of scope
 
@@ -73,8 +75,8 @@ or joining an existing one?"*
 
 ## Open questions
 
-- How the join step validates the home pointer without cross-repo read
-  access — manual confirmation only, or an optional org/host API check.
+- None. (Resolved on acceptance: v1 uses operator confirmation only; an
+  optional org/host API check may be added later.)
 
 ## References / cross-links
 
@@ -87,8 +89,10 @@ or joining an existing one?"*
 | Date | Revision | Author | Change |
 |------|----------|--------|--------|
 | 2026-06-22 | r1 | Eugenio Minardi | Initial draft. Establish-vs-join bootstrap branch; joining repos write only their own back-pointer, never cross-repo. |
+| 2026-06-22 | r2 | Eugenio Minardi | Accepted. Resolved open question: v1 validates the home pointer by operator confirmation, no API call (AC6). |
 
 ## Approvals
 
 | Role | Name | Date | Signature |
 |------|------|------|-----------|
+| Maintainer | Eugenio Minardi | 2026-06-22 | — |

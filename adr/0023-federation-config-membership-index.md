@@ -1,7 +1,7 @@
 ---
 adr: 0023
 title: Federation config and membership index
-status: Proposed
+status: Accepted
 date: 2026-06-22
 owner: Eugenio Minardi
 supersedes:
@@ -59,6 +59,10 @@ own bootstrap. No lifecycle skill writes across repos to update either.
    (adr/0017-configurable-artifact-root.md).
 5. Together the two artefacts answer "what is my home?" from any member
    and "which repos are in this product?" from the home.
+6. Both artefacts are **Markdown**: the member index is a Markdown table
+   (as `INDEX.md`); the back-pointer config uses a defined minimal
+   convention (a labelled field block) a lifecycle skill parses
+   unambiguously.
 
 ## Out of scope
 
@@ -68,7 +72,8 @@ own bootstrap. No lifecycle skill writes across repos to update either.
 
 ## Open questions
 
-- The file format (small YAML/JSON/Markdown) and the exact field names.
+- None. (Resolved on acceptance: both artefacts are Markdown — see AC6.
+  Exact field names are an implementation detail for the plan item.)
 
 ## References / cross-links
 
@@ -81,8 +86,10 @@ own bootstrap. No lifecycle skill writes across repos to update either.
 | Date | Revision | Author | Change |
 |------|----------|--------|--------|
 | 2026-06-22 | r1 | Eugenio Minardi | Initial draft. Per-repo back-pointer config plus hand-maintained authoritative member index in the home repo; no cross-repo writes. |
+| 2026-06-22 | r2 | Eugenio Minardi | Accepted. Resolved open question: both artefacts are Markdown (AC6). |
 
 ## Approvals
 
 | Role | Name | Date | Signature |
 |------|------|------|-----------|
+| Maintainer | Eugenio Minardi | 2026-06-22 | — |
