@@ -38,3 +38,11 @@ Maps to adr/0028-cross-repo-audit.md acceptance criteria:
 Depends on the shipped reference scheme (0019), member index (federation
 config), and roll-up (0020). Closes the deferred unreachable-reference
 detection noted in adr/0022-cross-repo-reference-scheme.md.
+
+---
+
+Shipped at HEAD `5884a5f` on 2026-06-23. audit check 12 adds the cross-repo
+federation checks (bidirectional membership, identity collisions, dangling
+cross-repo references, roll-up drift) with tolerant reach via local
+checkouts. ADR 0028 → Implemented; verify green. Structural verification
+only — no member repos in this dogfood repo to exercise it end-to-end.

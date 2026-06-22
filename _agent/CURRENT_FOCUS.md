@@ -17,17 +17,18 @@ file.
 
 ## Last shipped
 
-Multi-repo federation, foundation → roll-up **Implemented**: ADRs
+Multi-repo federation, foundation → audit backstop **Implemented**: ADRs
 **0019/0020/0023** (69fca8b — topology, establish/join, config + member
-index), **0021/0022** (e01cd96 — identity + cross-repo references), and
-**0024** (f6d07db — new `rollup` skill, 9 skills total). Earlier: ADRs
+index), **0021/0022** (e01cd96 — identity + cross-repo references),
+**0024** (f6d07db — new `rollup` skill), and **0028** (5884a5f — audit
+check 12, cross-repo federation checks). 9 skills total. Earlier: ADRs
 0010–0014 Implemented; 0015 Accepted (multi-target portability —
 verification pending). 0002/0008 Superseded. Version held at 0.8.0.
 
 ## Next item
 
-Multi-repo follow-on, all **Proposed**: 0025/0026 (cross-repo plan +
-status), 0027 (convention propagation), 0028 (cross-repo audit — carries
-the deferred unreachable-reference detection). Still open:
+Remaining multi-repo coordination tier, all **Proposed**: 0025 (cross-repo
+plan ownership), 0026 (cross-repo status + completion), 0027 (convention &
+template propagation) — each still carries an open question. Still open:
 `plan/todo/0010-multi-target-verification.md` (ADR 0015) — bootstrap
 behavioural run on Codex, plus OpenCode/Cowork.
