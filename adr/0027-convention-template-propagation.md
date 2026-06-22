@@ -1,12 +1,12 @@
 ---
 adr: 0027
 title: Convention and template propagation across the federation
-status: Proposed
+status: Accepted
 date: 2026-06-22
 owner: Eugenio Minardi
 supersedes:
 superseded-by:
-depends-on: ["0019", "0023"]
+depends-on: ["0019", "0023", "0028"]
 tags: [multirepo, conventions, propagation]
 ---
 
@@ -23,9 +23,11 @@ federation needs a single source and a defined way to keep members in sync
 ## Capability statement
 
 Shared conventions and templates have a **single authoritative source** in
-the federation (the home repo) and a **defined propagation mechanism** to
-members — active sync or copy-then-audit-drift — so the fleet stays
-consistent while members may still hold local-only conventions.
+the federation (the home repo). Members receive them by **copy at
+bootstrap**; drift from the source is **detected by audit**, not actively
+pushed. Shared rules are **referenceable** from the home, not force-pushed
+into members, which may still hold local-only conventions. No member's
+bootstrap writes into another repo.
 
 ## User stories / scenarios
 
@@ -47,6 +49,9 @@ consistent while members may still hold local-only conventions.
    overwrite.
 5. Propagation never requires a member's bootstrap to write to another
    repo.
+6. The mechanism is **copy-at-bootstrap + audit-detected drift**, not
+   active sync; shared rules are **referenceable** from the home, not
+   force-enforced into members.
 
 ## Out of scope
 
@@ -56,9 +61,8 @@ consistent while members may still hold local-only conventions.
 
 ## Open questions
 
-- Active sync vs copy-then-audit-drift; and whether shared rules are
-  **enforced** down into each repo or merely **referenceable** from the
-  home.
+- None. (Resolved on acceptance: copy-at-bootstrap + audit-detected drift,
+  referenceable not enforced — see AC6.)
 
 ## References / cross-links
 
@@ -70,8 +74,10 @@ consistent while members may still hold local-only conventions.
 | Date | Revision | Author | Change |
 |------|----------|--------|--------|
 | 2026-06-22 | r1 | Eugenio Minardi | Initial draft. Single source for shared conventions/templates with a defined propagation mechanism; local-only conventions preserved; no cross-repo writes. |
+| 2026-06-23 | r2 | Eugenio Minardi | Accepted. Resolved open question: copy-at-bootstrap + audit-detected drift, referenceable not enforced (AC6). Added depends-on 0028. |
 
 ## Approvals
 
 | Role | Name | Date | Signature |
 |------|------|------|-----------|
+| Maintainer | Eugenio Minardi | 2026-06-23 | — |

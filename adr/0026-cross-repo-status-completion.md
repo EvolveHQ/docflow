@@ -1,12 +1,12 @@
 ---
 adr: 0026
 title: Cross-repo status and completion
-status: Proposed
+status: Accepted
 date: 2026-06-22
 owner: Eugenio Minardi
 supersedes:
 superseded-by:
-depends-on: ["0025"]
+depends-on: ["0025", "0024"]
 tags: [multirepo, lifecycle, status]
 ---
 
@@ -49,6 +49,9 @@ representable and visible.
    model.
 5. The roll-up catalogue (adr/0024-federated-rollup-catalogue.md) reflects
    aggregate status.
+6. Aggregate status lives in the roll-up as a **derived** column computed
+   from each owning per-repo plan item's state; it is not hand-written
+   into the home ADR, so no cross-repo writes are required.
 
 ## Out of scope
 
@@ -56,8 +59,9 @@ representable and visible.
 
 ## Open questions
 
-- Where aggregate status physically lives (the home ADR vs the roll-up)
-  and how it updates without cross-repo writes.
+- None. (Resolved on acceptance: aggregate status is a derived roll-up
+  column computed from per-repo plan-item state; no cross-repo writes —
+  see AC6.)
 
 ## References / cross-links
 
@@ -70,8 +74,10 @@ representable and visible.
 | Date | Revision | Author | Change |
 |------|----------|--------|--------|
 | 2026-06-22 | r1 | Eugenio Minardi | Initial draft. Aggregate status from per-repo progress; Implemented only when all owning plan items ship; partial implementation visible. |
+| 2026-06-23 | r2 | Eugenio Minardi | Accepted. Resolved open question: aggregate status is a derived roll-up column from per-repo plan-item state, no cross-repo writes (AC6). Added depends-on 0024. |
 
 ## Approvals
 
 | Role | Name | Date | Signature |
 |------|------|------|-----------|
+| Maintainer | Eugenio Minardi | 2026-06-23 | — |

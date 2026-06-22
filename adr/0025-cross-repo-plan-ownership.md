@@ -1,7 +1,7 @@
 ---
 adr: 0025
 title: Cross-repo plan ownership
-status: Proposed
+status: Accepted
 date: 2026-06-22
 owner: Eugenio Minardi
 supersedes:
@@ -46,6 +46,8 @@ whose code it changes, and per-repo queue ordering is unchanged.
    (adr/0022-cross-repo-reference-scheme.md).
 5. The full set of plan items for one decision is discoverable from the
    owning ADR.
+6. No separate decision-level umbrella record is introduced; the owning
+   ADR is the single grouping point for its per-repo plan items.
 
 ## Out of scope
 
@@ -54,8 +56,8 @@ whose code it changes, and per-repo queue ordering is unchanged.
 
 ## Open questions
 
-- Whether a decision-level umbrella record is needed in the home repo to
-  group the per-repo items, or the owning ADR alone suffices.
+- None. (Resolved on acceptance: no umbrella record; the owning ADR alone
+  groups the per-repo items — see AC6.)
 
 ## References / cross-links
 
@@ -67,8 +69,10 @@ whose code it changes, and per-repo queue ordering is unchanged.
 | Date | Revision | Author | Change |
 |------|----------|--------|--------|
 | 2026-06-22 | r1 | Eugenio Minardi | Initial draft. Per-repo plan items tracing to the owning ADR; items live in the repo they change; local ordering preserved. |
+| 2026-06-23 | r2 | Eugenio Minardi | Accepted. Resolved open question: no umbrella record; the owning ADR alone groups the per-repo plan items (AC6). |
 
 ## Approvals
 
 | Role | Name | Date | Signature |
 |------|------|------|-----------|
+| Maintainer | Eugenio Minardi | 2026-06-23 | — |
