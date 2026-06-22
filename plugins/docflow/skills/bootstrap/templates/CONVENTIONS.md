@@ -167,6 +167,32 @@ once merged:
   renumbers.
 -->
 
+<!-- Federation (multi-repo) — bootstrap INCLUDES this section
+(uncommented) ONLY when this repo is part of a multi-repo product (Q11).
+Standalone repos OMIT it entirely.
+
+## Federation (multi-repo)
+
+This repo belongs to the **<product>** federation. Topology and the
+identity scheme are recorded in `federation.md`; the home repo's
+`federation-index.md` is the authoritative member list.
+
+- **Numbering is per-repo contiguous.** Each member repo numbers its own
+  ADRs contiguously from `0001`; numbers are **not** unique across the
+  federation. The cross-federation key is the **identity scheme** recorded
+  in `federation.md` — default repo-prefixed slug `<repo-id>/NNNN-slug`.
+- **Cross-repo references use the logical identity**, resolved through the
+  member index (`repo-id → location`); they survive a target repo move
+  (edit one index row, not the references). **Same-repo references stay
+  relative paths** (`adr/NNNN-*.md`).
+- `supersedes:` / `superseded-by:` may point across repos using the
+  logical identity.
+- **Membership is declared, not discovered.** A member repo carries a
+  `federation.md` back-pointer; adding it to the home's
+  `federation-index.md` is a deliberate edit there. The two must agree —
+  audit cross-checks both directions.
+-->
+
 ## Audit Trail Policy
 
 Every substantive change to an Accepted ADR appends a new row to its

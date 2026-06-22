@@ -7,6 +7,7 @@ skills read this to enumerate the product's repos.
 
 - **Product:** <product-name>
 - **Topology:** <A — central decisions repo | B — distributed + federation | C — home repo + local>
+- **Identity scheme:** <repo-prefixed slug `<repo-id>/NNNN-slug` (default) | other scheme chosen at establishment>
 
 | Repo id | Repo | Role | Pointer |
 |---------|------|------|---------|

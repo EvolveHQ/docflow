@@ -7,6 +7,7 @@ is my home?"; the home repo's `federation-index.md` is the answer to
 
 - **Product:** <product-name>
 - **Topology:** <A — central decisions repo | B — distributed + federation | C — home repo + local>
+- **Identity scheme:** <repo-prefixed slug `<repo-id>/NNNN-slug` (default) | other scheme chosen at establishment>
 - **Home:** <pointer to the home/central repo — URL or path; for the home repo itself, `this repo`>
 - **Role:** <home | member>
 - **Repo id:** <short identifier for this repo, used to qualify its records across the federation>

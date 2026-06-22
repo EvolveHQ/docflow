@@ -17,6 +17,9 @@ Author one new ADR, consistent with this repo's conventions.
    status lifecycle, language mandate (if any), whether `domains/`
    groupings exist, and the multi-agent mode.
 3. Read `INDEX.md` and `ls adr/` to learn existing numbers and titles.
+4. If a `federation.md` exists, this repo is part of a multi-repo
+   product. Note the **identity scheme** and the **home** it records —
+   they govern numbering and cross-repo references below.
 
 ## Step 0.5 — Assessment (run first)
 
@@ -56,6 +59,10 @@ Questions (skip any the request already answers):
 - **Number.** Next contiguous integer after the highest existing ADR,
   zero-padded to 4 digits. No gaps, no reuse. For a split repo, keep
   capability ADRs below the cutoff and technology ADRs at/above it.
+  **In a federation** (a `federation.md` exists), number contiguously
+  **within this repo** — numbers are not unique across the federation.
+  The ADR's federation identity is the recorded scheme applied to this
+  number (default repo-prefixed slug `<repo-id>/NNNN-slug`).
 
 ## Step 2 — Gather content
 
@@ -75,6 +82,10 @@ If this ADR replaces an existing one:
 - Set `supersedes:` on the new ADR and `superseded-by:` on the old.
 - Advance the old ADR's `status:` to `Superseded`, append a Revision
   History row noting the successor.
+- **Same-repo** links use relative paths (`adr/NNNN-*.md`). **In a
+  federation**, a link to an ADR in another repo uses the logical
+  identity (`<repo-id>/NNNN-slug`), resolved via the member index — not
+  a relative path.
 - A pure deprecation (no successor) sets the target to `Deprecated`
   with a Revision History row — and is usually done directly, not via
   this skill.

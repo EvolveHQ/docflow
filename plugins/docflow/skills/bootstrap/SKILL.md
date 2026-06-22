@@ -239,9 +239,16 @@ lines and ask for sign-off before writing any files.
     - **(Recommended) C — home repo + local:** one repo is the home for
       product-wide decisions; each repo also keeps purely-local ones.
 
+    **Q11c — Identity scheme (establish only).** How are ADRs identified
+    across the federation? **(Recommended) repo-prefixed slug**
+    `<repo-id>/NNNN-slug` — each repo keeps local contiguous numbering
+    with no central coordinator; the slug is the cross-federation key.
+    The scheme is recorded in the federation config and applied by the
+    authoring skills.
+
     **Establish** designates this repo as the home/central repo, writes
-    the member index here, and records the topology in the federation
-    config. **Join** asks for the home pointer — **you confirm it; the
+    the member index here, and records the topology **and identity
+    scheme** in the federation config. **Join** asks for the home pointer — **you confirm it; the
     skill performs no cross-repo read and no host API call** — then
     writes **only this repo's** back-pointer config and inherits the
     topology without re-asking it. Joining never writes into any other
@@ -279,7 +286,9 @@ write it into the repo.
 1. `CONVENTIONS.md` — from `templates/CONVENTIONS.md`. Spec other files
    reference. Include the **§Concurrency Guardrails** section only if Q5
    is mode 2/3 **or** Q4b is PR-based; omit it for single-agent
-   direct-to-main repos (no numbering race).
+   direct-to-main repos (no numbering race). Include the **§Federation
+   (multi-repo)** section only if Q11 = yes; fill `<product>` and state
+   the chosen identity scheme. Omit it for standalone repos.
 2. `AGENTS.md` — from `templates/AGENTS.md`. Include the concurrency
    guardrails hard-rule bullet (G2/G3) under the same condition as the
    CONVENTIONS section above; omit otherwise.
@@ -319,13 +328,16 @@ write it into the repo.
       Markdown table) from `templates/federation-index.md` into this
       repo, seeded with this repo as the home member; and write
       `federation.md` from `templates/federation-config.md` with
-      `Role: home` and the chosen topology.
+      `Role: home`, the chosen topology, and the chosen identity scheme
+      (default repo-prefixed slug). Record the identity scheme in both
+      files so it is the same on every read.
     - **Join:** write **only** `federation.md` from
       `templates/federation-config.md` with `Role: member`, the
-      confirmed home pointer, and the topology inherited from the
-      federation. Write nothing into any other repo, and do **not**
-      create a member index. Tell the user to add this repo to the home
-      repo's `federation-index.md` (a deliberate edit there).
+      confirmed home pointer, and the topology **and identity scheme**
+      inherited from the federation (read them from the home, do not
+      re-ask). Write nothing into any other repo, and do **not** create a
+      member index. Tell the user to add this repo to the home repo's
+      `federation-index.md` (a deliberate edit there).
 
 Commit each file (or logical group) with a Conventional Commit message;
 no `Co-Authored-By` trailer unless Q6 asked for one.
