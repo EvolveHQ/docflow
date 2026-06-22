@@ -1,6 +1,6 @@
 ---
 name: audit
-description: Audit a documentation-led repo against its own conventions — contiguous ADR numbering, INDEX sync, plan/ coverage, required sections, status validity, cross-reference resolution, language mandate, ADR-privacy leaks into user-visible code, and cross-worktree collisions (duplicate numbers, duplicate plan ownership, same ADR edited on two branches). Reports a punch list and offers to fix the mechanical issues. Use when the user says "audit the ADRs", "lint the conventions", "check repo consistency", "are the ADRs in sync", or invokes /audit.
+description: Audit a documentation-led repo against its own conventions — contiguous ADR numbering, INDEX sync, plan/ coverage, required sections, status validity, cross-reference resolution, language mandate, ADR-privacy leaks into user-visible code, cross-worktree collisions (duplicate numbers, duplicate plan ownership, same ADR edited on two branches), and — for a multi-repo product — cross-repo federation checks (bidirectional membership, identity collisions, dangling cross-repo references, roll-up drift). Reports a punch list and offers to fix the mechanical issues. Use when the user says "audit the ADRs", "lint the conventions", "check repo consistency", "are the ADRs in sync", or invokes /audit.
 ---
 
 # audit
@@ -15,6 +15,10 @@ This is the enforcement `AGENTS.md` cannot guarantee on its own.
    cutoff, status lifecycle, integration model, multi-agent mode,
    language mandate, optional artefacts present (GLOSSARY, domains/),
    and any Q10 domain hard rules.
+3. If a `federation.md` exists, this repo is part of a multi-repo
+   product. Note whether it is the **home** or a **member** and read the
+   recorded identity scheme; the cross-repo checks (check 12) run from
+   the home repo.
 
 ## Step 1 — Run the checks (read-only)
 
@@ -62,6 +66,23 @@ relevant):
       more than one. A `merge=union` would concatenate them silently.
     Cross-check against `_agent/IN_FLIGHT.md`: every collision should
     correspond to a reservation/ownership violation recorded there.
+12. **Cross-repo (federation) checks** — only when a `federation.md`
+    exists; run from the **home** repo. Reach each member through the
+    local checkout named in `federation-index.md`. A member not checked
+    out locally is reported **"unverified this run"** — never silently
+    passed, never a hard failure.
+    - **Bidirectional membership.** Every repo listed in the member index
+      carries a `federation.md` back-pointer to this home, and every repo
+      whose back-pointer names this home is listed in the index. Flag
+      either half-edge (in-index-without-back-pointer, or
+      points-home-but-unlisted).
+    - **Identity collisions.** No two ADRs across the federation resolve
+      to the same identity under the recorded identity scheme.
+    - **Dangling cross-repo references.** Every cross-repo link resolves
+      to a real ADR in the named member; flag a target that does not
+      exist. (Same-repo relative links are check 7.)
+    - **Roll-up drift.** The roll-up agrees with each member's `INDEX.md`
+      metadata; flag rows that are stale, missing, or extra.
 
 ## Step 2 — Report
 
