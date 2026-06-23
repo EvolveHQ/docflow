@@ -1,7 +1,7 @@
 {
   "name": "docflow",
   "description": "ADR-driven documentation workflow: a bootstrap skill that scaffolds an Architecture Decision Record (ADR) catalogue, a plan/ queue, AGENTS.md conventions, and _agent/ coordination — plus lifecycle skills to author ADRs, queue and ship work, add conventions, audit consistency, brainstorm decisions, and run agent waves. Works on Claude Code, Claude Cowork, pi, Codex, and OpenCode.",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "author": {
     "name": "Eugenio Minardi",
     "email": "docflow@evolvehq.io"
