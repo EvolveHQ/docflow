@@ -23,8 +23,9 @@ index), **0021/0022** (e01cd96 — identity + cross-repo references),
 **0024** (f6d07db — new `rollup` skill), and **0028** (5884a5f — audit
 check 12, cross-repo federation checks). 9 skills total. Earlier: ADRs
 0010–0014 Implemented; 0015 Accepted (multi-target portability —
-verification pending). 0002/0008 Superseded. **Released 0.9.0** (tag
-v0.9.0; published `@evolvehq/docflow@0.9.0` to npm).
+verification pending). 0002/0008 Superseded. **Released 0.9.1** (tag
+v0.9.1; published `@evolvehq/docflow@0.9.1` to npm — 0.9.0 + a docs
+refresh for federation/rollup/five-agent surfaces).
 
 ## Next item
 
