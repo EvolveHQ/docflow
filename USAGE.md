@@ -239,6 +239,7 @@ picks; a fully-specified request lets you skip straight through.
 | `/audit` | Lints the repo against its own conventions and reports a punch list — numbering, INDEX sync, plan coverage, section completeness, status validity, cross-refs, language mandate, and **ADR-privacy leaks into user-visible code**. Offers to fix the mechanical issues. |
 | `/brainstorm` | Decomposes a problem into candidate ADRs + plan items with dependency edges and ordering. Proposes drafts only; writes nothing until approved, then hands off to `/new-adr` and `/new-plan`. |
 | `/agent-wave` | Orchestrates parallel worktree subagents over the queue. Asks wave width, budget (items/waves; hours as a soft cap), and supervision (checkpoint vs. continuous). Requires multi-agent mode; refuses mode 1. |
+| `/rollup` | For a **multi-repo product**: from the home repo, aggregate every member repo's `INDEX` into one derived, product-wide roll-up. Members not checked out are listed as "not aggregated this run". |
 
 ### agent-wave: what it can and can't do
 
@@ -253,6 +254,35 @@ It requires a multi-agent mode (Q5 mode 2 or 3) and works best in mode
 3 (separate worktrees), where each subagent gets an isolated checkout.
 Continuous-unsupervised runs are recommended only with PR-based
 integration, so CI gates each merge.
+
+### Multi-repo products (federation)
+
+A single product spread across several repos runs as a **federation**.
+Bootstrap asks whether the repo is standalone or part of a multi-repo
+product, and — if the latter — whether it is **establishing** a new
+federation or **joining** an existing one. A joining repo writes only its
+own `federation.md` back-pointer; it never writes into another repo, and
+it inherits the topology and identity scheme rather than re-choosing them.
+
+- **Topology** (chosen at establishment): a central decisions repo · a
+  distributed set · or a home repo with local decisions alongside (the
+  default).
+- **Identity & numbering.** Numbering stays contiguous *per repo*; a
+  federation-wide identity — by default a repo-prefixed slug
+  `<repo-id>/NNNN-slug` — is the cross-repo key, so two repos never
+  collide.
+- **References.** Cross-repo links use the logical identity, resolved via
+  the home's `federation-index.md`; same-repo links stay relative.
+- **`/rollup`** aggregates every member's catalogue into one product-wide
+  view; **`/audit`** gains cross-repo checks (bidirectional membership,
+  identity collisions, dangling references, roll-up drift).
+- **Conventions** are copied at bootstrap and kept honest by audit
+  drift-detection — referenceable from the home, never force-pushed.
+
+No tool writes across a repo boundary: consistency is declared at the
+edges and enforced by audit. See the
+[methodology](https://evolvehq.github.io/docflow/methodology/#5-scaling-to-many-repositories)
+for the formal model.
 
 ### Enabling an optional convention later (worked example: TDD)
 

@@ -273,6 +273,19 @@ New work now follows the same loop: `/new-adr` → `/new-plan` → `/ship-item`.
 > direct-to-main repos need none of it. See
 > [USAGE → Concurrent ADR/plan creation](https://github.com/EvolveHQ/docflow/blob/main/USAGE.md).
 
+### rollup
+
+1. `/rollup` (run from the **home** repo of a federation) → reads
+   `federation-index.md`, aggregates each member's `INDEX` into a derived
+   product-wide roll-up, and reports how many members were aggregated.
+2. *"refresh the product-wide ADR view"* → regenerates the roll-up;
+   members not checked out are listed as "not aggregated this run" rather
+   than dropped.
+
+> **Federation.** `/rollup` and the cross-repo `/audit` checks run from the
+> home repo over the local checkouts named in `federation-index.md`. See
+> the [methodology](https://evolvehq.github.io/docflow/methodology/#5-scaling-to-many-repositories).
+
 ---
 
 [← Back to docflow](../)
