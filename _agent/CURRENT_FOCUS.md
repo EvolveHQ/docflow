@@ -27,10 +27,20 @@ verification pending). 0002/0008 Superseded. **Released 0.9.1** (tag
 v0.9.1; published `@evolvehq/docflow@0.9.1` to npm — 0.9.0 + a docs
 refresh for federation/rollup/five-agent surfaces).
 
+**Assessment remediation complete** (plan 0025/0026/0027, commits dab737c /
+dd79d06 / 8f87bae): the adversarial review's one FAIL and the PARTIALs are
+closed — 0019 topology A/B/C now genuinely differentiated (re-Implemented),
+cross-repo resolution operationalised (0021/0022/0028), and the join /
+roll-up-filename / artefact-root prose corrected (0020/0023/0024). All
+federation ADRs honestly match the skills. **Unreleased** (still 0.9.1 on
+npm; a 0.9.2 patch would carry these fixes).
+
 ## Next item
 
-Remaining multi-repo coordination tier, all **Proposed**: 0025 (cross-repo
-plan ownership), 0026 (cross-repo status + completion), 0027 (convention &
-template propagation) — each still carries an open question. Still open:
+Coordination tier — ADRs **0025/0026/0027 Accepted**, work queued in
+`plan/todo/0022-0024` (cross-repo plan ownership, status roll-up column,
+convention propagation), not yet implemented. Also open:
 `plan/todo/0010-multi-target-verification.md` (ADR 0015) — bootstrap
-behavioural run on Codex, plus OpenCode/Cowork.
+behavioural run on Codex, plus OpenCode/Cowork. Capstone worth doing: a
+real two-repo federation smoke test (everything is structurally verified
+only).

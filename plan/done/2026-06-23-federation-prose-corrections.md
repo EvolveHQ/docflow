@@ -32,3 +32,11 @@ ADRs (commit + Revision History row each; status stays Implemented).
 ## Dependencies
 
 Independent of 0025/0026. Trivial prose; smallest of the three.
+
+---
+
+Shipped at HEAD `8f87bae` on 2026-06-23. 0020 join contradiction removed
+(operator supplies topology/identity, no cross-repo read); 0024 roll-up
+pinned to `ROLLUP.md` at the artefact root; 0023 artefact-root note
+operationalised. ADRs 0020/0023/0024 stay Implemented (Revision History
+r4 each).
