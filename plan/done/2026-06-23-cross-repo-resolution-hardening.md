@@ -38,3 +38,11 @@ each of 0021/0022/0028 citing the assessment; status stays Implemented.
 
 Builds on the shipped identity (0018) and references (0019 plan) work and
 the member index. Independent of plan 0025.
+
+---
+
+Shipped at HEAD `dd79d06` on 2026-06-23. Resolution path
+`repo-id → Pointer → adr/NNNN-*.md` operationalised in CONVENTIONS
+§Federation + new-adr; audit check 12 collision/dangling checks made
+executable; 0021 AC2 clarified. ADRs 0021/0022/0028 stay Implemented
+(corrections, Revision History r4 each). Structural verification only.
