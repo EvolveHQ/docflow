@@ -37,12 +37,19 @@ npm; a 0.9.2 patch would carry these fixes).
 
 ## Next item
 
-**Federation design fully Implemented (ADRs 0019–0028)** — coordination
-tier shipped (commit eeb7e6b: plan ownership, aggregate status, convention
-propagation). A two-repo topology-C smoke test exercised topology /
-identity / references / roll-up / audit end-to-end; the coordination-tier
-additions themselves are structurally verified only. Still open:
-`plan/todo/0010-multi-target-verification.md` (ADR 0015) — bootstrap
-behavioural run on Codex, plus OpenCode/Cowork. **Released 0.9.2** (tag
-v0.9.2; published `@evolvehq/docflow@0.9.2` to npm — federation remediation
-+ coordination tier + A/B/C docs). main and npm are in sync.
+**Backlog cleared** (2026-06-23): ADRs **0016** (layered artifact model,
+commit 2a837a7), **0017** (configurable artifact root, 5895168), and
+**0018** (WIP-stays-out docs, c1c441e) all Implemented. Federation
+(0019–0028) Implemented and released in **0.9.2** (main and npm in sync;
+post-0.9.2 backlog work is unreleased — a 0.9.3 would carry it).
+
+**One item remains, operator-blocked:**
+`plan/todo/0010-multi-target-verification.md` (ADR 0015, still Accepted).
+AC5 needs behavioural `bootstrap`+`new-adr` runs on **real Codex, OpenCode,
+and Cowork** installs — not runnable from here. A Claude Code smoke-run
+(= the Cowork plugin artefact) passed and is logged in the item, with
+turnkey operator steps for the three; Codex install verified per ADR 0015
+r3. Ships when the three real-agent runs are recorded.
+
+Other soft item: the coordination-tier additions (0025–0027) are
+structurally verified only (the smoke test covered the foundation).
