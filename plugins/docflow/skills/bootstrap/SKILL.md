@@ -60,8 +60,10 @@ questions.
 For a **multi-repo product** (one product spread across several repos —
 see Q11), two extra files appear: `federation.md`, a small back-pointer
 every member repo carries, and `federation-index.md`, the authoritative
-member list that lives only in the home/establishing repo. A standalone
-repo has neither.
+member list that lives only in the home/establishing repo. All federation
+artefacts — `federation.md`, `federation-index.md`, and the derived
+roll-up `ROLLUP.md` — are placed under the **configured artefact root**.
+A standalone repo has none of them.
 
 ## Step 3 — Conventions to install
 
@@ -249,10 +251,11 @@ lines and ask for sign-off before writing any files.
     **Establish** sets this repo's role from the chosen topology —
     **central** (A), **coordinator** (B), or **home** (C) — writes the
     member index here, and records the topology **and identity scheme**
-    in the federation config. **Join** asks for the home pointer — **you confirm it; the
-    skill performs no cross-repo read and no host API call** — then
-    writes **only this repo's** back-pointer config and inherits the
-    topology without re-asking it. Joining never writes into any other
+    in the federation config. **Join** asks for the home pointer **and the federation's topology +
+    identity scheme** — **you supply them; the skill performs no
+    cross-repo read and no host API call** — then writes **only this
+    repo's** back-pointer config, recording those values (it does not
+    re-choose the topology). Joining never writes into any other
     repo; adding this repo to the member index is a deliberate edit in
     the home repo. A standalone repo (Q11 = No) writes none of these
     files and behaves exactly as a single-repo bootstrap.
@@ -340,8 +343,9 @@ write it into the repo.
     - **Join:** write **only** `federation.md` from
       `templates/federation-config.md` with `Role: member`, the
       confirmed home pointer, and the topology **and identity scheme**
-      inherited from the federation (read them from the home, do not
-      re-ask). Then apply the **topology's member rule**: for **A**, this
+      for the federation, **supplied by the operator at join** (recorded
+      into this repo's `federation.md`; no cross-repo read). Then apply
+      the **topology's member rule**: for **A**, this
       repo references the central repo and does **not** hold product-wide
       ADRs locally (its `adr/` is for local-implementation decisions
       only); for **B**, this repo owns its own catalogue in full; for

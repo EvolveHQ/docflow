@@ -91,6 +91,7 @@ or joining an existing one?"*
 | 2026-06-22 | r1 | Eugenio Minardi | Initial draft. Establish-vs-join bootstrap branch; joining repos write only their own back-pointer, never cross-repo. |
 | 2026-06-22 | r2 | Eugenio Minardi | Accepted. Resolved open question: v1 validates the home pointer by operator confirmation, no API call (AC6). |
 | 2026-06-22 | r3 | Eugenio Minardi | Implemented in bootstrap (commit 69fca8b): establish/join branch (Q11), join writes only its own back-pointer, operator-confirmed home pointer, topology inherited. |
+| 2026-06-23 | r4 | Eugenio Minardi | Resolution hardening (plan 0027): removed an AC5/AC6 contradiction the assessment flagged — join no longer "reads topology/identity from the home"; the operator supplies them and the skill records them locally (no cross-repo read). Stays Implemented. |
 
 ## Approvals
 

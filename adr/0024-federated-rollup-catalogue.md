@@ -79,6 +79,7 @@ federation-unique identity.
 | 2026-06-22 | r1 | Eugenio Minardi | Initial draft. Derived, read-only roll-up catalogue generated from the member index; per-repo INDEX stays authoritative. |
 | 2026-06-23 | r2 | Eugenio Minardi | Accepted. Resolved open question: generator is an agent-run lifecycle skill (not CI), tolerant of members not checked out locally (AC6/AC7). |
 | 2026-06-23 | r3 | Eugenio Minardi | Implemented (commit f6d07db): new agent-run roll-up skill — reads the member index, aggregates each available member's INDEX into a derived product-wide view, lists uncheckedout members as "not aggregated this run". Verified structurally (no member repos in the dogfood repo to aggregate end-to-end). |
+| 2026-06-23 | r4 | Eugenio Minardi | Resolution hardening (plan 0027): pinned the roll-up output to a fixed `ROLLUP.md` at the configured artefact root (was "e.g. ROLLUP.md"), so re-runs are idempotent — assessment flagged the vague filename. Stays Implemented. |
 
 ## Approvals
 

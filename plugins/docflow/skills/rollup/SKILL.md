@@ -47,7 +47,8 @@ visible rather than silent.
 
 ## Step 4 — Write the roll-up
 
-Write the aggregate to a derived file in the home repo (e.g. `ROLLUP.md`):
+Write the aggregate to **`ROLLUP.md`** at the configured artefact root (the
+same root as `INDEX.md`), so every re-run overwrites the same file:
 
 - A header stating it is **generated — do not hand-edit**, with the run
   date and the set of members aggregated.
