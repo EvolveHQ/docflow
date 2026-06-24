@@ -246,9 +246,10 @@ lines and ask for sign-off before writing any files.
     The scheme is recorded in the federation config and applied by the
     authoring skills.
 
-    **Establish** designates this repo as the home/central repo, writes
-    the member index here, and records the topology **and identity
-    scheme** in the federation config. **Join** asks for the home pointer — **you confirm it; the
+    **Establish** sets this repo's role from the chosen topology —
+    **central** (A), **coordinator** (B), or **home** (C) — writes the
+    member index here, and records the topology **and identity scheme**
+    in the federation config. **Join** asks for the home pointer — **you confirm it; the
     skill performs no cross-repo read and no host API call** — then
     writes **only this repo's** back-pointer config and inherits the
     topology without re-asking it. Joining never writes into any other
@@ -326,18 +327,28 @@ write it into the repo.
     configured artefact root (repository root by default).
     - **Establish:** write `federation-index.md` (the member index, a
       Markdown table) from `templates/federation-index.md` into this
-      repo, seeded with this repo as the home member; and write
-      `federation.md` from `templates/federation-config.md` with
-      `Role: home`, the chosen topology, and the chosen identity scheme
-      (default repo-prefixed slug). Record the identity scheme in both
-      files so it is the same on every read.
+      repo, seeded with this repo as the first member; and write
+      `federation.md` from `templates/federation-config.md` with the
+      chosen topology, the chosen identity scheme (default repo-prefixed
+      slug), and this repo's **`Role` set from the topology**:
+      `central` for **A** (this repo holds all product-wide ADRs),
+      `coordinator` for **B** (this repo holds only the member index —
+      product-wide decisions are distributed and the roll-up is the
+      product-wide view), or `home` for **C** (this repo holds
+      product-wide ADRs; members keep local ADRs alongside). Record the
+      identity scheme in both files so it is the same on every read.
     - **Join:** write **only** `federation.md` from
       `templates/federation-config.md` with `Role: member`, the
       confirmed home pointer, and the topology **and identity scheme**
       inherited from the federation (read them from the home, do not
-      re-ask). Write nothing into any other repo, and do **not** create a
-      member index. Tell the user to add this repo to the home repo's
-      `federation-index.md` (a deliberate edit there).
+      re-ask). Then apply the **topology's member rule**: for **A**, this
+      repo references the central repo and does **not** hold product-wide
+      ADRs locally (its `adr/` is for local-implementation decisions
+      only); for **B**, this repo owns its own catalogue in full; for
+      **C**, this repo keeps local ADRs and references the home for
+      product-wide ones. Write nothing into any other repo, and do **not**
+      create a member index. Tell the user to add this repo to the home
+      repo's `federation-index.md` (a deliberate edit there).
 
 Commit each file (or logical group) with a Conventional Commit message;
 no `Co-Authored-By` trailer unless Q6 asked for one.

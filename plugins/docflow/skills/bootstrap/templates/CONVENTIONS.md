@@ -177,6 +177,16 @@ This repo belongs to the **<product>** federation. Topology and the
 identity scheme are recorded in `federation.md`; the home repo's
 `federation-index.md` is the authoritative member list.
 
+- **Where product-wide decisions live depends on the topology** (recorded
+  in `federation.md`):
+  - **A — central:** a single central repo holds **all** product-wide
+    ADRs; every other repo references them and never duplicates a
+    product-wide decision locally.
+  - **B — distributed:** **no** repo holds product-wide ADRs; each repo
+    owns its own catalogue and the roll-up is the product-wide view.
+  - **C — home + local:** the home repo holds product-wide ADRs; members
+    keep purely-local ADRs alongside and reference the home for
+    product-wide ones.
 - **Numbering is per-repo contiguous.** Each member repo numbers its own
   ADRs contiguously from `0001`; numbers are **not** unique across the
   federation. The cross-federation key is the **identity scheme** recorded

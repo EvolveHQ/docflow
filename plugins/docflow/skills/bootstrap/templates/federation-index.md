@@ -11,7 +11,10 @@ skills read this to enumerate the product's repos.
 
 | Repo id | Repo | Role | Pointer |
 |---------|------|------|---------|
-| <id>    | <this repo> | home | this repo |
+| <id>    | <this repo> | <central\|home\|coordinator> | this repo |
+
+<!-- Role values: the establishing repo is `central` (topology A),
+`coordinator` (B), or `home` (C); every other member is `member`. -->
 
 <!-- Each row should have a matching federation.md back-pointer in the
 named repo, and vice versa. The audit step cross-checks both directions. -->
