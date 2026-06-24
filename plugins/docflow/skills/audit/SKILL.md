@@ -14,7 +14,9 @@ This is the enforcement `AGENTS.md` cannot guarantee on its own.
 2. Read `CONVENTIONS.md` to learn what to enforce: ADR shape and
    cutoff, status lifecycle, integration model, multi-agent mode,
    language mandate, optional artefacts present (GLOSSARY, domains/),
-   and any Q10 domain hard rules.
+   and any Q10 domain hard rules, and the **artefact root** (default:
+   repository root) — resolve `adr/`, `plan/`, `INDEX.md` against it and
+   honour it in the cross-reference and INDEX-sync checks.
 3. If a `federation.md` exists, this repo is part of a multi-repo
    product. Note its `Role` (`central` / `home` / `coordinator`
    index-holder, or a plain `member`) and read the recorded identity

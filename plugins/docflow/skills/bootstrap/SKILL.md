@@ -57,6 +57,11 @@ questions.
   federation-index.md    # multi-repo only (Q11): member index — home repo only
 ```
 
+**Placement.** The tree above shows the **root** option. `AGENTS.md` and
+`CLAUDE.md` always sit at the repository root; `adr/`, `plan/`, `_agent/`,
+`INDEX.md`, and `CONVENTIONS.md` go under the **artefact root** chosen in
+Q12 (default `docs/`, e.g. `docs/adr/`, `docs/plan/`).
+
 **Core vs optional layers.** Only the **core** is always written:
 `AGENTS.md`, `CLAUDE.md`, `CONVENTIONS.md`, `adr/0000-template.md`, and
 `INDEX.md`. A repo with just these is a valid, lightweight docflow repo — a
@@ -131,7 +136,7 @@ A standalone repo has none of them.
     doubt, ask whether a non-builder would ever see this string — if
     yes, the ADR reference comes out.
 
-## Step 4 — Assessment (10 questions, plus an optional federation question)
+## Step 4 — Assessment (10 questions, plus federation (Q11) and placement (Q12))
 
 **Ask the questions one at a time, not in a batch.** For each question,
 state a **recommended** option (label it "Recommended") with one short
@@ -272,6 +277,20 @@ lines and ask for sign-off before writing any files.
     repo; adding this repo to the member index is a deliberate edit in
     the home repo. A standalone repo (Q11 = No) writes none of these
     files and behaves exactly as a single-repo bootstrap.
+12. **Artifact placement.** Where the non-entry artefacts live — `adr/`,
+    `plan/`, `_agent/`, `INDEX.md`, `CONVENTIONS.md`:
+    - **(Recommended) `docs/`** — aligns with the common `doc/adr` / `docs/`
+      convention; keeps the repo root clean (`docs/adr/`, `docs/plan/`, …).
+    - **Repository root** — flat layout; decisions beside the code (good for
+      monorepos). This is docflow's own layout.
+    - **`.docflow/`** — hidden root; quietest footprint.
+
+    `AGENTS.md` and `CLAUDE.md` are **always** written to the repository
+    root (coding agents discover them there). The chosen root is recorded in
+    `CONVENTIONS.md`, and every lifecycle skill resolves `adr/`, `plan/`,
+    and `INDEX.md` against it. For an existing repo already laid out
+    differently, offer a documented migration (`git mv` into the chosen root
+    + update `CONVENTIONS.md`) — never force it.
 
 ## Step 4.5 — Cross-check before sign-off
 
@@ -299,6 +318,13 @@ plan summary. Surface each, take the correction, then proceed:
 Templates live in this skill's `templates/` directory. Read each
 template, fill its placeholders from the assessment answers, then
 write it into the repo.
+
+**Placement (Q12):** write `AGENTS.md` and `CLAUDE.md` to the repository
+root; write everything below under the chosen **artefact root** (default
+`docs/`) — e.g. `docs/adr/0000-template.md`, `docs/plan/`, `docs/INDEX.md`.
+Record the chosen root in `CONVENTIONS.md` so every lifecycle skill resolves
+paths against it, and adjust the `adr/`/`plan/` cross-paths in the filled
+`AGENTS.md` (and other templates) to the chosen root (e.g. `docs/adr/`).
 
 1. `CONVENTIONS.md` — from `templates/CONVENTIONS.md`. Spec other files
    reference. Include the **§Concurrency Guardrails** section only if Q5

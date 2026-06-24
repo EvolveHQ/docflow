@@ -4,6 +4,10 @@
 
 Project name: <name>.
 
+Artifact root: `<docs/ | . | .docflow/>` — `adr/`, `plan/`, `INDEX.md`, and
+this file live under this root; `AGENTS.md` and `CLAUDE.md` always stay at
+the repository root. Every lifecycle skill resolves paths against this root.
+
 <!-- Q1 language: if a language mandate is set, state it here.
 Example: "Language: en-GB throughout. Use forms such as organisation,
 behaviour, prioritise, catalogue, authorisation consistently across all

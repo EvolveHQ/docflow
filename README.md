@@ -64,6 +64,11 @@ ADR catalogue.
 Omitting any optional layer leaves a valid repo; a lifecycle skill that
 needs an absent layer refuses cleanly and says what's missing.
 
+**Placement:** `AGENTS.md` and `CLAUDE.md` always stay at the repository
+root; everything else lives under a configurable **artefact root** —
+`docs/` (the default), the repo root, or `.docflow/` — chosen at bootstrap
+and recorded in `CONVENTIONS.md`.
+
 ## Why
 
 Documentation-led projects rot when conventions live in someone's head.

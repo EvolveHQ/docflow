@@ -13,7 +13,8 @@ Add one item to the implementation queue.
    repo was bootstrapped without a plan folder (Q4a = skip), stop and
    say so — there is no queue to add to.
 2. Read `CONVENTIONS.md` for the plan-folder convention and the
-   completion event, and `plan/README.md` if present.
+   completion event, and `plan/README.md` if present. Resolve `plan/`
+   against the **artefact root** recorded there (default: repository root).
 3. `ls plan/todo/` to learn existing numbers and priority ordering.
 
 ## Step 0.5 — Assessment (run first)

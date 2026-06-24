@@ -14,7 +14,9 @@ order-sensitive operation in the system — follow the steps exactly.
 2. Read `CONVENTIONS.md` and `AGENTS.md` for: the **integration model**
    (direct-to-main fast-forward vs. PR-based with required CI), the
    **verify gate** command, the **multi-agent mode**, and the Git
-   contract (signed commits, tags, trailers).
+   contract (signed commits, tags, trailers). Resolve `adr/`, `plan/`, and
+   `INDEX.md` against the **artefact root** recorded in `CONVENTIONS.md`
+   (default: repository root).
 
 ## Step 1 — Select the item
 

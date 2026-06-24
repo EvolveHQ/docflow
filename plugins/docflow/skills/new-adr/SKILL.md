@@ -15,7 +15,9 @@ Author one new ADR, consistent with this repo's conventions.
 2. Read `CONVENTIONS.md` to learn this repo's choices: ADR shape
    (single vs. capability/technology split and the cutoff number),
    status lifecycle, language mandate (if any), whether `domains/`
-   groupings exist, and the multi-agent mode.
+   groupings exist, the multi-agent mode, and the **artefact root**
+   (default: repository root) — resolve `adr/` and `INDEX.md` against it
+   (`AGENTS.md`/`CLAUDE.md` stay at the repo root).
 3. Read `INDEX.md` and `ls adr/` to learn existing numbers and titles.
 4. If a `federation.md` exists, this repo is part of a multi-repo
    product. Note the **identity scheme** and the **home** it records —
