@@ -45,3 +45,11 @@ Maps to adr/0019-multirepo-topology.md acceptance criteria:
 The federation foundation (config, member index, identity, references,
 roll-up, audit) is shipped; this re-implements the topology layer on top.
 On completion ADR 0019 advances Accepted → Implemented (genuinely).
+
+---
+
+Shipped at HEAD `dab737c` on 2026-06-23. Establish/join branch per
+topology, topology-aware §Federation clause, and Role values
+central|home|coordinator|member. A/B/C now produce distinct behaviour
+(AC6/AC7). ADR 0019 → Implemented (honestly; the prior label-only stamp
+was voided in r4 and restored in r5). Structural verification only.

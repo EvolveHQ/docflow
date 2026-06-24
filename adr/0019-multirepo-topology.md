@@ -1,7 +1,7 @@
 ---
 adr: 0019
 title: Multirepo topology for a single product
-status: Accepted
+status: Implemented
 date: 2026-06-22
 owner: Eugenio Minardi
 supersedes:
@@ -113,6 +113,7 @@ exactly as today; the topology question is never asked.
 | 2026-06-22 | r2 | Eugenio Minardi | Accepted. Resolved open question: all three topologies ship in v1 (AC6); C remains the default. |
 | 2026-06-22 | r3 | Eugenio Minardi | Implemented in bootstrap (commit 69fca8b). Tightened AC2 scope: the federation config is the single readable source; per-skill consumption is owned by the dependent decisions (0021/0022/0028). |
 | 2026-06-23 | r4 | Eugenio Minardi | Status corrected Implemented→Accepted. An adversarial assessment found AC6 unmet: A/B/C were selectable labels with no differentiated behaviour, so the Accepted→Implemented guard was never satisfied and the r3 stamp was invalid. AC6 sharpened to require distinct per-topology behaviour; AC7 added. Differentiation queued before re-implementing. |
+| 2026-06-23 | r5 | Eugenio Minardi | Re-implemented (commit dab737c): topology-aware establish/join, a §Federation clause for where product-wide decisions live per topology, and Role values central\|home\|coordinator\|member. A/B/C now produce distinct behaviour — AC6/AC7 met; status restored to Implemented honestly. |
 
 ## Approvals
 
