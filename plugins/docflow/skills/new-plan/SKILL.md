@@ -52,6 +52,12 @@ Questions (skip any the request already answers):
   still `Proposed`, warn — you can queue ahead of acceptance, but the
   work is not yet authorised. If it has no ADR at all, suggest running
   the **new-adr** skill first; plan items should trace to a decision.
+- **In a federation** (a `federation.md` exists): the owning ADR may live
+  in **another** repo (the home/central). Name it by its **federation
+  identity** (`<repo-id>/NNNN-slug`); the plan item itself lives in **this**
+  repo — the one whose code the work changes. A decision spanning several
+  repos gets **one item per affected repo**, each tracing to the same
+  owning ADR (the grouping point — no umbrella record).
 
 ## Step 2 — Pick number and position
 

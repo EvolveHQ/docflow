@@ -205,6 +205,24 @@ identity scheme are recorded in `federation.md`; the home repo's
   `federation.md` back-pointer; adding it to the home's
   `federation-index.md` is a deliberate edit there. The two must agree —
   audit cross-checks both directions.
+- **Cross-repo work is one plan item per repo.** A decision implemented in
+  several repos gets one `plan/todo` item **per affected repo**, each in
+  the repo whose code it changes and naming the owning ADR by its
+  federation identity. The owning ADR is the single grouping point — its
+  per-repo items are discoverable from it; there is **no umbrella record**.
+  Per-repo "lower numbers first" ordering is unchanged.
+- **Aggregate status is derived in the roll-up.** A cross-repo decision is
+  `Implemented` only when **every** owning per-repo plan item has shipped
+  (each under its own repo's completion event); until then it is partially
+  implemented. The aggregate ("2 of 3 repos") is a **derived column in the
+  roll-up**, computed from per-repo plan-item state — never hand-written
+  into the ADR, so no cross-repo writes.
+- **Shared conventions come from one source.** Shared conventions and
+  templates are authoritative in the index-holding repo; members **copy
+  them at bootstrap** and may keep **local-only** conventions alongside.
+  Updates are **not** force-pushed — drift between a member's copy and the
+  source is **detected by audit**. Referenceable, not enforced; no
+  cross-repo writes.
 -->
 
 ## Audit Trail Policy

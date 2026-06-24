@@ -1,6 +1,6 @@
 ---
 name: audit
-description: Audit a documentation-led repo against its own conventions — contiguous ADR numbering, INDEX sync, plan/ coverage, required sections, status validity, cross-reference resolution, language mandate, ADR-privacy leaks into user-visible code, cross-worktree collisions (duplicate numbers, duplicate plan ownership, same ADR edited on two branches), and — for a multi-repo product — cross-repo federation checks (bidirectional membership, identity collisions, dangling cross-repo references, roll-up drift). Reports a punch list and offers to fix the mechanical issues. Use when the user says "audit the ADRs", "lint the conventions", "check repo consistency", "are the ADRs in sync", or invokes /audit.
+description: Audit a documentation-led repo against its own conventions — contiguous ADR numbering, INDEX sync, plan/ coverage, required sections, status validity, cross-reference resolution, language mandate, ADR-privacy leaks into user-visible code, cross-worktree collisions (duplicate numbers, duplicate plan ownership, same ADR edited on two branches), and — for a multi-repo product — cross-repo federation checks (bidirectional membership, identity collisions, dangling cross-repo references, roll-up drift, convention drift). Reports a punch list and offers to fix the mechanical issues. Use when the user says "audit the ADRs", "lint the conventions", "check repo consistency", "are the ADRs in sync", or invokes /audit.
 ---
 
 # audit
@@ -93,6 +93,10 @@ relevant):
       check 7.)
     - **Roll-up drift.** The roll-up agrees with each member's `INDEX.md`
       metadata; flag rows that are stale, missing, or extra.
+    - **Convention drift.** Compare each member's **shared** conventions
+      against the index-holder's authoritative copy; flag a member whose
+      shared conventions have drifted from the source. Members' **local-only**
+      conventions are exempt.
 
 ## Step 2 — Report
 

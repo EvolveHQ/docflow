@@ -40,6 +40,12 @@ For every member whose checkout is **locally available** at its pointer:
 A member's own `INDEX.md` stays authoritative for that member; this skill
 only reads it.
 
+For the **aggregate status** of a product-wide decision (one with owning
+per-repo plan items across several members), also scan each member's
+`plan/todo/` (pending) and `plan/done/` (shipped) for items naming that
+decision's federation identity — that per-repo state feeds the aggregate
+column in Step 4.
+
 ## Step 3 — Handle unreachable members
 
 A member named in the index whose checkout is **not locally available** is
@@ -56,6 +62,10 @@ same root as `INDEX.md`), so every re-run overwrites the same file:
   date and the set of members aggregated.
 - One table across the whole product: federation identity, title, status,
   owning repo, date. Group or sort by owning repo for readability.
+- For product-wide decisions, an **aggregate status** column **derived**
+  from per-repo plan-item state: `Implemented` only when every owning
+  per-repo plan item is in a member's `plan/done/`, otherwise `N of M
+  repos` shipped. This column is derived — never written back into any ADR.
 - The "Not aggregated this run" list from Step 3.
 
 Do not alter any member's `INDEX.md` and do not write into any other repo.
