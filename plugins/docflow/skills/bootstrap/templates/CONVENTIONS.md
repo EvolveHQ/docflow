@@ -35,6 +35,11 @@ Status lifecycle: `<from Q3>`.
 Terminal states (Superseded / Deprecated) are reachable from any prior
 state.
 
+The first **persisted** status is `Proposed` — there is no separate `Draft`
+state and no `brainstorming/`/`drafts/` folder. Work-in-progress lives in
+the brainstorm conversation; only an approved decision is written, as a
+numbered `Proposed` ADR.
+
 Cross-references link by relative path to `adr/NNNN-*.md`.
 
 ## ADR Shapes

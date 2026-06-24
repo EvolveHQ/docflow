@@ -99,6 +99,18 @@ repo boundary; consistency is declared at the edges and enforced by audit. See t
 [methodology](https://evolvehq.github.io/docflow/methodology/#5-scaling-to-many-repositories)
 for the full model.
 
+## No drafts in the catalogue
+
+docflow records **outcomes, not work-in-progress**. There is **no `Draft`
+status** and **no `brainstorming/` folder** — an ADR's first persisted
+status is `Proposed`, created only once a decision is approved. The
+`brainstorm` skill explores candidates **in conversation and writes
+nothing** until you approve them; only then does `new-adr` mint a numbered
+ADR. This keeps the catalogue free of half-formed drafts and the numbering
+clean — numbers go only to real decisions — following the lightweight-ADR
+tradition that an ADR captures the agreed decision, not the discussion that
+produced it.
+
 ## Install
 
 docflow ships from **one skill source** (`plugins/docflow/skills/`) to
