@@ -39,23 +39,30 @@ and point you at `/bootstrap`.
 
 ## What `/bootstrap` installs
 
-- `AGENTS.md` — hard rules for coding agents (the entry point).
-- `CLAUDE.md` — one-liner re-exporting `AGENTS.md` so Claude Code picks
-  it up automatically.
-- `CONVENTIONS.md` — authoring rules for ADRs, naming, status
-  lifecycle, audit trail, and git contract.
-- `INDEX.md` — generated table of all ADRs.
-- `adr/` — ADR catalogue with a capability-ADR template (and an
-  optional technology-ADR template).
-- `plan/todo/` and `plan/done/` — implementation queue. `git mv` from
-  `todo/` to `done/` is the completion event.
-- `_agent/` — multi-agent coordination: `ROLES.md`, `LOCKS.md`,
-  `WORKLOG.md`, `CURRENT_FOCUS.md`, `HANDOFF.md`, and an optional
-  unsupervised-run prompt under `prompts/`.
+Only the **core** is always written; everything else is an **opt-in layer**
+chosen during the assessment, so a minimal repo stays as light as a classic
+ADR catalogue.
 
-Optional, off by default: `GLOSSARY.md`, `domains/<slug>/README.md`
-groupings, project-specific hard rules (vendor-naming restriction,
-regulated-evidence posture, language mandate, audit-stream separation).
+**Core (always):**
+- `AGENTS.md` — hard rules for coding agents (the entry point).
+- `CLAUDE.md` — one-liner re-exporting `AGENTS.md` so Claude Code picks it
+  up automatically.
+- `CONVENTIONS.md` — authoring rules for ADRs, naming, status lifecycle,
+  audit trail, and git contract.
+- `INDEX.md` — generated table of all ADRs.
+- `adr/0000-template.md` — the ADR template; the catalogue starts here.
+
+**Optional layers (opt-in):**
+- `plan/todo/` + `plan/done/` — the implementation queue (Q4a). `git mv`
+  from `todo/` to `done/` is the completion event.
+- `_agent/` — coordination (`ROLES`, `LOCKS`, `WORKLOG`, `CURRENT_FOCUS`,
+  `HANDOFF`, optional `prompts/`). **Q5 — choose *None* to omit it.**
+- `GLOSSARY.md`, `domains/<slug>/README.md` groupings, the technology-ADR
+  template, and project-specific hard rules (vendor-naming, regulated
+  evidence, language mandate, audit-stream separation) — Q7/Q10.
+
+Omitting any optional layer leaves a valid repo; a lifecycle skill that
+needs an absent layer refuses cleanly and says what's missing.
 
 ## Why
 

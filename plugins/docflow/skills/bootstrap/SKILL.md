@@ -57,6 +57,15 @@ questions.
   federation-index.md    # multi-repo only (Q11): member index — home repo only
 ```
 
+**Core vs optional layers.** Only the **core** is always written:
+`AGENTS.md`, `CLAUDE.md`, `CONVENTIONS.md`, `adr/0000-template.md`, and
+`INDEX.md`. A repo with just these is a valid, lightweight docflow repo — a
+classic ADR catalogue with conventions. Everything else is an **opt-in
+layer**: the `plan/` queue (Q4a), the `_agent/` coordination set (Q5 —
+choose *None* to omit it), `GLOSSARY.md` and `domains/` (Q7). Omitting any
+optional layer is a valid state, not an error; a lifecycle skill that needs
+an absent layer refuses cleanly and names what is missing.
+
 For a **multi-repo product** (one product spread across several repos —
 see Q11), two extra files appear: `federation.md`, a small back-pointer
 every member repo carries, and `federation-index.md`, the authoritative
@@ -173,8 +182,12 @@ lines and ask for sign-off before writing any files.
      marks ready, merges. Ask the user for merge strategy
      (squash / merge / rebase — default: squash for clean history,
      rebase if per-commit identity matters).
-5. **Multi-agent setup.** Pick one — the three options have different
-   coordination-file shapes, and switching later is not free:
+5. **Multi-agent setup.** Pick one — these set the `_agent/` coordination
+   shape (or omit it), and switching later is not free:
+   - **None — omit `_agent/`.** A solo human/agent with no coordination
+     need; no `_agent/` directory is written, and lifecycle skills skip the
+     WORKLOG/snapshot steps. The lightest footprint (the optional `_agent/`
+     layer is left out — see the core-vs-optional note in Step 2).
    - **(Recommended) Single agent.** `default-agent` in ROLES.
      LOCKS skipped. WORKLOG / CURRENT_FOCUS as standard single-file
      snapshots. Right for small projects and the "one human + one
@@ -303,7 +316,8 @@ write it into the repo.
    (project-defined, e.g. 0091; default 0100 if unspecified).
 6. `plan/README.md` — from `templates/plan-README.md`. Create empty
    `plan/todo/.gitkeep` and `plan/done/.gitkeep`.
-7. `_agent/ROLES.md` — from `templates/_agent-ROLES.md`. Mode 1
+7. `_agent/ROLES.md` — from `templates/_agent-ROLES.md`. **If Q5 = None,
+   skip items 7–11 entirely — no `_agent/` directory.** Otherwise: Mode 1
    keeps the `default-agent` block; modes 2 and 3 expand to named
    agents per Q5.
 8. `_agent/LOCKS.md` — from `templates/_agent-LOCKS.md`. **Skip in

@@ -53,6 +53,9 @@ Once the change is on `main`:
 
 ## Step 6 — Record
 
+**If `_agent/` was omitted at bootstrap (Q5 = None), skip this step** — git
+history is the record.
+
 - Append a one-line `_agent/WORKLOG.md` row: branch, HEAD, verify
   result, any deferral.
 - Update the live snapshot: `_agent/CURRENT_FOCUS.md` in single-checkout

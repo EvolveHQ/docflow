@@ -49,7 +49,8 @@ relevant):
    `adr-0042`, `see ADR`, ADR titles — in UI copy, API responses,
    error messages, customer-facing logs, public docs, release notes.
    Report each suspect; this rule is easy to violate by reflex.
-10. **Coordination hygiene.** `_agent/LOCKS.md` has no stale claims
+10. **Coordination hygiene.** N/A if `_agent/` was omitted at bootstrap
+    (Q5 = None). Otherwise: `_agent/LOCKS.md` has no stale claims
     (mode 2); `_agent/IN_FLIGHT.md` rows match live worktrees (mode 3).
 11. **Cross-worktree collisions** (mode 3, or when auditing across
     unmerged branches). These catch semantic conflicts that a
