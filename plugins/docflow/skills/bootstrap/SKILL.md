@@ -277,7 +277,7 @@ lines and ask for sign-off before writing any files.
     repo; adding this repo to the member index is a deliberate edit in
     the home repo. A standalone repo (Q11 = No) writes none of these
     files and behaves exactly as a single-repo bootstrap.
-12. **Artifact placement.** Where the non-entry artefacts live — `adr/`,
+12. **Artefact placement.** Where the non-entry artefacts live — `adr/`,
     `plan/`, `_agent/`, `INDEX.md`, `CONVENTIONS.md`:
     - **(Recommended) `docs/`** — aligns with the common `doc/adr` / `docs/`
       convention; keeps the repo root clean (`docs/adr/`, `docs/plan/`, …).
