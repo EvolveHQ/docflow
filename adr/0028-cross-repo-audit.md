@@ -80,6 +80,7 @@ the same punch-list, with mechanical fixes offered where safe.
 | 2026-06-23 | r2 | Eugenio Minardi | Accepted. Resolved open question: audit reaches siblings via local checkouts named in the member index, tolerant of unavailable members reported as "unverified this run" (AC6), consistent with 0024. |
 | 2026-06-23 | r3 | Eugenio Minardi | Implemented (commit 5884a5f): audit check 12 — bidirectional membership, identity collisions, dangling cross-repo references, roll-up drift, tolerant reach. Closes the deferred dangling-ref detection from 0022. Verified structurally (no member repos in the dogfood repo). |
 | 2026-06-23 | r4 | Eugenio Minardi | Resolution hardening (plan 0026): made check 12 executable after an assessment found AC3/AC4 goal-stated only — identity-collision check now targets a duplicate `repo-id`; dangling-reference check resolves along `repo-id → Pointer → adr/NNNN-*.md` before the existence test. Stays Implemented. |
+| 2026-06-23 | r5 | Eugenio Minardi | Consistency fix: check 12 now runs from the index-holding repo (`central`\|`home`\|`coordinator`), not only `home`, and the membership check is role-agnostic — required by the topology A/B/C differentiation (0019). Stays Implemented. |
 
 ## Approvals
 

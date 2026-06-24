@@ -12,11 +12,13 @@ from source, never hand-edited — treat it exactly like a repo's own
 
 ## Step 0 — Preconditions
 
-1. This skill runs in the **home repo** of a federation. Confirm a
-   `federation-index.md` (the authoritative member list) and a
-   `federation.md` with `Role: home` exist. If they do not, stop: either
-   this repo is standalone (nothing to roll up) or it is a member, not the
-   home — point the user at the home repo.
+1. This skill runs in the **index-holding repo** of a federation — the one
+   that carries `federation-index.md` (its `Role` is `central` for
+   topology A, `coordinator` for B, or `home` for C). Confirm
+   `federation-index.md` and a `federation.md` whose `Role` is `central`,
+   `home`, or `coordinator` exist. If they do not, stop: either this repo
+   is standalone (nothing to roll up) or it is a plain member — point the
+   user at the index-holding repo.
 2. Read `federation.md` to learn the **identity scheme** (default
    repo-prefixed slug `<repo-id>/NNNN-slug`); roll-up rows use it.
 

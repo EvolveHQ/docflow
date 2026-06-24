@@ -67,15 +67,16 @@ relevant):
     Cross-check against `_agent/IN_FLIGHT.md`: every collision should
     correspond to a reservation/ownership violation recorded there.
 12. **Cross-repo (federation) checks** — only when a `federation.md`
-    exists; run from the **home** repo. Reach each member through the
-    local checkout named in `federation-index.md`. A member not checked
+    exists; run from the **index-holding** repo (`Role: central`, `home`,
+    or `coordinator` — whichever holds `federation-index.md`). Reach each
+    member through the local checkout named in `federation-index.md`. A member not checked
     out locally is reported **"unverified this run"** — never silently
     passed, never a hard failure.
     - **Bidirectional membership.** Every repo listed in the member index
-      carries a `federation.md` back-pointer to this home, and every repo
-      whose back-pointer names this home is listed in the index. Flag
-      either half-edge (in-index-without-back-pointer, or
-      points-home-but-unlisted).
+      carries a `federation.md` back-pointer to this index-holder, and
+      every repo whose back-pointer names this repo is listed in the
+      index. Flag either half-edge (in-index-without-back-pointer, or
+      points-here-but-unlisted).
     - **Identity collisions.** Under the repo-prefixed scheme an identity
       is `repo-id` + local number, so the only reachable collision is a
       **duplicate `repo-id`**. Flag any repo-id that appears on more than
