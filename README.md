@@ -80,8 +80,10 @@ set keeps numbering contiguous **per repo** while a federation-wide
 identity is the cross-repo key. The `rollup` skill aggregates every
 member's catalogue into one product-wide view, and `audit` gains
 cross-repo checks (membership, identity collisions, dangling references,
-roll-up drift). No tool writes across a repo boundary; consistency is
-declared at the edges and enforced by audit. See the
+roll-up drift, convention drift). Work and status cross repos the same way:
+a cross-repo decision is one plan item per affected repo, and its aggregate
+status ("2 of 3 repos") surfaces in the roll-up. No tool writes across a
+repo boundary; consistency is declared at the edges and enforced by audit. See the
 [methodology](https://evolvehq.github.io/docflow/methodology/#5-scaling-to-many-repositories)
 for the full model.
 

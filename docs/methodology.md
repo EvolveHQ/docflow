@@ -208,8 +208,14 @@ A single product spread across several repositories runs as a
   survive a repository move; same-repository links stay relative.
 - A **roll-up** aggregates every member's catalogue into one derived view,
   tolerant of members that are not checked out.
+- **Work and status flow across repositories too.** A cross-repository
+  decision is **one plan item per affected repository**, each tracing to the
+  owning ADR by its federation identity (no umbrella record). The decision's
+  **aggregate status** — *"2 of 3 repositories"* — is a derived roll-up
+  column, reaching `Implemented` only when every per-repository plan item has
+  shipped under its own completion event.
 - The audit extends across repositories: membership, identity collisions,
-  dangling references, and roll-up drift are all checked.
+  dangling references, roll-up drift, and convention drift are all checked.
 - Shared conventions are **copied at set-up** and kept honest by
   drift-detection in the audit — referenceable from one source, never
   force-pushed (INV-10).

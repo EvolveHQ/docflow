@@ -16,6 +16,15 @@ concrete.
 
 ---
 
+## Contents
+
+1. [A flow from scratch](#1-a-flow-from-scratch)
+2. [Retrofitting an existing repo](#2-retrofitting-an-existing-repo)
+3. [Skill-by-skill examples](#3-skill-by-skill-examples)
+4. [Multi-repo products: topologies A, B, C](#4-multi-repo-products-topologies-a-b-c)
+
+---
+
 ## 1. A flow from scratch
 
 Starting from an empty repo.
@@ -285,6 +294,81 @@ New work now follows the same loop: `/new-adr` → `/new-plan` → `/ship-item`.
 > **Federation.** `/rollup` and the cross-repo `/audit` checks run from the
 > home repo over the local checkouts named in `federation-index.md`. See
 > the [methodology](https://evolvehq.github.io/docflow/methodology/#5-scaling-to-many-repositories).
+
+---
+
+## 4. Multi-repo products: topologies A, B, C
+
+When one product spans several repositories, bootstrap wires them into a
+**federation**. You choose a **topology** once, when establishing; every
+repo that joins inherits it. These examples split **linkfold** into two
+repos — `linkfold-web` and `linkfold-api` (repo-ids `web` and `api`).
+
+The federation step (Q11) runs after the standard bootstrap assessment:
+*"Is this repo part of a multi-repo product?"* → **establish** or **join** →
+(establish only) **topology** + **identity scheme** (default repo-prefixed
+slug `<repo-id>/NNNN-slug`).
+
+### 4A — Topology A: central decisions repo
+
+All product-wide decisions live in one dedicated repo; code repos reference
+them and never duplicate.
+
+1. In a fresh `decisions` repo: `/bootstrap` → multi-repo **yes** →
+   **establish** → topology **A**. It becomes `Role: central` and writes
+   `federation-index.md` + `federation.md` (`Topology: A`, `Repo id: decisions`).
+2. In `linkfold-web`: `/bootstrap` → **join** → supply the home pointer
+   (`../decisions`) and the topology/identity. It writes only its own
+   `federation.md` (`Role: member`) and — per topology A — holds **no**
+   product-wide ADRs; its `adr/` is for local-implementation decisions that
+   reference `decisions/0001` etc.
+3. Add `web` and `api` rows to `decisions/federation-index.md` (a deliberate
+   edit in the central repo).
+4. `/rollup` and `/audit` run from `decisions`.
+
+*Use A when product-wide decisions need a single, code-free home.*
+
+### 4B — Topology B: distributed + federation
+
+No repo owns product-wide decisions; each repo owns its own catalogue and
+the roll-up is the only product-wide view.
+
+1. In `linkfold-web` (the first repo): `/bootstrap` → **establish** →
+   topology **B**. It becomes `Role: coordinator` — it holds the member
+   index for membership only, not a privileged catalogue.
+2. In `linkfold-api`: `/bootstrap` → **join**. It owns its ADRs in full
+   (`Role: member`); nothing is "product-wide" except by cross-repo
+   reference.
+3. Register `api` in the coordinator's `federation-index.md`.
+4. `/rollup` from the coordinator gives the combined product view — there is
+   no central authority.
+
+*Use B when each repo is autonomous and you only need a combined view.*
+
+### 4C — Topology C: home repo + local (recommended default)
+
+One home repo holds product-wide decisions; members keep local decisions
+alongside and reference the home for product-wide ones.
+
+1. In `linkfold-web` (the home): `/bootstrap` → **establish** → topology
+   **C** (default). `Role: home`; it holds product-wide ADRs *and* its own
+   local ones.
+2. In `linkfold-api`: `/bootstrap` → **join**. `Role: member`; it keeps
+   local ADRs and references `web/0007` for product-wide decisions.
+3. Register `api` in `linkfold-web/federation-index.md`.
+4. A cross-repo decision (say, a shared auth contract `web/0007`) gets **one
+   plan item per affected repo**. Its aggregate status shows in the roll-up
+   — "1 of 2 repos" until both ship, then `Implemented`.
+5. `/rollup` and `/audit` run from the home.
+
+*Use C — the default — for the common "one lead repo, several services" shape.*
+
+> **Across all three:** numbering stays contiguous *per repo*; the federation
+> identity (`<repo-id>/NNNN-slug`) is the cross-repo key; cross-repo
+> references resolve through the member index; aggregate status is derived in
+> the roll-up; and no tool writes across a repo boundary — membership and
+> convention drift are reconciled by `/audit`, not remote-pushed. See the
+> [methodology](https://evolvehq.github.io/docflow/methodology/#5-scaling-to-many-repositories).
 
 ---
 

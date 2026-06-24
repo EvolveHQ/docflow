@@ -273,9 +273,14 @@ it inherits the topology and identity scheme rather than re-choosing them.
   collide.
 - **References.** Cross-repo links use the logical identity, resolved via
   the home's `federation-index.md`; same-repo links stay relative.
+- **Work & status.** A cross-repo decision is one plan item **per affected
+  repo**, each tracing to the owning ADR by its federation identity (no
+  umbrella record); the decision's aggregate status ("2 of 3 repos") is a
+  derived roll-up column, `Implemented` only when every per-repo item ships.
 - **`/rollup`** aggregates every member's catalogue into one product-wide
   view; **`/audit`** gains cross-repo checks (bidirectional membership,
-  identity collisions, dangling references, roll-up drift).
+  identity collisions, dangling references, roll-up drift, convention
+  drift).
 - **Conventions** are copied at bootstrap and kept honest by audit
   drift-detection — referenceable from the home, never force-pushed.
 
