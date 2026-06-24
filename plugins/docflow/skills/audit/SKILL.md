@@ -16,9 +16,10 @@ This is the enforcement `AGENTS.md` cannot guarantee on its own.
    language mandate, optional artefacts present (GLOSSARY, domains/),
    and any Q10 domain hard rules.
 3. If a `federation.md` exists, this repo is part of a multi-repo
-   product. Note whether it is the **home** or a **member** and read the
-   recorded identity scheme; the cross-repo checks (check 12) run from
-   the home repo.
+   product. Note its `Role` (`central` / `home` / `coordinator`
+   index-holder, or a plain `member`) and read the recorded identity
+   scheme; the cross-repo checks (check 12) run from the index-holding
+   repo.
 
 ## Step 1 — Run the checks (read-only)
 
@@ -84,8 +85,11 @@ relevant):
       back-pointers.
     - **Dangling cross-repo references.** Resolve each cross-repo link
       along `repo-id → Pointer → adr/NNNN-*.md` — look up the repo-id's
-      Pointer in `federation-index.md`, then the ADR file under that repo —
-      and flag a target that does not exist. (Same-repo relative links are
+      Pointer in `federation-index.md`, then the ADR file under that repo.
+      A repo-id with **no index row** is a dangling reference. If the row
+      exists but the **checkout is absent**, report it **"unverified this
+      run"** (not dangling); only an **absent ADR in a present checkout**
+      is a true dangling reference. (Same-repo relative links are
       check 7.)
     - **Roll-up drift.** The roll-up agrees with each member's `INDEX.md`
       metadata; flag rows that are stale, missing, or extra.

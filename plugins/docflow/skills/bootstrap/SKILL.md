@@ -351,8 +351,9 @@ write it into the repo.
       only); for **B**, this repo owns its own catalogue in full; for
       **C**, this repo keeps local ADRs and references the home for
       product-wide ones. Write nothing into any other repo, and do **not**
-      create a member index. Tell the user to add this repo to the home
-      repo's `federation-index.md` (a deliberate edit there).
+      create a member index. Tell the user to add this repo to the
+      **index-holding repo's** `federation-index.md` — the home (C),
+      central (A), or coordinator (B) repo — a deliberate edit there.
 
 Commit each file (or logical group) with a Conventional Commit message;
 no `Co-Authored-By` trailer unless Q6 asked for one.
