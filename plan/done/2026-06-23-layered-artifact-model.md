@@ -31,3 +31,7 @@ Maps to adr/0016-layered-artifact-model.md acceptance criteria:
 ## Dependencies
 
 Foundation for 0013 (artifact root) — do first or together.
+
+---
+
+Shipped at HEAD `2a837a7` on 2026-06-23. Core declared always-on; _agent/ opt-in (Q5 None); ship-item/audit gate on _agent/ presence; README Core-vs-Optional layers. ADR 0016 → Implemented.
