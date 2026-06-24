@@ -42,8 +42,9 @@ standalone repos keep today's global contiguity.
 ## Acceptance criteria
 
 1. Each repo's ADRs remain locally contiguous within that repo.
-2. Every ADR is uniquely addressable across the federation via a
-   repo-qualified identity.
+2. Every ADR is uniquely addressable across the federation by **composing**
+   its repo-id (from `federation.md`) with its local number — a
+   repo-qualified identity, derived rather than stored as a field.
 3. Two repos minting the same local number do not collide at the
    federation level.
 4. The numbering convention text states **per-repo** contiguity for
@@ -79,6 +80,7 @@ standalone repos keep today's global contiguity.
 | 2026-06-22 | r1 | Eugenio Minardi | Initial draft. Federation-unique ADR identity; relax contiguous numbering to per-repo contiguity. |
 | 2026-06-22 | r2 | Eugenio Minardi | Accepted. Resolved open question: identity scheme is a bootstrap-establishment choice recorded in the federation config, default repo-prefixed slug (AC6). Added depends-on 0023. |
 | 2026-06-22 | r3 | Eugenio Minardi | Implemented (commit e01cd96): Q11c identity-scheme question + config field; conditional §Federation in scaffold CONVENTIONS (per-repo contiguity, logical identity); new-adr applies per-repo numbering + logical identity. |
+| 2026-06-23 | r4 | Eugenio Minardi | Resolution hardening (plan 0026): AC2 clarified — the federation identity is derived by composing repo-id + local number, not stored as a field — after an assessment flagged it as an unenforced naming convention. Stays Implemented. |
 
 ## Approvals
 

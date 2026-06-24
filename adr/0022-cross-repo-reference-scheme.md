@@ -80,6 +80,7 @@ unreachable.
 | 2026-06-22 | r1 | Eugenio Minardi | Initial draft. Repo-qualified cross-repo references; local links stay relative; cross-repo supersede/deprecate. |
 | 2026-06-22 | r2 | Eugenio Minardi | Accepted. Resolved open question: logical id resolved via the member index, surviving repo moves; uncheckedout target flagged unreachable by audit (AC1/AC4/AC5). Added depends-on 0023. |
 | 2026-06-22 | r3 | Eugenio Minardi | Implemented (commit e01cd96): §Federation reference rule in scaffold CONVENTIONS + new-adr cross-repo linkage. Tightened AC5: the scheme owns well-formed/resolvable-on-presence; active unreachable detection is owned by 0028. |
+| 2026-06-23 | r4 | Eugenio Minardi | Resolution hardening (plan 0026): the resolution path is now operationalised as `repo-id → Pointer (repo root) → adr/NNNN-*.md` in CONVENTIONS §Federation + new-adr, after an assessment found AC1/AC4 resolved only to repo granularity. Stays Implemented. |
 
 ## Approvals
 

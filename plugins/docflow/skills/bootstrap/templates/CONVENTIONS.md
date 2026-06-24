@@ -192,9 +192,11 @@ identity scheme are recorded in `federation.md`; the home repo's
   federation. The cross-federation key is the **identity scheme** recorded
   in `federation.md` — default repo-prefixed slug `<repo-id>/NNNN-slug`.
 - **Cross-repo references use the logical identity**, resolved through the
-  member index (`repo-id → location`); they survive a target repo move
-  (edit one index row, not the references). **Same-repo references stay
-  relative paths** (`adr/NNNN-*.md`).
+  member index along `repo-id → Pointer (repo root) → adr/NNNN-*.md`: look
+  up the repo-id's `Pointer` in `federation-index.md`, then find
+  `adr/NNNN-*.md` under that repo. They survive a target repo move (edit
+  one index row, not the references). **Same-repo references stay relative
+  paths** (`adr/NNNN-*.md`).
 - `supersedes:` / `superseded-by:` may point across repos using the
   logical identity.
 - **Membership is declared, not discovered.** A member repo carries a

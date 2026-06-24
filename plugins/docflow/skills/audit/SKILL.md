@@ -76,11 +76,16 @@ relevant):
       whose back-pointer names this home is listed in the index. Flag
       either half-edge (in-index-without-back-pointer, or
       points-home-but-unlisted).
-    - **Identity collisions.** No two ADRs across the federation resolve
-      to the same identity under the recorded identity scheme.
-    - **Dangling cross-repo references.** Every cross-repo link resolves
-      to a real ADR in the named member; flag a target that does not
-      exist. (Same-repo relative links are check 7.)
+    - **Identity collisions.** Under the repo-prefixed scheme an identity
+      is `repo-id` + local number, so the only reachable collision is a
+      **duplicate `repo-id`**. Flag any repo-id that appears on more than
+      one `federation-index.md` row or in two members' `federation.md`
+      back-pointers.
+    - **Dangling cross-repo references.** Resolve each cross-repo link
+      along `repo-id → Pointer → adr/NNNN-*.md` — look up the repo-id's
+      Pointer in `federation-index.md`, then the ADR file under that repo —
+      and flag a target that does not exist. (Same-repo relative links are
+      check 7.)
     - **Roll-up drift.** The roll-up agrees with each member's `INDEX.md`
       metadata; flag rows that are stale, missing, or extra.
 

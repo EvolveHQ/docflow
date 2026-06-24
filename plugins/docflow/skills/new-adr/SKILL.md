@@ -84,8 +84,8 @@ If this ADR replaces an existing one:
   History row noting the successor.
 - **Same-repo** links use relative paths (`adr/NNNN-*.md`). **In a
   federation**, a link to an ADR in another repo uses the logical
-  identity (`<repo-id>/NNNN-slug`), resolved via the member index — not
-  a relative path.
+  identity (`<repo-id>/NNNN-slug`), resolved via the member index along
+  `repo-id → Pointer → adr/NNNN-*.md` — not a relative path.
 - A pure deprecation (no successor) sets the target to `Deprecated`
   with a Revision History row — and is usually done directly, not via
   this skill.
