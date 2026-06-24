@@ -43,6 +43,6 @@ propagation). A two-repo topology-C smoke test exercised topology /
 identity / references / roll-up / audit end-to-end; the coordination-tier
 additions themselves are structurally verified only. Still open:
 `plan/todo/0010-multi-target-verification.md` (ADR 0015) — bootstrap
-behavioural run on Codex, plus OpenCode/Cowork. **Unreleased**: main is
-ahead of npm (0.9.1); a 0.9.2 would carry all the remediation + the
-coordination tier, after the npm token is rotated.
+behavioural run on Codex, plus OpenCode/Cowork. **Released 0.9.2** (tag
+v0.9.2; published `@evolvehq/docflow@0.9.2` to npm — federation remediation
++ coordination tier + A/B/C docs). main and npm are in sync.
