@@ -29,7 +29,7 @@ ADR change.
 | [0022](adr/0022-cross-repo-reference-scheme.md) | Cross-repo reference scheme | Implemented | 2026-06-22 | 0021, 0023 |
 | [0023](adr/0023-federation-config-membership-index.md) | Federation config and membership index | Implemented | 2026-06-22 | 0017, 0019, 0020 |
 | [0024](adr/0024-federated-rollup-catalogue.md) | Federated roll-up catalogue | Implemented | 2026-06-22 | 0021, 0022, 0023 |
-| [0025](adr/0025-cross-repo-plan-ownership.md) | Cross-repo plan ownership | Accepted | 2026-06-22 | 0021 |
-| [0026](adr/0026-cross-repo-status-completion.md) | Cross-repo status and completion | Accepted | 2026-06-22 | 0025, 0024 |
-| [0027](adr/0027-convention-template-propagation.md) | Convention and template propagation across the federation | Accepted | 2026-06-22 | 0019, 0023, 0028 |
+| [0025](adr/0025-cross-repo-plan-ownership.md) | Cross-repo plan ownership | Implemented | 2026-06-22 | 0021 |
+| [0026](adr/0026-cross-repo-status-completion.md) | Cross-repo status and completion | Implemented | 2026-06-22 | 0025, 0024 |
+| [0027](adr/0027-convention-template-propagation.md) | Convention and template propagation across the federation | Implemented | 2026-06-22 | 0019, 0023, 0028 |
 | [0028](adr/0028-cross-repo-audit.md) | Cross-repo audit | Implemented | 2026-06-22 | 0022, 0023, 0024 |

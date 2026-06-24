@@ -33,3 +33,10 @@ Maps to adr/0026-cross-repo-status-completion.md acceptance criteria:
 
 Depends on 0022 (cross-repo plan ownership) and the roll-up (0020). Builds
 on the roll-up skill rather than adding a new one.
+
+---
+
+Shipped at HEAD `eeb7e6b` on 2026-06-23. §Federation status rule +
+derived aggregate-status column in the rollup skill (from each member's
+plan/todo + plan/done). ADR 0026 → Implemented. Structural verification
+only.

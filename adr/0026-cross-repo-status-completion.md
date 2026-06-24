@@ -1,7 +1,7 @@
 ---
 adr: 0026
 title: Cross-repo status and completion
-status: Accepted
+status: Implemented
 date: 2026-06-22
 owner: Eugenio Minardi
 supersedes:
@@ -75,6 +75,7 @@ representable and visible.
 |------|----------|--------|--------|
 | 2026-06-22 | r1 | Eugenio Minardi | Initial draft. Aggregate status from per-repo progress; Implemented only when all owning plan items ship; partial implementation visible. |
 | 2026-06-23 | r2 | Eugenio Minardi | Accepted. Resolved open question: aggregate status is a derived roll-up column from per-repo plan-item state, no cross-repo writes (AC6). Added depends-on 0024. |
+| 2026-06-23 | r3 | Eugenio Minardi | Implemented (commit eeb7e6b): §Federation status rule (Implemented only when every owning per-repo plan item ships; partial visible) + a derived aggregate-status column in the rollup skill computed from each member's plan/todo + plan/done. Structural verification only. |
 
 ## Approvals
 

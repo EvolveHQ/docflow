@@ -1,7 +1,7 @@
 ---
 adr: 0027
 title: Convention and template propagation across the federation
-status: Accepted
+status: Implemented
 date: 2026-06-22
 owner: Eugenio Minardi
 supersedes:
@@ -75,6 +75,7 @@ bootstrap writes into another repo.
 |------|----------|--------|--------|
 | 2026-06-22 | r1 | Eugenio Minardi | Initial draft. Single source for shared conventions/templates with a defined propagation mechanism; local-only conventions preserved; no cross-repo writes. |
 | 2026-06-23 | r2 | Eugenio Minardi | Accepted. Resolved open question: copy-at-bootstrap + audit-detected drift, referenceable not enforced (AC6). Added depends-on 0028. |
+| 2026-06-23 | r3 | Eugenio Minardi | Implemented (commit eeb7e6b): §Federation propagation rule (shared conventions sourced from the index-holder, copied at bootstrap, referenceable not enforced) + a convention-drift check in audit check 12. Structural verification only. |
 
 ## Approvals
 

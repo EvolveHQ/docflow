@@ -37,10 +37,12 @@ npm; a 0.9.2 patch would carry these fixes).
 
 ## Next item
 
-Coordination tier — ADRs **0025/0026/0027 Accepted**, work queued in
-`plan/todo/0022-0024` (cross-repo plan ownership, status roll-up column,
-convention propagation), not yet implemented. Also open:
+**Federation design fully Implemented (ADRs 0019–0028)** — coordination
+tier shipped (commit eeb7e6b: plan ownership, aggregate status, convention
+propagation). A two-repo topology-C smoke test exercised topology /
+identity / references / roll-up / audit end-to-end; the coordination-tier
+additions themselves are structurally verified only. Still open:
 `plan/todo/0010-multi-target-verification.md` (ADR 0015) — bootstrap
-behavioural run on Codex, plus OpenCode/Cowork. Capstone worth doing: a
-real two-repo federation smoke test (everything is structurally verified
-only).
+behavioural run on Codex, plus OpenCode/Cowork. **Unreleased**: main is
+ahead of npm (0.9.1); a 0.9.2 would carry all the remediation + the
+coordination tier, after the npm token is rotated.

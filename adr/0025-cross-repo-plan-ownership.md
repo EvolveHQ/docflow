@@ -1,7 +1,7 @@
 ---
 adr: 0025
 title: Cross-repo plan ownership
-status: Accepted
+status: Implemented
 date: 2026-06-22
 owner: Eugenio Minardi
 supersedes:
@@ -70,6 +70,7 @@ whose code it changes, and per-repo queue ordering is unchanged.
 |------|----------|--------|--------|
 | 2026-06-22 | r1 | Eugenio Minardi | Initial draft. Per-repo plan items tracing to the owning ADR; items live in the repo they change; local ordering preserved. |
 | 2026-06-23 | r2 | Eugenio Minardi | Accepted. Resolved open question: no umbrella record; the owning ADR alone groups the per-repo plan items (AC6). |
+| 2026-06-23 | r3 | Eugenio Minardi | Implemented (commit eeb7e6b): §Federation "one plan item per affected repo, owning ADR by federation identity, no umbrella" clause + new-plan federation guidance. Structural verification only. |
 
 ## Approvals
 

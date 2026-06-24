@@ -33,3 +33,10 @@ Maps to adr/0027-convention-template-propagation.md acceptance criteria:
 Depends on the federation config/member index and the cross-repo audit
 (0021, shipped). Adds a convention-drift dimension to the audit federation
 checks if not already covered.
+
+---
+
+Shipped at HEAD `eeb7e6b` on 2026-06-23. §Federation propagation rule
+(shared conventions sourced from the index-holder, copied at bootstrap,
+referenceable not enforced) + convention-drift check in audit check 12.
+ADR 0027 → Implemented. Structural verification only.

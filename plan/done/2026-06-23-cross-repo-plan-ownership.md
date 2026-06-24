@@ -35,3 +35,10 @@ Maps to adr/0025-cross-repo-plan-ownership.md acceptance criteria:
 Depends on the shipped identity (0018) and references (0019). Status of a
 cross-repo decision is out of scope here — owned by
 adr/0026-cross-repo-status-completion.md.
+
+---
+
+Shipped at HEAD `eeb7e6b` on 2026-06-23. §Federation "one plan item per
+affected repo, owning ADR by federation identity, no umbrella" clause +
+new-plan federation guidance. ADR 0025 → Implemented. Structural
+verification only.
