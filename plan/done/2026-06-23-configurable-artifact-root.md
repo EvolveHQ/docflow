@@ -34,3 +34,7 @@ Maps to adr/0017-configurable-artifact-root.md acceptance criteria:
 
 Depends on 0012 (layered model). Touches the most skills — schedule after
 0012.
+
+---
+
+Shipped at HEAD `5895168` on 2026-06-23. Bootstrap Q12 placement (docs/ default · root · .docflow/); CONVENTIONS Artifact-root record; new-adr/new-plan/ship-item/audit resolve against it; migration offered not forced. ADR 0017 → Implemented.

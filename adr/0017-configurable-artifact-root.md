@@ -1,7 +1,7 @@
 ---
 adr: 0017
 title: Configurable artifact root — control the repo footprint
-status: Accepted
+status: Implemented
 date: 2026-06-17
 owner: Eugenio Minardi
 supersedes:
@@ -84,6 +84,7 @@ against it.
 | Date | Revision | Author | Change |
 |------|----------|--------|--------|
 | 2026-06-17 | r1 | Eugenio Minardi | Initial decision. Make the artefact root configurable at bootstrap (docs/ default, root, or .docflow/), keeping AGENTS.md/CLAUDE.md at repo root. |
+| 2026-06-23 | r2 | Eugenio Minardi | Implemented (commit 5895168): bootstrap Q12 placement question + CONVENTIONS "Artifact root" record; new-adr/new-plan/ship-item/audit resolve paths against it; README documents it; migration offered not forced. AC1-5 met. |
 
 ## Approvals
 
