@@ -1,7 +1,7 @@
 ---
 adr: 0018
 title: Work-in-progress stays out of the ADR catalogue
-status: Accepted
+status: Implemented
 date: 2026-06-17
 owner: Eugenio Minardi
 supersedes:
@@ -80,6 +80,7 @@ catalogue**:
 | Date | Revision | Author | Change |
 |------|----------|--------|--------|
 | 2026-06-17 | r1 | Eugenio Minardi | Initial decision. Keep WIP/drafts out of the catalogue: no Draft status, no brainstorming/ folder; brainstorm stays chat-only; document the choice in README. |
+| 2026-06-23 | r2 | Eugenio Minardi | Implemented (commit c1c441e): CONVENTIONS note (first persisted status Proposed, no Draft/brainstorming folder) + README "No drafts in the catalogue" section. brainstorm-writes-nothing and the no-brainstorming-folder scaffold reaffirmed. AC1-3 met. |
 
 ## Approvals
 

@@ -28,3 +28,7 @@ Maps to adr/0018-wip-stays-out-of-catalogue.md acceptance criteria:
 ## Dependencies
 
 Independent (docs + a convention note). Smallest of the three.
+
+---
+
+Shipped at HEAD `c1c441e` on 2026-06-23. CONVENTIONS note (first persisted status Proposed; no Draft/brainstorming folder) + README "No drafts in the catalogue" section. ADR 0018 → Implemented.
