@@ -14,7 +14,7 @@ files a repo can be driven from by humans and coding agents alike. A set of
 It runs on **five coding agents** — Claude Code, Claude Cowork, pi, Codex,
 and OpenCode — from the same skill files, and scales from a single
 repository to a **multi-repo product**. See the
-[methodology](/methodology/) for the formal definition of the conventions,
+[methodology]({{ '/methodology/' | relative_url }}) for the formal definition of the conventions,
 why they help, and where they fall short.
 
 ## Skills
@@ -69,7 +69,7 @@ handover. It works on fresh repos (scaffolds from zero) and existing ones
 
 ## Links
 
-- [Methodology — the formal definition](/methodology/)
+- [Methodology — the formal definition]({{ '/methodology/' | relative_url }})
 - [Source on GitHub](https://github.com/EvolveHQ/docflow)
 - [README](https://github.com/EvolveHQ/docflow/blob/main/README.md)
 - [Full usage & customisation guide (USAGE.md)](https://github.com/EvolveHQ/docflow/blob/main/USAGE.md)

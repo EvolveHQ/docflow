@@ -307,5 +307,5 @@ boundary, and a federation model.
 
 ---
 
-See the [examples](/examples/) for the method applied, or the
+See the [examples]({{ '/examples/' | relative_url }}) for the method applied, or the
 [source on GitHub](https://github.com/EvolveHQ/docflow).
