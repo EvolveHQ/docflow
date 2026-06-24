@@ -23,7 +23,7 @@ ADR change.
 | [0016](adr/0016-layered-artifact-model.md) | Layered artifact model — minimal core, opt-in layers | Accepted | 2026-06-17 | 0001 |
 | [0017](adr/0017-configurable-artifact-root.md) | Configurable artifact root — control the repo footprint | Accepted | 2026-06-17 | 0013, 0016 |
 | [0018](adr/0018-wip-stays-out-of-catalogue.md) | Work-in-progress stays out of the ADR catalogue | Accepted | 2026-06-17 | 0001, 0013, 0014 |
-| [0019](adr/0019-multirepo-topology.md) | Multirepo topology for a single product | Implemented | 2026-06-22 | 0001, 0016 |
+| [0019](adr/0019-multirepo-topology.md) | Multirepo topology for a single product | Accepted | 2026-06-22 | 0001, 0016 |
 | [0020](adr/0020-federation-bootstrap-establish-join.md) | Federation bootstrap — establish vs join | Implemented | 2026-06-22 | 0019, 0013, 0003 |
 | [0021](adr/0021-cross-repo-identity-numbering.md) | Cross-repo ADR identity and numbering | Implemented | 2026-06-22 | 0019, 0023 |
 | [0022](adr/0022-cross-repo-reference-scheme.md) | Cross-repo reference scheme | Implemented | 2026-06-22 | 0021, 0023 |

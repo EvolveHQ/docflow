@@ -1,7 +1,7 @@
 ---
 adr: 0019
 title: Multirepo topology for a single product
-status: Implemented
+status: Accepted
 date: 2026-06-22
 owner: Eugenio Minardi
 supersedes:
@@ -71,8 +71,18 @@ exactly as today; the topology question is never asked.
 5. The topology is chosen once at federation establishment and is **not**
    re-asked when other repos join (see
    adr/0020-federation-bootstrap-establish-join.md).
-6. Topologies A, B, and C are all implemented and selectable in v1; C is
-   the default, not the only supported mode.
+6. Topologies A, B, and C are all selectable in v1 (C the default), and
+   each produces its **defined, distinct behaviour** — not merely a stored
+   label:
+   - **A (central):** product-wide ADRs live only in the central repo;
+     members reference them and never duplicate.
+   - **B (distributed):** no repo holds product-wide ADRs; each owns its
+     own catalogue and the roll-up is the product-wide view.
+   - **C (home + local):** the home repo holds product-wide ADRs; members
+     keep local ADRs alongside.
+7. The establish/join flow and the §Federation conventions **branch per
+   topology**, and the recorded `Role` reflects it
+   (`central | home | coordinator | member`).
 
 ## Out of scope
 
@@ -102,6 +112,7 @@ exactly as today; the topology question is never asked.
 | 2026-06-22 | r1 | Eugenio Minardi | Initial draft. Configurable multirepo topology (A/B/C) for one product across many repos; C the recommended default. |
 | 2026-06-22 | r2 | Eugenio Minardi | Accepted. Resolved open question: all three topologies ship in v1 (AC6); C remains the default. |
 | 2026-06-22 | r3 | Eugenio Minardi | Implemented in bootstrap (commit 69fca8b). Tightened AC2 scope: the federation config is the single readable source; per-skill consumption is owned by the dependent decisions (0021/0022/0028). |
+| 2026-06-23 | r4 | Eugenio Minardi | Status corrected Implemented→Accepted. An adversarial assessment found AC6 unmet: A/B/C were selectable labels with no differentiated behaviour, so the Accepted→Implemented guard was never satisfied and the r3 stamp was invalid. AC6 sharpened to require distinct per-topology behaviour; AC7 added. Differentiation queued before re-implementing. |
 
 ## Approvals
 
