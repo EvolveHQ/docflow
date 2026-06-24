@@ -15,7 +15,8 @@
   <header class="hero{% if page.url != '/' %} hero--slim{% endif %}">
     <div class="wrap">
       <a class="brand" href="{{ '/' | relative_url }}">
-        <span class="brand-mark" aria-hidden="true"></span>docflow
+        <span class="brand-logo" aria-hidden="true"><img src="{{ '/assets/repository_hub_logo.png' | relative_url }}" alt=""></span>
+        <span class="brand-word">docflow</span>
       </a>
       {% if page.url == "/" %}
         <p class="tagline">{{ site.description }}</p>
