@@ -1,7 +1,7 @@
 ---
 adr: 0029
 title: Seed ADR recording the adopted method
-status: Proposed
+status: Accepted
 date: 2026-06-28
 owner: Eugenio Minardi
 supersedes:
@@ -104,8 +104,10 @@ ahead of any subsequent decisions, keeping numbering contiguous.
 | Date | Revision | Author | Change |
 |------|----------|--------|--------|
 | 2026-06-28 | r1 | Eugenio Minardi | Initial draft. Bootstrap scaffolds a default-on seed ADR at adr/0001 recording the adopted method (Implemented, references CONVENTIONS, generic, anchors backfill). |
+| 2026-06-28 | r2 | Eugenio Minardi | Accepted. All five brainstorm open questions resolved (seed at 0001; default-on/opt-out; Implemented; repo's recommended shape; always 0001 on retrofit). |
 
 ## Approvals
 
 | Role | Name | Date | Signature |
 |------|------|------|-----------|
+| Maintainer | Eugenio Minardi | 2026-06-28 | — |
