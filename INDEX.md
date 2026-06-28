@@ -33,3 +33,4 @@ ADR change.
 | [0026](adr/0026-cross-repo-status-completion.md) | Cross-repo status and completion | Implemented | 2026-06-22 | 0025, 0024 |
 | [0027](adr/0027-convention-template-propagation.md) | Convention and template propagation across the federation | Implemented | 2026-06-22 | 0019, 0023, 0028 |
 | [0028](adr/0028-cross-repo-audit.md) | Cross-repo audit | Implemented | 2026-06-22 | 0022, 0023, 0024 |
+| [0029](adr/0029-seed-adr-recording-the-method.md) | Seed ADR recording the adopted method | Proposed | 2026-06-28 | 0001, 0003, 0016, 0018 |
