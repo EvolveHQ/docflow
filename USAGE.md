@@ -345,6 +345,11 @@ scheme:
   and `INDEX.md`).
 - **G3 — gate backstop:** the single-threaded merge gate rejects a
   duplicate; the later author renumbers.
+- **G4 — claim before do:** before implementing a queued item, claim it (a
+  draft PR referencing it, or an `IN_FLIGHT`/`owner` entry) so two writers
+  don't build the same unclaimed `plan/todo` item — G1–G3 protect the
+  *number*, G4 protects the *work assignment*; the audit's
+  duplicate-plan-ownership check is the backstop.
 
 `bootstrap` **pre-wires** these into `CONVENTIONS.md` + an `AGENTS.md`
 hard rule **only** for multi-agent (mode 2/3) or PR-based repos.
@@ -352,6 +357,26 @@ hard rule **only** for multi-agent (mode 2/3) or PR-based repos.
 get none of this ceremony. Numbers are immutable once merged. (For
 orchestrated runs, `agent-wave` additionally *reserves* disjoint number
 blocks up front, so G2/G3 rarely fire.)
+
+### Numbering at scale, and grouping by domain
+
+ADR numbers are **integers**; the four-digit zero-padding is cosmetic and
+sorts **numerically**, so a catalogue is not capped at `9999` — widen the
+padding to five digits if you ever approach it (no real catalogue does).
+
+Two alternative identifier schemes are intentionally *not* used (the
+[methodology](https://evolvehq.github.io/docflow/methodology/#46-numbering-at-scale-and-alternatives-considered)
+has the full reasoning): **timestamp / opaque ids** — they trade away
+ordering and readability, and the guardrails above handle collisions
+instead; and **per-domain numbering** like `auth/0001` — the federation
+serves genuinely independent sequences, and within one repo you group
+rather than renumber.
+
+**Grouping by domain.** Opt in to `domains/<slug>/README.md` files that
+list the ADRs for each area (e.g. `domains/auth/`, `domains/billing/`). It
+is purely organisational: each ADR keeps its flat number and its `INDEX.md`
+row; the domain README is a curated view, not a namespace. Reach for it
+when a flat catalogue grows large enough to be hard to navigate.
 
 ## 6. Customising or extending
 

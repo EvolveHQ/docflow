@@ -190,6 +190,41 @@ outside this set or any transition lacking its guard.
   only within that repository; federation membership is declared at the
   edges and reconciled by audit, never by remote write.
 
+### 4.6 Numbering at scale, and alternatives considered
+
+The identifier is an **integer**, rendered four-digit zero-padded by
+convention. Tooling sorts ADRs **numerically**, not lexically, so a
+catalogue is not capped at `9999`: widen the padding to five digits if a
+repository ever approaches it (none in practice does). The padding is
+cosmetic; the integer is the identity.
+
+Two richer identifier schemes are deliberately **not** the default:
+
+- **Timestamp / opaque ids** (e.g. a reverse date-time) make concurrent
+  creation collision-free with no coordination — but they sacrifice the
+  at-a-glance ordering and the short, citable key that make a contiguous
+  number useful, and they break the lightweight-ADR convention every reader
+  and tool expects. A creation-time clash is treated as a **coordination**
+  problem and closed by the numbering guardrails (decide-before-do,
+  check-before-merge, a merge-gate backstop, and claim-before-do) rather
+  than by disfiguring the key. A team that genuinely prefers
+  zero-coordination ids may select a non-sequential scheme as its
+  **federation identity** (§5); the per-repository default stays contiguous.
+- **Domain-namespaced ids** (e.g. `auth/0001`, `billing/0001`, each area
+  numbering independently) are not used *within* a repository — they would
+  re-create the federation's cross-boundary questions at a smaller scale for
+  little gain. Independent sequences are instead served by the
+  **federation** (one repository per area, each contiguous, joined by a
+  federation identity); in-repo organisation is handled by grouping.
+
+**Grouping by domain.** A repository may add `domains/<slug>/README.md`
+files (e.g. `domains/auth/`, `domains/billing/`) that list the ADRs
+belonging to each area. This is **organisational only** — an ADR keeps its
+flat catalogue number and its row in the index; the domain README is a
+curated view, not a separate namespace. Grouping gives a large catalogue
+navigability without per-domain numbering or the rename-breaks-references
+risk a slug-as-identity scheme would carry.
+
 ## 5. Scaling to many repositories
 
 A single product spread across several repositories runs as a

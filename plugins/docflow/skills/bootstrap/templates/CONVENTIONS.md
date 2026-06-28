@@ -18,6 +18,14 @@ files." -->
 ADR filenames use `NNNN-kebab-case-slug.md`, zero-padded to 4 digits,
 with contiguous numbering and no reserved gaps.
 
+The number is an **integer**; the four-digit zero-padding is a display
+convention only — tools sort ADRs **numerically**, not lexically, so the
+catalogue is not capped at `9999` (widen the padding to five digits if you
+ever approach it; none do). Related ADRs may be **grouped** under
+`domains/<slug>/README.md` without changing their numbers — grouping is a
+curated view, not a separate namespace; the contiguous number stays the
+single identity.
+
 Each ADR describes one decision. If a decision splits, supersede the
 original ADR and create new ADRs rather than expanding scope inside a
 single document.
