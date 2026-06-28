@@ -187,8 +187,12 @@ lines and ask for sign-off before writing any files.
      marks ready, merges. Ask the user for merge strategy
      (squash / merge / rebase — default: squash for clean history,
      rebase if per-commit identity matters).
-5. **Multi-agent setup.** Pick one — these set the `_agent/` coordination
-   shape (or omit it), and switching later is not free:
+5. **Coordination — by number of writers.** Pick by how many people/agents
+   *write* to this repo and how they integrate — **writers (integration
+   concurrency), not how many agents you run.** A team of several developers
+   is multi-writer even with one agent each, and wants the worktree/PR
+   shape. This sets the `_agent/` shape (or omits it); switching later is
+   not free:
    - **None — omit `_agent/`.** A solo human/agent with no coordination
      need; no `_agent/` directory is written, and lifecycle skills skip the
      WORKLOG/snapshot steps. The lightest footprint (the optional `_agent/`
@@ -333,7 +337,7 @@ paths against it, and adjust the `adr/`/`plan/` cross-paths in the filled
    (multi-repo)** section only if Q11 = yes; fill `<product>` and state
    the chosen identity scheme. Omit it for standalone repos.
 2. `AGENTS.md` — from `templates/AGENTS.md`. Include the concurrency
-   guardrails hard-rule bullet (G2/G3) under the same condition as the
+   guardrails hard-rule bullet (G2–G4) under the same condition as the
    CONVENTIONS section above; omit otherwise.
 3. `CLAUDE.md` — from `templates/CLAUDE.md` (single line `@AGENTS.md`).
 4. `adr/0000-template.md` — from `templates/adr-capability.md`.

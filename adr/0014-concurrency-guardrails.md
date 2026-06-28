@@ -33,6 +33,11 @@ number is the right identity — short, ordered, immutable once assigned.
 The collision is a **coordination** problem, so we solve it with process
 guardrails and keep the numbering scheme unchanged.
 
+A sibling hazard is **duplicate effort**: an unclaimed `plan/todo` item on
+`main` — which G1 deliberately places there — can be picked up by two
+writers at once. That is a work-assignment race, not a numbering one, but
+the same coordination discipline (a visible claim) addresses it (G4).
+
 ## Capability statement
 
 docflow protects contiguous ADR/plan numbering under concurrent authoring
@@ -55,6 +60,12 @@ guardrails:
   duplicate number as the last line of defence, and the later author
   renumbers (a local, trivial change — a new ADR references its own number
   only in its file and the INDEX row).
+- **G4 — claim before do.** Before implementing a queued item, **claim it**
+  — a draft PR referencing it (the authoritative lock in PR/worktree
+  repos), or an `owner` / `_agent/IN_FLIGHT.md` entry — so two writers do
+  not build the same thing. G1–G3 protect the *number*; G4 protects the
+  *work assignment*. `audit`'s duplicate-plan-ownership check (check 11) is
+  the backstop.
 
 The guardrails are **pre-wired conditionally**: `bootstrap` writes them
 into a repo's `CONVENTIONS.md` (and an `AGENTS.md` hard-rule bullet) only
@@ -92,6 +103,10 @@ merging and G3 enforces at the gate.
 6. The numbering **identity is unchanged** — the contiguous number remains
    the stable cross-reference key; no slug/opaque-id mechanism is
    introduced.
+7. The guardrails block includes **G4 (claim before do)**: claim a queued
+   item (draft PR / `IN_FLIGHT` / `owner`) before implementing it, so two
+   writers do not duplicate effort on an unclaimed `plan/todo` item;
+   `audit`'s duplicate-plan-ownership check is the backstop.
 
 ## Out of scope
 
@@ -117,6 +132,7 @@ merging and G3 enforces at the gate.
 |------|----------|--------|--------|
 | 2026-06-02 | r1 | Eugenio Minardi | Initial decision. Process guardrails for concurrent ADR/plan numbering; mechanism alternatives (slug/opaque-id/merge-rewrite) considered and rejected. |
 | 2026-06-02 | r2 | Eugenio Minardi | Implemented (plan items 0007, 0008): conditional guardrails in templates + bootstrap/agent-wave/audit, docs in USAGE + site. Status Accepted → Implemented. |
+| 2026-06-28 | r3 | Eugenio Minardi | Added G4 (claim before do): claim a queued item before implementing so two writers don't duplicate effort on an unclaimed plan/todo item; added to the §Concurrency Guardrails block + AGENTS hard-rule bullet. Extends scope from numbering to work-assignment. Stays Implemented. |
 
 ## Approvals
 

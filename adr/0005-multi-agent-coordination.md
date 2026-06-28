@@ -21,6 +21,12 @@ worktree/PR-branch fan-out needs union-merged logs and a committed
 dashboard instead of file locks. Picking the wrong shape adds dead
 ceremony or causes lost writes, and switching later is not free.
 
+The axis that actually matters is the number of **writers** (integration
+concurrency), not the number of *agents*: a team of several developers —
+even with one agent each — is multi-writer and needs the worktree/PR shape,
+not the single-agent one. Choosing by "how many agents" misroutes a
+multi-developer team into mode 1.
+
 ## Capability statement
 
 The bootstrap offers three multi-agent coordination modes, each
@@ -35,7 +41,10 @@ selecting a different `_agent/` file shape:
    `.gitattributes`; gitignored `CURRENT_FOCUS` plus a committed
    `IN_FLIGHT.md` dashboard.
 
-The choice is recorded so the lifecycle skills honour it.
+The choice is recorded so the lifecycle skills honour it. It keys on
+**writers, not agents**: a single human+agent is mode 1; any set of
+concurrent writers integrating via branches/PRs is mode 3 (or mode 2 for a
+shared checkout), even when each writer runs a single agent.
 
 ## User stories / scenarios
 
@@ -52,6 +61,10 @@ The choice is recorded so the lifecycle skills honour it.
 2. `CONVENTIONS.md` and `AGENTS.md` describe the coordination rules of
    the chosen mode only.
 3. The mode is discoverable so lifecycle skills behave consistently.
+4. The bootstrap coordination question is framed by the number of
+   **writers** (integration concurrency); a multi-developer team is guided
+   to mode 3 (separate worktrees / PR branches) even when each developer
+   runs a single agent.
 
 ## Out of scope
 
@@ -72,6 +85,7 @@ The choice is recorded so the lifecycle skills honour it.
 | Date | Revision | Author | Change |
 |------|----------|--------|--------|
 | 2026-05-21 | r1 | Eugenio Minardi | Backfilled from commit 8d9e3a0 (three-option multi-agent mode: single / shared / worktree). |
+| 2026-06-28 | r2 | Eugenio Minardi | Clarified the selection axis is *writers* (integration concurrency), not agents — a multi-developer team uses mode 3 even with one agent each (new AC4); reframed bootstrap Q5 prose. No mode change; framing/guidance. Stays Implemented. |
 
 ## Approvals
 

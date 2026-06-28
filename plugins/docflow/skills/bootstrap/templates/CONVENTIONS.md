@@ -174,6 +174,13 @@ once merged:
 - **G3 — gate backstop.** Integration is single-threaded; it rejects a
   duplicate number as the last line of defence, and the later author
   renumbers.
+- **G4 — claim before do.** Before implementing a queued item, **claim it**
+  so two writers don't build the same thing: open a draft PR referencing
+  the item (the authoritative claim in PR-based / worktree repos), or record
+  an `owner` / `_agent/IN_FLIGHT.md` entry. An unclaimed `plan/todo` item on
+  `main` (which G1 deliberately puts there) is otherwise an open invitation
+  to duplicate effort. G1–G3 protect the *number*; G4 protects the *work
+  assignment*. `/audit`'s duplicate-plan-ownership check is the backstop.
 -->
 
 <!-- Federation (multi-repo) — bootstrap INCLUDES this section
