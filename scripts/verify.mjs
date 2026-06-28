@@ -170,10 +170,27 @@ function scanLeaks(rel) {
     }
   }
 }
+
+const textSurfaceExts = new Set(['.css', '.html', '.md', '.mdx', '.svg', '.yml', '.yaml']);
+function scanLeakTree(rel) {
+  if (!existsSync(join(root, rel))) return;
+  for (const entry of readdirSync(join(root, rel), { withFileTypes: true })) {
+    const child = `${rel}/${entry.name}`;
+    if (entry.isDirectory()) {
+      scanLeakTree(child);
+    } else if (textSurfaceExts.has(entry.name.slice(entry.name.lastIndexOf('.')).toLowerCase())) {
+      scanLeaks(child);
+    }
+  }
+}
+
 for (const name of skillDirs) {
   scanLeaks(`plugins/docflow/skills/${name}/SKILL.md`);
 }
 for (const f of ['README.md', 'USAGE.md']) scanLeaks(f);
+// The docs site is public/user-visible too; scan text-like site files
+// while skipping binary assets such as PNG/ICO previews.
+scanLeakTree('docs');
 // Bootstrap templates are user-visible (they ship into target repos).
 const tplDir = join(root, 'plugins/docflow/skills/bootstrap/templates');
 if (existsSync(tplDir)) {
