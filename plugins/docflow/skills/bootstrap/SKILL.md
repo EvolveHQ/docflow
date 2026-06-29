@@ -150,7 +150,9 @@ ask in plain text, listing options as A/B/C and naming the recommended
 one.
 
 After the answers are in, summarise the resulting plan in 5–10
-lines and ask for sign-off before writing any files.
+lines and ask for sign-off before writing any files. Note in the summary
+that a **seed ADR `0001`** recording the adopted method is created by
+default (the operator may decline it — see Step 5 item 5b).
 
 1. **Project identity.** Name, one-line description, doc language
    (en-GB / en-US / other), and — if existing repo — what current files
@@ -344,6 +346,18 @@ paths against it, and adjust the `adr/`/`plan/` cross-paths in the filled
 5. `adr/NNNN-template.md` — from `templates/adr-technology.md`, only if
    Q2 said split. `NNNN` is the number where capability ADRs end
    (project-defined, e.g. 0091; default 0100 if unspecified).
+5b. **Seed ADR (default on; opt-out at sign-off).** Write the seed
+   `adr/0001-record-architecture-decisions.md` from
+   `templates/adr-0001-seed.md`, filled from the assessment answers — it
+   records the **decision to adopt** the documentation-led, ADR-driven
+   method, status **`Implemented`**, and **references `CONVENTIONS.md`** for
+   the rules (it does not duplicate them). Keep it generic — no other
+   project's ADR numbers. **Skip only if the operator opted out.** For a
+   **split** repo (Q2) use the technology-ADR shape for the seed. If `plan/`
+   exists, also write a matching `plan/done/<date>-adopt-adr-method.md` (the
+   seed's completion event is this bootstrap), so plan-coverage stays
+   satisfied. On a **retrofit/backfill** (Step 6), the seed is `0001`, ahead
+   of the reconstructed decisions.
 6. `plan/README.md` — from `templates/plan-README.md`. Create empty
    `plan/todo/.gitkeep` and `plan/done/.gitkeep`.
 7. `_agent/ROLES.md` — from `templates/_agent-ROLES.md`. **If Q5 = None,
@@ -363,7 +377,8 @@ paths against it, and adjust the `adr/`/`plan/` cross-paths in the filled
     `_agent/IN_FLIGHT.md` from `templates/_agent-IN_FLIGHT.md` as
     the committed cross-worktree dashboard.
 11. `_agent/HANDOFF.md` — from `templates/_agent-HANDOFF.md`.
-12. Stub `INDEX.md` — header + empty table.
+12. `INDEX.md` — header + the seed ADR's row (item 5b); an empty table only
+    if the seed was declined.
 13. `_agent/prompts/autonomous.md` — from
     `templates/_agent-prompts-autonomous.md`, **only** if Q8 confirmed a
     verify gate. Keep the integration block matching Q4b: the

@@ -69,6 +69,12 @@ root; everything else lives under a configurable **artefact root** —
 `docs/` (the default), the repo root, or `.docflow/` — chosen at bootstrap
 and recorded in `CONVENTIONS.md`.
 
+**Seed ADR:** by default, bootstrap also writes **`adr/0001`** — a first
+ADR recording the decision to adopt this method (self-documenting, like the
+classic "use ADRs" convention). It references `CONVENTIONS.md` for the rules
+and is created `Implemented`. Decline it at sign-off if you want only the
+template.
+
 ## Why
 
 Documentation-led projects rot when conventions live in someone's head.

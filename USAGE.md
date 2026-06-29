@@ -165,6 +165,7 @@ After sign-off, the skill writes:
 | `CLAUDE.md` | `templates/CLAUDE.md` | Single line `@AGENTS.md`. |
 | `adr/0000-template.md` | `templates/adr-capability.md` | Capability-ADR template. |
 | `adr/NNNN-template.md` | `templates/adr-technology.md` | Technology-ADR template. Only if Q2 said split. `NNNN` is the project-defined cutoff (default 0100). |
+| `adr/0001-record-architecture-decisions.md` | `templates/adr-0001-seed.md` | **Seed ADR** recording the decision to adopt the method (`Implemented`, references `CONVENTIONS.md`). Default on; declined at sign-off if not wanted. |
 | `plan/README.md` | `templates/plan-README.md` | Plus empty `plan/todo/.gitkeep` and `plan/done/.gitkeep`. |
 | `_agent/ROLES.md` | `templates/_agent-ROLES.md` | Single `default-agent` by default. |
 | `_agent/LOCKS.md` | `templates/_agent-LOCKS.md` | Empty header. Created only if Q5 enabled LOCKS discipline. |
@@ -174,7 +175,7 @@ After sign-off, the skill writes:
 | `_agent/IN_FLIGHT.md` | `templates/_agent-IN_FLIGHT.md` | Only in Q5 mode 3 (worktree). Committed cross-worktree dashboard. |
 | `.gitattributes` (entry) | (none — inline) | Only in Q5 mode 3: appends `_agent/WORKLOG.md merge=union`. |
 | `.gitignore` (entry) | (none — inline) | Only in Q5 mode 3: adds `_agent/CURRENT_FOCUS.md` so it stays local-only. |
-| `INDEX.md` | (none — generated) | Stub header + empty table. |
+| `INDEX.md` | (none — generated) | Header + the seed ADR's row (empty table only if the seed was declined). |
 | `_agent/prompts/autonomous.md` | `templates/_agent-prompts-autonomous.md` | Only if Q8 confirmed a verify gate. |
 
 ## 5. After scaffolding
