@@ -3,6 +3,7 @@ description: >-
   ADR-driven, documentation-led workflow — scaffold an Architecture Decision
   Record (ADR) catalogue, a plan/ work queue, and AGENTS.md conventions into
   any repo, then author, queue, ship, and audit ADRs with lifecycle skills.
+url: "https://evolvehq.github.io"
 baseurl: "/docflow"
 defaults:
   - scope:
