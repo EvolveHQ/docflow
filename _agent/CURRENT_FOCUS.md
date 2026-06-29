@@ -8,6 +8,11 @@ purpose — the durable record lives in git (`git log`),
 If status files and git disagree, git is authoritative; correct this
 file.
 
+> **Released 0.9.3** (tag v0.9.3; `@evolvehq/docflow@0.9.3` on npm) — backlog
+> (0016/0017/0018), seed ADR (0029), coordination revisions + G4, numbering
+> clarification, multi-target verified (0015 Implemented), new logo/theme.
+> main and npm in sync. Catalogue all-Implemented (or Superseded); plan queue empty.
+
 ## Active state
 
 - **Branch:** main
