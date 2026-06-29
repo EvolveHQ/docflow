@@ -203,6 +203,9 @@ OpenCode has no marketplace command for `SKILL.md` skills (its plugin
 system is for npm JS plugins), so a shared skills directory is the clean
 path. Skills auto-load by description.
 
+**OpenCode-compatible forks** — e.g. Xiaomi's *mimocode* — inherit this
+support via the same skill-discovery path; no separate packaging.
+
 ### Claude Code — local development (no install)
 
 ```
