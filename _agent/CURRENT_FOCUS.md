@@ -51,5 +51,8 @@ and Cowork** installs — not runnable from here. A Claude Code smoke-run
 turnkey operator steps for the three; Codex install verified per ADR 0015
 r3. Ships when the three real-agent runs are recorded.
 
-Other soft item: the coordination-tier additions (0025–0027) are
-structurally verified only (the smoke test covered the foundation).
+The coordination tier (0025–0027) is now **behaviourally verified** too
+(2026-06-29): a two-repo smoke test exercised per-repo plan ownership, the
+derived aggregate-status column ("1 of 2 repos"), and convention-drift
+detection — all passed. No soft verification caveats remain on the
+federation; only the multi-target item (0010) stays operator-blocked.
