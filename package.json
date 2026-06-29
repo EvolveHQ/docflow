@@ -1,6 +1,6 @@
 {
   "name": "@evolvehq/docflow",
-  "version": "0.9.2",
+  "version": "0.9.3",
   "description": "ADR-driven documentation workflow: scaffold an Architecture Decision Record (ADR) catalogue, a plan/ queue, and AGENTS.md conventions into any repo, then author, queue, ship, audit, and roll up ADRs with lifecycle skills — across one repo or a multi-repo product. Works on Claude Code, Claude Cowork, pi, Codex, and OpenCode.",
   "keywords": [
     "pi-package",

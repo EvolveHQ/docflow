@@ -1,6 +1,6 @@
 {
   "name": "docflow",
-  "version": "0.9.2",
+  "version": "0.9.3",
   "description": "ADR-driven documentation workflow: a bootstrap skill that scaffolds an Architecture Decision Record (ADR) catalogue, a plan/ queue, AGENTS.md conventions, and _agent/ coordination — plus lifecycle skills to author ADRs, queue and ship work, add conventions, audit consistency, brainstorm decisions, run agent waves, and roll up a multi-repo product's catalogues. Scales from one repo to a multi-repo federation. Works on Claude Code, Claude Cowork, pi, Codex, and OpenCode.",
   "skills": "./skills/"
 }
