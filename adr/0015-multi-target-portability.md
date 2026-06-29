@@ -1,7 +1,7 @@
 ---
 adr: 0015
 title: Multi-target portability — one skill source, many coding agents
-status: Accepted
+status: Implemented
 date: 2026-06-03
 owner: Eugenio Minardi
 supersedes: ["0008"]
@@ -108,6 +108,7 @@ installs the existing Claude Code plugin.
 | 2026-06-03 | r1 | Eugenio Minardi | Initial decision. Generalises and supersedes ADR 0008 (dual-target) to multi-target: Claude Code, Cowork, pi, Codex, OpenCode from one skill source. |
 | 2026-06-03 | r2 | Eugenio Minardi | Codex has a native plugin marketplace (initial r1 wrongly scoped a one-command Codex installer out). Add a native Codex plugin (`.codex-plugin/` + `.agents/plugins/marketplace.json`); verify gate version-syncs three manifests; AC4 + Out-of-scope revised. |
 | 2026-06-04 | r3 | Eugenio Minardi | Codex requires the plugin (incl. its skills) in a subdirectory — root `source: "."`/`"./"` does not resolve. Restructure to `plugins/docflow/` holding the skills + all three plugin manifests; both marketplaces point to `./plugins/docflow`; `package.json` (`pi.skills`/`files`) + `verify.mjs` repointed. **Verified on real Codex** (`marketplace add` → `plugin add docflow@evolvehq` → all 8 skills installed). |
+| 2026-06-29 | r4 | Eugenio Minardi | Implemented. AC5 met: maintainer confirms `bootstrap` + lifecycle skills run on **Codex, OpenCode, and Cowork** via real usage (also pi, and mimocode beyond the documented five). plan 0010 → done. |
 
 ## Approvals
 

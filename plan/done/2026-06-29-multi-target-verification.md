@@ -50,6 +50,11 @@ installs (operator-run, not runnable from this environment).
   add` → `plugin add docflow@evolvehq` → all skills installed). A
   behavioural `bootstrap`+`new-adr` run on real Codex is **still pending**.
 - **OpenCode:** no verification yet.
+- **2026-06-29 — maintainer-confirmed via real usage: Codex, OpenCode, and
+  Cowork all PASS.** docflow has been run on all three target agents
+  (`bootstrap` + lifecycle skills) by the maintainer. Also confirmed on
+  **pi** (a documented target) and **mimocode** (an agent beyond the
+  documented five). **AC5 is met.**
 
 ## Turnkey operator steps (to close AC5)
 
@@ -67,3 +72,7 @@ Run on a machine with each agent installed; record PASS/FAIL here.
 
 When all three are recorded PASS, this item ships and ADR 0015 →
 Implemented.
+
+---
+
+Shipped on 2026-06-29. AC5 met by maintainer-confirmed real usage: bootstrap + lifecycle skills run on Codex, OpenCode, and Cowork (also pi, and mimocode beyond the documented five). ADR 0015 -> Implemented.
