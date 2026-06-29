@@ -44,3 +44,7 @@ Maps to adr/0029-seed-adr-recording-the-method.md acceptance criteria:
 Builds on the layered-artifact model (0016, shipped) for the opt-out
 pattern and the backfill flow (0003). Independent of the 0005/0014
 coordination revisions.
+
+---
+
+Shipped at HEAD `188c938` on 2026-06-29. templates/adr-0001-seed.md + bootstrap output item 5b (default-on adr/0001 seed, opt-out at sign-off, conditional plan/done entry, backfill anchor); README/USAGE. ADR 0029 -> Implemented.
