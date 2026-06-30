@@ -39,3 +39,7 @@ Fast-forwarded to `main` + remote push. On completion, `git mv` to
 `plan/done/`, advance ADR 0030 → Implemented, regenerate `INDEX.md`.
 
 > Queued while ADR 0030 is **Proposed** — do not start until it is Accepted.
+
+---
+
+Shipped at HEAD `e9b03f5` on 2026-06-30. bootstrap Q7 own recommendation + new-adr owning-domain + methodology §4.7 + examples §5 + README/USAGE. ADR 0030 -> Implemented (r3). C2 (domain: field/INDEX column/audit) deferred.

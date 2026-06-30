@@ -1,7 +1,7 @@
 ---
 adr: 0030
 title: Domain grouping — navigate the catalogue by area
-status: Accepted
+status: Implemented
 date: 2026-06-30
 owner: Eugenio Minardi
 supersedes:
@@ -105,6 +105,7 @@ in the user-facing docs and on the methodology page.
 |------|----------|--------|--------|
 | 2026-06-30 | r1 | Eugenio Minardi | Initial decision (Proposed). Make the `domains/` grouping a first-class optional organisational layer with its own owner, assessment recommendation, and docs — distinct from per-domain numbering and from federation. |
 | 2026-06-30 | r2 | Eugenio Minardi | Accepted. Scope confirmed at C1+C3+C4 (the `domain:` field / INDEX column / audit check stay out of scope as a possible follow-on). |
+| 2026-06-30 | r3 | Eugenio Minardi | Implemented (commit e9b03f5): bootstrap Q7 gives domains its own enable recommendation; `new-adr` identifies the owning domain when the layer is present; methodology §4.7, examples §5, README/USAGE elevated. AC1-5 met. → Implemented. |
 
 ## Approvals
 
