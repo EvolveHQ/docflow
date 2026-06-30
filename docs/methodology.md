@@ -239,6 +239,24 @@ the flat number — and it is **not the federation** (§5), which serves
 genuinely independent sequences across separate repositories. Domain
 grouping is one repository's one catalogue, viewed by area.
 
+### 4.8 Capturing work done outside the process
+
+The model assumes decisions are recorded as ADRs and work is queued as plan
+items — but real development sometimes runs ahead of the process: a **large
+development lands with no ADR and no plan**, recorded only in version
+control. The method's answer is **reconstruction, not exception**: such a
+development is treated as an ADR *not yet written*. It is captured the same
+way an existing codebase is adopted (§ backfill) — recover the decision(s)
+it embodies as ADR(s) drafted at **`Implemented`**, each Revision History
+row citing the implementing commits and noting it was recorded **after the
+fact**, with matching `plan/done` entries so the Implemented⇒plan-coverage
+invariant (INV-3) holds. The audit carries a **coverage** check — a
+deliberately conservative, doc-centric heuristic — that flags substantial
+behaviour with no owning ADR, so an escaped development is surfaced for
+capture rather than silently accumulating. Trivial or mechanical changes are
+*not* in scope here: they belong to the commit history (and the worklog),
+not the catalogue.
+
 ## 5. Scaling to many repositories
 
 A single product spread across several repositories runs as a

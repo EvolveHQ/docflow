@@ -48,6 +48,10 @@ Questions (skip any the request already answers):
 2. **Supersede?** — none, or select the ADR(s) this replaces.
    *Recommended: none.*
 3. **Initial status** — Proposed or Accepted. *Recommended: Proposed.*
+   **Reconstructing already-shipped work** (a development built ahead of the
+   process) is the exception: author at `Implemented`, Revision History
+   citing the implementing commits and noting it was recorded after the
+   fact, and write a matching `plan/done` entry.
 4. **Create a plan item now?** — yes / no. *Recommended: yes when Accepted.*
 5. **Title** — free text (the one unavoidable open answer).
 

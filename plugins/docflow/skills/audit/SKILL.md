@@ -100,6 +100,14 @@ relevant):
       against the index-holder's authoritative copy; flag a member whose
       shared conventions have drifted from the source. Members' **local-only**
       conventions are exempt.
+13. **Coverage (undocumented developments).** A heuristic nudge, not a
+    precise diff: scan the major modules / top-level source directories and
+    the recent `git log` for **substantial behaviour or an area with no
+    owning ADR** — a large feature, subsystem, or dependency the catalogue
+    never records. Report each as a prompt to **capture** it (reconstruct
+    the decision as an `Implemented` ADR + `plan/done`, per the backfill
+    path), **not** as a hard failure. Because the audit is doc-centric, keep
+    this conservative — flag clear, sizable gaps, not every file.
 
 ## Step 2 — Report
 

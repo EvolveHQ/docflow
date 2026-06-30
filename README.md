@@ -253,9 +253,12 @@ The skill will:
 3. Summarise the resulting plan and ask for sign-off.
 4. Write (or Edit, for existing repos) the files.
 5. Commit each logical group with a Conventional Commit message.
-6. **On existing repos**, offer to backfill ADRs, `plan/done/`, and
-   `CONVENTIONS.md` additions from the existing code and git history
-   — drafts only, approved in batches before anything commits.
+6. **On existing repos** — and re-runnable later to **capture a large
+   development that bypassed the process** — offer to backfill ADRs,
+   `plan/done/`, and `CONVENTIONS.md` additions from the existing code and
+   git history — drafts only, approved in batches. A reconstructed decision
+   lands at `Implemented` with a matching `plan/done`; `/audit`'s coverage
+   check surfaces undocumented work to capture.
 
 ## Updating
 

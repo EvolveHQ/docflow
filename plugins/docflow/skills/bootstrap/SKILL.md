@@ -440,7 +440,7 @@ no `Co-Authored-By` trailer unless Q6 asked for one.
 For an existing repo, prefer Edit over Write where files exist, and
 call out every merge decision in the commit message.
 
-## Step 6 — Offer backfill (existing repos only)
+## Step 6 — Offer backfill (existing repos; re-runnable for emergent work)
 
 Once the scaffolding commit has landed, **offer to backfill** the ADR
 catalogue, the plan folder, and `CONVENTIONS.md` from the existing
@@ -506,3 +506,15 @@ After each pass, commit the approved drafts with a Conventional Commit
 - If the user declines the backfill, the scaffolding is still
   complete; the queue is just empty until the first hand-authored ADR
   lands.
+
+**Re-running to capture a development that bypassed the process.** This
+backfill is not adoption-only. When a substantial development later lands in
+an already-docflow repo **without** an owning ADR or plan item — a large
+feature built ahead of the process — run the same passes again, **scoped to
+that development**: limit the scan (passes 1–3) to its commits and the area
+it touched, reconstruct just the decision(s) it embodies as `Implemented`
+ADR(s) (Revision History citing the implementing commits and noting they
+were recorded after the fact), and write the matching `plan/done` entries;
+regenerate `INDEX.md` and the worklog. A large development is never
+*outside* the catalogue — it is an ADR not yet written. `/audit`'s coverage
+check surfaces such gaps so they are captured, not silently kept.

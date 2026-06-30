@@ -98,11 +98,19 @@ optionally `_agent/prompts/autonomous.md`). For existing repos it
 prefers `Edit` over `Write` where files already exist, and calls out
 every merge decision in the commit message.
 
-### Phase D — Backfill (existing repos only)
+### Phase D — Backfill (existing repos; re-runnable to capture emergent work)
 
 Once the scaffolding has landed, the skill **offers** to backfill
 ADRs, `plan/done/` entries, and `CONVENTIONS.md` additions from the
 existing code and git history. Skipped on fresh repos.
+
+Backfill is **not adoption-only**. When a large development later lands in
+an already-docflow repo **without** an ADR/plan, re-run it **scoped to that
+development** to reconstruct its ADR(s) at `Implemented` (Revision History
+citing the commits, noting they were recorded after the fact) + matching
+`plan/done`. `/audit`'s **coverage** check flags substantial work with no
+owning ADR so such escapes are captured, not silently kept. (A large
+development is never outside the catalogue — it's an ADR not yet written.)
 
 If accepted, the backfill runs in four passes, each producing drafts
 you review before they commit:
