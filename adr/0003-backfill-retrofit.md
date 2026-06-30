@@ -1,7 +1,7 @@
 ---
 adr: 0003
-title: Retrofit existing repos via backfill from code and history
-status: Implemented
+title: Backfill — retrofit existing repos and capture undocumented developments
+status: Accepted
 date: 2026-05-21
 owner: Eugenio Minardi
 supersedes:
@@ -10,7 +10,7 @@ depends-on: ["0001", "0002"]
 tags: [bootstrap, retrofit]
 ---
 
-# ADR 0003 — Retrofit existing repos via backfill from code and history
+# ADR 0003 — Backfill — retrofit existing repos and capture undocumented developments
 
 ## Context
 
@@ -32,6 +32,17 @@ batches before it is committed. If history is too sparse to support a
 decision, the bootstrap says so and stops rather than inventing
 rationale.
 
+The same mechanism is also a **re-runnable, scoped capture path**. When a
+substantial development lands in an already-docflow repo **without** an
+owning ADR or plan item — a large feature built ahead of the process — it is
+captured the same way: reconstruct the decision(s) it embodies as ADR(s)
+drafted at `Implemented` (Revision History citing the implementing commits
+and noting they were recorded after the fact), plus matching `plan/done`
+entries, rather than leaving the work only in git history. A large
+development is never *outside* the model — it is an ADR not yet written.
+`audit` surfaces substantial undocumented work so such escapes are noticed,
+not silently accumulated.
+
 ## User stories / scenarios
 
 - As a maintainer of an existing repo, I want decisions inferred from my
@@ -41,14 +52,23 @@ rationale.
 
 ## Acceptance criteria
 
-1. Backfill is offered only on existing repos, only after the scaffold
-   commit.
+1. Backfill is offered on existing repos after the scaffold commit, **and
+   is re-runnable at any time** to capture a development that landed
+   without an ADR/plan — scoped to that development.
 2. It runs as discrete passes, each producing reviewable drafts before
    any commit.
 3. Inferred ADRs for shipped behaviour are drafted as `Implemented` with
-   a Revision History row citing the implementing commit(s).
+   a Revision History row citing the implementing commit(s) and noting they
+   were recorded after the fact.
 4. Speculative rationale is flagged; sparse history stops the pass rather
    than producing invented records.
+5. A substantial development that landed with **no owning ADR/plan** is
+   captured the same way: reconstruct the decision(s) as `Implemented`
+   ADR(s) plus matching `plan/done` entries, then regenerate `INDEX.md`
+   and the worklog.
+6. `audit` flags substantial behaviour/areas with **no owning ADR** (a
+   coverage nudge — heuristic, since the audit is doc-centric) so an
+   undocumented development is surfaced for capture, not silently kept.
 
 ## Out of scope
 
@@ -68,6 +88,7 @@ rationale.
 | Date | Revision | Author | Change |
 |------|----------|--------|--------|
 | 2026-05-21 | r1 | Eugenio Minardi | Backfilled from commit c10fca4 (offer backfill of ADRs/plan/conventions from code and history). |
+| 2026-06-30 | r2 | Eugenio Minardi | Reopened to generalise backfill into a **re-runnable retroactive-capture** path for a large development that landed with no ADR/plan (new AC1 wording, AC5), plus an `audit` coverage nudge that surfaces undocumented work (AC6). Title broadened. Status Implemented→Accepted pending implementation. |
 
 ## Approvals
 

@@ -7,7 +7,7 @@ ADR change.
 |-----|-------|--------|------|------------|
 | [0001](adr/0001-adr-driven-workflow.md) | Documentation-led, ADR-driven workflow as the product | Implemented | 2026-05-21 | — |
 | [0002](adr/0002-assessment-driven-bootstrap.md) | Interactive assessment-driven bootstrap | Superseded | 2026-05-21 | 0001 |
-| [0003](adr/0003-backfill-retrofit.md) | Retrofit existing repos via backfill from code and history | Implemented | 2026-05-21 | 0001, 0002 |
+| [0003](adr/0003-backfill-retrofit.md) | Backfill — retrofit existing repos and capture undocumented developments | Accepted | 2026-05-21 | 0001, 0002 |
 | [0004](adr/0004-adr-privacy.md) | ADRs are internal artefacts, never user-visible | Implemented | 2026-05-21 | 0001 |
 | [0005](adr/0005-multi-agent-coordination.md) | Configurable multi-agent coordination modes | Implemented | 2026-05-21 | 0001 |
 | [0006](adr/0006-integration-model.md) | Configurable integration model (direct-to-main vs PR-based) | Implemented | 2026-05-21 | 0001, 0005 |
