@@ -1,7 +1,7 @@
 ---
 adr: 0016
 title: Layered artifact model — minimal core, opt-in layers
-status: Implemented
+status: Accepted
 date: 2026-06-17
 owner: Eugenio Minardi
 supersedes:
@@ -41,12 +41,24 @@ Lifecycle skills that need an absent layer (e.g. `new-plan` with no
 `_agent/` becomes optional too: a single human with no coordination need
 can omit it.
 
+Optional layers are also **enableable after bootstrap**, not only
+deferrable at it. Re-running `bootstrap` on an already-docflow repo detects
+the recorded setup, skips the settled questions, and offers only the
+optional layers still **absent** — adding the chosen ones by merge, without
+disturbing existing content. Two common cases also have organic entry
+points: `add-convention` **creates `GLOSSARY.md`** on the first term, and
+`new-adr` **offers to create a `domains/<slug>/` grouping** when an ADR is
+assigned to a domain that does not yet exist.
+
 ## User stories / scenarios
 
 - As a maintainer who wants "just ADRs", I bootstrap the core only and
   get a catalogue as light as adr-tools, no `plan/` or `_agent/` noise.
 - As a team, I opt into `plan/` and `_agent/` and get the full workflow.
 - As a skill, I behave predictably when an optional layer is absent.
+- As a maintainer who deferred `GLOSSARY.md`/`domains/`, I enable them
+  later — by re-running `bootstrap`, or as a side effect of adding the
+  first glossary term / domain-scoped ADR — without re-scaffolding.
 
 ## Acceptance criteria
 
@@ -57,6 +69,12 @@ can omit it.
 3. A lifecycle skill invoked against a missing layer refuses cleanly and
    names what is missing (does not error obscurely or half-create it).
 4. The tiering (core vs optional) is documented in `README.md`/`USAGE.md`.
+5. An opted-out optional layer can be **enabled after bootstrap**:
+   re-running `bootstrap` on an existing docflow repo offers the absent
+   layers and adds the chosen ones by merge (never overwriting);
+   `add-convention` creates `GLOSSARY.md` if absent, and `new-adr` offers to
+   create a `domains/<slug>/` grouping when an ADR is assigned to a new
+   domain.
 
 ## Out of scope
 
@@ -81,6 +99,7 @@ can omit it.
 |------|----------|--------|--------|
 | 2026-06-17 | r1 | Eugenio Minardi | Initial decision. Tier artefacts into a minimal always-on core and opt-in layers (incl. making `_agent/` optional), to keep a minimal docflow repo lightweight. |
 | 2026-06-23 | r2 | Eugenio Minardi | Implemented (commit 2a837a7): core declared always-on; `_agent/` opt-in via Q5 "None"; ship-item/audit gate on `_agent/` presence; README split into Core vs Optional layers. AC1-4 met. |
+| 2026-06-30 | r3 | Eugenio Minardi | Reopened to add the **opt-in-later** capability (new AC5): a deferred optional layer can be enabled after bootstrap — an additive `bootstrap` re-run, `add-convention` creating `GLOSSARY.md`, and `new-adr` creating a domain on assign. Status Implemented→Accepted pending implementation. |
 
 ## Approvals
 
