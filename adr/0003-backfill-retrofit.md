@@ -1,7 +1,7 @@
 ---
 adr: 0003
 title: Backfill — retrofit existing repos and capture undocumented developments
-status: Accepted
+status: Implemented
 date: 2026-05-21
 owner: Eugenio Minardi
 supersedes:
@@ -89,6 +89,7 @@ not silently accumulated.
 |------|----------|--------|--------|
 | 2026-05-21 | r1 | Eugenio Minardi | Backfilled from commit c10fca4 (offer backfill of ADRs/plan/conventions from code and history). |
 | 2026-06-30 | r2 | Eugenio Minardi | Reopened to generalise backfill into a **re-runnable retroactive-capture** path for a large development that landed with no ADR/plan (new AC1 wording, AC5), plus an `audit` coverage nudge that surfaces undocumented work (AC6). Title broadened. Status Implemented→Accepted pending implementation. |
+| 2026-06-30 | r3 | Eugenio Minardi | Implemented (commit 30b4bf3): bootstrap Step 6 backfill re-runnable mid-life (scoped capture, reconstruct at Implemented + plan/done); new-adr reconstruction note; audit check 13 "Coverage"; methodology §4.8 + README/USAGE. AC1-6 met. → Implemented. |
 
 ## Approvals
 

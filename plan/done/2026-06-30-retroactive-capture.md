@@ -43,3 +43,7 @@ Fast-forwarded to `main` + remote push. On completion, `git mv` to
 `plan/done/`, advance ADR 0003 → Implemented, regenerate `INDEX.md`.
 
 > Queued while ADR 0003 is **Accepted** (reopened) — implement, then ship.
+
+---
+
+Shipped at HEAD `30b4bf3` on 2026-06-30. bootstrap Step 6 re-runnable capture + new-adr reconstruction note + audit check 13 coverage + methodology §4.8 + README/USAGE. ADR 0003 -> Implemented (r3).
