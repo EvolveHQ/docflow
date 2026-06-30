@@ -1,7 +1,7 @@
 ---
 adr: 0030
 title: Domain grouping — navigate the catalogue by area
-status: Proposed
+status: Accepted
 date: 2026-06-30
 owner: Eugenio Minardi
 supersedes:
@@ -104,9 +104,10 @@ in the user-facing docs and on the methodology page.
 | Date | Revision | Author | Change |
 |------|----------|--------|--------|
 | 2026-06-30 | r1 | Eugenio Minardi | Initial decision (Proposed). Make the `domains/` grouping a first-class optional organisational layer with its own owner, assessment recommendation, and docs — distinct from per-domain numbering and from federation. |
+| 2026-06-30 | r2 | Eugenio Minardi | Accepted. Scope confirmed at C1+C3+C4 (the `domain:` field / INDEX column / audit check stay out of scope as a possible follow-on). |
 
 ## Approvals
 
 | Role | Name | Date | Signature |
 |------|------|------|-----------|
-| Maintainer | Eugenio Minardi | — | (pending acceptance) |
+| Maintainer | Eugenio Minardi | 2026-06-30 | Accepted |
