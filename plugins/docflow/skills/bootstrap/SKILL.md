@@ -239,11 +239,16 @@ default (the operator may decline it — see Step 5 item 5b).
    carry a `Co-Authored-By` trailer. **Recommended: Conventional
    Commits ON, `Rationale:` footer ON, signed commits ON, ADR-revision
    tags OFF, `Co-Authored-By` trailer OFF.**
-7. **Optional artefacts.** Which now vs. defer: `GLOSSARY.md`,
-   `domains/<slug>/README.md` groupings, technology-ADR template?
-   **Recommended: defer all three** — add when scale demands
-   (terminology drift, >20 ADRs, or technology decisions splitting
-   from product decisions).
+7. **Optional artefacts.** Which now vs. defer:
+   - **`domains/<slug>/README.md` grouping** — per-area indexes over the
+     flat catalogue (navigation by area, *not* numbering). **Enable when
+     the project has distinct areas (e.g. auth, billing, search) or you
+     expect the catalogue to grow past ~20 ADRs**; defer for a small,
+     single-area repo. Cheap to add later.
+   - **`GLOSSARY.md`** — shared term definitions. *Defer; add on
+     terminology drift.*
+   - **technology-ADR template** — *defer unless technology decisions split
+     from product decisions.*
 8. **Verify gate.** What command(s) decide a change is shippable
    (`npm test`, CI workflow, deploy + smoke, manual)? *No
    recommendation — project-specific.* If the user has no real gate,

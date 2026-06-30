@@ -22,6 +22,7 @@ concrete.
 2. [Retrofitting an existing repo](#2-retrofitting-an-existing-repo)
 3. [Skill-by-skill examples](#3-skill-by-skill-examples)
 4. [Multi-repo products: topologies A, B, C](#4-multi-repo-products-topologies-a-b-c)
+5. [Grouping a large catalogue by domain](#5-grouping-a-large-catalogue-by-domain)
 
 ---
 
@@ -369,6 +370,55 @@ alongside and reference the home for product-wide ones.
 > the roll-up; and no tool writes across a repo boundary — membership and
 > convention drift are reconciled by `/audit`, not remote-pushed. See the
 > [methodology](https://evolvehq.github.io/docflow/methodology/#5-scaling-to-many-repositories).
+
+---
+
+## 5. Grouping a large catalogue by domain
+
+Once **linkfold**'s catalogue spans distinct areas, enable the `domains/`
+grouping (bootstrap Q7, or later via a bootstrap re-run / `new-adr`) so
+readers browse **by area** instead of scanning the whole numbered list. It
+is purely a view — every ADR keeps its flat number and its `INDEX.md` row.
+
+The layout (under the artefact root):
+
+```
+adr/
+  0004-oauth-login.md
+  0007-api-rate-limiting.md
+  0011-stripe-billing.md
+  0014-invoice-pdf.md
+domains/
+  auth/README.md        # indexes 0004, …
+  billing/README.md     # indexes 0011, 0014, …
+  api/README.md         # indexes 0007, …
+```
+
+A domain README is just a curated index:
+
+```
+# Auth — decisions
+
+| ADR | Title | Status |
+|-----|-------|--------|
+| [0004](../../adr/0004-oauth-login.md) | OAuth login | Implemented |
+| …    |       |        |
+```
+
+In practice:
+
+1. `/new-adr "add SSO via SAML"` → with `domains/` present, `new-adr` asks
+   (or infers) the owning domain — `auth` — mints the next **flat** number
+   (`adr/0017-…`), and adds it to `domains/auth/README.md`.
+2. *"new ADR: dunning emails for failed payments"*, filed under a domain that
+   doesn't exist yet → `new-adr` offers to create `domains/dunning/README.md`
+   and seeds it with the ADR.
+3. The global `INDEX.md` still lists **all** ADRs by number; the domain
+   READMEs are the per-area lens on top.
+
+*Not to be confused with per-domain numbering (`auth/0001` — rejected; the
+number stays flat) or the federation (separate repos). This is one repo, one
+catalogue, viewed by area.*
 
 ---
 

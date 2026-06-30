@@ -149,7 +149,7 @@ recommendation and what it changes up front helps you answer quickly.
 | 4 | **Plan folder + integration model.** Q4a: use `plan/todo/` + `plan/done/` or skip. Q4b: how work reaches `main` — **direct-to-main (fast-forward)** or **PR-based (required CI green)**. Asked after Q5, because the Q4b recommendation depends on the multi-agent mode. | **Q4a: use it.** **Q4b: direct-to-main if Q5 = single agent; PR-based if Q5 = multi-agent.** | Whether `plan/` is created. The completion-event sentence in `CONVENTIONS.md` §Plan Folder, `plan/README.md`, `AGENTS.md` §Plan folder. The integration block in `AGENTS.md` / `CONVENTIONS.md` §Git contract. Which variant of `_agent/prompts/autonomous.md` Step 6 is kept (`git merge --ff-only` vs. `gh pr create` → CI → merge). |
 | 5 | **Multi-agent setup** — pick one of three: (1) single agent; (2) multi-agent, shared checkout; (3) multi-agent, separate worktrees / PR branches. The three options differ in LOCKS semantics, WORKLOG layout, and CURRENT_FOCUS handling — switching later is not free. | **Single agent.** Small projects shouldn't pay the coordination cost. | `_agent/ROLES.md` content. `AGENTS.md` §Multi-agent workflow and `CONVENTIONS.md` §Multi-Agent Rules pick one of three variants. Mode 2 turns LOCKS on as a filesystem mutex. Mode 3 sets LOCKS to advisory, adds `_agent/WORKLOG.md merge=union` to `.gitattributes`, gitignores `_agent/CURRENT_FOCUS.md`, and writes `_agent/IN_FLIGHT.md` as the committed cross-worktree dashboard. |
 | 6 | **Git contract** — Conventional Commits, `Rationale:` footer, signed commits, ADR-revision tags, `Co-Authored-By` trailer. | **Conventional Commits ON, `Rationale:` footer ON, signed commits ON, ADR-revision tags OFF, `Co-Authored-By` trailer OFF.** | `AGENTS.md` §Git contract and `CONVENTIONS.md` §Git Contract bullets. |
-| 7 | **Optional artefacts** — `GLOSSARY.md`, `domains/`, technology-ADR template. | **Defer all three.** Add when scale demands (terminology drift, >20 ADRs, technology decisions splitting from product). | Whether those files / directories are created. |
+| 7 | **Optional artefacts** — `domains/` grouping, `GLOSSARY.md`, technology-ADR template. | **`domains/`: enable when the project has distinct areas or you expect >20 ADRs** (navigation by area). `GLOSSARY.md` / technology template: defer until terminology drift / a product–technology split appears. | Whether those files / directories are created. |
 | 8 | **Verify gate** — what command(s) decide a change is shippable. | *No default — project-specific.* | Whether `_agent/prompts/autonomous.md` is written. The skill **refuses** to write the autonomous prompt without a real verify gate. The Step 4 line of the prompt is filled with your command. |
 | 9 | **Existing-content conflicts** (existing repos only) — current commit format, branch policy, ADR style, status names the new layout must respect. | *No default — project-specific.* Skipped on fresh repos. | Merge behaviour during writes; commit-message notes calling out each compromise. |
 | 10 | **Domain-specific hard rules** to enforce from day one — e.g. vendor-naming restriction, regulated-evidence posture (attribution, retention, e-signatures), language mandate, mandatory user-story personas, separated audit streams. | **None from day one.** Add later when a concrete requirement appears; pre-emptive hard rules accumulate as cruft. | Additional sections in `CONVENTIONS.md` and additional bullets in `AGENTS.md` §Hard rules. |
@@ -389,11 +389,16 @@ instead; and **per-domain numbering** like `auth/0001` — the federation
 serves genuinely independent sequences, and within one repo you group
 rather than renumber.
 
-**Grouping by domain.** Opt in to `domains/<slug>/README.md` files that
-list the ADRs for each area (e.g. `domains/auth/`, `domains/billing/`). It
-is purely organisational: each ADR keeps its flat number and its `INDEX.md`
-row; the domain README is a curated view, not a namespace. Reach for it
-when a flat catalogue grows large enough to be hard to navigate.
+**Grouping by domain.** A first-class but optional way to navigate a large
+catalogue by area: `domains/<slug>/README.md` files (e.g. `domains/auth/`,
+`domains/billing/`), each a curated index of that area's ADRs. It is purely
+organisational — every ADR keeps its flat number and its `INDEX.md` row; the
+domain README is a view, not a namespace (and not per-domain numbering).
+`new-adr` keeps it current: it files each ADR under its owning domain and
+offers to create a domain's README on first use. Enable it when the project
+has distinct areas, or the flat list grows large enough to be hard to scan.
+See the [methodology](https://evolvehq.github.io/docflow/methodology/#47-grouping-adrs-by-domain)
+for the formal treatment.
 
 ## 6. Customising or extending
 

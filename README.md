@@ -57,9 +57,13 @@ ADR catalogue.
   from `todo/` to `done/` is the completion event.
 - `_agent/` — coordination (`ROLES`, `LOCKS`, `WORKLOG`, `CURRENT_FOCUS`,
   `HANDOFF`, optional `prompts/`). **Q5 — choose *None* to omit it.**
-- `GLOSSARY.md`, `domains/<slug>/README.md` groupings, the technology-ADR
-  template, and project-specific hard rules (vendor-naming, regulated
-  evidence, language mandate, audit-stream separation) — Q7/Q10.
+- `domains/<slug>/README.md` — **grouping**: per-area indexes (e.g.
+  `domains/auth/`) over the flat catalogue, for navigating a large catalogue
+  by area. Organisational only — ADRs keep their number; `new-adr` files
+  each under its domain. Enable it when the project has distinct areas (Q7).
+- `GLOSSARY.md`, the technology-ADR template, and project-specific hard
+  rules (vendor-naming, regulated evidence, language mandate, audit-stream
+  separation) — Q7/Q10.
 
 Omitting any optional layer leaves a valid repo; a lifecycle skill that
 needs an absent layer refuses cleanly and says what's missing.

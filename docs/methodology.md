@@ -215,15 +215,29 @@ Two richer identifier schemes are deliberately **not** the default:
   re-create the federation's cross-boundary questions at a smaller scale for
   little gain. Independent sequences are instead served by the
   **federation** (one repository per area, each contiguous, joined by a
-  federation identity); in-repo organisation is handled by grouping.
+  federation identity); in-repo organisation is handled by grouping (§4.7).
 
-**Grouping by domain.** A repository may add `domains/<slug>/README.md`
-files (e.g. `domains/auth/`, `domains/billing/`) that list the ADRs
-belonging to each area. This is **organisational only** — an ADR keeps its
-flat catalogue number and its row in the index; the domain README is a
-curated view, not a separate namespace. Grouping gives a large catalogue
-navigability without per-domain numbering or the rename-breaks-references
-risk a slug-as-identity scheme would carry.
+### 4.7 Grouping ADRs by domain
+
+A repository may add `domains/<slug>/README.md` files (e.g. `domains/auth/`,
+`domains/billing/`) — each a **curated index of the ADRs belonging to one
+area**. It is an **optional but first-class** organisational layer: a
+*navigation view* over the single flat catalogue, enabled when a repository
+spans distinct areas or its numbered list grows large enough to be hard to
+scan.
+
+The grouping is **organisational only**. An ADR keeps its flat contiguous
+number and its `INDEX.md` row; a domain README never renames, renumbers, or
+namespaces — the number stays the single identity. `new-adr` maintains the
+grouping: it records each new ADR under its owning domain's README and
+offers to create `domains/<slug>/README.md` when an ADR is filed under a
+domain that does not exist yet.
+
+Two adjacent mechanisms are deliberately distinct: it is **not per-domain
+numbering** (`auth/0001`, `billing/0001`) — rejected in §4.6; identity stays
+the flat number — and it is **not the federation** (§5), which serves
+genuinely independent sequences across separate repositories. Domain
+grouping is one repository's one catalogue, viewed by area.
 
 ## 5. Scaling to many repositories
 
