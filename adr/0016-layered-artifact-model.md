@@ -1,7 +1,7 @@
 ---
 adr: 0016
 title: Layered artifact model — minimal core, opt-in layers
-status: Accepted
+status: Implemented
 date: 2026-06-17
 owner: Eugenio Minardi
 supersedes:
@@ -100,6 +100,7 @@ assigned to a domain that does not yet exist.
 | 2026-06-17 | r1 | Eugenio Minardi | Initial decision. Tier artefacts into a minimal always-on core and opt-in layers (incl. making `_agent/` optional), to keep a minimal docflow repo lightweight. |
 | 2026-06-23 | r2 | Eugenio Minardi | Implemented (commit 2a837a7): core declared always-on; `_agent/` opt-in via Q5 "None"; ship-item/audit gate on `_agent/` presence; README split into Core vs Optional layers. AC1-4 met. |
 | 2026-06-30 | r3 | Eugenio Minardi | Reopened to add the **opt-in-later** capability (new AC5): a deferred optional layer can be enabled after bootstrap — an additive `bootstrap` re-run, `add-convention` creating `GLOSSARY.md`, and `new-adr` creating a domain on assign. Status Implemented→Accepted pending implementation. |
+| 2026-06-30 | r4 | Eugenio Minardi | Implemented (commit 92cd5cc): bootstrap "already a docflow repo" additive situation; `add-convention` creates `GLOSSARY.md` if absent; `new-adr` offers `domains/<slug>/` on assign; README/USAGE document the enable-later path. AC5 met. → Implemented. |
 
 ## Approvals
 

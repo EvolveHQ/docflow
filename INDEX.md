@@ -20,7 +20,7 @@ ADR change.
 | [0013](adr/0013-interactive-assessment-protocol.md) | Standard interactive assessment protocol for skills | Implemented | 2026-06-02 | 0006, 0007 |
 | [0014](adr/0014-concurrency-guardrails.md) | Concurrency guardrails for ADR and plan creation | Implemented | 2026-06-02 | 0001, 0006, 0010, 0013 |
 | [0015](adr/0015-multi-target-portability.md) | Multi-target portability — one skill source, many coding agents | Implemented | 2026-06-03 | 0001, 0007, 0009 |
-| [0016](adr/0016-layered-artifact-model.md) | Layered artifact model — minimal core, opt-in layers | Accepted | 2026-06-17 | 0001 |
+| [0016](adr/0016-layered-artifact-model.md) | Layered artifact model — minimal core, opt-in layers | Implemented | 2026-06-17 | 0001 |
 | [0017](adr/0017-configurable-artifact-root.md) | Configurable artifact root — control the repo footprint | Implemented | 2026-06-17 | 0013, 0016 |
 | [0018](adr/0018-wip-stays-out-of-catalogue.md) | Work-in-progress stays out of the ADR catalogue | Implemented | 2026-06-17 | 0001, 0013, 0014 |
 | [0019](adr/0019-multirepo-topology.md) | Multirepo topology for a single product | Implemented | 2026-06-22 | 0001, 0016 |

@@ -43,3 +43,7 @@ Out:
 
 Fast-forwarded to `main` + remote push. On completion, `git mv` to
 `plan/done/`, advance ADR 0016 → Implemented, regenerate `INDEX.md`.
+
+---
+
+Shipped at HEAD `92cd5cc` on 2026-06-30. bootstrap additive 'already a docflow repo' situation + add-convention GLOSSARY auto-create + new-adr domain auto-create; README/USAGE. ADR 0016 -> Implemented (r4).
