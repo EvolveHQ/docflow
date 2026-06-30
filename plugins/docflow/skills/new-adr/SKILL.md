@@ -105,7 +105,9 @@ If this ADR replaces an existing one:
 
 - Regenerate `INDEX.md` from ADR metadata.
 - If `domains/` exists, add the ADR to the owning domain's `README.md`
-  ADR list.
+  ADR list. If you assign the ADR to a domain that doesn't exist yet, offer
+  to create `domains/<slug>/README.md` (at the recorded artefact root) and
+  add the ADR to it — this enables the domains layer.
 - Multi-agent mode 2: claim the file in `_agent/LOCKS.md` before
   editing, remove on commit. Mode 3: you are on a branch/worktree.
 

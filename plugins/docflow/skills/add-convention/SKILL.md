@@ -67,7 +67,9 @@ Decide the home, and explain the choice:
   constraints.
 - **Authoring / process guidance** → a section in `CONVENTIONS.md`.
   Use for "how we do things" that informs but doesn't gate.
-- **Shared term / definition** → `GLOSSARY.md` (if the repo has one).
+- **Shared term / definition** → `GLOSSARY.md` (create it if absent —
+  adding the first term enables the glossary layer; place it at the
+  recorded artefact root).
 - **It is actually a decision, not a convention** (an architectural,
   product, or technology choice with alternatives and consequences) →
   this is an ADR. Stop and offer the **new-adr** skill; do not bury a

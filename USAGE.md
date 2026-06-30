@@ -290,6 +290,22 @@ edges and enforced by audit. See the
 [methodology](https://evolvehq.github.io/docflow/methodology/#5-scaling-to-many-repositories)
 for the formal model.
 
+### Enabling an optional layer later
+
+Deferred `plan/`, `_agent/`, `GLOSSARY.md`, `domains/`, or the
+technology-ADR template at bootstrap? You can add any of them later — saying
+no the first time doesn't lose you the option:
+
+- **Re-run `bootstrap`** on the repo. It detects your existing setup, reads
+  the recorded choices (shape, artefact root, mode, layers present), skips
+  the settled questions, and offers only the layers you don't have yet —
+  adding the chosen ones by **merge**, under your recorded artefact root,
+  without touching existing content.
+- **`add-convention`** creates `GLOSSARY.md` if it's absent when you add
+  your first shared term.
+- **`new-adr`** offers to create a `domains/<slug>/README.md` grouping when
+  you file an ADR under a domain that doesn't exist yet.
+
 ### Enabling an optional convention later (worked example: TDD)
 
 docflow's bootstrap is deliberately lean — practices such as

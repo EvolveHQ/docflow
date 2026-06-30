@@ -23,6 +23,18 @@ Inspect the repo before asking anything.
     your assessment summary.
   - If ADRs already exist in another format, propose a migration plan
     (renumber, keep, translate) rather than creating a parallel tree.
+- **Already a docflow repo** (carries `AGENTS.md` + `CONVENTIONS.md` + an
+  ADR catalogue): you are **adding to an existing setup**, not scaffolding.
+  Do **not** re-scaffold the core or re-ask settled questions — read the
+  recorded choices from `CONVENTIONS.md`/`AGENTS.md` (ADR shape, status
+  lifecycle, **artefact root**, multi-agent mode, and which optional layers
+  already exist). Then offer to **enable any opted-out optional layer**
+  still absent — `plan/`, `_agent/`, `GLOSSARY.md`, `domains/`, or the
+  technology-ADR template/split — and write only the chosen ones, by
+  **merge**, under the recorded artefact root, leaving everything else
+  untouched. Ask only the questions the new layers need (e.g. the
+  coordination-mode question when enabling `_agent/`). This is the entry
+  point for adding a layer you deferred at first bootstrap.
 
 State which situation applies in one line before asking the assessment
 questions.

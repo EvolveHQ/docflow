@@ -64,6 +64,13 @@ ADR catalogue.
 Omitting any optional layer leaves a valid repo; a lifecycle skill that
 needs an absent layer refuses cleanly and says what's missing.
 
+**Enable a deferred layer later:** re-run **bootstrap** on the repo — it
+detects your existing setup, skips the settled questions, and offers only
+the optional layers you don't have yet, adding the chosen ones by merge.
+(Two shortcuts: `add-convention` creates `GLOSSARY.md` on your first shared
+term, and `new-adr` offers to create a `domains/<slug>/` grouping when you
+file an ADR under a new domain.)
+
 **Placement:** `AGENTS.md` and `CLAUDE.md` always stay at the repository
 root; everything else lives under a configurable **artefact root** —
 `.docflow/` (the default), `docs/`, or the repo root — chosen at bootstrap
