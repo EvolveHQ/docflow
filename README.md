@@ -66,7 +66,7 @@ needs an absent layer refuses cleanly and says what's missing.
 
 **Placement:** `AGENTS.md` and `CLAUDE.md` always stay at the repository
 root; everything else lives under a configurable **artefact root** —
-`docs/` (the default), the repo root, or `.docflow/` — chosen at bootstrap
+`.docflow/` (the default), `docs/`, or the repo root — chosen at bootstrap
 and recorded in `CONVENTIONS.md`.
 
 **Seed ADR:** by default, bootstrap also writes **`adr/0001`** — a first

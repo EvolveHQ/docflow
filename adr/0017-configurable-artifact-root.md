@@ -28,11 +28,13 @@ The **root under which docflow's non-entry artefacts live is
 configurable**, chosen during the bootstrap assessment
 (adr/0013-interactive-assessment-protocol.md):
 
-- `docs/` — **recommended default**; aligns with the `doc/adr`/`docs/`
-  convention (e.g. `docs/adr/`, `docs/plan/`).
+- `.docflow/` — **recommended default**; a hidden root that keeps the repo
+  root clean and groups all docflow artefacts in one place (e.g.
+  `.docflow/adr/`, `.docflow/plan/`).
+- `docs/` — aligns with the `doc/adr`/`docs/` convention; good when the
+  records should be visible alongside other docs.
 - repository root — flat layout (today's behaviour); good for monorepos
   that want decisions beside the code.
-- `.docflow/` — hidden root; quietest footprint.
 
 `AGENTS.md` and `CLAUDE.md` are **always at the repository root** (coding
 agents discover them there); only the catalogue, queue, coordination,
@@ -42,16 +44,16 @@ against it.
 
 ## User stories / scenarios
 
-- As a maintainer who dislikes root clutter, I pick `docs/` and the
-  repo root stays clean (just `AGENTS.md`, `CLAUDE.md`, and `docs/`).
+- As a maintainer who dislikes root clutter, the default `.docflow/`
+  keeps the repo root clean (just `AGENTS.md`, `CLAUDE.md`, and `.docflow/`).
 - As a monorepo owner, I pick root so decisions sit beside the code.
 - As a lifecycle skill, I read the configured root and find `adr/`,
   `plan/`, and `INDEX.md` wherever they were placed.
 
 ## Acceptance criteria
 
-1. Bootstrap asks an **artifact-placement** question (`docs/` default ·
-   root · `.docflow/`), under the assessment protocol.
+1. Bootstrap asks an **artifact-placement** question (`.docflow/` default ·
+   `docs/` · root), under the assessment protocol.
 2. `AGENTS.md` and `CLAUDE.md` are written to the repository root
    regardless of the choice.
 3. The chosen root is recorded in `CONVENTIONS.md`; `new-adr`,
@@ -85,6 +87,7 @@ against it.
 |------|----------|--------|--------|
 | 2026-06-17 | r1 | Eugenio Minardi | Initial decision. Make the artefact root configurable at bootstrap (docs/ default, root, or .docflow/), keeping AGENTS.md/CLAUDE.md at repo root. |
 | 2026-06-23 | r2 | Eugenio Minardi | Implemented (commit 5895168): bootstrap Q12 placement question + CONVENTIONS "Artifact root" record; new-adr/new-plan/ship-item/audit resolve paths against it; README documents it; migration offered not forced. AC1-5 met. |
+| 2026-06-30 | r3 | Eugenio Minardi | Default placement changed `docs/` → **`.docflow/`** (hidden root, cleanest footprint) at the maintainer's request. The question is unchanged — still asks `.docflow/` (default) · `docs/` · root. Updated Q12, both placement notes, the CONVENTIONS template menu, and the README. |
 
 ## Approvals
 

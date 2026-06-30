@@ -4,7 +4,7 @@
 
 Project name: <name>.
 
-Artefact root: `<docs/ | . | .docflow/>` — `adr/`, `plan/`, `INDEX.md`, and
+Artefact root: `<.docflow/ | docs/ | .>` — `adr/`, `plan/`, `INDEX.md`, and
 this file live under this root; `AGENTS.md` and `CLAUDE.md` always stay at
 the repository root. Every lifecycle skill resolves paths against this root.
 

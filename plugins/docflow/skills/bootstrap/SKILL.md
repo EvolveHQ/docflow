@@ -60,7 +60,7 @@ questions.
 **Placement.** The tree above shows the **root** option. `AGENTS.md` and
 `CLAUDE.md` always sit at the repository root; `adr/`, `plan/`, `_agent/`,
 `INDEX.md`, and `CONVENTIONS.md` go under the **artefact root** chosen in
-Q12 (default `docs/`, e.g. `docs/adr/`, `docs/plan/`).
+Q12 (default `.docflow/`, e.g. `.docflow/adr/`, `.docflow/plan/`).
 
 **Core vs optional layers.** Only the **core** is always written:
 `AGENTS.md`, `CLAUDE.md`, `CONVENTIONS.md`, `adr/0000-template.md`, and
@@ -285,11 +285,13 @@ default (the operator may decline it — see Step 5 item 5b).
     files and behaves exactly as a single-repo bootstrap.
 12. **Artefact placement.** Where the non-entry artefacts live — `adr/`,
     `plan/`, `_agent/`, `INDEX.md`, `CONVENTIONS.md`:
-    - **(Recommended) `docs/`** — aligns with the common `doc/adr` / `docs/`
-      convention; keeps the repo root clean (`docs/adr/`, `docs/plan/`, …).
+    - **(Recommended) `.docflow/`** — a hidden root that keeps the repo
+      root clean and groups all docflow artefacts in one place
+      (`.docflow/adr/`, `.docflow/plan/`, …).
+    - **`docs/`** — aligns with the common `doc/adr` / `docs/` convention;
+      records visible alongside other docs.
     - **Repository root** — flat layout; decisions beside the code (good for
       monorepos). This is docflow's own layout.
-    - **`.docflow/`** — hidden root; quietest footprint.
 
     `AGENTS.md` and `CLAUDE.md` are **always** written to the repository
     root (coding agents discover them there). The chosen root is recorded in
@@ -327,10 +329,11 @@ write it into the repo.
 
 **Placement (Q12):** write `AGENTS.md` and `CLAUDE.md` to the repository
 root; write everything below under the chosen **artefact root** (default
-`docs/`) — e.g. `docs/adr/0000-template.md`, `docs/plan/`, `docs/INDEX.md`.
-Record the chosen root in `CONVENTIONS.md` so every lifecycle skill resolves
-paths against it, and adjust the `adr/`/`plan/` cross-paths in the filled
-`AGENTS.md` (and other templates) to the chosen root (e.g. `docs/adr/`).
+`.docflow/`) — e.g. `.docflow/adr/0000-template.md`, `.docflow/plan/`,
+`.docflow/INDEX.md`. Record the chosen root in `CONVENTIONS.md` so every
+lifecycle skill resolves paths against it, and adjust the `adr/`/`plan/`
+cross-paths in the filled `AGENTS.md` (and other templates) to the chosen
+root (e.g. `.docflow/adr/`).
 
 1. `CONVENTIONS.md` — from `templates/CONVENTIONS.md`. Spec other files
    reference. Include the **§Concurrency Guardrails** section only if Q5
