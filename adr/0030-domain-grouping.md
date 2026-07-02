@@ -93,7 +93,7 @@ in the user-facing docs and on the methodology page.
 - None. (Whether to promote the grouping to a derived metadata field is
   recorded as out of scope above, not open.)
 
-## References / cross-links
+## References
 
 - adr/0016-layered-artifact-model.md — domains is one of its optional layers.
 - The methodology page's numbering/identity section, which already
@@ -111,4 +111,4 @@ in the user-facing docs and on the methodology page.
 
 | Role | Name | Date | Signature |
 |------|------|------|-----------|
-| Maintainer | Eugenio Minardi | 2026-06-30 | Accepted |
+| Maintainer | Eugenio Minardi | 2026-06-30 | — |

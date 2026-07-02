@@ -66,7 +66,7 @@ federation-unique identity.
 - None. (Resolved on acceptance: an agent-run lifecycle skill, tolerant of
   members not checked out locally — see AC6, AC7.)
 
-## References / cross-links
+## References
 
 - adr/0021-cross-repo-identity-numbering.md
 - adr/0022-cross-repo-reference-scheme.md

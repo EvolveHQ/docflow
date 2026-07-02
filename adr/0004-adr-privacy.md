@@ -59,7 +59,7 @@ comments, commit messages, PR descriptions, internal docs, `AGENTS.md`,
 
 - None.
 
-## References / cross-links
+## References
 
 - adr/0001-adr-driven-workflow.md
 - adr/0007-lifecycle-skills.md

@@ -62,7 +62,7 @@ picked up and driven by both humans and agents with no oral handover.
 
 - None.
 
-## References / cross-links
+## References
 
 - adr/0002-assessment-driven-bootstrap.md
 - adr/0007-lifecycle-skills.md

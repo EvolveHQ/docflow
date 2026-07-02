@@ -167,10 +167,10 @@ marketplace once listed. No separate packaging.
 ### pi coding agent
 
 ```
-pi install git:github.com/EvolveHQ/docflow
+pi install npm:@evolvehq/docflow
 ```
 
-or, once published to npm, `pi install npm:@evolvehq/docflow`. Pi
+or, from source, `pi install git:github.com/EvolveHQ/docflow`. Pi
 auto-discovers the skills via the `pi.skills` key in
 `package.json`. Invoke with `/skill:bootstrap`, `/skill:new-adr`,
 `/skill:ship-item`, … Pi does **not** auto-trigger skills from their

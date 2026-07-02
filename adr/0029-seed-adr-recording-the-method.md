@@ -91,7 +91,7 @@ ahead of any subsequent decisions, keeping numbering contiguous.
 - None. (Resolved at brainstorm: seed at `0001`; default-on/opt-out;
   `Implemented`; repo's recommended shape; always `0001` on retrofit.)
 
-## References / cross-links
+## References
 
 - adr/0001-adr-driven-workflow.md
 - adr/0003-backfill-retrofit.md

@@ -78,7 +78,7 @@ or joining an existing one?"*
 - None. (Resolved on acceptance: v1 uses operator confirmation only; an
   optional org/host API check may be added later.)
 
-## References / cross-links
+## References
 
 - adr/0019-multirepo-topology.md
 - adr/0013-interactive-assessment-protocol.md

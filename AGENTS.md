@@ -17,8 +17,8 @@ below describe how docflow itself is built and maintained.
 
 - `plugins/docflow/skills/` — **the product**. `bootstrap/` (with
   `templates/`) plus the lifecycle skills (`new-adr`, `new-plan`,
-  `ship-item`, `add-convention`, `audit`, `brainstorm`, `agent-wave`).
-  This is what gets installed. One source for every target.
+  `ship-item`, `add-convention`, `audit`, `brainstorm`, `agent-wave`,
+  `rollup`). This is what gets installed. One source for every target.
 - `plugins/docflow/.claude-plugin/plugin.json` — Claude Code / Cowork
   plugin manifest; `plugins/docflow/.codex-plugin/plugin.json` — Codex.
 - `.claude-plugin/marketplace.json` + `.agents/plugins/marketplace.json`
@@ -28,14 +28,20 @@ below describe how docflow itself is built and maintained.
 - `README.md`, `USAGE.md`, `docs/` — user-facing documentation.
 - `adr/0000-template.md` — canonical ADR template.
 - `adr/NNNN-<kebab-slug>.md` — one ADR per decision, contiguous
-  numbering, no gaps. These describe **docflow itself**.
+  numbering, no gaps. These describe **docflow itself**. (The optional
+  `domains/` grouping layer the product offers is not enabled in this
+  repo.)
 - `INDEX.md` — table regenerated from every ADR's metadata block.
 - `CONVENTIONS.md` — authoring rules (read before editing anything).
 - `plan/todo/NNNN-<slug>.md` — pending work, lower numbers run first.
 - `plan/done/<YYYY-MM-DD>-<slug>.md` — shipped work, chronological.
 - `_agent/` — coordination: `ROLES.md`, `WORKLOG.md`,
   `CURRENT_FOCUS.md`, `HANDOFF.md`, `prompts/`.
-- `scripts/verify.mjs` — the verify gate (manifest + version check).
+- `scripts/verify.mjs` — the static verify gate (manifests + version
+  sync, skill structure + parity, ADR catalogue + INDEX sync,
+  ADR-privacy leak scan).
+- `evals/` — behavioural eval harness: deterministic assertions plus
+  subagent-driven end-to-end skill runs (release gate, not per-push).
 
 ## Hard rules when editing ADRs
 
@@ -60,11 +66,13 @@ These come from `CONVENTIONS.md` and override default behaviour:
 
 ## Domain-specific hard rules
 
-- **Dual-target parity.** Any change to a skill, template, or the skill
-  set must keep BOTH targets working: Claude Code (`.claude-plugin/`)
-  and pi (`package.json`). Skill prose stays agent-neutral; put
-  agent-specific invocation forms (`/name` vs `/skill:name`) in
-  `README.md`, not in skill bodies.
+- **Multi-target parity.** Any change to a skill, template, or the
+  skill set must keep ALL five targets working: Claude Code / Cowork
+  (`.claude-plugin/`), pi (`package.json`), Codex (`.codex-plugin/` +
+  `.agents/`), and OpenCode (skill auto-discovery, no manifest). Skill
+  prose stays agent-neutral; put agent-specific invocation forms
+  (`/name` vs `/skill:name` vs `$name`) in `README.md`, not in skill
+  bodies.
 - **Version-sync invariant.** The `version` in `package.json`,
   `.claude-plugin/plugin.json`, and `.codex-plugin/plugin.json` must
   always match. Bump them together in the same commit. The git tag

@@ -68,7 +68,7 @@ catalogue**:
 
 - None.
 
-## References / cross-links
+## References
 
 - adr/0001-adr-driven-workflow.md
 - adr/0013-interactive-assessment-protocol.md

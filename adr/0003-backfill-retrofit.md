@@ -78,7 +78,7 @@ not silently accumulated.
 
 - None.
 
-## References / cross-links
+## References
 
 - adr/0001-adr-driven-workflow.md
 - adr/0002-assessment-driven-bootstrap.md

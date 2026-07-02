@@ -69,7 +69,7 @@ runs before every push.
 
 - None.
 
-## References / cross-links
+## References
 
 - adr/0001-adr-driven-workflow.md
 - adr/0004-adr-privacy.md

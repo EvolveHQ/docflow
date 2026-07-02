@@ -62,7 +62,7 @@ recommendation depends on the multi-agent mode chosen first).
 
 - None.
 
-## References / cross-links
+## References
 
 - adr/0001-adr-driven-workflow.md
 - adr/0003-backfill-retrofit.md

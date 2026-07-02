@@ -75,7 +75,7 @@ own bootstrap. No lifecycle skill writes across repos to update either.
 - None. (Resolved on acceptance: both artefacts are Markdown — see AC6.
   Exact field names are an implementation detail for the plan item.)
 
-## References / cross-links
+## References
 
 - adr/0017-configurable-artifact-root.md
 - adr/0019-multirepo-topology.md

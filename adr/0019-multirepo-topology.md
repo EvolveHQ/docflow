@@ -99,7 +99,7 @@ exactly as today; the topology question is never asked.
 - None. (Resolved on acceptance: all three topologies ship in v1; C is the
   default.)
 
-## References / cross-links
+## References
 
 - adr/0001-adr-driven-workflow.md
 - adr/0016-layered-artifact-model.md

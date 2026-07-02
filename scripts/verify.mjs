@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Static verify gate for docflow (ADR 0011). Deterministic, no network,
 // no model call. Validates: manifests + version sync (ADR 0008), skill
-// structure + dual-target parity (ADR 0007/0008), ADR catalogue
+// structure + multi-target parity (ADR 0007/0015), ADR catalogue
 // integrity + INDEX sync (ADR 0001), and ADR-privacy leakage into
 // user-visible surfaces (ADR 0004). Exit 0 = shippable, 1 = blocked.
 
@@ -72,7 +72,7 @@ for (const [mfile, mkt, pluginName] of [
   }
 }
 
-// ── B. Skills: frontmatter, body shape, dual-target parity ──
+// ── B. Skills: frontmatter, body shape, multi-target parity ──
 const skillsDir = join(root, 'plugins/docflow/skills');
 const skillDirs = readdirSync(skillsDir, { withFileTypes: true })
   .filter((d) => d.isDirectory())

@@ -63,7 +63,7 @@ not the rules themselves.
 
 - None.
 
-## References / cross-links
+## References
 
 - CONVENTIONS.md (the operative authoring rules)
 - Michael Nygard, "Documenting Architecture Decisions" — https://adr.github.io

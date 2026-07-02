@@ -63,7 +63,7 @@ direct-to-main).
 
 - None.
 
-## References / cross-links
+## References
 
 - adr/0005-multi-agent-coordination.md
 - adr/0001-adr-driven-workflow.md

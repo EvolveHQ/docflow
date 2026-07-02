@@ -58,7 +58,7 @@ consequence captured as the version-sync convention in `CONVENTIONS.md`).
 
 - None.
 
-## References / cross-links
+## References
 
 - adr/0007-lifecycle-skills.md
 - adr/0009-distribution-marketplace-npm.md

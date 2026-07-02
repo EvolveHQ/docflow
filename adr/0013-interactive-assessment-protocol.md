@@ -91,7 +91,7 @@ fast-forward, PR-based, or other).
 
 - None.
 
-## References / cross-links
+## References
 
 - adr/0002-assessment-driven-bootstrap.md (superseded by this ADR)
 - adr/0006-integration-model.md

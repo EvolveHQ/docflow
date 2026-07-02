@@ -62,7 +62,7 @@ Releases are tagged `vX.Y.Z` matching the manifest version, and the npm
 
 - None.
 
-## References / cross-links
+## References
 
 - adr/0008-dual-target-packaging.md
 - `README.md` §Install, `USAGE.md` §Updating the plugin

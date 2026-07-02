@@ -63,7 +63,7 @@ representable and visible.
   column computed from per-repo plan-item state; no cross-repo writes —
   see AC6.)
 
-## References / cross-links
+## References
 
 - adr/0025-cross-repo-plan-ownership.md
 - adr/0024-federated-rollup-catalogue.md

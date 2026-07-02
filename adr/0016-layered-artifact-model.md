@@ -86,7 +86,7 @@ assigned to a domain that does not yet exist.
 
 - None.
 
-## References / cross-links
+## References
 
 - adr/0001-adr-driven-workflow.md
 - adr/0017-configurable-artifact-root.md

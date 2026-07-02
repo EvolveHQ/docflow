@@ -119,7 +119,7 @@ merging and G3 enforces at the gate.
 
 - None.
 
-## References / cross-links
+## References
 
 - adr/0001-adr-driven-workflow.md (numbering this protects)
 - adr/0006-integration-model.md (the merge gate that confirms the number)

@@ -59,7 +59,7 @@ whose code it changes, and per-repo queue ordering is unchanged.
 - None. (Resolved on acceptance: no umbrella record; the owning ADR alone
   groups the per-repo items — see AC6.)
 
-## References / cross-links
+## References
 
 - adr/0021-cross-repo-identity-numbering.md
 - adr/0022-cross-repo-reference-scheme.md

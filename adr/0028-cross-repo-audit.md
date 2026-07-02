@@ -66,7 +66,7 @@ the same punch-list, with mechanical fixes offered where safe.
   named in the member index, tolerant of unavailable members — see AC6,
   consistent with the roll-up skill.)
 
-## References / cross-links
+## References
 
 - adr/0022-cross-repo-reference-scheme.md
 - adr/0023-federation-config-membership-index.md

@@ -66,7 +66,7 @@ unreachable.
   index; an uncheckedout target stays well-formed and audit flags it
   unreachable — see AC1, AC5.)
 
-## References / cross-links
+## References
 
 - adr/0021-cross-repo-identity-numbering.md
 - adr/0023-federation-config-membership-index.md

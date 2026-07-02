@@ -75,7 +75,7 @@ shared checkout), even when each writer runs a single agent.
 
 - None.
 
-## References / cross-links
+## References
 
 - adr/0001-adr-driven-workflow.md
 - adr/0006-integration-model.md

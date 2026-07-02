@@ -88,7 +88,7 @@ before evaluating.
   a worktree subagent and verifying with the static gate. See Capability
   statement §Runner.
 
-## References / cross-links
+## References
 
 - adr/0011-static-skill-validation.md
 - adr/0007-lifecycle-skills.md

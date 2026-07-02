@@ -75,7 +75,7 @@ against it.
 
 - None.
 
-## References / cross-links
+## References
 
 - adr/0016-layered-artifact-model.md
 - adr/0013-interactive-assessment-protocol.md

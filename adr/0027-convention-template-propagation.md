@@ -64,7 +64,7 @@ bootstrap writes into another repo.
 - None. (Resolved on acceptance: copy-at-bootstrap + audit-detected drift,
   referenceable not enforced — see AC6.)
 
-## References / cross-links
+## References
 
 - adr/0019-multirepo-topology.md
 - adr/0023-federation-config-membership-index.md

@@ -26,7 +26,8 @@ Read these files IN ORDER, in full, before any tool calls:
 ## Step 3 — Implement
 
 Implement against the ADR's numbered acceptance criteria. Keep
-dual-target parity: a skill change must work on both Claude Code and pi.
+multi-target parity: a skill change must work on all five targets
+(Claude Code, Claude Cowork, pi, Codex, OpenCode).
 
 ## Step 4 — Verify
 

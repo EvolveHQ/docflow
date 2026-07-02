@@ -95,7 +95,7 @@ installs the existing Claude Code plugin.
 
 - None.
 
-## References / cross-links
+## References
 
 - adr/0008-dual-target-packaging.md (superseded by this ADR)
 - adr/0009-distribution-marketplace-npm.md (the Claude Code / npm channels)

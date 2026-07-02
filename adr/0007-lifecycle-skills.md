@@ -68,7 +68,7 @@ The skills refuse to run on an un-bootstrapped repo and point at
 
 - None.
 
-## References / cross-links
+## References
 
 - adr/0001-adr-driven-workflow.md
 - adr/0008-dual-target-packaging.md

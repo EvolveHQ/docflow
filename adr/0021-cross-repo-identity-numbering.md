@@ -67,7 +67,7 @@ standalone repos keep today's global contiguity.
   choice recorded in the federation config; default repo-prefixed slug —
   see AC6.)
 
-## References / cross-links
+## References
 
 - adr/0019-multirepo-topology.md
 - adr/0023-federation-config-membership-index.md

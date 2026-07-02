@@ -75,4 +75,4 @@ Implemented.
 
 ---
 
-Shipped on 2026-06-29. AC5 met by maintainer-confirmed real usage: bootstrap + lifecycle skills run on Codex, OpenCode, and Cowork (also pi, and mimocode beyond the documented five). ADR 0015 -> Implemented.
+Shipped at HEAD `611a148` on 2026-06-29. AC5 met by maintainer-confirmed real usage: bootstrap + lifecycle skills run on Codex, OpenCode, and Cowork (also pi, and mimocode beyond the documented five). ADR 0015 -> Implemented.

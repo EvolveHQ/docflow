@@ -41,7 +41,7 @@ implementation.>
 
 - <Unresolved items. Empty when ADR transitions to Accepted.>
 
-## References / cross-links
+## References
 
 - adr/NNNN-<other>.md
 - <External links, specs, prior art.>

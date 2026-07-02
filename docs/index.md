@@ -25,10 +25,10 @@ why they help, and where they fall short.
 | `new-adr` | Author one ADR — next contiguous number, right shape, INDEX + domain wiring, supersede linkage. |
 | `new-plan` | Add a `plan/todo` item tracing to its owning ADR(s). |
 | `ship-item` | Run the completion event: verify → integrate → `todo`→`done` → ADR `Accepted`→`Implemented` → INDEX/WORKLOG. |
-| `add-convention` | Assess whether a convention is worth codifying, route it to the right home, then add it (e.g. enable TDD on demand). |
+| `add-convention` | Assess whether a convention is worth codifying, route it to the right home (or to an ADR), then add it — e.g. enable optional practices like TDD on demand. |
 | `audit` | Lint the repo against its own conventions — numbering, INDEX sync, plan coverage, ADR-privacy leaks, and more. |
 | `brainstorm` | Decompose a problem into candidate ADRs + plan items (proposes drafts; writes nothing until approved). |
-| `agent-wave` | Orchestrate a wave of parallel worktree subagents over the queue. |
+| `agent-wave` | Orchestrate a wave of parallel worktree subagents over the queue, with checkpoint or continuous supervision. |
 | `rollup` | For a multi-repo product: aggregate every member repo's ADRs into one derived, product-wide roll-up (run from the home repo). |
 
 ## Install
@@ -46,9 +46,10 @@ matching requests).
 ### pi coding agent
 
 ```
-pi install git:github.com/EvolveHQ/docflow
+pi install npm:@evolvehq/docflow
 ```
 
+(or, from source, `pi install git:github.com/EvolveHQ/docflow`.)
 Invoke as `/skill:bootstrap`, `/skill:new-adr`, …
 
 ### Also: Claude Cowork, Codex, OpenCode

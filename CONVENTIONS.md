@@ -40,18 +40,22 @@ and contain these sections in order: Context, Capability statement,
 User stories / scenarios, Acceptance criteria, Out of scope, Open
 questions, References, Revision History, Approvals.
 
-## Dual-Target Parity
+## Multi-Target Parity
 
-docflow ships for two coding agents — Claude Code and the pi coding
-agent — from the **same** skill files under `plugins/docflow/skills/`. Only the
-manifests differ: `.claude-plugin/plugin.json` + `marketplace.json`
-for Claude Code, `package.json` (`pi.skills`) for pi.
+docflow ships for five coding agents — Claude Code, Claude Cowork, pi,
+Codex, and OpenCode — from the **same** skill files under
+`plugins/docflow/skills/`. Only the manifests differ:
+`.claude-plugin/plugin.json` + `.claude-plugin/marketplace.json` for
+Claude Code / Cowork, `package.json` (`pi.skills`) for pi, and
+`.codex-plugin/plugin.json` + `.agents/plugins/marketplace.json` for
+Codex. OpenCode auto-discovers the same skill files and needs no
+manifest of its own.
 
-Any change to a skill, template, or the skill set must keep **both**
-targets working. Skill prose stays agent-neutral; agent-specific
-invocation forms (`/name` vs `/skill:name`) belong in `README.md`, not
-in the skill bodies. A change that only makes sense on one agent is a
-defect until the other agent is handled too.
+Any change to a skill, template, or the skill set must keep **every**
+target working. Skill prose stays agent-neutral; agent-specific
+invocation forms (`/name` vs `/skill:name` vs `$name`) belong in
+`README.md`, not in the skill bodies. A change that only makes sense on
+one agent is a defect until the other agents are handled too.
 
 ## Version-Sync Invariant
 

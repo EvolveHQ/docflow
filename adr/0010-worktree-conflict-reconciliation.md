@@ -87,7 +87,7 @@ beyond git's line-level merge:
   orchestrator at spawn time?~~ Resolved: orchestrator-computed at spawn
   time, recorded in `_agent/IN_FLIGHT.md` (no separate registry file).
 
-## References / cross-links
+## References
 
 - adr/0005-multi-agent-coordination.md
 - adr/0007-lifecycle-skills.md
