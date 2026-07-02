@@ -1,7 +1,7 @@
 ---
 adr: 0011
 title: Static structural validation of skills and manifests
-status: Accepted
+status: Implemented
 date: 2026-06-01
 owner: Eugenio Minardi
 supersedes:
@@ -110,6 +110,7 @@ runs before every push.
 | 2026-06-01 | r1 | Eugenio Minardi | Initial decision. |
 | 2026-06-01 | r2 | Eugenio Minardi | Implemented in scripts/verify.mjs (plan item 0001). Status Accepted → Implemented. |
 | 2026-07-02 | r3 | Eugenio Minardi | Reopened: extend the gate with catalogue/queue checks — section order, numbered acceptance criteria, depends-on resolution, INDEX row fidelity, done-footer SHA (AC5–9). Motivated by the 2026-07-02 consistency review: every enforced rule held, every unenforced rule had drifted. Status Implemented → Accepted pending plan 0032. |
+| 2026-07-02 | r4 | Eugenio Minardi | Implemented (plan 0032, commit 77cf25b): all five checks live in scripts/verify.mjs, each mutation-tested. AC5–9 met; AC4 (no network/model) preserved. Status Accepted → Implemented. |
 
 ## Approvals
 

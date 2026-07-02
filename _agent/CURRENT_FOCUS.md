@@ -8,10 +8,11 @@ purpose — the durable record lives in git (`git log`),
 If status files and git disagree, git is authoritative; correct this
 file.
 
-> **Released 0.9.3** (tag v0.9.3; `@evolvehq/docflow@0.9.3` on npm) — backlog
-> (0016/0017/0018), seed ADR (0029), coordination revisions + G4, numbering
-> clarification, multi-target verified (0015 Implemented), new logo/theme.
-> main and npm in sync. Catalogue all-Implemented (or Superseded); plan queue empty.
+> **Released 0.9.3** (tag v0.9.3; `@evolvehq/docflow@0.9.3` on npm).
+> main is **ahead of the release** with unreleased maintenance: the
+> 2026-07-02 full-repo consistency pass (2602a04) and the static-gate
+> extension (plan 0032, 77cf25b). A 0.9.4 patch would carry these.
+> Catalogue all-Implemented (or Superseded); plan queue empty.
 
 ## Active state
 
@@ -22,42 +23,31 @@ file.
 
 ## Last shipped
 
-Multi-repo federation, foundation → audit backstop **Implemented**: ADRs
-**0019/0020/0023** (69fca8b — topology, establish/join, config + member
-index), **0021/0022** (e01cd96 — identity + cross-repo references),
-**0024** (f6d07db — new `rollup` skill), and **0028** (5884a5f — audit
-check 12, cross-repo federation checks). 9 skills total. Earlier: ADRs
-0010–0014 Implemented; 0015 Accepted (multi-target portability —
-verification pending). 0002/0008 Superseded. **Released 0.9.1** (tag
-v0.9.1; published `@evolvehq/docflow@0.9.1` to npm — 0.9.0 + a docs
-refresh for federation/rollup/five-agent surfaces).
-
-**Assessment remediation complete** (plan 0025/0026/0027, commits dab737c /
-dd79d06 / 8f87bae): the adversarial review's one FAIL and the PARTIALs are
-closed — 0019 topology A/B/C now genuinely differentiated (re-Implemented),
-cross-repo resolution operationalised (0021/0022/0028), and the join /
-roll-up-filename / artefact-root prose corrected (0020/0023/0024). All
-federation ADRs honestly match the skills. **Unreleased** (still 0.9.1 on
-npm; a 0.9.2 patch would carry these fixes).
+**Plan 0032 — static gate extension** (2026-07-02, 77cf25b): five new
+deterministic checks in `scripts/verify.mjs` — ADR section order,
+numbered acceptance criteria, depends-on resolution, INDEX row fidelity
+(status/date/depends-on, not just row presence), and plan/done HEAD-SHA
+footers. Each mutation-tested. ADR 0011 reopened (r3) → re-Implemented
+(r4). Preceded the same day by a full-repo consistency pass (2602a04):
+dual-target → multi-target prose in CONVENTIONS/AGENTS/prompts,
+`References / cross-links` → `References` header standardisation across
+the catalogue and shipped templates, pi install docs npm-first, plus
+small ADR/plan-footer repairs — every one of which the extended gate
+now catches automatically.
 
 ## Next item
 
-**Backlog cleared** (2026-06-23): ADRs **0016** (layered artifact model,
-commit 2a837a7), **0017** (configurable artifact root, 5895168), and
-**0018** (WIP-stays-out docs, c1c441e) all Implemented. Federation
-(0019–0028) Implemented and released in **0.9.2** (main and npm in sync;
-post-0.9.2 backlog work is unreleased — a 0.9.3 would carry it).
+Queue is empty. Candidate next decisions from the 2026-07-02 review
+discussion (not yet queued — need /new-adr or /add-convention first):
 
-**One item remains, operator-blocked:**
-`plan/todo/0010-multi-target-verification.md` (ADR 0015, still Accepted).
-AC5 needs behavioural `bootstrap`+`new-adr` runs on **real Codex, OpenCode,
-and Cowork** installs — not runnable from here. A Claude Code smoke-run
-(= the Cowork plugin artefact) passed and is logged in the item, with
-turnkey operator steps for the three; Codex install verified per ADR 0015
-r3. Ships when the three real-agent runs are recorded.
-
-The coordination tier (0025–0027) is now **behaviourally verified** too
-(2026-06-29): a two-repo smoke test exercised per-repo plan ownership, the
-derived aggregate-status column ("1 of 2 repos"), and convention-drift
-detection — all passed. No soft verification caveats remain on the
-federation; only the multi-target item (0010) stays operator-blocked.
+1. **Prose-drift detection** — derive shared facts (target list, skill
+   inventory) from the manifests and check the prose surfaces against
+   them (new ADR).
+2. **Gate-integrity convention** — gate changes (`scripts/verify.mjs`,
+   `evals/`) ship in their own commit, never bundled with product
+   changes (add-convention).
+3. **Executable acceptance criteria** — bind ADR criterion N to eval
+   assertion N so "Implemented" means "asserted" (new ADR, the big
+   one).
+4. Deferred: provenance in WORKLOG; a /release skill (write it while
+   performing the next release).

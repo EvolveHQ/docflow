@@ -55,3 +55,10 @@ When this ships, ADR 0011 advances Accepted → Implemented (again).
 ## Dependencies
 
 None. The queue is otherwise empty.
+
+---
+
+Shipped at HEAD `77cf25b` on 2026-07-02. All five checks implemented in
+scripts/verify.mjs and mutation-tested (each fails with a file-and-rule
+message on an injected fault; clean repo passes — 30 ADRs, 40 shipped
+plan items validated). ADR 0011 → Implemented (r4).
