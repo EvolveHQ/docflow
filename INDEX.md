@@ -15,7 +15,7 @@ ADR change.
 | [0008](adr/0008-dual-target-packaging.md) | Dual-target packaging from one skill source | Superseded | 2026-05-22 | 0001, 0007 |
 | [0009](adr/0009-distribution-marketplace-npm.md) | Distribution via self-hosted marketplace and npm/pi package | Implemented | 2026-05-22 | 0008 |
 | [0010](adr/0010-worktree-conflict-reconciliation.md) | Content-level conflict reconciliation across worktrees | Implemented | 2026-06-01 | 0005, 0007 |
-| [0011](adr/0011-static-skill-validation.md) | Static structural validation of skills and manifests | Implemented | 2026-06-01 | 0001, 0007, 0008 |
+| [0011](adr/0011-static-skill-validation.md) | Static structural validation of skills and manifests | Accepted | 2026-06-01 | 0001, 0007, 0008 |
 | [0012](adr/0012-skill-behavioural-evals.md) | Behavioural and end-to-end evaluation of skill outcomes | Implemented | 2026-06-01 | 0001, 0011 |
 | [0013](adr/0013-interactive-assessment-protocol.md) | Standard interactive assessment protocol for skills | Implemented | 2026-06-02 | 0006, 0007 |
 | [0014](adr/0014-concurrency-guardrails.md) | Concurrency guardrails for ADR and plan creation | Implemented | 2026-06-02 | 0001, 0006, 0010, 0013 |

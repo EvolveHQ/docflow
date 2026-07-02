@@ -1,7 +1,7 @@
 ---
 adr: 0011
 title: Static structural validation of skills and manifests
-status: Implemented
+status: Accepted
 date: 2026-06-01
 owner: Eugenio Minardi
 supersedes:
@@ -40,6 +40,18 @@ manifests:
 - Manifest parsing and `package.json` ↔ `plugin.json` version agreement
   (folds in today's `scripts/verify.mjs`).
 
+The same gate also validates the repo's own catalogue and queue beyond
+numbering (r3):
+
+- **Catalogue integrity** — per-ADR section order matching the
+  documented shape, a numbered acceptance-criteria list in every ADR,
+  and every `depends-on` entry resolving to an existing catalogue ADR.
+- **INDEX row fidelity** — each `INDEX.md` row's status, date, and
+  depends-on agree with the ADR's frontmatter (not merely row
+  presence).
+- **Queue discipline** — every `plan/done/` item carries a footer
+  naming the shipping HEAD SHA (minor formatting variants tolerated).
+
 It exits non-zero on any violation and is wired as the verify gate, so it
 runs before every push.
 
@@ -59,11 +71,25 @@ runs before every push.
 3. Manifest parse + version-sync checks from `scripts/verify.mjs` are
    subsumed by, or invoked from, this validator.
 4. The gate runs with no network and no model call.
+5. The gate fails when any catalogue ADR's section order deviates from
+   the documented shape order.
+6. The gate fails when any catalogue ADR lacks a numbered
+   acceptance-criteria list.
+7. The gate fails when any `depends-on` entry names a non-existent ADR.
+8. The gate fails when an `INDEX.md` row's status, date, or depends-on
+   disagrees with the ADR's frontmatter.
+9. The gate fails when a `plan/done/` file carries no HEAD-SHA footer.
 
 ## Out of scope
 
 - Behavioural correctness of what a skill produces — that is the e2e
   tier, adr/0012-skill-behavioural-evals.md.
+- Revision-History-row enforcement on substantive edits — not statically
+  decidable from a repository snapshot.
+- `Rationale:` commit-footer enforcement — belongs in a commit hook, not
+  a file-state gate.
+- Prose-drift detection across README/USAGE/docs — a separate decision,
+  not yet recorded.
 
 ## Open questions
 
@@ -83,9 +109,10 @@ runs before every push.
 |------|----------|--------|--------|
 | 2026-06-01 | r1 | Eugenio Minardi | Initial decision. |
 | 2026-06-01 | r2 | Eugenio Minardi | Implemented in scripts/verify.mjs (plan item 0001). Status Accepted → Implemented. |
+| 2026-07-02 | r3 | Eugenio Minardi | Reopened: extend the gate with catalogue/queue checks — section order, numbered acceptance criteria, depends-on resolution, INDEX row fidelity, done-footer SHA (AC5–9). Motivated by the 2026-07-02 consistency review: every enforced rule held, every unenforced rule had drifted. Status Implemented → Accepted pending plan 0032. |
 
 ## Approvals
 
 | Role | Name | Date | Signature |
 |------|------|------|-----------|
-| Maintainer | Eugenio Minardi | 2026-06-01 | — |
+| Maintainer | Eugenio Minardi | 2026-07-02 | — |
