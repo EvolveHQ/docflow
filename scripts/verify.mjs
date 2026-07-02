@@ -2,8 +2,10 @@
 // Static verify gate for docflow (ADR 0011). Deterministic, no network,
 // no model call. Validates: manifests + version sync (ADR 0008), skill
 // structure + multi-target parity (ADR 0007/0015), ADR catalogue
-// integrity + INDEX sync (ADR 0001), and ADR-privacy leakage into
-// user-visible surfaces (ADR 0004). Exit 0 = shippable, 1 = blocked.
+// integrity + INDEX row fidelity (ADR 0001; section order, numbered
+// acceptance criteria, depends-on resolution per ADR 0011 r3),
+// ADR-privacy leakage into user-visible surfaces (ADR 0004), and
+// plan/done queue discipline. Exit 0 = shippable, 1 = blocked.
 
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
@@ -111,17 +113,24 @@ for (const name of skillDirs) {
   });
 }
 
-// ── C. ADR catalogue: numbering, status, INDEX sync ──
+// ── C. ADR catalogue: numbering, status, structure, INDEX fidelity ──
 const VALID_STATUS = new Set([
   'Proposed', 'Accepted', 'Implemented', 'Superseded', 'Deprecated',
 ]);
+// Expected H2 sequence for the single ADR shape this repo uses
+// (CONVENTIONS.md §ADR Shapes).
+const SECTION_ORDER = [
+  'Context', 'Capability statement', 'User stories / scenarios',
+  'Acceptance criteria', 'Out of scope', 'Open questions', 'References',
+  'Revision History', 'Approvals',
+];
 const adrDir = join(root, 'adr');
 const catalogue = [];
 if (existsSync(adrDir)) {
   const adrFiles = readdirSync(adrDir)
     .filter((f) => /^\d{4}-.+\.md$/.test(f) && f !== '0000-template.md');
   for (const f of adrFiles) {
-    const { fields } = frontmatter(read(`adr/${f}`));
+    const { fields, body } = frontmatter(read(`adr/${f}`));
     const fileNum = f.slice(0, 4);
     if (!fields) {
       fail(`adr/${f}: missing frontmatter`);
@@ -133,7 +142,23 @@ if (existsSync(adrDir)) {
     if (!VALID_STATUS.has(fields.status)) {
       fail(`adr/${f}: invalid status "${fields.status}"`);
     }
-    catalogue.push({ num: Number(fileNum), file: f, slug: f.replace(/\.md$/, '') });
+    // Section order matches the documented shape exactly.
+    const heads = [...body.matchAll(/^##\s+(.+?)\s*$/gm)].map((m) => m[1]);
+    if (heads.join(' | ') !== SECTION_ORDER.join(' | ')) {
+      fail(
+        `adr/${f}: section order [${heads.join(', ')}] != ` +
+        `[${SECTION_ORDER.join(', ')}] (CONVENTIONS.md §ADR Shapes)`,
+      );
+    }
+    // Acceptance criteria carry a numbered list.
+    const acBlock = body.split(/^## Acceptance criteria\s*$/m)[1]?.split(/^## /m)[0] ?? '';
+    if (!/^\d+\.\s+\S/m.test(acBlock)) {
+      fail(`adr/${f}: Acceptance criteria section has no numbered list`);
+    }
+    const deps = (fields['depends-on'] ?? '').match(/\d{4}/g) ?? [];
+    catalogue.push({
+      num: Number(fileNum), file: f, slug: f.replace(/\.md$/, ''), fields, deps,
+    });
   }
   catalogue.sort((a, b) => a.num - b.num);
   catalogue.forEach((adr, i) => {
@@ -141,12 +166,37 @@ if (existsSync(adrDir)) {
       fail(`ADR numbering not contiguous: expected ${String(i + 1).padStart(4, '0')}, got ${adr.file}`);
     }
   });
-  // INDEX sync — every catalogue ADR appears in INDEX.md.
+  // depends-on entries resolve to existing catalogue ADRs.
+  const nums = new Set(catalogue.map((a) => String(a.num).padStart(4, '0')));
+  for (const adr of catalogue) {
+    for (const d of adr.deps) {
+      if (!nums.has(d)) {
+        fail(`adr/${adr.file}: depends-on "${d}" names a non-existent ADR`);
+      }
+    }
+  }
+  // INDEX fidelity — every catalogue ADR has a row whose status, date,
+  // and depends-on agree with the ADR's frontmatter.
   if (existsSync(join(root, 'INDEX.md'))) {
-    const index = read('INDEX.md');
+    const indexLines = read('INDEX.md').split('\n');
     for (const adr of catalogue) {
-      if (!index.includes(adr.file)) {
+      const row = indexLines.find((l) => l.includes(`(adr/${adr.file})`));
+      if (!row) {
         fail(`INDEX.md: missing row for adr/${adr.file} (regenerate INDEX)`);
+        continue;
+      }
+      // | [NNNN](adr/…) | Title | Status | Date | Depends on |
+      const cols = row.split('|').map((c) => c.trim());
+      const [status, date, depCol] = [cols[3], cols[4], cols[5]];
+      if (status !== adr.fields.status) {
+        fail(`INDEX.md: adr/${adr.file} row status "${status}" != frontmatter "${adr.fields.status}" (regenerate INDEX)`);
+      }
+      if (date !== adr.fields.date) {
+        fail(`INDEX.md: adr/${adr.file} row date "${date}" != frontmatter "${adr.fields.date}" (regenerate INDEX)`);
+      }
+      const rowDeps = ((depCol ?? '').match(/\d{4}/g) ?? []).join(', ');
+      if (rowDeps !== adr.deps.join(', ')) {
+        fail(`INDEX.md: adr/${adr.file} row depends-on "${rowDeps || '—'}" != frontmatter "${adr.deps.join(', ') || '—'}" (regenerate INDEX)`);
       }
     }
   } else {
@@ -197,6 +247,21 @@ if (existsSync(tplDir)) {
   for (const f of readdirSync(tplDir)) scanLeaks(`plugins/docflow/skills/bootstrap/templates/${f}`);
 }
 
+// ── E. Plan queue discipline: shipped items name the shipping SHA ──
+// Tolerant of formatting variants (e.g. a bolded "**Shipped**"); strict
+// on substance: the word Shipped, HEAD, and a backticked commit SHA.
+let doneCount = 0;
+const doneDir = join(root, 'plan/done');
+if (existsSync(doneDir)) {
+  for (const f of readdirSync(doneDir).filter((n) => n.endsWith('.md'))) {
+    doneCount++;
+    const text = read(`plan/done/${f}`).replace(/\*/g, '');
+    if (!/Shipped[^\n]*HEAD[^\n]*`[0-9a-f]{7,40}`/.test(text)) {
+      fail(`plan/done/${f}: footer does not name the shipping HEAD SHA`);
+    }
+  }
+}
+
 // ── Report ──
 if (errors.length) {
   console.error('verify: FAIL');
@@ -205,5 +270,5 @@ if (errors.length) {
 }
 console.log(
   `verify: OK (version ${pkg.version}, ${skillDirs.length} skills, ` +
-  `${catalogue.length} ADRs)`,
+  `${catalogue.length} ADRs, ${doneCount} shipped plan items)`,
 );
