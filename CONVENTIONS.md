@@ -72,6 +72,24 @@ and the published npm version must match this same number. Each
 marketplace manifest (`.claude-plugin/marketplace.json`,
 `.agents/plugins/marketplace.json`) must list the plugin by name.
 
+## Gate Integrity
+
+The quality gates — `scripts/verify.mjs` (static tier) and `evals/`
+(behavioural tier) — judge every other change. A commit must never
+change a gate's behaviour AND the files that gate judges (skills,
+templates, manifests, ADR catalogue, plan queue, docs) at the same
+time, so a change can never weaken the gate that admits it.
+
+Two sanctioned exceptions, both named in the commit message:
+
+- **Tighten-and-repair.** A commit that adds or strengthens a check may
+  also fix the true positives the new check surfaces.
+- **Comment-only.** Gate edits that cannot change behaviour (comments,
+  failure-message wording) may ride along with related prose changes.
+
+Weakening a check — removing it, narrowing its scope, suppressing a
+failure — always ships alone, with the reason in the commit message.
+
 ## Skill Authoring
 
 The product is the `plugins/docflow/skills/` tree. When adding or editing a skill:

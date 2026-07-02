@@ -78,6 +78,11 @@ These come from `CONVENTIONS.md` and override default behaviour:
   always match. Bump them together in the same commit. The git tag
   `vX.Y.Z` and the published npm version track the same number.
   `scripts/verify.mjs` enforces this.
+- **Gate integrity.** Never change gate behaviour (`scripts/verify.mjs`,
+  `evals/`) and the files the gate judges in the same commit.
+  Exceptions, named in the commit message: a new/stricter check may
+  ship with the repairs it surfaces; comment-only gate edits may ride
+  along. Weakening a check always ships alone, with the reason stated.
 
 ## Implementation work
 
