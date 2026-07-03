@@ -28,10 +28,19 @@ Author one new ADR, consistent with this repo's conventions.
 
 Run the shared assessment protocol before authoring:
 
-- **Opt-out gate first.** Ask whether to run the assessment or skip
-  straight to authoring. Recommend **running** it when the request
-  arrived with little or no context; recommend **skipping** when the
-  decision is already fully specified.
+- **Depth selector first.** Ask how deep this assessment should go:
+  **express** — every choice takes its recommended default; only
+  questions with no derivable default (the free-text essentials) are
+  still asked; **guided** — only the questions marked high-impact
+  below, plus the free-text essentials; **full** — every question
+  below. If the repo's `CONVENTIONS.md` records an `Assessment depth:`,
+  pre-select it as the recommended option — the selector always
+  appears; a recorded depth is never applied silently. Otherwise
+  recommend **full** when the request arrived with little or no
+  context and **express** when it is already fully specified. At any
+  question the operator may answer "defaults from here" or "go
+  deeper"; honour the switch immediately.
+
 - Ask the questions below **one at a time**, each with a **recommended
   option** and a one-line reason; wait for each answer.
 - Use **structured selection** (single- or multiple-choice). If the host
@@ -46,14 +55,16 @@ Questions (skip any the request already answers):
 1. **Shape** — capability or technology (only if the repo splits shapes;
    single-shape repos skip this). *Recommended: per the request's intent.*
 2. **Supersede?** — none, or select the ADR(s) this replaces.
-   *Recommended: none.*
+   *Recommended: none.* *(High-impact — asked in guided: supersession
+   linkage is hard to reverse.)*
 3. **Initial status** — Proposed or Accepted. *Recommended: Proposed.*
    **Reconstructing already-shipped work** (a development built ahead of the
    process) is the exception: author at `Implemented`, Revision History
    citing the implementing commits and noting it was recorded after the
    fact, and write a matching `plan/done` entry.
 4. **Create a plan item now?** — yes / no. *Recommended: yes when Accepted.*
-5. **Title** — free text (the one unavoidable open answer).
+5. **Title** — free text (the one unavoidable open answer; asked at
+   every depth).
 
 ## Step 1 — Determine shape and number
 

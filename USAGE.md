@@ -251,10 +251,15 @@ files in sync as a side effect.
 `brainstorm`, and `agent-wave` each open with a brief assessment before
 acting — the same pattern bootstrap uses (§3):
 
-- An **opt-out gate** first: *run the assessment, or skip it?* The
-  recommended default flips on context — *run* when you invoked the skill
-  with little detail, *skip* when your request already specifies
-  everything.
+- A **depth selector** first: *express* (every choice takes its
+  recommended default; only free-text essentials like a title are
+  still asked), *guided* (only the high-impact questions), or *full*
+  (everything). The recommendation follows the `Assessment depth:`
+  recorded in your `CONVENTIONS.md` if present — otherwise it flips on
+  context: *full* when you invoked the skill with little detail,
+  *express* when your request already specifies everything. The
+  selector always appears; a recorded depth is never applied silently,
+  and at any question you can say "defaults from here" or "go deeper".
 - Questions are asked **one at a time**, each with a **recommended
   option** you can accept, override, or replace.
 - Answers use **scroll-to-select** (single- or multiple-choice) where the

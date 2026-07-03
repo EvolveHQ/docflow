@@ -20,10 +20,19 @@ stenographer.
 Run the shared assessment protocol; the triage (Step 1) and routing
 (Step 2) questions are asked under it:
 
-- **Opt-out gate first.** Ask whether to run the assessment or skip to
-  drafting. Recommend **running** it when the request arrived with little
-  or no context; recommend **skipping** when the convention and its home
-  are already clear.
+- **Depth selector first.** Ask how deep this assessment should go:
+  **express** — every choice takes its recommended default; only
+  questions with no derivable default (the free-text essentials) are
+  still asked; **guided** — only the questions marked high-impact
+  below, plus the free-text essentials; **full** — every question
+  below. If the repo's `CONVENTIONS.md` records an `Assessment depth:`,
+  pre-select it as the recommended option — the selector always
+  appears; a recorded depth is never applied silently. Otherwise
+  recommend **full** when the request arrived with little or no
+  context and **express** when it is already fully specified. At any
+  question the operator may answer "defaults from here" or "go
+  deeper"; honour the switch immediately.
+
 - Ask questions **one at a time**, each with a **recommended option** and
   a one-line reason; wait for each answer.
 - Use **structured selection** (single- or multiple-choice). If the host
@@ -37,13 +46,16 @@ Run the shared assessment protocol; the triage (Step 1) and routing
 Questions (skip any the request already answers):
 1. **Worth codifying?** — yes (recurring, stable, testable) or no
    (one-off, duplicate, churn-prone, vague). *Recommended: per the Step 1
-   triage; this question gates the rest.*
+   triage; this question gates the rest.* *(High-impact — asked in
+   guided.)*
 2. **Home** — `AGENTS.md` hard rule / `CONVENTIONS.md` guidance /
    `GLOSSARY.md` term / actually a decision (hand off to the **new-adr**
    skill). *Recommended: per the rule's nature (see Step 2).*
+   *(High-impact — asked in guided: the wrong home is churn to move.)*
 3. **Enforce in the verify gate?** — yes / no. *Recommended: no, unless
    the rule is mechanically checkable.*
-4. **Wording** — free text (the rule statement itself).
+4. **Wording** — free text (the rule statement itself; asked at every
+   depth).
 
 ## Step 1 — Assess: is this worth codifying?
 

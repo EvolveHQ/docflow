@@ -21,10 +21,19 @@ Add one item to the implementation queue.
 
 Run the shared assessment protocol before queueing:
 
-- **Opt-out gate first.** Ask whether to run the assessment or skip to
-  writing the item. Recommend **running** it when the request arrived
-  with little or no context; recommend **skipping** when the item is
-  already fully specified.
+- **Depth selector first.** Ask how deep this assessment should go:
+  **express** — every choice takes its recommended default; only
+  questions with no derivable default (the free-text essentials) are
+  still asked; **guided** — only the questions marked high-impact
+  below, plus the free-text essentials; **full** — every question
+  below. If the repo's `CONVENTIONS.md` records an `Assessment depth:`,
+  pre-select it as the recommended option — the selector always
+  appears; a recorded depth is never applied silently. Otherwise
+  recommend **full** when the request arrived with little or no
+  context and **express** when it is already fully specified. At any
+  question the operator may answer "defaults from here" or "go
+  deeper"; honour the switch immediately.
+
 - Ask the questions below **one at a time**, each with a **recommended
   option** and a one-line reason; wait for each answer.
 - Use **structured selection** (single- or multiple-choice). If the host
@@ -37,13 +46,15 @@ Run the shared assessment protocol before queueing:
 
 Questions (skip any the request already answers):
 1. **Owning ADR(s)** — select from the catalogue (single or multiple).
-   *Recommended: the ADR named in the request.*
+   *Recommended: the ADR named in the request.* *(High-impact — asked
+   in guided: the trace to a decision is the item's identity.)*
 2. **Dependencies** — none, or select the plan items / ADRs that must
    land first. *Recommended: none.*
 3. **Priority / position** — next number, or insert ahead of existing
    items. *Recommended: next number.*
 4. **Scope & exit criteria** — free text, mapped to the owning ADR's
-   numbered acceptance criteria where possible.
+   numbered acceptance criteria where possible (free-text essential;
+   asked at every depth).
 
 ## Step 1 — Identify the owning ADR(s)
 

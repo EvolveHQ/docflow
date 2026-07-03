@@ -36,14 +36,24 @@ you there rather than pretending to be it.
 
 Run the shared assessment protocol before spawning anything:
 
-- **Opt-out gate first.** Ask whether to run the assessment or proceed on
-  recommended defaults. Recommend **running** it when the request arrived
-  with little or no context (e.g. a bare "fan out the queue"); recommend
-  **skipping** when width, budget, supervision, and merge strategy were
-  all specified.
+- **Depth selector first.** Ask how deep this assessment should go:
+  **express** — every choice takes its recommended default; only
+  questions with no derivable default (the free-text essentials) are
+  still asked; **guided** — only the questions marked high-impact
+  below, plus the free-text essentials; **full** — every question
+  below. If the repo's `CONVENTIONS.md` records an `Assessment depth:`,
+  pre-select it as the recommended option — the selector always
+  appears; a recorded depth is never applied silently. Otherwise
+  recommend **full** when the request arrived with little or no
+  context and **express** when it is already fully specified. At any
+  question the operator may answer "defaults from here" or "go
+  deeper"; honour the switch immediately.
+
 - The Step 1 parameters **are** the assessment questions: ask them **one
   at a time**, each with a **recommended option** and a one-line reason;
-  wait for each answer.
+  wait for each answer. **Budget** and **supervision** are the
+  high-impact parameters (asked in guided); width and merge strategy
+  take their recommended defaults.
 - Use **structured selection** (single- or multiple-choice). If the host
   exposes a structured single-/multi-select question tool, use it and
   mark the recommended option; otherwise list options A/B/C in plain text

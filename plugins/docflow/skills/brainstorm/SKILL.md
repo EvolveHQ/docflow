@@ -23,10 +23,19 @@ to the **new-adr** and **new-plan** skills.
 
 Run the shared assessment protocol before decomposing:
 
-- **Opt-out gate first.** Ask whether to run the assessment or go
-  straight to decomposing. Recommend **running** it when the request
-  arrived with little or no context; recommend **skipping** when the goal
-  and scope are already clear.
+- **Depth selector first.** Ask how deep this assessment should go:
+  **express** — every choice takes its recommended default; only
+  questions with no derivable default (the free-text essentials) are
+  still asked; **guided** — only the questions marked high-impact
+  below, plus the free-text essentials; **full** — every question
+  below. If the repo's `CONVENTIONS.md` records an `Assessment depth:`,
+  pre-select it as the recommended option — the selector always
+  appears; a recorded depth is never applied silently. Otherwise
+  recommend **full** when the request arrived with little or no
+  context and **express** when it is already fully specified. At any
+  question the operator may answer "defaults from here" or "go
+  deeper"; honour the switch immediately.
+
 - Ask the questions below **one at a time**, each with a **recommended
   option** and a one-line reason; wait for each answer.
 - Use **structured selection** (single- or multiple-choice). If the host
@@ -38,12 +47,15 @@ Run the shared assessment protocol before decomposing:
   answer, and never guess scope when invoked with no context.
 
 Questions (skip any the request already answers):
-1. **Goal / problem** — free text (the unavoidable open answer) if not
-   already given.
+1. **Goal / problem** — free text (the unavoidable open answer; asked
+   at every depth) if not already given.
 2. **Output** — candidate ADRs only, or ADRs + plan items.
    *Recommended: ADRs + plan items.*
-3. **Depth** — quick (top candidates) or thorough (full decomposition).
-   *Recommended: quick first, expand on request.*
+3. **Decomposition depth** — quick (top candidates) or thorough (full
+   decomposition). *Recommended: quick first, expand on request.*
+
+No question here is marked high-impact — a guided run behaves like
+express for this skill.
 
 This skill still **writes nothing** until you approve the outline.
 
