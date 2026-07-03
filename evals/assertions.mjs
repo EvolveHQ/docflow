@@ -39,6 +39,23 @@ export function assertTree(root, paths) {
   }
 }
 
+// None of the listed paths exists under root (e.g. layers a profile
+// promises to leave off).
+export function assertAbsent(root, paths) {
+  const present = paths.filter((p) => existsSync(join(root, p)));
+  if (present.length) {
+    throw new Error(`paths expected absent but present: ${present.join(', ')}`);
+  }
+}
+
+// A file under root contains the given substring (CRLF-tolerant).
+export function assertFileContains(root, rel, substring) {
+  if (!existsSync(join(root, rel))) throw new Error(`${rel} missing`);
+  if (!read(root, rel).includes(substring)) {
+    throw new Error(`${rel} does not contain "${substring}"`);
+  }
+}
+
 // ADR numbers are contiguous from 0001 with no gaps or duplicates.
 export function assertContiguousAdrs(root) {
   const adrs = listAdrs(root);

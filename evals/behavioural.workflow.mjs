@@ -55,11 +55,24 @@ const CASES = [
     prompt:
       'Behavioural eval of the docflow `bootstrap` skill. Work ONLY in your worktree; do NOT push. ' +
       'Create a fresh scratch repo in a temp subdirectory (git init), then following plugins/docflow/skills/bootstrap/SKILL.md ' +
-      'scaffold it using these scripted answers: en-GB; single ADR shape; full lifecycle; use plan folder; ' +
+      'scaffold it using these scripted answers: FULL assessment depth; en-GB; single ADR shape; full lifecycle; use plan folder; ' +
       'single agent; direct-to-main; default git contract; defer optional artefacts; verify gate = manual; ' +
-      'no domain hard rules. Do NOT ask questions interactively — use those answers. PASS only if the scratch ' +
+      'no domain hard rules; standalone; artefact root = repository root. Do NOT ask questions interactively — use those answers. PASS only if the scratch ' +
       'repo then contains AGENTS.md, CLAUDE.md, CONVENTIONS.md, INDEX.md, adr/0000-template.md, plan/todo, ' +
       'plan/done, and _agent/ROLES.md. Report the resulting file tree and whether all required paths exist.',
+  },
+  {
+    key: 'bootstrap-express',
+    prompt:
+      'Behavioural eval of the docflow `bootstrap` skill at EXPRESS depth. Work ONLY in your worktree; do NOT push. ' +
+      'Create a fresh scratch repo in a temp subdirectory (git init), then following plugins/docflow/skills/bootstrap/SKILL.md ' +
+      'run an express-depth bootstrap with project name "scratch-express" and description "eval fixture". ' +
+      'Do NOT ask questions interactively — express takes the fixed profile. PASS only if ALL hold in the scratch repo: ' +
+      '(1) AGENTS.md and CLAUDE.md at the root; (2) CONVENTIONS.md, INDEX.md, adr/0000-template.md and the seed ' +
+      'adr/0001-record-architecture-decisions.md under the DEFAULT artefact root .docflow/; (3) NO plan/, _agent/, ' +
+      'GLOSSARY.md, domains/, or federation files anywhere (root or .docflow/); (4) .docflow/CONVENTIONS.md contains ' +
+      '"Assessment depth: express" and records direct-to-main fast-forward integration. Report the file tree and ' +
+      'each of the four checks explicitly.',
   },
 ]
 

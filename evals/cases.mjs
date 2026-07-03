@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import {
   assertTree, assertContiguousAdrs, assertIndexSync, assertAdrStatus,
-  assertPlanShipped,
+  assertPlanShipped, assertAbsent, assertFileContains,
 } from './assertions.mjs';
 
 const repoRoot = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -40,6 +40,28 @@ export const cases = [
         'AGENTS.md', 'CLAUDE.md', 'CONVENTIONS.md', 'INDEX.md',
         'adr/0000-template.md', 'plan/todo', 'plan/done', '_agent/ROLES.md',
       ]);
+    },
+  },
+  {
+    name: 'bootstrap: express depth scaffolds the fixed minimal profile',
+    skill: 'bootstrap',
+    inputs: { depth: 'express', name: 'scratch-express', description: 'eval fixture' },
+    assert(repo) {
+      // Entry points at the root; artefacts under the default root.
+      assertTree(repo, [
+        'AGENTS.md', 'CLAUDE.md',
+        '.docflow/CONVENTIONS.md', '.docflow/INDEX.md',
+        '.docflow/adr/0000-template.md',
+        '.docflow/adr/0001-record-architecture-decisions.md',
+      ]);
+      // Optional layers stay off in the express profile.
+      assertAbsent(repo, [
+        '.docflow/plan', 'plan', '_agent', '.docflow/GLOSSARY.md',
+        'GLOSSARY.md', '.docflow/domains', 'domains',
+        '.docflow/federation.md', 'federation.md',
+      ]);
+      assertFileContains(repo, '.docflow/CONVENTIONS.md', 'Assessment depth: express');
+      assertFileContains(repo, '.docflow/CONVENTIONS.md', 'fast-forward');
     },
   },
   {
