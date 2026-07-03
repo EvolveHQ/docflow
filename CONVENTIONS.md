@@ -4,6 +4,17 @@
 
 Project name: docflow.
 
+Artefact root: `.` — `adr/`, `plan/`, `INDEX.md`, and this file live at
+the repository root. `AGENTS.md` and `CLAUDE.md` also stay at the
+repository root. Every lifecycle skill resolves paths against this root.
+
+Discovery: a `.docflow/` **directory** at the repository root is itself
+the artefact root; any other root is named by a one-line `.docflow`
+**file** at the repository root (`root: <path>`). This repo dogfoods the
+pointer-file form with `root: .`. Tools resolve the root in that order,
+falling back to probing `docs/` then the repository root for this file.
+The pointer and the record above must agree.
+
 Language: en-GB throughout. Use forms such as organisation, behaviour,
 prioritise, catalogue, authorisation, artefact, customisation
 consistently across all files. This matches the existing `README.md`
