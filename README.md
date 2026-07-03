@@ -78,7 +78,10 @@ file an ADR under a new domain.)
 **Placement:** `AGENTS.md` and `CLAUDE.md` always stay at the repository
 root; everything else lives under a configurable **artefact root** —
 `.docflow/` (the default), `docs/`, or the repo root — chosen at bootstrap
-and recorded in `CONVENTIONS.md`.
+and recorded in `CONVENTIONS.md`. Discovery is deterministic for tools
+(the same pattern as git's `.git`): a `.docflow/` directory *is* the
+root; any other choice gets a one-line `.docflow` pointer file at the
+repo root (`root: docs/`), written by bootstrap.
 
 **Seed ADR:** by default, bootstrap also writes **`adr/0001`** — a first
 ADR recording the decision to adopt this method (self-documenting, like the

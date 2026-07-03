@@ -119,6 +119,14 @@ optionally `_agent/prompts/autonomous.md`). For existing repos it
 prefers `Edit` over `Write` where files already exist, and calls out
 every merge decision in the commit message.
 
+If the chosen artefact root is anything other than `.docflow/`, the
+skill also writes a one-line `.docflow` pointer file at the repository
+root (`root: docs/`, `root: .`) so external tools can locate the
+catalogue deterministically — a `.docflow` *directory* needs no
+pointer, it is its own marker. The same contract locates
+`federation.md` for multi-repo products (it lives at the artefact
+root).
+
 ### Phase D — Backfill (existing repos; re-runnable to capture emergent work)
 
 Once the scaffolding has landed, the skill **offers** to backfill

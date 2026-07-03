@@ -74,6 +74,14 @@ questions.
 `INDEX.md`, and `CONVENTIONS.md` go under the **artefact root** chosen in
 Q12 (default `.docflow/`, e.g. `.docflow/adr/`, `.docflow/plan/`).
 
+**Discovery.** Tools locate the artefact root without reading
+`CONVENTIONS.md` first: a `.docflow/` **directory** at the repository
+root *is* the root; for any other root, bootstrap writes a `.docflow`
+**file** at the repository root — a one-line pointer, `root: <path>`
+(e.g. `root: docs/`, `root: .`). Neither present means a pre-contract
+repo (tools probe `docs/`, then the repository root, for a
+`CONVENTIONS.md` naming an artefact root) or not a docflow repo.
+
 **Core vs optional layers.** Only the **core** is always written:
 `AGENTS.md`, `CLAUDE.md`, `CONVENTIONS.md`, `adr/0000-template.md`, and
 `INDEX.md`. A repo with just these is a valid, lightweight docflow repo — a
@@ -419,6 +427,13 @@ depth** in `CONVENTIONS.md` so every lifecycle skill resolves paths
 against the root and later assessments pre-select the recorded depth,
 and adjust the `adr/`/`plan/` cross-paths in the filled `AGENTS.md` (and
 other templates) to the chosen root (e.g. `.docflow/adr/`).
+
+**Discovery pointer.** If the chosen root is anything other than
+`.docflow/`, also write a `.docflow` file at the repository root
+containing the single line `root: <path>` (`root: docs/`, `root: .`) —
+the marker external tools use to find the catalogue. Do **not** write
+it when the root is `.docflow/` (the directory itself is the marker).
+Keep the pointer in sync if a later re-run migrates the root.
 
 1. `CONVENTIONS.md` — from `templates/CONVENTIONS.md`. Spec other files
    reference. Include the **§Concurrency Guardrails** section only if Q5

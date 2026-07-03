@@ -108,6 +108,14 @@ relevant):
     the decision as an `Implemented` ADR + `plan/done`, per the backfill
     path), **not** as a hard failure. Because the audit is doc-centric, keep
     this conservative — flag clear, sizable gaps, not every file.
+14. **Artefact-root discovery.** If a `.docflow` **file** exists at the
+    repository root, its `root:` line must agree with the artefact root
+    recorded in `CONVENTIONS.md`, and it must not redundantly name
+    `.docflow/` (the directory is its own marker — flag the file for
+    removal). If the artefact root is **not** `.docflow/` and no pointer
+    file exists, surface it as an **offer** to add one (external tools
+    discover the catalogue through it) — never as a hard failure;
+    migration is offered, not forced.
 
 ## Step 2 — Report
 
