@@ -1,7 +1,7 @@
 ---
 adr: 0031
 title: Tiered assessment depth — express, guided, full
-status: Proposed
+status: Accepted
 date: 2026-07-03
 owner: Eugenio Minardi
 supersedes:
@@ -39,13 +39,21 @@ that generalises the run/skip opt-out gate into three tiers:
   asked; everything else takes its recommended default.
 - **full** — the complete flow as it exists today.
 
+In every tier, questions with no derivable recommended default — the
+unavoidable free-text essentials such as a title, goal, or scope
+statement — are still asked. A tier can skip a choice only where a
+recommendation exists to take.
+
 The choice is re-tunable in both directions and at both timescales:
 
 - **Mid-flight** — at any question the operator can drop to
   "use defaults from here" or escalate to the fuller tier.
 - **Durably** — the chosen depth is recorded in the target repo's
-  `CONVENTIONS.md` as the default for future assessments, and can be
-  changed later like any other convention.
+  `CONVENTIONS.md` and offered as the **pre-selected recommendation**
+  on future depth selectors. The selector still appears every time —
+  the record steers the recommendation, it is never applied silently,
+  so a different operator is not dropped into someone else's depth
+  choice. The record can be changed later like any other convention.
 
 All other protocol rules from
 adr/0013-interactive-assessment-protocol.md stand unchanged: questions
@@ -78,17 +86,20 @@ propagated to nine.
 1. The shared assessment protocol opens with a single depth selector
    offering express, guided, and full, replacing the binary run/skip
    opt-out gate.
-2. Express asks no further questions; every remaining choice takes its
-   recommended default, and the defaults are summarised to the operator
-   before any file is written.
+2. Express asks no further questions beyond unavoidable free-text
+   essentials (inputs with no derivable default, such as a title);
+   every choice with a recommended default takes it, and the defaults
+   are summarised to the operator before any file is written.
 3. Guided asks only the questions the skill marks high-impact; all
    other choices take their recommended defaults.
 4. At any question the operator can drop to "defaults from here" or
    escalate to the fuller tier, and the skill honours the switch
    immediately.
 5. The chosen depth is recorded in the target repo's `CONVENTIONS.md`
-   as the default for future assessments, and a later change to that
-   record takes effect on the next assessment.
+   and appears as the pre-selected recommendation on the next
+   assessment's depth selector — never applied without the selector
+   being shown; a later change to the record changes the
+   recommendation.
 6. The bootstrap skill implements the selector.
 7. All eight lifecycle skills implement the selector.
 
@@ -116,8 +127,10 @@ propagated to nine.
 | Date | Revision | Author | Change |
 |------|----------|--------|--------|
 | 2026-07-03 | r1 | Eugenio Minardi | Initial draft (Proposed), from the approved 2026-07-03 brainstorm: depth selector generalising the opt-out gate, re-tunable mid-flight and durably, staged adoption bootstrap-first. |
+| 2026-07-03 | r2 | Eugenio Minardi | Pre-acceptance spec review fixes: express carve-out for unavoidable free-text essentials (AC2); recorded depth is a pre-selected recommendation, never applied silently (AC5). Status Proposed → Accepted. |
 
 ## Approvals
 
 | Role | Name | Date | Signature |
 |------|------|------|-----------|
+| Maintainer | Eugenio Minardi | 2026-07-03 | — |

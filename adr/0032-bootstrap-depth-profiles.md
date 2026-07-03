@@ -1,7 +1,7 @@
 ---
 adr: 0032
 title: Bootstrap express and guided profiles
-status: Proposed
+status: Accepted
 date: 2026-07-03
 owner: Eugenio Minardi
 supersedes:
@@ -120,8 +120,10 @@ history can be captured later.
 | Date | Revision | Author | Change |
 |------|----------|--------|--------|
 | 2026-07-03 | r1 | Eugenio Minardi | Initial draft (Proposed), from the approved 2026-07-03 brainstorm: express profile, federation guard, guided three-question subset, retrofit safety, backfill deferral. |
+| 2026-07-03 | r2 | Eugenio Minardi | Status Proposed → Accepted (profile confirmed as drafted after spec review; the mechanism fixes landed in adr/0031-tiered-assessment-depth.md r2). |
 
 ## Approvals
 
 | Role | Name | Date | Signature |
 |------|------|------|-----------|
+| Maintainer | Eugenio Minardi | 2026-07-03 | — |
