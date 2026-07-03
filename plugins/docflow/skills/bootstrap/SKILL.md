@@ -1,6 +1,6 @@
 ---
 name: bootstrap
-description: Scaffold or retrofit documentation-led conventions (AGENTS.md, CLAUDE.md, CONVENTIONS.md, ADR catalogue, plan/ queue, _agent/ coordination) into a repo. Use when the user asks to "set up conventions", "bootstrap ADRs", "scaffold the documentation-led layout", "add AGENTS.md and a plan queue", or invokes /bootstrap. Works on fresh repos and existing ones — preserves existing content and merges rather than overwrites.
+description: Scaffold or retrofit documentation-led conventions (AGENTS.md, CLAUDE.md, CONVENTIONS.md, ADR catalogue, plan/ queue, _agent/ coordination) into a repo. Use when the user asks to "set up conventions", "bootstrap ADRs", "scaffold the documentation-led layout", "add AGENTS.md and a plan queue", or invokes /bootstrap. Works on fresh repos and existing ones — preserves existing content and merges rather than overwrites. Opens with an express / guided / full depth choice, so a quick conservative setup needs almost no questions.
 ---
 
 # bootstrap
@@ -148,7 +148,71 @@ A standalone repo has none of them.
     doubt, ask whether a non-builder would ever see this string — if
     yes, the ADR reference comes out.
 
-## Step 4 — Assessment (10 questions, plus federation (Q11) and placement (Q12))
+## Step 4 — Assessment (depth-tiered; 10 questions at full depth, plus federation (Q11) and placement (Q12))
+
+**Open with the depth selector — one single-select question before
+anything else:** how deep should this assessment go?
+
+- **express** — no further choices. Every choice takes the fixed
+  express profile below. Only essentials with **no derivable default**
+  are still asked: project name and one-line description — and even
+  those are derived from the repo (README, manifest) when possible and
+  only asked when underivable.
+- **guided** *(recommend this for most repos)* — only the
+  hard-to-reverse choices are asked: plan folder (Q4a), coordination
+  mode (Q5), and integration model (Q4b — skipped if Q4a = skip), plus
+  the underivable essentials. Everything else takes its recommended
+  default.
+- **full** — the complete question set below.
+
+If the repo's `CONVENTIONS.md` already records an `Assessment depth:`
+(a retrofit or re-run), pre-select **that** depth as the recommended
+option instead. The selector always appears — a recorded depth steers
+the recommendation and is never applied silently.
+
+**Mid-flight switching.** At any question the operator may answer
+"**defaults from here**" (remaining choices take their recommended
+defaults, as in express) or "**go deeper**" (escalate express → guided
+→ full for the remaining questions). Honour the switch immediately.
+
+**Express profile.** An express bootstrap scaffolds the conservative
+fixed profile — summarise it and get sign-off before writing anything:
+
+- the **core only**: `AGENTS.md`, `CLAUDE.md`, `CONVENTIONS.md`,
+  `adr/0000-template.md`, `INDEX.md`, plus the seed ADR `0001`
+  (Step 5 item 5b). All optional layers **off**: no `plan/`, no
+  `_agent/`, no `GLOSSARY.md`, no `domains/`, no technology template.
+- Default artefact root (`.docflow/`); single ADR shape; full status
+  lifecycle.
+- Git contract: Conventional Commits ON, `Rationale:` footer ON,
+  signed commits ON, ADR-revision tags OFF, `Co-Authored-By` OFF.
+- Integration recorded as **direct-to-main, fast-forward only**; the
+  Multi-Agent Rules section records a **single writer** with no
+  coordination directory.
+- **Standalone** — never part of a federation.
+- Doc language: match the existing repo's content, else en-US.
+- No verify gate recorded (so no autonomous prompt); no
+  domain-specific hard rules.
+
+On an existing repo, express preserves and merges exactly as a full
+run does — depth changes how many questions are asked, never how
+destructive the run is.
+
+**Guided defaults.** Beyond its three questions, guided takes: single
+shape, full lifecycle, the recommended git contract, optional
+artefacts deferred, no hard rules, default artefact root, standalone,
+and the express language rule. Run the Step 4.5 cross-check on the
+answers before the sign-off summary.
+
+**Federation guard.** Express and guided runs are always
+**standalone**: Q11 is never asked and no federation file is written.
+Establishing or joining a multi-repo product is available at full
+depth only — it is an outward-facing commitment no default may make.
+
+**Record the choice.** Write the chosen depth into the scaffolded
+`CONVENTIONS.md` (`Assessment depth:` line in §Project — see Step 5
+item 1). Later assessments read it and pre-select it as the
+recommendation.
 
 **Ask the questions one at a time, not in a batch.** For each question,
 state a **recommended** option (label it "Recommended") with one short
@@ -320,7 +384,10 @@ default (the operator may decline it — see Step 5 item 5b).
 ## Step 4.5 — Cross-check before sign-off
 
 After all answers are in, scan for contradictions before writing the
-plan summary. Surface each, take the correction, then proceed:
+plan summary. Surface each, take the correction, then proceed. (An
+express run is internally consistent by construction and skips this
+check; guided and full runs, and any run that switched tiers
+mid-flight, get the full scan.)
 
 - **Q5 mode 3 (worktrees) + Q4b direct-to-main.** Unusual: each
   worktree would have to rebase onto main before fast-forwarding.
@@ -347,10 +414,11 @@ write it into the repo.
 **Placement (Q12):** write `AGENTS.md` and `CLAUDE.md` to the repository
 root; write everything below under the chosen **artefact root** (default
 `.docflow/`) — e.g. `.docflow/adr/0000-template.md`, `.docflow/plan/`,
-`.docflow/INDEX.md`. Record the chosen root in `CONVENTIONS.md` so every
-lifecycle skill resolves paths against it, and adjust the `adr/`/`plan/`
-cross-paths in the filled `AGENTS.md` (and other templates) to the chosen
-root (e.g. `.docflow/adr/`).
+`.docflow/INDEX.md`. Record the chosen root **and the chosen assessment
+depth** in `CONVENTIONS.md` so every lifecycle skill resolves paths
+against the root and later assessments pre-select the recorded depth,
+and adjust the `adr/`/`plan/` cross-paths in the filled `AGENTS.md` (and
+other templates) to the chosen root (e.g. `.docflow/adr/`).
 
 1. `CONVENTIONS.md` — from `templates/CONVENTIONS.md`. Spec other files
    reference. Include the **§Concurrency Guardrails** section only if Q5
@@ -445,6 +513,13 @@ call out every merge decision in the commit message.
 Once the scaffolding commit has landed, **offer to backfill** the ADR
 catalogue, the plan folder, and `CONVENTIONS.md` from the existing
 code and git history. Skip this step entirely on a fresh repo.
+
+**Tier the offer by the assessment depth.** At **full**, make the
+offer as phrased below. At **guided**, ask it as one brief yes/no
+("Backfill decision records from the existing history? I'll propose
+drafts for approval."). At **express**, do not run it now — close
+with a one-line pointer instead: undocumented history can be captured
+later by re-running this skill.
 
 Phrase the offer like this:
 

@@ -248,8 +248,13 @@ _agent/ layout"*. The skill auto-triggers on those phrasings.
 The skill will:
 
 1. Detect whether the repo is fresh or existing, and state which.
-2. Ask 10 assessment questions to tune the conventions to the project
-   — one at a time, with a recommended option for each.
+2. Ask how deep to go — **express** (one question, conservative
+   defaults, minimal footprint), **guided** (only the hard-to-reverse
+   choices: integration model, coordination mode, plan queue), or
+   **full** (all 10 assessment questions) — then ask that tier's
+   questions one at a time, with a recommended option for each. You
+   can switch depth mid-way ("defaults from here" / "go deeper"), and
+   the choice is remembered as the recommendation for next time.
 3. Summarise the resulting plan and ask for sign-off.
 4. Write (or Edit, for existing repos) the files.
 5. Commit each logical group with a Conventional Commit message.

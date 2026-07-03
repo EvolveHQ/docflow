@@ -21,7 +21,7 @@ why they help, and where they fall short.
 
 | Skill | Purpose |
 |-------|---------|
-| `bootstrap` | Scaffold or retrofit the whole convention set. Start here. |
+| `bootstrap` | Scaffold or retrofit the whole convention set. Start here. Opens with an express / guided / full depth choice — a quick conservative setup needs almost no questions. |
 | `new-adr` | Author one ADR — next contiguous number, right shape, INDEX + domain wiring, supersede linkage. |
 | `new-plan` | Add a `plan/todo` item tracing to its owning ADR(s). |
 | `ship-item` | Run the completion event: verify → integrate → `todo`→`done` → ADR `Accepted`→`Implemented` → INDEX/WORKLOG. |

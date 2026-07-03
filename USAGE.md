@@ -1,7 +1,7 @@
 # Using docflow
 
 This document explains how the `bootstrap` skill behaves end-to-end,
-what each of the 10 assessment questions actually changes in the
+what each of the 10 assessment questions (asked in full depth) actually changes in the
 output, and how to customise or extend the templates. The lifecycle
 skills are covered in §5a.
 
@@ -78,12 +78,33 @@ parallel tree.
 
 ### Phase B — Assess
 
-The skill asks the 10 assessment questions **one at a time**, in order.
-For each question it states a **recommended** option with one short
-sentence on why, plus the alternatives. You pick the recommended
-option, pick an alternative, or type a custom answer. After all 10
-answers are in, the skill summarises the resulting plan in 5–10 lines
-and asks for sign-off. **It does not write files before sign-off.**
+The assessment opens with a **depth selector** — one question deciding
+how deep to go:
+
+- **express** — no further choices; everything takes a conservative
+  fixed profile (minimal core files, default location, direct-to-main,
+  single writer, seed ADR on, no optional layers, standalone). Only
+  underivable essentials (project name, description) are still asked,
+  and the resulting defaults are summarised before sign-off.
+- **guided** — only the hard-to-reverse choices are asked: plan
+  folder, coordination mode, and integration model; everything else
+  takes its recommended default.
+- **full** — the complete flow below.
+
+At any question you can answer **"defaults from here"** (finish with
+recommended defaults) or **"go deeper"** (escalate to the fuller
+tier). The chosen depth is recorded in `CONVENTIONS.md` and offered as
+the pre-selected recommendation next time — the selector always still
+appears. Express and guided never set up multi-repo federation; that
+is a full-depth choice only.
+
+At full depth the skill asks the 10 assessment questions **one at a
+time**, in order. For each question it states a **recommended** option
+with one short sentence on why, plus the alternatives. You pick the
+recommended option, pick an alternative, or type a custom answer.
+After all 10 answers are in, the skill summarises the resulting plan
+in 5–10 lines and asks for sign-off. **It does not write files before
+sign-off.**
 
 If the host CLI supports structured single-select (e.g. Claude Code's
 `AskUserQuestion`), the recommended option is labelled "(Recommended)"

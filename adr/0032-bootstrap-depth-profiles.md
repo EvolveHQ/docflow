@@ -121,6 +121,7 @@ history can be captured later.
 |------|----------|--------|--------|
 | 2026-07-03 | r1 | Eugenio Minardi | Initial draft (Proposed), from the approved 2026-07-03 brainstorm: express profile, federation guard, guided three-question subset, retrofit safety, backfill deferral. |
 | 2026-07-03 | r2 | Eugenio Minardi | Status Proposed → Accepted (profile confirmed as drafted after spec review; the mechanism fixes landed in adr/0031-tiered-assessment-depth.md r2). |
+| 2026-07-03 | r3 | Eugenio Minardi | Implementation clarification (plan 0033): where per-question recommended defaults (plan/ on, single-agent `_agent/` on) diverge from the express profile, the **profile governs** — for bootstrap, the "recommended default" express takes (adr/0031-tiered-assessment-depth.md AC2) is this fixed profile. "Direct-to-main" and "single writer" are recorded as conventions text; the optional folders stay off. |
 
 ## Approvals
 
