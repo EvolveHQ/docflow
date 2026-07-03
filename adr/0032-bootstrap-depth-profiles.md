@@ -1,7 +1,7 @@
 ---
 adr: 0032
 title: Bootstrap express and guided profiles
-status: Accepted
+status: Implemented
 date: 2026-07-03
 owner: Eugenio Minardi
 supersedes:
@@ -122,6 +122,7 @@ history can be captured later.
 | 2026-07-03 | r1 | Eugenio Minardi | Initial draft (Proposed), from the approved 2026-07-03 brainstorm: express profile, federation guard, guided three-question subset, retrofit safety, backfill deferral. |
 | 2026-07-03 | r2 | Eugenio Minardi | Status Proposed → Accepted (profile confirmed as drafted after spec review; the mechanism fixes landed in adr/0031-tiered-assessment-depth.md r2). |
 | 2026-07-03 | r3 | Eugenio Minardi | Implementation clarification (plan 0033): where per-question recommended defaults (plan/ on, single-agent `_agent/` on) diverge from the express profile, the **profile governs** — for bootstrap, the "recommended default" express takes (adr/0031-tiered-assessment-depth.md AC2) is this fixed profile. "Direct-to-main" and "single writer" are recorded as conventions text; the optional folders stay off. |
+| 2026-07-03 | r4 | Eugenio Minardi | Implemented (plan 0033, commits 6e7f8a5/4d9df46/f225e70/fc158bc): depth selector + express/guided profiles live in bootstrap; templates gained the omitted-layer variants the express path needs; AC1–5 met by the skill text, AC6 by the express behavioural eval (PASS, worktree subagent against the pushed skill). Status Accepted → Implemented. |
 
 ## Approvals
 

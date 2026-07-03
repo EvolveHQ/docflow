@@ -9,12 +9,13 @@ If status files and git disagree, git is authoritative; correct this
 file.
 
 > **Released 0.9.3** (tag v0.9.3; `@evolvehq/docflow@0.9.3` on npm).
-> main is **ahead of the release** with unreleased maintenance: the
-> 2026-07-02 consistency pass (2602a04), the static-gate extension
-> (plan 0032, 77cf25b), and the gate-integrity convention (9b35a02).
-> A 0.9.4 patch would carry these. Catalogue: 0031/0032 **Accepted**
-> (tiered assessment), rest Implemented (or Superseded); **plan queue
-> has two items** (0033 bootstrap tiers, 0034 lifecycle adoption).
+> main is **ahead of the release** with unreleased work: the 2026-07-02
+> consistency pass, static-gate extension, gate-integrity convention,
+> and — user-facing — the **bootstrap depth tiers** (plan 0033,
+> fc158bc). **A 0.9.4 release is now meaningful** (bootstrap behaviour
+> changed). Catalogue: 0031 **Accepted** (AC7 pending), rest
+> Implemented (or Superseded); queue holds only 0034 (lifecycle
+> adoption — feedback-gated).
 
 ## Active state
 
@@ -25,26 +26,32 @@ file.
 
 ## Last shipped
 
-**Plan 0032 — static gate extension** (2026-07-02, 77cf25b): five new
-deterministic checks in `scripts/verify.mjs` — ADR section order,
-numbered acceptance criteria, depends-on resolution, INDEX row fidelity
-(status/date/depends-on, not just row presence), and plan/done HEAD-SHA
-footers. Each mutation-tested. ADR 0011 reopened (r3) → re-Implemented
-(r4). Preceded the same day by a full-repo consistency pass (2602a04):
-dual-target → multi-target prose in CONVENTIONS/AGENTS/prompts,
-`References / cross-links` → `References` header standardisation across
-the catalogue and shipped templates, pi install docs npm-first, plus
-small ADR/plan-footer repairs — every one of which the extended gate
-now catches automatically.
+**Plan 0033 — bootstrap depth tiers** (2026-07-03, fc158bc): the
+assessment opens with an express / guided / full selector; express
+scaffolds the fixed minimal profile (core only under `.docflow/`,
+layers off, direct-to-main, single writer, seed on, standalone),
+guided asks only plan folder + coordination + integration model;
+mid-flight switching; chosen depth recorded in the scaffolded
+CONVENTIONS as the next run's recommendation. Templates gained
+omitted-layer variants (Q5=None, Q4a=skip, gateless integration,
+seed-without-plan). Express behavioural eval PASS via worktree
+subagent against the pushed skill — an earlier stale-worktree run
+usefully validated the spec alone and surfaced the template gaps.
+ADR 0032 → Implemented (r4); ADR 0031 stays Accepted (AC7 pending).
+Earlier the same week: static-gate extension, gate-integrity
+convention, full-repo consistency pass.
 
 ## Next item
 
-**`plan/todo/0033-bootstrap-tiered-assessment.md`** — depth selector +
-express/guided profiles in bootstrap (ADRs 0031 AC1–6 + 0032, both
-Accepted 2026-07-03 after a pre-acceptance spec review fixed the
-express/free-text carve-out and the silent-depth ambiguity). Then
-**0034** (lifecycle adoption, completes 0031) — deliberately gated on
-feedback from the bootstrap rollout, not just queue order.
+**`plan/todo/0034-lifecycle-tier-adoption.md`** — propagate the depth
+selector to the eight lifecycle skills (completes ADR 0031 AC7).
+**Feedback-gated by design:** do not start it just because it is next —
+first confirm the tier design survived real express/guided bootstrap
+runs by non-technical users, or revise ADR 0031 if it did not.
+
+Also sensible before/alongside: **release 0.9.4** (bootstrap behaviour
+changed; main is well ahead of npm) — and write the /release skill
+while performing it.
 
 Candidate decisions still unqueued from the 2026-07-02 review:
 
@@ -55,7 +62,4 @@ Candidate decisions still unqueued from the 2026-07-02 review:
    assertion N so "Implemented" means "asserted" (new ADR, the big
    one).
 3. Deferred: plain-language assessment wording (awaits bootstrap-tier
-   feedback); provenance in WORKLOG; a /release skill (write it while
-   performing the next release).
-
-Done from that list: gate-integrity convention (9b35a02).
+   feedback); provenance in WORKLOG.

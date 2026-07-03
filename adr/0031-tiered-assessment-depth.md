@@ -128,6 +128,7 @@ propagated to nine.
 |------|----------|--------|--------|
 | 2026-07-03 | r1 | Eugenio Minardi | Initial draft (Proposed), from the approved 2026-07-03 brainstorm: depth selector generalising the opt-out gate, re-tunable mid-flight and durably, staged adoption bootstrap-first. |
 | 2026-07-03 | r2 | Eugenio Minardi | Pre-acceptance spec review fixes: express carve-out for unavoidable free-text essentials (AC2); recorded depth is a pre-selected recommendation, never applied silently (AC5). Status Proposed → Accepted. |
+| 2026-07-03 | r3 | Eugenio Minardi | Bootstrap adopted the selector (plan 0033): AC1–6 met in bootstrap, express eval green. AC7 (the eight lifecycle skills) outstanding — ships with plan 0034; status stays Accepted. |
 
 ## Approvals
 

@@ -66,3 +66,14 @@ Accepted** — its AC7 (lifecycle adoption) ships with plan 0034.
 ## Dependencies
 
 None. Runs first; plan 0034 depends on this item.
+
+---
+
+Shipped at HEAD `fc158bc` on 2026-07-03 (feature 6e7f8a5, evals
+4d9df46, template variants f225e70 + fc158bc — gate changes in their
+own commit per the gate-integrity convention). Express behavioural
+eval PASS against the pushed skill (worktree subagent; all four
+profile checks + privacy scan green; an earlier stale-worktree run
+validated the spec alone and surfaced the template gaps fixed here).
+ADR 0032 → Implemented (r4); ADR 0031 stays Accepted — AC7 ships with
+plan 0034.
