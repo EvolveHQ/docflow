@@ -15,8 +15,12 @@ this repo represent.>
   numbering, no gaps.
 - `INDEX.md` — table regenerated from every ADR's metadata block.
 - `CONVENTIONS.md` — authoring rules (read before editing anything).
+<!-- If plan folder skipped (Q4a): drop the two plan/ lines and the
+"Plan folder" section below. -->
 - `plan/todo/NNNN-<slug>.md` — pending work, lower numbers run first.
 - `plan/done/<YYYY-MM-DD>-<slug>.md` — shipped work, chronological.
+<!-- If no coordination layer (Q5 = None): drop the `_agent/` line and
+the WORKLOG/snapshot references below. -->
 - `_agent/` — multi-agent coordination: `ROLES.md`, `LOCKS.md`,
   `WORKLOG.md`, `CURRENT_FOCUS.md`, `HANDOFF.md`, `prompts/`.
 <!-- If GLOSSARY.md (Q7): also include `GLOSSARY.md` — shared terms. -->

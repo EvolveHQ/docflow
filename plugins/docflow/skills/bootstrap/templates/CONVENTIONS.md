@@ -110,6 +110,12 @@ instead.
 
 ## Multi-Agent Rules
 
+<!-- Q5 = None — no coordination layer. Replace the mode-1 text with:
+A single writer owns this repo — one human/agent integrates at a
+time. No coordination directory (`_agent/`) is in use; live state and
+history live in git.
+-->
+
 <!-- Mode 1 — single agent. Keep this line, drop the alternatives. -->
 A single agent owns this repo. The `_agent/` directory tracks live
 state and history; no LOCKS discipline.
@@ -148,6 +154,11 @@ Each agent works in its own worktree / PR branch.
 -->
 
 ## Plan Folder
+
+<!-- Q4a = skip: OMIT this whole section, and reword the Accepted /
+Implemented rows of the status table above so they do not reference
+`plan/todo/` / `plan/done/` (e.g. "Decision approved; implementation
+authorised." / "Shipped per the completion event."). -->
 
 Pending and shipped work live in `plan/` at the repository root:
 
