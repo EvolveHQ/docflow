@@ -54,3 +54,14 @@ plan 0033; AC7 lands here).
   (or revise adr/0031-tiered-assessment-depth.md first if it did not).
   This gate is the reason the adoption is staged at all — do not start
   this item purely because it is next in the queue.
+
+---
+
+Shipped at HEAD `3f1611e` on 2026-07-03. The feedback gate in
+§Dependencies was explicitly waived by the operator ("implement all"),
+same session the bootstrap tiers shipped. Selector adopted with one
+canonical block in the five assessment-bearing skills (new-adr,
+new-plan, add-convention, brainstorm, agent-wave) with per-skill
+high-impact markers; audit/rollup/ship-item run no assessment, so AC7
+is vacuous for them. USAGE protocol section updated. ADR 0031 →
+Implemented (r4).

@@ -1,7 +1,7 @@
 ---
 adr: 0031
 title: Tiered assessment depth — express, guided, full
-status: Accepted
+status: Implemented
 date: 2026-07-03
 owner: Eugenio Minardi
 supersedes:
@@ -129,6 +129,7 @@ propagated to nine.
 | 2026-07-03 | r1 | Eugenio Minardi | Initial draft (Proposed), from the approved 2026-07-03 brainstorm: depth selector generalising the opt-out gate, re-tunable mid-flight and durably, staged adoption bootstrap-first. |
 | 2026-07-03 | r2 | Eugenio Minardi | Pre-acceptance spec review fixes: express carve-out for unavoidable free-text essentials (AC2); recorded depth is a pre-selected recommendation, never applied silently (AC5). Status Proposed → Accepted. |
 | 2026-07-03 | r3 | Eugenio Minardi | Bootstrap adopted the selector (plan 0033): AC1–6 met in bootstrap, express eval green. AC7 (the eight lifecycle skills) outstanding — ships with plan 0034; status stays Accepted. |
+| 2026-07-03 | r4 | Eugenio Minardi | Implemented (plan 0034, commit 3f1611e): the five assessment-bearing lifecycle skills (new-adr, new-plan, add-convention, brainstorm, agent-wave) carry the canonical selector with per-skill high-impact markers. AC7 reading: audit, rollup, and ship-item run no assessment, so the criterion is vacuous for them. The plan's bootstrap-feedback gate was explicitly waived by the operator. Status Accepted → Implemented. |
 
 ## Approvals
 

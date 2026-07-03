@@ -9,13 +9,13 @@ If status files and git disagree, git is authoritative; correct this
 file.
 
 > **Released 0.9.3** (tag v0.9.3; `@evolvehq/docflow@0.9.3` on npm).
-> main is **ahead of the release** with unreleased work: the 2026-07-02
-> consistency pass, static-gate extension, gate-integrity convention,
-> and — user-facing — the **bootstrap depth tiers** (plan 0033,
-> fc158bc). **A 0.9.4 release is now meaningful** (bootstrap behaviour
-> changed). Catalogue: 0031 **Accepted** (AC7 pending), rest
-> Implemented (or Superseded); queue holds only 0034 (lifecycle
-> adoption — feedback-gated).
+> main is **well ahead of the release**: consistency pass, static-gate
+> extension, gate-integrity convention, **depth tiers everywhere**
+> (bootstrap + the five assessment-bearing lifecycle skills), and the
+> **artefact-root discovery contract** (.docflow marker/pointer — the
+> contract Clarity builds against). **Cut 0.9.4 next** — skill
+> behaviour changed across the set. Catalogue all-Implemented (or
+> Superseded); **plan queue empty**.
 
 ## Active state
 
@@ -26,32 +26,26 @@ file.
 
 ## Last shipped
 
-**Plan 0033 — bootstrap depth tiers** (2026-07-03, fc158bc): the
-assessment opens with an express / guided / full selector; express
-scaffolds the fixed minimal profile (core only under `.docflow/`,
-layers off, direct-to-main, single writer, seed on, standalone),
-guided asks only plan folder + coordination + integration model;
-mid-flight switching; chosen depth recorded in the scaffolded
-CONVENTIONS as the next run's recommendation. Templates gained
-omitted-layer variants (Q5=None, Q4a=skip, gateless integration,
-seed-without-plan). Express behavioural eval PASS via worktree
-subagent against the pushed skill — an earlier stale-worktree run
-usefully validated the spec alone and surfaced the template gaps.
-ADR 0032 → Implemented (r4); ADR 0031 stays Accepted (AC7 pending).
-Earlier the same week: static-gate extension, gate-integrity
-convention, full-repo consistency pass.
+**2026-07-03, a three-ship day:**
+- **Plan 0033 — bootstrap depth tiers** (fc158bc): express / guided /
+  full selector, express minimal profile, guided 3-question subset,
+  federation guard, recorded depth preference; template variants for
+  omitted layers; express behavioural eval PASS (worktree subagent).
+  ADR 0032 → Implemented.
+- **Plan 0035 — artefact-root discovery** (37a1798): `.docflow`
+  marker-dir / pointer-file precedence (the `.git` pattern) so tools
+  like **Clarity** resolve any repo's catalogue in one check; audit
+  check 14; this repo dogfoods `root: .`. ADR 0033 → Implemented.
+- **Plan 0034 — lifecycle tier adoption** (3f1611e): the canonical
+  selector in the five assessment-bearing skills with per-skill
+  high-impact markers; feedback gate explicitly waived by the
+  operator. ADR 0031 → Implemented — the tiers capability is complete.
 
 ## Next item
 
-**`plan/todo/0034-lifecycle-tier-adoption.md`** — propagate the depth
-selector to the eight lifecycle skills (completes ADR 0031 AC7).
-**Feedback-gated by design:** do not start it just because it is next —
-first confirm the tier design survived real express/guided bootstrap
-runs by non-technical users, or revise ADR 0031 if it did not.
-
-Also sensible before/alongside: **release 0.9.4** (bootstrap behaviour
-changed; main is well ahead of npm) — and write the /release skill
-while performing it.
+Queue is empty. **Cut release 0.9.4** — skill behaviour changed across
+bootstrap and five lifecycle skills; write the /release skill while
+performing the ritual.
 
 Candidate decisions still unqueued from the 2026-07-02 review:
 
@@ -61,5 +55,9 @@ Candidate decisions still unqueued from the 2026-07-02 review:
 2. **Executable acceptance criteria** — bind ADR criterion N to eval
    assertion N so "Implemented" means "asserted" (new ADR, the big
    one).
-3. Deferred: plain-language assessment wording (awaits bootstrap-tier
-   feedback); provenance in WORKLOG.
+3. Deferred: plain-language assessment wording (now awaits tier
+   feedback across all skills); provenance in WORKLOG.
+
+For **docflow-clarity**: record the consumer-side discovery decision in
+its own catalogue, referencing `docflow/0033-artefact-root-discovery`
+via the federation.
