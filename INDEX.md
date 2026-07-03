@@ -37,4 +37,4 @@ ADR change.
 | [0030](adr/0030-domain-grouping.md) | Domain grouping — navigate the catalogue by area | Implemented | 2026-06-30 | 0016 |
 | [0031](adr/0031-tiered-assessment-depth.md) | Tiered assessment depth — express, guided, full | Accepted | 2026-07-03 | 0013 |
 | [0032](adr/0032-bootstrap-depth-profiles.md) | Bootstrap express and guided profiles | Implemented | 2026-07-03 | 0016, 0017, 0020, 0029, 0030, 0031 |
-| [0033](adr/0033-artefact-root-discovery.md) | Artefact-root discovery contract | Proposed | 2026-07-03 | 0017, 0023 |
+| [0033](adr/0033-artefact-root-discovery.md) | Artefact-root discovery contract | Accepted | 2026-07-03 | 0017, 0023 |
