@@ -1,7 +1,7 @@
 ---
 adr: 0033
 title: Artefact-root discovery contract
-status: Accepted
+status: Implemented
 date: 2026-07-03
 owner: Eugenio Minardi
 supersedes:
@@ -120,6 +120,7 @@ serves consumers that must first find it.
 |------|----------|--------|--------|
 | 2026-07-03 | r1 | Eugenio Minardi | Initial draft (Proposed), from the approved brainstorm: marker directory / pointer file / legacy probe precedence, borrowing the `.git` pattern; motivated by Clarity's need for deterministic read-only discovery. |
 | 2026-07-03 | r2 | Eugenio Minardi | Status Proposed → Accepted. Contract confirmed as drafted; the consumer-side algorithm stays with the docflow-clarity catalogue. |
+| 2026-07-03 | r3 | Eugenio Minardi | Implemented (plan 0035, commit 37a1798): bootstrap pointer-write for non-default roots, precedence documented in template + README/USAGE, audit check 14, own `root: .` pointer dogfooded. AC1–6 met. Status Accepted → Implemented. |
 
 ## Approvals
 

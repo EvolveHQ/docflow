@@ -51,3 +51,10 @@ When this ships, ADR 0033 advances Accepted → Implemented.
 
 None. Independent of plan 0034 (lifecycle tier adoption, feedback-
 gated) — this item may run first.
+
+---
+
+Shipped at HEAD `37a1798` on 2026-07-03. Pointer written by bootstrap
+for non-default roots, precedence documented (template + README/USAGE),
+audit check 14 added, this repo carries its own `root: .` pointer.
+ADR 0033 → Implemented (r3).
