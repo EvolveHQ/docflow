@@ -10,9 +10,11 @@ file.
 
 > **Released 0.9.3** (tag v0.9.3; `@evolvehq/docflow@0.9.3` on npm).
 > main is **ahead of the release** with unreleased maintenance: the
-> 2026-07-02 full-repo consistency pass (2602a04) and the static-gate
-> extension (plan 0032, 77cf25b). A 0.9.4 patch would carry these.
-> Catalogue all-Implemented (or Superseded); plan queue empty.
+> 2026-07-02 consistency pass (2602a04), the static-gate extension
+> (plan 0032, 77cf25b), and the gate-integrity convention (9b35a02).
+> A 0.9.4 patch would carry these. Catalogue: 0031/0032 **Accepted**
+> (tiered assessment), rest Implemented (or Superseded); **plan queue
+> has two items** (0033 bootstrap tiers, 0034 lifecycle adoption).
 
 ## Active state
 
@@ -37,17 +39,23 @@ now catches automatically.
 
 ## Next item
 
-Queue is empty. Candidate next decisions from the 2026-07-02 review
-discussion (not yet queued — need /new-adr or /add-convention first):
+**`plan/todo/0033-bootstrap-tiered-assessment.md`** — depth selector +
+express/guided profiles in bootstrap (ADRs 0031 AC1–6 + 0032, both
+Accepted 2026-07-03 after a pre-acceptance spec review fixed the
+express/free-text carve-out and the silent-depth ambiguity). Then
+**0034** (lifecycle adoption, completes 0031) — deliberately gated on
+feedback from the bootstrap rollout, not just queue order.
+
+Candidate decisions still unqueued from the 2026-07-02 review:
 
 1. **Prose-drift detection** — derive shared facts (target list, skill
-   inventory) from the manifests and check the prose surfaces against
-   them (new ADR).
-2. **Gate-integrity convention** — gate changes (`scripts/verify.mjs`,
-   `evals/`) ship in their own commit, never bundled with product
-   changes (add-convention).
-3. **Executable acceptance criteria** — bind ADR criterion N to eval
+   inventory) from the manifests and check prose surfaces against them
+   (new ADR).
+2. **Executable acceptance criteria** — bind ADR criterion N to eval
    assertion N so "Implemented" means "asserted" (new ADR, the big
    one).
-4. Deferred: provenance in WORKLOG; a /release skill (write it while
+3. Deferred: plain-language assessment wording (awaits bootstrap-tier
+   feedback); provenance in WORKLOG; a /release skill (write it while
    performing the next release).
+
+Done from that list: gate-integrity convention (9b35a02).
