@@ -8,14 +8,10 @@ purpose — the durable record lives in git (`git log`),
 If status files and git disagree, git is authoritative; correct this
 file.
 
-> **Released 0.9.3** (tag v0.9.3; `@evolvehq/docflow@0.9.3` on npm).
-> main is **well ahead of the release**: consistency pass, static-gate
-> extension, gate-integrity convention, **depth tiers everywhere**
-> (bootstrap + the five assessment-bearing lifecycle skills), and the
-> **artefact-root discovery contract** (.docflow marker/pointer — the
-> contract Clarity builds against). **Cut 0.9.4 next** — skill
-> behaviour changed across the set. Catalogue all-Implemented (or
-> Superseded); **plan queue empty**.
+> **Released 0.9.4** (tag v0.9.4; `@evolvehq/docflow@0.9.4` on npm;
+> GitHub Releases page backfilled — 19 releases, 0.9.4 Latest). main
+> and npm in sync. Catalogue all-Implemented (or Superseded); plan
+> queue empty.
 
 ## Active state
 
@@ -43,9 +39,10 @@ file.
 
 ## Next item
 
-Queue is empty. **Cut release 0.9.4** — skill behaviour changed across
-bootstrap and five lifecycle skills; write the /release skill while
-performing the ritual.
+Queue is empty. 0.9.4 released 2026-07-03. The /release skill remains
+unwritten (the 0.9.4 ritual ran manually: 3-manifest bump, verify, tag,
+push, npm publish via one-shot userconfig, GitHub release) — write it
+from that transcript next release.
 
 Candidate decisions still unqueued from the 2026-07-02 review:
 
