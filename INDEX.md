@@ -36,3 +36,4 @@ ADR change.
 | [0029](adr/0029-seed-adr-recording-the-method.md) | Seed ADR recording the adopted method | Implemented | 2026-06-28 | 0001, 0003, 0016, 0018 |
 | [0030](adr/0030-domain-grouping.md) | Domain grouping — navigate the catalogue by area | Implemented | 2026-06-30 | 0016 |
 | [0031](adr/0031-tiered-assessment-depth.md) | Tiered assessment depth — express, guided, full | Proposed | 2026-07-03 | 0013 |
+| [0032](adr/0032-bootstrap-depth-profiles.md) | Bootstrap express and guided profiles | Proposed | 2026-07-03 | 0016, 0017, 0020, 0029, 0030, 0031 |
