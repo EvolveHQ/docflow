@@ -28,6 +28,8 @@ reasons behind the system are part of the repository.
 
 ## Capability statement
 
+<!-- If the plan/ layer was skipped (Q4a), drop the plan-queue clause
+here and in acceptance criterion 3. -->
 This repository is **documentation-led and ADR-driven**: every significant
 decision is recorded as a numbered ADR under `adr/`; the catalogue is the
 **source of truth** the running system is expected to match; and a status

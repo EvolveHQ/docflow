@@ -288,7 +288,8 @@ Commit messages follow Conventional Commits with a mandatory
 - Co-Authored-By trailer on agent commits: <yes/no>
 -->
 
-<!-- Integration model per Q4b — keep one paragraph.
+<!-- Integration model per Q4b — keep one paragraph. If no verify gate
+was recorded (Q8), drop the gate sentence.
 
 Direct-to-main:
 Changes are fast-forwarded onto `main`; no merge commits. The verify

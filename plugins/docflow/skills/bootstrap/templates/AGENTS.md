@@ -83,6 +83,12 @@ These come from `CONVENTIONS.md` and override default behaviour:
 
 ## Multi-agent workflow
 
+<!-- Q5 = None — no coordination layer. Replace the block below with:
+A single writer owns this repo — one human/agent integrates at a
+time. No coordination directory (`_agent/`) is in use; live state and
+history live in git.
+-->
+
 <!-- Mode 1 — single agent (Q5 default). Keep this block. -->
 A single agent owns this repo. The `_agent/` directory tracks live
 state and history; LOCKS discipline is not in use.
@@ -156,7 +162,8 @@ direct-to-main). See CONVENTIONS.md §Concurrency Guardrails.
 
 <!-- Integration model per Q4b — keep one block. -->
 
-<!-- Direct-to-main:
+<!-- Direct-to-main (if no verify gate was recorded (Q8), drop the
+gate sentence):
 - **Integration:** direct-to-main, **fast-forward only**. No merge
   commits on `main`. The verify gate (`<command from Q8>`) runs
   locally and must pass before push. Completion event:
