@@ -13,7 +13,9 @@ files a repo can be driven from by humans and coding agents alike. A set of
 
 It runs on **five coding agents** — Claude Code, Claude Cowork, pi, Codex,
 and OpenCode — from the same skill files, and scales from a single
-repository to a **multi-repo product**. See the
+repository to a **multi-repo product**. Tools can locate any docflow
+repository's catalogue deterministically via the `.docflow` marker
+(directory or one-line pointer file — the same pattern as git's `.git`). See the
 [methodology]({{ '/methodology/' | relative_url }}) for the formal definition of the conventions,
 why they help, and where they fall short.
 

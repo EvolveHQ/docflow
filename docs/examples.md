@@ -36,10 +36,12 @@ Starting from an empty repo.
 /bootstrap
 ```
 
-Answer the 10 questions (en-GB · single ADR shape · full lifecycle · use
-`plan/` · single agent · direct-to-main · default git contract · defer
-optionals · verify gate = `npm test` · no domain rules). Review the plan,
-then it writes:
+Pick the assessment depth — **full** here, to see every choice (express
+gives a minimal conservative setup with almost no questions; guided asks
+only the hard-to-reverse ones). Then answer the 10 questions (en-GB ·
+single ADR shape · full lifecycle · use `plan/` · single agent ·
+direct-to-main · default git contract · defer optionals · verify gate =
+`npm test` · no domain rules). Review the plan, then it writes:
 
 ```
 linkfold/
@@ -184,14 +186,19 @@ New work now follows the same loop: `/new-adr` → `/new-plan` → `/ship-item`.
 
 > **Heads-up — skills assess first.** `new-adr`, `new-plan`,
 > `add-convention`, `brainstorm`, and `agent-wave` open with a brief
-> assessment: an opt-out gate, then one scroll-to-select question at a time,
-> each with a recommended option — you decide, and a fully-specified request
-> lets you skip straight through. The examples below show the *intent*; in
-> practice the skill confirms scope with you first.
+> assessment: a depth selector first (express — defaults for everything,
+> only essentials like a title still asked · guided — only the high-impact
+> questions · full — everything), then one scroll-to-select question at a
+> time, each with a recommended option — you decide, you can say
+> "defaults from here" or "go deeper" at any point, and your repo
+> remembers the depth you prefer. The examples below show the *intent*;
+> in practice the skill confirms scope with you first.
 
 ### bootstrap
 
-1. `/bootstrap` on a fresh repo → 10 questions → full scaffold (see Flow 1).
+1. `/bootstrap` on a fresh repo → depth choice, then up to 10 questions →
+   full scaffold (see Flow 1). Express depth: one choice, minimal core,
+   conservative defaults, standalone.
 2. *"set up documentation-led conventions here"* on an existing repo →
    retrofit + backfill offer (see Flow 2).
 3. `/bootstrap` choosing **worktree multi-agent + PR integration** → `_agent/`

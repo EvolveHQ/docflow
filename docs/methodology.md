@@ -257,6 +257,38 @@ capture rather than silently accumulating. Trivial or mechanical changes are
 *not* in scope here: they belong to the commit history (and the worklog),
 not the catalogue.
 
+### 4.9 Artefact placement and discovery
+
+The catalogue's location is **configurable**: the non-entry artefacts
+(`adr/`, `plan/`, `INDEX.md`, `CONVENTIONS.md`, coordination files) live
+under an **artefact root** chosen at set-up — a hidden `.docflow/`
+directory (the default), `docs/`, or the repository root — recorded in
+`CONVENTIONS.md`. The agent entry points (`AGENTS.md`, `CLAUDE.md`)
+always stay at the repository root. This preserves each team's placement
+preference; but the record naming the root lives *under* the root, so a
+record alone cannot bootstrap discovery from outside.
+
+External tools therefore resolve the root by a normative three-step
+precedence, checked at the repository root (the same
+directory-or-pointer-file pattern git uses for `.git`):
+
+1. A `.docflow/` **directory** *is* the artefact root — the default
+   layout marks itself.
+2. A `.docflow` **file** is a one-line pointer, `root: <path>` relative
+   to the repository root (`root: docs/`, `root: .`), written at set-up
+   whenever a non-default root is chosen.
+3. Neither present: probe `docs/`, then the repository root, for a
+   `CONVENTIONS.md` carrying an artefact-root record (pre-contract
+   repositories); nothing found means the repository does not follow
+   the method.
+
+The pointer and the `CONVENTIONS.md` record must agree — a disagreement,
+or a pointer redundantly naming `.docflow/`, is an audit finding.
+Federation artefacts (§5) live at the artefact root, so the same
+resolution discovers a repository's federation membership. One check
+suffices for a conforming repository, which is what makes read-only
+tooling over arbitrary repositories practical.
+
 ## 5. Scaling to many repositories
 
 A single product spread across several repositories runs as a
