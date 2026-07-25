@@ -30,7 +30,8 @@ Inspect the repo before asking anything.
   lifecycle, **artefact root**, multi-agent mode, and which optional layers
   already exist). Then offer to **enable any opted-out optional layer**
   still absent — `plan/`, `_agent/`, `GLOSSARY.md`, `domains/`, or the
-  technology-ADR template/split — and write only the chosen ones, by
+  technology-ADR template/split — plus the capability manifest
+  `docflow.yml` where the repo predates it — and write only the chosen ones, by
   **merge**, under the recorded artefact root, leaving everything else
   untouched. Ask only the questions the new layers need (e.g. the
   coordination-mode question when enabling `_agent/`). This is the entry
@@ -48,6 +49,7 @@ questions.
   README.md              # human-facing project summary (preserve if exists)
   CONVENTIONS.md         # authoring rules: ADRs, naming, status, audit, git
   INDEX.md               # generated table of all ADRs
+  docflow.yml            # capability manifest: schema, model, layers
   GLOSSARY.md            # shared terms (optional — see Q7)
   adr/
     0000-template.md     # capability-ADR template (always)
@@ -82,9 +84,18 @@ root *is* the root; for any other root, bootstrap writes a `.docflow`
 repo (tools probe `docs/`, then the repository root, for a
 `CONVENTIONS.md` naming an artefact root) or not a docflow repo.
 
+**Capability manifest.** `docflow.yml` sits **inside** the resolved
+artefact root — discovery finds the root; the manifest records the
+repo's shape: contract `schema`, record `model`, enabled `layers`.
+Tools read it instead of parsing `CONVENTIONS.md`; on disagreement the
+manifest wins and the audit reports the divergence. A tool that meets a
+`schema` newer than it understands refuses writes and says so; an
+absent manifest means a pre-contract repo — behave as before.
+
 **Core vs optional layers.** Only the **core** is always written:
-`AGENTS.md`, `CLAUDE.md`, `CONVENTIONS.md`, `adr/0000-template.md`, and
-`INDEX.md`. A repo with just these is a valid, lightweight docflow repo — a
+`AGENTS.md`, `CLAUDE.md`, `CONVENTIONS.md`, `adr/0000-template.md`,
+`INDEX.md`, and the capability manifest `docflow.yml`. A repo with just
+these is a valid, lightweight docflow repo — a
 classic ADR catalogue with conventions. Everything else is an **opt-in
 layer**: the `plan/` queue (Q4a), the `_agent/` coordination set (Q5 —
 choose *None* to omit it), `GLOSSARY.md` and `domains/` (Q7). Omitting any
@@ -187,8 +198,8 @@ defaults, as in express) or "**go deeper**" (escalate express → guided
 fixed profile — summarise it and get sign-off before writing anything:
 
 - the **core only**: `AGENTS.md`, `CLAUDE.md`, `CONVENTIONS.md`,
-  `adr/0000-template.md`, `INDEX.md`, plus the seed ADR `0001`
-  (Step 5 item 5b). All optional layers **off**: no `plan/`, no
+  `adr/0000-template.md`, `INDEX.md`, `docflow.yml`, plus the seed ADR
+  `0001` (Step 5 item 5b). All optional layers **off**: no `plan/`, no
   `_agent/`, no `GLOSSARY.md`, no `domains/`, no technology template.
 - Default artefact root (`.docflow/`); single ADR shape; full status
   lifecycle.
@@ -482,6 +493,12 @@ Keep the pointer in sync if a later re-run migrates the root.
 11. `_agent/HANDOFF.md` — from `templates/_agent-HANDOFF.md`.
 12. `INDEX.md` — header + the seed ADR's row (item 5b); an empty table only
     if the seed was declined.
+12b. `docflow.yml` — from `templates/docflow.yml`, at the **artefact
+    root**, at **every** depth tier. Fill `model` (`capability-first`,
+    or `two-shape` if Q2 chose the split) and `layers` (the subset of
+    `plan`, `agent`, `glossary`, `domains`, `federation` actually
+    enabled — empty for an express run). Leave `autonomy` unset — it is
+    reserved.
 13. `_agent/prompts/autonomous.md` — from
     `templates/_agent-prompts-autonomous.md`, **only** if Q8 confirmed a
     verify gate. Keep the integration block matching Q4b: the

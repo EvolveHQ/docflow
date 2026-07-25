@@ -213,6 +213,7 @@ After sign-off, the skill writes:
 | `.gitattributes` (entry) | (none — inline) | Only in Q5 mode 3: appends `_agent/WORKLOG.md merge=union`. |
 | `.gitignore` (entry) | (none — inline) | Only in Q5 mode 3: adds `_agent/CURRENT_FOCUS.md` so it stays local-only. |
 | `INDEX.md` | (none — generated) | Header + the seed ADR's row (empty table only if the seed was declined). |
+| `docflow.yml` | `templates/docflow.yml` | Capability manifest at the artefact root: contract `schema`, record `model`, enabled `layers`. Machine-readable — tools read it instead of parsing `CONVENTIONS.md`; on disagreement the manifest wins. Written at every depth tier. |
 | `_agent/prompts/autonomous.md` | `templates/_agent-prompts-autonomous.md` | Only if Q8 confirmed a verify gate. |
 
 ## 5. After scaffolding

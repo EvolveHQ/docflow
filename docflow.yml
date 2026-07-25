@@ -1,0 +1,5 @@
+# docflow capability manifest — machine-readable repo shape; on
+# disagreement with CONVENTIONS.md this file wins (§Trust Posture).
+schema: 1
+model: capability-first
+layers: [plan, agent]

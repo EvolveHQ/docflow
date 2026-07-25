@@ -15,6 +15,15 @@ pointer-file form with `root: .`. Tools resolve the root in that order,
 falling back to probing `docs/` then the repository root for this file.
 The pointer and the record above must agree.
 
+Capability manifest: `docflow.yml` at the artefact root (here, the
+repository root) records this repo's shape for tools — contract
+`schema: 1`, `model: capability-first`, `layers: [plan, agent]`. On
+disagreement between the manifest and this file, the manifest wins and
+the audit reports the divergence. A tool that meets a `schema` newer
+than it understands refuses writes; a repo without the file is
+pre-contract and tools behave as before. The `autonomy` field is
+reserved — neither written nor read.
+
 Language: en-GB throughout. Use forms such as organisation, behaviour,
 prioritise, catalogue, authorisation, artefact, customisation
 consistently across all files. This matches the existing `README.md`

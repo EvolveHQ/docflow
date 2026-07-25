@@ -14,6 +14,14 @@ the repository root (`root: <path>`). Tools resolve the root in that order,
 falling back to probing `docs/` then the repository root for this file.
 The pointer and the record above must agree.
 
+Capability manifest: `docflow.yml` at the artefact root records this
+repo's shape for tools — contract `schema`, record `model`, enabled
+`layers`. On disagreement between the manifest and this file, the
+manifest wins and the audit reports the divergence. A tool that meets a
+`schema` newer than it understands refuses writes and says so; a repo
+without the file is pre-contract and tools behave as before. The
+`autonomy` field is reserved — neither written nor read.
+
 Assessment depth: `<express | guided | full>` — the depth chosen at
 bootstrap. Skill assessments pre-select it as the recommended depth; the
 depth selector always still appears, so the record steers the
