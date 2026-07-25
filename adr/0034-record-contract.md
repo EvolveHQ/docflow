@@ -1,7 +1,7 @@
 ---
 adr: 0034
 title: Explicit record contract — cooperative guarantee and capability manifest
-status: Accepted
+status: Implemented
 date: 2026-07-25
 owner: Eugenio Minardi
 supersedes:
@@ -137,6 +137,7 @@ from prose.
 |------|----------|--------|--------|
 | 2026-07-25 | r1 | Eugenio Minardi | Initial draft. |
 | 2026-07-25 | r2 | Eugenio Minardi | Accepted — approvals populated, implementation queued as plan 0036. |
+| 2026-07-25 | r3 | Eugenio Minardi | Implemented (commits c2581df, 2ee2333, 0475c6b): trust posture in own + template conventions and USAGE §5b; `docflow.yml` manifest written by bootstrap at every tier, dogfooded here; gate check F shipped alone. AC1–AC9 met. |
 
 ## Approvals
 

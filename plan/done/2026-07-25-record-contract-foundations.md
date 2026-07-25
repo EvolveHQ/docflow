@@ -64,3 +64,14 @@ When this ships, ADR 0034 advances Accepted → Implemented.
 ## Dependencies
 
 None — first item of the programme; the queue is otherwise empty.
+
+---
+
+Shipped at HEAD `0475c6b` on 2026-07-25, in three commits per the
+slice's own rules: `c2581df` trust posture (own + template CONVENTIONS,
+USAGE §5b hardening recipe, two overclaims softened in methodology and
+the audit skill), `2ee2333` capability manifest (templates/docflow.yml,
+bootstrap writes at every tier + additive re-run offer, docs, dogfood
+manifest schema 1 / capability-first / [plan, agent]), `0475c6b` gate
+check F alone per gate integrity (mutation-tested). ADR 0034 →
+Implemented (r3). AC1–AC9 met; verify green.

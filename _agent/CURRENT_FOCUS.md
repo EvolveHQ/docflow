@@ -16,13 +16,14 @@ file.
 ## Active state
 
 - **Branch:** main
-- **Active item:** **Plan 0036 — record-contract foundations** (owning
-  ADR 0034, Accepted 2026-07-25). First slice (S0) of the
-  aligned-autonomy programme; the full analysis and decision register
-  live in the unversioned sibling folder `../docflow-workflow-analysis/`
-  (r10).
-- **Blockers:** none.
-- **Uncommitted work:** none once the acceptance commit lands.
+- **Active item:** none — slice S0 shipped 2026-07-25 (plan 0036 done,
+  ADR 0034 Implemented). Next in the programme: slice S1 — per-AC
+  verification methods + bound evidence records (new ADR, not yet
+  authored). The full analysis and decision register live in the
+  unversioned sibling folder `../docflow-workflow-analysis/` (r10).
+- **Blockers:** none for S1. The external multi-agent pilot (gates
+  slices S6+) still needs a candidate project.
+- **Uncommitted work:** none once the ship commit lands.
 
 ## Last shipped
 
