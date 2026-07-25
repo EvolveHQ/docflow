@@ -1,7 +1,7 @@
 ---
 adr: 0034
 title: Explicit record contract — cooperative guarantee and capability manifest
-status: Proposed
+status: Accepted
 date: 2026-07-25
 owner: Eugenio Minardi
 supersedes:
@@ -136,8 +136,10 @@ from prose.
 | Date | Revision | Author | Change |
 |------|----------|--------|--------|
 | 2026-07-25 | r1 | Eugenio Minardi | Initial draft. |
+| 2026-07-25 | r2 | Eugenio Minardi | Accepted — approvals populated, implementation queued as plan 0036. |
 
 ## Approvals
 
 | Role | Name | Date | Signature |
 |------|------|------|-----------|
+| Maintainer | Eugenio Minardi | 2026-07-25 | — |

@@ -16,12 +16,13 @@ file.
 ## Active state
 
 - **Branch:** main
-- **Active item:** **ADR 0034 (record contract) — Proposed, awaiting
-  acceptance.** First slice (S0) of the aligned-autonomy programme; the
-  full analysis and decision register live in the unversioned sibling
-  folder `../docflow-workflow-analysis/` (r10).
-- **Blockers:** 0034 acceptance is the operator's call.
-- **Uncommitted work:** none once 0034's authoring commit lands.
+- **Active item:** **Plan 0036 — record-contract foundations** (owning
+  ADR 0034, Accepted 2026-07-25). First slice (S0) of the
+  aligned-autonomy programme; the full analysis and decision register
+  live in the unversioned sibling folder `../docflow-workflow-analysis/`
+  (r10).
+- **Blockers:** none.
+- **Uncommitted work:** none once the acceptance commit lands.
 
 ## Last shipped
 
