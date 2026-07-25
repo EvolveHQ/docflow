@@ -262,6 +262,48 @@ if (existsSync(doneDir)) {
   }
 }
 
+// ── F. Capability manifest (docflow.yml, ADR 0034) ──
+// Machine-readable repo shape (CONVENTIONS.md §Project / §Trust
+// Posture). An absent file means a pre-contract repo — no failure; a
+// present file must be well-formed, carry a schema this gate
+// understands, and use only legal model/layer values. `autonomy` is
+// reserved and must not be set.
+const MANIFEST_SCHEMA = 1;
+const MANIFEST_MODELS = new Set(['capability-first', 'two-shape']);
+const MANIFEST_LAYERS = new Set(['plan', 'agent', 'glossary', 'domains', 'federation']);
+if (existsSync(join(root, 'docflow.yml'))) {
+  const manifest = {};
+  for (const line of read('docflow.yml').split('\n')) {
+    const kv = line.match(/^([A-Za-z0-9_-]+):\s*(.*?)\s*(?:#.*)?$/);
+    if (kv) manifest[kv[1]] = kv[2].trim();
+  }
+  if (!('schema' in manifest)) {
+    fail('docflow.yml: missing "schema"');
+  } else if (Number(manifest.schema) !== MANIFEST_SCHEMA) {
+    fail(
+      `docflow.yml: schema "${manifest.schema}" is not one this gate ` +
+      `understands (${MANIFEST_SCHEMA}) — refusing (newer schema means a newer gate)`,
+    );
+  }
+  if (!('model' in manifest)) {
+    fail('docflow.yml: missing "model"');
+  } else if (!MANIFEST_MODELS.has(manifest.model)) {
+    fail(`docflow.yml: illegal model "${manifest.model}" (legal: ${[...MANIFEST_MODELS].join(', ')})`);
+  }
+  if (!('layers' in manifest)) {
+    fail('docflow.yml: missing "layers"');
+  } else {
+    for (const layer of manifest.layers.match(/[a-z]+/g) ?? []) {
+      if (!MANIFEST_LAYERS.has(layer)) {
+        fail(`docflow.yml: illegal layer "${layer}" (legal: ${[...MANIFEST_LAYERS].join(', ')})`);
+      }
+    }
+  }
+  if ('autonomy' in manifest) {
+    fail('docflow.yml: "autonomy" is reserved by the contract — do not set it');
+  }
+}
+
 // ── Report ──
 if (errors.length) {
   console.error('verify: FAIL');
