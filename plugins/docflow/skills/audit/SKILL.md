@@ -6,7 +6,9 @@ description: Audit a documentation-led repo against its own conventions — cont
 # audit
 
 Check a documentation-led repo against the conventions it declares.
-This is the enforcement `AGENTS.md` cannot guarantee on its own.
+This is the detection layer: `AGENTS.md` states the rules; this skill
+checks they were followed and reports drift. It detects — it does not
+prevent.
 
 ## Step 0 — Preconditions and context
 

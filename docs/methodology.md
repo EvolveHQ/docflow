@@ -81,8 +81,12 @@ catalogue never appear in any surface an end user sees.
 rationale footer on ADR-touching changes, and one declared integration
 model so "shipped" is unambiguous.
 
-**C11 — Enforcement by audit.** None of the above is left to goodwill; an
-audit routine checks it mechanically.
+**C11 — Drift made visible by audit.** None of the above is left to
+memory: an audit routine checks it mechanically and surfaces every
+violation. The controls are cooperative — they detect and report, they
+do not prevent a writer from bypassing them; repos needing prevention
+add host-level enforcement (CI-required checks, branch protection) on
+top.
 
 ## 4. Normative specification
 

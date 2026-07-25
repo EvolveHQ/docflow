@@ -442,6 +442,32 @@ has distinct areas, or the flat list grows large enough to be hard to scan.
 See the [methodology](https://evolvehq.github.io/docflow/methodology/#47-grouping-adrs-by-domain)
 for the formal treatment.
 
+## 5b. Trust posture and hardening
+
+docflow's checks — the verify gate, the audit, and the conventions the
+skills follow — are **cooperative**: they catch honest mistakes and
+structural drift, and they make skipped steps visible. They do not
+authenticate who wrote a change, and a local script cannot stop a
+writer who edits files directly.
+
+For most repos that is the right trade — markdown + git stays simple,
+and the audit surfaces drift. Teams that need tamper resistance add
+host-level enforcement on top:
+
+1. **Run the verify gate in CI** as a required status check on the
+   integration branch (keep the local run as the fast path).
+2. **Protect the branch** — no force-pushes; require the CI check (and
+   PR review, if PR-based) before anything lands.
+3. **Restrict write access to what the gate reads** (e.g. GitHub
+   CODEOWNERS): the decision records and generated index,
+   `CONVENTIONS.md` / `AGENTS.md`, any verification inputs the repo
+   carries, and the gate script itself. If the gate reads it, protect
+   it — otherwise the gate can be edited around.
+
+With all three in place the cooperative checks become enforced ones —
+the guarantee comes from the host (CI + branch protection), with
+docflow supplying the checks it runs.
+
 ## 6. Customising or extending
 
 The templates are deliberately small and self-contained. To customise:

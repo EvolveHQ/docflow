@@ -114,6 +114,29 @@ Rule of thumb: if a non-builder could ever read the string, the ADR
 reference comes out. Refer to the behaviour by its product-level name
 instead.
 
+## Trust Posture
+
+These conventions, the audit, and any verify gate are **cooperative**
+controls: they catch honest mistakes and structural drift. They do not
+authenticate who wrote a change, and they cannot stop a writer who
+bypasses them — a local check is sidestepped by a direct edit.
+
+- **Declarations are projections.** A `status:` line (and anything
+  generated from it, such as `INDEX.md`) records what an author
+  asserted, not what the repository proves. Where a declared state and
+  the state the repository's contents support disagree, the contents
+  win; the audit reports the divergence.
+- **Transition precedence.** Where two status transitions could apply
+  at once, a deliberate terminal transition (`Superseded`,
+  `Deprecated`) takes precedence over an automatic progress transition
+  (such as advancing to `Implemented`). Ambiguity that survives this
+  rule is reported for a human to resolve, never auto-resolved.
+- **Hardening (optional).** A repo that needs tamper resistance adds
+  host-level controls: run the verify gate as a required CI check,
+  protect the integration branch, and restrict who may edit the paths
+  the gate reads (the ADR catalogue and index, this file, verification
+  inputs, and the gate's own code).
+
 ## Multi-Agent Rules
 
 <!-- Q5 = None — no coordination layer. Replace the mode-1 text with:

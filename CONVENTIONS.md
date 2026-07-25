@@ -101,6 +101,28 @@ Two sanctioned exceptions, both named in the commit message:
 Weakening a check — removing it, narrowing its scope, suppressing a
 failure — always ships alone, with the reason in the commit message.
 
+## Trust Posture
+
+The verify gate, the audit, and the lifecycle skills are **cooperative**
+controls: they catch honest mistakes and structural drift. They do not
+authenticate who wrote a change, and they cannot stop a writer who
+bypasses them — a local script is sidestepped by a direct edit.
+
+- **Declarations are projections.** A `status:` line (and anything
+  generated from it, such as `INDEX.md`) records what an author
+  asserted, not what the repository proves. Where a declared state and
+  the state the repository's contents support disagree, the contents
+  win and the divergence is reported.
+- **Transition precedence.** Where two status transitions could apply
+  at once, a deliberate terminal transition (`Superseded`,
+  `Deprecated`) takes precedence over an automatic progress transition
+  (such as advancing to `Implemented`). Ambiguity that survives this
+  rule is reported for a human to resolve, never auto-resolved.
+- **Stronger guarantees are a hosting concern.** A repo that needs
+  tamper resistance applies the hardening recipe (`USAGE.md` §5b): run
+  the verify gate in CI as a required check, protect the integration
+  branch, and restrict who may edit the paths the gate reads.
+
 ## Skill Authoring
 
 The product is the `plugins/docflow/skills/` tree. When adding or editing a skill:
