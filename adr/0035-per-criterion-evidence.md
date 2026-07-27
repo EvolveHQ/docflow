@@ -1,7 +1,7 @@
 ---
 adr: 0035
 title: Per-criterion verification — bound evidence records
-status: Proposed
+status: Accepted
 date: 2026-07-25
 owner: Eugenio Minardi
 supersedes:
@@ -142,8 +142,10 @@ capability manifest.
 | Date | Revision | Author | Change |
 |------|----------|--------|--------|
 | 2026-07-25 | r1 | Eugenio Minardi | Initial draft. |
+| 2026-07-27 | r2 | Eugenio Minardi | Accepted — approvals populated, implementation queued as plan 0037. |
 
 ## Approvals
 
 | Role | Name | Date | Signature |
 |------|------|------|-----------|
+| Maintainer | Eugenio Minardi | 2026-07-27 | — |
