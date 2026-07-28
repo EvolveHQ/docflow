@@ -118,6 +118,23 @@ relevant):
     file exists, surface it as an **offer** to add one (external tools
     discover the catalogue through it) — never as a hard failure;
     migration is offered, not forced.
+15. **Declared-vs-computed status.** N/A unless `docflow.yml` records
+    `evidence-adopted-at:`. For each record in evidence scope (created
+    or edited after that commit) declaring `Implemented`: every current
+    criterion's digest has a matching valid evidence record (exit code
+    0, or an attested manual record) under `evidence/<record-slug>/`.
+    Flag stale projections — the computed state wins (§Trust Posture);
+    report the divergence, never silently rewrite the status.
+16. **Evidence re-runs.** N/A without adoption. Re-execute inexpensive
+    `Verify:` commands (sample expensive ones): checking a *record*
+    runs at its recorded `source-sha`; checking *current satisfaction*
+    runs at HEAD. Divergence between a record and its re-run is a
+    **finding** (evidence debt) for a human — never an automatic state
+    change or record edit.
+17. **Manual-verification ratio.** N/A without adoption. Report the
+    share of in-scope criteria verified `manual`, and flag any manual
+    record whose verifier is the implementer. Reported, not gated — the
+    number is the argument.
 
 ## Step 2 — Report
 

@@ -91,6 +91,11 @@ Ask for the pieces the chosen template needs, one prompt at a time:
 - Technology ADR: decision, rationale (**name alternatives considered
   and give specific rejection reasons** — reject "simpler"/"idiomatic"
   as insufficient), consequences, acceptance criteria.
+- **In an evidence-adopting repo** (`docflow.yml` records
+  `evidence-adopted-at:`): a `Verify:` method for each acceptance
+  criterion — an inline command, `gate-check`, or `manual` (see
+  `CONVENTIONS.md` §Verification Evidence). A criterion nobody can
+  name a check for is not ready to be written — ask, don't invent.
 
 Honour the language mandate if one is set.
 

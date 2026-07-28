@@ -29,6 +29,26 @@ Run the repo's verify gate. **Require a pass.** Do not bypass with
 `--no-verify` or equivalent. If it fails, stop, surface the failure,
 fix the root cause, re-run.
 
+## Step 2b — Execute criterion verification (evidence-adopting repos)
+
+Skip this step when `docflow.yml` records no `evidence-adopted-at:` —
+pre-adoption behaviour is unchanged.
+
+Otherwise, for each owning record in evidence scope (created or edited
+after the adoption commit):
+
+1. Run each acceptance criterion's `Verify:` method against the change
+   being shipped.
+2. Write one bound evidence record per criterion —
+   `evidence/<record-slug>/AC<n>-<seq>.md`, next free sequence — per
+   `CONVENTIONS.md` §Verification Evidence: the criterion's current
+   digest, the method/command, the source SHA being shipped, exit code,
+   output digest, verifier (`gate@ship-item`), date. Never edit an
+   existing record; a correction is a new record naming `supersedes:`.
+3. `manual` criteria need the named attestation (verifier **≠** the
+   implementer, with date and scope). Collect it now; a criterion
+   without one stays **unevidenced** — do not invent attestations.
+
 ## Step 3 — Integrate (per the repo's model)
 
 - **Direct-to-main, fast-forward:** `git merge --ff-only <branch>` (or
@@ -49,7 +69,14 @@ Once the change is on `main`:
 
 ## Step 5 — Advance the ADR(s) and regenerate
 
-- Advance each owning ADR's `status:` from `Accepted` to `Implemented`.
+- Advance each owning ADR's `status:` from `Accepted` to `Implemented`
+  — **in an evidence-adopting repo, only if every current criterion of
+  that record has valid evidence** (exit code 0, or an attested manual
+  record). Otherwise name the unevidenced criteria, leave the status
+  at `Accepted`, and say so in the ship report. The plan item still
+  completes on its own exit criteria — a partial contribution
+  integrates without blocking; the record catches up when the
+  remaining criteria are evidenced.
 - Append a Revision History row if the status change is substantive
   (it is). Regenerate `INDEX.md` to match.
 
