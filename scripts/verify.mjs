@@ -10,6 +10,7 @@
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
+import { createHash } from 'node:crypto';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const errors = [];
@@ -301,6 +302,91 @@ if (existsSync(join(root, 'docflow.yml'))) {
   }
   if ('autonomy' in manifest) {
     fail('docflow.yml: "autonomy" is reserved by the contract — do not set it');
+  }
+  if ('evidence-adopted-at' in manifest &&
+      !/^[0-9a-f]{7,40}$/.test(manifest['evidence-adopted-at'])) {
+    fail(`docflow.yml: evidence-adopted-at "${manifest['evidence-adopted-at']}" is not a commit SHA`);
+  }
+}
+
+// ── G. Bound evidence records (ADR 0035) ──
+// Evidence records are append-only proofs per acceptance criterion
+// (CONVENTIONS.md §Verification Evidence). This check validates every
+// record's shape and — for any catalogue ADR that carries an evidence
+// directory and declares Implemented — recomputes each criterion's
+// digest and requires matching valid evidence: the declared status
+// must be backed by the computed state.
+const normaliseCriterion = (text) => text.replace(/\s+/g, ' ').trim();
+const digest = (text) => createHash('sha256').update(text, 'utf8').digest('hex');
+// Parse the numbered items of an ADR's Acceptance-criteria section into
+// normalised texts, index 0 = AC1. Items span lines up to the next item.
+function criteriaOf(body) {
+  const block = body.split(/^## Acceptance criteria\s*$/m)[1]?.split(/^## /m)[0] ?? '';
+  const items = [];
+  for (const m of block.matchAll(/^(\d+)\.\s([\s\S]*?)(?=^\d+\.\s|$(?![\s\S]))/gm)) {
+    items[Number(m[1]) - 1] = normaliseCriterion(m[2]);
+  }
+  return items;
+}
+const EVIDENCE_FIELDS = ['ac', 'ac-digest', 'method', 'source-sha', 'exit-code', 'verifier', 'date'];
+const evidenceDir = join(root, 'evidence');
+if (existsSync(evidenceDir)) {
+  for (const entry of readdirSync(evidenceDir, { withFileTypes: true })) {
+    if (!entry.isDirectory()) continue;
+    const slug = entry.name;
+    const adr = catalogue.find((a) => a.slug === slug);
+    if (!adr) {
+      fail(`evidence/${slug}/: no catalogue ADR with that slug`);
+      continue;
+    }
+    // Validate each record's shape and collect the latest record per AC
+    // (a record superseded by a later one is not "current").
+    const records = {}; // ACn → { fields, file, seq }
+    for (const f of readdirSync(join(evidenceDir, slug)).filter((n) => n.endsWith('.md'))) {
+      const m = f.match(/^AC(\d+)-(\d{3})\.md$/);
+      if (!m) {
+        fail(`evidence/${slug}/${f}: filename is not AC<n>-<seq>.md`);
+        continue;
+      }
+      const { fields } = frontmatter(read(`evidence/${slug}/${f}`));
+      if (!fields) {
+        fail(`evidence/${slug}/${f}: missing frontmatter`);
+        continue;
+      }
+      for (const k of EVIDENCE_FIELDS) {
+        if (!fields[k]) fail(`evidence/${slug}/${f}: missing "${k}"`);
+      }
+      if (fields.verifier?.startsWith('human:') && !/human:\s*\S/.test(fields.verifier)) {
+        fail(`evidence/${slug}/${f}: manual evidence names no verifier`);
+      }
+      const acN = Number(m[1]);
+      const seq = Number(m[2]);
+      if (!records[acN] || seq > records[acN].seq) records[acN] = { fields, file: f, seq };
+    }
+    // Declared-vs-computed: an Implemented ADR with an evidence dir must
+    // have, for EVERY current criterion, a current record whose digest
+    // matches and whose result is valid (exit 0, or attested manual).
+    if (adr.fields.status === 'Implemented') {
+      const criteria = criteriaOf(frontmatter(read(`adr/${adr.file}`)).body);
+      criteria.forEach((text, i) => {
+        const acN = i + 1;
+        const rec = records[acN];
+        if (!rec) {
+          fail(`adr/${adr.file}: declares Implemented but AC${acN} has no evidence record`);
+          return;
+        }
+        if (rec.fields['ac-digest'] !== digest(text)) {
+          fail(
+            `adr/${adr.file}: AC${acN} was edited — evidence ` +
+            `${rec.file} digest no longer matches (stale projection; re-verify)`,
+          );
+        }
+        const manual = rec.fields.verifier?.startsWith('human:');
+        if (!manual && rec.fields['exit-code'] !== '0') {
+          fail(`evidence/${slug}/${rec.file}: exit-code ${rec.fields['exit-code']} does not evidence a pass`);
+        }
+      });
+    }
   }
 }
 
