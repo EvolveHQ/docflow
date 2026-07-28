@@ -53,7 +53,10 @@ These come from `CONVENTIONS.md` and override default behaviour:
 - **Capability ADR section order:** metadata → Context → Capability
   statement → User stories / scenarios → Acceptance criteria → Out of
   scope → Open questions → References → Revision History → Approvals.
-- **Acceptance criteria are testable and numbered.**
+- **Acceptance criteria are testable, numbered, and — on ADRs created
+  or edited after evidence adoption — carry a `Verify:` method**
+  (inline command | `gate-check` | `manual`; see `CONVENTIONS.md`
+  §Verification Evidence).
 - **ADRs are internal artefacts — never user-visible.** ADR numbers,
   ADR titles, and the existence of the ADR catalogue must NEVER appear
   in any user-visible surface. For docflow the user-visible surfaces are

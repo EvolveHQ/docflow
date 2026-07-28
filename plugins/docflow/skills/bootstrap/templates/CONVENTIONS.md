@@ -145,6 +145,48 @@ bypasses them — a local check is sidestepped by a direct edit.
   the gate reads (the ADR catalogue and index, this file, verification
   inputs, and the gate's own code).
 
+## Verification Evidence
+
+Each acceptance criterion names its **verification method** on a
+trailing `Verify:` line: an inline command, `gate-check` (the repo's
+static verify gate covers it), or `manual` (a named human attests).
+The rule applies to records created or edited after the adoption
+commit recorded in `docflow.yml` (`evidence-adopted-at:`); earlier
+records are exempt until edited. A repo without the field has not
+adopted evidence — nothing below applies.
+
+Verification produces **bound evidence records**: append-only files
+`evidence/<record-slug>/AC<n>-<seq>.md` at the artefact root, written
+by the shipping skill from the method's execution transcript — never
+authored by the implementer. Each record carries:
+
+- `ac:` — `<record-slug>#AC<n>`, the criterion it evidences.
+- `ac-digest:` — SHA-256 (hex) of the criterion's **normalised text**:
+  the full numbered item including its `Verify:` line, list marker
+  stripped, every whitespace run collapsed to a single space, trimmed.
+- `method:` and `command:` — what ran.
+- `source-sha:` — the commit the run verified.
+- `exit-code:` and `output-digest:` — the transcript.
+- `verifier:` — `gate@<skill>`, or `human:<name>` for manual.
+- `date:`; `supersedes:` on a correction — a correction is a **new
+  record** naming the one it replaces; existing records are never
+  edited.
+
+Rules:
+
+- A record's `Implemented` status is valid **only while every current
+  criterion's digest has matching valid evidence** (exit code 0, or an
+  attested manual record). Editing a criterion changes its digest and
+  invalidates its old evidence automatically; the stale status line is
+  a reported divergence (§Trust Posture).
+- **Manual evidence** requires a verifier who is **not the
+  implementer**, named with date and scope. The audit reports the
+  manual-verification ratio — reported, not gated.
+- **Temporal rules.** Re-running a method to check a *record* executes
+  at the record's `source-sha`; checking *current satisfaction*
+  executes at HEAD. Divergence is a finding for a human — evidence
+  history is never auto-invalidated.
+
 ## Multi-Agent Rules
 
 <!-- Q5 = None — no coordination layer. Replace the mode-1 text with:
