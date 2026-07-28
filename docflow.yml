@@ -3,3 +3,4 @@
 schema: 1
 model: capability-first
 layers: [plan, agent]
+evidence-adopted-at: f22f0d7

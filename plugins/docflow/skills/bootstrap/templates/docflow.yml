@@ -9,6 +9,10 @@
 #   pre-contract repo; tools apply pre-contract behaviour unchanged.
 # model:  capability-first | two-shape
 # layers: any of [plan, agent, glossary, domains, federation]
+# evidence-adopted-at: OPTIONAL — the commit at which this repo adopted
+#   per-criterion verification evidence (CONVENTIONS §Verification
+#   Evidence). Records last substantively edited before it are exempt
+#   until edited. Absent = evidence not adopted.
 # autonomy: RESERVED — defined by a future contract version; do not set.
 schema: 1
 model: <model>

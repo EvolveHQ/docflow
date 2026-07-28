@@ -17,9 +17,10 @@ The pointer and the record above must agree.
 
 Capability manifest: `docflow.yml` at the artefact root (here, the
 repository root) records this repo's shape for tools — contract
-`schema: 1`, `model: capability-first`, `layers: [plan, agent]`. On
-disagreement between the manifest and this file, the manifest wins and
-the audit reports the divergence. A tool that meets a `schema` newer
+`schema: 1`, `model: capability-first`, `layers: [plan, agent]`, and
+`evidence-adopted-at:` (the per-criterion-evidence adoption commit —
+see §Verification Evidence). On disagreement between the manifest and
+this file, the manifest wins and the audit reports the divergence. A tool that meets a `schema` newer
 than it understands refuses writes; a repo without the file is
 pre-contract and tools behave as before. The `autonomy` field is
 reserved — neither written nor read.
