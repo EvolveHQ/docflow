@@ -41,7 +41,9 @@ These come from `CONVENTIONS.md` and override default behaviour:
   Rationale → Consequences → Acceptance criteria → Out of scope → Open
   questions → References → Revision History → Approvals. Rationale must
   name alternatives considered with specific rejection reasons.
-- **Acceptance criteria are testable and numbered.**
+- **Acceptance criteria are testable, numbered, and carry a `Verify:`
+  method** — an inline command, `gate-check`, or `manual` (see
+  `CONVENTIONS.md` §Verification Evidence).
 - **ADRs are internal artefacts — never user-visible.** ADR numbers,
   ADR titles, and the existence of the ADR catalogue must NEVER appear
   in any string the product emits to users: UI copy, API response
@@ -61,8 +63,9 @@ These come from `CONVENTIONS.md` and override default behaviour:
   affects before changing behaviour.
 - If implementation reveals a capability gap or changed decision, update
   the relevant ADR rather than silently diverging.
-- Add or update tests for implemented behaviour. Map tests back to ADR
-  acceptance criteria where practical.
+- Add or update tests for implemented behaviour. Each acceptance
+  criterion names its verification method (`Verify:` line); the
+  shipping skill runs the methods and records the evidence.
 - **Do not leak ADR identifiers into user-visible surfaces.** When
   writing error messages, UI copy, API responses, log lines that ship
   to customers, public docs, or release notes, refer to the behaviour

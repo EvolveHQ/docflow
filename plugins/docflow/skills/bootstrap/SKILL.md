@@ -131,8 +131,11 @@ A standalone repo has none of them.
    `plan/todo/`, `Implemented` → `plan/done/`.
 4. **Filenames:** `adr/NNNN-kebab-slug.md`, zero-padded 4 digits,
    contiguous, no reserved gaps. Cross-references use relative paths.
-5. **Acceptance criteria are testable and numbered.** Tests map back to
-   them where practical.
+5. **Acceptance criteria are testable, numbered, and verifiable.** Each
+   criterion ends with a `Verify:` line naming how it is checked — an
+   inline command, `gate-check` (the static gate covers it), or
+   `manual` (a named human attests). The evidence rules live in
+   `CONVENTIONS.md` §Verification Evidence.
 6. **Audit discipline.** Substantive ADR changes append a Revision
    History row. Editorial changes (typos, formatting, link fixes) are
    excluded but flagged `editorial` in the commit message. Approvals

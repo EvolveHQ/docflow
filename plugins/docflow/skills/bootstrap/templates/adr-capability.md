@@ -29,8 +29,15 @@ implementation.>
 
 ## Acceptance criteria
 
+<Each criterion is testable and observable, and ends with a `Verify:`
+line naming how it is checked: an inline command, `gate-check` (the
+repo's static gate covers it), or `manual` (a named human attests —
+see CONVENTIONS §Verification Evidence).>
+
 1. <Testable, observable criterion.>
+   Verify: <command | gate-check | manual>
 2. <Testable, observable criterion.>
+   Verify: <command | gate-check | manual>
 3. ...
 
 ## Out of scope
