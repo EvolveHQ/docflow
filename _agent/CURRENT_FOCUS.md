@@ -16,12 +16,12 @@ file.
 ## Active state
 
 - **Branch:** main
-- **Active item:** none — slices S1 and S2 both shipped 2026-07-29
-  (ADRs 0035 + 0036 Implemented with bound evidence; CONSTRAINTS.md
-  live with CON-1..6; constraints layer in the manifest). Next in the
-  programme: slice S3 — deliberate abandonment (Withdrawn + dropped +
-  the supersession-timing fix in new-adr). Analysis and decision
-  register: `../docflow-workflow-analysis/` (r10).
+- **Active item:** none — slices S1, S2, and S3 all shipped 2026-07-29
+  (ADRs 0035–0037 Implemented with bound evidence). **Phase-1 stopping
+  point one reached:** verification, boundaries, and no-silent-deletion
+  are all live. Next: slice S4 — the decision/spec record split (spec/
+  class dormant first, then bootstrap exposure; two ADRs). Analysis and
+  decision register: `../docflow-workflow-analysis/` (r10).
 - **Blockers:** none for S2. The external multi-agent pilot (gates
   slices S6+) still needs a candidate project.
 - **Uncommitted work:** none once the ship commit lands.

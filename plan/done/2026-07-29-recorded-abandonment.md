@@ -50,3 +50,14 @@ When this ships, ADR 0037 advances Accepted → Implemented.
 ## Dependencies
 
 Slices S0–S2 (shipped): contract, evidence regime, constraints.
+
+---
+
+Shipped at HEAD `b58c921` on 2026-07-29, three implementation commits
++ ship: `97ee00b` lifecycle + dropped docs (own + template
+CONVENTIONS, AGENTS, both plan READMEs), `b6a7e29` new-adr
+supersession-on-Acceptance + Withdrawn path + audit semantics,
+`b58c921` gate alone (Withdrawn valid; check E2 dropped files,
+mutation-tested). Eight bound evidence records — five
+operator-attested (batch), three gate-checked. ADR 0037 →
+Implemented (r3). AC1–AC8 met.
