@@ -16,15 +16,22 @@ file.
 ## Active state
 
 - **Branch:** main
-- **Active item:** none — slices S1, S2, and S3 all shipped 2026-07-29
-  (ADRs 0035–0037 Implemented with bound evidence). **Phase-1 stopping
-  point one reached:** verification, boundaries, and no-silent-deletion
-  are all live. Next: slice S4 — the decision/spec record split (spec/
-  class dormant first, then bootstrap exposure; two ADRs). Analysis and
-  decision register: `../docflow-workflow-analysis/` (r10).
-- **Blockers:** none for S2. The external multi-agent pilot (gates
-  slices S6+) still needs a candidate project.
-- **Uncommitted work:** none once the ship commit lands.
+- **Active item:** none — slices S1–S3 shipped 2026-07-29 (ADRs
+  0035–0037 Implemented with bound evidence; stopping point one
+  reached), followed the same day by the **consolidation pass**
+  (surfaces caught up, `scripts/evidence.mjs` executor) and **plan 0040
+  eval catch-up** (mutation layer + self-checks, 15/15 deterministic
+  PASS; behavioural suite authored — its full green run via the
+  Workflow tool remains the release gate). **Second full 18-check audit
+  clean**; the record-level source-sha re-run finding is **closed**
+  (all three SHAs reproduce, digest byte-match on 0035/AC6). Next:
+  slice S4 — the decision/spec record split (spec/ class dormant
+  first, then bootstrap exposure; two ADRs). Analysis and decision
+  register: `../docflow-workflow-analysis/` (r11).
+- **Blockers:** none for S4. The external multi-agent pilot (gates
+  slices S6+) still needs a candidate project. Installed plugin cache
+  is 0.9.2 — stale vs the tree; update when convenient.
+- **Uncommitted work:** none once this snapshot commit lands.
 
 ## Last shipped
 
