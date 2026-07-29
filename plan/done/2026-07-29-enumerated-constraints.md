@@ -54,3 +54,15 @@ When this ships, ADR 0036 advances Accepted → Implemented.
 ## Dependencies
 
 Slices S0–S1 (shipped): manifest, evidence regime.
+
+---
+
+Shipped at HEAD `ac868b5` on 2026-07-29, five implementation commits
++ ship: `5b12610` format + discipline (own + template CONVENTIONS,
+AGENTS hard rules), `31cadf4` six boundaries extracted (CON-1..6),
+`3a3573b` add-convention writer + bootstrap layer + audit check 18,
+`28fb43d` gate check H alone (mutation-tested: illegal source and
+duplicate id both FAIL), `ac868b5` layer dogfooded in the manifest.
+Eight bound evidence records — six operator-attested (batch, after
+per-criterion review), two gate-checked. ADR 0036 → Implemented (r3).
+AC1–AC8 met.

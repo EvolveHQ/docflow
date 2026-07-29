@@ -16,11 +16,12 @@ file.
 ## Active state
 
 - **Branch:** main
-- **Active item:** none — slice S1 shipped 2026-07-29 (plan 0037 done,
-  ADR 0035 Implemented, nine bound evidence records dogfooded, digest
-  binding mutation-tested live). Next in the programme: slice S2 —
-  constraints as an enumerated artefact (new ADR, not yet authored).
-  Analysis and decision register: `../docflow-workflow-analysis/` (r10).
+- **Active item:** none — slices S1 and S2 both shipped 2026-07-29
+  (ADRs 0035 + 0036 Implemented with bound evidence; CONSTRAINTS.md
+  live with CON-1..6; constraints layer in the manifest). Next in the
+  programme: slice S3 — deliberate abandonment (Withdrawn + dropped +
+  the supersession-timing fix in new-adr). Analysis and decision
+  register: `../docflow-workflow-analysis/` (r10).
 - **Blockers:** none for S2. The external multi-agent pilot (gates
   slices S6+) still needs a candidate project.
 - **Uncommitted work:** none once the ship commit lands.

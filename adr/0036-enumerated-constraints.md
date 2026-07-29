@@ -1,7 +1,7 @@
 ---
 adr: 0036
 title: Constraints as an enumerated, decision-gated artefact
-status: Accepted
+status: Implemented
 date: 2026-07-29
 owner: Eugenio Minardi
 supersedes:
@@ -146,6 +146,7 @@ at every step — the value of a boundary is that it is always in view.
 |------|----------|--------|--------|
 | 2026-07-29 | r1 | Eugenio Minardi | Initial draft — first ADR authored under the evidence regime (methods named per criterion at drafting time). |
 | 2026-07-29 | r2 | Eugenio Minardi | Accepted — approvals populated, implementation queued as plan 0038. |
+| 2026-07-29 | r3 | Eugenio Minardi | Implemented (commits 5b12610, 31cadf4, 3a3573b, 28fb43d, ac868b5): format + discipline documented, six boundaries extracted, add-convention writer, opt-in layer, gate check H (mutation-tested), layer dogfooded. Eight evidence records — six operator-attested, two gate-checked. AC1–AC8 met. |
 
 ## Approvals
 
