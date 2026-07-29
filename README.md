@@ -51,6 +51,9 @@ ADR catalogue.
   audit trail, and git contract.
 - `INDEX.md` — generated table of all ADRs.
 - `adr/0000-template.md` — the ADR template; the catalogue starts here.
+- `docflow.yml` — the capability manifest: a small machine-readable
+  record of the repo's docflow shape (contract schema, record model,
+  enabled layers) so tools read it instead of parsing prose.
 
 **Optional layers (opt-in):**
 - `plan/todo/` + `plan/done/` — the implementation queue (Q4a). `git mv`
@@ -61,6 +64,10 @@ ADR catalogue.
   `domains/auth/`) over the flat catalogue, for navigating a large catalogue
   by area. Organisational only — ADRs keep their number; `new-adr` files
   each under its domain. Enable it when the project has distinct areas (Q7).
+- `CONSTRAINTS.md` — the repo's **inviolable boundaries**, enumerated
+  (`CON-1`, `CON-2`, …) so agents load them in full before any task.
+  Every change to the file needs an accepted decision record; there is
+  no severity — a rule that may bend is a convention instead (Q7).
 - `GLOSSARY.md`, the technology-ADR template, and project-specific hard
   rules (vendor-naming, regulated evidence, language mandate, audit-stream
   separation) — Q7/Q10.
@@ -71,9 +78,10 @@ needs an absent layer refuses cleanly and says what's missing.
 **Enable a deferred layer later:** re-run **bootstrap** on the repo — it
 detects your existing setup, skips the settled questions, and offers only
 the optional layers you don't have yet, adding the chosen ones by merge.
-(Two shortcuts: `add-convention` creates `GLOSSARY.md` on your first shared
-term, and `new-adr` offers to create a `domains/<slug>/` grouping when you
-file an ADR under a new domain.)
+(Three shortcuts: `add-convention` creates `GLOSSARY.md` on your first
+shared term and `CONSTRAINTS.md` on your first boundary — the latter
+gated by an accepted decision record — and `new-adr` offers to create a
+`domains/<slug>/` grouping when you file an ADR under a new domain.)
 
 **Placement:** `AGENTS.md` and `CLAUDE.md` always stay at the repository
 root; everything else lives under a configurable **artefact root** —
@@ -88,6 +96,19 @@ ADR recording the decision to adopt this method (self-documenting, like the
 classic "use ADRs" convention). It references `CONVENTIONS.md` for the rules
 and is created `Implemented`. Decline it at sign-off if you want only the
 template.
+
+**Trust posture and evidence:** docflow's checks are **cooperative** —
+they catch honest mistakes and make drift visible; they don't
+authenticate who wrote a change (teams needing tamper resistance apply
+the hardening recipe in the usage guide: CI-required gate, branch
+protection, protected paths). A status line is a *projection*, not a
+proof: once a repo adopts per-criterion evidence, every acceptance
+criterion names its verification method (`Verify:` a command,
+`gate-check`, or an attested `manual`), shipping runs the methods and
+writes **bound evidence records** — digest-tied to the criterion's
+exact text — and "Implemented" is only valid while every current
+criterion has matching proof. Edit a criterion and its old evidence
+stops counting automatically.
 
 ## Why
 

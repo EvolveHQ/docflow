@@ -15,6 +15,12 @@ this repo represent.>
   numbering, no gaps.
 - `INDEX.md` — table regenerated from every ADR's metadata block.
 - `CONVENTIONS.md` — authoring rules (read before editing anything).
+- `CONSTRAINTS.md` — inviolable boundaries; **load before any task**
+  (present only if the constraints layer is enabled).
+- `docflow.yml` — capability manifest: contract schema, record model,
+  enabled layers.
+- `evidence/<record-slug>/AC<n>-<seq>.md` — bound verification
+  evidence (present once the repo adopts per-criterion evidence).
 <!-- If plan folder skipped (Q4a): drop the two plan/ lines and the
 "Plan folder" section below. -->
 - `plan/todo/NNNN-<slug>.md` — pending work, lower numbers run first.

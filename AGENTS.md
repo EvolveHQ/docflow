@@ -33,6 +33,11 @@ below describe how docflow itself is built and maintained.
   repo.)
 - `INDEX.md` — table regenerated from every ADR's metadata block.
 - `CONVENTIONS.md` — authoring rules (read before editing anything).
+- `CONSTRAINTS.md` — the six inviolable boundaries (CON-1..6).
+- `docflow.yml` — capability manifest: contract schema, record model,
+  enabled layers, evidence adoption commit.
+- `evidence/<record-slug>/AC<n>-<seq>.md` — bound verification
+  evidence, written at ship (`CONVENTIONS.md` §Verification Evidence).
 - `plan/todo/NNNN-<slug>.md` — pending work, lower numbers run first.
 - `plan/done/<YYYY-MM-DD>-<slug>.md` — shipped work, chronological.
 - `_agent/` — coordination: `ROLES.md`, `WORKLOG.md`,
@@ -47,6 +52,8 @@ below describe how docflow itself is built and maintained.
 
 These come from `CONVENTIONS.md` and override default behaviour:
 
+- **Load `CONSTRAINTS.md` before any task.** The six boundaries bind
+  every action in this repo; read them first, every session.
 - **One decision per ADR.** Splits become new ADRs that supersede;
   never expand scope inside an existing one.
 - **Status lifecycle:** `Proposed → Accepted → Implemented →
