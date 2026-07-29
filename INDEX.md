@@ -39,4 +39,4 @@ ADR change.
 | [0032](adr/0032-bootstrap-depth-profiles.md) | Bootstrap express and guided profiles | Implemented | 2026-07-03 | 0016, 0017, 0020, 0029, 0030, 0031 |
 | [0033](adr/0033-artefact-root-discovery.md) | Artefact-root discovery contract | Implemented | 2026-07-03 | 0017, 0023 |
 | [0034](adr/0034-record-contract.md) | Explicit record contract — cooperative guarantee and capability manifest | Implemented | 2026-07-25 | 0011, 0016, 0033 |
-| [0035](adr/0035-per-criterion-evidence.md) | Per-criterion verification — bound evidence records | Accepted | 2026-07-25 | 0007, 0011, 0012, 0034 |
+| [0035](adr/0035-per-criterion-evidence.md) | Per-criterion verification — bound evidence records | Implemented | 2026-07-25 | 0007, 0011, 0012, 0034 |

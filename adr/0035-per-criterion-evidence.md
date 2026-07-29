@@ -1,7 +1,7 @@
 ---
 adr: 0035
 title: Per-criterion verification — bound evidence records
-status: Accepted
+status: Implemented
 date: 2026-07-25
 owner: Eugenio Minardi
 supersedes:
@@ -74,12 +74,14 @@ capability manifest.
    repo's static gate), or `manual`. This repo's own conventions drop
    "where practical" in favour of the same rule for records created or
    edited after adoption.
+   Verify: manual
 2. **Bound evidence format.** An evidence record is an append-only file
    `evidence/<record-slug>/AC<n>-<seq>.md` carrying: the criterion
    reference and its **content digest** (SHA-256 of the normalised
    criterion text), the method and command, the **source commit** the
    run verified, exit code, output digest, verifier identity, and date.
    Corrections are new records naming `supersedes:` — never edits.
+   Verify: manual
 3. **The shipping skill is the executor.** `ship-item` runs each
    pending criterion's method for the owning record, writes the
    evidence records, and advances the record to `Implemented` **only
@@ -87,30 +89,37 @@ capability manifest.
    it names the unevidenced criteria and leaves the status untouched.
    The plan item itself still completes on its own exit criteria — a
    partial contribution integrates without blocking.
+   Verify: manual
 4. **Manual is attested and counted.** `manual` evidence requires a
    verifier who is not the implementer, named with date and scope; the
    audit reports the manual-verification ratio. Reported, not gated.
+   Verify: manual
 5. **Audit closes the loop.** The audit gains: a declared-vs-computed
    check (records declaring `Implemented` whose current criteria lack
    valid evidence — post-adoption records only); **evidence re-runs**
    (re-execute inexpensive methods, sample expensive ones; divergence
    between a record and its re-run is a finding, never an automatic
    state change); and the manual ratio.
+   Verify: manual
 6. **Adoption is computed, not marked.** The capability manifest gains
    an optional `evidence-adopted-at: <commit>` field (within schema 1).
    A record whose last substantive edit predates that commit is exempt;
    editing it brings it into scope. No per-record markers.
+   Verify: gate-check
 7. **Temporal rules.** Re-running a record's method to check the
    *record* executes at its recorded source commit; checking *current
    satisfaction* executes at HEAD. Divergence produces a finding for a
    human — evidence history is never auto-invalidated.
+   Verify: manual
 8. **Self-hosting.** At this decision's own ship: the manifest records
    `evidence-adopted-at`, and this ADR's criteria carry methods and
    receive bound evidence records — the first proof the machinery
    works is the machinery's own record.
+   Verify: gate-check
 9. **Gate changes ship alone.** Static-gate additions (evidence-record
    well-formedness, declared-vs-computed, manifest field validation)
    land as their own commits, per gate integrity.
+   Verify: manual
 
 ## Out of scope
 
@@ -143,6 +152,7 @@ capability manifest.
 |------|----------|--------|--------|
 | 2026-07-25 | r1 | Eugenio Minardi | Initial draft. |
 | 2026-07-27 | r2 | Eugenio Minardi | Accepted — approvals populated, implementation queued as plan 0037. |
+| 2026-07-29 | r3 | Eugenio Minardi | Implemented (commits 801b9ec, d7c8e61, f22f0d7, 04aa335, e8be8cd): method rule, evidence contract, executor + audit checks, adoption field, gate check G. Criteria annotated with methods; nine bound evidence records written — seven attested by the operator, two gate-checked. AC1–AC9 met. |
 
 ## Approvals
 

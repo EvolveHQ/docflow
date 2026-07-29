@@ -69,3 +69,14 @@ When this ships, ADR 0035 advances Accepted → Implemented.
 ## Dependencies
 
 Slice S0 (shipped 2026-07-25): trust posture, manifest, gate check F.
+
+---
+
+Shipped at HEAD `e8be8cd` on 2026-07-29, five implementation commits
++ ship: `801b9ec` method rule, `d7c8e61` evidence contract,
+`f22f0d7` executor + audit checks 15–17, `04aa335` adoption field,
+`e8be8cd` gate check G (alone, per gate integrity). Nine bound
+evidence records under `evidence/0035-per-criterion-evidence/` —
+seven attested by the operator (AC1–5, 7, 9), two gate-checked
+(AC6, AC8). Digest binding mutation-tested live at ship (AC edit →
+FAIL, restore → green). ADR 0035 → Implemented (r3). AC1–AC9 met.
