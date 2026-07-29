@@ -50,3 +50,15 @@ completes their eval coverage (the D9 release-gate debt).
 ## Dependencies
 
 Slices S0–S3 shipped; consolidation pass (evidence executor) done.
+
+---
+
+Shipped at HEAD `6914ac1` on 2026-07-29, two commits: `e1d44a9` plan
+item, `6914ac1` eval suite (alone, per gate integrity — tighten-only).
+15/15 deterministic PASS: 6 self-checks (manifest, trust posture,
+evidence-backed 0035–0037 with independent digest recomputation,
+CON-1..6, abandonment, Verify: rule) + 9 mutation cases (7 negative,
+2 positive) via the new git-archive fixture layer. Behavioural
+prompts updated + 5 new cases; full-suite green run remains the
+release gate per the README. No ADR status change — owning ADRs
+already Implemented; this clears their eval-coverage debt.
