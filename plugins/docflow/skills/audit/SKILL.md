@@ -36,12 +36,18 @@ relevant):
    a matching file; metadata fields (status, title, date) agree.
 3. **Plan coverage.** Every `Accepted` ADR has a `plan/todo/` item;
    every `Implemented` ADR has a `plan/done/` entry. Flag orphans both
-   ways.
+   ways. `plan/dropped/` is a **valid terminal location**, not a
+   missing item — but a dropped item satisfies no coverage, and its
+   claimed scope must be re-queued or dispositioned in the drop
+   reason. `Withdrawn` ADRs expect **no** plan item.
 4. **Section completeness.** Each ADR has the required sections in the
    order its shape mandates. Acceptance criteria are numbered.
-5. **Status validity.** Every `status:` is in the declared lifecycle.
+5. **Status validity.** Every `status:` is in the declared lifecycle
+   (including `Withdrawn` — terminal, reachable only from `Proposed`).
    `Superseded` ADRs name a successor in `superseded-by:`; the successor
-   names them in `supersedes:` (symmetry).
+   names them in `supersedes:` (symmetry) **and is `Accepted` or
+   beyond** — a merely-`Proposed` or `Withdrawn` successor must not
+   have flipped its predecessor.
 6. **Revision/Approvals.** Revision History present; Approvals populated
    for ADRs at `Accepted` or beyond.
 7. **Cross-references.** Relative `adr/NNNN-*.md` links resolve to real

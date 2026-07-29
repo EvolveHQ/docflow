@@ -102,9 +102,11 @@ Honour the language mandate if one is set.
 ## Step 3 — Supersede / deprecate (only if replacing an ADR)
 
 If this ADR replaces an existing one:
-- Set `supersedes:` on the new ADR and `superseded-by:` on the old.
-- Advance the old ADR's `status:` to `Superseded`, append a Revision
-  History row noting the successor.
+- Set `supersedes:` on the new ADR — **intent only, at proposal**. Do
+  **not** touch the predecessor yet: supersession takes effect when
+  the successor is **Accepted** (see Step 7). A merely-`Proposed`
+  successor that is later withdrawn must leave the predecessor's
+  standing decision untouched.
 - **Same-repo** links use relative paths (`adr/NNNN-*.md`). **In a
   federation**, a link to an ADR in another repo uses the logical
   identity (`<repo-id>/NNNN-slug`), resolved via the member index along
@@ -141,5 +143,12 @@ Conventional Commit, `Rationale:` footer (this touches an ADR). No
 
 A new ADR is `Proposed`, not actionable yet. Offer to:
 - Walk it to `Accepted` (populate Approvals, change status, regen INDEX)
-  when the user is ready; and
+  when the user is ready. **If it supersedes an ADR, the flip happens
+  here**: on acceptance, set `superseded-by:` on the predecessor,
+  advance it to `Superseded`, and append its Revision History row
+  naming the successor.
 - Create a `plan/todo/` item for it (hand off to the **new-plan** skill).
+- If the operator turns the proposal down instead, set it `Withdrawn`
+  (terminal), append the Revision History row with the reason, regen
+  INDEX — never delete the file. Any `supersedes:` intent it carried
+  simply lapses.
