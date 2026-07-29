@@ -135,6 +135,15 @@ relevant):
     share of in-scope criteria verified `manual`, and flag any manual
     record whose verifier is the implementer. Reported, not gated — the
     number is the argument.
+18. **Constraints discipline.** N/A without a `CONSTRAINTS.md`. Every
+    entry parses per the conventions' format; ids unique; revisions
+    positive and monotonic; `source` and `state` legal; each
+    `authorised-by:` names a decision record that exists at Accepted
+    or beyond. Heuristically flag any constraint change in recent
+    history whose commit touched no authorising record, and surface
+    the removal of any `learned` constraint for extra scrutiny (they
+    are deliberately harder to remove). Report — the file is never
+    auto-edited.
 
 ## Step 2 — Report
 

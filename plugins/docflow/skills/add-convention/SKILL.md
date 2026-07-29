@@ -49,7 +49,8 @@ Questions (skip any the request already answers):
    triage; this question gates the rest.* *(High-impact — asked in
    guided.)*
 2. **Home** — `AGENTS.md` hard rule / `CONVENTIONS.md` guidance /
-   `GLOSSARY.md` term / actually a decision (hand off to the **new-adr**
+   `GLOSSARY.md` term / `CONSTRAINTS.md` boundary (decision-gated) /
+   actually a decision (hand off to the **new-adr**
    skill). *Recommended: per the rule's nature (see Step 2).*
    *(High-impact — asked in guided: the wrong home is churn to move.)*
 3. **Enforce in the verify gate?** — yes / no. *Recommended: no, unless
@@ -76,7 +77,16 @@ reason before doing anything.
 Decide the home, and explain the choice:
 - **Hard rule agents must obey** → a bullet in `AGENTS.md` §Hard rules,
   with the substance in `CONVENTIONS.md`. Use for non-negotiable
-  constraints.
+  process rules.
+- **A boundary that must never be violated** → an entry in
+  `CONSTRAINTS.md` (create it on first use — enabling the constraints
+  layer — at the recorded artefact root, format per `CONVENTIONS.md`
+  §Constraints). **Decision-gated:** a constraint entry needs a
+  human-accepted decision record authorising it — if none exists,
+  draft one via the ADR skill first; never write an ungated entry.
+  Distinguish carefully from a hard rule: a hard rule says how agents
+  work; a constraint says what must never be true of the product or
+  repo, whoever acts.
 - **Authoring / process guidance** → a section in `CONVENTIONS.md`.
   Use for "how we do things" that informs but doesn't gate.
 - **Shared term / definition** → `GLOSSARY.md` (create it if absent —

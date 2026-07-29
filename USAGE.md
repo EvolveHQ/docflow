@@ -214,6 +214,7 @@ After sign-off, the skill writes:
 | `.gitignore` (entry) | (none — inline) | Only in Q5 mode 3: adds `_agent/CURRENT_FOCUS.md` so it stays local-only. |
 | `INDEX.md` | (none — generated) | Header + the seed ADR's row (empty table only if the seed was declined). |
 | `docflow.yml` | `templates/docflow.yml` | Capability manifest at the artefact root: contract `schema`, record `model`, enabled `layers`. Machine-readable — tools read it instead of parsing `CONVENTIONS.md`; on disagreement the manifest wins. Written at every depth tier. |
+| `CONSTRAINTS.md` | `templates/CONSTRAINTS.md` | Enumerated inviolable boundaries (`CON-<n>` entries; every change needs an accepted decision record). Only if Q7 chose the constraints layer — the convention skill also creates it on first boundary. |
 | `_agent/prompts/autonomous.md` | `templates/_agent-prompts-autonomous.md` | Only if Q8 confirmed a verify gate. |
 
 ## 5. After scaffolding

@@ -29,7 +29,8 @@ Inspect the repo before asking anything.
   recorded choices from `CONVENTIONS.md`/`AGENTS.md` (ADR shape, status
   lifecycle, **artefact root**, multi-agent mode, and which optional layers
   already exist). Then offer to **enable any opted-out optional layer**
-  still absent — `plan/`, `_agent/`, `GLOSSARY.md`, `domains/`, or the
+  still absent — `plan/`, `_agent/`, `GLOSSARY.md`, `CONSTRAINTS.md`,
+  `domains/`, or the
   technology-ADR template/split — plus the capability manifest
   `docflow.yml` where the repo predates it — and write only the chosen ones, by
   **merge**, under the recorded artefact root, leaving everything else
@@ -51,6 +52,7 @@ questions.
   INDEX.md               # generated table of all ADRs
   docflow.yml            # capability manifest: schema, model, layers
   GLOSSARY.md            # shared terms (optional — see Q7)
+  CONSTRAINTS.md         # inviolable boundaries (optional — see Q7)
   adr/
     0000-template.md     # capability-ADR template (always)
     NNNN-template.md     # technology-ADR template (only if split — see Q2)
@@ -98,7 +100,8 @@ absent manifest means a pre-contract repo — behave as before.
 these is a valid, lightweight docflow repo — a
 classic ADR catalogue with conventions. Everything else is an **opt-in
 layer**: the `plan/` queue (Q4a), the `_agent/` coordination set (Q5 —
-choose *None* to omit it), `GLOSSARY.md` and `domains/` (Q7). Omitting any
+choose *None* to omit it), `GLOSSARY.md`, `CONSTRAINTS.md`, and
+`domains/` (Q7). Omitting any
 optional layer is a valid state, not an error; a lifecycle skill that needs
 an absent layer refuses cleanly and names what is missing.
 
@@ -203,7 +206,8 @@ fixed profile — summarise it and get sign-off before writing anything:
 - the **core only**: `AGENTS.md`, `CLAUDE.md`, `CONVENTIONS.md`,
   `adr/0000-template.md`, `INDEX.md`, `docflow.yml`, plus the seed ADR
   `0001` (Step 5 item 5b). All optional layers **off**: no `plan/`, no
-  `_agent/`, no `GLOSSARY.md`, no `domains/`, no technology template.
+  `_agent/`, no `GLOSSARY.md`, no `CONSTRAINTS.md`, no `domains/`, no
+  technology template.
 - Default artefact root (`.docflow/`); single ADR shape; full status
   lifecycle.
 - Git contract: Conventional Commits ON, `Rationale:` footer ON,
@@ -333,6 +337,10 @@ default (the operator may decline it — see Step 5 item 5b).
      single-area repo. Cheap to add later.
    - **`GLOSSARY.md`** — shared term definitions. *Defer; add on
      terminology drift.*
+   - **`CONSTRAINTS.md`** — enumerated inviolable boundaries, each
+     decision-gated (see the conventions §Constraints). *Defer; the
+     convention skill creates it when the first boundary-shaped rule
+     arrives, requiring its authorising decision record.*
    - **technology-ADR template** — *defer unless technology decisions split
      from product decisions.*
 8. **Verify gate.** What command(s) decide a change is shippable
@@ -499,9 +507,13 @@ Keep the pointer in sync if a later re-run migrates the root.
 12b. `docflow.yml` — from `templates/docflow.yml`, at the **artefact
     root**, at **every** depth tier. Fill `model` (`capability-first`,
     or `two-shape` if Q2 chose the split) and `layers` (the subset of
-    `plan`, `agent`, `glossary`, `domains`, `federation` actually
-    enabled — empty for an express run). Leave `autonomy` unset — it is
-    reserved.
+    `plan`, `agent`, `glossary`, `constraints`, `domains`, `federation`
+    actually enabled — empty for an express run). Leave `autonomy`
+    unset — it is reserved.
+12c. `CONSTRAINTS.md` — from `templates/CONSTRAINTS.md`, at the
+    artefact root, **only if Q7 chose the constraints layer**. Written
+    with the header and format comment only — entries arrive later via
+    the convention skill, each with its authorising decision record.
 13. `_agent/prompts/autonomous.md` — from
     `templates/_agent-prompts-autonomous.md`, **only** if Q8 confirmed a
     verify gate. Keep the integration block matching Q4b: the
