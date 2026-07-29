@@ -7,8 +7,10 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import {
   assertTree, assertContiguousAdrs, assertIndexSync, assertAdrStatus,
-  assertPlanShipped, assertAbsent, assertFileContains,
+  assertPlanShipped, assertAbsent, assertFileContains, assertFileLacks,
+  assertManifest, assertEvidenceBacked, assertConstraints,
 } from './assertions.mjs';
+import { assertGateFails, assertGateGreen } from './mutations.mjs';
 
 const repoRoot = join(dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -32,6 +34,182 @@ export const cases = [
     },
   },
   {
+    // ── Record contract (S0) ──
+    name: 'self-check: capability manifest declares the repo shape',
+    skill: null,
+    agentDependent: false,
+    repo: repoRoot,
+    assert(repo) {
+      assertManifest(repo, {
+        schema: 1, model: 'capability-first',
+        layers: ['plan', 'agent', 'constraints'],
+      });
+      assertFileContains(repo, 'CONVENTIONS.md', '## Trust Posture');
+      assertFileContains(repo, 'plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md', '## Trust Posture');
+      assertFileContains(repo, 'USAGE.md', 'Trust posture and hardening');
+    },
+  },
+  {
+    // ── Evidence (S1) ──
+    name: 'self-check: evidenced ADRs are backed — digests match, results valid',
+    skill: null,
+    agentDependent: false,
+    repo: repoRoot,
+    assert(repo) {
+      assertEvidenceBacked(repo, '0035-per-criterion-evidence');
+      assertEvidenceBacked(repo, '0036-enumerated-constraints');
+      assertEvidenceBacked(repo, '0037-recorded-abandonment');
+    },
+  },
+  {
+    name: 'self-check: Verify: method rule installed, escape hatch retired',
+    skill: null,
+    agentDependent: false,
+    repo: repoRoot,
+    assert(repo) {
+      assertFileContains(repo, 'CONVENTIONS.md', '## Verification Evidence');
+      assertFileContains(repo, 'plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md', '## Verification Evidence');
+      assertFileContains(repo, 'plugins/docflow/skills/bootstrap/templates/adr-capability.md', 'Verify: <command | gate-check | manual>');
+      assertFileLacks(repo, 'plugins/docflow/skills/bootstrap/SKILL.md', 'where practical');
+      assertFileLacks(repo, 'plugins/docflow/skills/bootstrap/templates/AGENTS.md', 'where practical');
+    },
+  },
+  {
+    // ── Constraints (S2) ──
+    name: 'self-check: CON-1..6 valid, decision-gated, template shipped',
+    skill: null,
+    agentDependent: false,
+    repo: repoRoot,
+    assert(repo) {
+      assertConstraints(repo, ['CON-1', 'CON-2', 'CON-3', 'CON-4', 'CON-5', 'CON-6']);
+      assertTree(repo, ['plugins/docflow/skills/bootstrap/templates/CONSTRAINTS.md']);
+      assertFileContains(repo, 'AGENTS.md', 'Load `CONSTRAINTS.md` before any task');
+      assertFileContains(repo, 'plugins/docflow/skills/add-convention/SKILL.md', 'CONSTRAINTS.md');
+    },
+  },
+  {
+    // ── Abandonment (S3) ──
+    name: 'self-check: Withdrawn + dropped documented; supersession fires on Acceptance',
+    skill: null,
+    agentDependent: false,
+    repo: repoRoot,
+    assert(repo) {
+      assertFileContains(repo, 'CONVENTIONS.md', 'Withdrawn');
+      assertFileContains(repo, 'plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md', 'Withdrawn');
+      assertFileContains(repo, 'plan/README.md', 'plan/dropped');
+      assertFileContains(repo, 'plugins/docflow/skills/bootstrap/templates/plan-README.md', 'plan/dropped');
+      assertFileContains(repo, 'plugins/docflow/skills/new-adr/SKILL.md', 'supersession takes effect when');
+      assertFileContains(repo, 'scripts/verify.mjs', "'Withdrawn'");
+    },
+  },
+  {
+    // ── Mutation suite: the gate rejects what it must reject. Each of
+    // these was run by hand at its slice's ship; now repeatable. Cut
+    // from committed HEAD — the live tree is never touched. ──
+    name: 'mutation: pristine fixture passes the gate (baseline)',
+    skill: null,
+    agentDependent: false,
+    repo: repoRoot,
+    assert(repo) { assertGateGreen(repo); },
+  },
+  {
+    name: 'mutation: editing an evidenced criterion FAILs the gate (digest binding)',
+    skill: null,
+    agentDependent: false,
+    repo: repoRoot,
+    assert(repo) {
+      assertGateFails(repo, (fix) => fix.replace(
+        'adr/0035-per-criterion-evidence.md',
+        'No per-record markers.', 'No per-record markers at all.',
+      ), /digest no longer matches/);
+    },
+  },
+  {
+    name: 'mutation: illegal manifest model FAILs the gate',
+    skill: null,
+    agentDependent: false,
+    repo: repoRoot,
+    assert(repo) {
+      assertGateFails(repo, (fix) => fix.replace(
+        'docflow.yml', 'model: capability-first', 'model: vibes',
+      ), /illegal model/);
+    },
+  },
+  {
+    name: 'mutation: setting the reserved autonomy field FAILs the gate',
+    skill: null,
+    agentDependent: false,
+    repo: repoRoot,
+    assert(repo) {
+      assertGateFails(repo, (fix) => fix.write(
+        'docflow.yml', fix.read('docflow.yml') + 'autonomy: L3\n',
+      ), /reserved/);
+    },
+  },
+  {
+    name: 'mutation: illegal constraint source FAILs the gate',
+    skill: null,
+    agentDependent: false,
+    repo: repoRoot,
+    assert(repo) {
+      assertGateFails(repo, (fix) => fix.replace(
+        'CONSTRAINTS.md', '- source: chosen', '- source: vibes',
+      ), /source "vibes"/);
+    },
+  },
+  {
+    name: 'mutation: duplicate constraint id FAILs the gate',
+    skill: null,
+    agentDependent: false,
+    repo: repoRoot,
+    assert(repo) {
+      assertGateFails(repo, (fix) => fix.replace(
+        'CONSTRAINTS.md', '## CON-6 r1', '## CON-1 r1',
+      ), /duplicate id/);
+    },
+  },
+  {
+    name: 'mutation: malformed dropped item FAILs the gate',
+    skill: null,
+    agentDependent: false,
+    repo: repoRoot,
+    assert(repo) {
+      assertGateFails(repo, (fix) => {
+        fix.mkdir('plan/dropped');
+        fix.write('plan/dropped/2026-01-01-badname.md', 'no footer\n');
+      }, /number must be kept|no Dropped footer/);
+    },
+  },
+  {
+    name: 'mutation: orphan evidence directory FAILs the gate',
+    skill: null,
+    agentDependent: false,
+    repo: repoRoot,
+    assert(repo) {
+      assertGateFails(repo, (fix) => {
+        fix.mkdir('evidence/9999-bogus');
+        fix.write('evidence/9999-bogus/AC1-001.md', '---\nac: x\n---\n');
+      }, /no catalogue ADR/);
+    },
+  },
+  {
+    name: 'mutation: Withdrawn is accepted end-to-end (positive)',
+    skill: null,
+    agentDependent: false,
+    repo: repoRoot,
+    assert(repo) {
+      // Flip a pre-evidence ADR to Withdrawn in both the file and its
+      // INDEX row: the gate (status validity + INDEX fidelity) stays
+      // green, proving the state is fully supported.
+      assertGateGreen(repo, (fix) => {
+        fix.replace('adr/0030-domain-grouping.md', 'status: Implemented', 'status: Withdrawn');
+        fix.replace('INDEX.md',
+          '| Domain grouping — navigate the catalogue by area | Implemented |',
+          '| Domain grouping — navigate the catalogue by area | Withdrawn |');
+      });
+    },
+  },
+  {
     name: 'bootstrap: fresh repo gets the full scaffold',
     skill: 'bootstrap',
     inputs: { /* the 10 assessment answers, scripted */ },
@@ -39,7 +217,9 @@ export const cases = [
       assertTree(repo, [
         'AGENTS.md', 'CLAUDE.md', 'CONVENTIONS.md', 'INDEX.md',
         'adr/0000-template.md', 'plan/todo', 'plan/done', '_agent/ROLES.md',
+        'docflow.yml',
       ]);
+      assertManifest(repo, { schema: 1, model: 'capability-first', layers: ['plan', 'agent'] });
     },
   },
   {
@@ -53,11 +233,13 @@ export const cases = [
         '.docflow/CONVENTIONS.md', '.docflow/INDEX.md',
         '.docflow/adr/0000-template.md',
         '.docflow/adr/0001-record-architecture-decisions.md',
+        '.docflow/docflow.yml',
       ]);
       // Optional layers stay off in the express profile.
       assertAbsent(repo, [
         '.docflow/plan', 'plan', '_agent', '.docflow/GLOSSARY.md',
-        'GLOSSARY.md', '.docflow/domains', 'domains',
+        'GLOSSARY.md', '.docflow/CONSTRAINTS.md', 'CONSTRAINTS.md',
+        '.docflow/domains', 'domains',
         '.docflow/federation.md', 'federation.md',
       ]);
       assertFileContains(repo, '.docflow/CONVENTIONS.md', 'Assessment depth: express');

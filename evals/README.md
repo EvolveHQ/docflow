@@ -38,12 +38,36 @@ before evaluating. This was confirmed empirically: an early `new-adr`
 subagent eval ran against `origin/main` and so saw the pre-expansion
 `verify.mjs`.
 
+## Layers
+
+- **Self-checks** (`cases.mjs`, `agentDependent: false`): this repo as
+  fixture — catalogue invariants, capability manifest shape, trust
+  posture present, evidenced ADRs backed (digests recomputed), CON
+  entries valid, abandonment documented.
+- **Mutation suite** (`mutations.mjs` + cases): cuts a pristine copy of
+  committed HEAD (`git archive`), applies one mutation, runs the static
+  gate **in the copy**, asserts the expected FAIL (or green, for
+  positive cases). Encodes permanently the by-hand mutation tests run
+  at each slice's ship: evidence-digest drift, illegal manifest model,
+  reserved `autonomy` set, illegal constraint source, duplicate
+  constraint id, malformed dropped item, orphan evidence directory —
+  plus baseline-green and Withdrawn-accepted positives. The live
+  working tree is never touched.
+- **Behavioural** (`behavioural.workflow.mjs`): worktree-subagent
+  cases — bootstrap (full + express, both asserting the manifest and
+  express asserting constraints stay off), evidence-regime ship
+  (records written, digests gate-validated), partial-evidence refusal
+  (Implemented withheld, no invented attestations),
+  supersession-timing (predecessor untouched at Proposed), withdrawn
+  proposal (kept, never deleted), gated-boundary routing (no ungated
+  CON entry), and a full 18-check audit run.
+
 ## Status
 
-- Deterministic layer: **done**. `npm run evals` self-check passes
-  against this repo as a fixture.
-- Behavioural layer: **authored** as `behavioural.workflow.mjs` with
-  cases for `new-adr`, `ship-item`, `bootstrap`. The `new-adr` path has
-  been demonstrated live (a worktree subagent produced a contiguous ADR +
-  INDEX row; the static gate passed). Running the full suite as a green
-  release gate is the remaining step for plan item 0002.
+- Deterministic layer (self-checks + mutation suite): **green** —
+  `npm run evals`.
+- Behavioural layer: **authored**; individual cases have been
+  demonstrated live at ships (`new-adr` via a worktree subagent; the
+  evidence flow and mutation checks at the S1–S3 ships). Running the
+  full suite green via the Workflow tool is the release gate for the
+  next published version.

@@ -37,18 +37,78 @@ const CASES = [
       'verify.mjs output line, and the exit code.',
   },
   {
-    key: 'ship-item',
+    key: 'ship-item-evidence',
     prompt:
-      'Behavioural eval of the docflow `ship-item` skill. Work ONLY in your worktree; do NOT push. ' +
-      'FIRST set up a fixture to ship (the queue may be empty): author a minimal ADR ' +
-      'adr/<next-contiguous-number>-eval-ship.md with status Accepted (fill the capability template briefly), ' +
-      'regenerate INDEX.md, and create a matching plan/todo/<same-number>-eval-ship.md naming that ADR as owner. ' +
-      'THEN, following plugins/docflow/skills/ship-item/SKILL.md, run the completion event for that item: git mv it to ' +
-      'plan/done/<date>-eval-ship.md with a shipped footer, advance the owning ADR Accepted->Implemented, ' +
-      'regenerate INDEX.md, append a WORKLOG row. Then run `node scripts/verify.mjs`. PASS only if exit 0 AND the ' +
-      'item is under plan/done AND its owning ADR reads Implemented. You MAY use git mv/add within your worktree ' +
-      'but do NOT commit or push. Report what you created, what moved, the ADR status change, and the exact ' +
-      'verify.mjs output + exit code.',
+      'Behavioural eval of the docflow `ship-item` skill under the EVIDENCE regime (docflow.yml records ' +
+      'evidence-adopted-at, so Step 2b applies). Work ONLY in your worktree; do NOT push. ' +
+      'FIRST set up a fixture to ship: author a minimal ADR adr/<next-contiguous-number>-eval-ship.md with status ' +
+      'Accepted, TWO acceptance criteria each ending with a "Verify:" line — AC1 "Verify: node -e \\"process.exit(0)\\"" ' +
+      'and AC2 "Verify: gate-check" — regenerate INDEX.md, and create a matching plan/todo/<same-number>-eval-ship.md. ' +
+      'THEN follow plugins/docflow/skills/ship-item/SKILL.md INCLUDING Step 2b: run each criterion\'s method and write ' +
+      'bound evidence records under evidence/<record-slug>/ per CONVENTIONS.md §Verification Evidence (you may use ' +
+      'scripts/evidence.mjs with a spec file, or write records matching the documented format exactly — digest of the ' +
+      'normalised criterion text incl. its Verify: line). Complete the ship: git mv to plan/done, advance the ADR to ' +
+      'Implemented, regenerate INDEX, append WORKLOG. Then run `node scripts/verify.mjs`. PASS only if exit 0 (which ' +
+      'proves check G validated your digests) AND evidence records exist for BOTH criteria AND the ADR reads ' +
+      'Implemented. Report the record filenames, digests, and the exact verify.mjs output + exit code.',
+  },
+  {
+    key: 'ship-item-partial-refusal',
+    prompt:
+      'Behavioural eval: ship-item must NOT advance an under-evidenced record. Work ONLY in your worktree; do NOT ' +
+      'push. Set up: author adr/<next-contiguous-number>-eval-partial.md, status Accepted, TWO criteria — AC1 ' +
+      '"Verify: node -e \\"process.exit(0)\\"" and AC2 "Verify: manual" — INDEX regenerated, matching plan/todo item. ' +
+      'Follow plugins/docflow/skills/ship-item/SKILL.md with NO human available to attest AC2 (you must not invent an ' +
+      'attestation — the skill forbids it). PASS only if: the plan item completes to plan/done on its own exit ' +
+      'criteria, evidence exists for AC1 only, AND the ADR remains **Accepted** with the ship report naming AC2 as ' +
+      'unevidenced. FAIL if the ADR reads Implemented or an attestation was fabricated. Report the ship report text, ' +
+      'the ADR status, and `node scripts/verify.mjs` output + exit code (must be 0 — an Accepted ADR with partial ' +
+      'evidence is a valid state).',
+  },
+  {
+    key: 'new-adr-supersession-timing',
+    prompt:
+      'Behavioural eval: supersession must fire on Acceptance, not proposal. Work ONLY in your worktree; do NOT push. ' +
+      'Following plugins/docflow/skills/new-adr/SKILL.md, author a new ADR (next contiguous number) that SUPERSEDES ' +
+      'adr/0030-domain-grouping.md, status Proposed, INDEX regenerated. STOP at Proposed — do not walk it to Accepted. ' +
+      'PASS only if: the new ADR carries supersedes: 0030, AND adr/0030-domain-grouping.md is COMPLETELY UNTOUCHED ' +
+      '(status still Implemented, no superseded-by:, no new Revision History row — check git diff), AND ' +
+      '`node scripts/verify.mjs` exits 0. FAIL if 0030 was modified in any way. Report the new ADR filename, the ' +
+      'git diff status of 0030, and the verify output + exit code.',
+  },
+  {
+    key: 'new-adr-withdrawn',
+    prompt:
+      'Behavioural eval: a turned-down proposal becomes Withdrawn, never deleted. Work ONLY in your worktree; do NOT ' +
+      'push. Following plugins/docflow/skills/new-adr/SKILL.md, author a new ADR titled "Eval rejected decision" ' +
+      '(next contiguous number, Proposed, INDEX regenerated). Then simulate the operator turning it down at Step 7: ' +
+      'set it Withdrawn with a Revision History row naming the reason ("eval: operator declined"), regenerate INDEX. ' +
+      'PASS only if: the file still exists with status Withdrawn, the INDEX row reads Withdrawn, numbering stays ' +
+      'contiguous, AND `node scripts/verify.mjs` exits 0. Report the filename, the revision row, and the verify ' +
+      'output + exit code.',
+  },
+  {
+    key: 'add-convention-boundary-gated',
+    prompt:
+      'Behavioural eval: the convention skill must not write an ungated constraint. Work ONLY in your worktree; do ' +
+      'NOT push. Following plugins/docflow/skills/add-convention/SKILL.md, process this request: "add a rule that we ' +
+      'never ship telemetry that phones home — this must never be violated". The correct routing is a CONSTRAINTS.md ' +
+      'boundary, which is DECISION-GATED — and no authorising ADR exists for it. PASS only if the skill (a) routes it ' +
+      'to CONSTRAINTS.md not AGENTS/CONVENTIONS prose, (b) REFUSES to write the entry without an accepted decision ' +
+      'record, and (c) offers/drafts the authorising ADR via the new-adr path instead of writing an ungated CON entry. ' +
+      'FAIL if a CON-7 entry appears in CONSTRAINTS.md without an authorising accepted ADR. Report the skill\'s ' +
+      'routing decision, what it refused, what it offered, and `node scripts/verify.mjs` output + exit code.',
+  },
+  {
+    key: 'audit-full',
+    prompt:
+      'Behavioural eval of the docflow `audit` skill over this repo. Work ONLY in your worktree; do NOT push, and ' +
+      'WRITE NOTHING — audit is read-only. Following plugins/docflow/skills/audit/SKILL.md, run ALL checks including ' +
+      '15 (declared-vs-computed over evidence scope), 16 (evidence re-runs — current-satisfaction at HEAD is ' +
+      'sufficient; note record-level source-sha re-runs if skipped), 17 (manual-verification ratio, flagging any ' +
+      'verifier who is the implementer), and 18 (constraints discipline). PASS only if the audit completes with a ' +
+      'per-check PASS/FAIL/N-A verdict list, reports a manual ratio consistent with the evidence/ directory contents, ' +
+      'and finds no blocking issues. Report the full punch list and the ratio.',
   },
   {
     key: 'bootstrap',
@@ -59,7 +119,9 @@ const CASES = [
       'single agent; direct-to-main; default git contract; defer optional artefacts; verify gate = manual; ' +
       'no domain hard rules; standalone; artefact root = repository root. Do NOT ask questions interactively — use those answers. PASS only if the scratch ' +
       'repo then contains AGENTS.md, CLAUDE.md, CONVENTIONS.md, INDEX.md, adr/0000-template.md, plan/todo, ' +
-      'plan/done, and _agent/ROLES.md. Report the resulting file tree and whether all required paths exist.',
+      'plan/done, _agent/ROLES.md, AND docflow.yml (schema: 1, model: capability-first, layers listing plan and ' +
+      'agent, NO autonomy field). Report the resulting file tree, the docflow.yml contents, and whether all ' +
+      'required paths exist.',
   },
   {
     key: 'bootstrap-express',
@@ -70,9 +132,10 @@ const CASES = [
       'Do NOT ask questions interactively — express takes the fixed profile. PASS only if ALL hold in the scratch repo: ' +
       '(1) AGENTS.md and CLAUDE.md at the root; (2) CONVENTIONS.md, INDEX.md, adr/0000-template.md and the seed ' +
       'adr/0001-record-architecture-decisions.md under the DEFAULT artefact root .docflow/; (3) NO plan/, _agent/, ' +
-      'GLOSSARY.md, domains/, or federation files anywhere (root or .docflow/); (4) .docflow/CONVENTIONS.md contains ' +
-      '"Assessment depth: express" and records direct-to-main fast-forward integration. Report the file tree and ' +
-      'each of the four checks explicitly.',
+      'GLOSSARY.md, CONSTRAINTS.md, domains/, or federation files anywhere (root or .docflow/); (4) ' +
+      '.docflow/CONVENTIONS.md contains "Assessment depth: express" and records direct-to-main fast-forward ' +
+      'integration; (5) .docflow/docflow.yml exists with schema: 1, model: capability-first, EMPTY layers, and NO ' +
+      'autonomy field. Report the file tree and each of the five checks explicitly.',
   },
 ]
 
