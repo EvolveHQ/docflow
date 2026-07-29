@@ -1,7 +1,7 @@
 ---
 adr: 0037
 title: Deliberate abandonment is a recorded terminal state
-status: Proposed
+status: Accepted
 date: 2026-07-29
 owner: Eugenio Minardi
 supersedes:
@@ -137,8 +137,10 @@ reason. Nothing deliberate is ever deleted.
 | Date | Revision | Author | Change |
 |------|----------|--------|--------|
 | 2026-07-29 | r1 | Eugenio Minardi | Initial draft. |
+| 2026-07-29 | r2 | Eugenio Minardi | Accepted — approvals populated, implementation queued as plan 0039. |
 
 ## Approvals
 
 | Role | Name | Date | Signature |
 |------|------|------|-----------|
+| Maintainer | Eugenio Minardi | 2026-07-29 | — |
