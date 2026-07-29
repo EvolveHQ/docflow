@@ -271,7 +271,7 @@ if (existsSync(doneDir)) {
 // reserved and must not be set.
 const MANIFEST_SCHEMA = 1;
 const MANIFEST_MODELS = new Set(['capability-first', 'two-shape']);
-const MANIFEST_LAYERS = new Set(['plan', 'agent', 'glossary', 'domains', 'federation']);
+const MANIFEST_LAYERS = new Set(['plan', 'agent', 'glossary', 'constraints', 'domains', 'federation']);
 if (existsSync(join(root, 'docflow.yml'))) {
   const manifest = {};
   for (const line of read('docflow.yml').split('\n')) {
@@ -386,6 +386,58 @@ if (existsSync(evidenceDir)) {
           fail(`evidence/${slug}/${rec.file}: exit-code ${rec.fields['exit-code']} does not evidence a pass`);
         }
       });
+    }
+  }
+}
+
+// ── H. Constraints file (ADR 0036) ──
+// CONSTRAINTS.md, when present, enumerates decision-gated boundaries
+// (CONVENTIONS.md §Constraints): parseable CON-<n> r<n> entries with
+// unique ids, positive revisions, legal source/state values, and an
+// authorised-by decision record that exists at Accepted or beyond.
+const CON_SOURCES = new Set(['chosen', 'imposed', 'learned']);
+const CON_STATES = new Set(['Active', 'Removed']);
+if (existsSync(join(root, 'CONSTRAINTS.md'))) {
+  const conIds = new Set();
+  const blocks = read('CONSTRAINTS.md').split(/^## /m).slice(1);
+  if (!blocks.length) fail('CONSTRAINTS.md: present but has no CON entries');
+  for (const block of blocks) {
+    const head = block.split('\n', 1)[0];
+    const hm = head.match(/^(CON-\d+) r(\d+) — (.+)$/);
+    if (!hm) {
+      fail(`CONSTRAINTS.md: entry header "${head}" is not "CON-<n> r<n> — <title>"`);
+      continue;
+    }
+    const [, id, rev] = hm;
+    if (conIds.has(id)) fail(`CONSTRAINTS.md: duplicate id ${id}`);
+    conIds.add(id);
+    if (Number(rev) < 1) fail(`CONSTRAINTS.md: ${id} revision r${rev} is not positive`);
+    const field = (name) =>
+      block.match(new RegExp(`^- ${name}:\\s*(.+)$`, 'm'))?.[1].trim();
+    const source = field('source');
+    if (!CON_SOURCES.has(source)) {
+      fail(`CONSTRAINTS.md: ${id} source "${source}" not in {${[...CON_SOURCES].join(', ')}}`);
+    }
+    const state = field('state');
+    if (!CON_STATES.has(state)) {
+      fail(`CONSTRAINTS.md: ${id} state "${state}" not in {${[...CON_STATES].join(', ')}}`);
+    }
+    if (!field('statement')) fail(`CONSTRAINTS.md: ${id} missing statement`);
+    if (!field('check')) fail(`CONSTRAINTS.md: ${id} missing check`);
+    const auth = field('authorised-by');
+    const am = auth?.match(/^adr\/(\d{4}-[a-z0-9-]+)\.md$/);
+    if (!am) {
+      fail(`CONSTRAINTS.md: ${id} authorised-by "${auth}" is not an adr/NNNN-<slug>.md path`);
+    } else {
+      const target = catalogue.find((a) => a.slug === am[1]);
+      if (!target) {
+        fail(`CONSTRAINTS.md: ${id} authorised-by names non-existent ${auth}`);
+      } else if (!['Accepted', 'Implemented'].includes(target.fields.status)) {
+        fail(
+          `CONSTRAINTS.md: ${id} authorised-by ${auth} is "${target.fields.status}" ` +
+          '— a constraint needs an Accepted-or-beyond decision',
+        );
+      }
     }
   }
 }
