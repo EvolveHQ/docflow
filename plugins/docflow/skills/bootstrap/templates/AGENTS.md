@@ -44,6 +44,9 @@ These come from `CONVENTIONS.md` and override default behaviour:
 - **Acceptance criteria are testable, numbered, and carry a `Verify:`
   method** — an inline command, `gate-check`, or `manual` (see
   `CONVENTIONS.md` §Verification Evidence).
+- **Never alter `CONSTRAINTS.md` without a human-accepted ADR** (only
+  if the constraints layer is enabled — see `CONVENTIONS.md`
+  §Constraints). Proposing is fine; writing is gated.
 - **ADRs are internal artefacts — never user-visible.** ADR numbers,
   ADR titles, and the existence of the ADR catalogue must NEVER appear
   in any string the product emits to users: UI copy, API response

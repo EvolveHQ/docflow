@@ -187,6 +187,38 @@ Rules:
   executes at HEAD. Divergence is a finding for a human — evidence
   history is never auto-invalidated.
 
+<!-- Constraints layer — bootstrap INCLUDES this section (uncommented)
+ONLY when the constraints layer was chosen (Q7). Omit otherwise.
+
+## Constraints
+
+The repo's inviolable boundaries are enumerated in `CONSTRAINTS.md` at
+the artefact root — small enough to load in full before any task. One
+entry per constraint:
+
+## CON-<n> r<n> — <title>
+- source: chosen | imposed | learned
+- state: Active | Removed
+- authorised-by: adr/NNNN-<slug>.md
+- statement: <the boundary, one or two sentences>
+- check: <how a violation surfaces — gate check, audit check, review>
+
+`source:` records provenance: `chosen` (a decision this team made),
+`imposed` (law, licence, or vendor terms — the authorising record
+captures the chosen *response*), `learned` (born of observed harm;
+deliberately harder to remove).
+
+Discipline:
+
+- Constraints are **absolute** — no severity. A rule that may
+  sometimes bend is a convention, not a constraint.
+- **Every transition needs a human-accepted decision record**:
+  creation, each scope revision (`r<n>` increments), and removal.
+- **Removal is permanent.** Reintroduction is a new id under a fresh
+  decision.
+- Agents never alter `CONSTRAINTS.md` without the accepted record.
+-->
+
 ## Multi-Agent Rules
 
 <!-- Q5 = None — no coordination layer. Replace the mode-1 text with:

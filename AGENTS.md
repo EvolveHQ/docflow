@@ -57,6 +57,10 @@ These come from `CONVENTIONS.md` and override default behaviour:
   or edited after evidence adoption — carry a `Verify:` method**
   (inline command | `gate-check` | `manual`; see `CONVENTIONS.md`
   §Verification Evidence).
+- **Never alter `CONSTRAINTS.md` without a human-accepted ADR.** Every
+  constraint transition — creation, scope revision, removal — is
+  decision-gated (`CONVENTIONS.md` §Constraints). Proposing is fine;
+  writing is gated.
 - **ADRs are internal artefacts — never user-visible.** ADR numbers,
   ADR titles, and the existence of the ADR catalogue must NEVER appear
   in any user-visible surface. For docflow the user-visible surfaces are
