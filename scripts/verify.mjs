@@ -117,6 +117,7 @@ for (const name of skillDirs) {
 // ── C. ADR catalogue: numbering, status, structure, INDEX fidelity ──
 const VALID_STATUS = new Set([
   'Proposed', 'Accepted', 'Implemented', 'Superseded', 'Deprecated',
+  'Withdrawn', // terminal, reachable only from Proposed (ADR 0037)
 ]);
 // Expected H2 sequence for the single ADR shape this repo uses
 // (CONVENTIONS.md §ADR Shapes).
@@ -386,6 +387,23 @@ if (existsSync(evidenceDir)) {
           fail(`evidence/${slug}/${rec.file}: exit-code ${rec.fields['exit-code']} does not evidence a pass`);
         }
       });
+    }
+  }
+}
+
+// ── E2. Dropped queue items (ADR 0037) ──
+// Abandonment is recorded, never deleted: plan/dropped/ files keep the
+// item's number (<date>-NNNN-<slug>.md) and carry a Dropped footer
+// naming the reason.
+const droppedDir = join(root, 'plan/dropped');
+if (existsSync(droppedDir)) {
+  for (const f of readdirSync(droppedDir).filter((n) => n.endsWith('.md'))) {
+    if (!/^\d{4}-\d{2}-\d{2}-\d{4}-.+\.md$/.test(f)) {
+      fail(`plan/dropped/${f}: name is not <YYYY-MM-DD>-NNNN-<slug>.md (the number must be kept)`);
+    }
+    const text = read(`plan/dropped/${f}`).replace(/\*/g, '');
+    if (!/Dropped[^\n]{8,}/.test(text)) {
+      fail(`plan/dropped/${f}: no Dropped footer naming the reason`);
     }
   }
 }
