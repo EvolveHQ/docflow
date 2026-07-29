@@ -175,6 +175,11 @@ Rules:
   executes at HEAD. Divergence is a finding for a human — evidence
   history is never auto-invalidated.
 
+This repo's executor is `scripts/evidence.mjs` (spec-file driven; it
+refuses manual records with no named verifier). Its digest logic
+mirrors the gate's; drift is fail-safe — the gate recomputes on every
+run and wins.
+
 ## Constraints
 
 The repo's inviolable boundaries are enumerated in `CONSTRAINTS.md` at
