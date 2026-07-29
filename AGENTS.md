@@ -49,7 +49,10 @@ These come from `CONVENTIONS.md` and override default behaviour:
 
 - **One decision per ADR.** Splits become new ADRs that supersede;
   never expand scope inside an existing one.
-- **Status lifecycle:** `Proposed → Accepted → Implemented → (Superseded | Deprecated)`.
+- **Status lifecycle:** `Proposed → Accepted → Implemented →
+  (Superseded | Deprecated)`, with `Proposed → Withdrawn` for a
+  rejected proposal. Supersession fires on the successor's
+  **Acceptance**, never its proposal.
 - **Capability ADR section order:** metadata → Context → Capability
   statement → User stories / scenarios → Acceptance criteria → Out of
   scope → Open questions → References → Revision History → Approvals.
@@ -126,6 +129,9 @@ state and history; LOCKS discipline is not in use.
   (and any release tag / npm version).
 - The owning ADR(s) advance `Accepted → Implemented` on the same
   commit. Regenerate `INDEX.md`.
+- An abandoned item is never deleted: `git mv` to
+  `plan/dropped/<YYYY-MM-DD>-NNNN-<slug>.md` (number kept) with a
+  `Dropped` footer naming the reason.
 
 ## Git contract
 

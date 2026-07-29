@@ -59,9 +59,12 @@ Status lifecycle: `<from Q3>`.
 | Implemented | Code shipped per Q4 completion event. Work item moved to `plan/done/`. ADR is the authoritative spec the running system matches. |
 | Superseded | Replaced by another ADR. The successor is named in `superseded-by:` metadata. |
 | Deprecated | Was real; the world moved on; no successor. Capability is not being rebuilt. |
+| Withdrawn | Proposed and turned down. The option was considered and rejected; the decision was never in effect. Terminal. |
 
-Terminal states (Superseded / Deprecated) are reachable from any prior
-state.
+Exits are sharpened by state: from `Proposed` the only exits are
+`Accepted` and `Withdrawn`; `Superseded` and `Deprecated` are
+reachable from `Accepted` and `Implemented`. Supersession takes effect
+when the successor is **Accepted** — never on its mere proposal.
 
 The first **persisted** status is `Proposed` — there is no separate `Draft`
 state and no `brainstorming/`/`drafts/` folder. Work-in-progress lives in
@@ -277,6 +280,13 @@ Pending and shipped work live in `plan/` at the repository root:
   Each file names the owning ADR(s), scope, and exit criteria.
 - `plan/done/<YYYY-MM-DD>-<slug>.md` — shipped work, chronological. A
   `git mv` from `todo/` to `done/` is the completion event.
+- `plan/dropped/<YYYY-MM-DD>-NNNN-<slug>.md` — abandoned work, never
+  deleted. The `git mv` keeps the item's number so references resolve;
+  a `Dropped` footer names the date and reason. A dropped item
+  **leaves the owning set**: a record's advancement quantifies over
+  non-dropped plans only, and a dropped item satisfies no coverage —
+  its claimed scope is re-queued or explicitly dispositioned in the
+  drop reason.
 
 The completion event is: `<from Q4>`.
 

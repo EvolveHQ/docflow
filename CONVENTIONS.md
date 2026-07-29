@@ -40,7 +40,8 @@ Each ADR describes one decision. If a decision splits, supersede the
 original ADR and create new ADRs rather than expanding scope inside a
 single document.
 
-Status lifecycle: `Proposed → Accepted → Implemented → (Superseded | Deprecated)`.
+Status lifecycle: `Proposed → Accepted → Implemented → (Superseded | Deprecated)`,
+with `Proposed → Withdrawn` for a rejected proposal.
 
 | Status | Meaning |
 |---|---|
@@ -49,9 +50,12 @@ Status lifecycle: `Proposed → Accepted → Implemented → (Superseded | Depre
 | Implemented | Code shipped per the completion event. Work item moved to `plan/done/`. ADR is the authoritative spec the running system matches. |
 | Superseded | Replaced by another ADR. The successor is named in `superseded-by:` metadata. |
 | Deprecated | Was real; the world moved on; no successor. Capability is not being rebuilt. |
+| Withdrawn | Proposed and turned down. The option was considered and rejected; the decision was never in effect. Terminal. |
 
-Terminal states (Superseded / Deprecated) are reachable from any prior
-state.
+Exits are sharpened by state: from `Proposed` the only exits are
+`Accepted` and `Withdrawn`; `Superseded` and `Deprecated` are
+reachable from `Accepted` and `Implemented`. Supersession takes effect
+when the successor is **Accepted** — never on its mere proposal.
 
 Cross-references link by relative path to `adr/NNNN-*.md`.
 
@@ -259,6 +263,13 @@ Pending and shipped work live in `plan/` at the repository root:
   Each file names the owning ADR(s), scope, and exit criteria.
 - `plan/done/<YYYY-MM-DD>-<slug>.md` — shipped work, chronological. A
   `git mv` from `todo/` to `done/` is the completion event.
+- `plan/dropped/<YYYY-MM-DD>-NNNN-<slug>.md` — abandoned work, never
+  deleted. The `git mv` keeps the item's number so references resolve;
+  a `Dropped` footer names the date and reason. A dropped item
+  **leaves the owning set**: a record's advancement quantifies over
+  non-dropped plans only, and a dropped item satisfies no coverage —
+  its claimed scope is re-queued or explicitly dispositioned in the
+  drop reason.
 
 The completion event is: the change is fast-forwarded onto `main` and
 the remote push succeeds (verify gate green locally first). No PRs, no

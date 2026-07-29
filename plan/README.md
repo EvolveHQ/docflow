@@ -13,6 +13,9 @@ tracks the human ordering of work, not the ADR catalogue ordering.
   chronologically. The `git mv` from `todo/` to `done/` is the
   completion event; the file's body is amended with a "Shipped"
   footer naming the HEAD SHA and any release tag / npm version.
+- `plan/dropped/<YYYY-MM-DD>-NNNN-<slug>.md` — abandoned work, never
+  deleted. The `git mv` keeps the number so references resolve; a
+  "Dropped" footer names the date and reason.
 
 ## Convention
 
@@ -23,6 +26,9 @@ tracks the human ordering of work, not the ADR catalogue ordering.
   tweak, a dependency bump) skips the ceremony. Use judgement.
 - The status of the owning ADR(s) advances when the work ships:
   `Accepted` → `Implemented`.
+- Abandoned work is dropped, never deleted; a dropped item leaves the
+  owning aggregate and satisfies no coverage — its scope is re-queued
+  or dispositioned in the drop reason.
 
 ## Status semantics on the owning ADRs
 
@@ -33,5 +39,6 @@ tracks the human ordering of work, not the ADR catalogue ordering.
 | Implemented | Shipped per the project's completion event. Sits in `plan/done/`. |
 | Superseded | Replaced by another ADR (named in `superseded-by:`). |
 | Deprecated | Was real; the world moved on; no successor. |
+| Withdrawn | Proposed and turned down; never in effect. No plan item expected. |
 
 See `CONVENTIONS.md` §Status lifecycle for the canonical definition.
