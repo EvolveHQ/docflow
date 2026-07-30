@@ -28,10 +28,18 @@ file.
   full loop unattended once, trigger corpus passes, no breaking
   contract change). Analysis and decision register:
   `../docflow-workflow-analysis/` (r11).
+- **Since Phase-1 completion (2026-07-30):** the **behavioural suite
+  ran FULL GREEN — 11/11** (D9's internal-eval condition met; one
+  trigger-clause hardening applied); all documentation and pages caught
+  up (README/USAGE eleven-skill surface, site verified-tier summary,
+  five worked use cases, methodology §§4.10–4.14 + INV-11..15 — all
+  marked in-development, nothing published); **internal test is LIVE**
+  — the local marketplace serves the working tree (cache pinned to
+  HEAD), and the first live re-run invocation enabled the glossary
+  layer and surfaced + fixed a skill-prose finding (technology
+  template wrongly offered as a re-run layer).
 - **Blockers:** **the pilot candidate — the only thing on the critical
-  path.** Also pending when convenient: plugin cache update (0.9.2 →
-  current), the behavioural suite's full green run (11 cases, the
-  release gate), the methodology-page spec extension.
+  path** for S6+. Nothing else pending.
 - **Uncommitted work:** none once this snapshot commit lands.
 
 ## Last shipped
