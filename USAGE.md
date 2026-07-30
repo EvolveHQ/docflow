@@ -244,15 +244,18 @@ The repo is now ready for ADR-driven work. Typical first steps:
 
 The manual workflow in §5 is exactly what the lifecycle skills
 automate. They all share four properties: they **run a short assessment
-first** (see below); they **read `CONVENTIONS.md` first** and honour the
-repo's recorded choices (ADR shape, status lifecycle, integration model,
-multi-agent mode); they **refuse on an un-bootstrapped repo** and point
-at `/bootstrap`; and they keep `INDEX.md` and the `_agent/` coordination
-files in sync as a side effect.
+first** (see below); they **read the capability manifest (`docflow.yml`)
+and `CONVENTIONS.md` first** and honour the repo's recorded choices
+(record model, status lifecycle, integration model, multi-agent mode,
+enabled layers); they **refuse cleanly off-model or on an
+un-bootstrapped repo** and point at `/bootstrap`; and they keep
+`INDEX.md` and the `_agent/` coordination files in sync as a side
+effect.
 
-**The assessment protocol.** `new-adr`, `new-plan`, `add-convention`,
-`brainstorm`, and `agent-wave` each open with a brief assessment before
-acting — the same pattern bootstrap uses (§3):
+**The assessment protocol.** `new-adr`, `new-spec`, `new-plan`,
+`add-convention`, `brainstorm`, `challenge`, and `agent-wave` each open
+with a brief assessment before acting — the same pattern bootstrap uses
+(§3):
 
 - A **depth selector** first: *express* (every choice takes its
   recommended default; only free-text essentials like a title are
@@ -280,10 +283,12 @@ picks; a fully-specified request lets you skip straight through.
 |-------|------------------------------|
 | `/new-adr` | §5 steps 1–2: pick number, choose shape, fill template, set `Proposed`, regen INDEX, wire domain README, supersede linkage. Offers to walk to `Accepted` and to create the plan item. |
 | `/new-plan` | §5 step 3: create `plan/todo/NNNN`, name owning ADR(s), scope, exit criteria, dependencies, queue position. |
-| `/ship-item` | §5 steps 5–6: verify gate → integrate (ff or PR per Q4b) → `git mv` todo→done with footer → ADR `Accepted`→`Implemented` → regen INDEX → WORKLOG → live snapshot. The most order-sensitive operation; let the skill do it. |
+| `/new-spec` | On the decisions+specs record model: author one living capability spec — unique kebab slug (immutable once `Agreed`), `Draft` authoring, human-gated `Draft`→`Agreed` (≥1 criterion, each with a `Verify:` method), INDEX Specs section. Refuses cleanly on other models. |
+| `/ship-item` | §5 steps 5–6: verify gate → **in an evidence-adopting repo, run each criterion's `Verify:` method and write bound evidence records** → integrate (ff or PR per Q4b) → `git mv` todo→done with footer → owning record → `Implemented` **only when every current criterion has valid evidence** (a partial plan still completes; the record catches up later) → regen INDEX → WORKLOG → live snapshot. The most order-sensitive operation; let the skill do it. |
 | `/add-convention` | Assesses whether a convention is worth codifying (triages out one-offs, duplicates, churn-prone, vague), routes it to AGENTS.md / CONVENTIONS.md / GLOSSARY / an ADR, then writes it. |
-| `/audit` | Lints the repo against its own conventions and reports a punch list — numbering, INDEX sync, plan coverage, section completeness, status validity, cross-refs, language mandate, and **ADR-privacy leaks into user-visible code**. Offers to fix the mechanical issues. |
-| `/brainstorm` | Decomposes a problem into candidate ADRs + plan items with dependency edges and ordering. Proposes drafts only; writes nothing until approved, then hands off to `/new-adr` and `/new-plan`. |
+| `/audit` | Lints the repo against its own conventions and reports a punch list — numbering, INDEX sync, plan coverage, section completeness, status validity, cross-refs, language mandate, **ADR-privacy leaks**, and (where adopted) declared-vs-computed status, evidence re-runs, the manual-verification ratio, constraints discipline, and spec records. Offers to fix the mechanical issues. |
+| `/brainstorm` | **The front door.** Decomposes a problem into *classified* candidates (choice / behaviour / rule / boundary / job) with dependency edges and ordering, then routes each to its writer on approval — you never need to know which writer to call. Classes with no writer yet are surfaced as future routes. |
+| `/challenge` | **The interrogator** — advisory, write-free. Critique mode: a rubric over any draft (one decision, testable criteria + methods, real alternatives, boundary scan). Elicitation mode: an eight-category checklist that pulls unstated boundaries out of your head and routes each to the decision-gated constraint path. May honestly return "solid — nothing to add". |
 | `/agent-wave` | Orchestrates parallel worktree subagents over the queue. Asks wave width, budget (items/waves; hours as a soft cap), and supervision (checkpoint vs. continuous). Requires multi-agent mode; refuses mode 1. |
 | `/rollup` | For a **multi-repo product**: from the home repo, aggregate every member repo's `INDEX` into one derived, product-wide roll-up. Members not checked out are listed as "not aggregated this run". |
 

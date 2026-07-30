@@ -24,18 +24,21 @@ agent the same skills are invoked as `/skill:<name>` (e.g.
 |-------|---------------|---------|
 | bootstrap | `/bootstrap` | Scaffold or retrofit the whole convention set. Start here. |
 | new-adr | `/new-adr` | Author one ADR — next contiguous number, right shape, INDEX + domain wiring, supersede linkage. |
-| new-plan | `/new-plan` | Add a `plan/todo` item tracing to its owning ADR(s). |
-| ship-item | `/ship-item` | Run the completion event: verify → integrate → `todo`→`done` → ADR `Accepted`→`Implemented` → INDEX/WORKLOG. |
+| new-spec | `/new-spec` | Author one **living capability spec** (`spec/<slug>.md`) on the decisions+specs record model — slug-identified, edited in place, human-gated `Draft`→`Agreed`. |
+| new-plan | `/new-plan` | Add a `plan/todo` item tracing to its owning record(s) — ADR, or spec criterion ids where specs exist. |
+| ship-item | `/ship-item` | Run the completion event: verify → **execute each criterion's `Verify:` method and write bound evidence** → integrate → `todo`→`done` → owning record → `Implemented` (only with full valid evidence) → INDEX/WORKLOG. |
 | add-convention | `/add-convention` | Assess whether a convention is worth codifying, route it to the right home (or to an ADR), then add it. Use it to enable optional practices (e.g. TDD) on demand — see [USAGE §5a](USAGE.md). |
-| audit | `/audit` | Lint the repo against its own conventions — numbering, INDEX sync, plan coverage, **ADR-privacy leaks**, more. |
-| brainstorm | `/brainstorm` | Decompose a problem into candidate ADRs + plan items (proposes drafts; writes nothing until approved). |
+| audit | `/audit` | Lint the repo against its own conventions — numbering, INDEX sync, plan coverage, **ADR-privacy leaks**, declared-vs-computed status, evidence re-runs, the manual-verification ratio, constraints discipline, spec records. |
+| brainstorm | `/brainstorm` | **The front door.** Decompose a problem into *classified* candidates — a choice → decision · a behaviour → capability record · a rule → convention · a boundary → constraint · a job → plan item — and route each to its writer on approval. Writes nothing until approved. |
+| challenge | `/challenge` | **The interrogator.** Pressure-test a draft record by rubric, or elicit the boundaries you have not written down (eight-category checklist). Advisory only — writes nothing, gates nothing, and may honestly return "solid, nothing to add". |
 | agent-wave | `/agent-wave` | Orchestrate a wave of parallel worktree subagents over the queue, with checkpoint or continuous supervision. |
 | rollup | `/rollup` | For a multi-repo product: aggregate every member repo's ADRs into one derived, product-wide roll-up (run from the home repo). |
 
-The lifecycle skills all **read `CONVENTIONS.md` first** and honour the
-choices the bootstrap recorded (ADR shape, status lifecycle, integration
-model, multi-agent mode). They refuse to run on an un-bootstrapped repo
-and point you at `/bootstrap`.
+The lifecycle skills all **read the capability manifest (`docflow.yml`)
+and `CONVENTIONS.md` first** and honour the choices the bootstrap
+recorded (record model, status lifecycle, integration model, multi-agent
+mode, enabled layers). They refuse to run on an un-bootstrapped repo and
+point you at `/bootstrap`.
 
 ## What `/bootstrap` installs
 
@@ -333,11 +336,13 @@ docflow/
         SKILL.md                    #   bootstrap: assessment + output sequence + backfill
         templates/                  #   files the bootstrap reads and writes into target repos
       new-adr/SKILL.md              #   lifecycle skills — operate on a bootstrapped repo,
-      new-plan/SKILL.md             #     read CONVENTIONS.md, honour its choices
+      new-spec/SKILL.md             #     read docflow.yml + CONVENTIONS.md, honour their choices
+      new-plan/SKILL.md
       ship-item/SKILL.md
       add-convention/SKILL.md
       audit/SKILL.md
       brainstorm/SKILL.md
+      challenge/SKILL.md
       agent-wave/SKILL.md
       rollup/SKILL.md
   README.md
