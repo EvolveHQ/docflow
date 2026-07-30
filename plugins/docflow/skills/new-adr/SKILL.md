@@ -1,6 +1,6 @@
 ---
 name: new-adr
-description: Author a new ADR — record a DECISION (what the system must do, or how it is built) in a documentation-led repo. Picks the next contiguous number, chooses the shape (capability vs technology), fills the template, sets status Proposed, regenerates INDEX, updates domain READMEs, handles supersede/deprecate linkage, commits. Use when the user says "add an ADR", "new ADR", "record a decision", "create an architecture decision record", or invokes /new-adr. NOT for queueing a unit of work against an existing decision (use /new-plan) and NOT for recording a reusable rule, practice, or naming/process standard (use /add-convention).
+description: Author a new ADR — record a DECISION (what the system must do, or how it is built) in a documentation-led repo. Picks the next contiguous number, chooses the shape (capability vs technology), fills the template, sets status Proposed, regenerates INDEX, updates domain READMEs, handles supersede/deprecate linkage, commits. Use when the user says "add an ADR", "new ADR", "record a decision", "create an architecture decision record", or invokes /new-adr. NOT for queueing a unit of work against an existing decision (use /new-plan), NOT for recording a reusable rule, practice, or naming/process standard (use /add-convention), and NOT for a living capability spec on the decisions+specs record model (use /new-spec).
 ---
 
 # new-adr
