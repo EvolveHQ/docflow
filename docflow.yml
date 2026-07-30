@@ -2,5 +2,5 @@
 # disagreement with CONVENTIONS.md this file wins (§Trust Posture).
 schema: 1
 model: capability-first
-layers: [plan, agent, constraints]
+layers: [plan, agent, constraints, glossary]
 evidence-adopted-at: f22f0d7
