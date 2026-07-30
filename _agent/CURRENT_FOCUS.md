@@ -38,20 +38,22 @@ file.
   HEAD), and the first live re-run invocation enabled the glossary
   layer and surfaced + fixed a skill-prose finding (technology
   template wrongly offered as a re-run layer).
-- **PILOT NAMED (2026-07-30): clarity.docflowhq.com.** Reconnaissance
-  confirms a near-ideal candidate: already a docflow repo (`.docflow/`
-  marker root, ~126-numbered catalogue, live plan queue, GLOSSARY,
-  `_agent/`), **pre-contract** (no manifest, no evidence, no
-  constraints — the verified tier retrofit is exactly the pilot
-  exercise), massively multi-writer (dozens of Codex worktrees — mode-3
-  reality to formalise), en-US mandate, its own naming conventions
-  (constraint candidates), a real `design/` token system (creative-kit
-  dogfood potential → D7), and the long-planned federation link back to
-  this repo. Next: the additive retrofit re-run, conducted IN clarity
-  under its own conventions, with its own catalogue recording the
-  adoption decisions.
-- **Blockers:** none — the critical path now runs through the pilot
-  retrofit, not through this repo.
+- **PILOT: clarity.docflowhq.com — RETROFIT COMPLETE (2026-07-31).**
+  Correction to the recon record: clarity is **two-shape** (capability
+  0001–0099, technology 0100+), not capability-first — the "numbering
+  gaps" note was a misread of the two-range split. The retrofit ran in
+  clarity as an 11-commit chain (d3a8b6f..d05e3c5), every gate held by
+  the operator: manifest (schema 1, two-shape, layers
+  plan/agent/glossary/constraints, evidence-adopted-at fa32986), its
+  adoption ADR Implemented with the repo's first four evidence
+  records, CON-1..CON-8 live (one entry declined on the record), four
+  elicitation categories asked-and-empty, three enforcement items
+  queued there. **Fourteen pilot findings relayed** — triaged into
+  plan 0044 here. **Two gate criteria remain:** an unattended
+  full-loop run in clarity (its queued items are ready-made
+  candidates) and the trigger-corpus check from clarity's side.
+- **Blockers:** none for plan 0044 (findings wave). The pilot gate
+  needs the two remaining criteria, run in clarity.
 - **Uncommitted work:** none once this snapshot commit lands.
 
 ## Last shipped
