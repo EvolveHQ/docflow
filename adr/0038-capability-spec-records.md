@@ -1,7 +1,7 @@
 ---
 adr: 0038
 title: Capability specs — living, slug-identified records
-status: Proposed
+status: Accepted
 date: 2026-07-29
 owner: Eugenio Minardi
 supersedes:
@@ -151,8 +151,10 @@ no repo gains `spec/` until it opts in.
 | Date | Revision | Author | Change |
 |------|----------|--------|--------|
 | 2026-07-29 | r1 | Eugenio Minardi | Initial draft. |
+| 2026-07-29 | r2 | Eugenio Minardi | Accepted — approvals populated, implementation queued as plan 0041. |
 
 ## Approvals
 
 | Role | Name | Date | Signature |
 |------|------|------|-----------|
+| Maintainer | Eugenio Minardi | 2026-07-29 | — |
