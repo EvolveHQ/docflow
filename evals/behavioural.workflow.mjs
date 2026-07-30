@@ -114,6 +114,17 @@ const CASES = [
       'routing decision, what it refused, what it offered, and `node scripts/verify.mjs` output + exit code.',
   },
   {
+    key: 'trigger-corpus',
+    prompt:
+      'Behavioural eval: trigger disjointness across the docflow skill set. Work ONLY in your worktree; write ' +
+      'nothing. Read the `description:` frontmatter of every SKILL.md under plugins/docflow/skills/ and the labelled ' +
+      'corpus evals/trigger-corpus.json. For EACH corpus utterance, decide from the descriptions alone which single ' +
+      'skill should trigger (or "abstain" if none should claim it — e.g. validation/goal phrasings whose skill does ' +
+      'not exist yet). Compare against the expect labels. PASS only if >= 90% of utterances match their label AND no ' +
+      'utterance plausibly triggers two skills at once (a collision). Report: the per-utterance routing table, every ' +
+      'mismatch and collision with the description text that caused it, and the final match percentage.',
+  },
+  {
     key: 'audit-full',
     prompt:
       'Behavioural eval of the docflow `audit` skill over this repo. Work ONLY in your worktree; do NOT push, and ' +

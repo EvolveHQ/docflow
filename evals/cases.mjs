@@ -279,6 +279,33 @@ export const cases = [
     },
   },
   {
+    // ── Trigger-disjointness corpus (routing tested, not asserted) ──
+    name: 'self-check: trigger corpus well-formed, all three interrogation classes covered',
+    skill: null,
+    agentDependent: false,
+    repo: repoRoot,
+    async assert(repo) {
+      const { readFileSync, readdirSync } = await import('node:fs');
+      const { join } = await import('node:path');
+      const corpus = JSON.parse(readFileSync(join(repo, 'evals/trigger-corpus.json'), 'utf8'));
+      const skills = new Set(readdirSync(join(repo, 'plugins/docflow/skills')));
+      skills.add('abstain');
+      if (!Array.isArray(corpus.cases) || corpus.cases.length < 20) {
+        throw new Error(`corpus has ${corpus.cases?.length ?? 0} cases, expected >= 20`);
+      }
+      for (const c of corpus.cases) {
+        if (!c.utterance || !skills.has(c.expect)) {
+          throw new Error(`bad corpus case: ${JSON.stringify(c)} (expect must be a skill dir or "abstain")`);
+        }
+      }
+      for (const must of ['brainstorm', 'challenge', 'audit', 'abstain']) {
+        if (!corpus.cases.some((c) => c.expect === must)) {
+          throw new Error(`corpus covers no "${must}" expectation — the demarcation trio + abstain must all appear`);
+        }
+      }
+    },
+  },
+  {
     name: 'bootstrap: fresh repo gets the full scaffold',
     skill: 'bootstrap',
     inputs: { /* the 10 assessment answers, scripted */ },
