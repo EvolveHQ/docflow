@@ -1,7 +1,7 @@
 ---
 adr: 0039
 title: The record model is a bootstrap choice — capability-first stays the default
-status: Proposed
+status: Accepted
 date: 2026-07-29
 owner: Eugenio Minardi
 supersedes:
@@ -131,8 +131,10 @@ migration is its own later decision.
 | Date | Revision | Author | Change |
 |------|----------|--------|--------|
 | 2026-07-29 | r1 | Eugenio Minardi | Initial draft. |
+| 2026-07-29 | r2 | Eugenio Minardi | Accepted — approvals populated, implementation queued as plan 0042. |
 
 ## Approvals
 
 | Role | Name | Date | Signature |
 |------|------|------|-----------|
+| Maintainer | Eugenio Minardi | 2026-07-29 | — |
