@@ -1,7 +1,7 @@
 ---
 adr: 0040
 title: A convergent challenge skill; brainstorm becomes the router
-status: Proposed
+status: Accepted
 date: 2026-07-29
 owner: Eugenio Minardi
 supersedes:
@@ -144,8 +144,10 @@ boundaries across all eleven skills stay disjoint, and disjointness is
 | Date | Revision | Author | Change |
 |------|----------|--------|--------|
 | 2026-07-29 | r1 | Eugenio Minardi | Initial draft. |
+| 2026-07-29 | r2 | Eugenio Minardi | Accepted — approvals populated, implementation queued as plan 0043. |
 
 ## Approvals
 
 | Role | Name | Date | Signature |
 |------|------|------|-----------|
+| Maintainer | Eugenio Minardi | 2026-07-29 | — |
