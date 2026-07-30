@@ -37,6 +37,20 @@ const CASES = [
       'verify.mjs output line, and the exit code.',
   },
   {
+    key: 'bootstrap-decisions-specs',
+    prompt:
+      'Behavioural eval of the docflow `bootstrap` skill on the DECISIONS+SPECS record model. Work ONLY in your ' +
+      'worktree; do NOT push. Create a fresh scratch repo in a temp subdirectory (git init), then following ' +
+      'plugins/docflow/skills/bootstrap/SKILL.md scaffold it with: FULL depth; record model = decisions+specs; en-GB; ' +
+      'full lifecycle; use plan folder; single agent; direct-to-main; default git contract; defer optional artefacts; ' +
+      'verify gate = manual; no domain hard rules; standalone; artefact root = repository root. Do NOT ask questions ' +
+      'interactively. PASS only if ALL hold in the scratch repo: (1) adr/0000-template.md carries the DECISION shape ' +
+      '(Context / Decision / Rationale / Consequences sections, not Capability statement); (2) spec/0000-template.md ' +
+      'exists and spec/ is otherwise empty; (3) CONVENTIONS.md contains an uncommented "Capability Specs" section; ' +
+      '(4) docflow.yml records model: decisions+specs; (5) no adr/NNNN-template.md second template. Report each check ' +
+      'explicitly with the file evidence.',
+  },
+  {
     key: 'ship-item-evidence',
     prompt:
       'Behavioural eval of the docflow `ship-item` skill under the EVIDENCE regime (docflow.yml records ' +

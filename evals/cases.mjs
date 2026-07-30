@@ -304,11 +304,12 @@ export const cases = [
         '.docflow/adr/0001-record-architecture-decisions.md',
         '.docflow/docflow.yml',
       ]);
-      // Optional layers stay off in the express profile.
+      // Optional layers stay off in the express profile — and the
+      // record model stays capability-first: no spec artefacts.
       assertAbsent(repo, [
         '.docflow/plan', 'plan', '_agent', '.docflow/GLOSSARY.md',
         'GLOSSARY.md', '.docflow/CONSTRAINTS.md', 'CONSTRAINTS.md',
-        '.docflow/domains', 'domains',
+        '.docflow/domains', 'domains', '.docflow/spec', 'spec',
         '.docflow/federation.md', 'federation.md',
       ]);
       assertFileContains(repo, '.docflow/CONVENTIONS.md', 'Assessment depth: express');
