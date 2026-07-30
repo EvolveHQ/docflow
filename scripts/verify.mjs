@@ -264,6 +264,68 @@ if (existsSync(doneDir)) {
   }
 }
 
+// ── C2. Capability specs (spec/, ADR 0038) ──
+// Living slug-identified records. When spec/ exists: id equals the
+// filename slug, status in the spec lifecycle, retired-from set iff
+// Retired, Agreed-or-beyond has ≥1 criterion each with a Verify: line,
+// decided-by resolves to catalogue ADRs, constrained-by to CON ids,
+// and INDEX's Specs section keeps row fidelity.
+const SPEC_STATUS = new Set(['Draft', 'Agreed', 'Implemented', 'Retired']);
+const specs = [];
+const specDir = join(root, 'spec');
+if (existsSync(specDir)) {
+  const conIds = new Set(
+    existsSync(join(root, 'CONSTRAINTS.md'))
+      ? [...read('CONSTRAINTS.md').matchAll(/^## (CON-\d+) r\d+/gm)].map((m) => m[1])
+      : [],
+  );
+  const indexText = existsSync(join(root, 'INDEX.md')) ? read('INDEX.md') : '';
+  for (const f of readdirSync(specDir).filter((n) => n.endsWith('.md'))) {
+    const slug = f.replace(/\.md$/, '');
+    const { fields, body } = frontmatter(read(`spec/${f}`));
+    if (!fields) { fail(`spec/${f}: missing frontmatter`); continue; }
+    if (fields.id !== slug) {
+      fail(`spec/${f}: id "${fields.id}" != filename slug "${slug}" (slugs are the identity)`);
+    }
+    if (!SPEC_STATUS.has(fields.status)) {
+      fail(`spec/${f}: invalid status "${fields.status}" (Draft | Agreed | Implemented | Retired)`);
+    }
+    if (fields.status === 'Retired' && !fields['retired-from']) {
+      fail(`spec/${f}: Retired without retired-from (never-delivered vs removed must stay distinguishable)`);
+    }
+    if (fields.status !== 'Retired' && fields['retired-from']) {
+      fail(`spec/${f}: retired-from set but status is "${fields.status}"`);
+    }
+    if (['Agreed', 'Implemented'].includes(fields.status)) {
+      const block = body.split(/^## Acceptance criteria\s*$/m)[1]?.split(/^## /m)[0] ?? '';
+      const items = [...block.matchAll(/^(\d+)\.\s([\s\S]*?)(?=^\d+\.\s|$(?![\s\S]))/gm)];
+      if (!items.length) {
+        fail(`spec/${f}: ${fields.status} with no acceptance criteria (Agreed requires ≥1)`);
+      }
+      for (const it of items) {
+        if (!/Verify:\s*\S/.test(it[2])) {
+          fail(`spec/${f}: AC${it[1]} has no Verify: method (required at Agreed and beyond)`);
+        }
+      }
+    }
+    for (const d of (fields['decided-by'] ?? '').match(/\d{4}/g) ?? []) {
+      if (!catalogue.some((a) => String(a.num).padStart(4, '0') === d)) {
+        fail(`spec/${f}: decided-by "${d}" names a non-existent ADR`);
+      }
+    }
+    for (const c of (fields['constrained-by'] ?? '').match(/CON-\d+/g) ?? []) {
+      if (!conIds.has(c)) fail(`spec/${f}: constrained-by "${c}" names no constraint entry`);
+    }
+    const row = indexText.split('\n').find((l) => l.includes(`(spec/${f})`));
+    if (!row) {
+      fail(`INDEX.md: missing Specs row for spec/${f} (regenerate INDEX)`);
+    } else if (!row.split('|').map((c) => c.trim()).includes(fields.status)) {
+      fail(`INDEX.md: spec/${f} row does not carry status "${fields.status}" (regenerate INDEX)`);
+    }
+    specs.push({ slug, fields, body });
+  }
+}
+
 // ── F. Capability manifest (docflow.yml, ADR 0034) ──
 // Machine-readable repo shape (CONVENTIONS.md §Project / §Trust
 // Posture). An absent file means a pre-contract repo — no failure; a
@@ -271,7 +333,7 @@ if (existsSync(doneDir)) {
 // understands, and use only legal model/layer values. `autonomy` is
 // reserved and must not be set.
 const MANIFEST_SCHEMA = 1;
-const MANIFEST_MODELS = new Set(['capability-first', 'two-shape']);
+const MANIFEST_MODELS = new Set(['capability-first', 'two-shape', 'decisions+specs', 'decisions-only']);
 const MANIFEST_LAYERS = new Set(['plan', 'agent', 'glossary', 'constraints', 'domains', 'federation']);
 if (existsSync(join(root, 'docflow.yml'))) {
   const manifest = {};
@@ -336,8 +398,9 @@ if (existsSync(evidenceDir)) {
     if (!entry.isDirectory()) continue;
     const slug = entry.name;
     const adr = catalogue.find((a) => a.slug === slug);
-    if (!adr) {
-      fail(`evidence/${slug}/: no catalogue ADR with that slug`);
+    const spec = specs.find((s) => s.slug === slug);
+    if (!adr && !spec) {
+      fail(`evidence/${slug}/: no catalogue ADR or spec with that slug`);
       continue;
     }
     // Validate each record's shape and collect the latest record per AC
@@ -364,21 +427,25 @@ if (existsSync(evidenceDir)) {
       const seq = Number(m[2]);
       if (!records[acN] || seq > records[acN].seq) records[acN] = { fields, file: f, seq };
     }
-    // Declared-vs-computed: an Implemented ADR with an evidence dir must
-    // have, for EVERY current criterion, a current record whose digest
-    // matches and whose result is valid (exit 0, or attested manual).
-    if (adr.fields.status === 'Implemented') {
-      const criteria = criteriaOf(frontmatter(read(`adr/${adr.file}`)).body);
+    // Declared-vs-computed: an Implemented record (ADR or spec) with an
+    // evidence dir must have, for EVERY current criterion, a current
+    // record whose digest matches and whose result is valid (exit 0,
+    // or attested manual).
+    const owner = adr
+      ? { label: `adr/${adr.file}`, status: adr.fields.status, body: frontmatter(read(`adr/${adr.file}`)).body }
+      : { label: `spec/${spec.slug}.md`, status: spec.fields.status, body: spec.body };
+    if (owner.status === 'Implemented') {
+      const criteria = criteriaOf(owner.body);
       criteria.forEach((text, i) => {
         const acN = i + 1;
         const rec = records[acN];
         if (!rec) {
-          fail(`adr/${adr.file}: declares Implemented but AC${acN} has no evidence record`);
+          fail(`${owner.label}: declares Implemented but AC${acN} has no evidence record`);
           return;
         }
         if (rec.fields['ac-digest'] !== digest(text)) {
           fail(
-            `adr/${adr.file}: AC${acN} was edited — evidence ` +
+            `${owner.label}: AC${acN} was edited — evidence ` +
             `${rec.file} digest no longer matches (stale projection; re-verify)`,
           );
         }
