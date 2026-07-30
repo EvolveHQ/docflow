@@ -1,7 +1,7 @@
 ---
 adr: 0039
 title: The record model is a bootstrap choice — capability-first stays the default
-status: Accepted
+status: Implemented
 date: 2026-07-29
 owner: Eugenio Minardi
 supersedes:
@@ -132,6 +132,7 @@ migration is its own later decision.
 |------|----------|--------|--------|
 | 2026-07-29 | r1 | Eugenio Minardi | Initial draft. |
 | 2026-07-29 | r2 | Eugenio Minardi | Accepted — approvals populated, implementation queued as plan 0042. |
+| 2026-07-29 | r3 | Eugenio Minardi | Implemented (commits cdfb6ef, 57f3e53, 064754a): Q2 record-model question + per-model outputs + cross-checks + never-convert re-runs + docs; gate template exclusion alone; eval coverage alone (18/18). Eight evidence records — six operator-attested, one command transcript, one gate-checked. AC1–AC8 met. Slice S4 complete. |
 
 ## Approvals
 

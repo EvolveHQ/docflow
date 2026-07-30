@@ -61,3 +61,15 @@ S4 is complete.
 ## Dependencies
 
 Plan 0041 (spec class, shipped).
+
+---
+
+Shipped at HEAD `064754a` on 2026-07-29, three implementation commits
++ ship: `cdfb6ef` Q2 record-model question (four models, scale rule,
+per-model outputs incl. item 12d, cross-checks, never-convert
+re-runs, README/USAGE), `57f3e53` gate template-exclusion alone
+(tested green three ways), `064754a` eval coverage alone (express
+no-spec assertion + decisions+specs behavioural case; 18/18). Eight
+evidence records — six operator-attested (batch), one command
+transcript (npm run evals, exit 0), one gate-checked. ADR 0039 →
+Implemented (r3). AC1–AC8 met. Slice S4 complete.
