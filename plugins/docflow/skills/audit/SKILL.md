@@ -150,6 +150,19 @@ relevant):
     the removal of any `learned` constraint for extra scrutiny (they
     are deliberately harder to remove). Report — the file is never
     auto-edited.
+19. **Spec records.** N/A without a `spec/` directory. Every spec's
+    `id:` equals its filename slug; statuses are in the spec lifecycle
+    (Draft / Agreed / Implemented / Retired, with `retired-from:` set
+    only on Retired); an Agreed-or-beyond spec has ≥1 criterion, each
+    with a `Verify:` method; `decided-by:` entries resolve to existing
+    decision records and `constrained-by:` to existing constraint ids;
+    the INDEX Specs section matches the files. Checks 3
+    (plan coverage), 15 (declared-vs-computed), and 16 (re-runs) apply
+    to specs exactly as to ADRs — an Implemented spec needs full valid
+    evidence; an Agreed spec's queued work traces to its criterion
+    ids. Flag any spec whose slug changed in recent history after it
+    reached Agreed (slugs are immutable from Agreed — rename = retire
+    + new).
 
 ## Step 2 — Report
 

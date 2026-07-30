@@ -56,10 +56,13 @@ Questions (skip any the request already answers):
    numbered acceptance criteria where possible (free-text essential;
    asked at every depth).
 
-## Step 1 — Identify the owning ADR(s)
+## Step 1 — Identify the owning record(s)
 
-- Ask which ADR(s) this work implements. Validate they exist in
-  `adr/`.
+- Ask which record(s) this work implements. Validate they exist —
+  ADR(s) in `adr/`, and in a repo whose record model has capability
+  specs, spec(s) in `spec/`. **Where a spec owns the work, trace the
+  item to its criterion ids** (e.g. `spec/<slug>.md#AC2`) so exit
+  criteria map to the criteria that will be evidenced.
 - Normally a queue item tracks an **Accepted** ADR. If the named ADR is
   still `Proposed`, warn — you can queue ahead of acceptance, but the
   work is not yet authorised. If it has no ADR at all, suggest running

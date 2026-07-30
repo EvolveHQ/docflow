@@ -67,18 +67,20 @@ Once the change is on `main`:
 - Amend the moved file with a footer: **"Shipped at HEAD `<sha>`"** plus
   any artefact id, image tag, deploy id, or PR link.
 
-## Step 5 — Advance the ADR(s) and regenerate
+## Step 5 — Advance the owning record(s) and regenerate
 
-- Advance each owning ADR's `status:` from `Accepted` to `Implemented`
-  — **in an evidence-adopting repo, only if every current criterion of
+- Advance each owning record's status — an ADR from `Accepted` to
+  `Implemented`, a capability spec from `Agreed` to `Implemented` —
+  **in an evidence-adopting repo, only if every current criterion of
   that record has valid evidence** (exit code 0, or an attested manual
   record). Otherwise name the unevidenced criteria, leave the status
-  at `Accepted`, and say so in the ship report. The plan item still
+  where it is, and say so in the ship report. The plan item still
   completes on its own exit criteria — a partial contribution
   integrates without blocking; the record catches up when the
   remaining criteria are evidenced.
 - Append a Revision History row if the status change is substantive
-  (it is). Regenerate `INDEX.md` to match.
+  (it is). Regenerate `INDEX.md` to match (the ADR table, and the
+  Specs section where the repo has one).
 
 ## Step 6 — Record
 
