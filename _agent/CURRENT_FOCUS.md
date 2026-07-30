@@ -16,21 +16,19 @@ file.
 ## Active state
 
 - **Branch:** main
-- **Active item:** none — slices S1–S3 shipped 2026-07-29 (ADRs
-  0035–0037 Implemented with bound evidence; stopping point one
-  reached), followed the same day by the **consolidation pass**
-  (surfaces caught up, `scripts/evidence.mjs` executor) and **plan 0040
-  eval catch-up** (mutation layer + self-checks, 15/15 deterministic
-  PASS; behavioural suite authored — its full green run via the
-  Workflow tool remains the release gate). **Second full 18-check audit
-  clean**; the record-level source-sha re-run finding is **closed**
-  (all three SHAs reproduce, digest byte-match on 0035/AC6). Next:
-  slice S4 — the decision/spec record split (spec/ class dormant
-  first, then bootstrap exposure; two ADRs). Analysis and decision
-  register: `../docflow-workflow-analysis/` (r11).
-- **Blockers:** none for S4. The external multi-agent pilot (gates
-  slices S6+) still needs a candidate project. Installed plugin cache
-  is 0.9.2 — stale vs the tree; update when convenient.
+- **Active item:** none — **slice S4 complete** (2026-07-29): ADR 0038
+  capability specs (dormant class: spec/<slug>, new-spec tenth skill,
+  gate + eval machinery) and ADR 0039 record-model choice (Q2 → four
+  models, capability-first default, scale-rule recommendation, re-runs
+  never convert) both Implemented with bound evidence. **Stopping
+  point two reached — the record model is fixed.** Programme scoreboard:
+  S0–S4 shipped; next **S5 — challenge skill + brainstorm router**,
+  the last slice before the **pilot gate** (S6+ blocked on an external
+  multi-agent pilot project). Analysis and decision register:
+  `../docflow-workflow-analysis/` (r11).
+- **Blockers:** none for S5. **The pilot candidate is now the critical
+  path** — it gates everything after S5. Installed plugin cache is
+  0.9.2 — stale vs the tree; update when convenient.
 - **Uncommitted work:** none once this snapshot commit lands.
 
 ## Last shipped
