@@ -17,7 +17,10 @@
 //     },
 //     "manualVerifier": "human: Name", // REQUIRED if manual non-empty;
 //                                       // must not be the implementer
-//     "manualNote": "batch attestation …"  // optional body preamble
+//     "manualNote": "batch attestation …",  // optional body preamble
+//     "attended": true                  // operator supervised this run:
+//                                       // gate/command records carry
+//                                       // "gate@ship-item (attended)"
 //   }
 //
 // Digest logic mirrors scripts/verify.mjs check G. Drift between the
@@ -114,7 +117,7 @@ for (const n of [...covered].sort((a, b) => a - b)) {
     `source-sha: ${sourceSha}`,
     `exit-code: ${isGate ? gateExit : cmd ? cmdExit : 0}`,
     `output-digest: ${isGate ? gateDigest : cmd ? cmdDigest : 'n/a (manual attestation)'}`,
-    `verifier: ${isGate || cmd ? 'gate@ship-item' : spec.manualVerifier}`,
+    `verifier: ${isGate || cmd ? `gate@ship-item${spec.attended ? ' (attended)' : ''}` : spec.manualVerifier}`,
     `date: ${date}`,
     'supersedes:',
     '---',
