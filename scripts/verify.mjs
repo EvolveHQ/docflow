@@ -280,7 +280,9 @@ if (existsSync(specDir)) {
       : [],
   );
   const indexText = existsSync(join(root, 'INDEX.md')) ? read('INDEX.md') : '';
-  for (const f of readdirSync(specDir).filter((n) => n.endsWith('.md'))) {
+  // 0000-template.md is the scaffolded copy the authoring skill acts
+  // on — excluded, mirroring the ADR template exclusion.
+  for (const f of readdirSync(specDir).filter((n) => n.endsWith('.md') && n !== '0000-template.md')) {
     const slug = f.replace(/\.md$/, '');
     const { fields, body } = frontmatter(read(`spec/${f}`));
     if (!fields) { fail(`spec/${f}: missing frontmatter`); continue; }
