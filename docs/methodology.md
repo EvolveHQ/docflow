@@ -44,6 +44,10 @@ pick up a cold repository and act correctly with no oral handover.
 | `CONVENTIONS.md` | The authoring rules every contributor reads first. |
 | `AGENTS.md` (+ `CLAUDE.md`) | The hard-rules entry point coding agents load. |
 | `_agent/` | Coordination state — roles, work log, live snapshot, hand-off. |
+| `docflow.yml` | The **capability manifest** — machine-readable repo shape (contract schema, record model, enabled layers). *(in development)* |
+| `CONSTRAINTS.md` | The enumerated **inviolable boundaries**; every change decision-gated. *(optional layer; in development)* |
+| `spec/<slug>.md` | **Living capability specs** on the decisions+specs record model — slug-identified, edited in place. *(in development)* |
+| `evidence/<record>/AC<n>-<seq>.md` | **Bound verification evidence** — append-only proof per acceptance criterion. *(in development)* |
 
 ## 3. The conventions
 
@@ -156,18 +160,26 @@ criteria MUST be numbered and testable (§4.5 INV-4).
 
 ### 4.4 Status — the state machine
 
-States: `Proposed`, `Accepted`, `Implemented`, `Superseded`, `Deprecated`.
+States: `Proposed`, `Accepted`, `Implemented`, `Superseded`,
+`Deprecated`, `Withdrawn`.
 
 | From | To | Guard (MUST hold to transition) |
 |---|---|---|
 | Proposed | Accepted | Open questions resolved (section empty); Approvals populated. |
-| Accepted | Implemented | The owning plan item(s) reached the completion event. In a federation, **every** per-repo plan item shipped. |
-| any non-terminal | Superseded | A successor ADR exists and the `supersedes`/`superseded-by` links are set symmetrically. |
-| any non-terminal | Deprecated | The decision is retired with no successor. |
+| Proposed | Withdrawn | The proposal was considered and turned down; the reason is recorded. The file is kept — deletion is not a transition. |
+| Accepted | Implemented | The owning plan item(s) reached the completion event — in an evidence-adopting repository, additionally every current acceptance criterion carries valid bound evidence (§4.12). In a federation, **every** per-repo plan item shipped. |
+| Accepted / Implemented | Superseded | A successor record exists **at `Accepted` or beyond** and the `supersedes`/`superseded-by` links are set symmetrically. A merely-proposed successor MUST NOT flip its predecessor. |
+| Accepted / Implemented | Deprecated | The decision is retired with no successor. |
 
-`Superseded` and `Deprecated` are terminal and reachable from any prior
-state. There are no other transitions; an audit MUST flag any `status`
-outside this set or any transition lacking its guard.
+Exits are sharpened by state: from `Proposed` the only exits are
+`Accepted` and `Withdrawn`; `Superseded` and `Deprecated` are reachable
+from `Accepted` and `Implemented`. All of `Superseded`, `Deprecated`,
+and `Withdrawn` are terminal. Where two transitions could apply at
+once, a deliberate terminal transition takes precedence over an
+automatic progress transition; residual ambiguity is reported for a
+human, never auto-resolved. There are no other transitions; an audit
+MUST flag any `status` outside this set or any transition lacking its
+guard.
 
 ### 4.5 Invariants
 
@@ -193,6 +205,27 @@ outside this set or any transition lacking its guard.
 - **INV-10 (no cross-boundary writes).** A repository's tooling MUST write
   only within that repository; federation membership is declared at the
   edges and reconciled by audit, never by remote write.
+- **INV-11 (manifest authority).** *(in development)* Where a capability
+  manifest exists, tools MUST read the repository's shape from it; on
+  disagreement between the manifest and prose the manifest wins and the
+  divergence is an audit finding.
+- **INV-12 (evidence validity).** *(in development)* In an
+  evidence-adopting repository, a record's `Implemented` status is
+  valid only while every current acceptance criterion's content digest
+  has a matching valid evidence record; the status line is a
+  projection, never a proof.
+- **INV-13 (constraint gating).** *(in development)* Every transition
+  of a constraint entry — creation, scope revision, removal — MUST be
+  authorised by a human-accepted decision record. Constraints have no
+  severity; a rule that may bend is a convention.
+- **INV-14 (recorded abandonment).** *(in development)* Deliberate
+  abandonment is a recorded terminal state — `Withdrawn` for
+  proposals, a reasoned move to `dropped/` for queue items — never a
+  deletion. A dropped item leaves the owning aggregate and satisfies
+  no coverage.
+- **INV-15 (slug immutability).** *(in development)* A capability
+  spec's slug is immutable once the spec is `Agreed`; renaming means
+  retiring and creating anew.
 
 ### 4.6 Numbering at scale, and alternatives considered
 
@@ -292,6 +325,91 @@ Federation artefacts (§5) live at the artefact root, so the same
 resolution discovers a repository's federation membership. One check
 suffices for a conforming repository, which is what makes read-only
 tooling over arbitrary repositories practical.
+
+### 4.10 The capability manifest
+
+*(This and the following sections describe the verified tier — on
+`main`, in development beyond the released 0.9.4.)*
+
+`docflow.yml` at the artefact root is the machine-readable record of
+the repository's docflow shape: `schema` (contract version), `model`
+(record model), `layers` (enabled optional layers), and — where
+adopted — `evidence-adopted-at` (the evidence adoption commit). A tool
+that meets a `schema` newer than it understands MUST refuse writes and
+say so; an absent manifest means a pre-contract repository and prior
+behaviour applies unchanged. Re-running the bootstrap never rewrites
+the recorded model (§4.14).
+
+### 4.11 Trust posture
+
+The conventions, the audit, and any verify gate are **cooperative**
+controls: they catch honest mistakes and structural drift, and they
+make skipped steps visible. They do not authenticate authorship, and a
+local check is sidestepped by a direct edit. Two rules follow.
+**Declarations are projections** — a `status:` line records what an
+author asserted; where the declared state and the state the
+repository's contents support disagree, the contents win and the audit
+reports the divergence. **Stronger guarantees are a hosting concern** —
+a repository needing tamper resistance runs the gate as a required CI
+check, protects the integration branch, and restricts write access to
+every path the gate reads (records, constraints, verification inputs,
+and the gate's own code). Detection, not prevention, is the honest
+claim; the hosting recipe upgrades it where required.
+
+### 4.12 Verification evidence
+
+Each acceptance criterion names its **verification method** on a
+trailing `Verify:` line — an inline command, `gate-check` (the static
+gate covers it), or `manual` (a named human attests). Verification
+produces **bound evidence records**: append-only files under
+`evidence/<record-slug>/AC<n>-<seq>.md`, written by the shipping
+tooling from the method's execution transcript, each binding the
+criterion's content digest (its normalised text, including the
+`Verify:` line), the method and command, the source commit, the exit
+code and output digest, the verifier, and the date. Corrections are
+new records naming what they supersede; existing records are never
+edited. Manual evidence MUST name a verifier who is not the
+implementer; the audit reports the manual-verification ratio —
+reported, not gated. Re-running a method to check a *record* executes
+at the record's source commit; checking *current satisfaction*
+executes at HEAD; divergence is a finding for a human, and evidence
+history is never auto-invalidated. Adoption is computed against the
+manifest's adoption commit — records last substantively edited before
+it are exempt until edited.
+
+### 4.13 Constraints
+
+A repository's inviolable boundaries are enumerated in
+`CONSTRAINTS.md` — one `CON-<n> r<n>` entry per constraint, each with a
+provenance (`chosen`, `imposed`, or `learned`), a state (`Active` or
+`Removed`), the authorising decision record, a statement, and a check
+hint. Constraints are **absolute** — there is no severity. Every
+transition is decision-gated (INV-13); removal is permanent, and
+reintroduction is a new id under a fresh decision. The file is small
+by design: its value is that an agent loads it in full before any
+task.
+
+### 4.14 Record models and capability specs
+
+Where capability content lives is a bootstrap choice recorded in the
+manifest: **capability-first** (capability records in the ADR
+catalogue — the default), **two-shape** (capability + technology
+shapes), **decisions+specs** (pure decision ADRs plus living
+`spec/<slug>.md` records), or **decisions-only** (pure decisions;
+capability content owned by an external system). The honest
+recommendation is scale-dependent: capability-first for a small
+repository with few long-lived capabilities; decisions+specs for a
+product repository with many living requirements, where capability
+growth becomes an edit with a revision row instead of a lifecycle
+round-trip. A capability spec is slug-identified (INV-15), edited in
+place, and carries the living lifecycle `Draft → Agreed → Implemented
+→ Retired`: `Agreed` is a human gate requiring at least one criterion,
+each with its method; `Implemented` is a projection under INV-12;
+`Retired` records the state it left so never-delivered and
+delivered-then-removed stay distinguishable. Its criteria and evidence
+work identically to decision records. A re-run of the bootstrap never
+converts a repository's model — migration is a separate, deliberate
+path.
 
 ## 5. Scaling to many repositories
 
