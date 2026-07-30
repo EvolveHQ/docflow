@@ -33,9 +33,11 @@ Inspect the repo before asking anything.
   **artefact root**, multi-agent mode, and which optional layers
   already exist). Then offer to **enable any opted-out optional layer**
   still absent — `plan/`, `_agent/`, `GLOSSARY.md`, `CONSTRAINTS.md`,
-  `domains/`, or the
-  technology-ADR template/split — plus the capability manifest
-  `docflow.yml` where the repo predates it — and write only the chosen ones, by
+  or `domains/` — plus the capability manifest
+  `docflow.yml` where the repo predates it. (The technology-ADR
+  template is **not** offered here: adding it means moving to the
+  two-shape record model, and a re-run never converts the model.)
+  Write only the chosen ones, by
   **merge**, under the recorded artefact root, leaving everything else
   untouched. Ask only the questions the new layers need (e.g. the
   coordination-mode question when enabling `_agent/`). This is the entry
