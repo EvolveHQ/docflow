@@ -193,6 +193,75 @@ export const cases = [
     },
   },
   {
+    // ── Spec-class machinery (dormant): fixtures write a spec into the
+    // pristine copy, since this repo carries none. ──
+    name: 'mutation: a valid Draft spec passes the gate (positive)',
+    skill: null,
+    agentDependent: false,
+    repo: repoRoot,
+    assert(repo) {
+      assertGateGreen(repo, (fix) => {
+        fix.mkdir('spec');
+        fix.write('spec/eval-fixture.md', [
+          '---', 'id: eval-fixture', 'status: Draft', 'decided-by: []',
+          'constrained-by: []', 'retired-from:', '---', '',
+          '# Eval fixture', '', '## Acceptance criteria', '',
+          '1. Placeholder criterion.', '   Verify: manual', '',
+        ].join('\n'));
+        fix.write('INDEX.md', fix.read('INDEX.md') +
+          '\n## Specs\n\n| Spec | Title | Status |\n|---|---|---|\n' +
+          '| [eval-fixture](spec/eval-fixture.md) | Eval fixture | Draft |\n');
+      });
+    },
+  },
+  {
+    name: 'mutation: an Agreed spec missing a Verify: method FAILs the gate',
+    skill: null,
+    agentDependent: false,
+    repo: repoRoot,
+    assert(repo) {
+      assertGateFails(repo, (fix) => {
+        fix.mkdir('spec');
+        fix.write('spec/eval-fixture.md', [
+          '---', 'id: eval-fixture', 'status: Agreed', 'decided-by: []',
+          'constrained-by: []', 'retired-from:', '---', '',
+          '# Eval fixture', '', '## Acceptance criteria', '',
+          '1. Criterion with no method named.', '',
+        ].join('\n'));
+        fix.write('INDEX.md', fix.read('INDEX.md') +
+          '\n## Specs\n\n| Spec | Title | Status |\n|---|---|---|\n' +
+          '| [eval-fixture](spec/eval-fixture.md) | Eval fixture | Agreed |\n');
+      }, /no Verify: method/);
+    },
+  },
+  {
+    name: 'mutation: an Implemented spec with mismatched evidence FAILs the gate',
+    skill: null,
+    agentDependent: false,
+    repo: repoRoot,
+    assert(repo) {
+      assertGateFails(repo, (fix) => {
+        fix.mkdir('spec');
+        fix.write('spec/eval-fixture.md', [
+          '---', 'id: eval-fixture', 'status: Implemented', 'decided-by: []',
+          'constrained-by: []', 'retired-from:', '---', '',
+          '# Eval fixture', '', '## Acceptance criteria', '',
+          '1. Placeholder criterion.', '   Verify: manual', '',
+        ].join('\n'));
+        fix.write('INDEX.md', fix.read('INDEX.md') +
+          '\n## Specs\n\n| Spec | Title | Status |\n|---|---|---|\n' +
+          '| [eval-fixture](spec/eval-fixture.md) | Eval fixture | Implemented |\n');
+        fix.mkdir('evidence/eval-fixture');
+        fix.write('evidence/eval-fixture/AC1-001.md', [
+          '---', 'ac: eval-fixture#AC1',
+          'ac-digest: 0000000000000000000000000000000000000000000000000000000000000000',
+          'method: manual', 'source-sha: 0000000', 'exit-code: 0',
+          'verifier: human: Eval Fixture', 'date: 2026-01-01', '---', '',
+        ].join('\n'));
+      }, /digest no longer matches/);
+    },
+  },
+  {
     name: 'mutation: Withdrawn is accepted end-to-end (positive)',
     skill: null,
     agentDependent: false,
