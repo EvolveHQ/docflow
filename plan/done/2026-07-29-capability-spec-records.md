@@ -54,3 +54,17 @@ When this ships, ADR 0038 advances Accepted → Implemented.
 ## Dependencies
 
 Slices S0–S3 + eval catch-up (all shipped).
+
+---
+
+Shipped at HEAD `5815f21` on 2026-07-29, four implementation commits
++ ship: `031f890` templates (layer-gated conventions section, spec.md,
+manifest models), `21d0dcd` skills (new-spec tenth skill; ship-item/
+new-plan/audit speak record; audit check 19), `4f975bd` gate alone
+(check C2 + G spec extension, smoke-tested), `5815f21` eval fixture
+cases alone (18/18). Dormant: nothing exposed, this repo stays
+capability-first. Nine evidence records — five operator-attested
+(batch), three gate-checked, one command transcript (npm run evals,
+exit 0; the catalogue's first command-method record). Executor gained
+command support in the ship commit. ADR 0038 → Implemented (r3).
+AC1–AC9 met.

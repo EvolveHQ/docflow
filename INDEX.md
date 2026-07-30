@@ -42,4 +42,4 @@ ADR change.
 | [0035](adr/0035-per-criterion-evidence.md) | Per-criterion verification — bound evidence records | Implemented | 2026-07-25 | 0007, 0011, 0012, 0034 |
 | [0036](adr/0036-enumerated-constraints.md) | Constraints as an enumerated, decision-gated artefact | Implemented | 2026-07-29 | 0016, 0034, 0035 |
 | [0037](adr/0037-recorded-abandonment.md) | Deliberate abandonment is a recorded terminal state | Implemented | 2026-07-29 | 0001, 0034, 0035 |
-| [0038](adr/0038-capability-spec-records.md) | Capability specs — living, slug-identified records | Accepted | 2026-07-29 | 0016, 0034, 0035, 0036, 0037 |
+| [0038](adr/0038-capability-spec-records.md) | Capability specs — living, slug-identified records | Implemented | 2026-07-29 | 0016, 0034, 0035, 0036, 0037 |

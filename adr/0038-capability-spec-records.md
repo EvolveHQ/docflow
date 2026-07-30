@@ -1,7 +1,7 @@
 ---
 adr: 0038
 title: Capability specs — living, slug-identified records
-status: Accepted
+status: Implemented
 date: 2026-07-29
 owner: Eugenio Minardi
 supersedes:
@@ -152,6 +152,7 @@ no repo gains `spec/` until it opts in.
 |------|----------|--------|--------|
 | 2026-07-29 | r1 | Eugenio Minardi | Initial draft. |
 | 2026-07-29 | r2 | Eugenio Minardi | Accepted — approvals populated, implementation queued as plan 0041. |
+| 2026-07-29 | r3 | Eugenio Minardi | Implemented (commits 031f890, 21d0dcd, 4f975bd, 5815f21): class documented + spec template, new-spec tenth skill + record generalisation, gate check C2 + G spec extension (alone), fixture eval cases (18/18). Dormant — nothing exposed. Nine evidence records: five operator-attested, three gate-checked, one command transcript (the catalogue's first). AC1–AC9 met. |
 
 ## Approvals
 

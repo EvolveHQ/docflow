@@ -9,6 +9,9 @@
 //     "sourceSha": "abc1234",          // the commit the run verifies
 //     "date": "YYYY-MM-DD",
 //     "gateAcs": [2, 6],               // ACs evidenced by the gate run
+//     "commands": {                     // ACs evidenced by running a command
+//       "8": "npm run evals"
+//     },
 //     "manual": {                       // operator-attested ACs
 //       "1": "scope text …", "3": "scope text …"
 //     },
@@ -48,6 +51,7 @@ if (!specPath) {
 const spec = JSON.parse(readFileSync(specPath, 'utf8'));
 const { slug, sourceSha, date } = spec;
 const gateAcs = new Set(spec.gateAcs ?? []);
+const commands = spec.commands ?? {};
 const manual = spec.manual ?? {};
 if (!slug || !sourceSha || !date) {
   console.error('spec.json needs slug, sourceSha, date');
@@ -63,7 +67,9 @@ if (!body) { console.error(`adr/${slug}.md: no frontmatter/body`); process.exit(
 const criteria = criteriaOf(body);
 
 // Every criterion must be covered by exactly one route.
-const covered = new Set([...gateAcs, ...Object.keys(manual).map(Number)]);
+const covered = new Set([
+  ...gateAcs, ...Object.keys(commands).map(Number), ...Object.keys(manual).map(Number),
+]);
 const missing = criteria.map((_, i) => i + 1).filter((n) => !covered.has(n));
 if (missing.length) {
   console.error(`uncovered criteria (stay unevidenced, record will not reach Implemented): AC${missing.join(', AC')}`);
@@ -88,26 +94,38 @@ const nextSeq = (n) => {
 for (const n of [...covered].sort((a, b) => a - b)) {
   if (!criteria[n - 1]) { console.error(`AC${n}: no such criterion — skipped`); continue; }
   const isGate = gateAcs.has(n);
+  const cmd = commands[n];
+  let cmdExit = 0, cmdDigest = '';
+  if (cmd) {
+    let cmdOut;
+    try {
+      cmdOut = execSync(cmd, { cwd: root, encoding: 'utf8' });
+    } catch (e) { cmdOut = String(e.stdout ?? ''); cmdExit = e.status ?? 1; }
+    cmdDigest = digest(cmdOut);
+  }
+  const method = isGate ? 'gate-check' : cmd ? cmd : 'manual';
   const file = `AC${n}-${nextSeq(n)}.md`;
   writeFileSync(join(dir, file), [
     '---',
     `ac: ${slug}#AC${n}`,
     `ac-digest: ${digest(criteria[n - 1])}`,
-    `method: ${isGate ? 'gate-check' : 'manual'}`,
-    `command: ${isGate ? 'node scripts/verify.mjs' : 'n/a (manual attestation)'}`,
+    `method: ${isGate ? 'gate-check' : cmd ? 'command' : 'manual'}`,
+    `command: ${isGate ? 'node scripts/verify.mjs' : cmd ?? 'n/a (manual attestation)'}`,
     `source-sha: ${sourceSha}`,
-    `exit-code: ${isGate ? gateExit : 0}`,
-    `output-digest: ${isGate ? gateDigest : 'n/a (manual attestation)'}`,
-    `verifier: ${isGate ? 'gate@ship-item' : spec.manualVerifier}`,
+    `exit-code: ${isGate ? gateExit : cmd ? cmdExit : 0}`,
+    `output-digest: ${isGate ? gateDigest : cmd ? cmdDigest : 'n/a (manual attestation)'}`,
+    `verifier: ${isGate || cmd ? 'gate@ship-item' : spec.manualVerifier}`,
     `date: ${date}`,
     'supersedes:',
     '---',
     '',
     isGate
       ? `Static gate run at ship time (exit ${gateExit}).`
-      : `Attested by ${spec.manualVerifier.replace(/^human:\s*/, '')} (not the implementer) on ${date}${spec.manualNote ? `, ${spec.manualNote}` : ''}. Scope: ${manual[n]}`,
+      : cmd
+        ? `Command run at ship time: \`${cmd}\` (exit ${cmdExit}).`
+        : `Attested by ${spec.manualVerifier.replace(/^human:\s*/, '')} (not the implementer) on ${date}${spec.manualNote ? `, ${spec.manualNote}` : ''}. Scope: ${manual[n]}`,
     '',
   ].join('\n'));
-  console.log(`${file}  ${isGate ? 'gate-check' : 'manual'}`);
+  console.log(`${file}  ${method}${cmd ? ` (exit ${cmdExit})` : ''}`);
 }
 console.log(`gate exit ${gateExit}`);
