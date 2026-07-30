@@ -26,8 +26,11 @@ Inspect the repo before asking anything.
 - **Already a docflow repo** (carries `AGENTS.md` + `CONVENTIONS.md` + an
   ADR catalogue): you are **adding to an existing setup**, not scaffolding.
   Do **not** re-scaffold the core or re-ask settled questions — read the
-  recorded choices from `CONVENTIONS.md`/`AGENTS.md` (ADR shape, status
-  lifecycle, **artefact root**, multi-agent mode, and which optional layers
+  recorded choices from the capability manifest and
+  `CONVENTIONS.md`/`AGENTS.md` (the **record model**, from `docflow.yml`
+  `model:` — a re-run **never converts it**; changing model is a
+  separate, deliberate migration path — plus status lifecycle,
+  **artefact root**, multi-agent mode, and which optional layers
   already exist). Then offer to **enable any opted-out optional layer**
   still absent — `plan/`, `_agent/`, `GLOSSARY.md`, `CONSTRAINTS.md`,
   `domains/`, or the
@@ -55,8 +58,11 @@ questions.
   CONSTRAINTS.md         # inviolable boundaries (optional — see Q7)
   adr/
     0000-template.md     # capability-ADR template (always)
-    NNNN-template.md     # technology-ADR template (only if split — see Q2)
+    NNNN-template.md     # technology-ADR template (two-shape model only — see Q2)
     NNNN-<kebab-slug>.md # one ADR per decision, contiguous numbering
+  spec/                  # decisions+specs model only (see Q2)
+    0000-template.md     # capability-spec template
+    <kebab-slug>.md      # one living spec per capability, slug-identified
   domains/<slug>/README.md   # optional (see Q7)
   plan/
     README.md
@@ -128,6 +134,14 @@ A standalone repo has none of them.
      Revision History → Approvals. Rationale must name alternatives
      considered and give specific rejection reasons (not "simpler" /
      "more idiomatic").
+
+   Which shape is `adr/0000-template.md` depends on the record model
+   (Q2): capability-first uses the capability shape; two-shape uses
+   both (capability at `0000`, technology at the cutoff); the
+   decision-led models (`decisions+specs`, `decisions-only`) use the
+   **decision shape** — the technology-ADR section order — as the
+   single `0000` template, since every catalogue entry is a pure
+   decision there.
 3. **Status lifecycle:** `Proposed → Accepted → Implemented →
    (Superseded | Deprecated)`. Terminal states reachable from any prior
    state. Status drives plan-folder placement: `Accepted` →
@@ -208,8 +222,8 @@ fixed profile — summarise it and get sign-off before writing anything:
   `0001` (Step 5 item 5b). All optional layers **off**: no `plan/`, no
   `_agent/`, no `GLOSSARY.md`, no `CONSTRAINTS.md`, no `domains/`, no
   technology template.
-- Default artefact root (`.docflow/`); single ADR shape; full status
-  lifecycle.
+- Default artefact root (`.docflow/`); **capability-first record
+  model** (single shape); full status lifecycle.
 - Git contract: Conventional Commits ON, `Rationale:` footer ON,
   signed commits ON, ADR-revision tags OFF, `Co-Authored-By` OFF.
 - Integration recorded as **direct-to-main, fast-forward only**; the
@@ -224,8 +238,9 @@ On an existing repo, express preserves and merges exactly as a full
 run does — depth changes how many questions are asked, never how
 destructive the run is.
 
-**Guided defaults.** Beyond its three questions, guided takes: single
-shape, full lifecycle, the recommended git contract, optional
+**Guided defaults.** Beyond its three questions, guided takes: the
+capability-first record model, full lifecycle, the recommended git
+contract, optional
 artefacts deferred, no hard rules, default artefact root, standalone,
 and the express language rule. Run the Step 4.5 cross-check on the
 answers before the sign-off summary.
@@ -260,10 +275,23 @@ default (the operator may decline it — see Step 5 item 5b).
    (en-GB / en-US / other), and — if existing repo — what current files
    (README, CONTRIBUTING, docs/, adr/, etc.) must be preserved or
    merged. *No recommendation — project-specific.*
-2. **ADR shape.** Single shape, or capability-vs-technology split?
-   **Recommended: single shape** — start simple, split later if
-   long-lived product requirements clearly outlive their
-   implementations.
+2. **Record model.** Where does capability content live? Four options,
+   recorded in the capability manifest (`model:`):
+   - **(Default) capability-first** — capability records in the ADR
+     catalogue, single shape. Today's behaviour, unchanged.
+   - **two-shape** — capability + technology shapes in the catalogue.
+   - **decisions+specs** — pure decision ADRs plus living
+     `spec/<slug>.md` capability records (slug-identified, edited in
+     place, criteria evidenced like ADR criteria).
+   - **decisions-only** — pure decision ADRs; capability content is
+     managed outside this repo. Choose only when a real external
+     system owns it.
+
+   **Recommendation by scale:** capability-first for a small repo with
+   a few long-lived capabilities (the light path stays light);
+   **decisions+specs for a product repo with many living
+   requirements** — capability growth becomes an edit with a revision
+   row, not a lifecycle round-trip.
 3. **Status lifecycle.** Full `Proposed → Accepted → Implemented →
    (Superseded | Deprecated)`, or shorter (drop `Implemented`)?
    **Recommended: full lifecycle** — the `Implemented` rung is cheap
@@ -429,8 +457,14 @@ mid-flight, get the full scan.)
 - **Q8 has no real verify gate + Q4b PR-based with required CI.**
   "Required CI green" needs a CI gate. Confirm what the CI actually
   runs, or downgrade the completion event.
-- **Q2 single ADR shape + Q7 technology-ADR template requested.**
-  Contradiction — pick one.
+- **Q2 capability-first + Q7 technology-ADR template requested.**
+  Contradiction — the split is the two-shape model; pick one.
+- **Q2 not `decisions+specs` + spec artefacts requested.**
+  Contradiction — specs exist only on that model; pick one.
+- **Q2 `decisions-only` + Q4a plan folder enabled.** Legitimate but
+  worth confirming: with no capability records in the repo, plan-item
+  exit criteria must cite the external system that owns them — confirm
+  the operator knows where "done" is defined.
 - **Q11 = join but no confirmable home pointer.** Joining needs a
   home/federation pointer you can confirm. If none exists yet, you are
   really *establishing* — switch Q11a to establish.
@@ -467,9 +501,12 @@ Keep the pointer in sync if a later re-run migrates the root.
    guardrails hard-rule bullet (G2–G4) under the same condition as the
    CONVENTIONS section above; omit otherwise.
 3. `CLAUDE.md` — from `templates/CLAUDE.md` (single line `@AGENTS.md`).
-4. `adr/0000-template.md` — from `templates/adr-capability.md`.
-5. `adr/NNNN-template.md` — from `templates/adr-technology.md`, only if
-   Q2 said split. `NNNN` is the number where capability ADRs end
+4. `adr/0000-template.md` — from `templates/adr-capability.md` on the
+   capability-first and two-shape models; from
+   `templates/adr-technology.md` (the decision shape) on
+   `decisions+specs` and `decisions-only`.
+5. `adr/NNNN-template.md` — from `templates/adr-technology.md`, only on
+   the two-shape model. `NNNN` is the number where capability ADRs end
    (project-defined, e.g. 0091; default 0100 if unspecified).
 5b. **Seed ADR (default on; opt-out at sign-off).** Write the seed
    `adr/0001-record-architecture-decisions.md` from
@@ -477,8 +514,9 @@ Keep the pointer in sync if a later re-run migrates the root.
    records the **decision to adopt** the documentation-led, ADR-driven
    method, status **`Implemented`**, and **references `CONVENTIONS.md`** for
    the rules (it does not duplicate them). Keep it generic — no other
-   project's ADR numbers. **Skip only if the operator opted out.** For a
-   **split** repo (Q2) use the technology-ADR shape for the seed. If `plan/`
+   project's ADR numbers. **Skip only if the operator opted out.** On the
+   **two-shape** and **decision-led** models (Q2) use the
+   technology/decision shape for the seed. If `plan/`
    exists, also write a matching `plan/done/<date>-adopt-adr-method.md` (the
    seed's completion event is this bootstrap), so plan-coverage stays
    satisfied. On a **retrofit/backfill** (Step 6), the seed is `0001`, ahead
@@ -505,8 +543,9 @@ Keep the pointer in sync if a later re-run migrates the root.
 12. `INDEX.md` — header + the seed ADR's row (item 5b); an empty table only
     if the seed was declined.
 12b. `docflow.yml` — from `templates/docflow.yml`, at the **artefact
-    root**, at **every** depth tier. Fill `model` (`capability-first`,
-    or `two-shape` if Q2 chose the split) and `layers` (the subset of
+    root**, at **every** depth tier. Fill `model` (`capability-first` |
+    `two-shape` | `decisions+specs` | `decisions-only`, per Q2) and
+    `layers` (the subset of
     `plan`, `agent`, `glossary`, `constraints`, `domains`, `federation`
     actually enabled — empty for an express run). Leave `autonomy`
     unset — it is reserved.
@@ -514,6 +553,12 @@ Keep the pointer in sync if a later re-run migrates the root.
     artefact root, **only if Q7 chose the constraints layer**. Written
     with the header and format comment only — entries arrive later via
     the convention skill, each with its authorising decision record.
+12d. **Spec artefacts — only on the `decisions+specs` model:** write
+    `spec/0000-template.md` from `templates/spec.md` (the copy the
+    spec-authoring skill acts on) and leave `spec/` otherwise empty;
+    uncomment the Capability Specs section in the scaffolded
+    `CONVENTIONS.md` (item 1). The other three models write **no**
+    spec artefacts.
 13. `_agent/prompts/autonomous.md` — from
     `templates/_agent-prompts-autonomous.md`, **only** if Q8 confirmed a
     verify gate. Keep the integration block matching Q4b: the

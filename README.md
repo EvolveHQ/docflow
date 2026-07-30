@@ -97,6 +97,16 @@ classic "use ADRs" convention). It references `CONVENTIONS.md` for the rules
 and is created `Implemented`. Decline it at sign-off if you want only the
 template.
 
+**Record models:** where capability content lives is a bootstrap
+choice — **capability-first** (capability records in the ADR
+catalogue; the default), **two-shape** (capability + technology
+shapes), **decisions+specs** (pure decision ADRs plus living
+`spec/<slug>.md` records — slug-identified, edited in place, criteria
+evidenced exactly like ADR criteria; recommended for product repos
+with many living requirements), or **decisions-only** (pure decisions;
+capability content owned by an external system). The choice is
+recorded in `docflow.yml`; re-running bootstrap never converts it.
+
 **Trust posture and evidence:** docflow's checks are **cooperative** —
 they catch honest mistakes and make drift visible; they don't
 authenticate who wrote a change (teams needing tamper resistance apply
