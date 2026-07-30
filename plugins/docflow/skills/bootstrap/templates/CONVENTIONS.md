@@ -222,6 +222,43 @@ Discipline:
 - Agents never alter `CONSTRAINTS.md` without the accepted record.
 -->
 
+<!-- Capability Specs — bootstrap INCLUDES this section (uncommented)
+ONLY when the record model separates decisions from capability specs.
+Omit for capability-first / two-shape repos.
+
+## Capability Specs
+
+Living capability records live in `spec/<slug>.md` at the artefact
+root — **slug-identified** (kebab-case, no number), **edited in
+place**. Growth is an edit with a Revision History row, never
+supersession. The slug is **immutable once Agreed**: renaming a spec
+means retiring it and creating a new one.
+
+Lifecycle: `Draft → Agreed → Implemented → Retired`.
+
+| Status | Meaning |
+|---|---|
+| Draft | Being written; not yet a contract. |
+| Agreed | A human agreed the contract. Requires ≥1 acceptance criterion, each with a `Verify:` method. |
+| Implemented | A projection, valid only while **every current criterion's digest has valid evidence** (§Verification Evidence). Editing a criterion returns the spec to Agreed in truth automatically. |
+| Retired | Terminal. `retired-from:` records the state it left — never-delivered (from Draft/Agreed) and delivered-then-removed (from Implemented) stay distinguishable. |
+
+A **normative** revision — one that changes what was agreed rather
+than adding to it — returns the spec to `Draft` for re-agreement.
+
+Front matter: `id` (must equal the filename slug), `status`,
+`decided-by:` (the decision records authorising this capability),
+`constrained-by:` (the constraint ids that bound it),
+`retired-from:` (set only on Retired).
+
+Acceptance criteria and evidence work **identically to decision
+records**: numbered criteria ending in `Verify:` lines, evidence
+bound under `evidence/<spec-slug>/AC<n>-<seq>.md`.
+
+`INDEX.md` gains a **Specs** section — one row per spec (slug, title,
+status), regenerated like the ADR table.
+-->
+
 ## Multi-Agent Rules
 
 <!-- Q5 = None — no coordination layer. Replace the mode-1 text with:
