@@ -44,4 +44,4 @@ ADR change.
 | [0037](adr/0037-recorded-abandonment.md) | Deliberate abandonment is a recorded terminal state | Implemented | 2026-07-29 | 0001, 0034, 0035 |
 | [0038](adr/0038-capability-spec-records.md) | Capability specs — living, slug-identified records | Implemented | 2026-07-29 | 0016, 0034, 0035, 0036, 0037 |
 | [0039](adr/0039-record-model-choice.md) | The record model is a bootstrap choice — capability-first stays the default | Implemented | 2026-07-29 | 0002, 0032, 0038 |
-| [0040](adr/0040-challenge-and-router.md) | A convergent challenge skill; brainstorm becomes the router | Accepted | 2026-07-29 | 0007, 0013, 0036, 0038 |
+| [0040](adr/0040-challenge-and-router.md) | A convergent challenge skill; brainstorm becomes the router | Implemented | 2026-07-29 | 0007, 0013, 0036, 0038 |

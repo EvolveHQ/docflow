@@ -16,19 +16,22 @@ file.
 ## Active state
 
 - **Branch:** main
-- **Active item:** none — **slice S4 complete** (2026-07-29): ADR 0038
-  capability specs (dormant class: spec/<slug>, new-spec tenth skill,
-  gate + eval machinery) and ADR 0039 record-model choice (Q2 → four
-  models, capability-first default, scale-rule recommendation, re-runs
-  never convert) both Implemented with bound evidence. **Stopping
-  point two reached — the record model is fixed.** Programme scoreboard:
-  S0–S4 shipped; next **S5 — challenge skill + brainstorm router**,
-  the last slice before the **pilot gate** (S6+ blocked on an external
-  multi-agent pilot project). Analysis and decision register:
+- **Active item:** none — **PHASE 1 (S0–S5) COMPLETE** (2026-07-29).
+  ADR 0040 challenge + router Implemented: eleventh skill (advisory
+  interrogator, elicitation checklist + critique rubric, "solid"
+  normative), brainstorm classifies and routes per record model,
+  trigger corpus in evals (19/19 deterministic). First challenge run
+  critiqued its own ADR — three findings, no blockers. The programme
+  is **parked at the ⛔ pilot gate**: S6 goals, S7 validation, S8
+  autonomy, S9 migration, and 1.0 all wait on an **external
+  multi-agent pilot repo** running the S0–S5 stack (exit criteria:
+  full loop unattended once, trigger corpus passes, no breaking
+  contract change). Analysis and decision register:
   `../docflow-workflow-analysis/` (r11).
-- **Blockers:** none for S5. **The pilot candidate is now the critical
-  path** — it gates everything after S5. Installed plugin cache is
-  0.9.2 — stale vs the tree; update when convenient.
+- **Blockers:** **the pilot candidate — the only thing on the critical
+  path.** Also pending when convenient: plugin cache update (0.9.2 →
+  current), the behavioural suite's full green run (11 cases, the
+  release gate), the methodology-page spec extension.
 - **Uncommitted work:** none once this snapshot commit lands.
 
 ## Last shipped

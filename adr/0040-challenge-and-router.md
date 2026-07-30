@@ -1,7 +1,7 @@
 ---
 adr: 0040
 title: A convergent challenge skill; brainstorm becomes the router
-status: Accepted
+status: Implemented
 date: 2026-07-29
 owner: Eugenio Minardi
 supersedes:
@@ -145,6 +145,7 @@ boundaries across all eleven skills stay disjoint, and disjointness is
 |------|----------|--------|--------|
 | 2026-07-29 | r1 | Eugenio Minardi | Initial draft. |
 | 2026-07-29 | r2 | Eugenio Minardi | Accepted — approvals populated, implementation queued as plan 0043. |
+| 2026-07-29 | r3 | Eugenio Minardi | Implemented (commits 010aaa9, 8ed6217): challenge skill + brainstorm router + demarcation; trigger corpus (19/19 deterministic). First challenge run critiqued this ADR (three findings, no blockers — plan footer). Eight evidence records — six operator-attested, one command transcript, one gate-checked. AC1–AC8 met. Phase 1 (S0–S5) complete. |
 
 ## Approvals
 
