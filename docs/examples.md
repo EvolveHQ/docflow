@@ -23,6 +23,7 @@ concrete.
 3. [Skill-by-skill examples](#3-skill-by-skill-examples)
 4. [Multi-repo products: topologies A, B, C](#4-multi-repo-products-topologies-a-b-c)
 5. [Grouping a large catalogue by domain](#5-grouping-a-large-catalogue-by-domain)
+6. [Use cases — the verified tier](#6-use-cases--the-verified-tier) *(in development)*
 
 ---
 
@@ -430,3 +431,143 @@ catalogue, viewed by area.*
 ---
 
 [← Back to docflow](../)
+
+
+---
+
+## 6. Use cases — the verified tier
+
+> *In development — these capabilities are on `main` and beyond the
+> released 0.9.4; they are being exercised in internal testing.* The
+> walkthroughs continue with **linkfold**.
+
+### 6.1 A product repo on decisions + specs
+
+linkfold has outgrown capability-first: requirements keep growing and
+every growth reopens an implemented record. At bootstrap (or on a new
+repo), the record-model question offers the split:
+
+> **Record model?** … **decisions+specs** — pure decision ADRs plus
+> living `spec/<slug>.md` records. *Recommended for product repos with
+> many living requirements: capability growth becomes an edit, not a
+> lifecycle round-trip.*
+
+The scaffold now carries a decision-shaped `adr/0000-template.md`, an
+empty `spec/` with its template, and `docflow.yml` recording
+`model: decisions+specs`. Authoring:
+
+```
+/new-spec record the capability: link expiry
+```
+
+The skill picks the slug `link-expiry` (immutable once agreed), fills
+the template at `Draft`, and gathers criteria — **each must name its
+check**:
+
+```markdown
+1. An expired link returns 410 with the owner-configured message.
+   Verify: npm test -- expiry
+2. Expiry sweeps run without blocking redirects.
+   Verify: manual
+```
+
+`Draft → Agreed` is a human gate. From there the work is queued with
+`/new-plan` (items trace to `link-expiry#AC1`, `#AC2`) and shipped
+with `/ship-item` — which **runs each criterion's method and writes
+bound evidence** under `evidence/link-expiry/`. The spec reads
+`Implemented` only while every criterion has valid proof.
+
+### 6.2 Evidence catches a silent edit
+
+Months later someone "clarifies" AC1 — changing the expected status
+code. Nothing else is touched. The next gate run:
+
+```
+verify: FAIL
+  - spec/link-expiry.md: AC1 was edited — evidence AC1-001.md digest
+    no longer matches (stale projection; re-verify)
+```
+
+The evidence was **digest-bound to the criterion's exact text**, so
+editing the criterion silently invalidated its old proof — exactly as
+designed. The fix is honest: re-run the method against the new
+wording (`/ship-item` writes the fresh record), or revert the edit.
+History is never rewritten — corrections are new records naming what
+they supersede.
+
+### 6.3 Eliciting the boundaries nobody wrote down
+
+Before scaling the team, the maintainer runs the interrogator:
+
+```
+/challenge grill me about the boundaries we haven't written down
+```
+
+The skill walks eight categories one at a time. Three minutes in:
+
+> **Privacy and data** — is there data linkfold must never store or
+> log?
+>
+> *"…destination URLs must never appear in logs, actually. They leak
+> user intent."*
+
+That answer becomes a drafted boundary — but `challenge` **writes
+nothing**: it routes the finding to the convention skill's constraint
+path, which requires an authorising decision record. After the ADR is
+accepted, `CONSTRAINTS.md` gains:
+
+```markdown
+## CON-1 r1 — Destination URLs never appear in logs
+- source: chosen
+- state: Active
+- authorised-by: adr/0007-<slug>.md
+- statement: Destination URLs must never be written to any log line.
+- check: log-format review; grep sweep in the audit.
+```
+
+Every agent loads `CONSTRAINTS.md` before any task; changing the file
+without an accepted decision is a hard-rule violation the audit flags.
+
+### 6.4 Saying no, on the record
+
+A proposal to add link-preview screenshots is reviewed and rejected —
+the decision record is **not deleted**:
+
+```
+status: Withdrawn      # terminal; the option was considered and rejected
+```
+
+The catalogue keeps the "we said no, and why" — often the most
+valuable entry when the idea resurfaces a year later. Likewise an
+abandoned queue item is moved, never removed:
+
+```
+plan/dropped/2026-08-14-0012-preview-screenshots.md   # number kept
+…
+Dropped 2026-08-14: rejected on privacy grounds — see the withdrawal.
+```
+
+A dropped item leaves the owning aggregate (it can neither block a
+record's advancement forever nor fake coverage), and the audit treats
+`dropped/` as a valid terminal location — distinguishable from
+"never existed".
+
+### 6.5 One fuzzy prompt through the front door
+
+```
+/brainstorm we need custom domains for paying customers
+```
+
+The router classifies as it decomposes:
+
+| Candidate | Class | Routed to |
+|---|---|---|
+| Custom domains served via CNAME + on-the-fly certs | a choice | `/new-adr` |
+| Customer can attach/verify a domain; redirects honour it | a behaviour | `/new-spec` (this repo is on decisions+specs) |
+| Certificate private keys never leave the edge store | a boundary | constraint path (decision-gated) |
+| DNS verification wording follows the voice guide | a rule | `/add-convention` |
+| Implement CNAME verification worker | a job | `/new-plan` |
+
+Nothing is written until the outline is approved; then each candidate
+goes to its writer, each under its own gate. You never had to know
+which skill owned what.

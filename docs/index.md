@@ -13,7 +13,18 @@ files a repo can be driven from by humans and coding agents alike. A set of
 
 It runs on **five coding agents** — Claude Code, Claude Cowork, pi, Codex,
 and OpenCode — from the same skill files, and scales from a single
-repository to a **multi-repo product**. Tools can locate any docflow
+repository to a **multi-repo product**.
+
+**The verified tier** *(in development — beyond the released 0.9.4)*:
+a repo can adopt an explicit trust posture and a machine-readable
+capability manifest (`docflow.yml`); every acceptance criterion names
+its verification method, and shipping writes **bound evidence records**
+— digest-tied to the criterion's exact text — so *Implemented* is only
+valid while every criterion has matching proof; the repo's inviolable
+boundaries live in an enumerated, decision-gated `CONSTRAINTS.md`;
+rejected proposals become `Withdrawn` and abandoned work is `dropped`,
+never deleted; and product repos can split **pure decision ADRs from
+living capability specs** (`spec/<slug>.md`). Tools can locate any docflow
 repository's catalogue deterministically via the `.docflow` marker
 (directory or one-line pointer file — the same pattern as git's `.git`). See the
 [methodology]({{ '/methodology/' | relative_url }}) for the formal definition of the conventions,
@@ -25,11 +36,13 @@ why they help, and where they fall short.
 |-------|---------|
 | `bootstrap` | Scaffold or retrofit the whole convention set. Start here. Opens with an express / guided / full depth choice — a quick conservative setup needs almost no questions. |
 | `new-adr` | Author one ADR — next contiguous number, right shape, INDEX + domain wiring, supersede linkage. |
-| `new-plan` | Add a `plan/todo` item tracing to its owning ADR(s). |
-| `ship-item` | Run the completion event: verify → integrate → `todo`→`done` → ADR `Accepted`→`Implemented` → INDEX/WORKLOG. |
+| `new-spec` | Author one **living capability spec** (`spec/<slug>.md`) on the decisions+specs record model — slug-identified, edited in place, human-gated `Draft`→`Agreed`. |
+| `new-plan` | Add a `plan/todo` item tracing to its owning record(s) — ADR, or spec criterion ids where specs exist. |
+| `ship-item` | Run the completion event: verify → execute each criterion's `Verify:` method and write **bound evidence** → integrate → `todo`→`done` → owning record → `Implemented` (only with full valid evidence) → INDEX/WORKLOG. |
 | `add-convention` | Assess whether a convention is worth codifying, route it to the right home (or to an ADR), then add it — e.g. enable optional practices like TDD on demand. |
-| `audit` | Lint the repo against its own conventions — numbering, INDEX sync, plan coverage, ADR-privacy leaks, and more. |
-| `brainstorm` | Decompose a problem into candidate ADRs + plan items (proposes drafts; writes nothing until approved). |
+| `audit` | Lint the repo against its own conventions — numbering, INDEX sync, plan coverage, ADR-privacy leaks, declared-vs-computed status, evidence re-runs, constraints discipline, and more. |
+| `brainstorm` | **The front door.** Decompose a problem into *classified* candidates (choice / behaviour / rule / boundary / job) and route each to its writer on approval. Writes nothing until approved. |
+| `challenge` | **The interrogator.** Pressure-test a draft by rubric, or elicit the boundaries you have not written down. Advisory — writes nothing, gates nothing, and may honestly return "solid, nothing to add". |
 | `agent-wave` | Orchestrate a wave of parallel worktree subagents over the queue, with checkpoint or continuous supervision. |
 | `rollup` | For a multi-repo product: aggregate every member repo's ADRs into one derived, product-wide roll-up (run from the home repo). |
 
