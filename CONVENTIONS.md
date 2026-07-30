@@ -29,7 +29,10 @@ reserved — neither written nor read.
 Language: en-GB throughout. Use forms such as organisation, behaviour,
 prioritise, catalogue, authorisation, artefact, customisation
 consistently across all files. This matches the existing `README.md`
-and `USAGE.md`.
+and `USAGE.md`. Structured field keys and enumerated values
+(`status:`, `source:`, `authorised-by:`, `Verify:`, `verifier:`, and
+their legal values) are **machine identifiers — locale-invariant**;
+a language mandate governs prose, never keys.
 
 ## ADR Files
 
@@ -156,7 +159,9 @@ normalised text — the full numbered item including its `Verify:` line,
 list marker stripped, whitespace runs collapsed to single spaces,
 trimmed), `method:`/`command:`, `source-sha:` (the commit the run
 verified), `exit-code:` and `output-digest:`, `verifier:`
-(`gate@<skill>` or `human:<name>`), `date:`, and `supersedes:` on a
+(`gate@<skill>` for an unattended skill run, `gate@<skill> (attended)`
+when the operator supervised the execution, or `human:<name>` for
+manual attestation), `date:`, and `supersedes:` on a
 correction — corrections are new records; existing ones are never
 edited.
 
@@ -174,6 +179,11 @@ Rules:
   at the record's `source-sha`; checking *current satisfaction*
   executes at HEAD. Divergence is a finding for a human — evidence
   history is never auto-invalidated.
+- **Self-referential adoption.** The record that adopts evidence (the
+  one `evidence-adopted-at:` points at) is itself in scope; its own
+  evidence runs at its implementation commit like any other record's.
+  The adoption commit defines the scope boundary, not a special
+  execution point.
 
 This repo's executor is `scripts/evidence.mjs` (spec-file driven; it
 refuses manual records with no named verifier). Its digest logic

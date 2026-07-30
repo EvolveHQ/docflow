@@ -264,8 +264,11 @@ with a brief assessment before acting — the same pattern bootstrap uses
   recorded in your `CONVENTIONS.md` if present — otherwise it flips on
   context: *full* when you invoked the skill with little detail,
   *express* when your request already specifies everything. The
-  selector always appears; a recorded depth is never applied silently,
-  and at any question you can say "defaults from here" or "go deeper".
+  selector always appears — except when your invocation already
+  answers every tier-differentiated question, where the skill skips
+  it and says so in one line; a recorded depth is never applied
+  silently, and at any question you can say "defaults from here" or
+  "go deeper".
 - Questions are asked **one at a time**, each with a **recommended
   option** you can accept, override, or replace.
 - Answers use **scroll-to-select** (single- or multiple-choice) where the

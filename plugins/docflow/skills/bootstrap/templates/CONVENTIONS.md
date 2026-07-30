@@ -24,14 +24,20 @@ without the file is pre-contract and tools behave as before. The
 
 Assessment depth: `<express | guided | full>` — the depth chosen at
 bootstrap. Skill assessments pre-select it as the recommended depth; the
-depth selector always still appears, so the record steers the
-recommendation and is never applied silently. Change this line to change
-the recommendation.
+depth selector always still appears (except when an invocation already
+answers every tiered question — the skill then skips it and says so),
+so the record steers the recommendation and is never applied silently.
+Change this line to change the recommendation.
 
 <!-- Q1 language: if a language mandate is set, state it here.
 Example: "Language: en-GB throughout. Use forms such as organisation,
 behaviour, prioritise, catalogue, authorisation consistently across all
 files." -->
+
+Structured field keys and enumerated values (`status:`, `source:`,
+`authorised-by:`, `Verify:`, `verifier:`, and their legal values) are
+**machine identifiers — locale-invariant**. A language mandate governs
+prose; keys and enumerated values never localise.
 
 ## ADR Files
 
@@ -170,7 +176,9 @@ authored by the implementer. Each record carries:
 - `method:` and `command:` — what ran.
 - `source-sha:` — the commit the run verified.
 - `exit-code:` and `output-digest:` — the transcript.
-- `verifier:` — `gate@<skill>`, or `human:<name>` for manual.
+- `verifier:` — the executor: `gate@<skill>` for an unattended skill
+  run, `gate@<skill> (attended)` when the operator supervised the
+  execution, or `human:<name>` for manual attestation.
 - `date:`; `supersedes:` on a correction — a correction is a **new
   record** naming the one it replaces; existing records are never
   edited.
@@ -189,6 +197,11 @@ Rules:
   at the record's `source-sha`; checking *current satisfaction*
   executes at HEAD. Divergence is a finding for a human — evidence
   history is never auto-invalidated.
+- **Self-referential adoption.** The record that adopts evidence (the
+  one `evidence-adopted-at:` points at) is itself in scope; its own
+  evidence runs at its implementation commit like any other record's.
+  The adoption commit defines the scope boundary, not a special
+  execution point.
 
 <!-- Constraints layer — bootstrap INCLUDES this section (uncommented)
 ONLY when the constraints layer was chosen (Q7). Omit otherwise.

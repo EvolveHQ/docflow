@@ -59,21 +59,21 @@ analysis doc, not part of this item.
 - **F14 — challenge Mode B multi-select.** A category may surface
   several boundaries at once; codify the multi-select posture.
 
-**Decision-gated (operator decides during this item):**
+**Decision-gated — both DECIDED by the operator, 2026-07-31:**
 
-- **F4 — depth-selector skip exception.** "The selector always
-  appears" is settled behaviour (tiered-depth ADR). Proposal: one
-  narrow exception — when the invocation pre-answers every
-  tier-differentiated question, the selector may be skipped with a
-  one-line note saying so. Lands as a revision to the owning ADR only
-  on operator acceptance; otherwise F4 is declined with the reason
-  recorded.
-- **F11 — verifier identity for attended ships.** `verifier:
-  gate@ship-item` assumes a skill ran. Proposal: the verifier value
-  names the *executor role*, with `gate@ship-item` for skill-run
-  ships and an explicit attended form (e.g. `gate@ship-item
-  (attended)`) defined in §Verification Evidence. Operator picks the
-  form.
+- **F4 — depth-selector skip exception: ACCEPTED.** One narrow
+  exception to "the selector always appears" — when the invocation
+  pre-answers every tier-differentiated question, the skill skips the
+  selector and says so in one line; no recorded depth is applied.
+  Lands as a revision row on the owning ADR. Side effect: the edit is
+  the ADR's first post-adoption change, so its criteria gain
+  `Verify:` methods and bound evidence — the first live instance of
+  the re-evidencing rule firing on a pre-adoption record.
+- **F11 — attended-ship verifier: ACCEPTED as `gate@ship-item
+  (attended)`.** The verifier names the executor role; the attended
+  marker makes operator-supervised runs visible to the audit. Defined
+  in §Verification Evidence (own + template), supported by the
+  executor (`attended` flag), named in the ship skill.
 
 ## Exit criteria
 

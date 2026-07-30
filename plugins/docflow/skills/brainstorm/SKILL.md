@@ -37,7 +37,9 @@ Run the shared assessment protocol before decomposing:
   below, plus the free-text essentials; **full** — every question
   below. If the repo's `CONVENTIONS.md` records an `Assessment depth:`,
   pre-select it as the recommended option — the selector always
-  appears; a recorded depth is never applied silently. Otherwise
+  appears (one narrow exception: when the invocation already answers
+  every question the tiers differentiate, skip it and say so in one
+  line); a recorded depth is never applied silently. Otherwise
   recommend **full** when the request arrived with little or no
   context and **express** when it is already fully specified. At any
   question the operator may answer "defaults from here" or "go

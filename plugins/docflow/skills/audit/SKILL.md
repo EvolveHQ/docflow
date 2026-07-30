@@ -31,7 +31,10 @@ Report each as PASS / FAIL / N/A with specifics (file + line where
 relevant):
 
 1. **Numbering.** ADR filenames contiguous, zero-padded, no gaps, no
-   duplicates. Split repos: capability below cutoff, technology at/above.
+   duplicates. Split repos: capability below cutoff, technology
+   at/above — but **never derive an ADR's shape from its number
+   alone**: a recorded exception (an ADR noting it deviates from the
+   range) wins over the range; flag only undocumented deviations.
 2. **INDEX sync.** Every ADR appears in `INDEX.md`; every INDEX row has
    a matching file; metadata fields (status, title, date) agree.
 3. **Plan coverage.** Every `Accepted` ADR has a `plan/todo/` item;
@@ -41,7 +44,10 @@ relevant):
    claimed scope must be re-queued or dispositioned in the drop
    reason. `Withdrawn` ADRs expect **no** plan item.
 4. **Section completeness.** Each ADR has the required sections in the
-   order its shape mandates. Acceptance criteria are numbered.
+   order its shape mandates — read the required list **from the
+   repo's own templates** (`adr/0000-template.md` and, where present,
+   the technology template), not from a memorised section list; repos
+   legitimately vary section names. Acceptance criteria are numbered.
 5. **Status validity.** Every `status:` is in the declared lifecycle
    (including `Withdrawn` — terminal, reachable only from `Proposed`).
    `Superseded` ADRs name a successor in `superseded-by:`; the successor

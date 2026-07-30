@@ -35,7 +35,9 @@ Run the shared assessment protocol before authoring:
   below, plus the free-text essentials; **full** — every question
   below. If the repo's `CONVENTIONS.md` records an `Assessment depth:`,
   pre-select it as the recommended option — the selector always
-  appears; a recorded depth is never applied silently. Otherwise
+  appears (one narrow exception: when the invocation already answers
+  every question the tiers differentiate, skip it and say so in one
+  line); a recorded depth is never applied silently. Otherwise
   recommend **full** when the request arrived with little or no
   context and **express** when it is already fully specified. At any
   question the operator may answer "defaults from here" or "go
@@ -96,6 +98,11 @@ Ask for the pieces the chosen template needs, one prompt at a time:
   criterion — an inline command, `gate-check`, or `manual` (see
   `CONVENTIONS.md` §Verification Evidence). A criterion nobody can
   name a check for is not ready to be written — ask, don't invent.
+  **Avoid time-bound criteria**: one whose truth is momentary ("the
+  directory is empty", "no references exist yet") is permanently
+  false on every future re-run at HEAD and becomes evidence debt the
+  day it ships. Word criteria to be durably true, or scope them to
+  the event they describe ("at adoption, …").
 
 Honour the language mandate if one is set.
 
@@ -147,7 +154,10 @@ A new ADR is `Proposed`, not actionable yet. Offer to:
   here**: on acceptance, set `superseded-by:` on the predecessor,
   advance it to `Superseded`, and append its Revision History row
   naming the successor.
-- Create a `plan/todo/` item for it (hand off to the **new-plan** skill).
+- Create a `plan/todo/` item for it (hand off to the **new-plan**
+  skill). When the operator's acceptance in this flow already covered
+  the item's exact scope, say so in the hand-off — the receiving
+  skill treats those answers as given and does not re-ask them.
 - If the operator turns the proposal down instead, set it `Withdrawn`
   (terminal), append the Revision History row with the reason, regen
   INDEX — never delete the file. Any `supersedes:` intent it carried

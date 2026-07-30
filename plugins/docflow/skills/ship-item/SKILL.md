@@ -43,7 +43,10 @@ after the adoption commit):
    `evidence/<record-slug>/AC<n>-<seq>.md`, next free sequence — per
    `CONVENTIONS.md` §Verification Evidence: the criterion's current
    digest, the method/command, the source SHA being shipped, exit code,
-   output digest, verifier (`gate@ship-item`), date. Never edit an
+   output digest, verifier, date. The verifier names the executor:
+   `gate@ship-item` for an unattended skill run, `gate@ship-item
+   (attended)` when the operator supervised the execution (see
+   `CONVENTIONS.md` §Verification Evidence). Never edit an
    existing record; a correction is a new record naming `supersedes:`.
 3. `manual` criteria need the named attestation (verifier **≠** the
    implementer, with date and scope). Collect it now; a criterion

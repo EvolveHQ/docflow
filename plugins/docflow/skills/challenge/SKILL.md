@@ -35,7 +35,9 @@ Run the shared assessment protocol:
   only the high-impact questions plus the essentials; **full** — every
   question. If the repo's `CONVENTIONS.md` records an
   `Assessment depth:`, pre-select it as the recommended option — the
-  selector always appears; a recorded depth is never applied silently.
+  selector always appears (one narrow exception: when the invocation
+  already answers every question the tiers differentiate, skip it and
+  say so in one line); a recorded depth is never applied silently.
   At any question the operator may answer "defaults from here" or "go
   deeper"; honour the switch immediately.
 - Ask questions **one at a time**, each with a recommended option; use
@@ -59,7 +61,9 @@ reusable on any draft, before acceptance:
 2. **Criteria are testable and observable**, and — in an
    evidence-adopting repo — each names its `Verify:` method. A
    criterion nobody can name a check for is the finding, not a
-   formality.
+   formality. **Time-bound criteria are findings too**: one whose
+   truth is momentary ("the directory is empty") fails every future
+   re-run at HEAD and becomes permanent evidence debt.
 3. **Rationale names real alternatives** with specific rejection
    reasons. "Simpler", "cleaner", "more idiomatic" are findings, not
    rationale. (Capability-shaped records without a Rationale section:
@@ -77,7 +81,10 @@ explicit verdict: **solid — nothing to add.**
 
 Walk the categories below **one at a time**, asking a concrete
 question per category and pressing once on vague answers. Nobody
-volunteers these; that is why this mode exists. (The checklist lives
+volunteers these; that is why this mode exists. A category may
+surface **several boundaries at once** — use multi-select where the
+host supports it, and record each surfaced boundary separately;
+never collapse distinct boundaries into one entry. (The checklist lives
 here in the body deliberately — only the scaffolding skill carries
 template files.)
 

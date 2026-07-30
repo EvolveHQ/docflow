@@ -366,7 +366,9 @@ produces **bound evidence records**: append-only files under
 tooling from the method's execution transcript, each binding the
 criterion's content digest (its normalised text, including the
 `Verify:` line), the method and command, the source commit, the exit
-code and output digest, the verifier, and the date. Corrections are
+code and output digest, the verifier (the executor role, marked
+`(attended)` when an operator supervised the run, or the named human
+for a manual attestation), and the date. Corrections are
 new records naming what they supersede; existing records are never
 edited. Manual evidence MUST name a verifier who is not the
 implementer; the audit reports the manual-verification ratio —
@@ -375,7 +377,12 @@ at the record's source commit; checking *current satisfaction*
 executes at HEAD; divergence is a finding for a human, and evidence
 history is never auto-invalidated. Adoption is computed against the
 manifest's adoption commit — records last substantively edited before
-it are exempt until edited.
+it are exempt until edited. The adopting record itself is in scope:
+its evidence runs at its implementation commit like any other; the
+adoption commit defines the scope boundary, not a special execution
+point. Field keys and enumerated values in records and manifests are
+machine identifiers, locale-invariant — a repository's language
+mandate governs prose only.
 
 ### 4.13 Constraints
 

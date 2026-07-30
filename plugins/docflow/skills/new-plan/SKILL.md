@@ -28,7 +28,9 @@ Run the shared assessment protocol before queueing:
   below, plus the free-text essentials; **full** — every question
   below. If the repo's `CONVENTIONS.md` records an `Assessment depth:`,
   pre-select it as the recommended option — the selector always
-  appears; a recorded depth is never applied silently. Otherwise
+  appears (one narrow exception: when the invocation already answers
+  every question the tiers differentiate, skip it and say so in one
+  line); a recorded depth is never applied silently. Otherwise
   recommend **full** when the request arrived with little or no
   context and **express** when it is already fully specified. At any
   question the operator may answer "defaults from here" or "go
@@ -43,6 +45,12 @@ Run the shared assessment protocol before queueing:
   enumerable set is impossible (e.g. the scope summary).
 - **The operator decides.** Never proceed past a question without an
   answer, and never guess scope when invoked with no context.
+- **Pre-approved hand-off.** When another skill hands work over whose
+  scope the operator already approved at one of its gates (e.g. a
+  decision accepted moments ago, its plan scope stated there), treat
+  those answers as given: skip the questions they cover and say in
+  one line which gate supplied them. Approval carries across a skill
+  chain — details the earlier gate did not settle are still asked.
 
 Questions (skip any the request already answers):
 1. **Owning ADR(s)** — select from the catalogue (single or multiple).
@@ -76,9 +84,13 @@ Questions (skip any the request already answers):
 
 ## Step 2 — Pick number and position
 
-- `plan/todo/NNNN-<slug>.md`, zero-padded. **Lower numbers run first** —
-  ask where this sits in priority and renumber neighbours only if the
-  user wants it inserted ahead of existing items.
+- `plan/todo/NNNN-<slug>.md`, zero-padded, is the **default** naming
+  scheme. If `CONVENTIONS.md` or `plan/README.md` records a different
+  one (some repos prefix todo items by date), follow the recorded
+  scheme — the convention on record wins over this default.
+- **Lower numbers run first** (or the recorded scheme's ordering
+  rule) — ask where this sits in priority and renumber neighbours
+  only if the user wants it inserted ahead of existing items.
 
 ## Step 3 — Write the item
 

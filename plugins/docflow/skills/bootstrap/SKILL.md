@@ -34,12 +34,19 @@ Inspect the repo before asking anything.
   already exist). Then offer to **enable any opted-out optional layer**
   still absent — `plan/`, `_agent/`, `GLOSSARY.md`, `CONSTRAINTS.md`,
   or `domains/` — plus the capability manifest
-  `docflow.yml` where the repo predates it. (The technology-ADR
+  `docflow.yml` where the repo predates it, and the
+  `Assessment depth:` line (§Project) where the recorded
+  `CONVENTIONS.md` predates that. (The technology-ADR
   template is **not** offered here: adding it means moving to the
   two-shape record model, and a re-run never converts the model.)
   Write only the chosen ones, by
-  **merge**, under the recorded artefact root, leaving everything else
-  untouched. Ask only the questions the new layers need (e.g. the
+  **merge**, under the recorded artefact root. Enabling a layer
+  **includes writing its `CONVENTIONS.md` section** — each optional
+  layer's rules live there, so the layer and its rules arrive
+  together (likewise, a repo adopting evidence gains §Trust Posture
+  and §Verification Evidence together — the latter cross-references
+  the former). Everything not chosen is left untouched. Ask only the
+  questions the new layers need (e.g. the
   coordination-mode question when enabling `_agent/`). This is the entry
   point for adding a layer you deferred at first bootstrap.
 
@@ -68,7 +75,7 @@ questions.
   domains/<slug>/README.md   # optional (see Q7)
   plan/
     README.md
-    todo/NNNN-<slug>.md
+    todo/NNNN-<slug>.md    # default scheme — a recorded convention wins
     done/<YYYY-MM-DD>-<slug>.md
   _agent/
     ROLES.md             # named agents and what each owns
@@ -209,7 +216,10 @@ anything else:** how deep should this assessment go?
 If the repo's `CONVENTIONS.md` already records an `Assessment depth:`
 (a retrofit or re-run), pre-select **that** depth as the recommended
 option instead. The selector always appears — a recorded depth steers
-the recommendation and is never applied silently.
+the recommendation and is never applied silently — with one narrow
+exception: when the invocation already answers every question the
+tiers differentiate, skip the selector and say so in one line (no
+tiered question remains, so no recorded depth is being applied).
 
 **Mid-flight switching.** At any question the operator may answer
 "**defaults from here**" (remaining choices take their recommended
@@ -449,10 +459,12 @@ express run is internally consistent by construction and skips this
 check; guided and full runs, and any run that switched tiers
 mid-flight, get the full scan.)
 
-- **Q5 mode 3 (worktrees) + Q4b direct-to-main.** Unusual: each
-  worktree would have to rebase onto main before fast-forwarding.
-  Ask the user to confirm or switch to PR-based — PR-based is the
-  near-universal fit for worktree work.
+- **Q5 mode 3 (worktrees) + Q4b direct-to-main.** Unusual but
+  legitimate: each worktree rebases onto main before fast-forwarding,
+  and the concurrency guardrails (G1–G4) carry the coordination load
+  PRs would otherwise provide. Confirm the pair is deliberate and
+  that the guardrails section is being written; recommend switching
+  to PR-based only when it is not.
 - **Q4a plan-folder skipped + Q8 autonomous prompt expected.** The
   autonomous prompt walks `plan/todo/`; with no plan folder it has
   nothing to drive. Do not write the autonomous prompt.

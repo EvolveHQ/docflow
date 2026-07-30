@@ -34,7 +34,9 @@ Run the shared assessment protocol before authoring:
   below, plus the free-text essentials; **full** — every question
   below. If the repo's `CONVENTIONS.md` records an `Assessment depth:`,
   pre-select it as the recommended option — the selector always
-  appears; a recorded depth is never applied silently. Otherwise
+  appears (one narrow exception: when the invocation already answers
+  every question the tiers differentiate, skip it and say so in one
+  line); a recorded depth is never applied silently. Otherwise
   recommend **full** when the request arrived with little or no
   context and **express** when it is already fully specified. At any
   question the operator may answer "defaults from here" or "go
@@ -68,8 +70,11 @@ Ask for the pieces the template needs, one prompt at a time: the
 capability statement, user stories, and **numbered, testable
 acceptance criteria — each ending with a `Verify:` line** (an inline
 command, `gate-check`, or `manual`). A criterion nobody can name a
-check for is not ready to be written — ask, don't invent. Honour the
-language mandate if one is set.
+check for is not ready to be written — ask, don't invent. **Avoid
+time-bound criteria**: one whose truth is momentary ("the directory
+is empty") is permanently false on every future re-run at HEAD —
+word criteria to be durably true, or scope them to the event they
+describe. Honour the language mandate if one is set.
 
 ## Step 2 — Write
 
