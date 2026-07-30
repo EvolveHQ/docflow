@@ -54,6 +54,11 @@ The choice is re-tunable in both directions and at both timescales:
   the record steers the recommendation, it is never applied silently,
   so a different operator is not dropped into someone else's depth
   choice. The record can be changed later like any other convention.
+  One narrow exception, learned in external use: when an invocation
+  already answers every question the tiers differentiate, the
+  selector would be a pure no-op — the skill may skip it, stating in
+  one line that it did and why. A skipped selector applies no
+  recorded depth; no tiered question remains for one to steer.
 
 All other protocol rules from
 adr/0013-interactive-assessment-protocol.md stand unchanged: questions
@@ -86,22 +91,32 @@ propagated to nine.
 1. The shared assessment protocol opens with a single depth selector
    offering express, guided, and full, replacing the binary run/skip
    opt-out gate.
+   Verify: manual
 2. Express asks no further questions beyond unavoidable free-text
    essentials (inputs with no derivable default, such as a title);
    every choice with a recommended default takes it, and the defaults
    are summarised to the operator before any file is written.
+   Verify: manual
 3. Guided asks only the questions the skill marks high-impact; all
    other choices take their recommended defaults.
+   Verify: manual
 4. At any question the operator can drop to "defaults from here" or
    escalate to the fuller tier, and the skill honours the switch
    immediately.
+   Verify: manual
 5. The chosen depth is recorded in the target repo's `CONVENTIONS.md`
    and appears as the pre-selected recommendation on the next
    assessment's depth selector — never applied without the selector
    being shown; a later change to the record changes the
-   recommendation.
+   recommendation. The one exception: an invocation that already
+   answers every tier-differentiated question may skip the selector
+   with a one-line note saying so — no recorded depth is applied
+   there at all.
+   Verify: manual
 6. The bootstrap skill implements the selector.
+   Verify: node -e "const s=require('fs').readFileSync('plugins/docflow/skills/bootstrap/SKILL.md','utf8'); process.exit(s.includes('depth selector') && s.includes('express') && s.includes('guided') ? 0 : 1)"
 7. All eight lifecycle skills implement the selector.
+   Verify: node -e "const f=require('fs'); const s=['new-adr','new-plan','add-convention','brainstorm','agent-wave']; process.exit(s.every(n=>f.readFileSync('plugins/docflow/skills/'+n+'/SKILL.md','utf8').includes('Depth selector first'))?0:1)"
 
 ## Out of scope
 
@@ -130,9 +145,11 @@ propagated to nine.
 | 2026-07-03 | r2 | Eugenio Minardi | Pre-acceptance spec review fixes: express carve-out for unavoidable free-text essentials (AC2); recorded depth is a pre-selected recommendation, never applied silently (AC5). Status Proposed → Accepted. |
 | 2026-07-03 | r3 | Eugenio Minardi | Bootstrap adopted the selector (plan 0033): AC1–6 met in bootstrap, express eval green. AC7 (the eight lifecycle skills) outstanding — ships with plan 0034; status stays Accepted. |
 | 2026-07-03 | r4 | Eugenio Minardi | Implemented (plan 0034, commit 3f1611e): the five assessment-bearing lifecycle skills (new-adr, new-plan, add-convention, brainstorm, agent-wave) carry the canonical selector with per-skill high-impact markers. AC7 reading: audit, rollup, and ship-item run no assessment, so the criterion is vacuous for them. The plan's bootstrap-feedback gate was explicitly waived by the operator. Status Accepted → Implemented. |
+| 2026-07-31 | r5 | Eugenio Minardi | External-pilot feedback (plan 0044, F4): narrow skip exception when an invocation pre-answers every tier-differentiated question — announced in one line, never silent (capability statement + AC5). First post-adoption edit, so all criteria gained `Verify:` methods and bound evidence per §Verification Evidence. Status unchanged (Implemented). |
 
 ## Approvals
 
 | Role | Name | Date | Signature |
 |------|------|------|-----------|
 | Maintainer | Eugenio Minardi | 2026-07-03 | — |
+| Maintainer | Eugenio Minardi | 2026-07-31 | — |
