@@ -144,7 +144,7 @@ export const cases = [
       assertGateFails(repo, (fix) => fix.replace(
         'adr/0041-goals-layer.md',
         'serves: ["G-aligned-autonomy"]', 'serves: ["G-nonexistent"]',
-      ), /resolves to no GOALS\.md entry/);
+      ), /resolves to no goals\/ file/);
     },
   },
   {
@@ -154,7 +154,7 @@ export const cases = [
     repo: repoRoot,
     assert(repo) {
       assertGateFails(repo, (fix) => fix.replace(
-        'GOALS.md', '- state: Active', '- state: Someday',
+        'goals/G-aligned-autonomy.md', 'state: Active', 'state: Someday',
       ), /illegal state "Someday"/);
     },
   },
@@ -165,7 +165,7 @@ export const cases = [
     repo: repoRoot,
     assert(repo) {
       assertGateFails(repo, (fix) => fix.replace(
-        'COVERAGE.md', '| Accepted |', '| Implemented |',
+        'COVERAGE.md', '(Active)', '(Paused)',
       ), /COVERAGE\.md stale/);
     },
   },
