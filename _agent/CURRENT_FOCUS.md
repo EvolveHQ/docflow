@@ -60,9 +60,19 @@ file.
   batch-attested, 2 command attended). **Both remaining gate criteria
   subsequently PASSED in clarity (operator-attested 2026-07-31)** —
   see the active-state bullet above.
-- **Blockers:** none — the pilot gate is closed. Queue: S6 goals →
-  S7 validation → S8 autonomy → S9 migration machinery → S10 own
-  migration → 1.0. S6 starts on the operator's go.
+- **S6 GOALS SHIPPED (2026-07-31, plan 0045):** per-file
+  `goals/G-<slug>.md` records + INDEX Goals section + `serves:`
+  edges + COVERAGE generator + brainstorm-as-goal-writer + audit
+  check 20 + gate check I. Notable: the operator **challenged the
+  accepted single-file design at the attestation gate** (context
+  accumulation of terminal entries); revised to per-file by r3
+  before any evidence bound — the gate working as designed. Three
+  Active goals live: G-aligned-autonomy, G-external-adoption,
+  G-one-zero. Seven evidence records, all attended.
+- **Blockers:** none. Queue: S7 validation (needs the
+  validation-cycle-identity decision) → S8 autonomy → S9 migration
+  machinery (needs an external candidate) → S10 own migration → 1.0.
+  S7 starts on the operator's go.
 - **Uncommitted work:** none once this snapshot commit lands.
 
 ## Last shipped

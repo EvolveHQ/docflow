@@ -9,7 +9,7 @@ The walk goal → serving record → criteria evidence → plan items.
 
 | Serving record | Status | Evidence | Plan items |
 |---|---|---|---|
-| adr/0041-goals-layer.md | Accepted | 0/7 criteria | todo/0045-goals-layer |
+| adr/0041-goals-layer.md | Implemented | 7/7 criteria | done/2026-07-31-goals-layer |
 
 ## G-external-adoption — docflow drives repos beyond its own (Active)
 

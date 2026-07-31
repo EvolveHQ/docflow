@@ -45,7 +45,7 @@ ADR change.
 | [0038](adr/0038-capability-spec-records.md) | Capability specs — living, slug-identified records | Implemented | 2026-07-29 | 0016, 0034, 0035, 0036, 0037 |
 | [0039](adr/0039-record-model-choice.md) | The record model is a bootstrap choice — capability-first stays the default | Implemented | 2026-07-29 | 0002, 0032, 0038 |
 | [0040](adr/0040-challenge-and-router.md) | A convergent challenge skill; brainstorm becomes the router | Implemented | 2026-07-29 | 0007, 0013, 0036, 0038 |
-| [0041](adr/0041-goals-layer.md) | Goals layer — the top of the traceability chain | Accepted | 2026-07-31 | 0016, 0034, 0035, 0038, 0040 |
+| [0041](adr/0041-goals-layer.md) | Goals layer — the top of the traceability chain | Implemented | 2026-07-31 | 0016, 0034, 0035, 0038, 0040 |
 
 ## Goals
 

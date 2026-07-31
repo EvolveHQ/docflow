@@ -45,3 +45,14 @@ Owning ADR: adr/0041-goals-layer.md (Accepted 2026-07-31).
 ## Dependencies
 
 None open — the pilot gate closed 2026-07-31.
+
+---
+
+**Shipped at HEAD `d67cec7`** (chain 7ddc774 propose → 19957b3 accept
+→ f3181f4 implement → d505c37/d16cd2f gate (alone, two revisions) →
+1b9e43c/84f0d97 dogfood + operator-directed per-file restructure (r3)
+→ f736171/d67cec7 evals (alone) + this ship commit). Owning ADR
+Implemented on seven bound evidence records (3 gate-check, 1 command,
+3 manual batch-attested; all attended). Mid-cycle design challenge by
+the operator resolved by revision before evidence bound — single-file
+GOALS.md → per-file goals/ records with INDEX Goals section.

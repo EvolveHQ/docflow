@@ -1,7 +1,7 @@
 ---
 adr: 0041
 title: Goals layer — the top of the traceability chain
-status: Accepted
+status: Implemented
 date: 2026-07-31
 owner: Eugenio Minardi
 supersedes:
@@ -185,6 +185,7 @@ Active goals than the cap.
 | 2026-07-31 | r1 | Eugenio Minardi | Initial draft (Proposed), from the approved programme: single-file goals layer, serves: edges over AC-bearing records, generated coverage view, brainstorm as the goal writer, audit traceability checks. Authored on pilot-gate closure. |
 | 2026-07-31 | r2 | Eugenio Minardi | Status Proposed → Accepted by the operator; implementation authorised (plan 0045). |
 | 2026-07-31 | r3 | Eugenio Minardi | Pre-evidence design revision, operator-directed at the attestation gate: single-file `GOALS.md` → per-file `goals/G-<slug>.md` records with front-matter properties and an INDEX Goals section — catalogue uniformity, terminal goals at zero context cost; the always-in-view discipline now applies to the Active set. Capability statement + AC1–AC3, AC6–AC7 reworded; no evidence bound to the earlier text. |
+| 2026-07-31 | r4 | Eugenio Minardi | Implemented (plan 0045): AC2/AC3/AC5 gate-evidenced (check I v2), AC7 command-evidenced, AC1/AC4/AC6 operator-attested — seven bound records, attended. Three operator-approved goals live; the record carries the first serves: edge. Status Accepted → Implemented. |
 
 ## Approvals
 
