@@ -16,17 +16,18 @@ file.
 ## Active state
 
 - **Branch:** main
-- **Active item:** none — **PHASE 1 (S0–S5) COMPLETE** (2026-07-29).
-  ADR 0040 challenge + router Implemented: eleventh skill (advisory
-  interrogator, elicitation checklist + critique rubric, "solid"
-  normative), brainstorm classifies and routes per record model,
-  trigger corpus in evals (19/19 deterministic). First challenge run
-  critiqued its own ADR — three findings, no blockers. The programme
-  is **parked at the ⛔ pilot gate**: S6 goals, S7 validation, S8
-  autonomy, S9 migration, and 1.0 all wait on an **external
-  multi-agent pilot repo** running the S0–S5 stack (exit criteria:
-  full loop unattended once, trigger corpus passes, no breaking
-  contract change). Analysis and decision register:
+- **Active item:** none — **PHASE 1 (S0–S5) COMPLETE** (2026-07-29)
+  and the **✅ PILOT GATE CLOSED (2026-07-31, operator-attested).**
+  All three exit criteria passed in/around clarity: the unattended
+  full-loop run, the trigger-corpus check, and no breaking contract
+  change (wave-1 refinements merged additively on both sides). Run
+  identifiers from the clarity side are not yet recorded here — append
+  the clarity SHAs and corpus tally to this bullet when relayed. The
+  programme is **UNBLOCKED**: next is S6 goals, then S7 validation,
+  S8 autonomy, S9 migration machinery, S10 own migration, S11 1.0
+  (publish only on explicit instruction). Pre-decisions worth taking
+  early: S7 validation-cycle identity; S9 external migration
+  candidate. Analysis and decision register:
   `../docflow-workflow-analysis/` (r11).
 - **Since Phase-1 completion (2026-07-30):** the **behavioural suite
   ran FULL GREEN — 11/11** (D9's internal-eval condition met; one
@@ -56,13 +57,12 @@ file.
   operator-accepted. Side effect worth remembering: the tiered-depth
   record became the **first pre-adoption record re-evidenced on
   edit** — Verify methods + 7 bound records (5 manual
-  batch-attested, 2 command attended). **Two gate criteria remain:**
-  an unattended full-loop run in clarity (its queued items are
-  ready-made candidates) and the trigger-corpus check from clarity's
-  side.
-- **Blockers:** the pilot gate needs the two remaining criteria, run
-  in clarity. Post-gate queue: S6 goals → S7 validation → S8
-  autonomy → S9 migration machinery → S10 own migration → 1.0.
+  batch-attested, 2 command attended). **Both remaining gate criteria
+  subsequently PASSED in clarity (operator-attested 2026-07-31)** —
+  see the active-state bullet above.
+- **Blockers:** none — the pilot gate is closed. Queue: S6 goals →
+  S7 validation → S8 autonomy → S9 migration machinery → S10 own
+  migration → 1.0. S6 starts on the operator's go.
 - **Uncommitted work:** none once this snapshot commit lands.
 
 ## Last shipped
