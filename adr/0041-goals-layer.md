@@ -1,7 +1,7 @@
 ---
 adr: 0041
 title: Goals layer — the top of the traceability chain
-status: Proposed
+status: Accepted
 date: 2026-07-31
 owner: Eugenio Minardi
 supersedes:
@@ -174,8 +174,10 @@ Active goals than the cap.
 | Date | Revision | Author | Change |
 |------|----------|--------|--------|
 | 2026-07-31 | r1 | Eugenio Minardi | Initial draft (Proposed), from the approved programme: single-file goals layer, serves: edges over AC-bearing records, generated coverage view, brainstorm as the goal writer, audit traceability checks. Authored on pilot-gate closure. |
+| 2026-07-31 | r2 | Eugenio Minardi | Status Proposed → Accepted by the operator; implementation authorised (plan 0045). |
 
 ## Approvals
 
 | Role | Name | Date | Signature |
 |------|------|------|-----------|
+| Maintainer | Eugenio Minardi | 2026-07-31 | — |
