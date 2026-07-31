@@ -531,35 +531,67 @@ if (existsSync(join(root, 'CONSTRAINTS.md'))) {
 }
 
 // ── I. Goals layer (ADR 0041) ──
-// GOALS.md, when present, is the top of the traceability chain
-// (CONVENTIONS.md §Goals): parseable G-<slug> entries carrying the
-// five fields and a legal state, unique ids, manifest agreement, and
-// a COVERAGE.md in sync with the catalogue. serves: front matter on
-// AC-bearing records must resolve to real goal ids. The Active-cap
+// goals/, when present, holds one slug-identified file per goal
+// (CONVENTIONS.md §Goals): front-matter id equal to the filename
+// stem, legal state, the five properties, Statement/Measure body
+// sections; an INDEX.md Goals section in sync both ways; serves:
+// front matter on AC-bearing records resolving to real goal files;
+// COVERAGE.md in sync via the generator's --check. The Active-cap
 // and aspiration checks are audit findings, not gate failures — the
 // gate holds shape and referential integrity only.
 const GOAL_STATES = new Set(['Active', 'Achieved', 'Retired']);
 const goalIds = new Set();
-if (existsSync(join(root, 'GOALS.md'))) {
-  const gtext = read('GOALS.md');
-  const headers = [...gtext.matchAll(/^## (G-[a-z0-9-]+) — (.+)$/gm)];
-  if (!headers.length) fail('GOALS.md: no parseable "## G-<slug> — <title>" entries');
-  headers.forEach((h, i) => {
-    const id = h[1];
-    if (goalIds.has(id)) fail(`GOALS.md: duplicate goal id ${id}`);
-    goalIds.add(id);
-    const block = gtext.slice(h.index, headers[i + 1]?.index);
-    const gfield = (k) => block.match(new RegExp(`^- ${k}:\\s*(.+)$`, 'm'))?.[1]?.trim();
-    for (const k of ['state', 'statement', 'measure', 'horizon', 'review-by']) {
-      if (!gfield(k)) fail(`GOALS.md: ${id} missing "${k}"`);
+const goalStates = {};
+const goalsDir = join(root, 'goals');
+if (existsSync(goalsDir)) {
+  for (const f of readdirSync(goalsDir).filter((n) => n.endsWith('.md') && n !== 'G-template.md')) {
+    const stem = f.replace(/\.md$/, '');
+    if (!/^G-[a-z0-9-]+$/.test(stem)) {
+      fail(`goals/${f}: filename is not G-<kebab-slug>.md`);
+      continue;
     }
-    const state = gfield('state');
-    if (state && !GOAL_STATES.has(state)) {
-      fail(`GOALS.md: ${id} illegal state "${state}" (legal: ${[...GOAL_STATES].join(', ')})`);
+    const { fields, body } = frontmatter(read(`goals/${f}`));
+    if (!fields) {
+      fail(`goals/${f}: missing front matter`);
+      continue;
     }
-  });
+    if (fields.id !== stem) fail(`goals/${f}: id "${fields.id}" does not equal the filename stem`);
+    goalIds.add(stem);
+    goalStates[stem] = fields.state;
+    for (const k of ['title', 'state', 'horizon', 'review-by', 'date']) {
+      if (!fields[k]) fail(`goals/${f}: missing "${k}"`);
+    }
+    if (fields.state && !GOAL_STATES.has(fields.state)) {
+      fail(`goals/${f}: illegal state "${fields.state}" (legal: ${[...GOAL_STATES].join(', ')})`);
+    }
+    if (!/^## Statement\s*$/m.test(body)) fail(`goals/${f}: missing "## Statement" section`);
+    if (!/^## Measure\s*$/m.test(body)) fail(`goals/${f}: missing "## Measure" section`);
+  }
   if (existsSync(join(root, 'docflow.yml')) && !/^layers:.*\bgoals\b/m.test(read('docflow.yml'))) {
-    fail('GOALS.md present but docflow.yml layers does not enable "goals" — enable the layer or the manifest wins');
+    fail('goals/ present but docflow.yml layers does not enable "goals"');
+  }
+  if (existsSync(join(root, 'GOALS.md'))) {
+    fail('GOALS.md: legacy single-file goals alongside goals/ — migrate the entries and remove it');
+  }
+  // INDEX Goals section — bijective with the files, states agree.
+  const gsec = read('INDEX.md').split(/^## Goals\s*$/m)[1]?.split(/^## /m)[0];
+  if (goalIds.size && !gsec) {
+    fail('INDEX.md: goals exist but there is no "## Goals" section');
+  } else if (gsec) {
+    const rows = {};
+    for (const m of gsec.matchAll(/^\| \[(G-[a-z0-9-]+)\]\(goals\/([A-Za-z0-9-]+)\.md\) \| .*? \| (\w+) \|/gm)) {
+      if (m[1] !== m[2]) fail(`INDEX.md Goals: row ${m[1]} links goals/${m[2]}.md`);
+      rows[m[1]] = m[3];
+    }
+    for (const id of goalIds) {
+      if (!(id in rows)) fail(`INDEX.md Goals: no row for ${id}`);
+      else if (rows[id] !== goalStates[id]) {
+        fail(`INDEX.md Goals: ${id} state "${rows[id]}" does not match the file's "${goalStates[id]}"`);
+      }
+    }
+    for (const id of Object.keys(rows)) {
+      if (!goalIds.has(id)) fail(`INDEX.md Goals: row ${id} has no goals/ file`);
+    }
   }
   try {
     execSync('node scripts/coverage.mjs --check', { cwd: root, stdio: 'pipe' });
@@ -570,12 +602,12 @@ if (existsSync(join(root, 'GOALS.md'))) {
 const servesOf = (v) => (v?.match(/G-[a-z0-9-]+/g) ?? []);
 for (const a of catalogue) {
   for (const gid of servesOf(a.fields.serves)) {
-    if (!goalIds.has(gid)) fail(`adr/${a.file}: serves "${gid}" resolves to no GOALS.md entry`);
+    if (!goalIds.has(gid)) fail(`adr/${a.file}: serves "${gid}" resolves to no goals/ file`);
   }
 }
 for (const s of specs) {
   for (const gid of servesOf(s.fields.serves)) {
-    if (!goalIds.has(gid)) fail(`spec/${s.slug}.md: serves "${gid}" resolves to no GOALS.md entry`);
+    if (!goalIds.has(gid)) fail(`spec/${s.slug}.md: serves "${gid}" resolves to no goals/ file`);
   }
 }
 
