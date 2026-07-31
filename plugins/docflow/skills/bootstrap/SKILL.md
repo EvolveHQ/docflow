@@ -33,7 +33,7 @@ Inspect the repo before asking anything.
   **artefact root**, multi-agent mode, and which optional layers
   already exist). Then offer to **enable any opted-out optional layer**
   still absent — `plan/`, `_agent/`, `GLOSSARY.md`, `CONSTRAINTS.md`,
-  or `domains/` — plus the capability manifest
+  `GOALS.md`, or `domains/` — plus the capability manifest
   `docflow.yml` where the repo predates it, and the
   `Assessment depth:` line (§Project) where the recorded
   `CONVENTIONS.md` predates that. (The technology-ADR
@@ -65,6 +65,8 @@ questions.
   docflow.yml            # capability manifest: schema, model, layers
   GLOSSARY.md            # shared terms (optional — see Q7)
   CONSTRAINTS.md         # inviolable boundaries (optional — see Q7)
+  GOALS.md               # 3–7 active goals (optional — see Q7)
+  COVERAGE.md            # generated goal→evidence walk (goals layer only)
   adr/
     0000-template.md     # capability-ADR template (always)
     NNNN-template.md     # technology-ADR template (two-shape model only — see Q2)
@@ -115,8 +117,8 @@ absent manifest means a pre-contract repo — behave as before.
 these is a valid, lightweight docflow repo — a
 classic ADR catalogue with conventions. Everything else is an **opt-in
 layer**: the `plan/` queue (Q4a), the `_agent/` coordination set (Q5 —
-choose *None* to omit it), `GLOSSARY.md`, `CONSTRAINTS.md`, and
-`domains/` (Q7). Omitting any
+choose *None* to omit it), `GLOSSARY.md`, `CONSTRAINTS.md`,
+`GOALS.md`, and `domains/` (Q7). Omitting any
 optional layer is a valid state, not an error; a lifecycle skill that needs
 an absent layer refuses cleanly and names what is missing.
 
@@ -232,8 +234,8 @@ fixed profile — summarise it and get sign-off before writing anything:
 - the **core only**: `AGENTS.md`, `CLAUDE.md`, `CONVENTIONS.md`,
   `adr/0000-template.md`, `INDEX.md`, `docflow.yml`, plus the seed ADR
   `0001` (Step 5 item 5b). All optional layers **off**: no `plan/`, no
-  `_agent/`, no `GLOSSARY.md`, no `CONSTRAINTS.md`, no `domains/`, no
-  technology template.
+  `_agent/`, no `GLOSSARY.md`, no `CONSTRAINTS.md`, no `GOALS.md`, no
+  `domains/`, no technology template.
 - Default artefact root (`.docflow/`); **capability-first record
   model** (single shape); full status lifecycle.
 - Git contract: Conventional Commits ON, `Rationale:` footer ON,
@@ -381,6 +383,12 @@ default (the operator may decline it — see Step 5 item 5b).
      decision-gated (see the conventions §Constraints). *Defer; the
      convention skill creates it when the first boundary-shaped rule
      arrives, requiring its authorising decision record.*
+   - **`GOALS.md`** — the repo's 3–7 active goals, the top of the
+     traceability chain (see the conventions §Goals). *Defer unless
+     the operator wants the repo's "why" recorded from day one; the
+     brainstorm skill writes entries once the layer exists, and
+     offers to enable it when an approved outcome-class candidate
+     arrives without it.*
    - **technology-ADR template** — *defer unless technology decisions split
      from product decisions.*
 8. **Verify gate.** What command(s) decide a change is shippable
@@ -560,7 +568,8 @@ Keep the pointer in sync if a later re-run migrates the root.
     root**, at **every** depth tier. Fill `model` (`capability-first` |
     `two-shape` | `decisions+specs` | `decisions-only`, per Q2) and
     `layers` (the subset of
-    `plan`, `agent`, `glossary`, `constraints`, `domains`, `federation`
+    `plan`, `agent`, `glossary`, `constraints`, `goals`, `domains`,
+    `federation`
     actually enabled — empty for an express run). Leave `autonomy`
     unset — it is reserved.
 12c. `CONSTRAINTS.md` — from `templates/CONSTRAINTS.md`, at the
@@ -573,6 +582,12 @@ Keep the pointer in sync if a later re-run migrates the root.
     uncomment the Capability Specs section in the scaffolded
     `CONVENTIONS.md` (item 1). The other three models write **no**
     spec artefacts.
+12e. `GOALS.md` — from `templates/GOALS.md`, at the artefact root,
+    **only if Q7 chose the goals layer**. Written with the header and
+    format comment only — entries arrive via the brainstorm skill on
+    operator approval. Uncomment the §Goals section in the scaffolded
+    `CONVENTIONS.md` (item 1). `COVERAGE.md` is not scaffolded — it is
+    generated once the first goal and serving record exist.
 13. `_agent/prompts/autonomous.md` — from
     `templates/_agent-prompts-autonomous.md`, **only** if Q8 confirmed a
     verify gate. Keep the integration block matching Q4b: the

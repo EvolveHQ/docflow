@@ -5,6 +5,7 @@ date: YYYY-MM-DD
 owner: <agent-id or human>
 decided-by: []
 constrained-by: []
+serves: []
 retired-from:
 ---
 

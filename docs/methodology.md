@@ -418,6 +418,27 @@ work identically to decision records. A re-run of the bootstrap never
 converts a repository's model — migration is a separate, deliberate
 path.
 
+### 4.15 The goals layer
+
+Goals are the top of the traceability chain — the recorded "why"
+above every record. The layer is opt-in: a single `GOALS.md` at the
+artefact root, small enough to load in full, guiding 3–7 `Active`
+goals. Each entry carries a stable id (`G-<kebab-slug>`, immutable,
+never reused), a statement, a **measure** (a goal that cannot name
+one can never be validated), a horizon, a `review-by:` date, and a
+state (`Active | Achieved | Retired` — terminal entries stay; removal
+is by state, never deletion). AC-bearing records — capability ADRs
+and specs alike — name the goals they advance in `serves:` front
+matter; every id must resolve. `COVERAGE.md` is the generated walk
+goal → serving record → criteria evidence state → plan items,
+maintained like the index. Entries are written by the decomposition
+skill on operator approval — a goal is discovered in decomposition,
+not dictated by category first. The audit reports, never edits: an
+Active goal nothing serves is an aspiration; a goal without a measure
+is unvalidatable; a dangling `serves:` id is a broken edge; growth
+past the cap is a signal, not a gate. Acting on the measure — outcome
+records and validation cycles — is a later tier of the method.
+
 ## 5. Scaling to many repositories
 
 A single product spread across several repositories runs as a

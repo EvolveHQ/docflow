@@ -71,6 +71,12 @@ ADR catalogue.
   (`CON-1`, `CON-2`, …) so agents load them in full before any task.
   Every change to the file needs an accepted decision record; there is
   no severity — a rule that may bend is a convention instead (Q7).
+- `GOALS.md` — the repo's **3–7 active goals** *(in development —
+  beyond the released version)*: id, statement, measure, horizon,
+  review-by. Records name the goals they advance in `serves:` front
+  matter; a generated `COVERAGE.md` walks goal → record → evidence →
+  plan; `brainstorm` writes entries on approval; the audit flags
+  aspirations, unmeasurable goals, and dangling edges (Q7).
 - `GLOSSARY.md`, the technology-ADR template, and project-specific hard
   rules (vendor-naming, regulated evidence, language mandate, audit-stream
   separation) — Q7/Q10.

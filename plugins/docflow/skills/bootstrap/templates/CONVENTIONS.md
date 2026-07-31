@@ -235,6 +235,38 @@ Discipline:
 - Agents never alter `CONSTRAINTS.md` without the accepted record.
 -->
 
+<!-- Goals layer — bootstrap INCLUDES this section (uncommented) ONLY
+when the goals layer was chosen (Q7). Omit otherwise.
+
+## Goals
+
+The repo's active goals live in `GOALS.md` at the artefact root — a
+single file, 3–7 Active goals, loadable in full. One entry per goal:
+
+## G-<kebab-slug> — <title>
+- state: Active | Achieved | Retired
+- statement: <the outcome sought, one or two sentences>
+- measure: <how the world looks different if this is met>
+- horizon: <a period or date>
+- review-by: <YYYY-MM-DD>
+
+Discipline:
+
+- Goal ids are stable and never reused; removal is by terminal state,
+  never deletion.
+- Every Active goal names a measure — a goal that cannot name one can
+  never be validated.
+- AC-bearing records name the goals they advance in `serves:` front
+  matter; every listed id must resolve to a `GOALS.md` entry.
+- `COVERAGE.md` is the generated walk goal → serving records →
+  criteria evidence state → plan items. Derived, never hand-edited;
+  regenerated like `INDEX.md`.
+- Entries are written by the brainstorm skill on operator approval.
+  The audit reports: Active goals nothing serves, goals without a
+  measure, dangling `serves:` ids, growth past the ~7-Active cap (a
+  signal, not a gate).
+-->
+
 <!-- Capability Specs — bootstrap INCLUDES this section (uncommented)
 ONLY when the record model separates decisions from capability specs.
 Omit for capability-first / two-shape repos.
