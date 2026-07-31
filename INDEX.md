@@ -46,3 +46,11 @@ ADR change.
 | [0039](adr/0039-record-model-choice.md) | The record model is a bootstrap choice — capability-first stays the default | Implemented | 2026-07-29 | 0002, 0032, 0038 |
 | [0040](adr/0040-challenge-and-router.md) | A convergent challenge skill; brainstorm becomes the router | Implemented | 2026-07-29 | 0007, 0013, 0036, 0038 |
 | [0041](adr/0041-goals-layer.md) | Goals layer — the top of the traceability chain | Accepted | 2026-07-31 | 0016, 0034, 0035, 0038, 0040 |
+
+## Goals
+
+| Goal | Title | State | Horizon | Review by |
+|---|---|---|---|---|
+| [G-aligned-autonomy](goals/G-aligned-autonomy.md) | Agents build unattended within recorded boundaries | Active | 2026-Q4 | 2026-10-31 |
+| [G-external-adoption](goals/G-external-adoption.md) | docflow drives repos beyond its own | Active | 2027-Q1 | 2026-12-31 |
+| [G-one-zero](goals/G-one-zero.md) | A published 1.0 gated by behavioural evals | Active | 2026-Q4 | 2026-11-30 |

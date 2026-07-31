@@ -61,8 +61,8 @@ Questions (skip any the request already answers):
    (`constrained-by:`), if the repo carries a constraints file.
    *Recommended: none unless one plainly applies.*
 3b. **Serves** — which goal id(s) this capability advances
-   (`serves:`), if the repo carries a goals file; every listed id
-   must resolve to a `GOALS.md` entry. *Recommended: the goal the
+   (`serves:`), if the repo carries a `goals/` directory; every
+   listed id must resolve to a goal file. *Recommended: the goal the
    request names, or none.*
 4. **Walk to Agreed now?** — yes / no. *Recommended: no — Draft first,
    agree when the criteria are settled.*

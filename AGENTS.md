@@ -36,9 +36,11 @@ below describe how docflow itself is built and maintained.
 - `CONSTRAINTS.md` — the six inviolable boundaries (CON-1..6).
 - `docflow.yml` — capability manifest: contract schema, record model,
   enabled layers, evidence adoption commit.
-- `GOALS.md` — the repo's active goals (id, statement, measure,
-  horizon, review-by); AC-bearing records name the goals they advance
-  in `serves:` front matter.
+- `goals/G-<kebab-slug>.md` — one file per goal (front matter: id,
+  title, state, horizon, review-by; body: Statement, Measure).
+  **Load the Active goals before any task.** AC-bearing records name
+  the goals they advance in `serves:` front matter; INDEX carries a
+  Goals section.
 - `COVERAGE.md` — generated goal → record → evidence → plan walk
   (`scripts/coverage.mjs`); derived, never hand-edited.
 - `evidence/<record-slug>/AC<n>-<seq>.md` — bound verification

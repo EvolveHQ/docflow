@@ -170,16 +170,18 @@ relevant):
     reached Agreed (slugs are immutable from Agreed — rename = retire
     + new).
 
-20. **Goal traceability.** N/A without a `GOALS.md`. Every entry
-    parses per the conventions' §Goals format; ids unique, states
-    legal, terminal entries kept. Findings — all reported, never
-    auto-edited: an `Active` goal no AC-bearing record `serves:` (an
-    aspiration, not a goal); an `Active` goal without a measure (it
-    can never be validated); a `serves:` id on any record that
-    resolves to no entry; more Active goals than the recorded cap
-    (~7 — a signal, not a gate). Where `COVERAGE.md` exists, check it
-    is in sync with the catalogue (stale, missing, or extra rows),
-    exactly as INDEX sync is checked.
+20. **Goal traceability.** N/A without a `goals/` directory. Every
+    goal file parses per the conventions' §Goals format (`id:` equal
+    to the filename stem, legal state, title/horizon/review-by/date,
+    Statement and Measure sections); the `INDEX.md` Goals section
+    matches the files both ways (id, state). Findings — all reported,
+    never auto-edited: an `Active` goal no AC-bearing record
+    `serves:` (an aspiration, not a goal); an `Active` goal without a
+    measure (it can never be validated); a `serves:` id on any record
+    that resolves to no goal file; more Active goals than the
+    recorded cap (~7 — a signal, not a gate). Where `COVERAGE.md`
+    exists, check it is in sync with the catalogue (stale, missing,
+    or extra rows), exactly as INDEX sync is checked.
 
 ## Step 2 — Report
 

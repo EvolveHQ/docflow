@@ -83,9 +83,10 @@ Once the change is on `main`:
   remaining criteria are evidenced.
 - Append a Revision History row if the status change is substantive
   (it is). Regenerate `INDEX.md` to match (the ADR table, and the
-  Specs section where the repo has one). Where the goals layer is
-  enabled, regenerate `COVERAGE.md` the same way — it walks evidence
-  and plan state, both of which this step just changed.
+  Specs section where the repo has one, and the Goals section
+  likewise). Where the goals layer is enabled, regenerate
+  `COVERAGE.md` the same way — it walks evidence and plan state,
+  both of which this step just changed.
 
 ## Step 6 — Record
 

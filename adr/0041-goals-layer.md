@@ -37,34 +37,39 @@ decision, not this one.)
 
 ## Capability statement
 
-**`GOALS.md` is an opt-in layer** (recorded as `goals` in the
-capability manifest `layers:`), a **single file at the artefact root**
-— small enough to load into an agent's context in full, at every
-step. It is never part of the core scaffold and never enabled by the
-express profile. A directory of goal files defeats the point: the
-value of a goal, like a constraint, is that it is *always* in view.
+**The goals layer is opt-in** (recorded as `goals` in the capability
+manifest `layers:`), never part of the core scaffold and never
+enabled by the express profile. **Goals are slug-identified files** —
+one per goal, `goals/G-<kebab-slug>.md` at the artefact root, the
+same record shape as the rest of the catalogue: properties in front
+matter, an index section, one file per record.
 
-**One entry per goal:**
+**Per goal file:**
 
-- a **stable id** `G-<kebab-slug>` — immutable, never reused; the id
-  is the cross-reference key.
-- a one-or-two-sentence **statement** of the outcome sought.
-- a **measure** — how the world looks different if the goal is met; a
-  goal that cannot name one can never be validated.
-- a **horizon** and a **`review-by:`** date — when the goal expects to
-  be re-examined.
-- a **state**: `Active | Achieved | Retired`. Terminal entries keep
-  their id and stay in the file as history; removal is by state, never
-  by deletion.
+- front matter: **`id:`** equal to the filename stem
+  (`G-<kebab-slug>` — immutable, never reused; the cross-reference
+  key), **`title:`**, **`state:`** (`Active | Achieved | Retired`),
+  **`horizon:`**, **`review-by:`**, and **`date:`**.
+- body: a `## Statement` (the outcome sought, one or two sentences)
+  and a `## Measure` (how the world looks different if the goal is
+  met — a goal that cannot name one can never be validated).
 
-The file guides **3–7 Active goals**. The cap is a signal, not a gate:
-the audit reports growth past it; nothing blocks.
+A finished or abandoned goal keeps its file under a terminal state —
+removal is by state, never deletion, so historical `serves:` edges
+always resolve. **Only the Active set is loaded before a task**, so
+terminal goals cost no context. `INDEX.md` gains a **Goals section**
+(id, title, state, horizon, review-by), regenerated like the ADR
+table. The layer guides **3–7 Active goals**; the cap is a signal,
+not a gate — the audit reports growth past it; nothing blocks.
+(Chosen over a single always-in-view `GOALS.md` for catalogue
+uniformity and unbounded terminal history at zero context cost; the
+price is a handful of small reads instead of one.)
 
 **`serves:` edges connect the chain.** Any AC-bearing record — a
 capability ADR or a capability spec alike; the traceability target is
 "AC-bearing record", not "spec" — may carry `serves:` front matter
-listing the goal ids it advances. Every listed id must resolve to an
-entry in `GOALS.md`. Plan items already trace to records and criteria;
+listing the goal ids it advances. Every listed id must resolve to a
+`goals/` file. Plan items already trace to records and criteria;
 evidence already binds to criteria — with `serves:` in place the full
 chain goal → record → criterion → plan → evidence is mechanically
 walkable.
@@ -75,9 +80,10 @@ plan items in flight. Derived like `INDEX.md`, never hand-edited,
 regenerated when goals or serving records change.
 
 **`brainstorm` is the goal writer.** Its classifier already emits the
-outcome class; an outcome-class candidate becomes a `GOALS.md` entry
-only on operator approval. There is no separate goal-authoring skill —
-a goal is discovered in decomposition, not dictated by category first.
+outcome class; an outcome-class candidate becomes a `goals/` file
+(copied from the repo's goal template) only on operator approval.
+There is no separate goal-authoring skill — a goal is discovered in
+decomposition, not dictated by category first.
 
 **The audit closes the loop** with goal-traceability checks, all
 reported and never auto-edited: an Active goal no record serves (an
@@ -87,9 +93,10 @@ Active goals than the cap.
 
 ## User stories / scenarios
 
-- As an operator, I want the repo's 3–7 active goals in one small
-  file, so every session — mine or an agent's — starts from the same
-  "why".
+- As an operator, I want the repo's 3–7 active goals as small
+  catalogue records with an index row each, so every session — mine
+  or an agent's — starts from the same "why" without terminal
+  history in view.
 - As a coding agent, I want the record I am implementing to name the
   goal it serves, so an ambiguous choice can be resolved toward the
   goal instead of escalated.
@@ -107,19 +114,21 @@ Active goals than the cap.
 ## Acceptance criteria
 
 1. The goals layer is opt-in: enabled repos record `goals` in the
-   manifest `layers:`; `GOALS.md` is a single file at the artefact
-   root; the layer is absent from the core scaffold and from the
-   express profile.
+   manifest `layers:`; goals live one-per-file under `goals/` at the
+   artefact root; the layer is absent from the core scaffold and from
+   the express profile.
    Verify: manual
-2. Each goal entry carries the stable id (`G-<kebab-slug>`, immutable,
-   never reused), statement, measure, horizon, `review-by:` date, and
-   state (`Active | Achieved | Retired`); terminal entries keep their
-   id and remain in the file; this repo's own `GOALS.md` parses
-   against that shape.
+2. Each goal file's front matter carries `id:` equal to the filename
+   stem (`G-<kebab-slug>`, immutable, never reused), `title:`,
+   `state:` (`Active | Achieved | Retired`), `horizon:`,
+   `review-by:`, and `date:`, with Statement and Measure sections in
+   the body; a terminal goal keeps its file under its terminal state;
+   `INDEX.md` carries a Goals section in sync with the files; this
+   repo's own `goals/` parses against that shape.
    Verify: gate-check
 3. AC-bearing records (capability ADRs and specs alike) may carry
-   `serves:` front matter; every listed goal id resolves to an entry
-   in `GOALS.md`, and this repo carries at least one record with a
+   `serves:` front matter; every listed goal id resolves to a
+   `goals/` file, and this repo carries at least one record with a
    resolving `serves:` edge.
    Verify: gate-check
 4. The audit reports goal-traceability findings: an Active goal with
@@ -132,16 +141,15 @@ Active goals than the cap.
    plan items; it stays in sync with the catalogue the same way
    `INDEX.md` does.
    Verify: gate-check
-6. `brainstorm` writes a `GOALS.md` entry from an approved
-   outcome-class candidate — only on operator approval, and only when
-   the layer is enabled (absent layer: it refuses cleanly and offers
-   to enable it via bootstrap); no separate goal-authoring skill
-   exists.
+6. `brainstorm` writes a `goals/` file from an approved outcome-class
+   candidate — only on operator approval, and only when the layer is
+   enabled (absent layer: it refuses cleanly and offers to enable it
+   via bootstrap); no separate goal-authoring skill exists.
    Verify: manual
 7. `bootstrap` offers the layer at fresh runs and re-runs (arriving
-   together with its conventions section) and ships a `GOALS.md`
+   together with its conventions section) and ships a per-goal
    template.
-   Verify: node -e "const f=require('fs'); process.exit(f.existsSync('plugins/docflow/skills/bootstrap/templates/GOALS.md') && f.readFileSync('plugins/docflow/skills/bootstrap/SKILL.md','utf8').includes('GOALS.md') ? 0 : 1)"
+   Verify: node -e "const f=require('fs'); process.exit(f.existsSync('plugins/docflow/skills/bootstrap/templates/goal.md') && f.readFileSync('plugins/docflow/skills/bootstrap/SKILL.md','utf8').includes('goals/') ? 0 : 1)"
 
 ## Out of scope
 
@@ -176,6 +184,7 @@ Active goals than the cap.
 |------|----------|--------|--------|
 | 2026-07-31 | r1 | Eugenio Minardi | Initial draft (Proposed), from the approved programme: single-file goals layer, serves: edges over AC-bearing records, generated coverage view, brainstorm as the goal writer, audit traceability checks. Authored on pilot-gate closure. |
 | 2026-07-31 | r2 | Eugenio Minardi | Status Proposed → Accepted by the operator; implementation authorised (plan 0045). |
+| 2026-07-31 | r3 | Eugenio Minardi | Pre-evidence design revision, operator-directed at the attestation gate: single-file `GOALS.md` → per-file `goals/G-<slug>.md` records with front-matter properties and an INDEX Goals section — catalogue uniformity, terminal goals at zero context cost; the always-in-view discipline now applies to the Active set. Capability statement + AC1–AC3, AC6–AC7 reworded; no evidence bound to the earlier text. |
 
 ## Approvals
 

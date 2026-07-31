@@ -225,26 +225,33 @@ Discipline:
 
 ## Goals
 
-The repo's active goals live in `GOALS.md` at the artefact root — a
-single file, 3–7 Active goals, loadable in full. One entry per goal:
-`## G-<kebab-slug> — <title>` with `state:` (`Active | Achieved |
-Retired`), `statement:`, `measure:`, `horizon:`, and `review-by:`.
+Goals live one-per-file in `goals/G-<kebab-slug>.md` at the artefact
+root — front matter `id:` (equal to the filename stem, immutable,
+never reused), `title:`, `state:` (`Active | Achieved | Retired`),
+`horizon:`, `review-by:`, `date:`; the body carries `## Statement`
+and `## Measure`. `INDEX.md` carries a Goals section (id, title,
+state, horizon, review-by), regenerated like the ADR table.
+`goals/G-template.md` is the authoring template.
 
 Discipline:
 
-- Goal ids are stable and never reused; removal is by terminal state,
-  never deletion.
-- Every Active goal names a measure — a goal that cannot name one can
-  never be validated.
+- Guide: 3–7 Active goals. The audit reports growth past the cap — a
+  signal, not a gate. **Load the Active goals before any task** —
+  they are the recorded "why"; terminal goals stay on disk at zero
+  context cost.
+- A finished or abandoned goal keeps its file under a terminal
+  state; removal is by state, never deletion, so historical
+  `serves:` edges always resolve.
+- Every Active goal names a measure — a goal that cannot name one
+  can never be validated.
 - AC-bearing records name the goals they advance in `serves:` front
-  matter; every listed id must resolve to a `GOALS.md` entry.
+  matter; every listed id must resolve to a `goals/` file.
 - `COVERAGE.md` is the generated walk goal → serving records →
   criteria evidence state → plan items (`scripts/coverage.mjs`);
   derived, never hand-edited, regenerated like `INDEX.md`.
-- Entries are written by the brainstorm skill on operator approval.
-  The audit reports: Active goals nothing serves, goals without a
-  measure, dangling `serves:` ids, and growth past the ~7-Active cap
-  (a signal, not a gate).
+- Goal files are written by the brainstorm skill on operator
+  approval. The audit reports: Active goals nothing serves, goals
+  without a measure, dangling `serves:` ids.
 
 ## Skill Authoring
 

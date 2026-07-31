@@ -17,20 +17,6 @@ import { fileURLToPath } from 'node:url';
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const read = (rel) => readFileSync(join(root, rel), 'utf8').replace(/\r\n/g, '\n');
 
-const goalsPath = join(root, 'GOALS.md');
-if (!existsSync(goalsPath)) {
-  console.error('GOALS.md not found — the goals layer is not enabled; nothing to generate.');
-  process.exit(2);
-}
-
-// ── Parse GOALS.md ──
-const goals = []; // { id, title, state }
-for (const m of read('GOALS.md').matchAll(/^## (G-[a-z0-9-]+) — (.+)$/gm)) {
-  const tail = read('GOALS.md').slice(m.index);
-  const state = tail.match(/^- state:\s*(\S+)/m)?.[1] ?? 'unknown';
-  goals.push({ id: m[1], title: m[2].trim(), state });
-}
-
 // ── Parse AC-bearing records (catalogue ADRs + specs, templates excluded) ──
 function frontmatter(text) {
   const m = text.match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/);
@@ -44,6 +30,23 @@ function frontmatter(text) {
 }
 const parseList = (v) => (v?.match(/"[^"]+"|[\w/-]+/g) ?? [])
   .map((s) => s.replace(/"/g, '')).filter((s) => s !== '[]' && s !== '');
+
+// ── Parse goals/ (one file per goal; template excluded) ──
+const goalsDir = join(root, 'goals');
+if (!existsSync(goalsDir)) {
+  console.error('goals/ not found — the goals layer is not enabled; nothing to generate.');
+  process.exit(2);
+}
+const goals = []; // { id, title, state }
+for (const f of readdirSync(goalsDir).filter((n) => n.endsWith('.md') && n !== 'G-template.md').sort()) {
+  const { fields } = frontmatter(read(`goals/${f}`));
+  if (!fields) continue;
+  goals.push({
+    id: fields.id ?? f.replace(/\.md$/, ''),
+    title: fields.title ?? '',
+    state: fields.state ?? 'unknown',
+  });
+}
 function criteriaOf(body) {
   const block = body.split(/^## Acceptance criteria\s*$/m)[1]?.split(/^## /m)[0] ?? '';
   return [...block.matchAll(/^(\d+)\.\s/gm)].length;
@@ -122,7 +125,7 @@ const out = lines.join('\n');
 if (process.argv.includes('--check')) {
   const current = existsSync(join(root, 'COVERAGE.md')) ? read('COVERAGE.md') : null;
   if (current === null) {
-    console.error('COVERAGE.md missing while GOALS.md exists — regenerate.');
+    console.error('COVERAGE.md missing while goals/ exists — regenerate.');
     process.exit(1);
   }
   if (current.trimEnd() !== out.trimEnd()) {

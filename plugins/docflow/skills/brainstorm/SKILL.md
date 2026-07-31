@@ -14,9 +14,10 @@ spec on the decisions+specs model, a capability ADR otherwise) · a
 rule → a convention · a boundary → a constraint (decision-gated) · an
 outcome → a goal entry · a job → a plan item**. The **outcome class
 is the one this skill writes itself**: an approved outcome becomes a
-`GOALS.md` entry (a single-file append; the goals layer must be
-enabled). A class whose writer does not exist yet in this repo is
-surfaced as a **future route**, never silently dropped.
+`goals/G-<kebab-slug>.md` file plus its `INDEX.md` Goals-section row
+(the goals layer must be enabled). A class whose writer does not
+exist yet in this repo is surfaced as a **future route**, never
+silently dropped.
 
 ## Step 0 — Preconditions and context
 
@@ -25,10 +26,10 @@ surfaced as a **future route**, never silently dropped.
 2. Read the capability manifest (`docflow.yml`) for the **record
    model** — it decides where behaviour-class candidates route — and
    `CONVENTIONS.md` for shapes and lifecycle. Skim `INDEX.md` +
-   existing records (and `CONSTRAINTS.md` and `GOALS.md` if present)
-   so candidates don't duplicate or contradict what already exists,
-   so dependencies point at real records, and so candidates can name
-   the existing goals they serve.
+   existing records (and `CONSTRAINTS.md` and the Active `goals/`
+   files if the layer is enabled) so candidates don't duplicate or
+   contradict what already exists, so dependencies point at real
+   records, and so candidates can name the existing goals they serve.
 
 ## Step 0.5 — Assessment (run first)
 
@@ -131,13 +132,16 @@ constraint path carries the decision gate), queued jobs to the
 **new-plan** skill — or hand the approved outline to those skills.
 
 **Outcome candidates this skill writes itself** (goals layer enabled
-only): on approval, append the `GOALS.md` entry — id `G-<kebab-slug>`
-derived from the title (unique, immutable), statement, **measure**
-(press for one; a goal that cannot name a measure is not ready to be
-written), horizon, `review-by:` date, state `Active`. Note when the
-Active count passes the recorded cap — a signal for the operator, not
-a block. Regenerate `COVERAGE.md` if the repo has one. When the layer
-is absent, do not write: preserve the candidate in the outline and
+only): on approval, copy `goals/G-template.md` to
+`goals/G-<kebab-slug>.md` — id derived from the title, equal to the
+filename stem, unique and immutable — and fill title, statement,
+**measure** (press for one; a goal that cannot name a measure is not
+ready to be written), horizon, `review-by:` date, state `Active`.
+Add the goal's row to the `INDEX.md` Goals section (create the
+section on the repo's first goal). Note when the Active count passes
+the recorded cap — a signal for the operator, not a block.
+Regenerate `COVERAGE.md` if the repo has one. When the layer is
+absent, do not write: preserve the candidate in the outline and
 offer the bootstrap skill to enable the layer.
 
 Guardrail: if the problem is too vague to decompose without inventing

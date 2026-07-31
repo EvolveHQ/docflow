@@ -103,10 +103,10 @@ Ask for the pieces the chosen template needs, one prompt at a time:
   false on every future re-run at HEAD and becomes evidence debt the
   day it ships. Word criteria to be durably true, or scope them to
   the event they describe ("at adoption, …").
-- **If the repo keeps goals** (a `GOALS.md` exists): offer `serves:` —
-  which goal id(s) this record advances, as front matter. Every
-  listed id must resolve to a `GOALS.md` entry. *Recommended: the
-  goal the request names, or none.*
+- **If the repo keeps goals** (a `goals/` directory exists): offer
+  `serves:` — which goal id(s) this record advances, as front
+  matter. Every listed id must resolve to a `goals/` file.
+  *Recommended: the goal the request names, or none.*
 
 Honour the language mandate if one is set.
 

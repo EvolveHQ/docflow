@@ -421,15 +421,19 @@ path.
 ### 4.15 The goals layer
 
 Goals are the top of the traceability chain — the recorded "why"
-above every record. The layer is opt-in: a single `GOALS.md` at the
-artefact root, small enough to load in full, guiding 3–7 `Active`
-goals. Each entry carries a stable id (`G-<kebab-slug>`, immutable,
-never reused), a statement, a **measure** (a goal that cannot name
-one can never be validated), a horizon, a `review-by:` date, and a
-state (`Active | Achieved | Retired` — terminal entries stay; removal
-is by state, never deletion). AC-bearing records — capability ADRs
-and specs alike — name the goals they advance in `serves:` front
-matter; every id must resolve. `COVERAGE.md` is the generated walk
+above every record. The layer is opt-in: one file per goal,
+`goals/G-<kebab-slug>.md` at the artefact root, guiding 3–7 `Active`
+goals. Front matter carries the stable id (equal to the filename
+stem, immutable, never reused), title, state (`Active | Achieved |
+Retired`), horizon, and `review-by:` date; the body carries the
+statement and the **measure** (a goal that cannot name one can never
+be validated). The index gains a Goals section, regenerated like the
+record tables. A finished goal keeps its file under a terminal state
+— removal is by state, never deletion, so historical edges always
+resolve; only the Active set is loaded before a task. AC-bearing
+records — capability ADRs and specs alike — name the goals they
+advance in `serves:` front matter; every id must resolve.
+`COVERAGE.md` is the generated walk
 goal → serving record → criteria evidence state → plan items,
 maintained like the index. Entries are written by the decomposition
 skill on operator approval — a goal is discovered in decomposition,
