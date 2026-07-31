@@ -48,12 +48,21 @@ file.
   adoption ADR Implemented with the repo's first four evidence
   records, CON-1..CON-8 live (one entry declined on the record), four
   elicitation categories asked-and-empty, three enforcement items
-  queued there. **Fourteen pilot findings relayed** — triaged into
-  plan 0044 here. **Two gate criteria remain:** an unattended
-  full-loop run in clarity (its queued items are ready-made
-  candidates) and the trigger-corpus check from clarity's side.
-- **Blockers:** none for plan 0044 (findings wave). The pilot gate
-  needs the two remaining criteria, run in clarity.
+  queued there. **Fourteen pilot findings relayed and PROCESSED —
+  plan 0044 SHIPPED (2026-07-31, chain 9e3a71c..d1922d1 + ship):**
+  F1 was our own brief error (owned + corrected); F2–F14 landed
+  across skills/templates/conventions/methodology; F4 (selector skip
+  exception, r5 on the owning ADR) and F11 (attended verifier form)
+  operator-accepted. Side effect worth remembering: the tiered-depth
+  record became the **first pre-adoption record re-evidenced on
+  edit** — Verify methods + 7 bound records (5 manual
+  batch-attested, 2 command attended). **Two gate criteria remain:**
+  an unattended full-loop run in clarity (its queued items are
+  ready-made candidates) and the trigger-corpus check from clarity's
+  side.
+- **Blockers:** the pilot gate needs the two remaining criteria, run
+  in clarity. Post-gate queue: S6 goals → S7 validation → S8
+  autonomy → S9 migration machinery → S10 own migration → 1.0.
 - **Uncommitted work:** none once this snapshot commit lands.
 
 ## Last shipped

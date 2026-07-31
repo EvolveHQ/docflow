@@ -93,3 +93,13 @@ analysis doc, not part of this item.
 
 None — all Phase-1 machinery shipped. Independent of the two remaining
 pilot-gate criteria (which run in clarity, not here).
+
+---
+
+**Shipped at HEAD `d1922d1`** (chain 9e3a71c → 9dc1510 → d1922d1 +
+this ship commit). All thirteen queued findings landed; F4 and F11
+operator-accepted 2026-07-31. Owning-record side effect: the
+tiered-depth record entered evidence scope on its first post-adoption
+edit — seven criteria gained `Verify:` methods and bound evidence
+(5 manual batch-attested by the operator, 2 command, attended). Gate
+and deterministic evals green throughout; no gate behaviour changed.
