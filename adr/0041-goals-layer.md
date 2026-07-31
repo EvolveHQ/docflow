@@ -7,6 +7,7 @@ owner: Eugenio Minardi
 supersedes:
 superseded-by:
 depends-on: ["0016", "0034", "0035", "0038", "0040"]
+serves: ["G-aligned-autonomy"]
 tags: [workflow, goals, traceability, alignment]
 ---
 
