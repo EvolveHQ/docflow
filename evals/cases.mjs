@@ -136,6 +136,40 @@ export const cases = [
     },
   },
   {
+    name: 'mutation: dangling serves edge FAILs the gate',
+    skill: null,
+    agentDependent: false,
+    repo: repoRoot,
+    assert(repo) {
+      assertGateFails(repo, (fix) => fix.replace(
+        'adr/0041-goals-layer.md',
+        'serves: ["G-aligned-autonomy"]', 'serves: ["G-nonexistent"]',
+      ), /resolves to no GOALS\.md entry/);
+    },
+  },
+  {
+    name: 'mutation: illegal goal state FAILs the gate',
+    skill: null,
+    agentDependent: false,
+    repo: repoRoot,
+    assert(repo) {
+      assertGateFails(repo, (fix) => fix.replace(
+        'GOALS.md', '- state: Active', '- state: Someday',
+      ), /illegal state "Someday"/);
+    },
+  },
+  {
+    name: 'mutation: stale COVERAGE FAILs the gate (derived-view sync)',
+    skill: null,
+    agentDependent: false,
+    repo: repoRoot,
+    assert(repo) {
+      assertGateFails(repo, (fix) => fix.replace(
+        'COVERAGE.md', '| Accepted |', '| Implemented |',
+      ), /COVERAGE\.md stale/);
+    },
+  },
+  {
     name: 'mutation: setting the reserved autonomy field FAILs the gate',
     skill: null,
     agentDependent: false,
