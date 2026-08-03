@@ -540,6 +540,7 @@ if (existsSync(join(root, 'CONSTRAINTS.md'))) {
 // and aspiration checks are audit findings, not gate failures — the
 // gate holds shape and referential integrity only.
 const GOAL_STATES = new Set(['Active', 'Achieved', 'Retired']);
+const OUTCOME_VERDICTS = new Set(['achieved', 'not-achieved-execution', 'not-achieved-hypothesis', 'inconclusive']);
 const goalIds = new Set();
 const goalStates = {};
 const goalsDir = join(root, 'goals');
@@ -566,6 +567,34 @@ if (existsSync(goalsDir)) {
     }
     if (!/^## Statement\s*$/m.test(body)) fail(`goals/${f}: missing "## Statement" section`);
     if (!/^## Measure\s*$/m.test(body)) fail(`goals/${f}: missing "## Measure" section`);
+    // Outcome entries (ADR 0042): append-only "### Cycle <n> — <date>"
+    // records under ## Outcomes — contiguous per-goal ordinals, a
+    // legal verdict, the measure/basis/harm fields, a disposition
+    // whenever harm is not none, and a human verdict-giver.
+    const osec = body.split(/^## Outcomes\s*$/m)[1]?.split(/^## /m)[0];
+    if (osec !== undefined) {
+      const entries = [...osec.matchAll(/^### Cycle (\d+) — (\d{4}-\d{2}-\d{2})\s*$/gm)];
+      if (!entries.length) fail(`goals/${f}: ## Outcomes present but no "### Cycle <n> — <date>" entries`);
+      entries.forEach((e, i) => {
+        if (Number(e[1]) !== i + 1) fail(`goals/${f}: outcome cycle ${e[1]} out of order (expected ${i + 1})`);
+        const block = osec.slice(e.index, entries[i + 1]?.index);
+        const ofield = (k) => block.match(new RegExp(`^- ${k}:\\s*(.+)$`, 'm'))?.[1]?.trim();
+        const verdict = ofield('verdict');
+        if (!verdict || !OUTCOME_VERDICTS.has(verdict)) {
+          fail(`goals/${f}: cycle ${e[1]} illegal verdict "${verdict}" (legal: ${[...OUTCOME_VERDICTS].join(' | ')})`);
+        }
+        for (const k of ['measure-before', 'measure-after', 'basis', 'harm']) {
+          if (!ofield(k)) fail(`goals/${f}: cycle ${e[1]} missing "${k}"`);
+        }
+        const harm = ofield('harm');
+        if (harm && harm !== 'none' && !ofield('disposition')) {
+          fail(`goals/${f}: cycle ${e[1]} records harm with no disposition`);
+        }
+        if (!/^- verdict-by:\s*human:\s*\S/m.test(block)) {
+          fail(`goals/${f}: cycle ${e[1]} verdict-by must name a human`);
+        }
+      });
+    }
   }
   if (existsSync(join(root, 'docflow.yml')) && !/^layers:.*\bgoals\b/m.test(read('docflow.yml'))) {
     fail('goals/ present but docflow.yml layers does not enable "goals"');
