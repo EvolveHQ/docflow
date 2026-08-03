@@ -45,3 +45,15 @@ Owning ADR: adr/0042-validation-loop.md (Accepted 2026-08-03).
 ## Dependencies
 
 adr/0041-goals-layer.md Implemented (it is).
+
+---
+
+**Shipped at HEAD `634bd97`** (chain 06755f8 propose → 5c92dd1 accept
+→ 995ac46 implement → 23a813b gate (alone) → 634bd97 evals (alone) +
+this ship commit). Owning ADR Implemented on seven bound evidence
+records (1 gate-check, 3 command incl. the full deterministic suite,
+3 manual batch-attested; all attended). Design decisions asked before
+authoring (outcome storage in-goal; per-goal date-anchored cycles).
+No docflow goal is due before 2026-10-31 — the machinery ships ahead
+of its first live verdict, and the audit's none-due reading is the
+current true state.

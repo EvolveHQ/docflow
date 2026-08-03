@@ -69,10 +69,22 @@ file.
   before any evidence bound — the gate working as designed. Three
   Active goals live: G-aligned-autonomy, G-external-adoption,
   G-one-zero. Seven evidence records, all attended.
-- **Blockers:** none. Queue: S7 validation (needs the
-  validation-cycle-identity decision) → S8 autonomy → S9 migration
-  machinery (needs an external candidate) → S10 own migration → 1.0.
-  S7 starts on the operator's go.
+- **S7 VALIDATION SHIPPED (2026-08-03, plan 0046):** validate is the
+  twelfth skill and third human gate — four verdicts with defined
+  goal transitions, append-only `### Cycle` outcome entries in the
+  goal file (per-goal date-anchored ordinals; both design points
+  operator-decided BEFORE authoring, per the S6 lesson), harm as an
+  orthogonal finding with recorded disposition, audit check 21, gate
+  outcome checks (alone, mutation-proven), corpus abstains flipped
+  (24/24). **The full development loop — goals through validation —
+  is now expressible in docflow artefacts.** No goal is due before
+  2026-10-31; the first live verdict will be the machinery's real
+  test.
+- **Blockers:** none. Queue: S8 autonomy (L0–L5 — the most
+  decision-heavy slice; level semantics are the operator's call) →
+  S9 migration machinery (needs an external candidate) → S10 own
+  migration → 1.0 (explicit instruction only). S8 starts on the
+  operator's go.
 - **Uncommitted work:** none once this snapshot commit lands.
 
 ## Last shipped

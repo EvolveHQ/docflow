@@ -1,7 +1,7 @@
 ---
 adr: 0042
 title: Validation loop — outcome records, four verdicts, harm findings
-status: Accepted
+status: Implemented
 date: 2026-07-31
 owner: Eugenio Minardi
 supersedes:
@@ -173,6 +173,7 @@ gated.
 |------|----------|--------|--------|
 | 2026-07-31 | r1 | Eugenio Minardi | Initial draft (Proposed), to the operator-decided design: outcomes append to the goal file; per-goal date-anchored cycles; four verdicts with defined transitions; harm as orthogonal finding with human disposition; validate as the twelfth skill. |
 | 2026-08-03 | r2 | Eugenio Minardi | Status Proposed → Accepted by the operator; implementation authorised (plan 0046). |
+| 2026-08-03 | r3 | Eugenio Minardi | Implemented (plan 0046): AC2 gate-evidenced (outcome-entry checks, two mutations prove them), AC1/AC6/AC7 command-evidenced (evals 24/24), AC3/AC4/AC5 operator-attested — seven bound records, attended. Twelfth skill live; no goal due before 2026-10-31, so the machinery ships ahead of its first live verdict. Status Accepted → Implemented. |
 
 ## Approvals
 
