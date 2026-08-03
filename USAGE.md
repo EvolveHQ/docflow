@@ -254,7 +254,8 @@ un-bootstrapped repo** and point at `/bootstrap`; and they keep
 effect.
 
 **The assessment protocol.** `new-adr`, `new-spec`, `new-plan`,
-`add-convention`, `brainstorm`, `challenge`, and `agent-wave` each open
+`add-convention`, `brainstorm`, `challenge`, `validate`, and
+`agent-wave` each open
 with a brief assessment before acting — the same pattern bootstrap uses
 (§3):
 
@@ -290,7 +291,8 @@ picks; a fully-specified request lets you skip straight through.
 | `/new-spec` | On the decisions+specs record model: author one living capability spec — unique kebab slug (immutable once `Agreed`), `Draft` authoring, human-gated `Draft`→`Agreed` (≥1 criterion, each with a `Verify:` method), INDEX Specs section. Refuses cleanly on other models. |
 | `/ship-item` | §5 steps 5–6: verify gate → **in an evidence-adopting repo, run each criterion's `Verify:` method and write bound evidence records** → integrate (ff or PR per Q4b) → `git mv` todo→done with footer → owning record → `Implemented` **only when every current criterion has valid evidence** (a partial plan still completes; the record catches up later) → regen INDEX → WORKLOG → live snapshot. The most order-sensitive operation; let the skill do it. |
 | `/add-convention` | Assesses whether a convention is worth codifying (triages out one-offs, duplicates, churn-prone, vague), routes it to AGENTS.md / CONVENTIONS.md / GLOSSARY / an ADR, then writes it. |
-| `/audit` | Lints the repo against its own conventions and reports a punch list — numbering, INDEX sync, plan coverage, section completeness, status validity, cross-refs, language mandate, **ADR-privacy leaks**, and (where adopted) declared-vs-computed status, evidence re-runs, the manual-verification ratio, constraints discipline, and spec records. Offers to fix the mechanical issues. |
+| `/audit` | Lints the repo against its own conventions and reports a punch list — numbering, INDEX sync, plan coverage, section completeness, status validity, cross-refs, language mandate, **ADR-privacy leaks**, and (where adopted) declared-vs-computed status, evidence re-runs, the manual-verification ratio, constraints discipline, spec records, goal traceability, and validation state (goals due a verdict). Offers to fix the mechanical issues. |
+| `/validate` | The loop's third human gate: for a goal past its `review-by:` (the audit surfaces them), gathers the measure's current reading, presents it against the baseline, and records **your** verdict — achieved / not-achieved-execution / not-achieved-hypothesis / inconclusive — as an append-only `### Cycle` entry in the goal file, then applies the goal transition. Asks the harm question separately on every verdict; a harm's constraint disposition routes through the decision-gated path. Refuses cleanly without the goals layer. |
 | `/brainstorm` | **The front door.** Decomposes a problem into *classified* candidates (choice / behaviour / rule / boundary / job) with dependency edges and ordering, then routes each to its writer on approval — you never need to know which writer to call. Classes with no writer yet are surfaced as future routes. |
 | `/challenge` | **The interrogator** — advisory, write-free. Critique mode: a rubric over any draft (one decision, testable criteria + methods, real alternatives, boundary scan). Elicitation mode: an eight-category checklist that pulls unstated boundaries out of your head and routes each to the decision-gated constraint path. May honestly return "solid — nothing to add". |
 | `/agent-wave` | Orchestrates parallel worktree subagents over the queue. Asks wave width, budget (items/waves; hours as a soft cap), and supervision (checkpoint vs. continuous). Requires multi-agent mode; refuses mode 1. |

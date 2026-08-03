@@ -252,6 +252,20 @@ Discipline:
 - Goal files are written by the brainstorm skill on operator
   approval. The audit reports: Active goals nothing serves, goals
   without a measure, dangling `serves:` ids.
+- **Validation** (the validate skill) appends **outcome entries** to
+  the goal file's `## Outcomes` section: `### Cycle <n> — <date>`
+  with `verdict:` (`achieved | not-achieved-execution |
+  not-achieved-hypothesis | inconclusive`), `measure-before:` /
+  `measure-after:`, `basis:`, `harm:` (`none` or the finding),
+  `disposition:` required when harm is present, and `verdict-by:
+  human:<name>` — the verdict is always human. Per-goal ordinals
+  from 1; entries are never edited — a correction is a new entry
+  naming what it corrects. Transitions: achieved → `Achieved`;
+  execution-short → stays `Active`; hypothesis-wrong → `Retired`
+  (reason in the entry); inconclusive → stays `Active` with
+  `review-by:` re-armed. Harm's constraint disposition routes
+  through the decision-gated path — never written by the validate
+  skill.
 
 ## Skill Authoring
 

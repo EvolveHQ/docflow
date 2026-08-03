@@ -182,6 +182,14 @@ relevant):
     recorded cap (~7 — a signal, not a gate). Where `COVERAGE.md`
     exists, check it is in sync with the catalogue (stale, missing,
     or extra rows), exactly as INDEX sync is checked.
+21. **Validation state.** N/A without a `goals/` directory. Reported,
+    never gated: every `Active` goal past its `review-by:` with no
+    outcome entry dated after the current arming (**due for a
+    verdict** — the validate skill performs it); goals accumulating
+    repeated `inconclusive` verdicts (a measure unmeasurable in
+    practice — fix or retire it); and the shipped-versus-validated
+    picture (work shipped against goals vs outcomes recorded) as a
+    visibility note — the number is the argument, nothing blocks.
 
 ## Step 2 — Report
 

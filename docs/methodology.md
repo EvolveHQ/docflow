@@ -440,8 +440,36 @@ skill on operator approval — a goal is discovered in decomposition,
 not dictated by category first. The audit reports, never edits: an
 Active goal nothing serves is an aspiration; a goal without a measure
 is unvalidatable; a dangling `serves:` id is a broken edge; growth
-past the cap is a signal, not a gate. Acting on the measure — outcome
-records and validation cycles — is a later tier of the method.
+past the cap is a signal, not a gate.
+
+### 4.16 The validation loop
+
+Verification is synchronous with a change; validation is not — a
+goal's measure moves on a timescale of weeks, which is why validation
+is its own phase with its own trigger and its own human gate. The
+audit *surfaces* what is due (an `Active` goal past `review-by:` with
+no outcome dated after the current arming — cycles are per-goal and
+date-anchored, so one old outcome never satisfies the check);
+validation *performs* it: the tooling gathers the measure's current
+reading and presents it; a **human gives the verdict**, always. Four
+verdicts, each with a defined transition: `achieved` (goal →
+Achieved — the records serving it stand if they serve other goals or
+describe enduring behaviour), `not-achieved-execution` (the work
+fell short; goal stays Active for respecification),
+`not-achieved-hypothesis` (the goal was wrong; goal → Retired with
+the reason recorded), `inconclusive` (goal stays Active,
+`review-by:` re-armed, the repetition visible). The outcome is an
+append-only entry in the goal file — cycle ordinal, date, measure
+before and after, basis, verdict, verdict-giver — never edited;
+corrections are new entries. **Harm is not a verdict**: it is an
+orthogonal finding attachable to any outcome, demanding a recorded
+human disposition — roll back, remediate, respecify, accept the
+trade-off, or propose a constraint through the decision-gated path;
+a constraint is never auto-created. Validation is deliberately not
+an experimentation platform — it records the verdict and its basis,
+not statistics — and skipping it is made visible rather than
+impossible: the audit reports shipped-versus-validated and lets the
+number argue.
 
 ## 5. Scaling to many repositories
 
