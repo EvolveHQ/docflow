@@ -159,6 +159,32 @@ export const cases = [
     },
   },
   {
+    name: 'mutation: illegal outcome verdict FAILs the gate',
+    skill: null,
+    agentDependent: false,
+    repo: repoRoot,
+    assert(repo) {
+      assertGateFails(repo, (fix) => fix.write(
+        'goals/G-one-zero.md',
+        fix.read('goals/G-one-zero.md') +
+          '\n## Outcomes\n\n### Cycle 1 — 2026-08-03\n- verdict: vibes\n- measure-before: 0\n- measure-after: 0\n- basis: test\n- harm: none\n- verdict-by: human: Test\n',
+      ), /illegal verdict "vibes"/);
+    },
+  },
+  {
+    name: 'mutation: harm without disposition FAILs the gate',
+    skill: null,
+    agentDependent: false,
+    repo: repoRoot,
+    assert(repo) {
+      assertGateFails(repo, (fix) => fix.write(
+        'goals/G-one-zero.md',
+        fix.read('goals/G-one-zero.md') +
+          '\n## Outcomes\n\n### Cycle 1 — 2026-08-03\n- verdict: achieved\n- measure-before: 0\n- measure-after: 1\n- basis: test\n- harm: a regression was observed\n- verdict-by: human: Test\n',
+      ), /records harm with no disposition/);
+    },
+  },
+  {
     name: 'mutation: stale COVERAGE FAILs the gate (derived-view sync)',
     skill: null,
     agentDependent: false,

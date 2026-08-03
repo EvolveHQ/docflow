@@ -29,7 +29,8 @@
     { "utterance": "fan out the queue across parallel agents", "expect": "agent-wave" },
     { "utterance": "roll up the federation catalogue", "expect": "rollup" },
     { "utterance": "did shipping the cache actually move the latency number?", "expect": "abstain" },
-    { "utterance": "did it work? has the goal been achieved?", "expect": "abstain" },
+    { "utterance": "did it work? has the goal been achieved?", "expect": "validate" },
+    { "utterance": "give a verdict on our context-loss goal", "expect": "validate" },
     { "utterance": "set a goal for this quarter", "expect": "brainstorm" },
     { "utterance": "record this as a goal", "expect": "brainstorm" }
   ]
