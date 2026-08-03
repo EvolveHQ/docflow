@@ -9,8 +9,8 @@ The walk goal → serving record → criteria evidence → plan items.
 
 | Serving record | Status | Evidence | Plan items |
 |---|---|---|---|
-| adr/0041-goals-layer.md | Implemented | 7/7 criteria | done/2026-07-31-goals-layer |
-| adr/0042-validation-loop.md | Proposed | 0/7 criteria | — |
+| adr/0041-goals-layer.md | Implemented | 7/7 criteria | done/2026-07-31-goals-layer, todo/0046-validation-loop |
+| adr/0042-validation-loop.md | Accepted | 0/7 criteria | todo/0046-validation-loop |
 
 ## G-external-adoption — docflow drives repos beyond its own (Active)
 
