@@ -4,3 +4,4 @@ schema: 1
 model: capability-first
 layers: [plan, agent, constraints, glossary, goals]
 evidence-adopted-at: f22f0d7
+autonomy: L3
