@@ -32,6 +32,8 @@
     { "utterance": "did it work? has the goal been achieved?", "expect": "validate" },
     { "utterance": "give a verdict on our context-loss goal", "expect": "validate" },
     { "utterance": "set a goal for this quarter", "expect": "brainstorm" },
-    { "utterance": "record this as a goal", "expect": "brainstorm" }
+    { "utterance": "record this as a goal", "expect": "brainstorm" },
+    { "utterance": "migrate the record model", "expect": "bootstrap" },
+    { "utterance": "convert the catalogue to living specs", "expect": "bootstrap" }
   ]
 }
