@@ -34,6 +34,8 @@
     { "utterance": "set a goal for this quarter", "expect": "brainstorm" },
     { "utterance": "record this as a goal", "expect": "brainstorm" },
     { "utterance": "migrate the record model", "expect": "bootstrap" },
-    { "utterance": "convert the catalogue to living specs", "expect": "bootstrap" }
+    { "utterance": "convert the catalogue to living specs", "expect": "bootstrap" },
+    { "utterance": "release 1.0 and publish the plugin", "expect": "release" },
+    { "utterance": "promote the winning candidate to main", "expect": "release" }
   ]
 }
