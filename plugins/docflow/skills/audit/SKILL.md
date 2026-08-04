@@ -31,7 +31,10 @@ Report each as PASS / FAIL / N/A with specifics (file + line where
 relevant):
 
 1. **Numbering.** ADR filenames contiguous, zero-padded, no gaps, no
-   duplicates. Split repos: capability below cutoff, technology
+   duplicates. **In a migrated repo** (a `MIGRATION.md` exists), gaps
+   the mapping accounts for are legal — no-duplicates is the rule
+   there; an unaccounted gap still fails. Split repos: capability
+   below cutoff, technology
    at/above — but **never derive an ADR's shape from its number
    alone**: a recorded exception (an ADR noting it deviates from the
    range) wins over the range; flag only undocumented deviations.
@@ -57,7 +60,9 @@ relevant):
 6. **Revision/Approvals.** Revision History present; Approvals populated
    for ADRs at `Accepted` or beyond.
 7. **Cross-references.** Relative `adr/NNNN-*.md` links resolve to real
-   files. Glossary anchors (if used) resolve.
+   files — or, in a migrated repo, through the `MIGRATION.md` mapping
+   to the record's new home. Glossary anchors (if used) resolve. A
+   spec's `migrated-from:` must name a path the mapping lists.
 8. **Language mandate.** If set, spot-check user-facing docs for the
    required spellings.
 9. **ADR-privacy leaks.** Grep source / product directories for ADR

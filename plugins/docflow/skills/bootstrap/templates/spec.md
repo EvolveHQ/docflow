@@ -6,6 +6,7 @@ owner: <agent-id or human>
 decided-by: []
 constrained-by: []
 serves: []
+migrated-from:
 retired-from:
 ---
 

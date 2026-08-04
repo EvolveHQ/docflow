@@ -44,7 +44,11 @@ prose; keys and enumerated values never localise.
 ## ADR Files
 
 ADR filenames use `NNNN-kebab-case-slug.md`, zero-padded to 4 digits,
-with contiguous numbering and no reserved gaps.
+with contiguous numbering and no reserved gaps. After a model
+migration, contiguity relaxes to **no-duplicates** — but only for
+numbers a `MIGRATION.md` mapping at the artefact root accounts for
+(one row per moved record, old path → new home); an unaccounted gap
+is still a failure.
 
 The number is an **integer**; the four-digit zero-padding is a display
 convention only — tools sort ADRs **numerically**, not lexically, so the
@@ -204,6 +208,12 @@ Rules:
   evidence runs at its implementation commit like any other record's.
   The adoption commit defines the scope boundary, not a special
   execution point.
+- **Migration rebinding.** A migration never edits, moves, or
+  rewrites evidence records or their directories. A moved record
+  carries `migrated-from:` (its old path); verification tooling
+  follows it to the old slug's evidence directory for criteria
+  evidenced before the move; evidence produced after the move binds
+  under the new identity.
 
 <!-- Constraints layer — bootstrap INCLUDES this section (uncommented)
 ONLY when the constraints layer was chosen (Q7). Omit otherwise.

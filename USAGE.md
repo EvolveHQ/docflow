@@ -192,6 +192,17 @@ recommendation and what it changes up front helps you answer quickly.
 | 10 | **Domain-specific hard rules** to enforce from day one — e.g. vendor-naming restriction, regulated-evidence posture (attribution, retention, e-signatures), language mandate, mandatory user-story personas, separated audit streams. | **None from day one.** Add later when a concrete requirement appears; pre-emptive hard rules accumulate as cruft. | Additional sections in `CONVENTIONS.md` and additional bullets in `AGENTS.md` §Hard rules. |
 | 13 | **Autonomy level** *(full depth only; in development — beyond the released version)* — how much an agent may initiate **unattended**: L0 read/propose · L1 author records · L2 named items · L3 self-serve the queue · L4 specify+queue+implement from an agreed record · L5 decisions + waves in a budget. Eight escalation triggers bind at every level; attended work is unaffected. | **L2** — implement only what a human named. Express/guided record the default silently. Cross-checked: L2+ needs a real gate, L4+ needs the constraints layer. | `autonomy:` in `docflow.yml`; §Autonomy in `CONVENTIONS.md`; the autonomous prompt honours it. |
 
+**Changing the record model later** *(in development — beyond the
+released version)*: a re-run never converts the model. Ask bootstrap
+to **migrate** instead — an operator-gated path that classifies every
+record (decision-stays / reclassify / split / terminal) for your
+per-record approval, moves capability records to `spec/` with a
+`migrated-from:` lineage, writes a `MIGRATION.md` mapping (gaps the
+mapping accounts for become legal; unaccounted gaps still fail), and
+never touches an evidence file — pre-move criteria resolve their
+proof through the lineage. Evidenced records move in a later wave or
+never; a half-migrated catalogue is a valid state.
+
 ## 4. Output files
 
 After sign-off, the skill writes:

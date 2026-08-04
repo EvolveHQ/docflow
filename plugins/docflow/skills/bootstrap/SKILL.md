@@ -739,3 +739,56 @@ were recorded after the fact), and write the matching `plan/done` entries;
 regenerate `INDEX.md` and the worklog. A large development is never
 *outside* the catalogue — it is an ADR not yet written. `/audit`'s coverage
 check surfaces such gaps so they are captured, not silently kept.
+
+## Migration path — changing the record model
+
+The **only sanctioned way** the manifest's `model:` changes. A re-run
+**never converts** the model; this path runs only when the operator
+explicitly asks to migrate ("migrate the record model", "convert the
+catalogue to specs"). Operator-gated throughout — full depth, no
+tiers, and a **per-record approval**: tooling proposes, the operator
+decides every move.
+
+1. **Classify the whole catalogue first.** Every record gets one of
+   four classes, presented as a table the operator approves row by
+   row before anything moves:
+   - **decision-stays** — a pure decision; byte-untouched.
+   - **reclassify** — capability content in decision clothing; moves
+     to `spec/`.
+   - **split** — a mixed record; the decision core stays with a
+     pointer, the capability content moves.
+   - **terminal** — Superseded / Deprecated / Withdrawn; untouched by
+     definition.
+2. **Wave discipline.** Unevidenced records move in wave one.
+   Records with bound evidence move only in a later wave, under the
+   rebinding rule below — and stopping after wave one indefinitely
+   is a valid end state (mixed records are legal), not a failure.
+3. **Mechanics — reclassify:** `git mv adr/NNNN-<slug>.md
+   spec/<slug>.md`; rewrite front matter to spec form (`id:` =
+   slug, `status:`, `decided-by:` naming the authorising decisions,
+   `constrained-by:`/`serves:` where they apply) plus
+   **`migrated-from: adr/NNNN-<slug>.md`**; append one revision row —
+   "reclassified as a capability spec; content unchanged". **This is
+   not supersession**: the decision behind the record still stands;
+   nothing flips to Superseded, and criteria are **not reworded** (an
+   edit during migration invalidates evidence exactly as any edit
+   does — visibly).
+4. **Mechanics — split:** the capability content and criteria move
+   to a new `spec/<slug>.md` carrying `migrated-from:`; the decision
+   core stays in place, trimmed, with a `specified-by:` pointer and
+   its own revision row.
+5. **`MIGRATION.md`** at the artefact root: one row per moved record,
+   old path → new home. Every numbering gap the moves leave must be
+   accounted for here — contiguity relaxes to **no-duplicates** only
+   for accounted gaps; an unaccounted gap is still a failure.
+   Historical references resolve through this mapping forever.
+6. **Evidence — the rebinding rule.** Evidence records and their
+   directories are **never edited, moved, or rewritten**. The moved
+   record's `migrated-from:` is the link: pre-move criteria resolve
+   their evidence under the old slug's directory; evidence produced
+   after the move binds under the new identity.
+7. **Close the migration:** regenerate `INDEX.md` (the Specs section
+   gains the moved records), flip the manifest `model:` — inside the
+   migration, its one sanctioned change — update the conventions'
+   shape sections, and commit the chain with the migration named.
+   Run the repo's audit as the final check.

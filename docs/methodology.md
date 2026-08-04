@@ -494,6 +494,28 @@ anyway. The level is cooperative (§4.11), moves only by an
 operator's edit, and is reported on by the audit — never raised or
 lowered by any tool.
 
+### 4.18 Model migration
+
+A repository may outgrow its record model; re-running the set-up
+never converts it, and migration is the one sanctioned path — an
+explicit, operator-gated flow with a per-record approval. Every
+record is classified (a pure decision stays byte-untouched; a
+capability record in decision clothing is reclassified into a living
+spec; a mixed record splits; a terminal record is untouched by
+definition), and reclassification is **not** supersession — the
+decision behind a moved record still stands. A `MIGRATION.md`
+mapping records every move (old path → new home): numbering
+contiguity relaxes to no-duplicates only for the gaps the mapping
+accounts for, and historical references resolve through it forever.
+Evidence is never edited, moved, or rewritten by a migration: the
+moved record's `migrated-from:` lineage is the link — pre-move
+criteria resolve their proof under the old identity, post-move
+evidence binds under the new one, and a criterion reworded during
+migration invalidates its evidence exactly as any edit does.
+Unevidenced records migrate first; evidenced ones follow under the
+lineage rule, or never — a half-migrated catalogue is a valid state,
+not a failure.
+
 ## 5. Scaling to many repositories
 
 A single product spread across several repositories runs as a
