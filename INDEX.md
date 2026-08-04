@@ -48,6 +48,7 @@ ADR change.
 | [0041](adr/0041-goals-layer.md) | Goals layer — the top of the traceability chain | Implemented | 2026-07-31 | 0016, 0034, 0035, 0038, 0040 |
 | [0042](adr/0042-validation-loop.md) | Validation loop — outcome records, four verdicts, harm findings | Implemented | 2026-07-31 | 0036, 0040, 0041 |
 | [0043](adr/0043-candidate-branch-development.md) | Candidate-branch development — main is the released line | Implemented | 2026-08-04 | 0001 |
+| [0044](adr/0044-graded-autonomy.md) | Graded autonomy — the L0–L5 ladder in the manifest | Proposed | 2026-08-04 | 0034, 0036, 0041, 0042 |
 
 ## Goals
 
