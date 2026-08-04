@@ -1,7 +1,7 @@
 ---
 adr: 0044
 title: Graded autonomy — the L0–L5 ladder in the manifest
-status: Proposed
+status: Accepted
 date: 2026-08-04
 owner: Eugenio Minardi
 supersedes:
@@ -157,8 +157,10 @@ recorded grant it can detect — reported, never gated.
 | Date | Revision | Author | Change |
 |------|----------|--------|--------|
 | 2026-08-04 | r1 | Eugenio Minardi | Initial draft (Proposed), to the four operator decisions taken this session: ladder adopted as designed (L4 generalised to "agreed AC-bearing record"); bootstrap default L2; this repo L3; the L3+ manual-evidence authoring restriction adopted. |
+| 2026-08-04 | r2 | Eugenio Minardi | Status Proposed → Accepted by the operator; implementation authorised (plan 0047). |
 
 ## Approvals
 
 | Role | Name | Date | Signature |
 |------|------|------|-----------|
+| Maintainer | Eugenio Minardi | 2026-08-04 | — |
