@@ -1,7 +1,7 @@
 ---
 adr: 0045
 title: Model migration — the deliberate path, the mapping, evidence rebinding
-status: Proposed
+status: Accepted
 date: 2026-08-04
 owner: Eugenio Minardi
 supersedes:
@@ -152,8 +152,10 @@ lineage); the verify gate supports the mapping and rebinding rules.
 | Date | Revision | Author | Change |
 |------|----------|--------|--------|
 | 2026-08-04 | r1 | Eugenio Minardi | Initial draft (Proposed), to the two operator decisions taken this session: evidence rebinding by mapping rule (migrated-from:, append-only preserved); numbering gaps legal only with a MIGRATION.md accounting. |
+| 2026-08-04 | r2 | Eugenio Minardi | Status Proposed → Accepted by the operator; implementation authorised (plan 0048). |
 
 ## Approvals
 
 | Role | Name | Date | Signature |
 |------|------|------|-----------|
+| Maintainer | Eugenio Minardi | 2026-08-04 | — |
