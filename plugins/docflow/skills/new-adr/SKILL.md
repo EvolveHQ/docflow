@@ -102,7 +102,11 @@ Ask for the pieces the chosen template needs, one prompt at a time:
   directory is empty", "no references exist yet") is permanently
   false on every future re-run at HEAD and becomes evidence debt the
   day it ships. Word criteria to be durably true, or scope them to
-  the event they describe ("at adoption, …").
+  the event they describe ("at adoption, …"). **Unattended runs
+  (autonomy `L3`+):** name executable methods only — introducing a
+  `manual` method is an escalation to the operator, since a manual
+  method needs a human at ship and authoring one unattended
+  manufactures unattestable debt.
 - **If the repo keeps goals** (a `goals/` directory exists): offer
   `serves:` — which goal id(s) this record advances, as front
   matter. Every listed id must resolve to a `goals/` file.

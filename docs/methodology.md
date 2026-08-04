@@ -471,6 +471,29 @@ not statistics — and skipping it is made visible rather than
 impossible: the audit reports shipped-versus-validated and lets the
 number argue.
 
+### 4.17 Graded autonomy
+
+How much an agent may initiate **unattended** is a recorded repo
+fact: the manifest's `autonomy:` field, `L0`–`L5` — read/propose ·
+author records · implement a **named** queued item · self-serve the
+queue · specify+queue+implement from an agreed AC-bearing record ·
+propose decisions and run waves within a budget. Each level includes
+those below; each has a prerequisite (a verify gate from L2, the
+constraints layer from L4, the full stack plus an audit cadence at
+L5), and a recorded level with an absent prerequisite is a
+conformance finding. An absent field records no unattended grant;
+attended, operator-gated work is unaffected at every level. Eight
+**escalation triggers** bind at every level and are the boundary
+itself — constraint changes, goal changes, acceptance, supersession,
+outward-facing commitments, gate changes, untraceable work, and
+constraint conflicts always go to a human; everything not on the
+list is delegated. From L3 up, criteria authored unattended must
+carry executable verification methods — introducing a manual method
+is itself an escalation, since a manual method needs a human at ship
+anyway. The level is cooperative (§4.11), moves only by an
+operator's edit, and is reported on by the audit — never raised or
+lowered by any tool.
+
 ## 5. Scaling to many repositories
 
 A single product spread across several repositories runs as a

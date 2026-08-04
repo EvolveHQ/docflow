@@ -78,7 +78,9 @@ check for is not ready to be written — ask, don't invent. **Avoid
 time-bound criteria**: one whose truth is momentary ("the directory
 is empty") is permanently false on every future re-run at HEAD —
 word criteria to be durably true, or scope them to the event they
-describe. Honour the language mandate if one is set.
+describe. **Unattended runs (autonomy `L3`+):** name executable
+methods only — introducing a `manual` method is an escalation to
+the operator. Honour the language mandate if one is set.
 
 ## Step 2 — Write
 

@@ -12,12 +12,14 @@
 #   two-shape:        capability + technology shapes, both in the catalogue
 #   decisions+specs:  pure decision ADRs + living spec/<slug>.md records
 #   decisions-only:   pure decision ADRs; capability content managed elsewhere
-# layers: any of [plan, agent, glossary, constraints, domains, federation]
+# layers: any of [plan, agent, glossary, constraints, goals, domains, federation]
 # evidence-adopted-at: OPTIONAL — the commit at which this repo adopted
 #   per-criterion verification evidence (CONVENTIONS §Verification
 #   Evidence). Records last substantively edited before it are exempt
 #   until edited. Absent = evidence not adopted.
-# autonomy: RESERVED — defined by a future contract version; do not set.
+# autonomy: OPTIONAL — the unattended grant, L0–L5 (CONVENTIONS
+#   §Autonomy). Absent = no unattended grant recorded; attended
+#   operation is unaffected either way. Moved only by an operator.
 schema: 1
 model: <model>
 layers: [<layers>]

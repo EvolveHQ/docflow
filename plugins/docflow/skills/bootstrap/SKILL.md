@@ -247,6 +247,8 @@ fixed profile — summarise it and get sign-off before writing anything:
 - Doc language: match the existing repo's content, else en-US.
 - No verify gate recorded (so no autonomous prompt); no
   domain-specific hard rules.
+- Autonomy: the default grant `L2` recorded in the manifest
+  (implement named items only; Q13 is never asked below full depth).
 
 On an existing repo, express preserves and merges exactly as a full
 run does — depth changes how many questions are asked, never how
@@ -256,6 +258,7 @@ destructive the run is.
 capability-first record model, full lifecycle, the recommended git
 contract, optional
 artefacts deferred, no hard rules, default artefact root, standalone,
+autonomy at the default `L2`,
 and the express language rule. Run the Step 4.5 cross-check on the
 answers before the sign-off summary.
 
@@ -459,6 +462,19 @@ default (the operator may decline it — see Step 5 item 5b).
     differently, offer a documented migration (`git mv` into the chosen root
     + update `CONVENTIONS.md`) — never force it.
 
+13. **Autonomy level** *(full depth only — express and guided record
+    the default silently)*. How much may an agent initiate
+    **unattended**? Recorded in the manifest (`autonomy: L0`–`L5`;
+    see the conventions §Autonomy — attended operation is unaffected
+    at every level, and the eight escalation triggers bind at all of
+    them). **Recommended: `L2`** — implement only queued items a
+    human explicitly named; the conservative grant whose only
+    prerequisite is the verify gate. Offer the ladder: L0
+    read/propose · L1 author records · L2 named items · L3
+    self-serve the queue · L4 specify + queue + implement from an
+    agreed AC-bearing record (needs the constraints layer) · L5
+    decisions + waves within a budget (needs the full stack).
+
 ## Step 4.5 — Cross-check before sign-off
 
 After all answers are in, scan for contradictions before writing the
@@ -476,6 +492,13 @@ mid-flight, get the full scan.)
 - **Q4a plan-folder skipped + Q8 autonomous prompt expected.** The
   autonomous prompt walks `plan/todo/`; with no plan folder it has
   nothing to drive. Do not write the autonomous prompt.
+- **Q13 `L2`+ with no real verify gate (Q8).** An unattended
+  implementation grant with nothing to hold it to account — resolve
+  by naming a gate or dropping to `L1`.
+- **Q13 `L4`+ without the constraints layer (Q7).** Unattended
+  specification with no recorded boundaries is the unsafe
+  combination the ladder's prerequisites exist to prevent — enable
+  the constraints layer or cap at `L3`.
 - **Q8 has no real verify gate + Q4b PR-based with required CI.**
   "Required CI green" needs a CI gate. Confirm what the CI actually
   runs, or downgrade the completion event.
@@ -570,8 +593,8 @@ Keep the pointer in sync if a later re-run migrates the root.
     `layers` (the subset of
     `plan`, `agent`, `glossary`, `constraints`, `goals`, `domains`,
     `federation`
-    actually enabled — empty for an express run). Leave `autonomy`
-    unset — it is reserved.
+    actually enabled — empty for an express run). Fill `autonomy`
+    per Q13 (`L0`–`L5`; express and guided record the default `L2`).
 12c. `CONSTRAINTS.md` — from `templates/CONSTRAINTS.md`, at the
     artefact root, **only if Q7 chose the constraints layer**. Written
     with the header and format comment only — entries arrive later via

@@ -20,7 +20,9 @@ repo's shape for tools — contract `schema`, record `model`, enabled
 manifest wins and the audit reports the divergence. A tool that meets a
 `schema` newer than it understands refuses writes and says so; a repo
 without the file is pre-contract and tools behave as before. The
-`autonomy` field is reserved — neither written nor read.
+`autonomy` field records the repo's **unattended grant** (`L0`–`L5` —
+see §Autonomy); absent means no unattended grant is recorded, and
+attended operation is unaffected either way.
 
 Assessment depth: `<express | guided | full>` — the depth chosen at
 bootstrap. Skill assessments pre-select it as the recommended depth; the
@@ -316,6 +318,42 @@ bound under `evidence/<spec-slug>/AC<n>-<seq>.md`.
 `INDEX.md` gains a **Specs** section — one row per spec (slug, title,
 status), regenerated like the ADR table.
 -->
+
+## Autonomy
+
+The manifest's `autonomy:` field records how much an agent may
+initiate **unattended** — a cooperative, recorded boundary (§Trust
+Posture): skills honour it, the audit checks it, it authenticates
+nobody. Attended, operator-gated work is unaffected at every level.
+Each level includes those below it; a recorded level whose
+prerequisite is absent is a conformance finding.
+
+| Level | An agent may, unattended… | Prerequisite |
+|---|---|---|
+| L0 | read and propose only | — |
+| L1 | author records (decision drafts, specs, plan items) | conventions installed |
+| L2 | implement a **named** queued plan item | a verify gate exists |
+| L3 | pick the next item from `plan/todo/` itself | plan queue + gate |
+| L4 | specify + queue + implement from an **agreed AC-bearing record** | constraints layer written |
+| L5 | propose decisions and run agent waves within a budget | full stack + audit on a cadence |
+
+**Escalation triggers — binding at every level.** An unattended agent
+stops and surfaces to the operator on: (1) changing or adding a
+constraint; (2) changing or retiring a goal; (3) accepting a decision
+record; (4) superseding a decision record; (5) any outward-facing
+commitment — publishing, releasing, joining a federation;
+(6) changing a gate; (7) work with no traceable parent goal, spec,
+or decision; (8) a conflict between two constraints. Everything not
+on this list is delegated.
+
+**Manual-evidence restriction (L3+).** Criteria authored unattended
+carry an executable `Verify:` method (a command or `gate-check`);
+introducing a `manual` method is itself an escalation. An unattended
+run never invents attestations; unevidenced records hold below
+Implemented.
+
+The level moves only by an operator's edit — no skill raises or
+lowers it.
 
 ## Multi-Agent Rules
 

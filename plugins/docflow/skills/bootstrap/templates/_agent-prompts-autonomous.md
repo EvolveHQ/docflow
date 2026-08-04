@@ -5,6 +5,18 @@ implementation queue in `plan/todo/` to completion, unsupervised,
 committing per-item with the verify gate green, until the queue is
 empty or a documented stop condition fires.
 
+## Autonomy grant
+
+Read the `autonomy:` level from `docflow.yml` before anything else —
+it is the recorded bound on what this run may initiate (see
+`CONVENTIONS.md` §Autonomy). This prompt's queue-driving flow
+requires **`L3`** (self-serve the queue); at `L2` work only the item
+the operator named when launching you; below `L2`, or with no
+recorded grant, stop — this run has no unattended-implementation
+authority. At `L3+`, any acceptance criterion you author must carry
+an **executable** `Verify:` method — introducing a `manual` one is an
+escalation, not a judgement call.
+
 ## Step 1 — Orient
 
 Read these files IN ORDER, in full, before any tool calls:
@@ -106,6 +118,12 @@ Once the change is on `main` (fast-forwarded or PR-merged):
 - A queue item references an ADR whose status is not Accepted.
 - Acceptance criteria are ambiguous or untestable as written.
 - Lock contention on the same files between two same-priority items.
+- **Any escalation trigger** (CONVENTIONS.md §Autonomy — binding at
+  every autonomy level): a constraint change; a goal change or
+  retirement; accepting or superseding a decision record; an
+  outward-facing commitment (publish, release, federation); a gate
+  change; work with no traceable parent record; a conflict between
+  two constraints.
 
 When a stop condition fires, stop cleanly: leave the repo in a
 committed state, record the reason in `_agent/CURRENT_FOCUS.md`, and

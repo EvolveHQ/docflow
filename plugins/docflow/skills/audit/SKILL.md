@@ -190,6 +190,15 @@ relevant):
     practice — fix or retire it); and the shipped-versus-validated
     picture (work shipped against goals vs outcomes recorded) as a
     visibility note — the number is the argument, nothing blocks.
+22. **Autonomy state.** N/A when the manifest records no `autonomy:`
+    field. The recorded level is legal (`L0`–`L5` — the gate holds
+    this too) and its **prerequisites are present**: `L2`+ a named
+    verify gate; `L3`+ a plan queue; `L4`+ the constraints layer;
+    `L5` the goals layer and an audit cadence. A missing prerequisite
+    is a conformance finding. Heuristically flag recent unattended
+    activity signatures beyond the recorded grant (e.g. WORKLOG rows
+    from autonomous runs on a repo recording `L0`/`L1`) — reported,
+    never gated; the level moves only by an operator's edit.
 
 ## Step 2 — Report
 
