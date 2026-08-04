@@ -15,7 +15,13 @@ file.
 
 ## Active state
 
-- **Branch:** main
+- **Branch:** `v1/aligned-autonomy` — **the development line since
+  2026-08-04.** `main` is the released line, force-reset to the
+  v0.9.4 commit (ffd0b4e) and advanced only by promoting exactly one
+  v1 candidate; alternatives are sibling `v1/<approach>` branches,
+  archived unmerged if not chosen. All post-0.9.4 work (88 commits +
+  everything since) lives here. Recorded via the reconstruction path
+  with contract amendments and four evidence records.
 - **Active item:** none — **PHASE 1 (S0–S5) COMPLETE** (2026-07-29)
   and the **✅ PILOT GATE CLOSED (2026-07-31, operator-attested).**
   All three exit criteria passed in/around clarity: the unattended
