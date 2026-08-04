@@ -32,11 +32,12 @@ overrides this.
 
 All three, at the release commit:
 
-1. **Verify gate** — run it; require green.
+1. **Verify gate** — run the repo's verify gate; require green.
 2. **Deterministic evals** — run them; require green.
-3. **Behavioural suite** — the release gate proper. Run it now, or
-   have the operator explicitly confirm it ran green **at this
-   commit**. An older run at an older commit does not count.
+3. **Behavioural suite** — the release gate proper. Run the
+   behavioural suite now, or have the operator explicitly confirm it
+   ran green **at this commit**. An older run at an older commit
+   does not count.
 
 Red, or unconfirmed, ends the ritual — report what failed and stop.
 
