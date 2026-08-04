@@ -366,8 +366,8 @@ if (existsSync(join(root, 'docflow.yml'))) {
       }
     }
   }
-  if ('autonomy' in manifest) {
-    fail('docflow.yml: "autonomy" is reserved by the contract — do not set it');
+  if ('autonomy' in manifest && !/^L[0-5]$/.test(manifest.autonomy)) {
+    fail(`docflow.yml: illegal autonomy "${manifest.autonomy}" (legal: L0–L5; absent = no unattended grant)`);
   }
   if ('evidence-adopted-at' in manifest &&
       !/^[0-9a-f]{7,40}$/.test(manifest['evidence-adopted-at'])) {
