@@ -164,11 +164,25 @@ if (existsSync(adrDir)) {
     });
   }
   catalogue.sort((a, b) => a.num - b.num);
-  catalogue.forEach((adr, i) => {
-    if (adr.num !== i + 1) {
-      fail(`ADR numbering not contiguous: expected ${String(i + 1).padStart(4, '0')}, got ${adr.file}`);
+  // Migration mapping (ADR 0045): in a migrated repo, MIGRATION.md
+  // accounts for the numbers whose records moved — those gaps are
+  // legal (no-duplicates is the rule); an unaccounted gap still
+  // fails. Dormant until a migration runs.
+  const migratedNums = new Set();
+  if (existsSync(join(root, 'MIGRATION.md'))) {
+    for (const m of read('MIGRATION.md').matchAll(/adr\/(\d{4})-[a-z0-9-]+\.md/g)) {
+      migratedNums.add(Number(m[1]));
     }
-  });
+  }
+  let expectedNum = 1;
+  for (const adr of catalogue) {
+    while (adr.num > expectedNum && migratedNums.has(expectedNum)) expectedNum++;
+    if (adr.num !== expectedNum) {
+      fail(`ADR numbering not contiguous: expected ${String(expectedNum).padStart(4, '0')}, got ${adr.file}` +
+        (migratedNums.size ? ' (gap not accounted for in MIGRATION.md)' : ''));
+    }
+    expectedNum = adr.num + 1;
+  }
   // depends-on entries resolve to existing catalogue ADRs.
   const nums = new Set(catalogue.map((a) => String(a.num).padStart(4, '0')));
   for (const adr of catalogue) {
@@ -401,9 +415,15 @@ if (existsSync(evidenceDir)) {
     if (!entry.isDirectory()) continue;
     const slug = entry.name;
     const adr = catalogue.find((a) => a.slug === slug);
-    const spec = specs.find((s) => s.slug === slug);
+    let spec = specs.find((s) => s.slug === slug);
+    // Migration rebinding (ADR 0045): an old slug's evidence directory
+    // is owned by the record that migrated from it — the directory is
+    // history, never moved or edited. Dormant until a migration runs.
     if (!adr && !spec) {
-      fail(`evidence/${slug}/: no catalogue ADR or spec with that slug`);
+      spec = specs.find((s) => (s.fields['migrated-from'] ?? '').endsWith(`/${slug}.md`));
+    }
+    if (!adr && !spec) {
+      fail(`evidence/${slug}/: no catalogue ADR or spec with that slug (or migrated-from lineage)`);
       continue;
     }
     // Validate each record's shape and collect the latest record per AC
@@ -429,6 +449,31 @@ if (existsSync(evidenceDir)) {
       const acN = Number(m[1]);
       const seq = Number(m[2]);
       if (!records[acN] || seq > records[acN].seq) records[acN] = { fields, file: f, seq };
+    }
+    // Migration rebinding: merge the sibling directory's records —
+    // pre-move evidence resolves under the old slug; post-move
+    // evidence (the new identity) wins where both cover one AC.
+    if (spec && spec.fields['migrated-from']) {
+      const oldSlug = spec.fields['migrated-from'].match(/\/([^/]+)\.md$/)?.[1];
+      const collect = (s) => {
+        const out = {};
+        for (const f of readdirSync(join(evidenceDir, s)).filter((n) => n.endsWith('.md'))) {
+          const m2 = f.match(/^AC(\d+)-(\d{3})\.md$/);
+          if (!m2) continue;
+          const { fields } = frontmatter(read(`evidence/${s}/${f}`));
+          if (!fields) continue;
+          const acN = Number(m2[1]); const seq = Number(m2[2]);
+          if (!out[acN] || seq > out[acN].seq) out[acN] = { fields, file: `${s}/${f}`, seq };
+        }
+        return out;
+      };
+      if (slug === spec.slug && oldSlug && existsSync(join(evidenceDir, oldSlug))) {
+        const old = collect(oldSlug);
+        for (const k of Object.keys(old)) if (!records[k]) records[k] = old[k];
+      } else if (slug === oldSlug && existsSync(join(evidenceDir, spec.slug))) {
+        const neu = collect(spec.slug);
+        for (const k of Object.keys(neu)) records[k] = neu[k];
+      }
     }
     // Declared-vs-computed: an Implemented record (ADR or spec) with an
     // evidence dir must have, for EVERY current criterion, a current
