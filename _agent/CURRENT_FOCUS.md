@@ -93,12 +93,20 @@ file.
   Eight escalation triggers bind at every level; the autonomous
   prompt reads the grant and needs L3 to self-serve the queue; gate
   legality replaced the reservation (alone); audit check 22.
-- **Blockers:** none. Queue: S9 migration machinery (needs the
-  evidence-rebinding design — option C `migrated-to:` recommended —
-  and an external candidate repo per D6) → S10 own migration (per
-  `../docflow-workflow-analysis/migration-triage.md`) → S11 1.0
-  (explicit instruction only; internal-eval condition already met).
-  S9 starts on the operator's go.
+- **S9 MIGRATION MACHINERY SHIPPED (2026-08-04, plan 0048):** the
+  sanctioned model change — bootstrap Migration path with per-record
+  operator approval, `migrated-from:` lineage, MIGRATION.md mapping
+  (gaps legal only when accounted), evidence rebinding with the new
+  identity winning per criterion, wave discipline (mixed records
+  legal). Gate support dormant (alone); both design decisions
+  operator-taken pre-authoring. **PHASE 2 MACHINERY COMPLETE** —
+  every slice from S0 to S9 is built and evidenced.
+- **Blockers for what remains:** S10 (own migration, per
+  `../docflow-workflow-analysis/migration-triage.md`) is sequenced
+  behind **one external migration** exercising the S9 machinery — a
+  candidate repo is the open question. S11 (1.0) needs the
+  operator's explicit publish instruction and now also the
+  candidate-branch **promotion** decision. Nothing else is queued.
 - **Uncommitted work:** none once this snapshot commit lands.
 
 ## Last shipped

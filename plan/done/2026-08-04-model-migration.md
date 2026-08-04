@@ -36,3 +36,13 @@ Owning ADR: adr/0045-model-migration.md (Accepted 2026-08-04).
 
 adr/0038-capability-spec-records.md and
 adr/0039-record-model-choice.md Implemented (both are).
+
+---
+
+**Shipped at HEAD `c89f444`** (chain a7079ee propose → e27c169 accept
+→ 0154c66 implement → 120bd78 gate (alone, dormant support) →
+c89f444 evals (alone) + this ship commit). Owning ADR Implemented on
+six bound evidence records (4 command, 1 eval-suite command, 1 manual
+attested; all attended). Both design decisions taken by the operator
+pre-authoring. The machinery is dormant by design — docflow's own
+migration stays sequenced behind external use.
