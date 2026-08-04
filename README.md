@@ -33,6 +33,7 @@ agent the same skills are invoked as `/skill:<name>` (e.g.
 | validate | `/validate` | **The verdict** *(in development — beyond the released version)*: did a goal's **measure** actually move? Gathers the reading, presents the evidence, records your verdict (achieved · execution short · hypothesis wrong · inconclusive) as an append-only outcome entry in the goal file, applies the transition. Harm is asked about separately, whatever the verdict. |
 | challenge | `/challenge` | **The interrogator.** Pressure-test a draft record by rubric, or elicit the boundaries you have not written down (eight-category checklist). Advisory only — writes nothing, gates nothing, and may honestly return "solid, nothing to add". |
 | agent-wave | `/agent-wave` | Orchestrate a wave of parallel worktree subagents over the queue, with checkpoint or continuous supervision. |
+| release | `/release` | **The most gated** *(in development — beyond the released version)*: promotion of the chosen candidate + version bump + tag + publish as one ritual, an operator confirmation per outward step. Refuses unattended use at every autonomy level. |
 | rollup | `/rollup` | For a multi-repo product: aggregate every member repo's ADRs into one derived, product-wide roll-up (run from the home repo). |
 
 The lifecycle skills all **read the capability manifest (`docflow.yml`)
