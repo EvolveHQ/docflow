@@ -86,11 +86,19 @@ file.
   is now expressible in docflow artefacts.** No goal is due before
   2026-10-31; the first live verdict will be the machinery's real
   test.
-- **Blockers:** none. Queue: S8 autonomy (L0–L5 — the most
-  decision-heavy slice; level semantics are the operator's call) →
-  S9 migration machinery (needs an external candidate) → S10 own
-  migration → 1.0 (explicit instruction only). S8 starts on the
-  operator's go.
+- **S8 AUTONOMY SHIPPED (2026-08-04, plan 0047):** the manifest's
+  `autonomy:` field is live — L0–L5, four level decisions taken by
+  the operator pre-authoring (ladder as designed, default L2, this
+  repo L3 matching practice, L3+ manual-evidence restriction).
+  Eight escalation triggers bind at every level; the autonomous
+  prompt reads the grant and needs L3 to self-serve the queue; gate
+  legality replaced the reservation (alone); audit check 22.
+- **Blockers:** none. Queue: S9 migration machinery (needs the
+  evidence-rebinding design — option C `migrated-to:` recommended —
+  and an external candidate repo per D6) → S10 own migration (per
+  `../docflow-workflow-analysis/migration-triage.md`) → S11 1.0
+  (explicit instruction only; internal-eval condition already met).
+  S9 starts on the operator's go.
 - **Uncommitted work:** none once this snapshot commit lands.
 
 ## Last shipped

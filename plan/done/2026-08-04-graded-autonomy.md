@@ -42,3 +42,13 @@ Owning ADR: adr/0044-graded-autonomy.md (Accepted 2026-08-04).
 
 adr/0041-goals-layer.md and adr/0042-validation-loop.md Implemented
 (both are).
+
+---
+
+**Shipped at HEAD `33632a9`** (chain ccb4106 propose → a66d607 accept
+→ 2e48451 implement → cd893e6 gate (alone — legality replaces the
+reservation) → 342fe53 dogfood L3 → 33632a9 evals (alone) + this ship
+commit). Owning ADR Implemented on seven bound evidence records
+(1 gate-check, 5 command, 1 manual attested incl. the
+L3-matches-practice confirmation; all attended). All four level
+decisions were taken by the operator before authoring.
