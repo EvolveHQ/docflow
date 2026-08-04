@@ -18,5 +18,7 @@ No serving records — an aspiration until something serves it.
 
 ## G-one-zero — A published 1.0 gated by behavioural evals (Active)
 
-No serving records — an aspiration until something serves it.
+| Serving record | Status | Evidence | Plan items |
+|---|---|---|---|
+| adr/0043-candidate-branch-development.md | Implemented | 0/4 criteria | done/2026-08-04-candidate-branch-split |
 

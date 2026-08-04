@@ -155,7 +155,12 @@ state and history; LOCKS discipline is not in use.
 - ADR-revision tags `adr-NNNN-rN`: no.
 - Co-Authored-By trailer: no.
 - Cross-references between ADRs use relative paths (`adr/NNNN-*.md`).
-- **Integration:** direct-to-main, **fast-forward only**. No merge
-  commits on `main`. The verify gate (`node scripts/verify.mjs`) runs
+- **Integration:** candidate-branch development, **fast-forward
+  only**. `main` is the released line, frozen at the latest release
+  tag and advanced only by promoting one candidate. Development
+  fast-forwards onto the active **v1 candidate branch**
+  (`v1/<approach>`, currently `v1/aligned-autonomy`); no merge
+  commits anywhere. The verify gate (`node scripts/verify.mjs`) runs
   locally and must pass before push. Completion event: fast-forwarded
-  to `main` + remote push succeeded.
+  to the active candidate + remote push succeeded. Alternative
+  candidates never merge with each other — exactly one is promoted.

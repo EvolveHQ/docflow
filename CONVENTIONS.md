@@ -330,9 +330,11 @@ Pending and shipped work live in `plan/` at the repository root:
   its claimed scope is re-queued or explicitly dispositioned in the
   drop reason.
 
-The completion event is: the change is fast-forwarded onto `main` and
-the remote push succeeds (verify gate green locally first). No PRs, no
-merge commits.
+The completion event is: the change is fast-forwarded onto the
+**development line** and the remote push succeeds (verify gate green
+locally first). No PRs, no merge commits. The development line is the
+active v1 candidate branch (`v1/<approach>`) — see §Git Contract; it
+was `main` until the 0.9.4 release line was frozen.
 
 When a `plan/todo/` item ships, the file moves to `plan/done/` AND the
 owning ADR(s)' `status:` advances from `Accepted` to `Implemented`.
@@ -360,7 +362,17 @@ Commit messages follow Conventional Commits with a mandatory
   onward. (Commits predating the bootstrap that carry the trailer are
   left untouched — history is not rewritten.)
 
-Integration model: direct-to-main, **fast-forward only**. Changes are
-fast-forwarded onto `main`; no merge commits. The verify gate runs
-locally and must pass before push. A change is "shipped" when it is on
-`main` and pushed.
+Integration model: **candidate-branch development, fast-forward
+only.** `main` is the **released line**, frozen at the latest release
+tag (currently v0.9.4); it advances only by **promotion**. Development
+happens on a **v1 candidate branch** — `v1/<approach>`, currently
+`v1/aligned-autonomy` — with the same discipline main had: changes
+fast-forward onto the candidate, no merge commits, the verify gate
+runs locally and must pass before push. A change is "shipped" when it
+is on the active candidate and pushed. **Alternatives are parallel
+candidate branches**; each carries its own continuation of the
+catalogue and never merges with another — exactly **one** candidate is
+promoted to `main` (fast-forward), and the rest are archived unmerged,
+so cross-candidate numbering collisions never meet on one line (the
+audit's cross-branch checks cover accidental cross-pollination).
+Promotion is an operator decision, recorded when taken.
