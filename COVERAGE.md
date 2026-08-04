@@ -11,7 +11,7 @@ The walk goal → serving record → criteria evidence → plan items.
 |---|---|---|---|
 | adr/0041-goals-layer.md | Implemented | 7/7 criteria | done/2026-07-31-goals-layer, done/2026-08-03-validation-loop, done/2026-08-04-graded-autonomy |
 | adr/0042-validation-loop.md | Implemented | 7/7 criteria | done/2026-08-03-validation-loop, done/2026-08-04-graded-autonomy |
-| adr/0044-graded-autonomy.md | Implemented | 7/7 criteria | done/2026-08-04-graded-autonomy, todo/0049-release-ritual |
+| adr/0044-graded-autonomy.md | Implemented | 7/7 criteria | done/2026-08-04-graded-autonomy, done/2026-08-04-release-ritual |
 
 ## G-external-adoption — docflow drives repos beyond its own (Active)
 
@@ -21,7 +21,7 @@ No serving records — an aspiration until something serves it.
 
 | Serving record | Status | Evidence | Plan items |
 |---|---|---|---|
-| adr/0043-candidate-branch-development.md | Implemented | 4/4 criteria | done/2026-08-04-candidate-branch-split, todo/0049-release-ritual |
+| adr/0043-candidate-branch-development.md | Implemented | 4/4 criteria | done/2026-08-04-candidate-branch-split, done/2026-08-04-release-ritual |
 | adr/0045-model-migration.md | Implemented | 6/6 criteria | done/2026-08-04-model-migration |
-| adr/0046-release-ritual.md | Accepted | 0/6 criteria | todo/0049-release-ritual |
+| adr/0046-release-ritual.md | Implemented | 6/6 criteria | done/2026-08-04-release-ritual |
 

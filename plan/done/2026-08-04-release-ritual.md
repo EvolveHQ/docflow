@@ -31,3 +31,12 @@ Owning ADR: adr/0046-release-ritual.md (Accepted 2026-08-04).
 
 adr/0043-candidate-branch-development.md and
 adr/0044-graded-autonomy.md Implemented (both are).
+
+---
+
+**Shipped at HEAD `64bbb01`** (chain 5bbb648 propose → 5642db4 accept
+→ d348e5f implement → 64bbb01 evals (alone) + this ship commit).
+Owning ADR Implemented on six bound evidence records (3 command,
+1 gate-check, the eval suite, 1 manual attested; all attended). The
+ritual is dormant by design: 1.0 is one /release invocation away,
+on the operator's explicit instruction only.

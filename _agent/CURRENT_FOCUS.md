@@ -101,12 +101,19 @@ file.
   legal). Gate support dormant (alone); both design decisions
   operator-taken pre-authoring. **PHASE 2 MACHINERY COMPLETE** —
   every slice from S0 to S9 is built and evidenced.
-- **Blockers for what remains:** S10 (own migration, per
-  `../docflow-workflow-analysis/migration-triage.md`) is sequenced
-  behind **one external migration** exercising the S9 machinery — a
-  candidate repo is the open question. S11 (1.0) needs the
-  operator's explicit publish instruction and now also the
-  candidate-branch **promotion** decision. Nothing else is queued.
+- **S11 PREP SHIPPED (2026-08-04, plan 0049):** `release` is the
+  thirteenth skill — trigger-5 refusal of unattended use, release
+  gate first (verify + deterministic + behavioural AT the release
+  commit), promotion by operator choice with a decision record on
+  the winner, one confirmation per outward step, partial rituals
+  first-class. Note for the ledger: check G caught a failing
+  evidence record mid-ship (AC2 command vs prose case mismatch) —
+  fixed by prose, re-executed, the failed record kept as history.
+- **THE BUILD IS DONE.** Remaining, both operator-gated: S10 (own
+  migration) waits on one external migration exercising the S9
+  machinery; **1.0 is one `/release` invocation away** — promotion +
+  publish, on the operator's explicit word only. Nothing else is
+  queued.
 - **Uncommitted work:** none once this snapshot commit lands.
 
 ## Last shipped
