@@ -196,14 +196,14 @@ export const cases = [
     },
   },
   {
-    name: 'mutation: setting the reserved autonomy field FAILs the gate',
+    name: 'mutation: illegal autonomy level FAILs the gate',
     skill: null,
     agentDependent: false,
     repo: repoRoot,
     assert(repo) {
-      assertGateFails(repo, (fix) => fix.write(
-        'docflow.yml', fix.read('docflow.yml') + 'autonomy: L3\n',
-      ), /reserved/);
+      assertGateFails(repo, (fix) => fix.replace(
+        'docflow.yml', 'autonomy: L3', 'autonomy: L9',
+      ), /illegal autonomy/);
     },
   },
   {
