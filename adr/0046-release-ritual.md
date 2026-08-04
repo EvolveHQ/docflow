@@ -1,7 +1,7 @@
 ---
 adr: 0046
 title: Release ritual — promotion and publication as one gated skill
-status: Proposed
+status: Accepted
 date: 2026-08-04
 owner: Eugenio Minardi
 supersedes:
@@ -139,8 +139,10 @@ release named in the plan queue where an item owns it.
 | Date | Revision | Author | Change |
 |------|----------|--------|--------|
 | 2026-08-04 | r1 | Eugenio Minardi | Initial draft (Proposed): the 0.9.4 manual ritual becomes the thirteenth skill, composed with promotion (candidate-branch model), the behavioural release gate, and trigger-5 refusal of unattended use. Skill count consciously extended past the twelve-writer set. |
+| 2026-08-04 | r2 | Eugenio Minardi | Status Proposed → Accepted by the operator; implementation authorised (plan 0049). |
 
 ## Approvals
 
 | Role | Name | Date | Signature |
 |------|------|------|-----------|
+| Maintainer | Eugenio Minardi | 2026-08-04 | — |
