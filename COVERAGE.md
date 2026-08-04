@@ -23,4 +23,5 @@ No serving records — an aspiration until something serves it.
 |---|---|---|---|
 | adr/0043-candidate-branch-development.md | Implemented | 4/4 criteria | done/2026-08-04-candidate-branch-split |
 | adr/0045-model-migration.md | Implemented | 6/6 criteria | done/2026-08-04-model-migration |
+| adr/0046-release-ritual.md | Proposed | 0/6 criteria | — |
 

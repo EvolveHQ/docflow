@@ -50,6 +50,7 @@ ADR change.
 | [0043](adr/0043-candidate-branch-development.md) | Candidate-branch development — main is the released line | Implemented | 2026-08-04 | 0001 |
 | [0044](adr/0044-graded-autonomy.md) | Graded autonomy — the L0–L5 ladder in the manifest | Implemented | 2026-08-04 | 0034, 0036, 0041, 0042 |
 | [0045](adr/0045-model-migration.md) | Model migration — the deliberate path, the mapping, evidence rebinding | Implemented | 2026-08-04 | 0035, 0038, 0039 |
+| [0046](adr/0046-release-ritual.md) | Release ritual — promotion and publication as one gated skill | Proposed | 2026-08-04 | 0015, 0043, 0044 |
 
 ## Goals
 
