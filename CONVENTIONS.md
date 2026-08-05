@@ -146,9 +146,11 @@ Pending and shipped work live in `plan/` at the repository root:
 - `plan/done/<YYYY-MM-DD>-<slug>.md` — shipped work, chronological. A
   `git mv` from `todo/` to `done/` is the completion event.
 
-The completion event is: the change is fast-forwarded onto `main` and
-the remote push succeeds (verify gate green locally first). No PRs, no
-merge commits.
+The completion event is: the change is fast-forwarded onto the
+**development line** and the remote push succeeds (verify gate green
+locally first). No PRs, no merge commits. The development line is the
+active v1 candidate branch — here `v1/agent-loop-graph` — see §Git
+Contract; it was `main` until the 0.9.4 release line was frozen.
 
 When a `plan/todo/` item ships, the file moves to `plan/done/` AND the
 owning ADR(s)' `status:` advances from `Accepted` to `Implemented`.
@@ -176,7 +178,20 @@ Commit messages follow Conventional Commits with a mandatory
   onward. (Commits predating the bootstrap that carry the trailer are
   left untouched — history is not rewritten.)
 
-Integration model: direct-to-main, **fast-forward only**. Changes are
-fast-forwarded onto `main`; no merge commits. The verify gate runs
-locally and must pass before push. A change is "shipped" when it is on
-`main` and pushed.
+Integration model: **candidate-branch development, fast-forward
+only.** `main` is the **released line**, frozen at the latest release
+tag (currently v0.9.4); it advances only by **promotion**. Development
+happens on a **v1 candidate branch** — this branch is
+`v1/agent-loop-graph`, the second candidate, focused on **agent
+loop/graph management** — with the same discipline `main` had:
+changes fast-forward onto the candidate, no merge commits, the verify
+gate runs locally and must pass before push. A change is "shipped"
+when it is on the active candidate and pushed. **Alternatives are
+parallel candidate branches** (the first is `v1/aligned-autonomy`);
+each carries its own continuation of the catalogue from the shared
+0.9.4 base and never merges with another — exactly **one** candidate
+is promoted to `main` (fast-forward), the rest are archived unmerged,
+so cross-candidate numbering collisions never meet on one line.
+Promotion is an operator decision, recorded when taken. Nothing on a
+candidate is released or published — internal testing only, until
+the operator's explicit release instruction.

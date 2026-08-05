@@ -1,63 +1,34 @@
 # Current Focus
 
-This file is the LIVE SNAPSHOT of any in-flight session. It is short on
-purpose — the durable record lives in git (`git log`),
+This file is the LIVE SNAPSHOT of any in-flight session. It is short
+on purpose — the durable record lives in git (`git log`),
 `_agent/WORKLOG.md`, and `plan/done/`. The queued work lives in
-`plan/todo/`.
-
-If status files and git disagree, git is authoritative; correct this
-file.
-
-> **Released 0.9.3** (tag v0.9.3; `@evolvehq/docflow@0.9.3` on npm).
-> main is **well ahead of the release**: consistency pass, static-gate
-> extension, gate-integrity convention, **depth tiers everywhere**
-> (bootstrap + the five assessment-bearing lifecycle skills), and the
-> **artefact-root discovery contract** (.docflow marker/pointer — the
-> contract Clarity builds against). **Cut 0.9.4 next** — skill
-> behaviour changed across the set. Catalogue all-Implemented (or
-> Superseded); **plan queue empty**.
+`plan/todo/`. If status files and git disagree, git is authoritative;
+correct this file.
 
 ## Active state
 
-- **Branch:** main
-- **Active item:** none — no work in flight.
+- **Branch:** `v1/agent-loop-graph` — the **second v1 candidate**,
+  cut clean from the v0.9.4 tag (ffd0b4e) on 2026-08-05. **Thesis:
+  agent loop/graph management.** `main` is the released line, frozen
+  at v0.9.4, advanced only by promoting exactly one candidate; the
+  first candidate is `v1/aligned-autonomy` (the verified tier);
+  candidates never merge — see
+  adr/0034-candidate-branch-development.md.
+- **Released:** 0.9.4 (tag + npm). **No release from this branch —
+  internal testing only**, until the operator's explicit instruction.
+- **Base state:** the clean 0.9.4 product — 9 skills, 33 prior ADRs,
+  pre-verified-tier (no manifest, no evidence machinery, no
+  constraints file on this line). What this candidate builds on top
+  is its own decision trail, starting at 0035.
+- **Active item:** none — the plan queue is empty. **Next: the
+  loop/graph-management design** — brainstorm the approach into
+  classified candidates, decisions first.
 - **Blockers:** none.
-- **Uncommitted work:** none.
 
-## Last shipped
+## Pointers
 
-**2026-07-03, a three-ship day:**
-- **Plan 0033 — bootstrap depth tiers** (fc158bc): express / guided /
-  full selector, express minimal profile, guided 3-question subset,
-  federation guard, recorded depth preference; template variants for
-  omitted layers; express behavioural eval PASS (worktree subagent).
-  ADR 0032 → Implemented.
-- **Plan 0035 — artefact-root discovery** (37a1798): `.docflow`
-  marker-dir / pointer-file precedence (the `.git` pattern) so tools
-  like **Clarity** resolve any repo's catalogue in one check; audit
-  check 14; this repo dogfoods `root: .`. ADR 0033 → Implemented.
-- **Plan 0034 — lifecycle tier adoption** (3f1611e): the canonical
-  selector in the five assessment-bearing skills with per-skill
-  high-impact markers; feedback gate explicitly waived by the
-  operator. ADR 0031 → Implemented — the tiers capability is complete.
-
-## Next item
-
-Queue is empty. **Cut release 0.9.4** — skill behaviour changed across
-bootstrap and five lifecycle skills; write the /release skill while
-performing the ritual.
-
-Candidate decisions still unqueued from the 2026-07-02 review:
-
-1. **Prose-drift detection** — derive shared facts (target list, skill
-   inventory) from the manifests and check prose surfaces against them
-   (new ADR).
-2. **Executable acceptance criteria** — bind ADR criterion N to eval
-   assertion N so "Implemented" means "asserted" (new ADR, the big
-   one).
-3. Deferred: plain-language assessment wording (now awaits tier
-   feedback across all skills); provenance in WORKLOG.
-
-For **docflow-clarity**: record the consumer-side discovery decision in
-its own catalogue, referencing `docflow/0033-artefact-root-discovery`
-via the federation.
+- Catalogue numbers above 0033 on this branch are independent of the
+  sibling candidate's — the never-merge rule means they can never
+  collide on one line.
+- Ship-by-ship history: `_agent/WORKLOG.md`.

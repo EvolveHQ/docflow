@@ -113,8 +113,10 @@ state and history; LOCKS discipline is not in use.
 
 - A pending item gets a `plan/todo/NNNN-<slug>.md` file BEFORE work
   starts, naming the owning ADR(s), scope, and exit criteria.
-- The completion event is: the change is fast-forwarded onto `main` and
-  the remote push succeeds. On completion, `git mv` the file to
+- The completion event is: the change is fast-forwarded onto the
+  **active candidate branch** (`v1/agent-loop-graph`; `main` is the
+  released line, advanced only by promotion) and the remote push
+  succeeds. On completion, `git mv` the file to
   `plan/done/<YYYY-MM-DD>-<slug>.md` with a footer naming the HEAD SHA
   (and any release tag / npm version).
 - The owning ADR(s) advance `Accepted → Implemented` on the same
@@ -128,7 +130,13 @@ state and history; LOCKS discipline is not in use.
 - ADR-revision tags `adr-NNNN-rN`: no.
 - Co-Authored-By trailer: no.
 - Cross-references between ADRs use relative paths (`adr/NNNN-*.md`).
-- **Integration:** direct-to-main, **fast-forward only**. No merge
-  commits on `main`. The verify gate (`node scripts/verify.mjs`) runs
-  locally and must pass before push. Completion event: fast-forwarded
-  to `main` + remote push succeeded.
+- **Integration:** candidate-branch development, **fast-forward
+  only**. `main` is the released line, frozen at the latest release
+  tag and advanced only by promoting one candidate. Development
+  fast-forwards onto this candidate branch (`v1/agent-loop-graph`);
+  no merge commits anywhere. The verify gate
+  (`node scripts/verify.mjs`) runs locally and must pass before push.
+  Completion event: fast-forwarded to the active candidate + remote
+  push succeeded. Candidates never merge with each other — exactly
+  one is promoted. **No release, no publish — internal testing only**
+  until the operator's explicit instruction.
