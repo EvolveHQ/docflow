@@ -12,7 +12,10 @@ correct this file.
   v1 candidate). `main` is the released line, frozen at v0.9.4
   (ffd0b4e); it advances only by promoting exactly one candidate;
   alternatives are sibling `v1/<approach>` branches, archived
-  unmerged if not chosen.
+  unmerged if not chosen. **A second candidate exists since
+  2026-08-05: `v1/agent-loop-graph`** (thesis: agent loop/graph
+  management), cut clean from the tag with its own catalogue
+  continuation from 0034 — the promotion comparison is now real.
 - **Released:** 0.9.4 (tag + npm). **Repo grant:** `autonomy: L3`.
 - **Active item:** none — the plan queue is empty. **The programme's
   build is complete** (S0–S9 + the release ritual): 46 ADRs, 13
