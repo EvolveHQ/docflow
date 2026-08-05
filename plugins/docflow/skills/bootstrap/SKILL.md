@@ -132,71 +132,44 @@ A standalone repo has none of them.
 
 ## Step 3 — Conventions to install
 
-1. **ADRs are the source of truth.** One decision per ADR. Splits become
-   new ADRs that supersede; never expand scope inside an existing one.
-2. **Up to two ADR shapes:**
-   - **Capability ADR** (what the system must do). Section order:
-     metadata → Context → Capability statement → User stories / scenarios
-     → Acceptance criteria → Out of scope → Open questions → References →
-     Revision History → Approvals.
-   - **Technology ADR** (how it's built). Section order:
-     metadata → Context → Decision → Rationale → Consequences →
-     Acceptance criteria → Out of scope → Open questions → References →
-     Revision History → Approvals. Rationale must name alternatives
-     considered and give specific rejection reasons (not "simpler" /
-     "more idiomatic").
+The full normative text lives in the `templates/` this skill writes —
+what bootstrap scaffolds IS the convention set. This summary is what
+the assessment hangs off; consult the templates for exact wording:
 
-   Which shape is `adr/0000-template.md` depends on the record model
-   (Q2): capability-first uses the capability shape; two-shape uses
-   both (capability at `0000`, technology at the cutoff); the
-   decision-led models (`decisions+specs`, `decisions-only`) use the
-   **decision shape** — the technology-ADR section order — as the
-   single `0000` template, since every catalogue entry is a pure
-   decision there.
-3. **Status lifecycle:** `Proposed → Accepted → Implemented →
-   (Superseded | Deprecated)`. Terminal states reachable from any prior
-   state. Status drives plan-folder placement: `Accepted` →
-   `plan/todo/`, `Implemented` → `plan/done/`.
-4. **Filenames:** `adr/NNNN-kebab-slug.md`, zero-padded 4 digits,
-   contiguous, no reserved gaps. Cross-references use relative paths.
-5. **Acceptance criteria are testable, numbered, and verifiable.** Each
-   criterion ends with a `Verify:` line naming how it is checked — an
-   inline command, `gate-check` (the static gate covers it), or
-   `manual` (a named human attests). The evidence rules live in
-   `CONVENTIONS.md` §Verification Evidence.
-6. **Audit discipline.** Substantive ADR changes append a Revision
-   History row. Editorial changes (typos, formatting, link fixes) are
-   excluded but flagged `editorial` in the commit message. Approvals
-   table populates when an ADR is Accepted and updates on each later
-   substantive revision.
-7. **INDEX.md is regenerated** from ADR metadata after any ADR change.
-   Treat as derived, not hand-edited.
-8. **`plan/` is the work queue.** `git mv plan/todo/X plan/done/<date>-X`
-   is the completion event; the moved file gets a footer naming the HEAD
-   SHA (and deploy artefact id if applicable). Owning ADR(s) advance
-   `Accepted → Implemented` on the same commit.
-9. **Multi-agent coordination.** Before editing, an agent appends a row
-   to `_agent/LOCKS.md` (`<agent-id> | <path> | <ISO-8601 timestamp>`)
-   and removes it on commit. On commit, append one line to
-   `_agent/WORKLOG.md`. `CURRENT_FOCUS.md` is the live snapshot; if it
-   disagrees with git, git wins and `CURRENT_FOCUS.md` is corrected.
-10. **Git contract.** Conventional Commits. Mandatory `Rationale:`
-    footer on commits touching an ADR. Signed commits unless the user
-    opts out. No `Co-Authored-By` trailer for agent work unless the user
-    asks for one.
-11. **AGENTS.md is the hard-rules entry point;** **CLAUDE.md** is the
-    one-liner `@AGENTS.md` so the Claude Code CLI picks it up.
-12. **ADRs are internal artefacts — never user-visible.** ADR numbers,
-    ADR titles, and the existence of the ADR catalogue must NEVER
-    appear in product code paths that reach a user: UI strings, API
-    response bodies, error messages, log lines emitted to customers,
-    public documentation, release notes, marketing copy, or support
-    communications. ADRs are for builders, not users. References ARE
-    allowed in: code comments (`// see adr/0042-foo.md`), commit
-    messages, PR descriptions, internal docs, `AGENTS.md`,
-    `CONVENTIONS.md`, `INDEX.md`, and the `plan/` queue. When in
-    doubt, ask whether a non-builder would ever see this string — if
-    yes, the ADR reference comes out.
+1. **ADRs are the source of truth** — one decision per record; splits
+   supersede, never expand in place.
+2. **Up to two ADR shapes** (capability / technology); which template
+   sits at `0000` follows the record model (Q2) — the decision-led
+   models use the technology section order as the single decision
+   shape. Section orders live in the templates.
+3. **Status lifecycle** `Proposed → Accepted → Implemented →
+   (Superseded | Deprecated)`, plus `Withdrawn` from Proposed; status
+   drives plan-folder placement.
+4. **Filenames** `adr/NNNN-kebab-slug.md`, zero-padded, contiguous;
+   cross-references by relative path.
+5. **Criteria are testable, numbered, and verifiable** — each with a
+   `Verify:` method (inline command | `gate-check` | `manual`; see
+   the conventions §Verification Evidence).
+6. **Audit discipline** — Revision History rows on substantive
+   change; editorial flagged in the commit; Approvals populate at
+   Accepted.
+7. **Derived views are regenerated, never hand-edited** — `INDEX.md`
+   (and `COVERAGE.md` where the goals layer exists).
+8. **`plan/` is the work queue** — `todo → done` is the completion
+   event; the owning record advances on the same commit.
+9. **Multi-agent coordination** per the chosen mode (Q5): LOCKS /
+   WORKLOG / CURRENT_FOCUS, or IN_FLIGHT in worktree mode.
+10. **Git contract** — Conventional Commits; `Rationale:` footer on
+    record-touching commits; signing and trailers per Q6.
+11. **AGENTS.md is the hard-rules entry point**; `CLAUDE.md` is the
+    one-liner `@AGENTS.md`.
+12. **ADRs are internal artefacts — never user-visible.** No record
+    numbers, titles, or catalogue mentions in any string a
+    non-builder could read (UI copy, API responses, errors,
+    customer-facing logs, public docs, release notes). References
+    ARE allowed in code comments, commits, PRs, and internal docs.
+    When in doubt: if a non-builder could ever see the string, the
+    reference comes out.
 
 ## Step 4 — Assessment (depth-tiered; 10 questions at full depth, plus federation (Q11) and placement (Q12))
 

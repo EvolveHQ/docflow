@@ -27,20 +27,14 @@ Revision History row, never supersession.
 
 Run the shared assessment protocol before authoring:
 
-- **Depth selector first.** Ask how deep this assessment should go:
-  **express** — every choice takes its recommended default; only
-  questions with no derivable default (the free-text essentials) are
-  still asked; **guided** — only the questions marked high-impact
-  below, plus the free-text essentials; **full** — every question
-  below. If the repo's `CONVENTIONS.md` records an `Assessment depth:`,
-  pre-select it as the recommended option — the selector always
-  appears (one narrow exception: when the invocation already answers
-  every question the tiers differentiate, skip it and say so in one
-  line); a recorded depth is never applied silently. Otherwise
-  recommend **full** when the request arrived with little or no
-  context and **express** when it is already fully specified. At any
-  question the operator may answer "defaults from here" or "go
-  deeper"; honour the switch immediately.
+- **Depth selector first.** **express** — recommended defaults, only
+  free-text essentials asked; **guided** — the high-impact questions
+  too; **full** — everything. Pre-select a recorded
+  `Assessment depth:` as the recommendation (the selector always
+  appears — except when the invocation pre-answers every tiered
+  question: skip it and say so in one line); otherwise recommend full
+  for a bare request, express for a fully specified one. "Defaults
+  from here" / "go deeper" switch mid-flight — honour immediately.
 - Ask the questions below **one at a time**, each with a **recommended
   option** and a one-line reason; wait for each answer.
 - Use **structured selection** where the options are enumerable; free

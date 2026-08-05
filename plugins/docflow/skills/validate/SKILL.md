@@ -28,17 +28,13 @@ defaulted.
 
 Run the shared assessment protocol:
 
-- **Depth selector first.** Ask how deep this assessment should go:
-  **express** — every choice takes its recommended default; only
-  questions with no derivable default are still asked; **guided** —
-  only the high-impact questions plus the essentials; **full** — every
-  question. If the repo's `CONVENTIONS.md` records an
-  `Assessment depth:`, pre-select it as the recommended option — the
-  selector always appears (one narrow exception: when the invocation
-  already answers every question the tiers differentiate, skip it and
-  say so in one line); a recorded depth is never applied silently.
-  At any question the operator may answer "defaults from here" or "go
-  deeper"; honour the switch immediately.
+- **Depth selector first.** **express** — recommended defaults, only
+  free-text essentials asked; **guided** — the high-impact questions
+  too; **full** — everything. Pre-select a recorded
+  `Assessment depth:` as the recommendation (the selector always
+  appears — except when the invocation pre-answers every tiered
+  question: skip it and say so in one line). "Defaults from here" /
+  "go deeper" switch mid-flight — honour immediately.
 - Ask questions **one at a time**, each with a recommended option;
   use structured selection where options are enumerable.
 
