@@ -24,7 +24,18 @@ valid while every criterion has matching proof; the repo's inviolable
 boundaries live in an enumerated, decision-gated `CONSTRAINTS.md`;
 rejected proposals become `Withdrawn` and abandoned work is `dropped`,
 never deleted; and product repos can split **pure decision ADRs from
-living capability specs** (`spec/<slug>.md`). Tools can locate any docflow
+living capability specs** (`spec/<slug>.md`). Above the records sit
+**goals** (`goals/G-<slug>.md` — the recorded "why", with `serves:`
+edges from the records advancing them and a generated `COVERAGE.md`
+walk down to evidence), a **validation loop** (`validate` gathers a
+goal's measure and records *your* verdict as an append-only outcome
+entry — harm handled separately, whatever the verdict), a **graded
+autonomy ladder** (`autonomy: L0–L5` in the manifest — how much an
+agent may initiate unattended, with eight escalation triggers binding
+at every level), a sanctioned **model-migration path** (per-record
+approval, a `MIGRATION.md` mapping, evidence never touched), and a
+**release ritual** (promotion + publish, one operator confirmation
+per outward step). Tools can locate any docflow
 repository's catalogue deterministically via the `.docflow` marker
 (directory or one-line pointer file — the same pattern as git's `.git`). See the
 [methodology]({{ '/methodology/' | relative_url }}) for the formal definition of the conventions,
@@ -41,10 +52,12 @@ why they help, and where they fall short.
 | `ship-item` | Run the completion event: verify → execute each criterion's `Verify:` method and write **bound evidence** → integrate → `todo`→`done` → owning record → `Implemented` (only with full valid evidence) → INDEX/WORKLOG. |
 | `add-convention` | Assess whether a convention is worth codifying, route it to the right home (or to an ADR), then add it — e.g. enable optional practices like TDD on demand. |
 | `audit` | Lint the repo against its own conventions — numbering, INDEX sync, plan coverage, ADR-privacy leaks, declared-vs-computed status, evidence re-runs, constraints discipline, and more. |
-| `brainstorm` | **The front door.** Decompose a problem into *classified* candidates (choice / behaviour / rule / boundary / job) and route each to its writer on approval. Writes nothing until approved. |
+| `brainstorm` | **The front door.** Decompose a problem into *classified* candidates (choice / behaviour / rule / boundary / outcome / job) and route each to its writer on approval — an approved outcome becomes a goal file. Writes nothing else until approved. |
 | `challenge` | **The interrogator.** Pressure-test a draft by rubric, or elicit the boundaries you have not written down. Advisory — writes nothing, gates nothing, and may honestly return "solid, nothing to add". |
 | `agent-wave` | Orchestrate a wave of parallel worktree subagents over the queue, with checkpoint or continuous supervision. |
+| `validate` | The loop's third human gate *(in development)*: gather a due goal's measure, record **your** verdict (achieved / execution short / hypothesis wrong / inconclusive) as an append-only outcome entry, apply the goal transition. Harm is asked separately on every verdict. |
 | `rollup` | For a multi-repo product: aggregate every member repo's ADRs into one derived, product-wide roll-up (run from the home repo). |
+| `release` | The outward ritual *(in development)*: release gate (incl. the behavioural suite at the release commit) → promotion of the operator-chosen candidate → tag, push, npm, GitHub release — one confirmation per outward step; refuses unattended use at every autonomy level. |
 
 ## Install
 

@@ -159,8 +159,9 @@ Active goals than the cap.
   visible in the file but enforced by nothing.
 - **Standing direction** — vision, tone, canon. A direction is not
   achievable and never completes; it is a different artefact class
-  (the deferred creative surface), and forcing it into `GOALS.md`
-  would recreate the misfiling this programme already corrected once.
+  (the deferred creative surface), and forcing it into the goals
+  layer would recreate the misfiling this programme already corrected
+  once.
 - **Autonomy consumption** — graded autonomy reading goals as its
   compass is the autonomy decision.
 - **Federation-level goal roll-up** — goals stay per-repo until a

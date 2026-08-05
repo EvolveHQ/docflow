@@ -571,3 +571,29 @@ The router classifies as it decomposes:
 Nothing is written until the outline is approved; then each candidate
 goes to its writer, each under its own gate. You never had to know
 which skill owned what.
+
+### 6.6 A goal, served and validated *(in development)*
+
+The team records why the work exists, and later checks whether it
+worked:
+
+1. A brainstorm surfaces an outcome — "support tickets about lost
+   sessions should halve". On approval, `brainstorm` writes
+   `goals/G-halve-session-tickets.md`: statement, **measure**
+   (baseline: 40/month, threshold: ≤20/month, source: the support
+   dashboard), horizon 2027-Q1, review-by 2026-12-31 — plus its row
+   in the INDEX Goals section.
+2. The records built toward it name it: the session-resumption spec
+   carries `serves: [G-halve-session-tickets]`, and `COVERAGE.md`
+   shows the goal → spec → evidence → plan walk at a glance.
+3. In January, `/audit` reports the goal past its `review-by:` with
+   no outcome. `/validate` reads the dashboard (28/month), presents
+   baseline vs reading, and the operator picks the verdict:
+   **not-achieved-execution** — the work fell short; the goal stands.
+   The append-only outcome entry records cycle 1, the readings, the
+   basis, `harm: none`, and the verdict-giver. `review-by:` moves;
+   respecification is offered.
+4. Cycle 2, months later: 17/month — **achieved**. The goal's state
+   flips to `Achieved`; the spec stays (it describes enduring
+   behaviour); the goal file now carries its whole validation history
+   at zero context cost to future sessions.

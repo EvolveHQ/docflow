@@ -226,6 +226,23 @@ guard.
 - **INV-15 (slug immutability).** *(in development)* A capability
   spec's slug is immutable once the spec is `Agreed`; renaming means
   retiring and creating anew.
+- **INV-16 (goal integrity).** *(in development)* A goal id is
+  immutable and never reused; a `serves:` edge MUST resolve to a goal
+  file; removal is by terminal state, never deletion; derived views
+  (the index's Goals section, the coverage walk) are regenerated,
+  never hand-edited.
+- **INV-17 (human verdict).** *(in development)* A validation verdict
+  is given by a human, recorded as an append-only outcome entry;
+  harm is orthogonal to the verdict and its constraint disposition
+  passes through INV-13's decision gate — never auto-created.
+- **INV-18 (recorded grant).** *(in development)* An agent initiates
+  unattended work only within the manifest's recorded autonomy level;
+  the eight escalation triggers bind at every level; the level moves
+  only by an operator's edit.
+- **INV-19 (migration preserves history).** *(in development)* A
+  model migration never edits, moves, or rewrites evidence; moved
+  records carry their lineage; every numbering gap is accounted for
+  in the migration mapping; reclassification is not supersession.
 
 ### 4.6 Numbering at scale, and alternatives considered
 

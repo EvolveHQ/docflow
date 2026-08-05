@@ -16,9 +16,11 @@ below describe how docflow itself is built and maintained.
 ## Repository structure
 
 - `plugins/docflow/skills/` — **the product**. `bootstrap/` (with
-  `templates/`) plus the lifecycle skills (`new-adr`, `new-plan`,
-  `ship-item`, `add-convention`, `audit`, `brainstorm`, `agent-wave`,
-  `rollup`). This is what gets installed. One source for every target.
+  `templates/`) plus the lifecycle skills (`new-adr`, `new-spec`,
+  `new-plan`, `ship-item`, `add-convention`, `audit`, `brainstorm`,
+  `challenge`, `validate`, `agent-wave`, `rollup`, `release` —
+  thirteen in all). This is what gets installed. One source for every
+  target.
 - `plugins/docflow/.claude-plugin/plugin.json` — Claude Code / Cowork
   plugin manifest; `plugins/docflow/.codex-plugin/plugin.json` — Codex.
 - `.claude-plugin/marketplace.json` + `.agents/plugins/marketplace.json`
@@ -137,8 +139,10 @@ state and history; LOCKS discipline is not in use.
 
 - A pending item gets a `plan/todo/NNNN-<slug>.md` file BEFORE work
   starts, naming the owning ADR(s), scope, and exit criteria.
-- The completion event is: the change is fast-forwarded onto `main` and
-  the remote push succeeds. On completion, `git mv` the file to
+- The completion event is: the change is fast-forwarded onto the
+  **active candidate branch** (`v1/aligned-autonomy`; `main` is the
+  released line, advanced only by promotion) and the remote push
+  succeeds. On completion, `git mv` the file to
   `plan/done/<YYYY-MM-DD>-<slug>.md` with a footer naming the HEAD SHA
   (and any release tag / npm version).
 - The owning ADR(s) advance `Accepted → Implemented` on the same
