@@ -51,6 +51,36 @@ const CASES = [
       'verify.mjs output + exit code.',
   },
   {
+    key: 'legacy-range-migration',
+    prompt:
+      'Behavioural eval of the docflow `audit` skill against a RANGE-NUMBERED catalogue. Work ONLY in your ' +
+      'worktree; do NOT commit or push, and do NOT modify evals/fixtures/legacy-range itself. ' +
+      'FIRST copy evals/fixtures/legacy-range to a scratch directory (e.g. ../legacy-scratch) and work THERE — ' +
+      'that copy is the repo under audit for the rest of this case. ' +
+      'Read plugins/docflow/skills/audit/SKILL.md, then: ' +
+      '(1) DETECTION — audit the scratch repo and report whether it recognised the legacy range encoding, from ' +
+      'which signal(s), and confirm the run produced exactly ONE "migration available" finding, that the finding ' +
+      'is NOT a failure, and that the numbering / INDEX / section checks PASSED under the range rules ' +
+      '(gap at the cutoff expected, no Shape column required, the 0100 template not counted as an ADR). ' +
+      '(2) OFFER — produce the dry-run old-to-new number map WITHOUT writing anything, and state the file count ' +
+      'changed so far (it must be zero). The expected map is 0101 -> 0004 and 0102 -> 0005, with 0001-0003 ' +
+      'unchanged and 0001 keeping its number. ' +
+      '(3) MIGRATION — confirm the map, then apply the migration to the scratch repo exactly as the skill ' +
+      'specifies (renumber, stamp shape: on every ADR, rewrite depends-on / supersede links / relative ' +
+      'adr/NNNN-*.md links / INDEX rows / domains listings / plan/todo owning-ADR lines, retire the boundary ' +
+      'template in favour of adr/0000-template-technology.md, rewrite CONVENTIONS §ADR Shapes and drop the ' +
+      'recorded-exception clause, regenerate INDEX with the Shape column). Leave plan/done footers alone. ' +
+      'State the single commit message you WOULD use, listing every old-to-new pair (do not actually commit). ' +
+      '(4) POST-MIGRATION AUDIT — re-run the checks with the legacy rules off and confirm the catalogue passes ' +
+      'with NO manual edit. ' +
+      'THEN run the deterministic assertions from the docflow checkout against the scratch repo: ' +
+      'node -e "import(\'./evals/assertions.mjs\').then(m=>{const r=process.argv[1];const map={\'0101\':\'0004\',\'0102\':\'0005\'};' +
+      'm.assertMigratedToDeclaredShape(r,{map});m.assertReferencesRewritten(r,{map});' +
+      'm.assertHistoryPreserved(r,{numbers:[\'0101\']});console.log(\'OK\')})" <scratch-repo-path> ' +
+      'PASS only if all four steps hold AND that command prints OK. Report each step, the map you produced, ' +
+      'the commit message, and the assertion output.',
+  },
+  {
     key: 'bootstrap',
     prompt:
       'Behavioural eval of the docflow `bootstrap` skill. Work ONLY in your worktree; do NOT push. ' +
