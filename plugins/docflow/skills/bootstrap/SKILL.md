@@ -30,7 +30,7 @@ Inspect the repo before asking anything.
   lifecycle, **artefact root**, multi-agent mode, and which optional layers
   already exist). Then offer to **enable any opted-out optional layer**
   still absent — `plan/`, `_agent/`, `GLOSSARY.md`, `domains/`, or the
-  technology-ADR template/split — and write only the chosen ones, by
+  second ADR shape (the technology template) — and write only the chosen ones, by
   **merge**, under the recorded artefact root, leaving everything else
   untouched. Ask only the questions the new layers need (e.g. the
   coordination-mode question when enabling `_agent/`). This is the entry
@@ -51,7 +51,7 @@ questions.
   GLOSSARY.md            # shared terms (optional — see Q7)
   adr/
     0000-template.md     # capability-ADR template (always)
-    NNNN-template.md     # technology-ADR template (only if split — see Q2)
+    0000-template-technology.md  # technology-ADR template (only if two shapes — see Q2)
     NNNN-<kebab-slug>.md # one ADR per decision, contiguous numbering
   domains/<slug>/README.md   # optional (see Q7)
   plan/
@@ -103,7 +103,12 @@ A standalone repo has none of them.
 
 1. **ADRs are the source of truth.** One decision per ADR. Splits become
    new ADRs that supersede; never expand scope inside an existing one.
-2. **Up to two ADR shapes:**
+2. **Up to two ADR shapes, declared by field.** A repo that
+   distinguishes the two records the distinction in each ADR's `shape:`
+   metadata field (`capability` or `technology`; an absent field means
+   capability) — never in a number range. Every ADR takes the next
+   contiguous number whatever its shape, and each shape has its own
+   template, both numbered `0000`.
    - **Capability ADR** (what the system must do). Section order:
      metadata → Context → Capability statement → User stories / scenarios
      → Acceptance criteria → Out of scope → Open questions → References →
@@ -242,10 +247,13 @@ default (the operator may decline it — see Step 5 item 5b).
    (en-GB / en-US / other), and — if existing repo — what current files
    (README, CONTRIBUTING, docs/, adr/, etc.) must be preserved or
    merged. *No recommendation — project-specific.*
-2. **ADR shape.** Single shape, or capability-vs-technology split?
-   **Recommended: single shape** — start simple, split later if
-   long-lived product requirements clearly outlive their
-   implementations.
+2. **ADR shape.** A single shape, or **two shapes declared by field** —
+   capability and technology, each ADR naming its own in a `shape:`
+   metadata field? **Recommended: single shape** — start simple, add
+   the second shape later if long-lived product requirements clearly
+   outlive their implementations. Ask for no number boundary: shape is
+   metadata, so two-shape repos keep one contiguous sequence and get a
+   second `0000` template rather than a cutoff.
 3. **Status lifecycle.** Full `Proposed → Accepted → Implemented →
    (Superseded | Deprecated)`, or shorter (drop `Implemented`)?
    **Recommended: full lifecycle** — the `Implemented` rung is cheap
@@ -319,8 +327,10 @@ default (the operator may decline it — see Step 5 item 5b).
      single-area repo. Cheap to add later.
    - **`GLOSSARY.md`** — shared term definitions. *Defer; add on
      terminology drift.*
-   - **technology-ADR template** — *defer unless technology decisions split
-     from product decisions.*
+   - **technology-ADR template** (`adr/0000-template-technology.md`, the
+     second ADR shape) — *defer unless technology decisions split from
+     product decisions.* Enabling it is the same choice as Q2's second
+     shape; the cross-check in Step 4.5 keeps the two answers in step.
 8. **Verify gate.** What command(s) decide a change is shippable
    (`npm test`, CI workflow, deploy + smoke, manual)? *No
    recommendation — project-specific.* If the user has no real gate,
@@ -408,7 +418,9 @@ mid-flight, get the full scan.)
   "Required CI green" needs a CI gate. Confirm what the CI actually
   runs, or downgrade the completion event.
 - **Q2 single ADR shape + Q7 technology-ADR template requested.**
-  Contradiction — pick one.
+  Contradiction — pick one. The technology template only exists in a
+  two-shape repo, because it is the template the `shape: technology`
+  field selects.
 - **Q11 = join but no confirmable home pointer.** Joining needs a
   home/federation pointer you can confirm. If none exists yet, you are
   really *establishing* — switch Q11a to establish.
@@ -446,17 +458,23 @@ Keep the pointer in sync if a later re-run migrates the root.
    CONVENTIONS section above; omit otherwise.
 3. `CLAUDE.md` — from `templates/CLAUDE.md` (single line `@AGENTS.md`).
 4. `adr/0000-template.md` — from `templates/adr-capability.md`.
-5. `adr/NNNN-template.md` — from `templates/adr-technology.md`, only if
-   Q2 said split. `NNNN` is the number where capability ADRs end
-   (project-defined, e.g. 0091; default 0100 if unspecified).
+5. `adr/0000-template-technology.md` — from
+   `templates/adr-technology.md`, only if Q2 chose two shapes. It ships
+   with `shape: technology` pre-filled. Both templates are numbered
+   `0000`; **no number boundary is chosen and none is recorded**, and no
+   template is written under any other number.
 5b. **Seed ADR (default on; opt-out at sign-off).** Write the seed
    `adr/0001-record-architecture-decisions.md` from
    `templates/adr-0001-seed.md`, filled from the assessment answers — it
    records the **decision to adopt** the documentation-led, ADR-driven
    method, status **`Implemented`**, and **references `CONVENTIONS.md`** for
    the rules (it does not duplicate them). Keep it generic — no other
-   project's ADR numbers. **Skip only if the operator opted out.** For a
-   **split** repo (Q2) use the technology-ADR shape for the seed. If `plan/`
+   project's ADR numbers. **Skip only if the operator opted out.** In a
+   **two-shape** repo (Q2) the seed stays `0001` and carries
+   `shape: technology`, written in the technology-ADR section order —
+   adopting the method is a decision about how the repo is built. Because
+   the shape is declared in the metadata, the scaffolded conventions need
+   no exception clause for it. If `plan/`
    exists, also write a matching `plan/done/<date>-adopt-adr-method.md` (the
    seed's completion event is this bootstrap), so plan-coverage stays
    satisfied. On a **retrofit/backfill** (Step 6), the seed is `0001`, ahead
@@ -481,7 +499,11 @@ Keep the pointer in sync if a later re-run migrates the root.
     the committed cross-worktree dashboard.
 11. `_agent/HANDOFF.md` — from `templates/_agent-HANDOFF.md`.
 12. `INDEX.md` — header + the seed ADR's row (item 5b); an empty table only
-    if the seed was declined.
+    if the seed was declined. In a **two-shape** repo (Q2) the table
+    carries a **Shape** column, filled from each ADR's `shape:` field
+    (blank field → `capability`); a single-shape repo has no such column.
+    Neither `0000-` template appears in the table — templates are not
+    decisions.
 13. `_agent/prompts/autonomous.md` — from
     `templates/_agent-prompts-autonomous.md`, **only** if Q8 confirmed a
     verify gate. Keep the integration block matching Q4b: the
@@ -565,7 +587,9 @@ produces drafts the user reviews before they are committed.
      Rationale section reconstructed from commit messages and code
      comments — flag any speculative rationale clearly so the human
      can correct it.
-   - Number contiguously from `0001`. Show the user the proposed list
+   - Number contiguously from `0001`, irrespective of shape. In a
+     two-shape repo, stamp each draft's `shape:` field to match the
+     template it was drafted from. Show the user the proposed list
      (number + title + status + one-line scope) before writing files.
 
 3. **Propose plan/done entries.** For each ADR drafted as
