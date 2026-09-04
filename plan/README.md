@@ -17,6 +17,9 @@ tracks the human ordering of work, not the ADR catalogue ordering.
 ## Convention
 
 - A pending item gets a `plan/todo/` file BEFORE work starts.
+- Numbers are never reused. The next `todo/` number is one above the
+  highest number across `todo/` filenames and `done/` titles; an empty
+  queue does not restart the sequence.
 - When work ships, the file is `git mv`'d to `plan/done/` with a new
   date prefix and the body amended with the shipped footer.
 - A small fix that doesn't justify a plan file (a typo, a one-line

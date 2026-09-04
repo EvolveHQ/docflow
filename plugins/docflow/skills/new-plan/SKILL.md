@@ -15,7 +15,11 @@ Add one item to the implementation queue.
 2. Read `CONVENTIONS.md` for the plan-folder convention and the
    completion event, and `plan/README.md` if present. Resolve `plan/`
    against the **artefact root** recorded there (default: repository root).
-3. `ls plan/todo/` to learn existing numbers and priority ordering.
+3. `ls plan/todo/` to learn the queue's priority ordering, and read the
+   titles in `plan/done/` as well: shipped items keep their number only
+   in the title (the filename carries a date). The next number is one
+   above the highest number used in either place — an empty queue does
+   not restart the sequence, and numbers are never reused.
 
 ## Step 0.5 — Assessment (run first)
 
@@ -73,7 +77,9 @@ Questions (skip any the request already answers):
 
 ## Step 2 — Pick number and position
 
-- `plan/todo/NNNN-<slug>.md`, zero-padded. **Lower numbers run first** —
+- `plan/todo/NNNN-<slug>.md`, zero-padded, `NNNN` being the next number
+  after the highest across `plan/todo/` filenames and `plan/done/`
+  titles. **Lower numbers run first** —
   ask where this sits in priority and renumber neighbours only if the
   user wants it inserted ahead of existing items.
 
