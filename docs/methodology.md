@@ -159,6 +159,25 @@ repository using one shape omits the field entirely and its index carries
 no such column. (A federation roll-up MAY add the column when any member
 declares two shapes — §5.)
 
+Earlier revisions of this method encoded the shape as a **number range** —
+capability records below a recorded cutoff, technology records at or
+above, the technology template numbered at the boundary. That encoding is
+superseded, for three reasons: it overflows (a capability block reaching
+the cutoff cannot grow, because the technology block already holds the
+numbers above it, and widening the boundary collides with real records);
+it forces an exception, since the record that adopts the method is itself
+a technology-shaped decision that must be first in the sequence; and it is
+per-shape numbering, which the flat-identity rule (§4.6) already rejects
+for domains. A repository still on it remains **conformant** — it is
+checked by its own range rules — and MAY migrate: the technology records
+take the numbers after the last capability one in their original order,
+capability numbers are unchanged, `shape:` is written on every record, and
+every in-repository reference follows. The migration MUST be confirmed
+against a shown old-to-new map before any file is written, and MUST land
+as one commit whose message lists every pair — outside the repository,
+history is not rewritten, so that list is the only bridge between the two
+numberings.
+
 ### 4.4 Status — the state machine
 
 States: `Proposed`, `Accepted`, `Implemented`, `Superseded`, `Deprecated`.
