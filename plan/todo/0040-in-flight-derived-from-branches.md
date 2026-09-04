@@ -32,6 +32,22 @@ adr/0014-concurrency-guardrails.md (r4)
    ownership record; open-question resolution wording updated. 0014
    r4: G4 names the branch/PR claim. Both stay Implemented; Rationale
    footers on the commit.
+6b. **ADR 0038 r2 (lands with this item, before the claim convention is
+   scaffolded).** The claim branch is `claim/<item-key>`, the item key
+   being the queue file name without extension — a fixed prefix so the
+   push itself is the exclusion — replacing the actor-prefixed form and
+   resolving the open question; the claim commit exists before the
+   branch is pushed; a remote claim whose tip is at or behind the
+   integration branch is not a claim; per-mode claim (branch in
+   separate worktrees; Claimed by plus lock rows in a shared checkout;
+   none for a single writer); stale = a worktree or Claimed by whose
+   remote claim branch no longer exists, a detached worktree being
+   neither; AC6: ship deletes the remote branch and the local one once
+   unheld; the rejected "claim commit to main" alternative reworded to
+   carve out the shared-checkout form; "spawn brief" reads "wave
+   specification"; the templates' partition sentence becomes "named
+   actors answer for areas; work is assigned by claim" on the
+   post-plan-0038 text. Scope items 1 and 4 above follow this wording.
 7. **Docs.** `README.md`, `USAGE.md`, `docs/examples.md` (mode-3
    paragraph), `docs/methodology.md`.
 

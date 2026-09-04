@@ -23,6 +23,14 @@ Owning ADR: adr/0037-shipped-record-is-git-and-plan-done.md
    state, handed to the migration finding (plan 0042).
 6. **Docs.** `README.md`, `USAGE.md` (output table, ship description),
    `docs/index.md`, `docs/methodology.md`, `docs/examples.md`.
+7. **ADR 0037 r2 (lands with this item).** Under pull-request
+   integration the completion changes — plan move, Status removal, ADR
+   advance, INDEX regeneration — are the last commit on the claim
+   branch before the request is marked ready; the merge is the
+   completion event; the footer names the HEAD SHA under direct-to-main
+   and the pull request under pull-request integration (AC1 amended;
+   both plan READMEs reworded). The run-prompt template's Ship step and
+   ship-item's PR path move accordingly.
 
 Out of scope:
 - Removing this repository's own `_agent/WORKLOG.md` — plan 0042
