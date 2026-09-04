@@ -12,9 +12,10 @@ This is the enforcement `AGENTS.md` cannot guarantee on its own.
 
 1. Confirm the repo is bootstrapped.
 2. Read `CONVENTIONS.md` to learn what to enforce: the **ADR shape
-   scheme** — a single shape, or two shapes declared by a `shape:` field
-   in each ADR's metadata block (no number boundary is recorded and none
-   is read) — status lifecycle, integration model, multi-agent mode,
+   scheme** — a single shape, two shapes declared by a `shape:` field in
+   each ADR's metadata block (no number boundary is recorded and none is
+   read), or the **legacy range encoding** described in item 4 — status
+   lifecycle, integration model, multi-agent mode,
    language mandate, optional artefacts present (GLOSSARY, domains/),
    and any Q10 domain hard rules, and the **artefact root** (default:
    repository root) — resolve `adr/`, `plan/`, `INDEX.md` against it and
@@ -24,6 +25,23 @@ This is the enforcement `AGENTS.md` cannot guarantee on its own.
    index-holder, or a plain `member`) and read the recorded identity
    scheme; the cross-repo checks (check 12) run from the index-holding
    repo.
+4. **Legacy range encoding.** Some two-shape repos were scaffolded
+   before the shape became a declared field and encode it in the
+   **number** instead: capability ADRs below a cutoff, technology ADRs
+   at or above it, and the technology template sitting at the boundary
+   as a pseudo-ADR. Two signals identify it, and **either one alone is
+   enough**:
+   - `CONVENTIONS.md` §ADR Shapes records a cutoff — a capability range
+     and a technology range rather than a `shape:` field; or
+   - `adr/` holds a template file numbered other than `0000` (e.g.
+     `adr/0100-template.md`, or whatever boundary the project chose).
+
+   Treat the two as one condition, not two findings. When it holds the
+   catalogue is **valid, not broken** — it predates the declared field.
+   Run the checks below under the **legacy rules** noted against
+   checks 1, 2 and 4, so a repo that passed before keeps passing, and
+   report the single finding of check 15. A migration onto the declared
+   field is offered in Step 4; nothing is rewritten here.
 
 ## Step 1 — Run the checks (read-only)
 
@@ -33,16 +51,25 @@ relevant):
 **Templates are not decisions.** Every check that walks the catalogue
 excludes each `adr/0000-*.md` file — `0000-template.md` and, in a
 two-shape repo, `0000-template-technology.md`. They are never numbered,
-indexed, plan-covered, or section-checked as ADRs.
+indexed, plan-covered, or section-checked as ADRs. Under the **legacy
+range encoding** the boundary-numbered template is excluded in exactly
+the same way: it is a template, not the first technology ADR.
 
 1. **Numbering.** ADR filenames contiguous, zero-padded, no gaps, no
    duplicates — **one sequence for the whole catalogue**, whatever each
    ADR's shape. Flag any template numbered other than `0000`.
+   *Legacy encoding:* apply the range rules exactly as they stood —
+   numbering contiguous **within each block** with no duplicates, the
+   gap at the cutoff expected rather than flagged, capability ADRs below
+   the cutoff and technology ADRs at or above it, and the
+   boundary-numbered template neither flagged nor counted as an ADR.
 2. **INDEX sync.** Every ADR appears in `INDEX.md`; every INDEX row has
    a matching file; metadata fields (status, title, date) agree. In a
    two-shape repo the table carries a **Shape** column and its values
    agree with each ADR's `shape:` field (an absent field reads as
    `capability`); a single-shape repo has no such column.
+   *Legacy encoding:* the table carries no Shape column — shape is read
+   from the range — so do not flag its absence.
 3. **Plan coverage.** Every `Accepted` ADR has a `plan/todo/` item;
    every `Implemented` ADR has a `plan/done/` entry. Flag orphans both
    ways.
@@ -56,6 +83,11 @@ indexed, plan-covered, or section-checked as ADRs.
    `capability` nor `technology`. A `shape:` field in a single-shape repo
    is redundant, not wrong — report it as hygiene. Acceptance criteria
    are numbered.
+   *Legacy encoding:* the shape is the ADR's side of the cutoff — below
+   it capability, at or above it technology — and no `shape:` field is
+   expected. Validate the section order against that, exactly as before.
+   A `shape:` field contradicting the range is a real inconsistency; one
+   agreeing with it is hygiene, not a failure.
 5. **Status validity.** Every `status:` is in the declared lifecycle.
    `Superseded` ADRs name a successor in `superseded-by:`; the successor
    names them in `supersedes:` (symmetry).
@@ -135,13 +167,26 @@ indexed, plan-covered, or section-checked as ADRs.
     file exists, surface it as an **offer** to add one (external tools
     discover the catalogue through it) — never as a hard failure;
     migration is offered, not forced.
+15. **Legacy shape encoding.** N/A unless Step 0 item 4 holds. When it
+    does, report exactly **one** finding at severity **migration
+    available**: name the signal(s) that identified the encoding (the
+    cutoff recorded in §ADR Shapes, the boundary-numbered template file,
+    or both), state that the catalogue is valid and passing under the
+    range rules, and say that a complete mechanical migration onto the
+    declared-field scheme is available (Step 4). Never split it into a
+    second finding — a template numbered off `0000` and a recorded
+    cutoff are the same condition — and never fail the audit for it.
 
 ## Step 2 — Report
 
 Lead with a one-line verdict (clean / N issues). Then the punch list,
 grouped by severity: **blocking** (privacy leaks, status/lifecycle
 violations, broken cross-refs), **drift** (INDEX out of sync, missing
-plan files), **hygiene** (stale locks, formatting).
+plan files), **hygiene** (stale locks, formatting), and **migration
+available** (a superseded scheme the repo can move off — check 15).
+A migration-available finding does not count towards the issue count in
+the verdict and never makes the run dirty: a repo whose only finding is
+that one is **clean, with a migration available**.
 
 ## Step 3 — Offer fixes
 
