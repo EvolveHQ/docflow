@@ -51,8 +51,6 @@ reopen)
    commit naming where each file's content lives.
 
 Out of scope:
-- The Empatica security-console repository's own migration — a
-  follow-up run of the offered procedure in that repository.
 - Federation-wide propagation (ADR 0027 applies unchanged).
 
 ## Exit criteria
