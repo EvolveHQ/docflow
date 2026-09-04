@@ -21,6 +21,8 @@ Author one new ADR, consistent with this repo's conventions.
    (default: repository root) — resolve `adr/` and `INDEX.md` against it
    (`AGENTS.md`/`CLAUDE.md` stay at the repo root).
 3. Read `INDEX.md` and `ls adr/` to learn existing numbers and titles.
+   Ignore every `adr/0000-*.md` file — the templates are not decisions
+   and hold no number in the sequence.
 4. If a `federation.md` exists, this repo is part of a multi-repo
    product. Note the **identity scheme** and the **home** it records —
    they govern numbering and cross-repo references below.
