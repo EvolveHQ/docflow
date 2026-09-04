@@ -8,7 +8,8 @@ Owning ADR: adr/0039-plan-item-carries-its-own-status.md
    `plan/README.md` define the `## Status` section (Claimed by,
    Blockers, Stopped) on every queued item; `new-plan` Step 3 writes
    it empty; `ship-item` Step 5 removes it on the move to `plan/done/`.
-2. **Run prompt template.** Step 3 "Claim" fills Claimed by; the stop
+2. **Run prompt template.** The Claim step introduced by plan 0040
+   also fills Claimed by; the stop
    path writes Stopped (date, reason), commits, surfaces — replacing
    "record the reason in `_agent/CURRENT_FOCUS.md`". Step 8 drops the
    snapshot update. `agent-wave`'s brief says the same.

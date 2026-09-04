@@ -19,8 +19,9 @@ adr/0014-concurrency-guardrails.md (r4)
    and the stop path have no dashboard write or cleanup; the mode-2
    path no longer references a file that does not exist.
 4. **ship-item / run prompt.** No dashboard-row removal; the merge and
-   branch deletion end the claim. Prompt Step 3 "Claim" pushes the
-   named branch (and opens the draft PR at integrate time).
+   branch deletion end the claim. The run-prompt template gains a Claim step between Pick and
+   Implement: push the branch named for the item; where integration is
+   PR-based, the draft PR opens at integrate time.
 5. **Audit.** Check 10 derives the in-flight set from `git worktree
    list`, remote branches matching the convention, and draft PRs;
    fails on duplicate claims and claims without an item; flags stale
