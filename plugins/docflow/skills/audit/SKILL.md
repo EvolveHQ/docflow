@@ -222,6 +222,14 @@ Compute the map and show it **before touching a single file**:
   technology ADRs `0101`, `0102`, `0104`, the map is `0101 → 0013`,
   `0102 → 0014`, `0104 → 0015`. Order is preserved; gaps in the old
   technology block are closed, not carried over.
+- **The moved set is the technology *range*, not every technology-shaped
+  ADR.** The range encoding forces one exception — the ADR that adopts
+  the method is a technology-shaped decision that has to be first in the
+  sequence — and repos record it as such in their conventions. It is
+  below the cutoff, so it does **not** move: it keeps its number and
+  simply gains `shape: technology`, which is what retires the exception
+  clause in step 6. Renumbering it would churn the one number every
+  early commit cites, for nothing.
 
 Render the map as an `old → new` table with each ADR's title, then list
 what follows from it: every `depends-on`, `supersedes` /
