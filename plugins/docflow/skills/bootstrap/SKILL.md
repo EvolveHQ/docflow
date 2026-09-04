@@ -36,6 +36,18 @@ Inspect the repo before asking anything.
   coordination-mode question when enabling `_agent/`). This is the entry
   point for adding a layer you deferred at first bootstrap.
 
+  **Enabling the second ADR shape is a scheme switch, not a file copy.**
+  It is the one deferred layer that changes a choice already recorded, so
+  write all of it in one pass or none of it: replace §ADR Shapes in
+  `CONVENTIONS.md` with the two-shape text, add the technology
+  section-order and shape bullets to `AGENTS.md`, write
+  `adr/0000-template-technology.md`, and regenerate `INDEX.md` with the
+  Shape column. Existing ADRs keep their numbers and stay capability —
+  an absent `shape:` field already means capability, so no ADR is
+  rewritten and nothing is renumbered. Half of the switch strands the
+  repo in the state the Step 4.5 cross-check calls a contradiction: a
+  technology template that a single-shape scheme will never select.
+
 State which situation applies in one line before asking the assessment
 questions.
 
@@ -420,7 +432,8 @@ mid-flight, get the full scan.)
 - **Q2 single ADR shape + Q7 technology-ADR template requested.**
   Contradiction — pick one. The technology template only exists in a
   two-shape repo, because it is the template the `shape: technology`
-  field selects.
+  field selects. (On a re-run that enables the second shape on an
+  existing single-shape repo, the two move together — see Step 1.)
 - **Q11 = join but no confirmable home pointer.** Joining needs a
   home/federation pointer you can confirm. If none exists yet, you are
   really *establishing* — switch Q11a to establish.

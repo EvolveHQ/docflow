@@ -154,8 +154,10 @@ criteria MUST be numbered and testable (§4.5 INV-4).
 Where both shapes are in use, the shape is **declared** in the `shape:`
 field, never inferred from the number: a repository keeps one contiguous
 sequence for both shapes, ships one template per shape (each numbered
-`0000`, neither a decision), and MAY render the shape as a column of its
-index. A repository using one shape omits the field entirely.
+`0000`, neither a decision), and its index MUST carry a Shape column. A
+repository using one shape omits the field entirely and its index carries
+no such column. (A federation roll-up MAY add the column when any member
+declares two shapes — §5.)
 
 ### 4.4 Status — the state machine
 

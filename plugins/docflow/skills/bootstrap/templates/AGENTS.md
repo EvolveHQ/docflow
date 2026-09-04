@@ -36,7 +36,8 @@ These come from `CONVENTIONS.md` and override default behaviour:
 - **Capability ADR section order:** metadata → Context → Capability
   statement → User stories / scenarios → Acceptance criteria → Out of
   scope → Open questions → References → Revision History → Approvals.
-<!-- If two ADR shapes (Q2): -->
+<!-- If two ADR shapes (Q2): keep the NEXT TWO bullets. A single-shape repo
+drops both — it writes no `shape:` field at all. -->
 - **Technology ADR section order:** metadata → Context → Decision →
   Rationale → Consequences → Acceptance criteria → Out of scope → Open
   questions → References → Revision History → Approvals. Rationale must
@@ -45,6 +46,7 @@ These come from `CONVENTIONS.md` and override default behaviour:
   which order applies (`capability` — the default when the field is
   absent — or `technology`). Every ADR takes the next contiguous number
   whatever its shape.
+<!-- End of the two-shape bullets. -->
 - **Acceptance criteria are testable and numbered.**
 - **ADRs are internal artefacts — never user-visible.** ADR numbers,
   ADR titles, and the existence of the ADR catalogue must NEVER appear
