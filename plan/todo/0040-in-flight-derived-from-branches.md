@@ -1,0 +1,66 @@
+# 0040 — In-flight state derived: retire the dashboard, claim by branch
+
+Owning ADR: adr/0038-in-flight-state-derived-from-branches-and-pull-requests.md
+Also revises: adr/0010-worktree-conflict-reconciliation.md (r3),
+adr/0014-concurrency-guardrails.md (r4)
+
+## Scope
+
+1. **Claim convention.** `templates/CONVENTIONS.md` §Concurrency
+   Guardrails G4 and `templates/AGENTS.md`'s hard-rule bullet name the
+   claim: a pushed branch `<actor>/NNNN-<slug>` for the item, plus a
+   draft PR where integration is PR-based. The identifier-reservation
+   and single-writer paragraphs point at the branch and PR description
+   instead of a dashboard. `USAGE.md` §Concurrency documents it.
+2. **bootstrap.** No `_agent-IN_FLIGHT.md` template; mode 3 Step 5
+   writes no dashboard and no `.gitignore` entry.
+3. **agent-wave.** Step 2 hands each agent its reserved block in the
+   brief and requires it in the PR description or first commit; Step 4
+   and the stop path have no dashboard write or cleanup; the mode-2
+   path no longer references a file that does not exist.
+4. **ship-item / run prompt.** No dashboard-row removal; the merge and
+   branch deletion end the claim. Prompt Step 3 "Claim" pushes the
+   named branch (and opens the draft PR at integrate time).
+5. **Audit.** Check 10 derives the in-flight set from `git worktree
+   list`, remote branches matching the convention, and draft PRs;
+   fails on duplicate claims and claims without an item; flags stale
+   worktrees and offers to prune; reports "unverifiable" with no
+   remote. Check 11 collisions become FAIL severity; the dashboard
+   cross-check is removed.
+6. **ADR revisions.** 0010 r3: AC2 names the claiming branch/PR as the
+   ownership record; open-question resolution wording updated. 0014
+   r4: G4 names the branch/PR claim. Both stay Implemented; Rationale
+   footers on the commit.
+7. **Docs.** `README.md`, `USAGE.md`, `docs/examples.md` (mode-3
+   paragraph), `docs/methodology.md`.
+
+Out of scope:
+- Task blockers and stop reasons (plan 0041).
+- Migration of existing dashboards (plan 0042).
+
+## Exit criteria
+
+Maps to adr/0038-in-flight-state-derived-from-branches-and-pull-requests.md
+acceptance criteria:
+
+1. Claim convention stated in scaffolded CONVENTIONS/AGENTS and USAGE.
+   → AC1
+2. Bootstrap writes no dashboard in any mode. → AC2
+3. Audit check 10 derives from worktrees/branches/PRs with the listed
+   failures, stale prune offer, and "unverifiable" without a remote.
+   → AC3
+4. Audit check 11 collisions are FAIL; dashboard cross-check removed.
+   → AC4
+5. agent-wave carries reservation in the brief and PR; no dashboard
+   phase anywhere. → AC5
+6. ship-item and prompt remove no row. → AC6
+7. ADR 0010 r3 and 0014 r4 rows present; both Implemented. → AC7
+8. Docs updated. → AC8
+9. Verify gate green; skill parity preserved.
+
+When this ships, ADR 0038 advances Accepted → Implemented.
+
+## Dependencies
+
+- Plan 0038 (file set) and plan 0039 (shares ship-item, prompt,
+  bootstrap edits) — sequential.
