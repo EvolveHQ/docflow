@@ -4,6 +4,7 @@ title: <Title in sentence case>
 status: Proposed
 date: YYYY-MM-DD
 owner: <agent-id or human>
+shape: technology
 supersedes:
 superseded-by:
 depends-on: []

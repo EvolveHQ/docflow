@@ -61,9 +61,12 @@ ADR catalogue.
   `domains/auth/`) over the flat catalogue, for navigating a large catalogue
   by area. Organisational only — ADRs keep their number; `new-adr` files
   each under its domain. Enable it when the project has distinct areas (Q7).
-- `GLOSSARY.md`, the technology-ADR template, and project-specific hard
-  rules (vendor-naming, regulated evidence, language mandate, audit-stream
-  separation) — Q7/Q10.
+- `GLOSSARY.md`, the technology-ADR template
+  (`adr/0000-template-technology.md` — the **second ADR shape**, chosen at
+  Q2 and declared per ADR by a `shape:` metadata field rather than by a
+  number range), and project-specific hard rules (vendor-naming,
+  regulated evidence, language mandate, audit-stream separation) —
+  Q2/Q7/Q10.
 
 Omitting any optional layer leaves a valid repo; a lifecycle skill that
 needs an absent layer refuses cleanly and says what's missing.

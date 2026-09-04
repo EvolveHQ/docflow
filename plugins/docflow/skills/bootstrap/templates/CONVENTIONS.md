@@ -68,19 +68,36 @@ Cross-references link by relative path to `adr/NNNN-*.md`.
 This project uses a single ADR shape. ADRs use `adr/0000-template.md`
 and contain these sections in order: Context, Capability statement,
 User stories / scenarios, Acceptance criteria, Out of scope, Open
-questions, References, Revision History, Approvals.
+questions, References, Revision History, Approvals. No `shape:` field
+is written. The template is not a decision: it is excluded from the
+catalogue and from `INDEX.md`.
 
-<!-- Split (Q2): -->
+<!-- Two shapes (Q2): -->
 <!--
-Capability ADRs (`0001`-`NNNN`) describe what the system must do. They
-use `adr/0000-template.md` with sections: Context, Capability
-statement, User stories / scenarios, Acceptance criteria, Out of
-scope, Open questions, References, Revision History, Approvals.
+This project uses two ADR shapes. The shape is **declared**, not
+inferred from the number: each ADR's metadata block carries a `shape:`
+field whose value is `capability` or `technology`. An absent field
+means `capability`. Every ADR takes the next contiguous number
+whatever its shape — there is no boundary between the shapes and
+nothing to widen.
 
-Technology ADRs (`NNNN+1` onwards) describe how the system is built.
-They use `adr/NNNN-template.md` with sections: Context, Decision,
-Rationale, Consequences, Acceptance criteria, Out of scope, Open
-questions, References, Revision History, Approvals.
+Capability ADRs (`shape: capability`, or the field omitted) describe
+what the system must do. They use `adr/0000-template.md` with
+sections: Context, Capability statement, User stories / scenarios,
+Acceptance criteria, Out of scope, Open questions, References,
+Revision History, Approvals.
+
+Technology ADRs (`shape: technology`) describe how the system is
+built. They use `adr/0000-template-technology.md` with sections:
+Context, Decision, Rationale, Consequences, Acceptance criteria, Out
+of scope, Open questions, References, Revision History, Approvals.
+
+Both templates are numbered `0000`. Neither is a decision: both are
+excluded from the catalogue, from `INDEX.md`, and from every audit
+check that walks the ADRs. No template carries any other number.
+
+`INDEX.md` carries a **Shape** column so the shape is read from the
+table rather than inferred.
 
 Technology ADR Rationale must name alternatives considered and give
 specific reasons they were rejected. Generic rationale such as

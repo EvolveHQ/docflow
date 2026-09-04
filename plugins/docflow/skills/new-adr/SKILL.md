@@ -12,14 +12,17 @@ Author one new ADR, consistent with this repo's conventions.
 1. Confirm the repo is bootstrapped: `AGENTS.md`, `CONVENTIONS.md`, and
    an `adr/` directory with at least `adr/0000-template.md` must exist.
    If not, stop and offer to run the **bootstrap** skill first.
-2. Read `CONVENTIONS.md` to learn this repo's choices: ADR shape
-   (single vs. capability/technology split and the cutoff number),
-   status lifecycle, language mandate (if any), whether `domains/`
-   groupings exist (and, if so, which domain this ADR belongs to — ask if
+2. Read `CONVENTIONS.md` to learn this repo's choices: the **ADR shape
+   scheme** — a single shape, or two shapes (capability and technology)
+   declared by a `shape:` field in each ADR's metadata block; there is
+   no number boundary to read — status lifecycle, language mandate (if
+   any), whether `domains/` groupings exist (and, if so, which domain this ADR belongs to — ask if
    it isn't obvious), the multi-agent mode, and the **artefact root**
    (default: repository root) — resolve `adr/` and `INDEX.md` against it
    (`AGENTS.md`/`CLAUDE.md` stay at the repo root).
 3. Read `INDEX.md` and `ls adr/` to learn existing numbers and titles.
+   Ignore every `adr/0000-*.md` file — the templates are not decisions
+   and hold no number in the sequence.
 4. If a `federation.md` exists, this repo is part of a multi-repo
    product. Note the **identity scheme** and the **home** it records —
    they govern numbering and cross-repo references below.
@@ -52,8 +55,10 @@ Run the shared assessment protocol before authoring:
   answer, and never guess scope when invoked with no context.
 
 Questions (skip any the request already answers):
-1. **Shape** — capability or technology (only if the repo splits shapes;
-   single-shape repos skip this). *Recommended: per the request's intent.*
+1. **Shape** — capability or technology (only if the repo declares two
+   shapes; single-shape repos skip this). The answer picks the template
+   and is written into the ADR's `shape:` field. *Recommended: per the
+   request's intent.*
 2. **Supersede?** — none, or select the ADR(s) this replaces.
    *Recommended: none.* *(High-impact — asked in guided: supersession
    linkage is hard to reverse.)*
@@ -69,14 +74,18 @@ Questions (skip any the request already answers):
 ## Step 1 — Determine shape and number
 
 - **Shape.** If the repo uses a single ADR shape, use
-  `adr/0000-template.md`. If it uses the split, decide capability vs.
-  technology from the user's intent (what the system must do →
-  capability; how it is built → technology); confirm with the user if
-  ambiguous. Use `adr/0000-template.md` (capability) or the technology
-  template (`adr/NNNN-template.md`).
+  `adr/0000-template.md` and write no `shape:` field. If it declares two
+  shapes, **ask** capability or technology — decide from the user's
+  intent (what the system must do → capability; how it is built →
+  technology) and confirm with the user if ambiguous. Then use the
+  matching template — `adr/0000-template.md` for capability,
+  `adr/0000-template-technology.md` for technology — and **write the
+  chosen value into the ADR's `shape:` field**. Both templates are
+  numbered `0000` and are never themselves catalogue entries.
 - **Number.** Next contiguous integer after the highest existing ADR,
-  zero-padded to 4 digits. No gaps, no reuse. For a split repo, keep
-  capability ADRs below the cutoff and technology ADRs at/above it.
+  zero-padded to 4 digits. No gaps, no reuse. **The shape does not
+  affect the number** — capability and technology ADRs share one
+  contiguous sequence, and neither `0000-` template counts towards it.
   **In a federation** (a `federation.md` exists), number contiguously
   **within this repo** — numbers are not unique across the federation.
   The ADR's federation identity is the recorded scheme applied to this
@@ -111,7 +120,9 @@ If this ADR replaces an existing one:
 ## Step 4 — Write
 
 - Copy the chosen template, fill all placeholders. Status `Proposed`,
-  today's date, owner = current agent/human.
+  today's date, owner = current agent/human. In a two-shape repo, set
+  `shape:` to the shape chosen in Step 1; in a single-shape repo omit
+  the field entirely.
 - Seed the Revision History with an `r1 — Initial draft` row. Leave the
   Approvals table empty (it populates on Accepted).
 - **Do not invent acceptance criteria or rationale to fill space.** If
@@ -119,7 +130,10 @@ If this ADR replaces an existing one:
 
 ## Step 5 — Wire up
 
-- Regenerate `INDEX.md` from ADR metadata.
+- Regenerate `INDEX.md` from ADR metadata. In a two-shape repo the table
+  carries a **Shape** column, filled from each ADR's `shape:` field (an
+  absent field renders as `capability`); a single-shape repo has none.
+  Neither `0000-` template is a catalogue entry, so neither appears.
 - If `domains/` exists, add the ADR to the owning domain's `README.md`
   ADR list. If you assign the ADR to a domain that doesn't exist yet, offer
   to create `domains/<slug>/README.md` (at the recorded artefact root) and

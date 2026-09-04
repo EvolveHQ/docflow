@@ -11,8 +11,10 @@ This is the enforcement `AGENTS.md` cannot guarantee on its own.
 ## Step 0 — Preconditions and context
 
 1. Confirm the repo is bootstrapped.
-2. Read `CONVENTIONS.md` to learn what to enforce: ADR shape and
-   cutoff, status lifecycle, integration model, multi-agent mode,
+2. Read `CONVENTIONS.md` to learn what to enforce: the **ADR shape
+   scheme** — a single shape, or two shapes declared by a `shape:` field
+   in each ADR's metadata block (no number boundary is recorded and none
+   is read) — status lifecycle, integration model, multi-agent mode,
    language mandate, optional artefacts present (GLOSSARY, domains/),
    and any Q10 domain hard rules, and the **artefact root** (default:
    repository root) — resolve `adr/`, `plan/`, `INDEX.md` against it and
@@ -28,15 +30,32 @@ This is the enforcement `AGENTS.md` cannot guarantee on its own.
 Report each as PASS / FAIL / N/A with specifics (file + line where
 relevant):
 
+**Templates are not decisions.** Every check that walks the catalogue
+excludes each `adr/0000-*.md` file — `0000-template.md` and, in a
+two-shape repo, `0000-template-technology.md`. They are never numbered,
+indexed, plan-covered, or section-checked as ADRs.
+
 1. **Numbering.** ADR filenames contiguous, zero-padded, no gaps, no
-   duplicates. Split repos: capability below cutoff, technology at/above.
+   duplicates — **one sequence for the whole catalogue**, whatever each
+   ADR's shape. Flag any template numbered other than `0000`.
 2. **INDEX sync.** Every ADR appears in `INDEX.md`; every INDEX row has
-   a matching file; metadata fields (status, title, date) agree.
+   a matching file; metadata fields (status, title, date) agree. In a
+   two-shape repo the table carries a **Shape** column and its values
+   agree with each ADR's `shape:` field (an absent field reads as
+   `capability`); a single-shape repo has no such column.
 3. **Plan coverage.** Every `Accepted` ADR has a `plan/todo/` item;
    every `Implemented` ADR has a `plan/done/` entry. Flag orphans both
    ways.
 4. **Section completeness.** Each ADR has the required sections in the
-   order its shape mandates. Acceptance criteria are numbered.
+   order its **declared shape** mandates — read the `shape:` field:
+   `capability`, or an absent field, means the capability order
+   (Context, Capability statement, User stories / scenarios, …);
+   `technology` means the technology order (Context, Decision,
+   Rationale, Consequences, …). In a single-shape repo every ADR takes
+   that repo's one order. Flag any `shape:` value that is neither
+   `capability` nor `technology`. A `shape:` field in a single-shape repo
+   is redundant, not wrong — report it as hygiene. Acceptance criteria
+   are numbered.
 5. **Status validity.** Every `status:` is in the declared lifecycle.
    `Superseded` ADRs name a successor in `superseded-by:`; the successor
    names them in `supersedes:` (symmetry).
