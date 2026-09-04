@@ -45,3 +45,6 @@ ADR change.
 | [0038](adr/0038-in-flight-state-derived-from-branches-and-pull-requests.md) | In-flight state is derived from branches and pull requests | Proposed | 2026-09-04 | 0036, 0006, 0010, 0014 |
 | [0039](adr/0039-plan-item-carries-its-own-status.md) | A plan item carries its own live status; the snapshot file is retired | Proposed | 2026-09-04 | 0036, 0001 |
 | [0040](adr/0040-coordination-directory-migration.md) | Compatibility, clean-up, and migration of existing coordination directories | Proposed | 2026-09-04 | 0036, 0037, 0038, 0039, 0033, 0035 |
+| [0041](adr/0041-status-at-a-glance-reporting-convention.md) | Status at a glance — every report says what was achieved and what is missing | Proposed | 2026-09-04 | 0001, 0007 |
+| [0042](adr/0042-skills-end-every-run-with-status-at-a-glance.md) | docflow's own skills end every run with Status at a glance | Proposed | 2026-09-04 | 0041, 0007, 0011, 0012 |
+| [0043](adr/0043-persisted-reports-carry-status-at-a-glance.md) | Persisted reports carry Status at a glance — pull-request bodies, wave summaries, stop entries | Proposed | 2026-09-04 | 0041, 0006, 0038, 0039 |
