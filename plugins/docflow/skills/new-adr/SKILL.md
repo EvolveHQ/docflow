@@ -35,7 +35,9 @@ Author one new ADR, consistent with this repo's conventions.
    and the remedy is the migration, never crossing the boundary.
 3. Read `INDEX.md` and `ls adr/` to learn existing numbers and titles.
    Ignore every `adr/0000-*.md` file — the templates are not decisions
-   and hold no number in the sequence.
+   and hold no number in the sequence. Under the legacy range encoding,
+   ignore the boundary-numbered template the same way: it is a template,
+   not the first technology ADR.
 4. If a `federation.md` exists, this repo is part of a multi-repo
    product. Note the **identity scheme** and the **home** it records —
    they govern numbering and cross-repo references below.
@@ -99,6 +101,8 @@ Questions (skip any the request already answers):
   zero-padded to 4 digits. No gaps, no reuse. **The shape does not
   affect the number** — capability and technology ADRs share one
   contiguous sequence, and neither `0000-` template counts towards it.
+  *Legacy range encoding:* the number is instead the next contiguous one
+  **within this ADR's block**, per Step 0 item 2.
   **In a federation** (a `federation.md` exists), number contiguously
   **within this repo** — numbers are not unique across the federation.
   The ADR's federation identity is the recorded scheme applied to this

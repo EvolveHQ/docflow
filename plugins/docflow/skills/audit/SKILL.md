@@ -260,7 +260,8 @@ ask for it as its own question, and take silence or ambiguity as a no.
 4. Rewrite every in-catalogue reference to a moved number: `depends-on:`,
    `supersedes:`, `superseded-by:`, relative `adr/NNNN-*.md` links in
    any ADR body, `INDEX.md` rows, domain `README.md` listings, and the
-   owning-ADR line of every `plan/todo/` item. Rewrite by resolved
+   owning-ADR line — and any other relative ADR link — of every
+   `plan/todo/` item. Rewrite by resolved
    identity, not by text search alone — a bare `0101` in prose may be a
    quantity, and a number that did **not** move must not be touched.
 5. Delete the boundary-numbered template and write
