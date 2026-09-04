@@ -4,6 +4,8 @@ title: Record architecture decisions as ADRs
 status: Implemented
 date: <YYYY-MM-DD>
 owner: <agent-id or human>
+# shape: technology    # Two-shape repos only — see the note below. Delete
+#                      # this line in a repo with a single ADR shape.
 supersedes:
 superseded-by:
 depends-on: []
@@ -15,7 +17,13 @@ tags: [process, conventions]
 <!-- Bootstrap writes this as the seed ADR (adr/0001) by default. It records
 the *decision* to adopt the method; the operative rules live in
 CONVENTIONS.md. Keep it generic — do not reference another project's ADR
-numbers. For a split-shape repo, adapt to the technology-ADR shape. -->
+numbers. In a repo that declares two ADR shapes, uncomment
+`shape: technology` above and recast the body in the technology-ADR
+section order (Context, Decision, Rationale, Consequences, Acceptance
+criteria, Out of scope, Open questions, References, Revision History,
+Approvals) — adopting the method is a decision about how the repo is
+built. The number stays 0001: the shape is declared in the metadata, so
+no exception clause is needed anywhere. -->
 
 ## Context
 

@@ -4,6 +4,9 @@ title: <Title in sentence case>
 status: Proposed
 date: YYYY-MM-DD
 owner: <agent-id or human>
+# shape: capability    # Optional. Only repos that declare two ADR shapes
+#                      # use this field; the values are `capability` and
+#                      # `technology`. An absent field means capability.
 supersedes:
 superseded-by:
 depends-on: []

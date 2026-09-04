@@ -10,7 +10,7 @@ this repo represent.>
 ## Repository structure
 
 - `adr/0000-template.md` — canonical ADR template.
-<!-- If technology-ADR split (Q2): also include `adr/NNNN-template.md` for technology ADRs. -->
+<!-- If two ADR shapes (Q2): also include `adr/0000-template-technology.md` for technology ADRs. -->
 - `adr/NNNN-<kebab-slug>.md` — one ADR per decision, contiguous
   numbering, no gaps.
 - `INDEX.md` — table regenerated from every ADR's metadata block.
@@ -36,11 +36,15 @@ These come from `CONVENTIONS.md` and override default behaviour:
 - **Capability ADR section order:** metadata → Context → Capability
   statement → User stories / scenarios → Acceptance criteria → Out of
   scope → Open questions → References → Revision History → Approvals.
-<!-- If technology-ADR split (Q2): -->
+<!-- If two ADR shapes (Q2): -->
 - **Technology ADR section order:** metadata → Context → Decision →
   Rationale → Consequences → Acceptance criteria → Out of scope → Open
   questions → References → Revision History → Approvals. Rationale must
   name alternatives considered with specific rejection reasons.
+- **Shape is declared, never numbered.** Each ADR's `shape:` field says
+  which order applies (`capability` — the default when the field is
+  absent — or `technology`). Every ADR takes the next contiguous number
+  whatever its shape.
 - **Acceptance criteria are testable and numbered.**
 - **ADRs are internal artefacts — never user-visible.** ADR numbers,
   ADR titles, and the existence of the ADR catalogue must NEVER appear
