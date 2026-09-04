@@ -8,56 +8,41 @@ purpose — the durable record lives in git (`git log`),
 If status files and git disagree, git is authoritative; correct this
 file.
 
-> **Released 0.9.3** (tag v0.9.3; `@evolvehq/docflow@0.9.3` on npm).
-> main is **well ahead of the release**: consistency pass, static-gate
-> extension, gate-integrity convention, **depth tiers everywhere**
-> (bootstrap + the five assessment-bearing lifecycle skills), and the
-> **artefact-root discovery contract** (.docflow marker/pointer — the
-> contract Clarity builds against). **Cut 0.9.4 next** — skill
-> behaviour changed across the set. Catalogue all-Implemented (or
-> Superseded); **plan queue empty**.
+> **Released 0.9.4** (tag v0.9.4; `@evolvehq/docflow@0.9.4` on npm).
+> `main` is the development line again (ADR 0044): the candidate
+> branches `v1/aligned-autonomy` and `v1/agent-loop-graph` are archived
+> unmerged. `main` carries **23 unpushed commits** from 2026-09-04:
+> sixteen ADRs (0034–0049; 0044 Implemented, the rest Proposed) and
+> fifteen queued items. This file is retired by plan 0042 when it
+> ships; until then it is kept current.
 
 ## Active state
 
-- **Branch:** main
+- **Branch:** main, 23 commits ahead of `origin/main`, not pushed.
 - **Active item:** none — no work in flight.
 - **Blockers:** none.
 - **Uncommitted work:** none.
 
 ## Last shipped
 
-**2026-07-03, a three-ship day:**
-- **Plan 0033 — bootstrap depth tiers** (fc158bc): express / guided /
-  full selector, express minimal profile, guided 3-question subset,
-  federation guard, recorded depth preference; template variants for
-  omitted layers; express behavioural eval PASS (worktree subagent).
-  ADR 0032 → Implemented.
-- **Plan 0035 — artefact-root discovery** (37a1798): `.docflow`
-  marker-dir / pointer-file precedence (the `.git` pattern) so tools
-  like **Clarity** resolve any repo's catalogue in one check; audit
-  check 14; this repo dogfoods `root: .`. ADR 0033 → Implemented.
-- **Plan 0034 — lifecycle tier adoption** (3f1611e): the canonical
-  selector in the five assessment-bearing skills with per-skill
-  high-impact markers; feedback gate explicitly waived by the
-  operator. ADR 0031 → Implemented — the tiers capability is complete.
+- **2026-09-04 — plan 0046, return to main** (acd3eed / a1b0813):
+  ADR 0044 recorded at Implemented. Same day, without a ship: ADRs
+  0034–0043 and 0045–0049 authored (Proposed), the new-plan numbering
+  defect fixed (00daf05), ADR 0005 superseded by 0036.
+- **2026-07-03 — plans 0033, 0035, 0034** (fc158bc, 37a1798, 3f1611e):
+  depth tiers, artefact-root discovery, lifecycle tier adoption; then
+  release 0.9.4 (ffd0b4e).
 
 ## Next item
 
-Queue is empty. **Cut release 0.9.4** — skill behaviour changed across
-bootstrap and five lifecycle skills; write the /release skill while
-performing the ritual.
+1. **Push `main`** when the operator says so — every wave-related item
+   needs the remote tip to carry the coordination ADRs.
+2. **Accept** the Proposed ADRs 0034–0043 and 0045–0049, settling the
+   open questions in 0034, 0036, 0038, 0041, 0045, 0047, 0049.
+3. **Ship the queue in order**, 0036 → 0051: shape-by-field (0036,
+   0037), coordination directory (0038–0042), Status at a glance
+   (0043–0045), agent-wave (0047–0051). Every item edits shared files;
+   none of it runs as a wave.
 
-Candidate decisions still unqueued from the 2026-07-02 review:
-
-1. **Prose-drift detection** — derive shared facts (target list, skill
-   inventory) from the manifests and check prose surfaces against them
-   (new ADR).
-2. **Executable acceptance criteria** — bind ADR criterion N to eval
-   assertion N so "Implemented" means "asserted" (new ADR, the big
-   one).
-3. Deferred: plain-language assessment wording (now awaits tier
-   feedback across all skills); provenance in WORKLOG.
-
-For **docflow-clarity**: record the consumer-side discovery decision in
-its own catalogue, referencing `docflow/0033-artefact-root-discovery`
-via the federation.
+Unqueued ideas from the 2026-07-02 review (prose-drift detection;
+executable acceptance criteria) remain in this file's git history.
