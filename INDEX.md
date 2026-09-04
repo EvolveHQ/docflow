@@ -49,3 +49,8 @@ ADR change.
 | [0042](adr/0042-skills-end-every-run-with-status-at-a-glance.md) | docflow's own skills end every run with Status at a glance | Proposed | 2026-09-04 | 0041, 0007, 0011, 0012 |
 | [0043](adr/0043-persisted-reports-carry-status-at-a-glance.md) | Persisted reports carry Status at a glance — pull-request bodies, wave summaries, stop entries | Proposed | 2026-09-04 | 0041, 0006, 0038, 0039 |
 | [0044](adr/0044-development-returns-to-main.md) | Development returns to main — candidate branches archived unmerged | Implemented | 2026-09-04 | 0001, 0006, 0009 |
+| [0045](adr/0045-wave-specification-contract.md) | The wave specification is the contract between the orchestrator and the executor | Proposed | 2026-09-04 | 0010, 0014, 0034, 0035, 0038, 0039, 0041, 0043 |
+| [0046](adr/0046-serialised-integration-under-direct-to-main.md) | Orchestrated waves integrate serially in queue order under direct-to-main | Proposed | 2026-09-04 | 0006, 0007, 0014, 0037, 0038, 0039, 0045 |
+| [0047](adr/0047-agent-wave-adapts-to-host-orchestration-capability.md) | agent-wave adapts to the orchestration capability the host exposes | Proposed | 2026-09-04 | 0006, 0007, 0013, 0014, 0015, 0031, 0036, 0038, 0044, 0045 |
+| [0048](adr/0048-wave-resumes-by-replanning-from-git.md) | A wave resumes by re-planning from git | Proposed | 2026-09-04 | 0013, 0031, 0037, 0038, 0039, 0045, 0046 |
+| [0049](adr/0049-skill-directories-carry-declarative-host-interface-files-only.md) | Skill directories carry SKILL.md plus declarative host interface files only | Proposed | 2026-09-04 | 0004, 0011, 0013, 0015 |
