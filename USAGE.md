@@ -202,7 +202,7 @@ After sign-off, the skill writes:
 | `CLAUDE.md` | `templates/CLAUDE.md` | Single line `@AGENTS.md`. |
 | `adr/0000-template.md` | `templates/adr-capability.md` | Capability-ADR template. |
 | `adr/0000-template-technology.md` | `templates/adr-technology.md` | Technology-ADR template, `shape: technology` pre-filled. Only if Q2 chose two shapes. Both templates are numbered `0000`; neither is a catalogue entry. |
-| `adr/0001-record-architecture-decisions.md` | `templates/adr-0001-seed.md` | **Seed ADR** recording the decision to adopt the method (`Implemented`, references `CONVENTIONS.md`). Default on; declined at sign-off if not wanted. |
+| `adr/0001-record-architecture-decisions.md` | `templates/adr-0001-seed.md` | **Seed ADR** recording the decision to adopt the method (`Implemented`, references `CONVENTIONS.md`). Default on; declined at sign-off if not wanted. In a two-shape repo (Q2) it carries `shape: technology` and the technology section order (Decision / Rationale / Consequences). |
 | `plan/README.md` | `templates/plan-README.md` | Plus empty `plan/todo/.gitkeep` and `plan/done/.gitkeep`. |
 | `_agent/ROLES.md` | `templates/_agent-ROLES.md` | Single `default-agent` by default. |
 | `_agent/LOCKS.md` | `templates/_agent-LOCKS.md` | Empty header. Created only if Q5 enabled LOCKS discipline. |

@@ -484,10 +484,17 @@ Keep the pointer in sync if a later re-run migrates the root.
    the rules (it does not duplicate them). Keep it generic — no other
    project's ADR numbers. **Skip only if the operator opted out.** In a
    **two-shape** repo (Q2) the seed stays `0001` and carries
-   `shape: technology`, written in the technology-ADR section order —
-   adopting the method is a decision about how the repo is built. Because
-   the shape is declared in the metadata, the scaffolded conventions need
-   no exception clause for it. If `plan/` exists, also write a matching `plan/done/<date>-adopt-adr-method.md` (the
+   `shape: technology`. Uncomment that field and **swap the body**:
+   delete Capability statement and User stories / scenarios, and
+   uncomment the Decision / Rationale / Consequences block the seed
+   template already ships. Do **not** recast the capability sections —
+   they have no technology content — and do **not** leave the capability
+   headings in place after stamping the field; audit validates section
+   order from the declared shape, so a field-only uncomment fails the
+   section check. Adopting the method is a decision about how the repo
+   is built. Because the shape is declared in the metadata, the
+   scaffolded conventions need no exception clause for it. If `plan/`
+   exists, also write a matching `plan/done/<date>-adopt-adr-method.md` (the
    seed's completion event is this bootstrap), so plan-coverage stays
    satisfied. On a **retrofit/backfill** (Step 6), the seed is `0001`, ahead
    of the reconstructed decisions.
