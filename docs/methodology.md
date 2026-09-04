@@ -137,6 +137,7 @@ Frontmatter fields:
 | `status` | enum | MUST | One of the §4.4 states. |
 | `date` | ISO date | MUST | Authoring date. |
 | `owner` | string | MUST | Accountable agent or human. |
+| `shape` | enum | MAY | `capability` or `technology`. Only repositories that distinguish the two shapes carry it; an absent field means `capability`. |
 | `supersedes` | id / empty | MAY | ADR(s) this replaces. |
 | `superseded-by` | id / empty | MAY | ADR that replaced this one. |
 | `depends-on` | list of ids | SHOULD | ADRs this decision builds on. |
@@ -149,6 +150,12 @@ A **technology** ADR replaces "Capability statement / User stories" with
 "Decision → Rationale → Consequences", and its Rationale MUST name the
 alternatives considered with specific rejection reasons. Acceptance
 criteria MUST be numbered and testable (§4.5 INV-4).
+
+Where both shapes are in use, the shape is **declared** in the `shape:`
+field, never inferred from the number: a repository keeps one contiguous
+sequence for both shapes, ships one template per shape (each numbered
+`0000`, neither a decision), and MAY render the shape as a column of its
+index. A repository using one shape omits the field entirely.
 
 ### 4.4 Status — the state machine
 
