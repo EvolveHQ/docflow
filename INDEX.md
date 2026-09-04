@@ -9,7 +9,7 @@ ADR change.
 | [0002](adr/0002-assessment-driven-bootstrap.md) | Interactive assessment-driven bootstrap | Superseded | 2026-05-21 | 0001 |
 | [0003](adr/0003-backfill-retrofit.md) | Backfill — retrofit existing repos and capture undocumented developments | Implemented | 2026-05-21 | 0001, 0002 |
 | [0004](adr/0004-adr-privacy.md) | ADRs are internal artefacts, never user-visible | Implemented | 2026-05-21 | 0001 |
-| [0005](adr/0005-multi-agent-coordination.md) | Configurable multi-agent coordination modes | Implemented | 2026-05-21 | 0001 |
+| [0005](adr/0005-multi-agent-coordination.md) | Configurable multi-agent coordination modes | Superseded | 2026-05-21 | 0001 |
 | [0006](adr/0006-integration-model.md) | Configurable integration model (direct-to-main vs PR-based) | Implemented | 2026-05-21 | 0001, 0005 |
 | [0007](adr/0007-lifecycle-skills.md) | Lifecycle skills for the ADR and plan loop | Implemented | 2026-05-22 | 0001 |
 | [0008](adr/0008-dual-target-packaging.md) | Dual-target packaging from one skill source | Superseded | 2026-05-22 | 0001, 0007 |
@@ -40,3 +40,8 @@ ADR change.
 | [0033](adr/0033-artefact-root-discovery.md) | Artefact-root discovery contract | Implemented | 2026-07-03 | 0017, 0023 |
 | [0034](adr/0034-adr-shape-as-declared-metadata.md) | ADR shape as declared metadata, one contiguous sequence | Proposed | 2026-09-04 | 0001, 0007, 0029, 0030 |
 | [0035](adr/0035-range-numbered-catalogue-migration.md) | Compatibility and migration for range-numbered catalogues | Proposed | 2026-09-04 | 0034, 0003, 0028 |
+| [0036](adr/0036-coordination-directory-holds-only-what-git-cannot-tell-you.md) | The coordination directory holds only what git cannot tell you | Proposed | 2026-09-04 | 0001, 0005, 0006, 0016 |
+| [0037](adr/0037-shipped-record-is-git-and-plan-done.md) | The shipped-work record is git history and plan/done | Proposed | 2026-09-04 | 0036, 0001, 0007 |
+| [0038](adr/0038-in-flight-state-derived-from-branches-and-pull-requests.md) | In-flight state is derived from branches and pull requests | Proposed | 2026-09-04 | 0036, 0006, 0010, 0014 |
+| [0039](adr/0039-plan-item-carries-its-own-status.md) | A plan item carries its own live status; the snapshot file is retired | Proposed | 2026-09-04 | 0036, 0001 |
+| [0040](adr/0040-coordination-directory-migration.md) | Compatibility, clean-up, and migration of existing coordination directories | Proposed | 2026-09-04 | 0036, 0037, 0038, 0039, 0033, 0035 |

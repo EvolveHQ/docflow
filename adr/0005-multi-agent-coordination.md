@@ -1,11 +1,11 @@
 ---
 adr: 0005
 title: Configurable multi-agent coordination modes
-status: Implemented
+status: Superseded
 date: 2026-05-21
 owner: Eugenio Minardi
 supersedes:
-superseded-by:
+superseded-by: ["0036"]
 depends-on: ["0001"]
 tags: [coordination, agents]
 ---
@@ -86,6 +86,7 @@ shared checkout), even when each writer runs a single agent.
 |------|----------|--------|--------|
 | 2026-05-21 | r1 | Eugenio Minardi | Backfilled from commit 8d9e3a0 (three-option multi-agent mode: single / shared / worktree). |
 | 2026-06-28 | r2 | Eugenio Minardi | Clarified the selection axis is *writers* (integration concurrency), not agents — a multi-developer team uses mode 3 even with one agent each (new AC4); reframed bootstrap Q5 prose. No mode change; framing/guidance. Stays Implemented. |
+| 2026-09-04 | r3 | Eugenio Minardi | Superseded by adr/0036-coordination-directory-holds-only-what-git-cannot-tell-you.md: the writer-keyed modes are restated there and the per-mode `_agent/` file set is replaced (derived state — worklog, snapshot, dashboard, hand-off — retired). Status Implemented → Superseded. |
 
 ## Approvals
 
