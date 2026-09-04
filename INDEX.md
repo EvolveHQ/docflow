@@ -48,3 +48,4 @@ ADR change.
 | [0041](adr/0041-status-at-a-glance-reporting-convention.md) | Status at a glance — every report says what was achieved and what is missing | Proposed | 2026-09-04 | 0001, 0007 |
 | [0042](adr/0042-skills-end-every-run-with-status-at-a-glance.md) | docflow's own skills end every run with Status at a glance | Proposed | 2026-09-04 | 0041, 0007, 0011, 0012 |
 | [0043](adr/0043-persisted-reports-carry-status-at-a-glance.md) | Persisted reports carry Status at a glance — pull-request bodies, wave summaries, stop entries | Proposed | 2026-09-04 | 0041, 0006, 0038, 0039 |
+| [0044](adr/0044-development-returns-to-main.md) | Development returns to main — candidate branches archived unmerged | Implemented | 2026-09-04 | 0001, 0006, 0009 |
