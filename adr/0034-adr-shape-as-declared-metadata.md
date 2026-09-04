@@ -1,7 +1,7 @@
 ---
 adr: 0034
 title: ADR shape as declared metadata, one contiguous sequence
-status: Proposed
+status: Accepted
 date: 2026-09-04
 owner: Eugenio Minardi
 supersedes:
@@ -120,9 +120,7 @@ catalogue; none of them reads a cutoff.
 
 ## Open questions
 
-- Whether the Shape column should also be rendered in single-shape
-  indexes for uniformity across a federation roll-up. Draft position:
-  no; the roll-up may add it when any member is two-shape.
+- None.
 
 ## References
 
@@ -137,8 +135,10 @@ catalogue; none of them reads a cutoff.
 | Date | Revision | Author | Change |
 |------|----------|--------|--------|
 | 2026-09-04 | r1 | Eugenio Minardi | Initial draft (Proposed), from the approved brainstorm: shape moves from a number range to a `shape:` metadata field; one contiguous sequence; two `0000` templates; skills read the field, never a cutoff. Motivated by the overflow, the seed-ADR exception, and consistency with the flat-identity principle. |
+| 2026-09-04 | r2 | Eugenio Minardi | Status Proposed → Accepted; acceptance delegated to the session by the operator for the sequential development of the queue. Open question resolved: the Shape column is rendered in two-shape indexes only; a federation roll-up may add it when any member is two-shape. Plan 0036 authorised. |
 
 ## Approvals
 
 | Role | Name | Date | Signature |
 |------|------|------|-----------|
+| Maintainer | Eugenio Minardi | 2026-09-04 | — (delegated) |
