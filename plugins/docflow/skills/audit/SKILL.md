@@ -197,3 +197,91 @@ acceptance criteria, or remove suspected privacy leaks without the
 user confirming each — those need judgement. Commit fixes as
 `fix(adr): ...` / `docs: ...` with a `Rationale:` footer where an ADR
 is touched.
+
+If check 15 fired, offer the **legacy range migration** here too — as
+its own offer, separate from the mechanical fixes above, and never
+bundled into a "fix everything" confirmation. Step 4 is the procedure.
+
+## Step 4 — Offer the legacy range migration (only when check 15 fired)
+
+The migration is **offered, never forced**. A repo that declines keeps
+the range encoding, keeps passing under the legacy rules, and is offered
+again on the next audit. Nothing below is written without the
+confirmation in 4.2.
+
+### 4.1 — Dry run: show the old-to-new number map
+
+Compute the map and show it **before touching a single file**:
+
+- **Capability ADRs** — those below the cutoff — keep their numbers.
+  Nothing moves, so the numbers already cited in commits, tickets and
+  shipped plan entries still resolve.
+- **Technology ADRs** — those at or above the cutoff — take the numbers
+  immediately following the **highest capability ADR**, in their
+  original relative order. With capability ADRs ending at `0012` and
+  technology ADRs `0101`, `0102`, `0104`, the map is `0101 → 0013`,
+  `0102 → 0014`, `0104 → 0015`. Order is preserved; gaps in the old
+  technology block are closed, not carried over.
+
+Render the map as an `old → new` table with each ADR's title, then list
+what follows from it: every `depends-on`, `supersedes` /
+`superseded-by`, relative `adr/NNNN-*.md` link, `INDEX.md` row, domain
+`README.md` listing, and `plan/todo/` owning-ADR reference that names a
+moved number; the boundary template replaced by
+`adr/0000-template-technology.md`; §ADR Shapes rewritten to the declared
+field. Say plainly what is **not** touched: `plan/done/` footers, commit
+messages, tags, and any reference from outside the catalogue. Those are
+history, and history is not rewritten.
+
+### 4.2 — Confirm
+
+Ask for an explicit confirmation of **that map**. Write nothing without
+it. Acceptance of the audit report is not acceptance of the migration:
+ask for it as its own question, and take silence or ambiguity as a no.
+
+### 4.3 — Apply, as one commit
+
+1. `git mv` each moved technology ADR to its new number, keeping its
+   slug. Capability files do not move.
+2. In each moved file, update the `adr:` metadata field and the H1
+   heading to the new number.
+3. Write `shape:` on **every** ADR — `technology` on the moved ones,
+   `capability` on the ones that stayed. Write it explicitly on both:
+   the field is the encoding now, and a catalogue that carries it only
+   on half its ADRs is still readable but no longer self-describing.
+4. Rewrite every in-catalogue reference to a moved number: `depends-on:`,
+   `supersedes:`, `superseded-by:`, relative `adr/NNNN-*.md` links in
+   any ADR body, `INDEX.md` rows, domain `README.md` listings, and the
+   owning-ADR line of every `plan/todo/` item. Rewrite by resolved
+   identity, not by text search alone — a bare `0101` in prose may be a
+   quantity, and a number that did **not** move must not be touched.
+5. Delete the boundary-numbered template and write
+   `adr/0000-template-technology.md` in its place — the technology
+   template, `shape: technology` pre-filled. `adr/0000-template.md`
+   stays as the capability template; no template carries any other
+   number afterwards.
+6. Rewrite `CONVENTIONS.md` §ADR Shapes to the declared-field form: two
+   shapes named by the field, an absent field meaning capability, one
+   contiguous sequence with no boundary, both templates numbered
+   `0000`, and a Shape column in `INDEX.md`. Delete the cutoff, and
+   delete any clause recording the seed ADR as an exception to the
+   range — under the declared field the seed is simply
+   `shape: technology`, and there is nothing to except. If `AGENTS.md`
+   mirrors the section, give it the matching shape hard rules.
+7. Regenerate `INDEX.md` from the new metadata, with the **Shape**
+   column.
+8. Commit **once**. The message lists **every** old-to-new pair, one per
+   line, so the renumbering is reconstructible from history alone — it
+   is the only record of the old numbers, and there is no alias field to
+   fall back on. Conventional Commit, with the `Rationale:` footer the
+   repo's git contract requires for ADR changes.
+
+### 4.4 — Verify before handing back
+
+Re-run Step 1 with the legacy rules **off**: one contiguous sequence,
+each ADR's sections matching its declared shape, a Shape column whose
+values agree with the fields, every relative link resolving, and no
+template numbered other than `0000`. The catalogue must pass with **no
+manual edit**. If anything fails, the migration is incomplete — finish
+it in the same commit rather than leaving a half-migrated catalogue,
+which is the one state neither rule set describes.

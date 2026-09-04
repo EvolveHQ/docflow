@@ -48,6 +48,39 @@ Inspect the repo before asking anything.
   repo in the state the Step 4.5 cross-check calls a contradiction: a
   technology template that a single-shape scheme will never select.
 
+  **A repo already on the legacy range encoding gets the migration
+  offer instead.** Some two-shape repos were scaffolded before the shape
+  became a declared field and encode it in the **number**: §ADR Shapes
+  records a cutoff (capability below it, technology at or above), and
+  `adr/` holds a template numbered other than `0000` (e.g.
+  `adr/0100-template.md`). Either signal alone identifies it. Such a repo
+  is not missing a layer — it has both shapes already — so do not offer
+  the scheme switch above, which would strand it with two rival
+  encodings. Offer the **migration onto the declared field**, on the same
+  terms the audit skill uses:
+
+  - Show the **old-to-new number map first**, as a dry run: capability
+    ADRs keep their numbers; technology ADRs take the numbers following
+    the highest capability ADR, in their original relative order.
+    Alongside it, list the references that follow (`depends-on`,
+    `supersedes` / `superseded-by`, relative `adr/NNNN-*.md` links,
+    `INDEX.md`, domain `README.md` listings, `plan/todo/` owning-ADR
+    lines) and what is left as history (`plan/done/` footers, commit
+    messages, tags).
+  - **Write nothing without an explicit confirmation of that map.**
+    Declining is a valid outcome: the repo keeps the range encoding and
+    keeps passing its own rules.
+  - On confirmation, apply the migration exactly as the **audit** skill's
+    migration step specifies — renumber, stamp `shape:` on every ADR,
+    rewrite every in-catalogue reference, replace the boundary template
+    with `adr/0000-template-technology.md`, rewrite §ADR Shapes to the
+    declared field and drop any seed-ADR exception clause, regenerate
+    `INDEX.md` with the Shape column — and land it as **one commit whose
+    message lists every old-to-new pair**. That procedure is the single
+    source of truth; do not paraphrase a second variant of it here.
+  - Then continue the re-run normally for the layers that really are
+    absent (`plan/`, `_agent/`, `GLOSSARY.md`, `domains/`).
+
 State which situation applies in one line before asking the assessment
 questions.
 

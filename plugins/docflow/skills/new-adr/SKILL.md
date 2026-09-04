@@ -20,6 +20,19 @@ Author one new ADR, consistent with this repo's conventions.
    it isn't obvious), the multi-agent mode, and the **artefact root**
    (default: repository root) — resolve `adr/` and `INDEX.md` against it
    (`AGENTS.md`/`CLAUDE.md` stay at the repo root).
+   **Legacy range encoding.** A repo scaffolded before the shape became
+   a declared field encodes it in the number instead — §ADR Shapes
+   records a cutoff, or `adr/` holds a template numbered other than
+   `0000` (e.g. `adr/0100-template.md`); either signal alone identifies
+   it. Say so, and offer the migration onto the declared field (the
+   **audit** skill carries the procedure) before authoring. If the
+   operator declines, author under the repo's own rules: read the cutoff
+   and place this ADR on its side of it — capability below, technology
+   at or above, next contiguous **within that block** — using the
+   boundary-numbered template for a technology ADR, and write **no**
+   `shape:` field, which that repo does not use. If the block this ADR
+   belongs to has reached the cutoff, stop and say so: the range is full,
+   and the remedy is the migration, never crossing the boundary.
 3. Read `INDEX.md` and `ls adr/` to learn existing numbers and titles.
    Ignore every `adr/0000-*.md` file — the templates are not decisions
    and hold no number in the sequence.
