@@ -1,7 +1,7 @@
 ---
 adr: 0035
 title: Compatibility and migration for range-numbered catalogues
-status: Proposed
+status: Accepted
 date: 2026-09-04
 owner: Eugenio Minardi
 supersedes:
@@ -107,9 +107,7 @@ operator confirms before any file is rewritten.
 
 ## Open questions
 
-- Whether the migration should also offer to keep the old numbers as
-  an `aliases:` field for grep-ability of old commit messages. Draft
-  position: no; the commit message map is the record.
+- None.
 
 ## References
 
@@ -124,8 +122,10 @@ operator confirms before any file is rewritten.
 | Date | Revision | Author | Change |
 |------|----------|--------|--------|
 | 2026-09-04 | r1 | Eugenio Minardi | Initial draft (Proposed), from the approved brainstorm: legacy range encoding stays recognised; audit and bootstrap offer a mechanical migration (append technology ADRs after the last capability number, stamp `shape:`, rewrite references, retire the boundary template); never forced. |
+| 2026-09-04 | r2 | Eugenio Minardi | Status Proposed → Accepted; acceptance delegated to the session by the operator. Open question resolved: no `aliases:` field; the migration commit's old-to-new map is the record. Plan 0037 authorised. |
 
 ## Approvals
 
 | Role | Name | Date | Signature |
 |------|------|------|-----------|
+| Maintainer | Eugenio Minardi | 2026-09-04 | — (delegated) |

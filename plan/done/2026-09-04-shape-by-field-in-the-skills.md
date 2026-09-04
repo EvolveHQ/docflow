@@ -64,3 +64,11 @@ When this ships, ADR 0034 advances Accepted → Implemented.
 
 None. Runs before plan 0037, which migrates legacy catalogues onto the
 scheme this item introduces.
+
+---
+
+Shipped at HEAD `35a933c` on 2026-09-04 via PR #1
+(https://github.com/EvolveHQ/docflow/pull/1; branch tip 58ca292, eight
+signed commits by the Opus 5 worker plus review fixes). Shape moved from
+a number range to a `shape:` field across templates, bootstrap, new-adr,
+audit, INDEX, and docs. ADR 0034 → Implemented (r3).

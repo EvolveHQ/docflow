@@ -1,7 +1,7 @@
 ---
 adr: 0034
 title: ADR shape as declared metadata, one contiguous sequence
-status: Accepted
+status: Implemented
 date: 2026-09-04
 owner: Eugenio Minardi
 supersedes:
@@ -136,6 +136,7 @@ catalogue; none of them reads a cutoff.
 |------|----------|--------|--------|
 | 2026-09-04 | r1 | Eugenio Minardi | Initial draft (Proposed), from the approved brainstorm: shape moves from a number range to a `shape:` metadata field; one contiguous sequence; two `0000` templates; skills read the field, never a cutoff. Motivated by the overflow, the seed-ADR exception, and consistency with the flat-identity principle. |
 | 2026-09-04 | r2 | Eugenio Minardi | Status Proposed → Accepted; acceptance delegated to the session by the operator for the sequential development of the queue. Open question resolved: the Shape column is rendered in two-shape indexes only; a federation roll-up may add it when any member is two-shape. Plan 0036 authorised. |
+| 2026-09-04 | r3 | Eugenio Minardi | Implemented (plan 0036, PR #1, merge 35a933c): optional `shape:` field in the capability template; `0000-template-technology.md` with the field pre-filled; bootstrap Q2 by field with no cutoff and the second shape enabled as one scheme switch on re-run; new-adr numbers contiguously and stamps the field; audit reads the declared shape and flags unknown values; INDEX Shape column in two-shape repos only; seed ADR carries `shape: technology` with a shipped technology body; single-shape repos unchanged. AC1–8 met. Status Accepted → Implemented. |
 
 ## Approvals
 
