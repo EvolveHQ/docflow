@@ -30,8 +30,8 @@ Inspect the repo before asking anything.
   lifecycle, **artefact root**, multi-agent mode, and which optional layers
   already exist). Then offer to **enable any opted-out optional layer**
   still absent — `plan/`, `_agent/`, `GLOSSARY.md`, `domains/`, or the
-  second ADR shape (the technology template) — and write only the chosen ones, by
-  **merge**, under the recorded artefact root, leaving everything else
+  second ADR shape (the technology template) — and write only the chosen
+  ones, by **merge**, under the recorded artefact root, leaving everything else
   untouched. Ask only the questions the new layers need (e.g. the
   coordination-mode question when enabling `_agent/`). This is the entry
   point for adding a layer you deferred at first bootstrap.
@@ -474,8 +474,7 @@ Keep the pointer in sync if a later re-run migrates the root.
    `shape: technology`, written in the technology-ADR section order —
    adopting the method is a decision about how the repo is built. Because
    the shape is declared in the metadata, the scaffolded conventions need
-   no exception clause for it. If `plan/`
-   exists, also write a matching `plan/done/<date>-adopt-adr-method.md` (the
+   no exception clause for it. If `plan/` exists, also write a matching `plan/done/<date>-adopt-adr-method.md` (the
    seed's completion event is this bootstrap), so plan-coverage stays
    satisfied. On a **retrofit/backfill** (Step 6), the seed is `0001`, ahead
    of the reconstructed decisions.

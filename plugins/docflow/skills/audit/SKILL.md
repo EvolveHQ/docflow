@@ -53,8 +53,9 @@ indexed, plan-covered, or section-checked as ADRs.
    `technology` means the technology order (Context, Decision,
    Rationale, Consequences, …). In a single-shape repo every ADR takes
    that repo's one order. Flag any `shape:` value that is neither
-   `capability` nor `technology`, and any `shape:` field at all in a
-   single-shape repo. Acceptance criteria are numbered.
+   `capability` nor `technology`. A `shape:` field in a single-shape repo
+   is redundant, not wrong — report it as hygiene. Acceptance criteria
+   are numbered.
 5. **Status validity.** Every `status:` is in the declared lifecycle.
    `Superseded` ADRs name a successor in `superseded-by:`; the successor
    names them in `supersedes:` (symmetry).

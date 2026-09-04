@@ -15,8 +15,8 @@ Author one new ADR, consistent with this repo's conventions.
 2. Read `CONVENTIONS.md` to learn this repo's choices: the **ADR shape
    scheme** — a single shape, or two shapes (capability and technology)
    declared by a `shape:` field in each ADR's metadata block; there is
-   no number boundary to read — status lifecycle, language mandate (if any), whether `domains/`
-   groupings exist (and, if so, which domain this ADR belongs to — ask if
+   no number boundary to read — status lifecycle, language mandate (if
+   any), whether `domains/` groupings exist (and, if so, which domain this ADR belongs to — ask if
    it isn't obvious), the multi-agent mode, and the **artefact root**
    (default: repository root) — resolve `adr/` and `INDEX.md` against it
    (`AGENTS.md`/`CLAUDE.md` stay at the repo root).
