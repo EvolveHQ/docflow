@@ -4,6 +4,10 @@
 
 Project name: docflow.
 
+Artefact root: `.` — the repository root. `adr/`, `plan/`, `INDEX.md`,
+`_agent/`, and this file live at the root; the `.docflow` pointer file
+records `root: .` so external tools find the catalogue in one check.
+
 Language: en-GB throughout. Use forms such as organisation, behaviour,
 prioritise, catalogue, authorisation, artefact, customisation
 consistently across all files. This matches the existing `README.md`
