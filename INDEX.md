@@ -38,3 +38,5 @@ ADR change.
 | [0031](adr/0031-tiered-assessment-depth.md) | Tiered assessment depth — express, guided, full | Implemented | 2026-07-03 | 0013 |
 | [0032](adr/0032-bootstrap-depth-profiles.md) | Bootstrap express and guided profiles | Implemented | 2026-07-03 | 0016, 0017, 0020, 0029, 0030, 0031 |
 | [0033](adr/0033-artefact-root-discovery.md) | Artefact-root discovery contract | Implemented | 2026-07-03 | 0017, 0023 |
+| [0034](adr/0034-adr-shape-as-declared-metadata.md) | ADR shape as declared metadata, one contiguous sequence | Proposed | 2026-09-04 | 0001, 0007, 0029, 0030 |
+| [0035](adr/0035-range-numbered-catalogue-migration.md) | Compatibility and migration for range-numbered catalogues | Proposed | 2026-09-04 | 0034, 0003, 0028 |
