@@ -58,11 +58,12 @@ ADR catalogue.
 - `_agent/` — the agent operating contract: who writes what, the one real
   mutex, and how an unattended run behaves. It holds nothing git already
   records. Members follow the coordination answer (Q5): a **single
-  writer** gets `prompts/autonomous.md` and only when a verify gate is
-  recorded (Q8) — otherwise no `_agent/` at all; a **shared checkout**
-  gets `ROLES.md`, `LOCKS.md`, and the prompt where there is a gate;
-  **separate worktrees** get `ROLES.md` and the prompt where there is a
-  gate.
+  writer** gets `prompts/autonomous.md`, and only where a verify gate
+  (Q8) and the `plan/todo/` queue the prompt walks (Q4a) are both
+  recorded — otherwise no `_agent/` at all; a **shared checkout** gets
+  `ROLES.md`, `LOCKS.md`, and the prompt on the same condition;
+  **separate worktrees** get `ROLES.md` and the prompt on the same
+  condition.
 - `domains/<slug>/README.md` — **grouping**: per-area indexes (e.g.
   `domains/auth/`) over the flat catalogue, for navigating a large catalogue
   by area. Organisational only — ADRs keep their number; `new-adr` files

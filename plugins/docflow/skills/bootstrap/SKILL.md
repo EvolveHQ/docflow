@@ -34,8 +34,8 @@ Inspect the repo before asking anything.
   ones, by **merge**, under the recorded artefact root, leaving everything else
   untouched. Ask only the questions the new layers need (e.g. the
   coordination question when enabling `_agent/` — where a single writer
-  with no recorded verify gate correctly ends up with no `_agent/` at
-  all, and the layer is simply not needed). This is the entry point for
+  without both a recorded verify gate and a plan queue correctly ends up
+  with no `_agent/` at all, and the layer is simply not needed). This is the entry point for
   adding a layer you deferred at first bootstrap. A repo still carrying
   coordination files an earlier scaffold wrote keeps them: leave them in
   place here and let the audit skill report the layout.
@@ -110,7 +110,8 @@ questions.
   _agent/                # the agent operating contract (see Q5) — optional
     ROLES.md             # who writes what (several writers only)
     LOCKS.md             # the file-claim mutex (shared checkout only)
-    prompts/autonomous.md  # how an unattended run behaves (only if a verify gate — Q8)
+    prompts/autonomous.md  # how an unattended run behaves (only with a
+                         #   verify gate — Q8 — AND a plan queue — Q4a)
   federation.md          # multi-repo only (Q11): this repo's back-pointer
   federation-index.md    # multi-repo only (Q11): member index — home repo only
 ```
@@ -132,15 +133,16 @@ repo (tools probe `docs/`, then the repository root, for a
 real mutex, and how an unattended run behaves. It holds nothing git
 already records: no log of what shipped, no dashboard of what is in
 flight, no snapshot of the current state, no hand-off. Which of the
-three files above exist follows entirely from Q5 and Q8, and a repo with
-no `_agent/` directory at all is a valid outcome.
+three files above exist follows entirely from Q5, Q8 and Q4a, and a repo
+with no `_agent/` directory at all is a valid outcome.
 
 **Core vs optional layers.** Only the **core** is always written:
 `AGENTS.md`, `CLAUDE.md`, `CONVENTIONS.md`, `adr/0000-template.md`, and
 `INDEX.md`. A repo with just these is a valid, lightweight docflow repo — a
 classic ADR catalogue with conventions. Everything else is an **opt-in
-layer**: the `plan/` queue (Q4a), the `_agent/` contract (Q5 + Q8 — a
-single writer with no verify gate gets none of it), `GLOSSARY.md` and
+layer**: the `plan/` queue (Q4a), the `_agent/` contract (Q5 + Q8 + Q4a —
+a single writer without both a verify gate and a plan queue gets none of
+it), `GLOSSARY.md` and
 `domains/` (Q7). Omitting any optional layer is a valid state, not an
 error; a lifecycle skill that needs an absent layer refuses cleanly and
 names what is missing.
@@ -261,12 +263,12 @@ fixed profile — summarise it and get sign-off before writing anything:
 - Git contract: Conventional Commits ON, `Rationale:` footer ON,
   signed commits ON, ADR-revision tags OFF, `Co-Authored-By` OFF.
 - Integration recorded as **direct-to-main, fast-forward only**; Q5
-  recorded as **single writer**, which with no verify gate (below)
-  means **no `_agent/` directory at all**.
+  recorded as **single writer**, which with no plan queue and no verify
+  gate (below) means **no `_agent/` directory at all**.
 - **Standalone** — never part of a federation.
 - Doc language: match the existing repo's content, else en-US.
-- No verify gate recorded (so no autonomous prompt); no
-  domain-specific hard rules.
+- No verify gate recorded and no plan queue (so no autonomous prompt on
+  either count); no domain-specific hard rules.
 
 On an existing repo, express preserves and merges exactly as a full
 run does — depth changes how many questions are asked, never how
@@ -278,8 +280,9 @@ artefacts deferred, no hard rules, default artefact root, standalone,
 and the express language rule. Q5 is one of the three it asks, and its
 recommended answer is **single writer** — so a guided run that takes
 the recommendation records single writer, and writes an `_agent/`
-directory only when Q8 records a verify gate. Run the Step 4.5
-cross-check on the answers before the sign-off summary.
+directory only when Q8 records a verify gate **and** Q4a kept the plan
+queue. Run the Step 4.5 cross-check on the answers before the sign-off
+summary.
 
 **Federation guard.** Express and guided runs are always
 **standalone**: Q11 is never asked and no federation file is written.
@@ -354,16 +357,20 @@ default (the operator may decline it — see Step 5 item 5b).
    - **(Recommended) Single writer.** One human/agent integrates at a
      time, so there is nothing to serialise: no roles list, no lock
      ledger. The only file written is `_agent/prompts/autonomous.md`,
-     and only if Q8 records a real verify gate — with no gate there is
-     **no `_agent/` directory at all**, the lightest footprint. Right
-     for small projects and the "one human + one agent" case.
+     and only if the repo is **eligible for the run prompt** — Q8
+     records a real verify gate *and* Q4a keeps the plan queue the
+     prompt walks. Fail either and there is **no `_agent/` directory at
+     all**, the lightest footprint. Right for small projects and the
+     "one human + one agent" case.
    - **Several writers, one shared checkout.** Named writers in
      `_agent/ROLES.md`. `_agent/LOCKS.md` ON as a filesystem mutex — in
      one working tree it is the only thing preventing simultaneous
-     writes to the same file. Plus the run prompt if Q8 records a gate.
+     writes to the same file. Plus the run prompt where the repo is
+     eligible for it (gate + plan queue).
    - **Several writers, separate worktrees / PR branches.** Named
-     writers in `_agent/ROLES.md`, plus the run prompt if Q8 records a
-     gate. **No lock ledger:** the pushed branch and its draft pull
+     writers in `_agent/ROLES.md`, plus the run prompt where the repo is
+     eligible for it (gate + plan queue). **No lock ledger:** the pushed
+     branch and its draft pull
      request are the claim, worktrees cannot collide on the filesystem,
      and an advisory ledger nobody can rely on is noise.
 
@@ -396,8 +403,10 @@ default (the operator may decline it — see Step 5 item 5b).
      shape; the cross-check in Step 4.5 keeps the two answers in step.
 8. **Verify gate.** What command(s) decide a change is shippable
    (`npm test`, CI workflow, deploy + smoke, manual)? *No
-   recommendation — project-specific.* If the user has no real gate,
-   the skill will refuse to write `_agent/prompts/autonomous.md`.
+   recommendation — project-specific.* The run prompt needs **both** a
+   real gate and the `plan/todo/` queue it walks: if the user has no
+   real gate, or Q4a skipped the plan folder, the skill refuses to
+   write `_agent/prompts/autonomous.md`.
 9. **Existing-content conflicts** (existing repos only). Any
    conventions already in place (commit format, branch policy, ADR
    style, status names) the new layout must defer to or merge with?
@@ -474,9 +483,13 @@ mid-flight, get the full scan.)
   worktree would have to rebase onto main before fast-forwarding.
   Ask the user to confirm or switch to PR-based — PR-based is the
   near-universal fit for worktree work.
-- **Q4a plan-folder skipped + Q8 autonomous prompt expected.** The
-  autonomous prompt walks `plan/todo/`; with no plan folder it has
-  nothing to drive. Do not write the autonomous prompt.
+- **Q4a plan-folder skipped + Q8 records a real gate.** The autonomous
+  prompt walks `plan/todo/`; with no plan folder it has nothing to
+  drive. Do not write the autonomous prompt — a gate alone does not make
+  the repo eligible for it. Say so, and offer the plan queue if the user
+  wanted an unattended run. Under a **single writer** this leaves no
+  `_agent/` directory at all; under several writers the mode's other
+  files are still written.
 - **Q8 has no real verify gate + Q4b PR-based with required CI.**
   "Required CI green" needs a CI gate. Confirm what the CI actually
   runs, or downgrade the completion event.
@@ -559,14 +572,17 @@ Keep the pointer in sync if a later re-run migrates the root.
    of the reconstructed decisions.
 6. `plan/README.md` — from `templates/plan-README.md`. Create empty
    `plan/todo/.gitkeep` and `plan/done/.gitkeep`.
-7. **`_agent/` — write exactly what Q5 and Q8 prescribe, and nothing
-   else.** The whole set is:
+7. **`_agent/` — write exactly what Q5, Q8 and Q4a prescribe, and
+   nothing else.** The run prompt is written only when the repo is
+   **eligible** for it: Q8 recorded a real verify gate **and** Q4a kept
+   the `plan/todo/` queue the prompt walks. Fail either and no prompt is
+   written. The whole set is:
 
    | Q5 answer | `_agent/` contents |
    |---|---|
-   | Single writer | `prompts/autonomous.md` **iff** Q8 recorded a gate — otherwise **no `_agent/` directory at all** |
-   | Several writers, shared checkout | `ROLES.md`, `LOCKS.md`, and `prompts/autonomous.md` iff a gate |
-   | Several writers, separate worktrees | `ROLES.md`, and `prompts/autonomous.md` iff a gate |
+   | Single writer | `prompts/autonomous.md` **iff** eligible (gate + plan queue) — otherwise **no `_agent/` directory at all** |
+   | Several writers, shared checkout | `ROLES.md`, `LOCKS.md`, and `prompts/autonomous.md` iff eligible |
+   | Several writers, separate worktrees | `ROLES.md`, and `prompts/autonomous.md` iff eligible |
 
    Write no work log, no dashboard, no live snapshot and no hand-off in
    any mode, and add no `.gitattributes` union entry or `.gitignore`
@@ -582,7 +598,10 @@ Keep the pointer in sync if a later re-run migrates the root.
    claim there).
 10. `_agent/prompts/autonomous.md` — from
     `templates/_agent-prompts-autonomous.md`, **only** if Q8 confirmed a
-    verify gate, in every Q5 answer. Keep the integration block matching
+    verify gate **and** Q4a kept the plan queue — in every Q5 answer.
+    The prompt's whole loop is "take the next `plan/todo/` item, ship it
+    through the gate", so neither half is optional. Keep the integration
+    block matching
     Q4b: the **direct-to-main** variant (`git merge --ff-only` then
     push) or the **PR-based** variant (`gh pr create --draft` → wait for
     CI → mark ready → `gh pr merge`). Drop the unused variant.

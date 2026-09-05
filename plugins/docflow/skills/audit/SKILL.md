@@ -112,15 +112,20 @@ the same way: it is a template, not the first technology ADR.
     contract — who writes what, the one real mutex, and how an
     unattended run behaves — and holds nothing git already records.
     N/A if the repo has no `_agent/` directory (a valid state: a single
-    writer with no verify gate has none). Otherwise read the recorded
-    coordination mode and check three things:
+    writer that is not eligible for the run prompt has none). Otherwise
+    read the recorded coordination mode and check three things:
     - **Only the prescribed files exist.** Single writer:
       `prompts/autonomous.md` and nothing else. Shared checkout:
       `ROLES.md`, `LOCKS.md`, `prompts/autonomous.md`. Separate
       worktrees: `ROLES.md`, `prompts/autonomous.md` — no lock ledger,
       because the branch and its pull request are the claim.
-      `prompts/autonomous.md` is prescribed only where a verify gate is
-      recorded. **Fail** on any other file under `_agent/`, and on a
+      `prompts/autonomous.md` is prescribed only where the repo is
+      eligible for it — a recorded verify gate **and** the `plan/todo/`
+      queue the prompt walks. A prompt in a repo with no plan queue is
+      an unprescribed file: report it, and say the fix is to add the
+      queue or drop the prompt. Under a single writer, no eligibility
+      means no `_agent/` directory at all. **Fail** on any other file
+      under `_agent/`, and on a
       prescribed file the mode does not allow (a lock ledger in
       separate-worktree mode, a roles list under a single writer).
     - **No file carries derived state.** **Fail** on any `_agent/` file

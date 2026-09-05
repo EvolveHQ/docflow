@@ -43,7 +43,7 @@ pick up a cold repository and act correctly with no oral handover.
 | `plan/todo/` · `plan/done/` | The work queue. Pending items move to done on completion. |
 | `CONVENTIONS.md` | The authoring rules every contributor reads first. |
 | `AGENTS.md` (+ `CLAUDE.md`) | The hard-rules entry point coding agents load. |
-| `_agent/` | The agent operating contract — who writes what, the one real mutex, how an unattended run behaves. Optional; per-mode members. |
+| `_agent/` | The agent operating contract — who writes what, the one real mutex, how an unattended run behaves. Optional; per-mode members, and the run prompt only where a verify gate and the `plan/todo/` queue it walks both exist. |
 
 ## 3. The conventions
 

@@ -147,7 +147,8 @@ so there is nothing to serialise: no roles list, no lock ledger. What
 happened is git history and `plan/done/`; what is in flight is the
 current branch and any open pull request. The one coordination file is
 `_agent/prompts/autonomous.md`, written only where a verify gate is
-recorded; with no gate there is no `_agent/` directory at all.
+recorded **and** the `plan/todo/` queue it walks exists; without both
+there is no `_agent/` directory at all.
 Regenerate `INDEX.md` after any ADR status change or new ADR.
 
 <!-- Several writers, one shared checkout. Replace with:

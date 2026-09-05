@@ -47,13 +47,14 @@ writer. -->
 - `plan/todo/NNNN-<slug>.md` — pending work, lower numbers run first.
 - `plan/done/<YYYY-MM-DD>-<slug>.md` — shipped work, chronological.
 <!-- `_agent/` line — list the members the coordination mode (Q5) writes,
-and drop the line entirely when no `_agent/` exists (a single writer with
-no verify gate):
+and drop the line entirely when no `_agent/` exists (a single writer
+without both a verify gate and a plan queue):
   single writer:       `prompts/autonomous.md`
   shared checkout:     `ROLES.md`, `LOCKS.md`, `prompts/autonomous.md`
   separate worktrees:  `ROLES.md`, `prompts/autonomous.md`
 `prompts/autonomous.md` appears only where a verify gate was recorded
-(Q8); drop it from the list otherwise. -->
+(Q8) AND the plan queue it walks exists (Q4a); drop it from the list
+otherwise. -->
 - `_agent/` — the agent operating contract: who writes what, the one
   real mutex, and how an unattended run behaves. Here: `ROLES.md`,
   `LOCKS.md`, `prompts/autonomous.md`. It holds nothing git already
@@ -133,9 +134,11 @@ A single writer owns this repo — one human/agent integrates at a time,
 so there is nothing to serialise. What happened is in git history and
 `plan/done/`; what is in flight is the branch you are on and any open
 pull request.
-<!-- If a verify gate was recorded (Q8), add: The one coordination file
-is `_agent/prompts/autonomous.md`, the contract for an unattended run.
-With no gate recorded there is no `_agent/` directory at all. -->
+<!-- If a verify gate was recorded (Q8) AND the plan queue exists (Q4a),
+add: The one coordination file is `_agent/prompts/autonomous.md`, the
+contract for an unattended run. Without both — the prompt walks
+`plan/todo/` and ships through the gate — there is no `_agent/`
+directory at all. -->
 
 <!-- Several writers, one shared checkout. Replace the block above with: -->
 <!--

@@ -49,7 +49,7 @@ linkfold/
 ├── INDEX.md           # generated ADR table
 ├── adr/0000-template.md
 ├── plan/{todo,done}/
-└── _agent/prompts/autonomous.md    # single writer + a verify gate
+└── _agent/prompts/autonomous.md    # single writer + a gate + plan/
 ```
 
 ### Step 2 — Record the first decision
@@ -195,8 +195,9 @@ New work now follows the same loop: `/new-adr` → `/new-plan` → `/ship-item`.
 2. *"set up documentation-led conventions here"* on an existing repo →
    retrofit + backfill offer (see Flow 2).
 3. `/bootstrap` choosing **several writers in separate worktrees + PR
-   integration** → `_agent/` holds `ROLES.md` and a PR-based
-   `prompts/autonomous.md`. No lock ledger: the pushed branch and its draft
+   integration** → `_agent/` holds `ROLES.md`, and a PR-based
+   `prompts/autonomous.md` where a verify gate and the `plan/todo/` queue
+   it walks both exist. No lock ledger: the pushed branch and its draft
    pull request are the claim.
 
 ### new-adr
