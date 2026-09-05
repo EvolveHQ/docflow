@@ -1,6 +1,6 @@
 ---
 name: agent-wave
-description: Orchestrate a wave of parallel agents over the plan/todo queue in a documentation-led repo — asks how many agents, the budget (items/waves, with hours as a soft cap), and whether to checkpoint after each wave or run continuously. Spawns isolated worktree subagents, assigns one queue item each, collects results. Use when the user says "spawn a wave of agents", "run the queue in parallel", "fan out the work", "agent wave", or invokes /agent-wave.
+description: Orchestrate a wave of parallel agents over the plan/todo queue in a documentation-led repo — asks how many agents, the budget (items/waves, with hours as a soft cap), and whether to checkpoint after each wave or run continuously. Spawns isolated worktree subagents, assigns one queue item each, collects results. Use when the user says "spawn a wave of agents", "run the queue in parallel", "fan out the work", or "agent wave".
 ---
 
 # agent-wave
@@ -14,8 +14,8 @@ hours. So this skill measures budget reliably in **items and waves**,
 with hours as a *soft cap* (stop starting new waves once elapsed time
 passes it). For a true multi-hour unsupervised fleet that outlives a
 session, use remote agents or a scheduled run of
-`_agent/prompts/autonomous.md` (`/schedule`) instead — this skill points
-you there rather than pretending to be it.
+`_agent/prompts/autonomous.md` instead — this skill points you there
+rather than pretending to be it.
 
 ## Step 0 — Preconditions and context
 
@@ -147,6 +147,6 @@ Stop the run (do not start another wave) when any holds:
   ambiguous.
 
 On stop, leave every worktree in a committed or cleanly-abandoned state
-and report the outcome to the operator in the wave summary. Write no
-run log: each item's own commits, its pull request, and `plan/done/` are
-the record.
+and report the outcome to the operator in the wave summary. Ensure each
+item's outcome is visible in its own commit or pull request; shipped
+items are recorded by their commits, pull requests, and `plan/done/`.

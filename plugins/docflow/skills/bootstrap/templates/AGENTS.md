@@ -21,17 +21,19 @@ Read these, in order, before any tool calls:
 1. `AGENTS.md` (this file) — the hard rules. Read in full.
 2. `CONVENTIONS.md` — authoring rules, ADR status semantics, the git
    contract.
-<!-- If plan folder skipped (Q4a): drop lines 3 and 7. -->
+<!-- If plan folder skipped (Q4a): drop lines 3, 4 and 8. -->
 3. `plan/README.md` — how the work queue is used.
-4. `INDEX.md` — the ADR catalogue: an ADR's filename and its dependency
+4. The newest `plan/done/` entries and
+   `git log --first-parent --oneline -n 20` — the shipped-work record.
+5. `INDEX.md` — the ADR catalogue: an ADR's filename and its dependency
    chain. Sorted by number, not by work order.
-<!-- Coordination lines: keep 5 in shared-checkout and separate-worktree
-modes; keep 6 in shared-checkout mode only; drop both for a single
+<!-- Coordination lines: keep 6 in shared-checkout and separate-worktree
+modes; keep 7 in shared-checkout mode only; drop both for a single
 writer. -->
-5. `_agent/ROLES.md` — who writes what.
-6. `_agent/LOCKS.md` — which files are currently claimed; claim yours
+6. `_agent/ROLES.md` — who writes what.
+7. `_agent/LOCKS.md` — which files are currently claimed; claim yours
    here before editing.
-7. The queue item you are about to work, `plan/todo/NNNN-<slug>.md`, and
+8. The queue item you are about to work, `plan/todo/NNNN-<slug>.md`, and
    the ADR(s) it names — both in full.
 
 ## Repository structure
@@ -148,8 +150,7 @@ Coordination rules:
   `<agent-id> | <path> | <ISO-8601 timestamp>`. Remove the line on
   commit. LOCKS is the one real mutex — it prevents simultaneous
   writes to the same file in this shared checkout.
-- Keep no log of what shipped: git history and `plan/done/` are that
-  record.
+- The shipped record is git history and `plan/done/`.
 -->
 
 <!-- Several writers, separate worktrees / PR branches. Replace the
@@ -163,9 +164,8 @@ Coordination rules:
   advisory ledger nobody can rely on is noise. What has to be guarded
   against is duplicated work and contradictory merges — see the
   guardrails below.
-- Keep no dashboard and no log: what is in flight is the set of live
-  branches, worktrees and open pull requests; what shipped is git
-  history and `plan/done/`.
+- What is in flight is the set of live branches, worktrees and open
+  pull requests; what shipped is git history and `plan/done/`.
 -->
 
 <!-- Concurrency guardrails hard rule — bootstrap INCLUDES this bullet
@@ -186,9 +186,14 @@ ONLY for several-writer (shared-checkout / worktree) OR PR-based repos
 - A pending item gets a `plan/todo/NNNN-<slug>.md` file BEFORE work
   starts, naming the owning ADR(s), scope, and exit criteria.
 - The completion event is: `<from Q4 — e.g. merge to main, deploy +
-  smoke passes, release tag>`. On completion, `git mv` the file to
+  smoke passes, release tag>`. Under direct-to-main integration, the
+  completion commit moves the file to
   `plan/done/<YYYY-MM-DD>-<slug>.md` with a footer naming the HEAD SHA
-  and any artefact id.
+  and any artefact id, then pushes. Under pull-request integration,
+  the move, any plan-item Status removal, ADR advance, and INDEX
+  regeneration are the final branch commit before the pull request is
+  marked ready; the footer names the pull request, and the merge is
+  the completion event.
 - The owning ADR(s) advance `Accepted → Implemented` on the same
   commit. Regenerate `INDEX.md`.
 
@@ -216,5 +221,7 @@ gate sentence):
   green before merge — the verify gate (`<command from Q8>`) runs in
   CI on the PR, not (only) locally. Merge strategy:
   <squash | merge | rebase>. Completion event: PR merged to `main`
-  with CI green.
+  with CI green. Completion changes are committed on the pull-request
+  branch before it is marked ready; no follow-up commit is made on the
+  integration branch after merge.
 -->
