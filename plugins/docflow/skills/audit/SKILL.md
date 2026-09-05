@@ -85,9 +85,15 @@ the same way: it is a template, not the first technology ADR.
    are numbered.
    *Legacy encoding:* the shape is the ADR's side of the cutoff — below
    it capability, at or above it technology — and no `shape:` field is
-   expected. Validate the section order against that, exactly as before.
-   A `shape:` field contradicting the range is a real inconsistency; one
-   agreeing with it is hygiene, not a failure.
+   expected. Validate the section order against that, exactly as before,
+   with the one carve-out the encoding forces and these repos record for
+   themselves: an ADR below the cutoff that `CONVENTIONS.md` names as a
+   **documented exception** — typically the ADR adopting the method,
+   which is technology-shaped but has to be first in the sequence — is
+   checked against the technology order, not flagged. A mismatch the
+   conventions do **not** record is still a finding. A `shape:` field
+   contradicting the range is a real inconsistency; one agreeing with it
+   is hygiene, not a failure.
 5. **Status validity.** Every `status:` is in the declared lifecycle.
    `Superseded` ADRs name a successor in `superseded-by:`; the successor
    names them in `supersedes:` (symmetry).
@@ -253,10 +259,15 @@ ask for it as its own question, and take silence or ambiguity as a no.
    slug. Capability files do not move.
 2. In each moved file, update the `adr:` metadata field and the H1
    heading to the new number.
-3. Write `shape:` on **every** ADR — `technology` on the moved ones,
-   `capability` on the ones that stayed. Write it explicitly on both:
-   the field is the encoding now, and a catalogue that carries it only
-   on half its ADRs is still readable but no longer self-describing.
+3. Write `shape:` on **every** ADR — the shape each one **actually
+   has**, not the block it came from. `technology` on the moved ones and
+   on the documented exception that stayed (4.1); `capability` on the
+   rest. Stamping the exception `capability` because it did not move
+   would put the field at odds with its sections, and the check in 4.4
+   would fail the catalogue the migration just produced. Write the field
+   explicitly on all of them: it is the encoding now, and a catalogue
+   carrying it on only half its ADRs is still readable but no longer
+   self-describing.
 4. Rewrite every in-catalogue reference to a moved number: `depends-on:`,
    `supersedes:`, `superseded-by:`, relative `adr/NNNN-*.md` links in
    any ADR body, `INDEX.md` rows, domain `README.md` listings, and the
