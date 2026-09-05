@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import {
   assertTree, assertContiguousAdrs, assertIndexSync, assertAdrStatus,
-  assertPlanShipped, assertAbsent, assertFileContains,
+  assertPlanShipped, assertAbsent, assertFileContains, assertCommandSucceeds,
   assertLegacyRange, assertMigratedToDeclaredShape,
   assertReferencesRewritten, assertHistoryPreserved,
 } from './assertions.mjs';
@@ -20,6 +20,12 @@ const repoRoot = join(evalsDir, '..');
 // the end of the sequence in their original order. 0001 is the seed —
 // technology-shaped inside the capability range — and does NOT move.
 const legacyFixture = join(evalsDir, 'fixtures/legacy-range');
+
+// A verify gate the SCAFFOLDED repo can run: node built-ins only, exit 0
+// on a sane bootstrapped tree. The bootstrap case copies it in as
+// tools/verify.mjs before invoking the skill and records
+// `node tools/verify.mjs` as the Q8 answer.
+const gateFixture = join(evalsDir, 'fixtures/scratch-gate/verify.mjs');
 const LEGACY_CUTOFF = 100;
 const LEGACY_MAP = { '0101': '0004', '0102': '0005' };
 const LEGACY_DONE_NUMBERS = ['0101'];
@@ -94,18 +100,28 @@ export const cases = [
     },
   },
   {
-    // Full depth, single writer, a real verify gate recorded: the
+    // Full depth, single writer, a plan queue AND a real verify gate: the
     // coordination directory holds the run prompt and nothing else — no
     // roles list (there is one writer), no lock ledger, and none of the
     // derived files the former scaffold wrote.
+    //
+    // The gate is the fixture script the case copies to tools/verify.mjs
+    // BEFORE bootstrap runs. A scaffolded repo has no scripts/verify.mjs
+    // of its own, so a gate naming this checkout's would record a command
+    // the scratch repo cannot execute — and an autonomous prompt built on
+    // an unrunnable gate is exactly what the prompt must never be.
     name: 'bootstrap: fresh repo gets the full scaffold',
     skill: 'bootstrap',
-    inputs: { /* the 10 assessment answers, scripted */ },
+    inputs: {
+      /* the 10 assessment answers, scripted */
+      gate: 'node tools/verify.mjs',
+      gateFixture: gateFixture,
+    },
     assert(repo) {
       assertTree(repo, [
         'AGENTS.md', 'CLAUDE.md', 'CONVENTIONS.md', 'INDEX.md',
         'adr/0000-template.md', 'plan/todo', 'plan/done',
-        '_agent/prompts/autonomous.md',
+        'tools/verify.mjs', '_agent/prompts/autonomous.md',
       ]);
       assertAbsent(repo, [
         '_agent/ROLES.md', '_agent/LOCKS.md', '_agent/WORKLOG.md',
@@ -114,6 +130,9 @@ export const cases = [
       ]);
       // The read order lives in AGENTS.md, not a hand-off file.
       assertFileContains(repo, 'AGENTS.md', 'Picking up this repo');
+      // The prompt records the scripted gate, and that gate runs here.
+      assertFileContains(repo, '_agent/prompts/autonomous.md', 'node tools/verify.mjs');
+      assertCommandSucceeds(repo, 'node tools/verify.mjs');
     },
   },
   {

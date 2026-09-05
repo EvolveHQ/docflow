@@ -4,6 +4,7 @@
 // success. CRLF-tolerant so the same checks pass on Windows checkouts.
 
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
+import { execSync } from 'node:child_process';
 import { join } from 'node:path';
 
 const read = (root, rel) =>
@@ -83,6 +84,23 @@ export function assertFileContains(root, rel, substring) {
   if (!existsSync(join(root, rel))) throw new Error(`${rel} missing`);
   if (!read(root, rel).includes(substring)) {
     throw new Error(`${rel} does not contain "${substring}"`);
+  }
+}
+
+// A recorded command actually runs in the repo and exits 0. A scaffolded
+// repo's verify gate has to be runnable THERE — a gate naming a script the
+// scaffolded repo does not contain records a string nobody can execute.
+export function assertCommandSucceeds(root, command) {
+  try {
+    execSync(command, { cwd: root, stdio: 'pipe' });
+  } catch (e) {
+    const out = [e.stdout, e.stderr]
+      .map((b) => (b ? b.toString().trim() : ''))
+      .filter(Boolean)
+      .join(' / ');
+    throw new Error(
+      `"${command}" failed in ${root} (exit ${e.status})${out ? ': ' + out : ''}`,
+    );
   }
 }
 
