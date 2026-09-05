@@ -45,7 +45,7 @@ const CASES = [
       'regenerate INDEX.md, and create a matching plan/todo/<same-number>-eval-ship.md naming that ADR as owner. ' +
       'THEN, following plugins/docflow/skills/ship-item/SKILL.md, run the completion event for that item: git mv it to ' +
       'plan/done/<date>-eval-ship.md with a shipped footer, advance the owning ADR Accepted->Implemented, ' +
-      'regenerate INDEX.md, append a WORKLOG row. Then run `node scripts/verify.mjs`. PASS only if exit 0 AND the ' +
+      'regenerate INDEX.md. Then run `node scripts/verify.mjs`. PASS only if exit 0 AND the ' +
       'item is under plan/done AND its owning ADR reads Implemented. You MAY use git mv/add within your worktree ' +
       'but do NOT commit or push. Report what you created, what moved, the ADR status change, and the exact ' +
       'verify.mjs output + exit code.',
@@ -86,10 +86,14 @@ const CASES = [
       'Behavioural eval of the docflow `bootstrap` skill. Work ONLY in your worktree; do NOT push. ' +
       'Create a fresh scratch repo in a temp subdirectory (git init), then following plugins/docflow/skills/bootstrap/SKILL.md ' +
       'scaffold it using these scripted answers: FULL assessment depth; en-GB; single ADR shape; full lifecycle; use plan folder; ' +
-      'single agent; direct-to-main; default git contract; defer optional artefacts; verify gate = manual; ' +
-      'no domain hard rules; standalone; artefact root = repository root. Do NOT ask questions interactively — use those answers. PASS only if the scratch ' +
-      'repo then contains AGENTS.md, CLAUDE.md, CONVENTIONS.md, INDEX.md, adr/0000-template.md, plan/todo, ' +
-      'plan/done, and _agent/ROLES.md. Report the resulting file tree and whether all required paths exist.',
+      'single writer; direct-to-main; default git contract; defer optional artefacts; verify gate = `node scripts/verify.mjs`; ' +
+      'no domain hard rules; standalone; artefact root = repository root. Do NOT ask questions interactively — use those answers. ' +
+      'PASS only if ALL hold in the scratch repo: (1) it contains AGENTS.md, CLAUDE.md, CONVENTIONS.md, INDEX.md, ' +
+      'adr/0000-template.md, plan/todo, plan/done, and _agent/prompts/autonomous.md — a single writer WITH a recorded ' +
+      'verify gate gets the run prompt and nothing else under _agent/; (2) there is NO _agent/ROLES.md, LOCKS.md, ' +
+      'WORKLOG.md, CURRENT_FOCUS.md, IN_FLIGHT.md or HANDOFF.md, no merge=union line in .gitattributes and no _agent/ ' +
+      'entry in .gitignore; (3) AGENTS.md carries a "Picking up this repo" section whose read order names only files ' +
+      'that exist in the scratch repo. Report the file tree and each of the three checks explicitly.',
   },
   {
     key: 'bootstrap-express',
@@ -99,7 +103,8 @@ const CASES = [
       'run an express-depth bootstrap with project name "scratch-express" and description "eval fixture". ' +
       'Do NOT ask questions interactively — express takes the fixed profile. PASS only if ALL hold in the scratch repo: ' +
       '(1) AGENTS.md and CLAUDE.md at the root; (2) CONVENTIONS.md, INDEX.md, adr/0000-template.md and the seed ' +
-      'adr/0001-record-architecture-decisions.md under the DEFAULT artefact root .docflow/; (3) NO plan/, _agent/, ' +
+      'adr/0001-record-architecture-decisions.md under the DEFAULT artefact root .docflow/; (3) NO plan/, _agent/ ' +
+      '(express records a single writer and no verify gate, so no coordination directory at all), ' +
       'GLOSSARY.md, domains/, or federation files anywhere (root or .docflow/); (4) .docflow/CONVENTIONS.md contains ' +
       '"Assessment depth: express" and records direct-to-main fast-forward integration. Report the file tree and ' +
       'each of the four checks explicitly.',

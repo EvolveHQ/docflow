@@ -94,14 +94,26 @@ export const cases = [
     },
   },
   {
+    // Full depth, single writer, a real verify gate recorded: the
+    // coordination directory holds the run prompt and nothing else — no
+    // roles list (there is one writer), no lock ledger, and none of the
+    // derived files the former scaffold wrote.
     name: 'bootstrap: fresh repo gets the full scaffold',
     skill: 'bootstrap',
     inputs: { /* the 10 assessment answers, scripted */ },
     assert(repo) {
       assertTree(repo, [
         'AGENTS.md', 'CLAUDE.md', 'CONVENTIONS.md', 'INDEX.md',
-        'adr/0000-template.md', 'plan/todo', 'plan/done', '_agent/ROLES.md',
+        'adr/0000-template.md', 'plan/todo', 'plan/done',
+        '_agent/prompts/autonomous.md',
       ]);
+      assertAbsent(repo, [
+        '_agent/ROLES.md', '_agent/LOCKS.md', '_agent/WORKLOG.md',
+        '_agent/CURRENT_FOCUS.md', '_agent/IN_FLIGHT.md',
+        '_agent/HANDOFF.md',
+      ]);
+      // The read order lives in AGENTS.md, not a hand-off file.
+      assertFileContains(repo, 'AGENTS.md', 'Picking up this repo');
     },
   },
   {
