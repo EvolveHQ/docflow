@@ -59,11 +59,13 @@ Once the change is on `main`:
 file and its shipped footer are the record; the coordination mode
 prescribes no log, dashboard or snapshot to update.
 
-One exception, and only while it lasts: a repo scaffolded before this
-convention may still carry a `_agent/WORKLOG.md` or
-`_agent/CURRENT_FOCUS.md` from its old layout. Keep such a file
-current if it is there — a half-maintained log is worse than either
-state — and mention that it is legacy. Never create one, in any mode.
+One transitional exception: a repo scaffolded before this convention
+may still *record* a log or snapshot step in its own `AGENTS.md` /
+`CONVENTIONS.md`, alongside the files it wrote for them. Honour what
+that repo's recorded conventions ask for — a half-maintained log is
+worse than either state — and say it is a legacy layout. Never create
+such a file, and never add the step to a repo whose conventions do not
+already have it.
 
 ## Step 7 — Commit
 

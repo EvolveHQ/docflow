@@ -33,8 +33,12 @@ Inspect the repo before asking anything.
   second ADR shape (the technology template) — and write only the chosen
   ones, by **merge**, under the recorded artefact root, leaving everything else
   untouched. Ask only the questions the new layers need (e.g. the
-  coordination-mode question when enabling `_agent/`). This is the entry
-  point for adding a layer you deferred at first bootstrap.
+  coordination question when enabling `_agent/` — where a single writer
+  with no recorded verify gate correctly ends up with no `_agent/` at
+  all, and the layer is simply not needed). This is the entry point for
+  adding a layer you deferred at first bootstrap. A repo still carrying
+  coordination files an earlier scaffold wrote keeps them: leave them in
+  place here and let the audit skill report the layout.
 
   **Enabling the second ADR shape is a scheme switch, not a file copy.**
   It is the one deferred layer that changes a choice already recorded, so
