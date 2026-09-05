@@ -1,6 +1,6 @@
 ---
 name: ship-item
-description: Ship a plan/todo item in a documentation-led repo — run the verify gate, integrate per the repo's model (fast-forward or PR), git mv todo→done with a shipped footer, advance the owning ADR(s) to Implemented, regenerate INDEX. Use when the user says "ship this", "complete the plan item", "mark done", "close out the queue item", or invokes /ship-item.
+description: Ship a plan/todo item in a documentation-led repo — run the verify gate, integrate per the repo's model (fast-forward or PR), git mv todo→done with a shipped footer, advance the owning ADR(s) to Implemented, and regenerate INDEX. Use when the user says "ship this", "complete the plan item", "mark done", or "close out the queue item".
 ---
 
 # ship-item
@@ -29,23 +29,40 @@ Run the repo's verify gate. **Require a pass.** Do not bypass with
 `--no-verify` or equivalent. If it fails, stop, surface the failure,
 fix the root cause, re-run.
 
-## Step 3 — Integrate (per the repo's model)
+## Step 3 — Prepare integration (per the repo's model)
 
 - **Direct-to-main, fast-forward:** `git merge --ff-only <branch>` (or
-  the work is already on `main`), then `git push origin main`. The
-  verify gate ran locally in Step 2.
-- **PR-based:** push the branch, `gh pr create --draft --fill`, wait
-  for CI green (`gh pr checks --watch`), `gh pr ready`, then
-  `gh pr merge` with the repo's strategy. Confirm the merge landed on
-  `main` before continuing.
+  the work is already on `main`) so the integration branch contains
+  the verified work locally. Do not push yet: the completion commit in
+  Step 7 must ride with the work, and the push is the completion event.
+- **PR-based:** push the branch and open a draft pull request. Keep it
+  draft until Steps 4-7 commit the completion changes as the last
+  branch commit before the request is marked ready.
 
 ## Step 4 — Move the queue item
 
-Once the change is on `main`:
+Make the queue move before the completion event:
+
+- **Direct-to-main:** move it on the local integration branch before
+  the push.
+- **PR-based:** move it on the pull-request branch before marking the
+  request ready; do not make a follow-up commit on the integration
+  branch after merge.
+
+Then:
+
 - `git mv plan/todo/NNNN-<slug>.md plan/done/<YYYY-MM-DD>-<slug>.md`
   (today's date prefix).
-- Amend the moved file with a footer: **"Shipped at HEAD `<sha>`"** plus
-  any artefact id, image tag, deploy id, or PR link.
+- Amend the moved file with a shipped footer:
+  - direct-to-main: **"Shipped at HEAD `<sha>`"** plus any artefact id,
+    image tag, deploy id, or release identifier. If the SHA is not
+    known until the completion commit exists, amend that commit once to
+    replace the placeholder with the actual HEAD SHA.
+  - PR-based: name the pull request and any artefact id, image tag, or
+    deploy id. Do not invent a future integration-branch SHA.
+- If the queued item carries a `Status` section for in-flight state,
+  remove that section; shipped state is represented by `plan/done/` and
+  git history.
 
 ## Step 5 — Advance the ADR(s) and regenerate
 
@@ -55,9 +72,10 @@ Once the change is on `main`:
 
 ## Step 6 — Record
 
-**Nothing to write.** The completion commit, the moved `plan/done/`
-file and its shipped footer are the record; the coordination mode
-prescribes no log, dashboard or snapshot to update.
+**Nothing else to write.** The completion commit, the moved
+`plan/done/` file and its shipped footer are the record; the
+coordination mode prescribes no shipped-state file, dashboard or
+snapshot to update.
 
 One transitional exception: a repo scaffolded before this convention
 may still *record* a log or snapshot step in its own `AGENTS.md` /
@@ -67,8 +85,18 @@ worse than either state — and say it is a legacy layout. Never create
 such a file, and never add the step to a repo whose conventions do not
 already have it.
 
-## Step 7 — Commit
+## Step 7 — Commit and complete
 
 Conventional Commit, `Rationale:` footer (touches an ADR). Group the
-move + status advance + INDEX regeneration into one coherent commit
-where possible so the completion event is atomic in history.
+move + any Status removal + status advance + INDEX regeneration into
+one coherent commit so the completion event is atomic in history. The
+commit message names the plan item and the owning ADR(s).
+
+- **Direct-to-main:** after the completion commit exists and the
+  footer names the actual HEAD SHA, push the integration branch. The
+  successful push is the completion event.
+- **PR-based:** push the branch after the completion commit, wait for
+  CI green (`gh pr checks --watch`), mark the pull request ready, then
+  merge with the repo's strategy. The merge is the completion event;
+  confirm it landed on `main`, and make no follow-up commit on the
+  integration branch.
