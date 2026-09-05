@@ -43,7 +43,7 @@ pick up a cold repository and act correctly with no oral handover.
 | `plan/todo/` · `plan/done/` | The work queue. Pending items move to done on completion. |
 | `CONVENTIONS.md` | The authoring rules every contributor reads first. |
 | `AGENTS.md` (+ `CLAUDE.md`) | The hard-rules entry point coding agents load. |
-| `_agent/` | Coordination state — roles, work log, live snapshot, hand-off. |
+| `_agent/` | The agent operating contract — who writes what, the one real mutex, how an unattended run behaves. Optional; per-mode members. |
 
 ## 3. The conventions
 
@@ -282,8 +282,8 @@ invariant (INV-3) holds. The audit carries a **coverage** check — a
 deliberately conservative, doc-centric heuristic — that flags substantial
 behaviour with no owning ADR, so an escaped development is surfaced for
 capture rather than silently accumulating. Trivial or mechanical changes are
-*not* in scope here: they belong to the commit history (and the worklog),
-not the catalogue.
+*not* in scope here: they belong to the commit history, not the
+catalogue.
 
 ## 5. Scaling to many repositories
 

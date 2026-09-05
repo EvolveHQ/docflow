@@ -183,8 +183,8 @@ recommendation and what it changes up front helps you answer quickly.
 | 1 | **Project identity** — name, one-liner, doc language, existing files to preserve. | *No default — project-specific.* | Header of `AGENTS.md`, `CONVENTIONS.md`, `README.md`; language mandate (if any) added to `CONVENTIONS.md` §Project. |
 | 2 | **ADR shape** — a single shape, or two shapes (capability and technology) declared by a `shape:` field in each ADR's metadata. No number boundary is asked for: both shapes share one contiguous sequence. | **Single shape.** Start simple; add the second shape later if long-lived product requirements clearly outlive their implementations. | Whether `adr/0000-template-technology.md` is created in addition to `adr/0000-template.md`. The `shape:` field and section-order rules in `CONVENTIONS.md` §ADR Shapes and `AGENTS.md` §Hard rules. Whether `INDEX.md` carries a Shape column. |
 | 3 | **Status lifecycle** — full or shorter. | **Full lifecycle.** The `Implemented` rung is cheap and gives a clear "what's shipped" signal. | Status table in `CONVENTIONS.md` §ADR Files and `plan/README.md` §Status semantics. Whether the `Implemented` rung exists at all. |
-| 4 | **Plan folder + integration model.** Q4a: use `plan/todo/` + `plan/done/` or skip. Q4b: how work reaches `main` — **direct-to-main (fast-forward)** or **PR-based (required CI green)**. Asked after Q5, because the Q4b recommendation depends on the multi-agent mode. | **Q4a: use it.** **Q4b: direct-to-main if Q5 = single agent; PR-based if Q5 = multi-agent.** | Whether `plan/` is created. The completion-event sentence in `CONVENTIONS.md` §Plan Folder, `plan/README.md`, `AGENTS.md` §Plan folder. The integration block in `AGENTS.md` / `CONVENTIONS.md` §Git contract. Which variant of `_agent/prompts/autonomous.md` Step 6 is kept (`git merge --ff-only` vs. `gh pr create` → CI → merge). |
-| 5 | **Multi-agent setup** — pick one of three: (1) single agent; (2) multi-agent, shared checkout; (3) multi-agent, separate worktrees / PR branches. The three options differ in LOCKS semantics, WORKLOG layout, and CURRENT_FOCUS handling — switching later is not free. | **Single agent.** Small projects shouldn't pay the coordination cost. | `_agent/ROLES.md` content. `AGENTS.md` §Multi-agent workflow and `CONVENTIONS.md` §Multi-Agent Rules pick one of three variants. Mode 2 turns LOCKS on as a filesystem mutex. Mode 3 sets LOCKS to advisory, adds `_agent/WORKLOG.md merge=union` to `.gitattributes`, gitignores `_agent/CURRENT_FOCUS.md`, and writes `_agent/IN_FLIGHT.md` as the committed cross-worktree dashboard. |
+| 4 | **Plan folder + integration model.** Q4a: use `plan/todo/` + `plan/done/` or skip. Q4b: how work reaches `main` — **direct-to-main (fast-forward)** or **PR-based (required CI green)**. Asked after Q5, because the Q4b recommendation depends on the coordination answer. | **Q4a: use it.** **Q4b: direct-to-main if Q5 = single writer; PR-based if Q5 = several writers.** | Whether `plan/` is created. The completion-event sentence in `CONVENTIONS.md` §Plan Folder, `plan/README.md`, `AGENTS.md` §Plan folder. The integration block in `AGENTS.md` / `CONVENTIONS.md` §Git contract. Which variant of `_agent/prompts/autonomous.md` Step 6 is kept (`git merge --ff-only` vs. `gh pr create` → CI → merge). |
+| 5 | **Coordination — by number of writers** — pick one of three: (1) single writer; (2) several writers, one shared checkout; (3) several writers, separate worktrees / PR branches. It keys on *writers* (integration concurrency), not on how many agents you run, and it fixes which `_agent/` files exist — switching later is not free. | **Single writer.** Small projects shouldn't pay the coordination cost. | Which `_agent/` files are written: single writer → `prompts/autonomous.md` alone, and only where Q8 records a verify gate (no gate → **no `_agent/` at all**); shared checkout → `ROLES.md` + `LOCKS.md` (the one real mutex) + the prompt where there is a gate; separate worktrees → `ROLES.md` + the prompt where there is a gate, with the pushed branch and its draft PR as the claim instead of a ledger. `AGENTS.md` §Multi-agent workflow, its §Picking up this repo read order, and `CONVENTIONS.md` §Multi-Agent Rules each take the matching variant. No answer writes a work log, dashboard, snapshot or hand-off, or a `.gitattributes` / `.gitignore` entry. |
 | 6 | **Git contract** — Conventional Commits, `Rationale:` footer, signed commits, ADR-revision tags, `Co-Authored-By` trailer. | **Conventional Commits ON, `Rationale:` footer ON, signed commits ON, ADR-revision tags OFF, `Co-Authored-By` trailer OFF.** | `AGENTS.md` §Git contract and `CONVENTIONS.md` §Git Contract bullets. |
 | 7 | **Optional artefacts** — `domains/` grouping, `GLOSSARY.md`, technology-ADR template (the second ADR shape). | **`domains/`: enable when the project has distinct areas or you expect >20 ADRs** (navigation by area). `GLOSSARY.md` / technology template: defer until terminology drift / a product–technology split appears. | Whether those files / directories are created. The technology template answer must agree with Q2 — the bootstrap cross-checks the two. |
 | 8 | **Verify gate** — what command(s) decide a change is shippable. | *No default — project-specific.* | Whether `_agent/prompts/autonomous.md` is written. The skill **refuses** to write the autonomous prompt without a real verify gate. The Step 4 line of the prompt is filled with your command. |
@@ -204,14 +204,8 @@ After sign-off, the skill writes:
 | `adr/0000-template-technology.md` | `templates/adr-technology.md` | Technology-ADR template, `shape: technology` pre-filled. Only if Q2 chose two shapes. Both templates are numbered `0000`; neither is a catalogue entry. |
 | `adr/0001-record-architecture-decisions.md` | `templates/adr-0001-seed.md` | **Seed ADR** recording the decision to adopt the method (`Implemented`, references `CONVENTIONS.md`). Default on; declined at sign-off if not wanted. In a two-shape repo (Q2) it carries `shape: technology` and the technology section order (Decision / Rationale / Consequences). |
 | `plan/README.md` | `templates/plan-README.md` | Plus empty `plan/todo/.gitkeep` and `plan/done/.gitkeep`. |
-| `_agent/ROLES.md` | `templates/_agent-ROLES.md` | Single `default-agent` by default. |
-| `_agent/LOCKS.md` | `templates/_agent-LOCKS.md` | Empty header. Created only if Q5 enabled LOCKS discipline. |
-| `_agent/WORKLOG.md` | `templates/_agent-WORKLOG.md` | Empty table header. |
-| `_agent/CURRENT_FOCUS.md` | `templates/_agent-CURRENT_FOCUS.md` | Live snapshot, initial state "none". |
-| `_agent/HANDOFF.md` | `templates/_agent-HANDOFF.md` | Fresh-agent entry point. |
-| `_agent/IN_FLIGHT.md` | `templates/_agent-IN_FLIGHT.md` | Only in Q5 mode 3 (worktree). Committed cross-worktree dashboard. |
-| `.gitattributes` (entry) | (none — inline) | Only in Q5 mode 3: appends `_agent/WORKLOG.md merge=union`. |
-| `.gitignore` (entry) | (none — inline) | Only in Q5 mode 3: adds `_agent/CURRENT_FOCUS.md` so it stays local-only. |
+| `_agent/ROLES.md` | `templates/_agent-ROLES.md` | One section per named writer. Only for several writers (shared checkout or separate worktrees). |
+| `_agent/LOCKS.md` | `templates/_agent-LOCKS.md` | The file-claim mutex, empty header. **Shared checkout only.** |
 | `INDEX.md` | (none — generated) | Header + the seed ADR's row (empty table only if the seed was declined). Carries a Shape column in a two-shape repo (Q2) and none in a single-shape one. |
 | `_agent/prompts/autonomous.md` | `templates/_agent-prompts-autonomous.md` | Only if Q8 confirmed a verify gate. |
 
@@ -235,7 +229,8 @@ The repo is now ready for ADR-driven work. Typical first steps:
    `git mv plan/todo/0001-<slug>.md plan/done/<YYYY-MM-DD>-<slug>.md`,
    amend the file with a "Shipped at HEAD `<sha>`" footer, advance the
    ADR's `status:` from `Accepted` to `Implemented`, regenerate
-   `INDEX.md`, append a row to `_agent/WORKLOG.md`.
+   `INDEX.md`. That commit and the moved file are the record — there is
+   nothing else to update.
 
 ## 5a. Lifecycle skills
 
@@ -243,9 +238,10 @@ The manual workflow in §5 is exactly what the lifecycle skills
 automate. They all share four properties: they **run a short assessment
 first** (see below); they **read `CONVENTIONS.md` first** and honour the
 repo's recorded choices (ADR shape, status lifecycle, integration model,
-multi-agent mode); they **refuse on an un-bootstrapped repo** and point
-at `/bootstrap`; and they keep `INDEX.md` and the `_agent/` coordination
-files in sync as a side effect.
+coordination mode); they **refuse on an un-bootstrapped repo** and point
+at `/bootstrap`; and they keep `INDEX.md` in sync as a side effect.
+`_agent/` holds contracts, not state, so no skill writes to it in the
+course of ordinary work.
 
 **The assessment protocol.** `new-adr`, `new-plan`, `add-convention`,
 `brainstorm`, and `agent-wave` each open with a brief assessment before
@@ -277,11 +273,11 @@ picks; a fully-specified request lets you skip straight through.
 |-------|------------------------------|
 | `/new-adr` | §5 steps 1–2: pick number, choose shape, fill template, set `Proposed`, regen INDEX, wire domain README, supersede linkage. Offers to walk to `Accepted` and to create the plan item. |
 | `/new-plan` | §5 step 3: create `plan/todo/NNNN`, name owning ADR(s), scope, exit criteria, dependencies, queue position. |
-| `/ship-item` | §5 steps 5–6: verify gate → integrate (ff or PR per Q4b) → `git mv` todo→done with footer → ADR `Accepted`→`Implemented` → regen INDEX → WORKLOG → live snapshot. The most order-sensitive operation; let the skill do it. |
+| `/ship-item` | §5 steps 5–6: verify gate → integrate (ff or PR per Q4b) → `git mv` todo→done with footer → ADR `Accepted`→`Implemented` → regen INDEX. The most order-sensitive operation; let the skill do it. |
 | `/add-convention` | Assesses whether a convention is worth codifying (triages out one-offs, duplicates, churn-prone, vague), routes it to AGENTS.md / CONVENTIONS.md / GLOSSARY / an ADR, then writes it. |
 | `/audit` | Lints the repo against its own conventions and reports a punch list — numbering, INDEX sync, plan coverage, section completeness, status validity, cross-refs, language mandate, and **ADR-privacy leaks into user-visible code**. Offers to fix the mechanical issues, and offers the number-range migration (§5b) if your catalogue predates the `shape:` field. |
 | `/brainstorm` | Decomposes a problem into candidate ADRs + plan items with dependency edges and ordering. Proposes drafts only; writes nothing until approved, then hands off to `/new-adr` and `/new-plan`. |
-| `/agent-wave` | Orchestrates parallel worktree subagents over the queue. Asks wave width, budget (items/waves; hours as a soft cap), and supervision (checkpoint vs. continuous). Requires multi-agent mode; refuses mode 1. |
+| `/agent-wave` | Orchestrates parallel worktree subagents over the queue. Asks wave width, budget (items/waves; hours as a soft cap), and supervision (checkpoint vs. continuous). Requires several writers; refuses a single-writer repo. |
 | `/rollup` | For a **multi-repo product**: from the home repo, aggregate every member repo's `INDEX` into one derived, product-wide roll-up. Members not checked out are listed as "not aggregated this run". |
 
 ### agent-wave: what it can and can't do
@@ -293,8 +289,9 @@ outliving fleet, schedule `_agent/prompts/autonomous.md` via
 `/schedule` (or use remote agents) instead — `/agent-wave` points you
 there rather than over-promising.
 
-It requires a multi-agent mode (Q5 mode 2 or 3) and works best in mode
-3 (separate worktrees), where each subagent gets an isolated checkout.
+It requires a several-writer mode (Q5 shared checkout or separate
+worktrees) and works best in separate worktrees, where each subagent
+gets an isolated checkout.
 Continuous-unsupervised runs are recommended only with PR-based
 integration, so CI gates each merge.
 
@@ -405,14 +402,14 @@ scheme:
 - **G3 — gate backstop:** the single-threaded merge gate rejects a
   duplicate; the later author renumbers.
 - **G4 — claim before do:** before implementing a queued item, claim it (a
-  draft PR referencing it, or an `IN_FLIGHT`/`owner` entry) so two writers
+  draft PR referencing it, or a work branch pushed for it) so two writers
   don't build the same unclaimed `plan/todo` item — G1–G3 protect the
   *number*, G4 protects the *work assignment*; the audit's
   duplicate-plan-ownership check is the backstop.
 
 `bootstrap` **pre-wires** these into `CONVENTIONS.md` + an `AGENTS.md`
-hard rule **only** for multi-agent (mode 2/3) or PR-based repos.
-**Single-agent / direct-to-main repos have no race by construction** and
+hard rule **only** for several-writer or PR-based repos.
+**Single-writer / direct-to-main repos have no race by construction** and
 get none of this ceremony. Numbers are immutable once merged. (For
 orchestrated runs, `agent-wave` additionally *reserves* disjoint number
 blocks up front, so G2/G3 rarely fire.)
