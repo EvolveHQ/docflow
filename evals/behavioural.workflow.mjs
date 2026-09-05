@@ -102,10 +102,10 @@ const CASES = [
       'that exist in the scratch repo; (4) the gate the run prompt records is the one that was scripted and it RUNS ' +
       'THERE: _agent/prompts/autonomous.md names `node tools/verify.mjs`, and running that command from the scratch ' +
       'repo root exits 0. Verify (4) with the deterministic assertions, run from the docflow checkout: ' +
-      'node -e "import('./evals/assertions.mjs').then(m=>{const r=process.argv[1];' +
-      'm.assertFileContains(r,'_agent/prompts/autonomous.md','node tools/verify.mjs');' +
-      'm.assertCommandSucceeds(r,'node tools/verify.mjs');console.log('OK')})" <scratch-repo-path> ' +
-      'Report the file tree, each of the four checks explicitly, and that command's output.',
+      'node -e "import(\'./evals/assertions.mjs\').then(m=>{const r=process.argv[1];' +
+      'm.assertFileContains(r,\'_agent/prompts/autonomous.md\',\'node tools/verify.mjs\');' +
+      'm.assertCommandSucceeds(r,\'node tools/verify.mjs\');console.log(\'OK\')})" <scratch-repo-path> ' +
+      'Report the file tree, each of the four checks explicitly, and that command\'s output.',
   },
   {
     key: 'bootstrap-express',

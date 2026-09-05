@@ -27,7 +27,8 @@ if (has('adr')) {
   const adrs = readdirSync(join(root, 'adr'))
     .filter((f) => /^\d{4}-.+\.md$/.test(f) && !f.startsWith('0000-'))
     .sort();
-  const index = has('INDEX.md') ? read('INDEX.md') : '';
+  const hasIndex = has('INDEX.md');
+  const index = hasIndex ? read('INDEX.md') : '';
   for (const file of adrs) {
     const body = read(join('adr', file));
     for (const field of ['adr:', 'title:', 'status:']) {
@@ -35,7 +36,9 @@ if (has('adr')) {
         problems.push(`adr/${file}: metadata block has no ${field}`);
       }
     }
-    if (index && !index.includes(file.slice(0, 4))) {
+    // An INDEX.md that exists but is empty is still a missing row, not a
+    // reason to skip the check; only an absent file gets the diagnostic above.
+    if (hasIndex && !index.includes(file.slice(0, 4))) {
       problems.push(`INDEX.md has no row for adr/${file}`);
     }
   }
