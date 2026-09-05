@@ -108,12 +108,64 @@ the same way: it is a template, not the first technology ADR.
    `adr-0042`, `see ADR`, ADR titles — in UI copy, API responses,
    error messages, customer-facing logs, public docs, release notes.
    Report each suspect; this rule is easy to violate by reflex.
-10. **Coordination hygiene.** N/A if `_agent/` was omitted at bootstrap
-    (Q5 = None). Otherwise: `_agent/LOCKS.md` has no stale claims
-    (mode 2); `_agent/IN_FLIGHT.md` rows match live worktrees (mode 3).
-11. **Cross-worktree collisions** (mode 3, or when auditing across
-    unmerged branches). These catch semantic conflicts that a
-    line-level git merge cannot:
+10. **Coordination hygiene.** `_agent/` is the agent operating
+    contract — who writes what, the one real mutex, and how an
+    unattended run behaves — and holds nothing git already records.
+    N/A if the repo has no `_agent/` directory (a valid state: a single
+    writer that is not eligible for the run prompt has none). Otherwise
+    read the recorded coordination mode and check three things:
+    - **Only the prescribed files exist.** Single writer:
+      `prompts/autonomous.md` and nothing else. Shared checkout:
+      `ROLES.md`, `LOCKS.md`, `prompts/autonomous.md`. Separate
+      worktrees: `ROLES.md`, `prompts/autonomous.md` — no lock ledger,
+      because the branch and its pull request are the claim.
+      `prompts/autonomous.md` is prescribed only where the repo is
+      eligible for it — a recorded verify gate **and** the `plan/todo/`
+      queue the prompt walks. A prompt in a repo with no plan queue is
+      an unprescribed file: report it, and say the fix is to add the
+      queue or drop the prompt. Under a single writer, no eligibility
+      means no `_agent/` directory at all. **Fail** on any other file
+      under `_agent/`, and on a
+      prescribed file the mode does not allow (a lock ledger in
+      separate-worktree mode, a roles list under a single writer).
+    - **No file carries derived state.** **Fail** on any `_agent/` file
+      whose content duplicates what git, the queue, or the live
+      branches already say: a log of shipped items, an in-flight or
+      per-worktree table, a snapshot of branch or queue state ("active
+      branch", "last shipped", "next item"), or a clause telling the
+      reader that git wins where the two disagree — that clause is the
+      file admitting it is a stale copy.
+    - **Stale claims.** In a shared checkout, a row in
+      `_agent/LOCKS.md` is a live mutex until there is **evidence** its
+      owner has finished or abandoned it. Writers claim a file *before*
+      editing it, so a claim with no pending change is the normal state
+      of a writer preparing an edit — **never** infer staleness from an
+      absent diff alone. Evidence must be tied to **this** claim, never
+      to the actor's history on the file — writers reuse files across
+      tasks, so a commit older than the row proves nothing about it.
+      Evidence is one of:
+      - a commit by the claiming actor that touches that path, with a
+        commit time **later than the row's timestamp**, has landed on
+        the integration branch and the row is still there (the claim
+        outlived its own work);
+      - the operator confirms the owner is gone.
+      Report rows with evidence as **hygiene**, naming the evidence.
+      Report every other claim as an **uncertain** row — listed for the
+      operator to confirm, counted as neither clean nor stale, and never
+      cleared automatically. Where the audit cannot attribute a row to a
+      commit at all (no matching actor in the history), it is uncertain,
+      not stale.
+    - **Legacy layout.** Where the offending files are the former
+      scaffolded set — `WORKLOG.md`, `worklog/`, `CURRENT_FOCUS.md`,
+      `IN_FLIGHT.md`, `HANDOFF.md`, a `merge=union` attribute for the
+      worklog, or a `.gitignore` entry for the snapshot — report them
+      as **one** finding naming the layout and every file in it, not
+      one finding per file. Do **not** offer to remove them and do not
+      edit them: a repo on the old layout still works, and moving it
+      onto the new one is a migration of its own.
+11. **Cross-worktree collisions** (repos that record several writers on
+    separate worktrees, or any audit that spans unmerged branches).
+    These catch semantic conflicts that a line-level git merge cannot:
     - **Duplicate ADR or plan/todo numbers** — two ADR files, or two
       `plan/todo/` items, (across branches/worktrees) claiming the same
       `NNNN`. Distinct from check 1, which only sees one tree. This is the
@@ -125,8 +177,10 @@ the same way: it is a template, not the first technology ADR.
     - **Same ADR edited on two unmerged branches** — compare ADR files
       across the live worktrees / open PRs; flag any ADR modified in
       more than one. A `merge=union` would concatenate them silently.
-    Cross-check against `_agent/IN_FLIGHT.md`: every collision should
-    correspond to a reservation/ownership violation recorded there.
+    Cross-check against the identifier blocks reserved for the wave and
+    the branch each worktree pushed: every collision should correspond
+    to a writer working outside its reserved block or editing an
+    artefact another branch claims.
 12. **Cross-repo (federation) checks** — only when a `federation.md`
     exists; run from the **index-holding** repo (`Role: central`, `home`,
     or `coordinator` — whichever holds `federation-index.md`). Reach each
@@ -188,7 +242,8 @@ the same way: it is a template, not the first technology ADR.
 Lead with a one-line verdict (clean / N issues). Then the punch list,
 grouped by severity: **blocking** (privacy leaks, status/lifecycle
 violations, broken cross-refs), **drift** (INDEX out of sync, missing
-plan files), **hygiene** (stale locks, formatting), and **migration
+plan files), **hygiene** (evidenced stale locks, uncertain lock rows
+awaiting confirmation, formatting), and **migration
 available** (a superseded scheme the repo can move off — check 15).
 A migration-available finding does not count towards the issue count in
 the verdict and never makes the run dirty: a repo whose only finding is
@@ -197,8 +252,12 @@ that one is **clean, with a migration available**.
 ## Step 3 — Offer fixes
 
 Offer to fix the **mechanical** issues automatically: regenerate
-`INDEX.md`, create missing `plan/todo` stubs, clear stale locks, fix
-broken relative links. **Do not** auto-edit ADR content, rewrite
+`INDEX.md`, create missing `plan/todo` stubs, clear the lock rows check
+10 found evidence for, fix broken relative links. **Only** rows with
+that evidence are clearable: clearing a live claim in a shared checkout
+removes another writer's only mutex and lets two writers edit the same
+file. Uncertain rows are listed for the operator to confirm one at a
+time and are never included in a "fix everything" confirmation. **Do not** auto-edit ADR content, rewrite
 acceptance criteria, or remove suspected privacy leaks without the
 user confirming each — those need judgement. Commit fixes as
 `fix(adr): ...` / `docs: ...` with a `Rationale:` footer where an ADR

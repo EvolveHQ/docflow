@@ -7,7 +7,7 @@ title: docflow
 **docflow** turns any repository into a **documentation-led, ADR-driven**
 project. A `bootstrap` skill scaffolds (or retrofits) an **Architecture
 Decision Record (ADR)** catalogue, a `plan/` work queue, `AGENTS.md`
-conventions, and multi-agent coordination files — the small set of canonical
+conventions, and the agent operating contract — the small set of canonical
 files a repo can be driven from by humans and coding agents alike. A set of
 **lifecycle skills** then author, queue, ship, and audit ADRs.
 
@@ -24,7 +24,7 @@ why they help, and where they fall short.
 | `bootstrap` | Scaffold or retrofit the whole convention set. Start here. Opens with an express / guided / full depth choice — a quick conservative setup needs almost no questions. |
 | `new-adr` | Author one ADR — next contiguous number, right shape, INDEX + domain wiring, supersede linkage. |
 | `new-plan` | Add a `plan/todo` item tracing to its owning ADR(s). |
-| `ship-item` | Run the completion event: verify → integrate → `todo`→`done` → ADR `Accepted`→`Implemented` → INDEX/WORKLOG. |
+| `ship-item` | Run the completion event: verify → integrate → `todo`→`done` → ADR `Accepted`→`Implemented` → INDEX. |
 | `add-convention` | Assess whether a convention is worth codifying, route it to the right home (or to an ADR), then add it — e.g. enable optional practices like TDD on demand. |
 | `audit` | Lint the repo against its own conventions — numbering, INDEX sync, plan coverage, ADR-privacy leaks, and more. |
 | `brainstorm` | Decompose a problem into candidate ADRs + plan items (proposes drafts; writes nothing until approved). |

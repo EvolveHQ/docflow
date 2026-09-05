@@ -37,7 +37,7 @@ Starting from an empty repo.
 ```
 
 Answer the 10 questions (en-GB · single ADR shape · full lifecycle · use
-`plan/` · single agent · direct-to-main · default git contract · defer
+`plan/` · single writer · direct-to-main · default git contract · defer
 optionals · verify gate = `npm test` · no domain rules). Review the plan,
 then it writes:
 
@@ -49,7 +49,7 @@ linkfold/
 ├── INDEX.md           # generated ADR table
 ├── adr/0000-template.md
 ├── plan/{todo,done}/
-└── _agent/{ROLES,WORKLOG,CURRENT_FOCUS,HANDOFF}.md
+└── _agent/prompts/autonomous.md    # single writer + a gate + plan/
 ```
 
 ### Step 2 — Record the first decision
@@ -100,7 +100,7 @@ verify: npm test … OK
 fast-forward → main, pushed
 plan/todo/0001-links-table.md → plan/done/2026-06-02-links-table.md  (+ shipped footer)
 adr/0001  status: Accepted → Implemented
-INDEX + WORKLOG updated
+INDEX regenerated
 ```
 
 ### Step 5 — Check consistency
@@ -194,9 +194,11 @@ New work now follows the same loop: `/new-adr` → `/new-plan` → `/ship-item`.
 1. `/bootstrap` on a fresh repo → 10 questions → full scaffold (see Flow 1).
 2. *"set up documentation-led conventions here"* on an existing repo →
    retrofit + backfill offer (see Flow 2).
-3. `/bootstrap` choosing **worktree multi-agent + PR integration** → `_agent/`
-   also gets `LOCKS.md`, `IN_FLIGHT.md`, `.gitattributes (WORKLOG merge=union)`,
-   and a PR-based `prompts/autonomous.md`.
+3. `/bootstrap` choosing **several writers in separate worktrees + PR
+   integration** → `_agent/` holds `ROLES.md`, and a PR-based
+   `prompts/autonomous.md` where a verify gate and the `plan/todo/` queue
+   it walks both exist. No lock ledger: the pushed branch and its draft
+   pull request are the claim.
 
 ### new-adr
 
@@ -222,7 +224,7 @@ New work now follows the same loop: `/new-adr` → `/new-plan` → `/ship-item`.
 ### ship-item
 
 1. `/ship-item` → ships the lowest-numbered todo through the full completion
-   event (verify → integrate → `todo`→`done` → ADR `Implemented` → INDEX/WORKLOG).
+   event (verify → integrate → `todo`→`done` → ADR `Implemented` → INDEX).
 2. *"ship plan/todo/0002"* → ships a specific item.
 3. *"mark the custom-slugs work done"* → resolves which item it means, then runs
    the same event. Stops if the verify gate fails — no partial ship.
@@ -292,8 +294,9 @@ New work now follows the same loop: `/new-adr` → `/new-plan` → `/ship-item`.
 > so parallel branches can collide on "next". docflow keeps the contiguous
 > numbers and closes the race with process guardrails — *decide-before-do*,
 > *check-before-merge* (sync + audit + renumber locally), and a *merge-gate
-> backstop* — pre-wired only for multi-agent / PR-based repos. Single-agent /
-> direct-to-main repos need none of it. See
+> backstop* — pre-wired only for several-writer (shared-checkout or
+> separate-worktree) or pull-request repos. A single writer on
+> direct-to-main needs none of it. See
 > [USAGE → Concurrent ADR/plan creation](https://github.com/EvolveHQ/docflow/blob/main/USAGE.md).
 
 ### rollup

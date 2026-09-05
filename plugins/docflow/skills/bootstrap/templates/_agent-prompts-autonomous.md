@@ -1,5 +1,9 @@
 # Autonomous-completion prompt
 
+**Authoritative for:** how an unattended run behaves in this repo — the
+order it works in, the gate it must pass, and the conditions under
+which it stops. It records nothing about past runs.
+
 You are this project's autonomous agent. Your task: drive the
 implementation queue in `plan/todo/` to completion, unsupervised,
 committing per-item with the verify gate green, until the queue is
@@ -7,17 +11,11 @@ empty or a documented stop condition fires.
 
 ## Step 1 — Orient
 
-Read these files IN ORDER, in full, before any tool calls:
-
-1. `AGENTS.md` — hard rules.
-2. `CONVENTIONS.md` — authoring rules + ADR status semantics + plan
-   folder convention.
-3. `plan/README.md` — the queue convention.
-4. `_agent/CURRENT_FOCUS.md` — live session snapshot.
-5. `INDEX.md` — ADR catalogue.
-6. Tail of `_agent/WORKLOG.md` (last 30 lines).
-7. The queue item file at `plan/todo/NNNN-*.md` you are about to work,
-   and the ADR(s) it names.
+Read `AGENTS.md` first and follow its **Picking up this repo** read
+order in full, in the order given, before any tool calls. That section
+lists this repo's actual files; do not assume any file it does not
+name. Finish by reading the queue item you are about to work,
+`plan/todo/NNNN-*.md`, and the ADR(s) it names.
 
 ## Step 2 — Pick the next item
 
@@ -42,22 +40,22 @@ footer required on any commit touching an ADR.
 
 ## Step 6 — Integrate
 
-<!-- Concurrency guardrail G2 (multi-agent / PR-based repos) — keep this
+<!-- Concurrency guardrail G2 (multi-writer / PR-based repos) — keep this
 step if CONVENTIONS.md has a §Concurrency Guardrails section; drop it for
-single-agent direct-to-main repos:
+single-writer direct-to-main repos:
 
 - **Check before merge (G2).** Sync onto the current `main`
-  (`git fetch` + rebase, or pull in a shared checkout) and run `/audit`.
-  If your new ADR or `plan/todo` number now clashes with what landed on
-  `main`, renumber locally — in your ADR/plan file and `INDEX.md` —
-  before integrating. The merge gate (G3) rejects a duplicate as the
-  backstop.
+  (`git fetch` + rebase, or pull in a shared checkout) and run the audit
+  skill. If your new ADR or `plan/todo` number now clashes with what
+  landed on `main`, renumber locally — in your ADR/plan file and
+  `INDEX.md` — before integrating. The merge gate (G3) rejects a
+  duplicate as the backstop.
 -->
 
 <!-- Integration model per Q4b — keep ONE of the two blocks below,
 delete the other. -->
 
-<!-- Direct-to-main (fast-forward only). Keep this block for mode 1 /
+<!-- Direct-to-main (fast-forward only). Keep this block for
 direct-to-main projects:
 
 - Fast-forward the work branch onto `main`:
@@ -67,8 +65,8 @@ direct-to-main projects:
 - The verify gate has already passed locally (Step 4); no CI wait.
 -->
 
-<!-- PR-based (required CI green). Keep this block for mode 2/3 /
-PR-based projects:
+<!-- PR-based (required CI green). Keep this block for PR-based
+projects:
 
 - Push the work branch: `git push -u origin <work-branch>`.
 - Open a draft PR: `gh pr create --draft --fill`.
@@ -91,13 +89,8 @@ Once the change is on `main` (fast-forwarded or PR-merged):
 - Advance the owning ADR(s)' `status:` from `Accepted` to
   `Implemented`; regenerate `INDEX.md`.
 
-## Step 8 — Record
-
-- Append a one-line `_agent/WORKLOG.md` entry naming the branch, the
-  HEAD, the verify result, any deferral.
-- Update `_agent/CURRENT_FOCUS.md` so the slim live snapshot reads
-  the new state. (In worktree mode this file is local-only; update
-  `_agent/IN_FLIGHT.md` to remove your worktree's row instead.)
+That commit, the moved file, and its footer are the record of the run.
+Write no separate log of what you did.
 
 ## Stop conditions
 
@@ -105,8 +98,7 @@ Once the change is on `main` (fast-forwarded or PR-merged):
 - Queue empty.
 - A queue item references an ADR whose status is not Accepted.
 - Acceptance criteria are ambiguous or untestable as written.
-- Lock contention on the same files between two same-priority items.
+- Two same-priority queue items contend for the same files.
 
 When a stop condition fires, stop cleanly: leave the repo in a
-committed state, record the reason in `_agent/CURRENT_FOCUS.md`, and
-surface to the human.
+committed state, and surface the item and the reason to the human.

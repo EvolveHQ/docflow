@@ -49,7 +49,8 @@ writer instruction on their columns; nothing reads the hand-off or the
 roles list; the hand-off hardcodes paths that the artefact-root and
 optional-layer decisions made variable; and choosing no coordination
 directory together with a real verify gate still writes a run prompt
-that reads and writes files that do not exist.
+that reads and writes files that do not exist — as does recording a
+gate without the plan queue that prompt is written to walk.
 
 The remedy is a principle, not another file: `_agent/` is the **agent
 operating contract** — who writes what, the one real mutex, and how an
@@ -61,18 +62,26 @@ task is waiting on lives in that task's own plan item.
 
 `_agent/` holds only what git cannot tell you. It contains contracts
 and never derived state. The coordination mode is still chosen by the
-number of writers, and each mode prescribes exactly these files:
+number of writers, and each mode prescribes exactly these files.
+
+The run prompt has two prerequisites, not one: it is written only when
+a verify gate is recorded **and** the `plan/todo/` queue it walks
+exists. The prompt's loop is "take the next queue item, do it, run the
+gate", so failing either prerequisite leaves it naming a command or a
+directory that is not there; fail either and no prompt is written.
 
 - **Single writer** — `_agent/prompts/autonomous.md` when a verify
-  gate is recorded; otherwise no `_agent/` directory at all. This one
-  answer replaces both the former "none" and "single agent" answers,
-  which now produce the same result.
+  gate is recorded and the plan queue exists; otherwise no `_agent/`
+  directory at all. This one answer replaces both the former "none" and
+  "single agent" answers, which now produce the same result.
 - **Shared checkout** — `ROLES.md`, `LOCKS.md` as the filesystem
-  mutex, and the run prompt when a gate is recorded.
+  mutex, and the run prompt when a gate is recorded and the plan queue
+  exists.
 - **Separate worktrees / pull requests** — `ROLES.md` and the run
-  prompt when a gate is recorded. No lock ledger: the pushed branch and
-  the draft pull request are the lock, and an advisory ledger whose own
-  header says not to rely on it is noise.
+  prompt when a gate is recorded and the plan queue exists. No lock
+  ledger: the pushed branch and the draft pull request are the lock,
+  and an advisory ledger whose own header says not to rely on it is
+  noise.
 
 No mode writes a worklog, a dashboard, a snapshot, or a hand-off file.
 The hand-off's read order becomes a short "Picking up this repo"
@@ -97,8 +106,9 @@ mode or the gate calls for it, and its absence is a valid state.
 - As an agent picking up a repo, I read `AGENTS.md` and it tells me
   the read order for this repo's actual layout, without a second entry
   point that duplicates it.
-- As a solo maintainer with a verify gate, I get a run prompt and
-  nothing else; without a gate I get no coordination directory at all.
+- As a solo maintainer with both a verify gate and a plan queue, I get
+  a run prompt and nothing else; missing either one, I get no
+  coordination directory at all.
 - As a team on separate worktrees, I stop maintaining a dashboard that
   could never be current on `main` and a lock ledger nobody trusted.
 - As an auditor, I flag any `_agent/` file that holds derived state,
@@ -107,8 +117,10 @@ mode or the gate calls for it, and its absence is a valid state.
 ## Acceptance criteria
 
 1. Bootstrap writes exactly the files the chosen mode prescribes and
-   nothing else under `_agent/`; a single-writer repo without a
-   recorded verify gate has no `_agent/` directory.
+   nothing else under `_agent/`; the run prompt is written only where a
+   verify gate is recorded **and** the `plan/todo/` queue exists, and a
+   single-writer repo without a recorded gate, or without a plan queue,
+   has no `_agent/` directory.
 2. The coordination question offers three answers keyed on writers —
    single writer, shared checkout, separate worktrees — and "single
    writer" replaces the former "none" and "single agent" answers; the
@@ -172,9 +184,11 @@ mode or the gate calls for it, and its absence is a valid state.
 |------|----------|--------|--------|
 | 2026-09-04 | r1 | Eugenio Minardi | Initial draft (Proposed), from the approved brainstorm: `_agent/` holds contracts only, never derived state; per-mode file set redefined (single writer / shared checkout / separate worktrees); hand-off folded into `AGENTS.md` and the run prompt; supersedes 0005's file shapes while keeping its writer-keyed modes. |
 | 2026-09-05 | r2 | Eugenio Minardi | Status Proposed → Accepted; acceptance delegated to the session by the operator. Open question resolved as drafted: `ROLES.md` stays; roles and domains are different axes. Plan 0038 authorised. |
+| 2026-09-05 | r3 | Eugenio Minardi | The run prompt now requires the `plan/todo/` queue as well as a recorded verify gate: capability statement (a new prerequisite paragraph and all three mode bullets), the Context drift sentence, the solo-maintainer scenario and AC1 restated accordingly. Triggered by review of pull request #3 (plan 0038): the implementation had added the queue prerequisite to stop a gate-present, queue-less repo getting a prompt that walks a queue which does not exist, and the specification is brought back into agreement with it. Status unchanged. |
 
 ## Approvals
 
 | Role | Name | Date | Signature |
 |------|------|------|-----------|
+| Maintainer | Eugenio Minardi | 2026-09-05 | — (delegated) |
 | Maintainer | Eugenio Minardi | 2026-09-05 | — (delegated) |

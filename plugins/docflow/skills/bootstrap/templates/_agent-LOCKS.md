@@ -1,17 +1,22 @@
 # Agent Locks
 
-Append a row before editing a file. Remove the row on commit.
+**Authoritative for:** which file each writer currently holds. In a
+shared checkout this ledger is the one real mutex — nothing else stops
+two writers editing the same file at the same time.
+
+Append a row before editing a file. Remove the row on commit. A row is
+stale only when a commit by its owner touching that path, made **after
+the row's timestamp**, has landed and the row is still here — an older
+commit on the same file says nothing about this claim. A row with no
+pending change is **not** evidence of staleness: the claim is made
+before the edit, so that is exactly what a writer preparing an edit
+looks like. Clear someone else's row only on that evidence or once
+they have confirmed they are done.
 
 Format: `<agent-id> | <path> | <ISO-8601 timestamp>`
 
-<!-- Mode 3 (worktree) advisory header — the skill leaves this in
-place when Q5 selected separate-worktrees mode:
-
-**Advisory only under separate-worktree mode.** GitHub draft PRs and
-branch assignment are the authoritative lock; LOCKS rows are an
-intent declaration to help coordinate before a PR exists. Do not
-rely on this file as a filesystem mutex — the filesystem can't
-conflict across worktrees in the first place.
--->
+<!-- Written in shared-checkout mode only. Writers in separate
+worktrees cannot collide on the filesystem: the pushed branch and its
+pull request are the claim, so no lock ledger is written. -->
 
 ---

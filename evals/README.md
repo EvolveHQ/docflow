@@ -62,6 +62,12 @@ what makes it what it is and what a case should expect from it.
   cross-references both ways, and the seed record as the exception the
   range forces. It feeds the legacy-detection and migration case
   (adr/0035-range-numbered-catalogue-migration.md AC1–AC9).
+- **`fixtures/scratch-gate/`** — a runnable verify gate for a freshly
+  scaffolded repo (node built-ins only, exit 0 on a sane tree). The
+  bootstrap case copies it to `<scratch>/tools/verify.mjs` **before**
+  invoking the skill and records `node tools/verify.mjs` as its Q8
+  answer, so the gate the scaffolded repo records is one it can actually
+  run — bootstrap does not install this checkout's `scripts/verify.mjs`.
 
 A fixture is a directory of files, not a git repo. A case that migrates
 or otherwise mutates one **copies it to a scratch directory first** —

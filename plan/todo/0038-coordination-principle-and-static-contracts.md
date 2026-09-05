@@ -9,9 +9,11 @@ Make `_agent/` the agent operating contract and nothing else:
 1. **Bootstrap.** Q5 becomes three writer-keyed answers — single
    writer (replacing "none" and "single agent"), shared checkout,
    separate worktrees. Step 5 writes per mode: single writer →
-   `_agent/prompts/autonomous.md` iff Q8 recorded a gate, else no
-   `_agent/`; shared checkout → `ROLES.md`, `LOCKS.md`, prompt iff
-   gate; separate worktrees → `ROLES.md`, prompt iff gate. No
+   `_agent/prompts/autonomous.md` iff Q8 recorded a gate **and** Q4a
+   kept the `plan/todo/` queue the prompt walks, else no `_agent/`;
+   shared checkout → `ROLES.md`, `LOCKS.md`, prompt iff gate and plan
+   queue; separate worktrees → `ROLES.md`, prompt iff gate and plan
+   queue. No
    worklog, snapshot, dashboard, hand-off, `.gitattributes` union
    entry, or `.gitignore` entry in any mode. The layout tree, Step 3
    "conventions to install" item 9, the express/guided profiles, and
@@ -53,8 +55,9 @@ Out of scope:
 Maps to adr/0036-coordination-directory-holds-only-what-git-cannot-tell-you.md
 acceptance criteria:
 
-1. Bootstrap writes exactly the per-mode set; single writer without a
-   gate has no `_agent/`. → AC1
+1. Bootstrap writes exactly the per-mode set; the run prompt is written
+   only where a gate and the plan queue are both recorded, and a single
+   writer missing either has no `_agent/`. → AC1
 2. Q5 offers three writer-keyed answers; express and guided record
    single writer. → AC2
 3. AGENTS "Picking up this repo" section generated per root/layers/

@@ -25,7 +25,7 @@ agent the same skills are invoked as `/skill:<name>` (e.g.
 | bootstrap | `/bootstrap` | Scaffold or retrofit the whole convention set. Start here. |
 | new-adr | `/new-adr` | Author one ADR — next contiguous number, right shape, INDEX + domain wiring, supersede linkage. |
 | new-plan | `/new-plan` | Add a `plan/todo` item tracing to its owning ADR(s). |
-| ship-item | `/ship-item` | Run the completion event: verify → integrate → `todo`→`done` → ADR `Accepted`→`Implemented` → INDEX/WORKLOG. |
+| ship-item | `/ship-item` | Run the completion event: verify → integrate → `todo`→`done` → ADR `Accepted`→`Implemented` → INDEX. |
 | add-convention | `/add-convention` | Assess whether a convention is worth codifying, route it to the right home (or to an ADR), then add it. Use it to enable optional practices (e.g. TDD) on demand — see [USAGE §5a](USAGE.md). |
 | audit | `/audit` | Lint the repo against its own conventions — numbering, INDEX sync, plan coverage, **ADR-privacy leaks**, more. |
 | brainstorm | `/brainstorm` | Decompose a problem into candidate ADRs + plan items (proposes drafts; writes nothing until approved). |
@@ -55,8 +55,15 @@ ADR catalogue.
 **Optional layers (opt-in):**
 - `plan/todo/` + `plan/done/` — the implementation queue (Q4a). `git mv`
   from `todo/` to `done/` is the completion event.
-- `_agent/` — coordination (`ROLES`, `LOCKS`, `WORKLOG`, `CURRENT_FOCUS`,
-  `HANDOFF`, optional `prompts/`). **Q5 — choose *None* to omit it.**
+- `_agent/` — the agent operating contract: who writes what, the one real
+  mutex, and how an unattended run behaves. It holds nothing git already
+  records. Members follow the coordination answer (Q5): a **single
+  writer** gets `prompts/autonomous.md`, and only where a verify gate
+  (Q8) and the `plan/todo/` queue the prompt walks (Q4a) are both
+  recorded — otherwise no `_agent/` at all; a **shared checkout** gets
+  `ROLES.md`, `LOCKS.md`, and the prompt on the same condition;
+  **separate worktrees** get `ROLES.md` and the prompt on the same
+  condition.
 - `domains/<slug>/README.md` — **grouping**: per-area indexes (e.g.
   `domains/auth/`) over the flat catalogue, for navigating a large catalogue
   by area. Organisational only — ADRs keep their number; `new-adr` files

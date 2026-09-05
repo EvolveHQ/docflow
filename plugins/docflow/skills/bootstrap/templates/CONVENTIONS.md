@@ -133,46 +133,52 @@ instead.
 
 ## Multi-Agent Rules
 
-<!-- Q5 = None — no coordination layer. Replace the mode-1 text with:
-A single writer owns this repo — one human/agent integrates at a
-time. No coordination directory (`_agent/`) is in use; live state and
-history live in git.
--->
+`_agent/` is the **agent operating contract**: who writes what, the one
+real mutex, and how an unattended run behaves. It holds nothing git
+already records — no log of what shipped, no dashboard of what is in
+flight, no snapshot of the current state. Its absence is a valid state.
 
-<!-- Mode 1 — single agent. Keep this line, drop the alternatives. -->
-A single agent owns this repo. The `_agent/` directory tracks live
-state and history; no LOCKS discipline.
+<!-- Keep the ONE block matching the coordination mode (Q5); delete the
+others. -->
 
-<!-- Mode 2 — multi-agent, shared checkout. Replace with:
-Work is partitioned across named agents (see `_agent/ROLES.md`).
-Claim a file in `_agent/LOCKS.md` before editing; remove the line on
-commit. Append to `_agent/WORKLOG.md` on commit.
-`_agent/CURRENT_FOCUS.md` is the single in-flight snapshot.
+<!-- Single writer. Keep this text. -->
+A single writer owns this repo — one human/agent integrates at a time,
+so there is nothing to serialise: no roles list, no lock ledger. What
+happened is git history and `plan/done/`; what is in flight is the
+current branch and any open pull request. The one coordination file is
+`_agent/prompts/autonomous.md`, written only where a verify gate is
+recorded **and** the `plan/todo/` queue it walks exists; without both
+there is no `_agent/` directory at all.
 Regenerate `INDEX.md` after any ADR status change or new ADR.
+
+<!-- Several writers, one shared checkout. Replace with:
+Work is partitioned across named writers (see `_agent/ROLES.md`).
+Claim a file in `_agent/LOCKS.md` before editing it; remove the row on
+commit. In one checkout that ledger is the only thing stopping two
+writers editing the same file, so it is the one lock that matters.
+Keep no log of what shipped — git history and `plan/done/` are that
+record. Regenerate `INDEX.md` after any ADR status change or new ADR.
 -->
 
-<!-- Mode 3 — multi-agent, separate worktrees / PR branches. Replace
-with:
-Work is partitioned across named agents (see `_agent/ROLES.md`).
-Each agent works in its own worktree / PR branch.
-- GitHub draft PRs are the authoritative lock; `_agent/LOCKS.md` is
-  advisory only.
-- `_agent/WORKLOG.md` is `merge=union` (see `.gitattributes`);
-  append on every commit.
-- `_agent/CURRENT_FOCUS.md` is gitignored (local-only per worktree);
-  the committed cross-worktree dashboard is `_agent/IN_FLIGHT.md` —
-  one row per active worktree.
+<!-- Several writers, separate worktrees / PR branches. Replace with:
+Work is partitioned across named writers (see `_agent/ROLES.md`).
+Each writer works in its own worktree / PR branch.
+- **The pushed branch and its draft pull request are the claim.** No
+  lock ledger is kept: worktrees cannot collide on the filesystem, and
+  an advisory ledger nobody can rely on is noise.
 - **Identifier reservation.** Before parallel worktrees are spawned,
-  each is assigned a disjoint block of ADR numbers / `plan/todo` slots
-  (recorded in `_agent/IN_FLIGHT.md`). An agent creates new ADRs/plans
-  only from its reserved block, so two worktrees never claim the same
-  next number. `agent-wave` performs the reservation.
+  each is given a disjoint block of ADR numbers / `plan/todo` slots in
+  the brief it is spawned with. A writer creates new ADRs/plans only
+  from its reserved block, so two worktrees never claim the same next
+  number. `agent-wave` performs the reservation.
 - **Single writer per artefact.** An ADR body or a given `plan/` item
-  is edited by at most one worktree at a time (its owner, per
-  `_agent/IN_FLIGHT.md`). Contradictory edits to one ADR across two
-  worktrees must never happen — `merge=union` would concatenate them
-  silently. `/audit` flags duplicate numbers, duplicate plan ownership,
-  and the same ADR edited on two unmerged branches.
+  is edited by at most one worktree at a time — the one whose branch
+  claims it. Contradictory edits to one ADR across two worktrees must
+  never happen; the audit skill flags duplicate numbers, duplicate plan
+  ownership, and the same ADR edited on two unmerged branches.
+- Keep no dashboard and no log: the live branches, worktrees and open
+  pull requests are what is in flight; git history and `plan/done/` are
+  what shipped.
 - Regenerate `INDEX.md` after any ADR status change or new ADR.
 -->
 
@@ -197,8 +203,9 @@ owning ADR(s)' `status:` advances from `Accepted` to `Implemented`.
 `INDEX.md` is regenerated to match.
 
 <!-- Concurrency Guardrails — bootstrap INCLUDES this section (uncommented)
-ONLY for multi-agent (mode 2/3) OR PR-based repos. Single-agent
-direct-to-main repos have no numbering race by construction and OMIT it.
+ONLY for several-writer repos (the recorded answer is a shared checkout
+or separate worktrees) OR pull-request integration. A single writer on
+direct-to-main has no numbering race by construction and OMITS it.
 Adapt "integrate" to the integration model (PR merge / ff-push / pull
 before commit in a shared checkout).
 
@@ -224,8 +231,8 @@ once merged:
   renumbers.
 - **G4 — claim before do.** Before implementing a queued item, **claim it**
   so two writers don't build the same thing: open a draft PR referencing
-  the item (the authoritative claim in PR-based / worktree repos), or record
-  an `owner` / `_agent/IN_FLIGHT.md` entry. An unclaimed `plan/todo` item on
+  the item (the authoritative claim in PR-based / worktree repos), or push
+  a work branch named for it. An unclaimed `plan/todo` item on
   `main` (which G1 deliberately puts there) is otherwise an open invitation
   to duplicate effort. G1–G3 protect the *number*; G4 protects the *work
   assignment*. `/audit`'s duplicate-plan-ownership check is the backstop.
