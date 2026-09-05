@@ -97,10 +97,11 @@ plan/todo/0001-links-table.md
 
 ```
 verify: npm test … OK
-fast-forward → main, pushed
-plan/todo/0001-links-table.md → plan/done/2026-06-02-links-table.md  (+ shipped footer)
+fast-forward → main locally
+plan/todo/0001-links-table.md → plan/done/2026-06-02-links-table.md  (+ footer naming HEAD SHA)
 adr/0001  status: Accepted → Implemented
 INDEX regenerated
+push → main
 ```
 
 ### Step 5 — Check consistency
@@ -224,7 +225,8 @@ New work now follows the same loop: `/new-adr` → `/new-plan` → `/ship-item`.
 ### ship-item
 
 1. `/ship-item` → ships the lowest-numbered todo through the full completion
-   event (verify → integrate → `todo`→`done` → ADR `Implemented` → INDEX).
+   event (verify → completion commit with `todo`→`done`, ADR
+   `Implemented`, and INDEX → push or PR merge).
 2. *"ship plan/todo/0002"* → ships a specific item.
 3. *"mark the custom-slugs work done"* → resolves which item it means, then runs
    the same event. Stops if the verify gate fails — no partial ship.

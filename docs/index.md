@@ -24,7 +24,7 @@ why they help, and where they fall short.
 | `bootstrap` | Scaffold or retrofit the whole convention set. Start here. Opens with an express / guided / full depth choice — a quick conservative setup needs almost no questions. |
 | `new-adr` | Author one ADR — next contiguous number, right shape, INDEX + domain wiring, supersede linkage. |
 | `new-plan` | Add a `plan/todo` item tracing to its owning ADR(s). |
-| `ship-item` | Run the completion event: verify → integrate → `todo`→`done` → ADR `Accepted`→`Implemented` → INDEX. |
+| `ship-item` | Run the completion event: verify → completion commit (`todo`→`done`, ADR `Accepted`→`Implemented`, INDEX) → push or PR merge per the recorded model. |
 | `add-convention` | Assess whether a convention is worth codifying, route it to the right home (or to an ADR), then add it — e.g. enable optional practices like TDD on demand. |
 | `audit` | Lint the repo against its own conventions — numbering, INDEX sync, plan coverage, ADR-privacy leaks, and more. |
 | `brainstorm` | Decompose a problem into candidate ADRs + plan items (proposes drafts; writes nothing until approved). |
