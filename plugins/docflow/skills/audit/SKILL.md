@@ -160,9 +160,9 @@ the same way: it is a template, not the first technology ADR.
       one finding per file. Do **not** offer to remove them and do not
       edit them: a repo on the old layout still works, and moving it
       onto the new one is a migration of its own.
-11. **Cross-worktree collisions** (mode 3, or when auditing across
-    unmerged branches). These catch semantic conflicts that a
-    line-level git merge cannot:
+11. **Cross-worktree collisions** (repos that record several writers on
+    separate worktrees, or any audit that spans unmerged branches).
+    These catch semantic conflicts that a line-level git merge cannot:
     - **Duplicate ADR or plan/todo numbers** — two ADR files, or two
       `plan/todo/` items, (across branches/worktrees) claiming the same
       `NNNN`. Distinct from check 1, which only sees one tree. This is the

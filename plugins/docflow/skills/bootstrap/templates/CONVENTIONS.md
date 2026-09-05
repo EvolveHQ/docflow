@@ -203,8 +203,9 @@ owning ADR(s)' `status:` advances from `Accepted` to `Implemented`.
 `INDEX.md` is regenerated to match.
 
 <!-- Concurrency Guardrails — bootstrap INCLUDES this section (uncommented)
-ONLY for multi-agent (mode 2/3) OR PR-based repos. Single-agent
-direct-to-main repos have no numbering race by construction and OMIT it.
+ONLY for several-writer repos (the recorded answer is a shared checkout
+or separate worktrees) OR pull-request integration. A single writer on
+direct-to-main has no numbering race by construction and OMITS it.
 Adapt "integrate" to the integration model (PR merge / ff-push / pull
 before commit in a shared checkout).
 

@@ -294,8 +294,9 @@ New work now follows the same loop: `/new-adr` → `/new-plan` → `/ship-item`.
 > so parallel branches can collide on "next". docflow keeps the contiguous
 > numbers and closes the race with process guardrails — *decide-before-do*,
 > *check-before-merge* (sync + audit + renumber locally), and a *merge-gate
-> backstop* — pre-wired only for multi-agent / PR-based repos. Single-agent /
-> direct-to-main repos need none of it. See
+> backstop* — pre-wired only for several-writer (shared-checkout or
+> separate-worktree) or pull-request repos. A single writer on
+> direct-to-main needs none of it. See
 > [USAGE → Concurrent ADR/plan creation](https://github.com/EvolveHQ/docflow/blob/main/USAGE.md).
 
 ### rollup
