@@ -140,11 +140,14 @@ the same way: it is a template, not the first technology ADR.
       owner has finished or abandoned it. Writers claim a file *before*
       editing it, so a claim with no pending change is the normal state
       of a writer preparing an edit — **never** infer staleness from an
-      absent diff alone. Evidence is one of:
-      - the claiming actor's commit touching that path has landed and
-        the row is still there (the claim outlived its own work);
-      - the row's timestamp is older than that actor's latest commit on
-        that path (the claim was superseded by work already committed);
+      absent diff alone. Evidence must be tied to **this** claim, never
+      to the actor's history on the file — writers reuse files across
+      tasks, so a commit older than the row proves nothing about it.
+      Evidence is one of:
+      - a commit by the claiming actor that touches that path, with a
+        commit time **later than the row's timestamp**, has landed on
+        the integration branch and the row is still there (the claim
+        outlived its own work);
       - the operator confirms the owner is gone.
       Report rows with evidence as **hygiene**, naming the evidence.
       Report every other claim as an **uncertain** row — listed for the
