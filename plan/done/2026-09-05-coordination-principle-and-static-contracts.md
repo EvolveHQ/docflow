@@ -84,3 +84,16 @@ stays Superseded.
 None on the queue. Runs after plans 0036 and 0037 (shape-by-field)
 by queue order; both also edit `bootstrap/SKILL.md`, so the three are
 sequential, not a wave.
+
+---
+
+Shipped at HEAD `d6df7df` on 2026-09-05 via PR #3
+(https://github.com/EvolveHQ/docflow/pull/3; thirteen signed commits by the
+Opus 5 worker and its two review-fix passes plus one coordinator fix,
+three review rounds). Per-mode file set, writer-keyed Q5, hand-off
+folded into the AGENTS read order and the run prompt, file headers,
+audit hygiene check, docs, eval assertions. Also landed here: the four
+derived-state templates (worklog, snapshot, dashboard, hand-off) were
+deleted outright, so plans 0039–0041 keep only their skill, prompt,
+and docs work; ADR 0036 r3 added the plan-queue prerequisite for the
+run prompt during review. ADR 0036 → Implemented (r4).

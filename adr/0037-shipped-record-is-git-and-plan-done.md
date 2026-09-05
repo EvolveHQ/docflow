@@ -1,7 +1,7 @@
 ---
 adr: 0037
 title: The shipped-work record is git history and plan/done
-status: Proposed
+status: Accepted
 date: 2026-09-04
 owner: Eugenio Minardi
 supersedes:
@@ -125,8 +125,10 @@ whereas a generated worklog would list what `git log` already lists.
 | Date | Revision | Author | Change |
 |------|----------|--------|--------|
 | 2026-09-04 | r1 | Eugenio Minardi | Initial draft (Proposed), from the approved brainstorm: worklog retired; the completion commit, the `plan/done/` footer, and first-parent git history are the shipped record; union-merge attribute and per-agent split removed. Bounded and generated worklogs considered and rejected. |
+| 2026-09-05 | r2 | Eugenio Minardi | Status Proposed → Accepted; acceptance delegated to the session by the operator. No open questions. Plan 0039 authorised; its ADR 0037 r2 amendment (completion changes ride in the pull request under pull-request integration; the footer names the SHA under direct-to-main and the pull request otherwise) lands with the item. |
 
 ## Approvals
 
 | Role | Name | Date | Signature |
 |------|------|------|-----------|
+| Maintainer | Eugenio Minardi | 2026-09-05 | — (delegated) |

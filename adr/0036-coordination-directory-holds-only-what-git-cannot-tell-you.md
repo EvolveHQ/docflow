@@ -1,7 +1,7 @@
 ---
 adr: 0036
 title: The coordination directory holds only what git cannot tell you
-status: Accepted
+status: Implemented
 date: 2026-09-04
 owner: Eugenio Minardi
 supersedes: ["0005"]
@@ -185,6 +185,7 @@ mode or the gate calls for it, and its absence is a valid state.
 | 2026-09-04 | r1 | Eugenio Minardi | Initial draft (Proposed), from the approved brainstorm: `_agent/` holds contracts only, never derived state; per-mode file set redefined (single writer / shared checkout / separate worktrees); hand-off folded into `AGENTS.md` and the run prompt; supersedes 0005's file shapes while keeping its writer-keyed modes. |
 | 2026-09-05 | r2 | Eugenio Minardi | Status Proposed → Accepted; acceptance delegated to the session by the operator. Open question resolved as drafted: `ROLES.md` stays; roles and domains are different axes. Plan 0038 authorised. |
 | 2026-09-05 | r3 | Eugenio Minardi | The run prompt now requires the `plan/todo/` queue as well as a recorded verify gate: capability statement (a new prerequisite paragraph and all three mode bullets), the Context drift sentence, the solo-maintainer scenario and AC1 restated accordingly. Triggered by review of pull request #3 (plan 0038): the implementation had added the queue prerequisite to stop a gate-present, queue-less repo getting a prompt that walks a queue which does not exist, and the specification is brought back into agreement with it. Status unchanged. |
+| 2026-09-05 | r4 | Eugenio Minardi | Implemented (plan 0038, PR #3, merge d6df7df): writer-keyed coordination answers with the per-mode file set; hand-off retired into the scaffolded AGENTS read order and the run prompt; roles and locks headers; agent-wave, ship-item, new-adr name only prescribed files; audit hygiene fails on unprescribed or derived-state files and reports a legacy layout without offering removal; docs and eval assertions aligned; the four derived-state templates deleted. AC1–8 met. Status Accepted → Implemented. |
 
 ## Approvals
 
