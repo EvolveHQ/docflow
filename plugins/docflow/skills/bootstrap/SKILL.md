@@ -103,13 +103,10 @@ questions.
     README.md
     todo/NNNN-<slug>.md
     done/<YYYY-MM-DD>-<slug>.md
-  _agent/
-    ROLES.md             # named agents and what each owns
-    LOCKS.md             # file-claim ledger
-    WORKLOG.md           # append-only ship log
-    CURRENT_FOCUS.md     # slim live snapshot
-    HANDOFF.md           # fresh-agent entry point
-    prompts/autonomous.md  # only if a verify gate exists (see Q8)
+  _agent/                # the agent operating contract (see Q5) — optional
+    ROLES.md             # who writes what (several writers only)
+    LOCKS.md             # the file-claim mutex (shared checkout only)
+    prompts/autonomous.md  # how an unattended run behaves (only if a verify gate — Q8)
   federation.md          # multi-repo only (Q11): this repo's back-pointer
   federation-index.md    # multi-repo only (Q11): member index — home repo only
 ```
@@ -127,14 +124,22 @@ root *is* the root; for any other root, bootstrap writes a `.docflow`
 repo (tools probe `docs/`, then the repository root, for a
 `CONVENTIONS.md` naming an artefact root) or not a docflow repo.
 
+**`_agent/` is the agent operating contract** — who writes what, the one
+real mutex, and how an unattended run behaves. It holds nothing git
+already records: no log of what shipped, no dashboard of what is in
+flight, no snapshot of the current state, no hand-off. Which of the
+three files above exist follows entirely from Q5 and Q8, and a repo with
+no `_agent/` directory at all is a valid outcome.
+
 **Core vs optional layers.** Only the **core** is always written:
 `AGENTS.md`, `CLAUDE.md`, `CONVENTIONS.md`, `adr/0000-template.md`, and
 `INDEX.md`. A repo with just these is a valid, lightweight docflow repo — a
 classic ADR catalogue with conventions. Everything else is an **opt-in
-layer**: the `plan/` queue (Q4a), the `_agent/` coordination set (Q5 —
-choose *None* to omit it), `GLOSSARY.md` and `domains/` (Q7). Omitting any
-optional layer is a valid state, not an error; a lifecycle skill that needs
-an absent layer refuses cleanly and names what is missing.
+layer**: the `plan/` queue (Q4a), the `_agent/` contract (Q5 + Q8 — a
+single writer with no verify gate gets none of it), `GLOSSARY.md` and
+`domains/` (Q7). Omitting any optional layer is a valid state, not an
+error; a lifecycle skill that needs an absent layer refuses cleanly and
+names what is missing.
 
 For a **multi-repo product** (one product spread across several repos —
 see Q11), two extra files appear: `federation.md`, a small back-pointer
@@ -183,11 +188,18 @@ A standalone repo has none of them.
    is the completion event; the moved file gets a footer naming the HEAD
    SHA (and deploy artefact id if applicable). Owning ADR(s) advance
    `Accepted → Implemented` on the same commit.
-9. **Multi-agent coordination.** Before editing, an agent appends a row
-   to `_agent/LOCKS.md` (`<agent-id> | <path> | <ISO-8601 timestamp>`)
-   and removes it on commit. On commit, append one line to
-   `_agent/WORKLOG.md`. `CURRENT_FOCUS.md` is the live snapshot; if it
-   disagrees with git, git wins and `CURRENT_FOCUS.md` is corrected.
+9. **Coordination is a contract, not a log.** `_agent/` holds only what
+   git cannot tell you, and each mode (Q5) prescribes exactly its own
+   files — nothing else is written there. In a **shared checkout**, an
+   agent appends a row to `_agent/LOCKS.md`
+   (`<agent-id> | <path> | <ISO-8601 timestamp>`) before editing and
+   removes it on commit; that ledger is the one real mutex. In
+   **separate worktrees** the pushed branch and its draft pull request
+   are the claim, and no ledger is kept. Under **a single writer**
+   there is nothing to serialise. No mode keeps a log of what shipped, a
+   dashboard of what is in flight, or a snapshot of the current state:
+   git history and `plan/done/` are the record, and the live branches
+   and pull requests are what is in flight.
 10. **Git contract.** Conventional Commits. Mandatory `Rationale:`
     footer on commits touching an ADR. Signed commits unless the user
     opts out. No `Co-Authored-By` trailer for agent work unless the user
@@ -244,9 +256,9 @@ fixed profile — summarise it and get sign-off before writing anything:
   lifecycle.
 - Git contract: Conventional Commits ON, `Rationale:` footer ON,
   signed commits ON, ADR-revision tags OFF, `Co-Authored-By` OFF.
-- Integration recorded as **direct-to-main, fast-forward only**; the
-  Multi-Agent Rules section records a **single writer** with no
-  coordination directory.
+- Integration recorded as **direct-to-main, fast-forward only**; Q5
+  recorded as **single writer**, which with no verify gate (below)
+  means **no `_agent/` directory at all**.
 - **Standalone** — never part of a federation.
 - Doc language: match the existing repo's content, else en-US.
 - No verify gate recorded (so no autonomous prompt); no
@@ -259,8 +271,11 @@ destructive the run is.
 **Guided defaults.** Beyond its three questions, guided takes: single
 shape, full lifecycle, the recommended git contract, optional
 artefacts deferred, no hard rules, default artefact root, standalone,
-and the express language rule. Run the Step 4.5 cross-check on the
-answers before the sign-off summary.
+and the express language rule. Q5 is one of the three it asks, and its
+recommended answer is **single writer** — so a guided run that takes
+the recommendation records single writer, and writes an `_agent/`
+directory only when Q8 records a verify gate. Run the Step 4.5
+cross-check on the answers before the sign-off summary.
 
 **Federation guard.** Express and guided runs are always
 **standalone**: Q11 is never asked and no federation file is written.
@@ -315,12 +330,12 @@ default (the operator may decline it — see Step 5 item 5b).
 
    **Q4b — Integration model.** *Skip if Q4a = skip.* Two options:
    - **Direct-to-main, fast-forward only.**
-     *Recommended if Q5 = mode 1 (single agent).* Local verify gate
+     *Recommended if Q5 = single writer.* Local verify gate
      runs before push. Completion event: "fast-forwarded to main +
      remote push succeeded". Autonomous prompt uses
      `git merge --ff-only`. Trunk-based development; no PRs.
    - **PR-based, required CI green.**
-     *Recommended if Q5 = mode 2 or 3 (multi-agent).* Verify gate
+     *Recommended if Q5 = shared checkout or separate worktrees.* Verify gate
      runs in CI on the PR. Completion event: "PR merged to main + CI
      green". Autonomous prompt opens a draft PR, waits for green,
      marks ready, merges. Ask the user for merge strategy
@@ -330,34 +345,33 @@ default (the operator may decline it — see Step 5 item 5b).
    *write* to this repo and how they integrate — **writers (integration
    concurrency), not how many agents you run.** A team of several developers
    is multi-writer even with one agent each, and wants the worktree/PR
-   shape. This sets the `_agent/` shape (or omits it); switching later is
-   not free:
-   - **None — omit `_agent/`.** A solo human/agent with no coordination
-     need; no `_agent/` directory is written, and lifecycle skills skip the
-     WORKLOG/snapshot steps. The lightest footprint (the optional `_agent/`
-     layer is left out — see the core-vs-optional note in Step 2).
-   - **(Recommended) Single agent.** `default-agent` in ROLES.
-     LOCKS skipped. WORKLOG / CURRENT_FOCUS as standard single-file
-     snapshots. Right for small projects and the "one human + one
-     agent" case.
-   - **Multi-agent, shared checkout.** Named agents in ROLES. LOCKS
-     ON as a filesystem mutex (prevents simultaneous writes to the
-     same file). WORKLOG append-on-commit, single file.
-     CURRENT_FOCUS as the single in-flight snapshot. Right when
-     several agents serialise through one working tree.
-   - **Multi-agent, separate worktrees / PR branches.** Named agents
-     in ROLES. LOCKS *advisory only* — GitHub draft PRs / branch
-     assignment are the real lock; pick one signal, not two.
-     `_agent/WORKLOG.md` gets `merge=union` via `.gitattributes` so
-     concurrent appends concatenate instead of conflicting (or split
-     to `_agent/worklog/<agent-id>.md` if agent set is fixed).
-     `_agent/CURRENT_FOCUS.md` becomes local-only (added to
-     `.gitignore`); a committed `_agent/IN_FLIGHT.md` dashboard
-     aggregates per-worktree state.
+   shape. Three answers, each prescribing exactly its own `_agent/`
+   files and nothing else:
+   - **(Recommended) Single writer.** One human/agent integrates at a
+     time, so there is nothing to serialise: no roles list, no lock
+     ledger. The only file written is `_agent/prompts/autonomous.md`,
+     and only if Q8 records a real verify gate — with no gate there is
+     **no `_agent/` directory at all**, the lightest footprint. Right
+     for small projects and the "one human + one agent" case.
+   - **Several writers, one shared checkout.** Named writers in
+     `_agent/ROLES.md`. `_agent/LOCKS.md` ON as a filesystem mutex — in
+     one working tree it is the only thing preventing simultaneous
+     writes to the same file. Plus the run prompt if Q8 records a gate.
+   - **Several writers, separate worktrees / PR branches.** Named
+     writers in `_agent/ROLES.md`, plus the run prompt if Q8 records a
+     gate. **No lock ledger:** the pushed branch and its draft pull
+     request are the claim, worktrees cannot collide on the filesystem,
+     and an advisory ledger nobody can rely on is noise.
 
-   Note: option 2 → option 3 is not a free upgrade later; it means
-   splitting WORKLOG (or adding the merge driver) and rethinking
-   CURRENT_FOCUS. Choose deliberately.
+   No answer writes a work log, a dashboard, a live snapshot, or a
+   hand-off, and none adds a `.gitattributes` or `.gitignore` entry for
+   coordination files: what happened is git history and `plan/done/`,
+   what is in flight is the live branches and pull requests.
+
+   Note: shared checkout → separate worktrees is not a free upgrade
+   later; it retires the lock ledger the shared-checkout repo relies on
+   and moves the claim onto branches and pull requests. Choose
+   deliberately.
 6. **Git contract.** Confirm or override each — Conventional Commits;
    mandatory `Rationale:` footer on ADR-touching commits; signed
    commits; ADR-revision tags `adr-NNNN-rN`; whether agent commits
@@ -452,7 +466,7 @@ express run is internally consistent by construction and skips this
 check; guided and full runs, and any run that switched tiers
 mid-flight, get the full scan.)
 
-- **Q5 mode 3 (worktrees) + Q4b direct-to-main.** Unusual: each
+- **Q5 separate worktrees + Q4b direct-to-main.** Unusual: each
   worktree would have to rebase onto main before fast-forwarding.
   Ask the user to confirm or switch to PR-based — PR-based is the
   near-universal fit for worktree work.
@@ -495,13 +509,21 @@ Keep the pointer in sync if a later re-run migrates the root.
 
 1. `CONVENTIONS.md` — from `templates/CONVENTIONS.md`. Spec other files
    reference. Include the **§Concurrency Guardrails** section only if Q5
-   is mode 2/3 **or** Q4b is PR-based; omit it for single-agent
-   direct-to-main repos (no numbering race). Include the **§Federation
+   is shared checkout or separate worktrees **or** Q4b is PR-based;
+   omit it for single-writer direct-to-main repos (no numbering race). Include the **§Federation
    (multi-repo)** section only if Q11 = yes; fill `<product>` and state
    the chosen identity scheme. Omit it for standalone repos.
 2. `AGENTS.md` — from `templates/AGENTS.md`. Include the concurrency
    guardrails hard-rule bullet (G2–G4) under the same condition as the
-   CONVENTIONS section above; omit otherwise.
+   CONVENTIONS section above; omit otherwise. **Generate the "Picking
+   up this repo" section** from the answers rather than copying the
+   template list verbatim: keep one line per file this run actually
+   writes, in read order, with every path resolved against the chosen
+   artefact root (Q12) — drop the `plan/` lines if Q4a skipped the
+   queue, drop `_agent/ROLES.md` unless Q5 chose several writers, drop
+   `_agent/LOCKS.md` unless Q5 chose a shared checkout, and renumber
+   what remains. The section must never name a file this repo does not
+   have; it is the only read order, and no hand-off file is written.
 3. `CLAUDE.md` — from `templates/CLAUDE.md` (single line `@AGENTS.md`).
 4. `adr/0000-template.md` — from `templates/adr-capability.md`.
 5. `adr/0000-template-technology.md` — from
@@ -533,36 +555,40 @@ Keep the pointer in sync if a later re-run migrates the root.
    of the reconstructed decisions.
 6. `plan/README.md` — from `templates/plan-README.md`. Create empty
    `plan/todo/.gitkeep` and `plan/done/.gitkeep`.
-7. `_agent/ROLES.md` — from `templates/_agent-ROLES.md`. **If Q5 = None,
-   skip items 7–11 entirely — no `_agent/` directory.** Otherwise: Mode 1
-   keeps the `default-agent` block; modes 2 and 3 expand to named
-   agents per Q5.
-8. `_agent/LOCKS.md` — from `templates/_agent-LOCKS.md`. **Skip in
-   mode 1.** **Mode 3** writes it with an advisory header noting
-   PRs are the authoritative lock.
-9. `_agent/WORKLOG.md` — from `templates/_agent-WORKLOG.md`. In
-   **mode 3**, also write a `.gitattributes` entry:
-   `_agent/WORKLOG.md merge=union`.
-10. `_agent/CURRENT_FOCUS.md` — from
-    `templates/_agent-CURRENT_FOCUS.md`. In **mode 3**, add
-    `_agent/CURRENT_FOCUS.md` to `.gitignore` (the file stays
-    local-only per worktree) and write
-    `_agent/IN_FLIGHT.md` from `templates/_agent-IN_FLIGHT.md` as
-    the committed cross-worktree dashboard.
-11. `_agent/HANDOFF.md` — from `templates/_agent-HANDOFF.md`.
-12. `INDEX.md` — header + the seed ADR's row (item 5b); an empty table only
+7. **`_agent/` — write exactly what Q5 and Q8 prescribe, and nothing
+   else.** The whole set is:
+
+   | Q5 answer | `_agent/` contents |
+   |---|---|
+   | Single writer | `prompts/autonomous.md` **iff** Q8 recorded a gate — otherwise **no `_agent/` directory at all** |
+   | Several writers, shared checkout | `ROLES.md`, `LOCKS.md`, and `prompts/autonomous.md` iff a gate |
+   | Several writers, separate worktrees | `ROLES.md`, and `prompts/autonomous.md` iff a gate |
+
+   Write no work log, no dashboard, no live snapshot and no hand-off in
+   any mode, and add no `.gitattributes` union entry or `.gitignore`
+   entry for coordination files. There is no template for any of them:
+   git history, `plan/done/`, and the live branches and pull requests
+   are that record.
+8. `_agent/ROLES.md` — from `templates/_agent-ROLES.md`, **skipped for a
+   single writer**. One section per named writer, naming what each is
+   the single writer of, from the Q5 answer.
+9. `_agent/LOCKS.md` — from `templates/_agent-LOCKS.md`, **shared
+   checkout only.** Not written for a single writer, and not in
+   separate-worktree mode (the branch and its pull request are the
+   claim there).
+10. `_agent/prompts/autonomous.md` — from
+    `templates/_agent-prompts-autonomous.md`, **only** if Q8 confirmed a
+    verify gate, in every Q5 answer. Keep the integration block matching
+    Q4b: the **direct-to-main** variant (`git merge --ff-only` then
+    push) or the **PR-based** variant (`gh pr create --draft` → wait for
+    CI → mark ready → `gh pr merge`). Drop the unused variant.
+11. `INDEX.md` — header + the seed ADR's row (item 5b); an empty table only
     if the seed was declined. In a **two-shape** repo (Q2) the table
     carries a **Shape** column, filled from each ADR's `shape:` field
     (blank field → `capability`); a single-shape repo has no such column.
     Neither `0000-` template appears in the table — templates are not
     decisions.
-13. `_agent/prompts/autonomous.md` — from
-    `templates/_agent-prompts-autonomous.md`, **only** if Q8 confirmed a
-    verify gate. Keep the integration block matching Q4b: the
-    **direct-to-main** variant (`git merge --ff-only` then push) or
-    the **PR-based** variant (`gh pr create --draft` → wait for CI →
-    mark ready → `gh pr merge`). Drop the unused variant.
-14. **Federation files** — **only if Q11 = yes.** Place both at the
+12. **Federation files** — **only if Q11 = yes.** Place both at the
     configured artefact root (repository root by default).
     - **Establish:** write `federation-index.md` (the member index, a
       Markdown table) from `templates/federation-index.md` into this
