@@ -43,7 +43,29 @@ subagent eval ran against `origin/main` and so saw the pre-expansion
 - Deterministic layer: **done**. `npm run evals` self-check passes
   against this repo as a fixture.
 - Behavioural layer: **authored** as `behavioural.workflow.mjs` with
-  cases for `new-adr`, `ship-item`, `bootstrap`. The `new-adr` path has
+  cases for `new-adr`, `ship-item`, `bootstrap`, and the legacy-range
+  migration. The `new-adr` path has
   been demonstrated live (a worktree subagent produced a contiguous ADR +
   INDEX row; the static gate passed). Running the full suite as a green
   release gate is the remaining step for plan item 0002.
+
+## Fixtures
+
+`fixtures/<name>/` holds a checked-in repository state a case needs and
+this repo cannot itself be. Each fixture carries a `README.md` saying
+what makes it what it is and what a case should expect from it.
+
+- **`fixtures/legacy-range/`** — a range-numbered catalogue as bootstrap
+  scaffolded a two-shape repo before the shape became a declared field:
+  a cutoff in `CONVENTIONS.md`, `adr/0100-template.md` at the boundary,
+  capability `0001`–`0003` below it, technology `0101`–`0102` above,
+  cross-references both ways, and the seed record as the exception the
+  range forces. It feeds the legacy-detection and migration case
+  (adr/0035-range-numbered-catalogue-migration.md AC1–AC9).
+
+A fixture is a directory of files, not a git repo. A case that migrates
+or otherwise mutates one **copies it to a scratch directory first** —
+mutating it in place destroys the state it exists to provide. A
+deterministic self-check case guards each fixture's defining properties,
+so a fixture that silently rots fails `npm run evals` rather than
+quietly making a behavioural case vacuous.

@@ -78,6 +78,19 @@ the optional layers you don't have yet, adding the chosen ones by merge.
 term, and `new-adr` offers to create a `domains/<slug>/` grouping when you
 file an ADR under a new domain.)
 
+**On an older number-range catalogue?** Early two-shape repos encoded the
+shape in the number — a cutoff in `CONVENTIONS.md`, a technology template
+at the boundary (`adr/0100-template.md` or your own number), technology
+records above it. That still works: `audit` recognises it, keeps checking
+it by its own range rules, and reports it as a single non-failing
+"migration available" note. Accept the offer (from `audit` or a
+`bootstrap` re-run) and the move is mechanical: your technology records
+are renumbered onto the end of the sequence in their original order,
+capability numbers stay put, `shape:` is written on every record, every
+in-repo reference follows, the boundary template is retired, and it lands
+as one commit listing every old-to-new pair. You see that map and confirm
+it before anything is written — and declining is a perfectly good answer.
+
 **Placement:** `AGENTS.md` and `CLAUDE.md` always stay at the repository
 root; everything else lives under a configurable **artefact root** —
 `.docflow/` (the default), `docs/`, or the repo root — chosen at bootstrap

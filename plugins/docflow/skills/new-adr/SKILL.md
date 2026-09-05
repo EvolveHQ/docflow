@@ -20,9 +20,24 @@ Author one new ADR, consistent with this repo's conventions.
    it isn't obvious), the multi-agent mode, and the **artefact root**
    (default: repository root) — resolve `adr/` and `INDEX.md` against it
    (`AGENTS.md`/`CLAUDE.md` stay at the repo root).
+   **Legacy range encoding.** A repo scaffolded before the shape became
+   a declared field encodes it in the number instead — §ADR Shapes
+   records a cutoff, or `adr/` holds a template numbered other than
+   `0000` (e.g. `adr/0100-template.md`); either signal alone identifies
+   it. Say so, and offer the migration onto the declared field (the
+   **audit** skill carries the procedure) before authoring. If the
+   operator declines, author under the repo's own rules: read the cutoff
+   and place this ADR on its side of it — capability below, technology
+   at or above, next contiguous **within that block** — using the
+   boundary-numbered template for a technology ADR, and write **no**
+   `shape:` field, which that repo does not use. If the block this ADR
+   belongs to has reached the cutoff, stop and say so: the range is full,
+   and the remedy is the migration, never crossing the boundary.
 3. Read `INDEX.md` and `ls adr/` to learn existing numbers and titles.
    Ignore every `adr/0000-*.md` file — the templates are not decisions
-   and hold no number in the sequence.
+   and hold no number in the sequence. Under the legacy range encoding,
+   ignore the boundary-numbered template the same way: it is a template,
+   not the first technology ADR.
 4. If a `federation.md` exists, this repo is part of a multi-repo
    product. Note the **identity scheme** and the **home** it records —
    they govern numbering and cross-repo references below.
@@ -82,10 +97,19 @@ Questions (skip any the request already answers):
   `adr/0000-template-technology.md` for technology — and **write the
   chosen value into the ADR's `shape:` field**. Both templates are
   numbered `0000` and are never themselves catalogue entries.
+  *Legacy range encoding (migration declined):* the repo has two shapes
+  but declares neither. Still ask which one, then take the template from
+  the repo's own scheme — `adr/0000-template.md` for capability, the
+  **boundary-numbered** template for technology — and write **no**
+  `shape:` field. Introducing the field on one ADR would leave the
+  catalogue with two rival encodings, which is the state neither rule
+  set describes.
 - **Number.** Next contiguous integer after the highest existing ADR,
   zero-padded to 4 digits. No gaps, no reuse. **The shape does not
   affect the number** — capability and technology ADRs share one
   contiguous sequence, and neither `0000-` template counts towards it.
+  *Legacy range encoding:* the number is instead the next contiguous one
+  **within this ADR's block**, per Step 0 item 2.
   **In a federation** (a `federation.md` exists), number contiguously
   **within this repo** — numbers are not unique across the federation.
   The ADR's federation identity is the recorded scheme applied to this
@@ -121,8 +145,9 @@ If this ADR replaces an existing one:
 
 - Copy the chosen template, fill all placeholders. Status `Proposed`,
   today's date, owner = current agent/human. In a two-shape repo, set
-  `shape:` to the shape chosen in Step 1; in a single-shape repo omit
-  the field entirely.
+  `shape:` to the shape chosen in Step 1; in a single-shape repo — and
+  in a legacy range-encoded one, where the number carries the shape —
+  omit the field entirely.
 - Seed the Revision History with an `r1 — Initial draft` row. Leave the
   Approvals table empty (it populates on Accepted).
 - **Do not invent acceptance criteria or rationale to fill space.** If
@@ -132,8 +157,11 @@ If this ADR replaces an existing one:
 
 - Regenerate `INDEX.md` from ADR metadata. In a two-shape repo the table
   carries a **Shape** column, filled from each ADR's `shape:` field (an
-  absent field renders as `capability`); a single-shape repo has none.
-  Neither `0000-` template is a catalogue entry, so neither appears.
+  absent field renders as `capability`); a single-shape repo has none,
+  and neither does a legacy range-encoded one — its shape is read from
+  the range, so adding the column would encode it twice. Neither `0000-`
+  template is a catalogue entry, so neither appears; under the legacy
+  encoding the boundary-numbered template is excluded the same way.
 - If `domains/` exists, add the ADR to the owning domain's `README.md`
   ADR list. If you assign the ADR to a domain that doesn't exist yet, offer
   to create `domains/<slug>/README.md` (at the recorded artefact root) and

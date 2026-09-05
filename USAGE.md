@@ -279,7 +279,7 @@ picks; a fully-specified request lets you skip straight through.
 | `/new-plan` | §5 step 3: create `plan/todo/NNNN`, name owning ADR(s), scope, exit criteria, dependencies, queue position. |
 | `/ship-item` | §5 steps 5–6: verify gate → integrate (ff or PR per Q4b) → `git mv` todo→done with footer → ADR `Accepted`→`Implemented` → regen INDEX → WORKLOG → live snapshot. The most order-sensitive operation; let the skill do it. |
 | `/add-convention` | Assesses whether a convention is worth codifying (triages out one-offs, duplicates, churn-prone, vague), routes it to AGENTS.md / CONVENTIONS.md / GLOSSARY / an ADR, then writes it. |
-| `/audit` | Lints the repo against its own conventions and reports a punch list — numbering, INDEX sync, plan coverage, section completeness, status validity, cross-refs, language mandate, and **ADR-privacy leaks into user-visible code**. Offers to fix the mechanical issues. |
+| `/audit` | Lints the repo against its own conventions and reports a punch list — numbering, INDEX sync, plan coverage, section completeness, status validity, cross-refs, language mandate, and **ADR-privacy leaks into user-visible code**. Offers to fix the mechanical issues, and offers the number-range migration (§5b) if your catalogue predates the `shape:` field. |
 | `/brainstorm` | Decomposes a problem into candidate ADRs + plan items with dependency edges and ordering. Proposes drafts only; writes nothing until approved, then hands off to `/new-adr` and `/new-plan`. |
 | `/agent-wave` | Orchestrates parallel worktree subagents over the queue. Asks wave width, budget (items/waves; hours as a soft cap), and supervision (checkpoint vs. continuous). Requires multi-agent mode; refuses mode 1. |
 | `/rollup` | For a **multi-repo product**: from the home repo, aggregate every member repo's `INDEX` into one derived, product-wide roll-up. Members not checked out are listed as "not aggregated this run". |
@@ -442,6 +442,57 @@ has distinct areas, or the flat list grows large enough to be hard to scan.
 See the [methodology](https://evolvehq.github.io/docflow/methodology/#47-grouping-adrs-by-domain)
 for the formal treatment.
 
+## 5b. Catalogues on the older number-range scheme
+
+Repos scaffolded before the shape became a declared field encode it in
+the **number**: `CONVENTIONS.md` §ADR Shapes records a cutoff, capability
+records sit below it, technology records at or above, and the technology
+template sits at the boundary as `adr/0100-template.md` (or whatever
+number the project chose). That scheme has a real limit — a capability
+block that reaches the cutoff has nowhere to grow, because the technology
+block already occupies the numbers above it.
+
+**Nothing breaks.** Either signal — the recorded cutoff or a template
+numbered off `0000` — is enough for the skills to recognise the scheme.
+`audit` then applies the range rules exactly as before (contiguous within
+each block, the gap at the cutoff expected, no Shape column required), so
+a repo that passed keeps passing, and adds **one** non-failing finding at
+severity *migration available*. `new-adr` keeps placing records on the
+correct side of the cutoff, and stops rather than crossing it if a block
+is full.
+
+**The migration is offered, never applied.** `audit` offers it after the
+punch list; a `bootstrap` re-run offers it in the existing-repo step. Both
+show the same dry run first:
+
+| old | new | |
+|---|---|---|
+| `0001`–`0012` | unchanged | capability records keep their numbers |
+| `0101` | `0013` | technology records take the numbers after the last capability one… |
+| `0102` | `0014` | …in their original order |
+| `0104` | `0015` | gaps in the old technology block are closed |
+
+Confirm that map and the migration lands as **one commit** that: renumbers
+the technology files; writes `shape:` on every record (capability ones
+too); rewrites every in-repo reference that named a moved number —
+`depends-on`, supersede links, relative `adr/NNNN-*.md` links, `INDEX.md`,
+domain `README.md` listings, and `plan/todo/` owner lines; replaces the
+boundary template with `adr/0000-template-technology.md`; rewrites §ADR
+Shapes to the declared-field form (and drops any "recorded exception"
+clause for the seed record); and regenerates `INDEX.md` with the Shape
+column. Afterwards the catalogue passes the two-shape checks with no
+manual edit.
+
+**What is deliberately left alone:** `plan/done/` footers, commit
+messages, and tags. Those are history, and history is not rewritten — the
+migration commit's old-to-new list is the record that ties the two
+numberings together. In a multi-repo product, other repos' references to
+the renumbered records show up as dangling in the next cross-repo audit,
+exactly as they would for any renumbering; fix them in the referring repo.
+
+**Declining is fine.** The repo keeps the range scheme and keeps passing;
+the offer comes back on the next audit.
+
 ## 6. Customising or extending
 
 The templates are deliberately small and self-contained. To customise:
@@ -472,6 +523,11 @@ The skill is idempotent in spirit, but be careful: re-running on a
 repo that already has scaffolded files will trigger the "existing
 repo" path and ask Q9 about conflicts. Use it intentionally — to add
 the parts you skipped the first time, not to wipe and rebuild.
+
+A re-run on a repo using the older number-range scheme offers the
+migration onto the declared `shape:` field instead of the second-shape
+layer (that repo already has both shapes) — see §5b. It shows the
+old-to-new number map and writes nothing until you confirm it.
 
 ## 8. Updating the plugin
 

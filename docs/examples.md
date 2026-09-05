@@ -256,6 +256,19 @@ New work now follows the same loop: `/new-adr` → `/new-plan` → `/ship-item`.
    ```
    ⚠ src/api/errors.ts:42  "see ADR 0007" in a customer-facing error string
    ```
+4. On a catalogue that predates the `shape:` field, the report ends with
+   one non-failing note and an offer:
+
+   ```
+   ℹ migration available  shape encoded by number range (cutoff in
+     CONVENTIONS.md §ADR Shapes; adr/0100-template.md at the boundary)
+     — catalogue valid and passing under the range rules
+   → migrate onto the declared shape: field?  0101 → 0013, 0102 → 0014,
+     0104 → 0015 (capability numbers unchanged)  [y/N]
+   ```
+
+   Answer `y` and it lands as one commit listing every pair; answer `N`
+   and the repo carries on unchanged. See USAGE §5b.
 
 ### brainstorm
 
