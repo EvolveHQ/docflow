@@ -1,6 +1,6 @@
 ---
 name: ship-item
-description: Ship a plan/todo item in a documentation-led repo — run the verify gate, integrate per the repo's model (fast-forward or PR), git mv todo→done with a shipped footer, advance the owning ADR(s) to Implemented, regenerate INDEX, append WORKLOG, update the live snapshot. Use when the user says "ship this", "complete the plan item", "mark done", "close out the queue item", or invokes /ship-item.
+description: Ship a plan/todo item in a documentation-led repo — run the verify gate, integrate per the repo's model (fast-forward or PR), git mv todo→done with a shipped footer, advance the owning ADR(s) to Implemented, regenerate INDEX. Use when the user says "ship this", "complete the plan item", "mark done", "close out the queue item", or invokes /ship-item.
 ---
 
 # ship-item
@@ -55,17 +55,18 @@ Once the change is on `main`:
 
 ## Step 6 — Record
 
-**If `_agent/` was omitted at bootstrap (Q5 = None), skip this step** — git
-history is the record.
+**Nothing to write.** The completion commit, the moved `plan/done/`
+file and its shipped footer are the record; the coordination mode
+prescribes no log, dashboard or snapshot to update.
 
-- Append a one-line `_agent/WORKLOG.md` row: branch, HEAD, verify
-  result, any deferral.
-- Update the live snapshot: `_agent/CURRENT_FOCUS.md` in single-checkout
-  modes; in worktree mode (Q5 mode 3) remove this worktree's row from
-  `_agent/IN_FLIGHT.md` instead (CURRENT_FOCUS is local-only there).
+One exception, and only while it lasts: a repo scaffolded before this
+convention may still carry a `_agent/WORKLOG.md` or
+`_agent/CURRENT_FOCUS.md` from its old layout. Keep such a file
+current if it is there — a half-maintained log is worse than either
+state — and mention that it is legacy. Never create one, in any mode.
 
 ## Step 7 — Commit
 
 Conventional Commit, `Rationale:` footer (touches an ADR). Group the
-move + status advance + INDEX + WORKLOG into one coherent commit where
-possible so the completion event is atomic in history.
+move + status advance + INDEX regeneration into one coherent commit
+where possible so the completion event is atomic in history.

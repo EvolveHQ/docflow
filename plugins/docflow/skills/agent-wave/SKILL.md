@@ -24,13 +24,14 @@ you there rather than pretending to be it.
    required — see the **bootstrap** skill, Q8).
 2. Read `CONVENTIONS.md` for the **multi-agent mode** and **integration
    model**.
-   - **Mode 1 (single agent):** refuse. Parallel agents in one checkout
-     clobber each other. Tell the user to re-bootstrap as mode 2/3, or
-     run the autonomous prompt sequentially instead.
-   - **Mode 2 (shared checkout):** allowed but warn — file contention is
-     real; LOCKS must be respected and wave width kept low.
-   - **Mode 3 (worktrees):** the intended mode. Each subagent works in
-     its own isolated worktree.
+   - **Single writer:** refuse. Parallel agents in one checkout
+     clobber each other. Tell the user to re-bootstrap for several
+     writers, or run the autonomous prompt sequentially instead.
+   - **Several writers, shared checkout:** allowed but warn — file
+     contention is real; `_agent/LOCKS.md` must be respected and wave
+     width kept low.
+   - **Several writers, separate worktrees:** the intended mode. Each
+     subagent works in its own isolated worktree.
 
 ## Step 0.5 — Assessment (run first)
 
@@ -86,7 +87,8 @@ every merge.
 
 - Read `plan/todo/`; take the lowest-numbered N items with no unmet
   dependencies. Two agents must never get the same item or items that
-  edit the same files — partition by item and, in mode 2, by LOCKS.
+  edit the same files — partition by item and, in a shared checkout, by
+  `_agent/LOCKS.md`.
 - **Reserve identifiers before spawning.** Parallel worktrees that each
   author an ADR or a `plan/` item will otherwise collide on the same
   next number — each worktree computes "next" against its own checkout,
@@ -102,10 +104,13 @@ every merge.
     reserved, it stops and reports rather than guessing.
 - **Single writer per artefact.** An ADR body (or a given `plan/` item)
   is edited by at most one worktree per wave. Never put two items that
-  both edit the same ADR in one wave — a `merge=union` would silently
-  concatenate contradictory edits into an incoherent document.
-- Record the assignment in `_agent/IN_FLIGHT.md` (mode 3) so the wave is
-  visible — including each agent's reserved identifier block.
+  both edit the same ADR in one wave — the merge would concatenate
+  contradictory edits into an incoherent document.
+- Show the assignment — item, agent, reserved identifier block — in the
+  wave plan you put to the operator before spawning, and hand each
+  agent its own block in its brief. Write it to no file under `_agent/`:
+  no coordination mode prescribes one, and the branch each agent pushes
+  is the visible claim.
 
 ## Step 3 — Spawn the wave
 
@@ -124,7 +129,7 @@ slips through, e.g. an out-of-band ADR landing mid-wave.)
 ## Step 4 — Collect and checkpoint
 
 When the wave returns, summarise: shipped, failed, blocked, with links.
-Update `_agent/IN_FLIGHT.md` (remove finished rows). Then:
+Then:
 - **Checkpoint mode:** present the summary and ask whether to launch the
   next wave.
 - **Continuous mode:** launch the next wave with the next N items,
@@ -141,5 +146,7 @@ Stop the run (do not start another wave) when any holds:
 - An item's ADR is not `Accepted`, or its acceptance criteria are
   ambiguous.
 
-On stop, leave every worktree in a committed or cleanly-abandoned state,
-record the outcome in the WORKLOG, and report.
+On stop, leave every worktree in a committed or cleanly-abandoned state
+and report the outcome to the operator in the wave summary. Write no
+run log: each item's own commits, its pull request, and `plan/done/` are
+the record.
