@@ -25,6 +25,12 @@ complete mechanical migration onto the declared-field scheme:
    `CONVENTIONS.md` §ADR Shapes is rewritten to the declared-field form
    and any seed-ADR exception clause removed. The commit message lists
    every old-to-new pair.
+3b. **new-adr (scope addition, agreed with the coordinator during the
+   run).** Traced to ADR 0035's capability statement ("recognised by
+   every lifecycle skill"): when the legacy encoding is present, new-adr
+   offers the migration first and, if declined, reads the cutoff and
+   places the new ADR on its side of it, stopping if that side is full;
+   no `shape:` field is written into a legacy catalogue.
 4. **Eval.** A fixture built from a range-numbered catalogue (a small
    capability block, a `0100` template, a short technology block, one
    cross-reference each way) exercises detection, the offer, and a
@@ -64,3 +70,12 @@ When this ships, ADR 0035 advances Accepted → Implemented.
 
 - Plan 0036 (the declared-field scheme this migrates onto) must ship
   first.
+
+---
+
+Shipped at HEAD `ce41a34` on 2026-09-05 via PR #2
+(https://github.com/EvolveHQ/docflow/pull/2; six signed commits by the
+Opus 5 worker, the eval fixture in its own commit). Legacy range
+detection with the range rules kept alive, the offered migration in
+audit and bootstrap, the new-adr legacy clause, the `legacy-range`
+eval fixture, and docs. ADR 0035 → Implemented (r3).

@@ -1,7 +1,7 @@
 ---
 adr: 0036
 title: The coordination directory holds only what git cannot tell you
-status: Proposed
+status: Accepted
 date: 2026-09-04
 owner: Eugenio Minardi
 supersedes: ["0005"]
@@ -153,10 +153,7 @@ mode or the gate calls for it, and its absence is a valid state.
 
 ## Open questions
 
-- Whether `ROLES.md` should fold into `domains/<slug>/README.md`
-  ownership lines when the domains layer is enabled, leaving `_agent/`
-  with the mutex and the run prompt only. Draft position: keep
-  `ROLES.md`; roles and domains are different axes.
+- None.
 
 ## References
 
@@ -174,8 +171,10 @@ mode or the gate calls for it, and its absence is a valid state.
 | Date | Revision | Author | Change |
 |------|----------|--------|--------|
 | 2026-09-04 | r1 | Eugenio Minardi | Initial draft (Proposed), from the approved brainstorm: `_agent/` holds contracts only, never derived state; per-mode file set redefined (single writer / shared checkout / separate worktrees); hand-off folded into `AGENTS.md` and the run prompt; supersedes 0005's file shapes while keeping its writer-keyed modes. |
+| 2026-09-05 | r2 | Eugenio Minardi | Status Proposed → Accepted; acceptance delegated to the session by the operator. Open question resolved as drafted: `ROLES.md` stays; roles and domains are different axes. Plan 0038 authorised. |
 
 ## Approvals
 
 | Role | Name | Date | Signature |
 |------|------|------|-----------|
+| Maintainer | Eugenio Minardi | 2026-09-05 | — (delegated) |

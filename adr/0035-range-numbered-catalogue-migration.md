@@ -1,7 +1,7 @@
 ---
 adr: 0035
 title: Compatibility and migration for range-numbered catalogues
-status: Accepted
+status: Implemented
 date: 2026-09-04
 owner: Eugenio Minardi
 supersedes:
@@ -123,6 +123,7 @@ operator confirms before any file is rewritten.
 |------|----------|--------|--------|
 | 2026-09-04 | r1 | Eugenio Minardi | Initial draft (Proposed), from the approved brainstorm: legacy range encoding stays recognised; audit and bootstrap offer a mechanical migration (append technology ADRs after the last capability number, stamp `shape:`, rewrite references, retire the boundary template); never forced. |
 | 2026-09-04 | r2 | Eugenio Minardi | Status Proposed → Accepted; acceptance delegated to the session by the operator. Open question resolved: no `aliases:` field; the migration commit's old-to-new map is the record. Plan 0037 authorised. |
+| 2026-09-05 | r3 | Eugenio Minardi | Implemented (plan 0037, PR #2, merge ce41a34): audit recognises the legacy encoding from a cutoff or a non-0000 template and keeps applying the range rules with one non-failing migration finding; audit and bootstrap offer the migration with a dry-run map and confirmation; the migration renumbers technology ADRs after the last capability one in order, stamps `shape:`, rewrites in-catalogue references, retires the boundary template, rewrites the conventions section, lands as one commit listing every pair; new-adr gained a legacy clause (scope addition traced to the capability statement); `legacy-range` eval fixture. AC1–9 met. Status Accepted → Implemented. |
 
 ## Approvals
 

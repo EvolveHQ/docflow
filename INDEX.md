@@ -39,8 +39,8 @@ ADR change.
 | [0032](adr/0032-bootstrap-depth-profiles.md) | Bootstrap express and guided profiles | Implemented | 2026-07-03 | 0016, 0017, 0020, 0029, 0030, 0031 |
 | [0033](adr/0033-artefact-root-discovery.md) | Artefact-root discovery contract | Implemented | 2026-07-03 | 0017, 0023 |
 | [0034](adr/0034-adr-shape-as-declared-metadata.md) | ADR shape as declared metadata, one contiguous sequence | Implemented | 2026-09-04 | 0001, 0007, 0029, 0030 |
-| [0035](adr/0035-range-numbered-catalogue-migration.md) | Compatibility and migration for range-numbered catalogues | Accepted | 2026-09-04 | 0034, 0003, 0028 |
-| [0036](adr/0036-coordination-directory-holds-only-what-git-cannot-tell-you.md) | The coordination directory holds only what git cannot tell you | Proposed | 2026-09-04 | 0001, 0005, 0006, 0016 |
+| [0035](adr/0035-range-numbered-catalogue-migration.md) | Compatibility and migration for range-numbered catalogues | Implemented | 2026-09-04 | 0034, 0003, 0028 |
+| [0036](adr/0036-coordination-directory-holds-only-what-git-cannot-tell-you.md) | The coordination directory holds only what git cannot tell you | Accepted | 2026-09-04 | 0001, 0005, 0006, 0016 |
 | [0037](adr/0037-shipped-record-is-git-and-plan-done.md) | The shipped-work record is git history and plan/done | Proposed | 2026-09-04 | 0036, 0001, 0007 |
 | [0038](adr/0038-in-flight-state-derived-from-branches-and-pull-requests.md) | In-flight state is derived from branches and pull requests | Proposed | 2026-09-04 | 0036, 0006, 0010, 0014 |
 | [0039](adr/0039-plan-item-carries-its-own-status.md) | A plan item carries its own live status; the snapshot file is retired | Proposed | 2026-09-04 | 0036, 0001 |

@@ -19,13 +19,14 @@ file.
 
 ## Active state
 
-- **Branch:** main, tracking `origin/main` (PR #1 merged 2026-09-04).
-- **Active item:** plan 0037 (legacy range detection and migration) — dispatched to an Opus 5 worker in an Orca child worktree; closes with a PR.
+- **Branch:** main, tracking `origin/main` (PRs #1 and #2 merged).
+- **Active item:** plan 0038 (coordination directory: principle and static contracts) — dispatched to an Opus 5 worker in an Orca child worktree; closes with a PR.
 - **Blockers:** none.
 - **Uncommitted work:** none.
 
 ## Last shipped
 
+- **2026-09-05 — plan 0037, legacy range migration** (PR #2, merge ce41a34): ADR 0035 → Implemented.
 - **2026-09-04 — plan 0036, shape by field** (PR #1, merge 35a933c): ADR 0034 → Implemented.
 - **2026-09-04 — plan 0046, return to main** (acd3eed / a1b0813):
   ADR 0044 recorded at Implemented. Same day, without a ship: ADRs
@@ -39,11 +40,11 @@ file.
 
 1. **Per item:** accept the owning ADR (delegated), dispatch an Opus 5
    worker in an Orca child worktree from `main`, review its PR, ship on
-   merge. ADRs 0034 (Implemented) and 0035 (Accepted) done; 0036–0043
+   merge. ADRs 0034 and 0035 Implemented, 0036 Accepted; 0037–0043
    and 0045–0049 still Proposed, accepted as their items come up.
 2. **Merges** have used GitHub's merge button (a merge commit on `main`);
    the recorded contract is fast-forward only — reconcile by decision.
-3. **Ship the queue in order**, 0037 → 0051 (0036 shipped): shape-by-field (0036,
+3. **Ship the queue in order**, 0038 → 0051 (0036, 0037 shipped): shape-by-field (0036,
    0037), coordination directory (0038–0042), Status at a glance
    (0043–0045), agent-wave (0047–0051). Every item edits shared files;
    none of it runs as a wave.
