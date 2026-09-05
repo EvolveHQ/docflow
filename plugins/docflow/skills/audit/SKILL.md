@@ -135,8 +135,23 @@ the same way: it is a template, not the first technology ADR.
       branch", "last shipped", "next item"), or a clause telling the
       reader that git wins where the two disagree — that clause is the
       file admitting it is a stale copy.
-    - **Stale claims.** In a shared checkout, report `_agent/LOCKS.md`
-      rows with no pending change as hygiene.
+    - **Stale claims.** In a shared checkout, a row in
+      `_agent/LOCKS.md` is a live mutex until there is **evidence** its
+      owner has finished or abandoned it. Writers claim a file *before*
+      editing it, so a claim with no pending change is the normal state
+      of a writer preparing an edit — **never** infer staleness from an
+      absent diff alone. Evidence is one of:
+      - the claiming actor's commit touching that path has landed and
+        the row is still there (the claim outlived its own work);
+      - the row's timestamp is older than that actor's latest commit on
+        that path (the claim was superseded by work already committed);
+      - the operator confirms the owner is gone.
+      Report rows with evidence as **hygiene**, naming the evidence.
+      Report every other claim as an **uncertain** row — listed for the
+      operator to confirm, counted as neither clean nor stale, and never
+      cleared automatically. Where the audit cannot attribute a row to a
+      commit at all (no matching actor in the history), it is uncertain,
+      not stale.
     - **Legacy layout.** Where the offending files are the former
       scaffolded set — `WORKLOG.md`, `worklog/`, `CURRENT_FOCUS.md`,
       `IN_FLIGHT.md`, `HANDOFF.md`, a `merge=union` attribute for the
@@ -224,7 +239,8 @@ the same way: it is a template, not the first technology ADR.
 Lead with a one-line verdict (clean / N issues). Then the punch list,
 grouped by severity: **blocking** (privacy leaks, status/lifecycle
 violations, broken cross-refs), **drift** (INDEX out of sync, missing
-plan files), **hygiene** (stale locks, formatting), and **migration
+plan files), **hygiene** (evidenced stale locks, uncertain lock rows
+awaiting confirmation, formatting), and **migration
 available** (a superseded scheme the repo can move off — check 15).
 A migration-available finding does not count towards the issue count in
 the verdict and never makes the run dirty: a repo whose only finding is
@@ -233,8 +249,12 @@ that one is **clean, with a migration available**.
 ## Step 3 — Offer fixes
 
 Offer to fix the **mechanical** issues automatically: regenerate
-`INDEX.md`, create missing `plan/todo` stubs, clear stale locks, fix
-broken relative links. **Do not** auto-edit ADR content, rewrite
+`INDEX.md`, create missing `plan/todo` stubs, clear the lock rows check
+10 found evidence for, fix broken relative links. **Only** rows with
+that evidence are clearable: clearing a live claim in a shared checkout
+removes another writer's only mutex and lets two writers edit the same
+file. Uncertain rows are listed for the operator to confirm one at a
+time and are never included in a "fix everything" confirmation. **Do not** auto-edit ADR content, rewrite
 acceptance criteria, or remove suspected privacy leaks without the
 user confirming each — those need judgement. Commit fixes as
 `fix(adr): ...` / `docs: ...` with a `Rationale:` footer where an ADR

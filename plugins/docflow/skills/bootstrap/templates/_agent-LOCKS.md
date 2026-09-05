@@ -5,7 +5,11 @@ shared checkout this ledger is the one real mutex — nothing else stops
 two writers editing the same file at the same time.
 
 Append a row before editing a file. Remove the row on commit. A row
-that outlives its change is stale; clear it.
+whose change has already landed is stale — clear it. A row with no
+pending change is **not** evidence of staleness: the claim is made
+before the edit, so that is exactly what a writer preparing an edit
+looks like. Clear someone else's row only once their work has landed
+or they have confirmed they are done.
 
 Format: `<agent-id> | <path> | <ISO-8601 timestamp>`
 
