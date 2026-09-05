@@ -7,6 +7,33 @@ This file provides guidance to coding agents working in this repository.
 <One paragraph. Project purpose, current baseline, what the artefacts in
 this repo represent.>
 
+## Picking up this repo
+
+<!-- Bootstrap GENERATES this list from the recorded artefact root, the
+optional layers this repo actually has, and the coordination mode: drop
+every line whose file was not written, renumber what remains, and
+resolve each path against the artefact root (e.g.
+`.docflow/CONVENTIONS.md`). This section is the repo's only read order —
+no separate hand-off file is written. -->
+
+Read these, in order, before any tool calls:
+
+1. `AGENTS.md` (this file) — the hard rules. Read in full.
+2. `CONVENTIONS.md` — authoring rules, ADR status semantics, the git
+   contract.
+<!-- If plan folder skipped (Q4a): drop lines 3 and 7. -->
+3. `plan/README.md` — how the work queue is used.
+4. `INDEX.md` — the ADR catalogue: an ADR's filename and its dependency
+   chain. Sorted by number, not by work order.
+<!-- Coordination lines: keep 5 in shared-checkout and separate-worktree
+modes; keep 6 in shared-checkout mode only; drop both for a single
+writer. -->
+5. `_agent/ROLES.md` — who writes what.
+6. `_agent/LOCKS.md` — which files are currently claimed; claim yours
+   here before editing.
+7. The queue item you are about to work, `plan/todo/NNNN-<slug>.md`, and
+   the ADR(s) it names — both in full.
+
 ## Repository structure
 
 - `adr/0000-template.md` — canonical ADR template.
@@ -19,10 +46,18 @@ this repo represent.>
 "Plan folder" section below. -->
 - `plan/todo/NNNN-<slug>.md` — pending work, lower numbers run first.
 - `plan/done/<YYYY-MM-DD>-<slug>.md` — shipped work, chronological.
-<!-- If no coordination layer (Q5 = None): drop the `_agent/` line and
-the WORKLOG/snapshot references below. -->
-- `_agent/` — multi-agent coordination: `ROLES.md`, `LOCKS.md`,
-  `WORKLOG.md`, `CURRENT_FOCUS.md`, `HANDOFF.md`, `prompts/`.
+<!-- `_agent/` line — list the members the coordination mode (Q5) writes,
+and drop the line entirely when no `_agent/` exists (a single writer with
+no verify gate):
+  single writer:       `prompts/autonomous.md`
+  shared checkout:     `ROLES.md`, `LOCKS.md`, `prompts/autonomous.md`
+  separate worktrees:  `ROLES.md`, `prompts/autonomous.md`
+`prompts/autonomous.md` appears only where a verify gate was recorded
+(Q8); drop it from the list otherwise. -->
+- `_agent/` — the agent operating contract: who writes what, the one
+  real mutex, and how an unattended run behaves. Here: `ROLES.md`,
+  `LOCKS.md`, `prompts/autonomous.md`. It holds nothing git already
+  records.
 <!-- If GLOSSARY.md (Q7): also include `GLOSSARY.md` — shared terms. -->
 <!-- If domains/ (Q7): also include `domains/<slug>/README.md`. -->
 
@@ -89,58 +124,55 @@ drops both — it writes no `shape:` field at all. -->
 
 ## Multi-agent workflow
 
-<!-- Q5 = None — no coordination layer. Replace the block below with:
-A single writer owns this repo — one human/agent integrates at a
-time. No coordination directory (`_agent/`) is in use; live state and
-history live in git.
--->
+<!-- Keep the ONE block matching the coordination mode (Q5); delete the
+others. `_agent/` holds contracts only — no mode writes a log, a
+dashboard, or a snapshot of what git already records. -->
 
-<!-- Mode 1 — single agent (Q5 default). Keep this block. -->
-A single agent owns this repo. The `_agent/` directory tracks live
-state and history; LOCKS discipline is not in use.
+<!-- Single writer. Keep this block. -->
+A single writer owns this repo — one human/agent integrates at a time,
+so there is nothing to serialise. What happened is in git history and
+`plan/done/`; what is in flight is the branch you are on and any open
+pull request.
+<!-- If a verify gate was recorded (Q8), add: The one coordination file
+is `_agent/prompts/autonomous.md`, the contract for an unattended run.
+With no gate recorded there is no `_agent/` directory at all. -->
 
-<!-- Mode 2 — multi-agent, shared checkout. Replace the block above with: -->
+<!-- Several writers, one shared checkout. Replace the block above with: -->
 <!--
-Work is partitioned across named agents (see `_agent/ROLES.md`).
+Work is partitioned across named writers (see `_agent/ROLES.md`).
 Coordination rules:
 - Before editing a file, claim it in `_agent/LOCKS.md` by appending
   `<agent-id> | <path> | <ISO-8601 timestamp>`. Remove the line on
-  commit. LOCKS is a filesystem mutex — it prevents simultaneous
-  writes to the same file.
-- Append a one-line entry to `_agent/WORKLOG.md` on every commit.
-- `_agent/CURRENT_FOCUS.md` is the single in-flight snapshot
-  (branch, active queue item, blockers, uncommitted work). Update it
-  when state changes.
+  commit. LOCKS is the one real mutex — it prevents simultaneous
+  writes to the same file in this shared checkout.
+- Keep no log of what shipped: git history and `plan/done/` are that
+  record.
 -->
 
-<!-- Mode 3 — multi-agent, separate worktrees / PR branches. Replace
-the block above with: -->
+<!-- Several writers, separate worktrees / PR branches. Replace the
+block above with: -->
 <!--
-Work is partitioned across named agents (see `_agent/ROLES.md`).
-Each agent works in its own git worktree or PR branch.
+Work is partitioned across named writers (see `_agent/ROLES.md`).
+Each writer works in its own git worktree or PR branch.
 Coordination rules:
-- **GitHub draft PRs / branch assignment are the authoritative lock.**
-  `_agent/LOCKS.md` is advisory only — append an intent declaration
-  if it helps coordinate before a PR exists; do not rely on it as a
-  mutex. The filesystem can't conflict across worktrees, but
-  duplicated work and contradictory merges still can.
-- Append a one-line entry to `_agent/WORKLOG.md` on every commit.
-  The repo's `.gitattributes` sets `_agent/WORKLOG.md merge=union`
-  so concurrent appends concatenate instead of conflicting.
-- `_agent/CURRENT_FOCUS.md` is local-only per worktree (gitignored).
-  Update it freely; it never merges.
-- The committed cross-worktree dashboard is `_agent/IN_FLIGHT.md` —
-  one row per active worktree (agent, branch, queue item, started).
-  Add your row when you start, remove it when the worktree closes.
+- **The pushed branch and its draft pull request are the claim.** There
+  is no lock ledger: worktrees cannot collide on the filesystem, and an
+  advisory ledger nobody can rely on is noise. What has to be guarded
+  against is duplicated work and contradictory merges — see the
+  guardrails below.
+- Keep no dashboard and no log: what is in flight is the set of live
+  branches, worktrees and open pull requests; what shipped is git
+  history and `plan/done/`.
 -->
 
 <!-- Concurrency guardrails hard rule — bootstrap INCLUDES this bullet
-ONLY for multi-agent (mode 2/3) OR PR-based repos (omit for single-agent
-direct-to-main). See CONVENTIONS.md §Concurrency Guardrails.
+ONLY for several-writer (shared-checkout / worktree) OR PR-based repos
+(omit for a single writer on direct-to-main). See CONVENTIONS.md
+§Concurrency Guardrails.
 
 - **Before integrating, check for number collisions (G2/G3).** Sync onto
-  the current `main` and run `/audit`; if your ADR or `plan/todo` number
-  now clashes with what landed on `main`, renumber locally before
+  the current `main` and run the audit skill; if your ADR or `plan/todo`
+  number now clashes with what landed on `main`, renumber locally before
   integrating. The single-threaded merge gate rejects a duplicate as the
   backstop. Numbers are immutable once merged. (G1 — landing the ADR
   before implementation — is recommended guidance, in CONVENTIONS.md.)
@@ -183,4 +215,3 @@ gate sentence):
   <squash | merge | rebase>. Completion event: PR merged to `main`
   with CI green.
 -->
-
