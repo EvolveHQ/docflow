@@ -40,7 +40,7 @@ pick up a cold repository and act correctly with no oral handover.
 |---|---|
 | `adr/NNNN-<slug>.md` | One decision per file, contiguously numbered. The catalogue. |
 | `INDEX.md` | A table **regenerated** from ADR metadata. Derived, never hand-edited. |
-| `plan/todo/` · `plan/done/` | The work queue. Pending items move to done on completion. |
+| `plan/todo/` · `plan/done/` | The work queue. Together with git history, `plan/done/` is the shipped-work record. |
 | `CONVENTIONS.md` | The authoring rules every contributor reads first. |
 | `AGENTS.md` (+ `CLAUDE.md`) | The hard-rules entry point coding agents load. |
 | `_agent/` | The agent operating contract — who writes what, the one real mutex, how an unattended run behaves. Optional; per-mode members, and the run prompt only where a verify gate and the `plan/todo/` queue it walks both exist. |
@@ -69,6 +69,7 @@ treated as derived — regenerated, never the source of truth.
 
 **C7 — The plan queue is the ledger of work.** A unit of work is queued
 *before* it starts, naming its owning ADR(s), scope, and exit criteria.
+When it ships, git history and `plan/done/` are the shipped record.
 
 **C8 — Audit trail and approvals.** Substantive ADR changes append a
 Revision History row; an Approvals table is populated when an ADR is
@@ -102,7 +103,11 @@ override with a recorded reason; MAY is optional.
   or false of the running system; the unit against which "done" is judged.
 - **Completion event** — the single, repository-defined moment a unit of
   work is considered shipped (e.g. fast-forwarded to the main line and
-  pushed, or a pull request merged with required checks green).
+  pushed, or a pull request merged with required checks green). Under
+  direct-to-main integration the shipped footer names the HEAD SHA; under
+  pull-request integration the completion metadata is committed on the
+  pull-request branch before it is marked ready, and the footer names the
+  pull request.
 - **Catalogue** — the set of ADR files in a repository.
 - **Plan queue** — `plan/todo/` (pending) and `plan/done/` (shipped).
 - **Federation** — a set of repositories forming one product (§5).

@@ -135,8 +135,9 @@ instead.
 
 `_agent/` is the **agent operating contract**: who writes what, the one
 real mutex, and how an unattended run behaves. It holds nothing git
-already records — no log of what shipped, no dashboard of what is in
-flight, no snapshot of the current state. Its absence is a valid state.
+already records — no duplicate shipped record, no dashboard of what is
+in flight, no snapshot of the current state. Its absence is a valid
+state.
 
 <!-- Keep the ONE block matching the coordination mode (Q5); delete the
 others. -->
@@ -156,8 +157,8 @@ Work is partitioned across named writers (see `_agent/ROLES.md`).
 Claim a file in `_agent/LOCKS.md` before editing it; remove the row on
 commit. In one checkout that ledger is the only thing stopping two
 writers editing the same file, so it is the one lock that matters.
-Keep no log of what shipped — git history and `plan/done/` are that
-record. Regenerate `INDEX.md` after any ADR status change or new ADR.
+The shipped record is git history and `plan/done/`. Regenerate
+`INDEX.md` after any ADR status change or new ADR.
 -->
 
 <!-- Several writers, separate worktrees / PR branches. Replace with:
@@ -176,9 +177,8 @@ Each writer works in its own worktree / PR branch.
   claims it. Contradictory edits to one ADR across two worktrees must
   never happen; the audit skill flags duplicate numbers, duplicate plan
   ownership, and the same ADR edited on two unmerged branches.
-- Keep no dashboard and no log: the live branches, worktrees and open
-  pull requests are what is in flight; git history and `plan/done/` are
-  what shipped.
+- The live branches, worktrees and open pull requests are what is in
+  flight; git history and `plan/done/` are what shipped.
 - Regenerate `INDEX.md` after any ADR status change or new ADR.
 -->
 
@@ -193,14 +193,22 @@ Pending and shipped work live in `plan/` at the repository root:
 
 - `plan/todo/NNNN-<slug>.md` — pending work, lower numbers run first.
   Each file names the owning ADR(s), scope, and exit criteria.
-- `plan/done/<YYYY-MM-DD>-<slug>.md` — shipped work, chronological. A
-  `git mv` from `todo/` to `done/` is the completion event.
+- `plan/done/<YYYY-MM-DD>-<slug>.md` — shipped work, chronological.
+  Under direct-to-main integration, the completion commit moves the
+  item here and its footer names the HEAD SHA. Under pull-request
+  integration, the move happens on the pull-request branch before it is
+  marked ready and the footer names the pull request.
 
 The completion event is: `<from Q4>`.
 
-When a `plan/todo/` item ships, the file moves to `plan/done/` AND the
-owning ADR(s)' `status:` advances from `Accepted` to `Implemented`.
-`INDEX.md` is regenerated to match.
+When a `plan/todo/` item ships, the file moves to `plan/done/`, any
+plan-item Status section is removed, the owning ADR(s)' `status:`
+advances from `Accepted` to `Implemented`, and `INDEX.md` is
+regenerated to match. Under direct-to-main integration these changes
+are committed before the final push. Under pull-request integration
+they are the final branch commit before the pull request is marked
+ready; the merge is the completion event, and no follow-up commit is
+made on the integration branch.
 
 <!-- Concurrency Guardrails — bootstrap INCLUDES this section (uncommented)
 ONLY for several-writer repos (the recorded answer is a shared checkout
@@ -222,10 +230,10 @@ once merged:
   branches start from a `main` that already carries the numbered ADR.
 - **G2 — check before merge.** Before integrating, sync onto the current
   `main` (`git fetch` + rebase, or pull in a shared checkout) and run
-  `/audit`. If your ADR number or `plan/todo` slot now clashes with what
-  landed on `main`, renumber locally **before** integrating — a trivial,
-  local change (a new ADR/plan names its own number only in its own file
-  and `INDEX.md`).
+  the audit skill. If your ADR number or `plan/todo` slot now clashes
+  with what landed on `main`, renumber locally **before** integrating —
+  a trivial, local change (a new ADR/plan names its own number only in
+  its own file and `INDEX.md`).
 - **G3 — gate backstop.** Integration is single-threaded; it rejects a
   duplicate number as the last line of defence, and the later author
   renumbers.
@@ -235,7 +243,8 @@ once merged:
   a work branch named for it. An unclaimed `plan/todo` item on
   `main` (which G1 deliberately puts there) is otherwise an open invitation
   to duplicate effort. G1–G3 protect the *number*; G4 protects the *work
-  assignment*. `/audit`'s duplicate-plan-ownership check is the backstop.
+  assignment*. The audit skill's duplicate-plan-ownership check is the
+  backstop.
 -->
 
 <!-- Federation (multi-repo) — bootstrap INCLUDES this section
@@ -330,5 +339,7 @@ PR-based:
 Every change ships via a pull request with required CI. The verify
 gate runs in CI on the PR. Merge strategy is <squash | merge |
 rebase>. A change is "shipped" when its PR is merged to `main` with
-CI green.
+CI green. Completion changes are committed on the pull-request branch
+before it is marked ready; no follow-up commit is made on the
+integration branch after merge.
 -->

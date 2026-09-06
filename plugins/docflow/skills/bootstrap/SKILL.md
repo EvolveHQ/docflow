@@ -1,6 +1,6 @@
 ---
 name: bootstrap
-description: Scaffold or retrofit documentation-led conventions (AGENTS.md, CLAUDE.md, CONVENTIONS.md, ADR catalogue, plan/ queue, _agent/ coordination) into a repo. Use when the user asks to "set up conventions", "bootstrap ADRs", "scaffold the documentation-led layout", "add AGENTS.md and a plan queue", or invokes /bootstrap. Works on fresh repos and existing ones — preserves existing content and merges rather than overwrites. Opens with an express / guided / full depth choice, so a quick conservative setup needs almost no questions.
+description: Scaffold or retrofit documentation-led conventions (AGENTS.md, CLAUDE.md, CONVENTIONS.md, ADR catalogue, plan/ queue, _agent/ coordination) into a repo. Use when the user asks to "set up conventions", "bootstrap ADRs", "scaffold the documentation-led layout", or "add AGENTS.md and a plan queue". Works on fresh repos and existing ones — preserves existing content and merges rather than overwrites. Opens with an express / guided / full depth choice, so a quick conservative setup needs almost no questions.
 ---
 
 # bootstrap
@@ -131,7 +131,7 @@ repo (tools probe `docs/`, then the repository root, for a
 
 **`_agent/` is the agent operating contract** — who writes what, the one
 real mutex, and how an unattended run behaves. It holds nothing git
-already records: no log of what shipped, no dashboard of what is in
+already records: no duplicate shipped record, no dashboard of what is in
 flight, no snapshot of the current state, no hand-off. Which of the
 three files above exist follows entirely from Q5, Q8 and Q4a, and a repo
 with no `_agent/` directory at all is a valid outcome.
@@ -190,10 +190,15 @@ A standalone repo has none of them.
    substantive revision.
 7. **INDEX.md is regenerated** from ADR metadata after any ADR change.
    Treat as derived, not hand-edited.
-8. **`plan/` is the work queue.** `git mv plan/todo/X plan/done/<date>-X`
-   is the completion event; the moved file gets a footer naming the HEAD
-   SHA (and deploy artefact id if applicable). Owning ADR(s) advance
-   `Accepted → Implemented` on the same commit.
+8. **`plan/` is the work queue.** When work ships, `git mv
+   plan/todo/X plan/done/<date>-X`, any plan-item Status removal, owning
+   ADR status advance, and `INDEX.md` regeneration are grouped in the
+   completion commit. Under direct-to-main integration that commit is
+   pushed to the integration branch and the moved file's footer names
+   the HEAD SHA (and deploy artefact id if applicable). Under
+   pull-request integration those changes are the last commit on the
+   pull-request branch before it is marked ready, the footer names the
+   pull request, and the merge is the completion event.
 9. **Coordination is a contract, not a log.** `_agent/` holds only what
    git cannot tell you, and each mode (Q5) prescribes exactly its own
    files — nothing else is written there. In a **shared checkout**, an
@@ -202,8 +207,8 @@ A standalone repo has none of them.
    removes it on commit; that ledger is the one real mutex. In
    **separate worktrees** the pushed branch and its draft pull request
    are the claim, and no ledger is kept. Under **a single writer**
-   there is nothing to serialise. No mode keeps a log of what shipped, a
-   dashboard of what is in flight, or a snapshot of the current state:
+   there is nothing to serialise. No mode keeps duplicate shipped state,
+   a dashboard of what is in flight, or a snapshot of the current state:
    git history and `plan/done/` are the record, and the live branches
    and pull requests are what is in flight.
 10. **Git contract.** Conventional Commits. Mandatory `Rationale:`
@@ -211,7 +216,7 @@ A standalone repo has none of them.
     opts out. No `Co-Authored-By` trailer for agent work unless the user
     asks for one.
 11. **AGENTS.md is the hard-rules entry point;** **CLAUDE.md** is the
-    one-liner `@AGENTS.md` so the Claude Code CLI picks it up.
+    one-liner `@AGENTS.md` for compatible agents that read it.
 12. **ADRs are internal artefacts — never user-visible.** ADR numbers,
     ADR titles, and the existence of the ADR catalogue must NEVER
     appear in product code paths that reach a user: UI strings, API
@@ -299,11 +304,10 @@ state a **recommended** option (label it "Recommended") with one short
 sentence on why; the user picks it, picks an alternative, or types a
 custom answer. Wait for the answer before moving to the next question.
 
-If the host CLI exposes a structured single-select question tool (e.g.
-Claude Code's `AskUserQuestion`), use it and mark the recommended
-option with the literal "(Recommended)" suffix in its label. Otherwise
-ask in plain text, listing options as A/B/C and naming the recommended
-one.
+If the host CLI exposes a structured single-select question tool, use
+it and mark the recommended option with the literal "(Recommended)"
+suffix in its label. Otherwise ask in plain text, listing options as
+A/B/C and naming the recommended one.
 
 After the answers are in, summarise the resulting plan in 5–10
 lines and ask for sign-off before writing any files. Note in the summary
@@ -344,8 +348,9 @@ default (the operator may decline it — see Step 5 item 5b).
    - **PR-based, required CI green.**
      *Recommended if Q5 = shared checkout or separate worktrees.* Verify gate
      runs in CI on the PR. Completion event: "PR merged to main + CI
-     green". Autonomous prompt opens a draft PR, waits for green,
-     marks ready, merges. Ask the user for merge strategy
+     green". Autonomous prompt opens a draft PR, commits the completion
+     changes as the final branch commit, waits for green, marks ready,
+     and merges. Ask the user for merge strategy
      (squash / merge / rebase — default: squash for clean history,
      rebase if per-commit identity matters).
 5. **Coordination — by number of writers.** Pick by how many people/agents
@@ -374,10 +379,11 @@ default (the operator may decline it — see Step 5 item 5b).
      request are the claim, worktrees cannot collide on the filesystem,
      and an advisory ledger nobody can rely on is noise.
 
-   No answer writes a work log, a dashboard, a live snapshot, or a
-   hand-off, and none adds a `.gitattributes` or `.gitignore` entry for
-   coordination files: what happened is git history and `plan/done/`,
-   what is in flight is the live branches and pull requests.
+   No answer writes a duplicate shipped-state file, a dashboard, a live
+   snapshot, or a hand-off, and none adds a `.gitattributes` or
+   `.gitignore` entry for coordination files: what happened is git
+   history and `plan/done/`, what is in flight is the live branches and
+   pull requests.
 
    Note: shared checkout → separate worktrees is not a free upgrade
    later; it retires the lock ledger the shared-checkout repo relies on
@@ -537,8 +543,10 @@ Keep the pointer in sync if a later re-run migrates the root.
    template list verbatim: keep one line per file this run actually
    writes, in read order, with every path resolved against the chosen
    artefact root (Q12) — drop the `plan/` lines if Q4a skipped the
-   queue, drop `_agent/ROLES.md` unless Q5 chose several writers, drop
-   `_agent/LOCKS.md` unless Q5 chose a shared checkout, and renumber
+   queue; when the queue exists, include the newest `plan/done/`
+   entries and a first-parent `git log` command as the shipped record;
+   drop `_agent/ROLES.md` unless Q5 chose several writers; drop
+   `_agent/LOCKS.md` unless Q5 chose a shared checkout; and renumber
    what remains. The section must never name a file this repo does not
    have; it is the only read order, and no hand-off file is written.
 3. `CLAUDE.md` — from `templates/CLAUDE.md` (single line `@AGENTS.md`).
@@ -584,11 +592,11 @@ Keep the pointer in sync if a later re-run migrates the root.
    | Several writers, shared checkout | `ROLES.md`, `LOCKS.md`, and `prompts/autonomous.md` iff eligible |
    | Several writers, separate worktrees | `ROLES.md`, and `prompts/autonomous.md` iff eligible |
 
-   Write no work log, no dashboard, no live snapshot and no hand-off in
-   any mode, and add no `.gitattributes` union entry or `.gitignore`
-   entry for coordination files. There is no template for any of them:
-   git history, `plan/done/`, and the live branches and pull requests
-   are that record.
+   Write no duplicate shipped-state file, no dashboard, no live snapshot
+   and no hand-off in any mode, and add no `.gitattributes` union entry
+   or `.gitignore` entry for coordination files. There is no template
+   for any of them: git history, `plan/done/`, and the live branches and
+   pull requests are that record.
 8. `_agent/ROLES.md` — from `templates/_agent-ROLES.md`, **skipped for a
    single writer**. One section per named writer, naming what each is
    the single writer of, from the Q5 answer.
@@ -602,9 +610,10 @@ Keep the pointer in sync if a later re-run migrates the root.
     The prompt's whole loop is "take the next `plan/todo/` item, ship it
     through the gate", so neither half is optional. Keep the integration
     block matching
-    Q4b: the **direct-to-main** variant (`git merge --ff-only` then
-    push) or the **PR-based** variant (`gh pr create --draft` → wait for
-    CI → mark ready → `gh pr merge`). Drop the unused variant.
+    Q4b: the **direct-to-main** variant (`git merge --ff-only`, commit
+    completion changes, then push) or the **PR-based** variant (draft
+    pull request → completion commit → CI → ready → merge). Drop the
+    unused variant.
 11. `INDEX.md` — header + the seed ADR's row (item 5b); an empty table only
     if the seed was declined. In a **two-shape** repo (Q2) the table
     carries a **Shape** column, filled from each ADR's `shape:` field
@@ -729,7 +738,7 @@ feature built ahead of the process — run the same passes again, **scoped to
 that development**: limit the scan (passes 1–3) to its commits and the area
 it touched, reconstruct just the decision(s) it embodies as `Implemented`
 ADR(s) (Revision History citing the implementing commits and noting they
-were recorded after the fact), and write the matching `plan/done` entries;
-regenerate `INDEX.md` and the worklog. A large development is never
-*outside* the catalogue — it is an ADR not yet written. `/audit`'s coverage
-check surfaces such gaps so they are captured, not silently kept.
+were recorded after the fact), write the matching `plan/done` entries, and
+regenerate `INDEX.md`. A large development is never *outside* the
+catalogue — it is an ADR not yet written. The audit skill's coverage check
+surfaces such gaps so they are captured, not silently kept.
