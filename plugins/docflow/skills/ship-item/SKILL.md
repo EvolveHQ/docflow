@@ -55,9 +55,12 @@ Then:
   (today's date prefix).
 - Amend the moved file with a shipped footer:
   - direct-to-main: **"Shipped at HEAD `<sha>`"** plus any artefact id,
-    image tag, deploy id, or release identifier. If the SHA is not
-    known until the completion commit exists, amend that commit once to
-    replace the placeholder with the actual HEAD SHA.
+    image tag, deploy id, or release identifier. `<sha>` is the
+    implementation tip that landed on the integration branch — the
+    `HEAD` you are standing on *before* the completion commit is made,
+    so it is known now. The completion commit that follows is a
+    separate commit; it is never amended, and the footer never names
+    itself.
   - PR-based: name the pull request and any artefact id, image tag, or
     deploy id. Do not invent a future integration-branch SHA.
 - If the queued item carries a `Status` section for in-flight state,
@@ -92,9 +95,9 @@ move + any Status removal + status advance + INDEX regeneration into
 one coherent commit so the completion event is atomic in history. The
 commit message names the plan item and the owning ADR(s).
 
-- **Direct-to-main:** after the completion commit exists and the
-  footer names the actual HEAD SHA, push the integration branch. The
-  successful push is the completion event.
+- **Direct-to-main:** after the completion commit exists, push the
+  integration branch. The successful push is the completion event; the
+  footer already names the implementation tip beneath that commit.
 - **PR-based:** push the branch after the completion commit, wait for
   CI green (`gh pr checks --watch`), mark the pull request ready, then
   merge with the repo's strategy. The merge is the completion event;

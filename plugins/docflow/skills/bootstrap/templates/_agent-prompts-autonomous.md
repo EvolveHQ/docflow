@@ -81,10 +81,11 @@ Make the completion changes before the completion event:
 
 - `git mv plan/todo/NNNN-<slug>.md plan/done/<YYYY-MM-DD>-<slug>.md`.
 - Amend the moved file with the shipped footer:
-  - direct-to-main: name the HEAD SHA and any artefact id, image tag,
-    deploy id, or release identifier. If the SHA is not known until the
-    completion commit exists, amend that commit once to replace the
-    placeholder with the actual HEAD SHA.
+  - direct-to-main: name the implementation tip that landed — the
+    `HEAD` you are on before making the completion commit — plus any
+    artefact id, image tag, deploy id, or release identifier. The
+    completion commit is a separate commit and is never amended; the
+    footer never names itself.
   - PR-based: name the pull request and any artefact id, image tag, or
     deploy id. Do not invent a future integration-branch SHA.
 - If the queued item carries a `Status` section for in-flight state,
