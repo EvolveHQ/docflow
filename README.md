@@ -25,7 +25,7 @@ agent the same skills are invoked as `/skill:<name>` (e.g.
 | bootstrap | `/bootstrap` | Scaffold or retrofit the whole convention set. Start here. |
 | new-adr | `/new-adr` | Author one ADR — next contiguous number, right shape, INDEX + domain wiring, supersede linkage. |
 | new-plan | `/new-plan` | Add a `plan/todo` item tracing to its owning ADR(s). |
-| ship-item | `/ship-item` | Run the completion event: verify → integrate → `todo`→`done` → ADR `Accepted`→`Implemented` → INDEX. |
+| ship-item | `/ship-item` | Run the completion event: verify → completion commit (`todo`→`done`, ADR `Accepted`→`Implemented`, INDEX) → push or PR merge per the recorded model. |
 | add-convention | `/add-convention` | Assess whether a convention is worth codifying, route it to the right home (or to an ADR), then add it. Use it to enable optional practices (e.g. TDD) on demand — see [USAGE §5a](USAGE.md). |
 | audit | `/audit` | Lint the repo against its own conventions — numbering, INDEX sync, plan coverage, **ADR-privacy leaks**, more. |
 | brainstorm | `/brainstorm` | Decompose a problem into candidate ADRs + plan items (proposes drafts; writes nothing until approved). |
@@ -53,8 +53,10 @@ ADR catalogue.
 - `adr/0000-template.md` — the ADR template; the catalogue starts here.
 
 **Optional layers (opt-in):**
-- `plan/todo/` + `plan/done/` — the implementation queue (Q4a). `git mv`
-  from `todo/` to `done/` is the completion event.
+- `plan/todo/` + `plan/done/` — the implementation queue (Q4a). Git
+  history and `plan/done/` are the shipped record: direct-to-main
+  footers name the HEAD SHA, while PR-based footers name the pull
+  request.
 - `_agent/` — the agent operating contract: who writes what, the one real
   mutex, and how an unattended run behaves. It holds nothing git already
   records. Members follow the coordination answer (Q5): a **single

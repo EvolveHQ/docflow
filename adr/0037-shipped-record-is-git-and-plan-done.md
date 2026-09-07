@@ -44,11 +44,18 @@ shipped record lives instead.
 The record of what shipped is **git history and `plan/done/`**, and
 nothing else is written:
 
-- The completion commit is the event. Its message names the plan item
-  and the ADR(s) it advances, as the git contract already requires.
+- Under direct-to-main integration, the completion commit is the
+  event. Its message names the plan item and the ADR(s) it advances,
+  as the git contract already requires.
+- Under pull-request integration, the completion changes — the plan
+  move, Status removal, ADR advance, and INDEX regeneration — are the
+  last commit on the claim branch before the request is marked ready.
+  The merge is the completion event, and nothing is committed to the
+  integration branch afterwards.
 - The `plan/done/` file is the chronological, one-per-item record; its
   shipped footer names the HEAD SHA and any release tag or package
-  version, as the plan convention already requires.
+  version under direct-to-main integration, and names the pull request
+  under pull-request integration.
 - The first-parent history of the integration branch is the ordered
   log. "What landed recently" is the newest entries in `plan/done/`
   together with `git log --first-parent`; the read order in
@@ -82,8 +89,15 @@ whereas a generated worklog would list what `git log` already lists.
 ## Acceptance criteria
 
 1. `ship-item`'s record step appends nothing; the completion commit
-   message names the plan item and the owning ADR(s), and the
-   `plan/done/` footer names the HEAD SHA and any release identifier.
+   message names the plan item and the owning ADR(s). Under
+   direct-to-main integration, that commit is the completion event and
+   the `plan/done/` footer names the HEAD SHA and any release
+   identifier. Under pull-request integration, the completion changes
+   — plan move, Status removal, ADR advance, and INDEX regeneration —
+   are the last commit on the claim branch before the request is
+   marked ready, the footer names the pull request, the merge is the
+   completion event, and nothing is committed to the integration
+   branch afterwards.
 2. The "Picking up this repo" read order names the newest `plan/done/`
    entries and a first-parent `git log` command as the shipped record;
    no template, skill, or run prompt refers to a worklog or its tail.
@@ -126,9 +140,11 @@ whereas a generated worklog would list what `git log` already lists.
 |------|----------|--------|--------|
 | 2026-09-04 | r1 | Eugenio Minardi | Initial draft (Proposed), from the approved brainstorm: worklog retired; the completion commit, the `plan/done/` footer, and first-parent git history are the shipped record; union-merge attribute and per-agent split removed. Bounded and generated worklogs considered and rejected. |
 | 2026-09-05 | r2 | Eugenio Minardi | Status Proposed → Accepted; acceptance delegated to the session by the operator. No open questions. Plan 0039 authorised; its ADR 0037 r2 amendment (completion changes ride in the pull request under pull-request integration; the footer names the SHA under direct-to-main and the pull request otherwise) lands with the item. |
+| 2026-09-05 | r3 | Eugenio Minardi | Pull-request integration clarified: completion changes (plan move, Status removal, ADR advance, INDEX regeneration) are the last commit on the claim branch before the request is marked ready; the merge is the completion event and no integration-branch follow-up commit is made. Footers name the HEAD SHA for direct-to-main and the pull request for pull-request integration. |
 
 ## Approvals
 
 | Role | Name | Date | Signature |
 |------|------|------|-----------|
+| Maintainer | Eugenio Minardi | 2026-09-05 | — (delegated) |
 | Maintainer | Eugenio Minardi | 2026-09-05 | — (delegated) |

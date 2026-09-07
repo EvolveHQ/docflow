@@ -61,7 +61,8 @@ direct-to-main projects:
 - Fast-forward the work branch onto `main`:
   `git merge --ff-only <work-branch>` (or commit directly on `main`
   if that is the project's flow).
-- Push: `git push origin main`.
+- Do not push yet. The completion commit in Step 7 must ride with the
+  work, and the successful push is the completion event.
 - The verify gate has already passed locally (Step 4); no CI wait.
 -->
 
@@ -70,27 +71,41 @@ projects:
 
 - Push the work branch: `git push -u origin <work-branch>`.
 - Open a draft PR: `gh pr create --draft --fill`.
-- Wait for CI: `gh pr checks --watch`. The verify gate runs in CI;
-  do not proceed until it is green.
-- Mark ready: `gh pr ready`.
-- Merge with the project's strategy:
-  `gh pr merge --squash --auto` (or `--merge` / `--rebase`).
-- Confirm the merge landed on `main` before treating the item as
-  shipped.
+- Keep the PR draft until Step 7 commits the completion changes as the
+  last branch commit before the request is marked ready.
 -->
 
 ## Step 7 — Ship the queue item
 
-Once the change is on `main` (fast-forwarded or PR-merged):
+Make the completion changes before the completion event:
 
 - `git mv plan/todo/NNNN-<slug>.md plan/done/<YYYY-MM-DD>-<slug>.md`.
-- Amend the moved file with a "Shipped at HEAD `<sha>`" footer (and
-  any artefact id, image tag, deploy id, PR link).
+- Amend the moved file with the shipped footer:
+  - direct-to-main: name the implementation tip that landed — the
+    `HEAD` you are on before making the completion commit — plus any
+    artefact id, image tag, deploy id, or release identifier. The
+    completion commit is a separate commit and is never amended; the
+    footer never names itself.
+  - PR-based: name the pull request and any artefact id, image tag, or
+    deploy id. Do not invent a future integration-branch SHA.
+- If the queued item carries a `Status` section for in-flight state,
+  remove that section.
 - Advance the owning ADR(s)' `status:` from `Accepted` to
   `Implemented`; regenerate `INDEX.md`.
+- Commit those changes as one Conventional Commit whose message names
+  the plan item and owning ADR(s). `Rationale:` footer required on any
+  commit touching an ADR.
+
+- **Direct-to-main:** push `main`. The successful push is the
+  completion event.
+- **PR-based:** push the branch, wait for CI green
+  (`gh pr checks --watch`), mark the pull request ready, and merge with
+  the project's strategy (`gh pr merge --squash --auto`, or `--merge` /
+  `--rebase`). The merge is the completion event; confirm it landed on
+  `main`, and make no follow-up commit on the integration branch.
 
 That commit, the moved file, and its footer are the record of the run.
-Write no separate log of what you did.
+Write no separate shipped-state file.
 
 ## Stop conditions
 
