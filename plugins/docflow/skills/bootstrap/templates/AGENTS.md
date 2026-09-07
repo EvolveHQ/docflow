@@ -21,7 +21,7 @@ Read these, in order, before any tool calls:
 1. `AGENTS.md` (this file) — the hard rules. Read in full.
 2. `CONVENTIONS.md` — authoring rules, ADR status semantics, the git
    contract.
-<!-- If plan folder skipped (Q4a): drop lines 3, 4 and 8. -->
+<!-- If plan folder skipped (Q4a): drop lines 3, 4 and 9. -->
 3. `plan/README.md` — how the work queue is used.
 4. The newest `plan/done/` entries and
    `git log --first-parent --oneline -n 20` — the shipped-work record.
@@ -33,7 +33,15 @@ writer. -->
 6. `_agent/ROLES.md` — who writes what.
 7. `_agent/LOCKS.md` — which files are currently claimed; claim yours
    here before editing.
-8. The queue item you are about to work, `plan/todo/NNNN-<slug>.md`, and
+<!-- Keep 8 in separate-worktree mode and in any pull-request repo; drop
+it elsewhere. -->
+8. **What is in flight** — no file records it, so derive it:
+   `git worktree list`, then `git fetch` and
+   `git branch -r --list 'origin/claim/*'`, plus the open draft pull
+   requests (`gh pr list --draft`) where a host is reachable. A
+   `claim/<item-key>` branch means that queue item is already claimed —
+   take another one.
+9. The queue item you are about to work, `plan/todo/NNNN-<slug>.md`, and
    the ADR(s) it names — both in full.
 
 ## Repository structure

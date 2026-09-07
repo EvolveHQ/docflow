@@ -288,7 +288,11 @@ that one is **clean, with a migration available**.
 
 Offer to fix the **mechanical** issues automatically: regenerate
 `INDEX.md`, create missing `plan/todo` stubs, clear the lock rows check
-10 found evidence for, fix broken relative links. **Only** rows with
+10 found evidence for, prune the stale worktrees and delete the leftover
+claim refs check 10 named, fix broken relative links. A worktree is
+pruned only on a confirmation naming it — it may hold uncommitted
+work — and a claim branch is deleted only where its item has shipped or
+the operator says the work is abandoned. **Only** rows with
 that evidence are clearable: clearing a live claim in a shared checkout
 removes another writer's only mutex and lets two writers edit the same
 file. Uncertain rows are listed for the operator to confirm one at a

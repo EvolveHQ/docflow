@@ -549,8 +549,10 @@ Keep the pointer in sync if a later re-run migrates the root.
    queue; when the queue exists, include the newest `plan/done/`
    entries and a first-parent `git log` command as the shipped record;
    drop `_agent/ROLES.md` unless Q5 chose several writers; drop
-   `_agent/LOCKS.md` unless Q5 chose a shared checkout; and renumber
-   what remains. The section must never name a file this repo does not
+   `_agent/LOCKS.md` unless Q5 chose a shared checkout; keep the derived
+   in-flight line — worktrees, remote claim branches, draft pull
+   requests — in separate-worktree mode and in any pull-request repo,
+   and drop it elsewhere; and renumber what remains. The section must never name a file this repo does not
    have; it is the only read order, and no hand-off file is written.
 3. `CLAUDE.md` — from `templates/CLAUDE.md` (single line `@AGENTS.md`).
 4. `adr/0000-template.md` — from `templates/adr-capability.md`.
