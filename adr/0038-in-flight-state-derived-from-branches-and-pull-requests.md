@@ -1,7 +1,7 @@
 ---
 adr: 0038
 title: In-flight state is derived from branches and pull requests
-status: Accepted
+status: Implemented
 date: 2026-09-04
 owner: Eugenio Minardi
 supersedes:
@@ -194,6 +194,7 @@ objection does not apply.
 | 2026-09-04 | r1 | Eugenio Minardi | Initial draft (Proposed), from the approved brainstorm: dashboard retired; the claim is a pushed branch named for the item plus a draft pull request; the in-flight view is computed from worktrees, branches, and pull requests; reservation is orchestrator state carried in the brief and the pull request. Orchestrator-only dashboard and claim commits considered and rejected. |
 | 2026-09-07 | r2 | Eugenio Minardi | Status Proposed → Accepted; acceptance delegated to the session by the operator. Plan 0040 authorised. The open question on the branch prefix is left open here and is resolved by the ADR 0038 r3 amendment that lands with plan 0040, which replaces the actor-prefixed claim branch with the fixed `claim/<item-key>` form so that the push itself is the exclusion. |
 | 2026-09-07 | r3 | Eugenio Minardi | Claim branch fixed at `claim/<item-key>` (the queue file name without its extension), replacing `<actor>/NNNN-<slug>`, so one item maps to one ref and the push is the exclusion; the open question is resolved. The claim commit exists before the push, and a remote claim at or behind the integration branch is not a claim. The claim is stated per coordination mode (branch in separate worktrees; `Claimed by` plus lock rows in a shared checkout; none under a single writer). Stale redefined as a worktree or `Claimed by` whose remote claim branch is gone, a detached worktree being neither. AC1 and AC5 reworded; AC6 gains remote and local branch deletion at ship. The rejected claim-commit alternative is carved out for the shared checkout; "spawn brief" reads "wave specification"; the templates' work-partition sentence becomes named actors answering for areas with work assigned by claim. |
+| 2026-09-07 | r4 | Eugenio Minardi | Status Accepted → Implemented. Plan 0040 shipped via PR #5: the scaffolded conventions, AGENTS hard rules and read order, USAGE and the docs state the `claim/<item-key>` claim and derive the in-flight view; bootstrap writes no dashboard in any mode and keeps the run prompt's Claim step per coordination mode; agent-wave hands out the reserved block in the wave specification and requires it in each pull request, with no dashboard write or cleanup on any path; ship-item and the run prompt remove no row and end the claim by deleting the branch; audit derives the in-flight set and fails on duplicate claims, claims without an item, reporting stale worktrees with a prune offer and the view as unverifiable without a remote, with check 11's collisions at FAIL. ADR 0010 r3 and ADR 0014 r4 landed with it. AC1–AC8 met. |
 
 ## Approvals
 

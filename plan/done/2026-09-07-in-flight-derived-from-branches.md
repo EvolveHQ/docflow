@@ -81,3 +81,36 @@ When this ships, ADR 0038 advances Accepted → Implemented.
 
 - Plan 0038 (file set) and plan 0039 (shares ship-item, prompt,
   bootstrap edits) — sequential.
+
+---
+
+Shipped at HEAD `65ed017` via PR #5 (https://github.com/EvolveHQ/docflow/pull/5).
+The scaffolded `CONVENTIONS.md`, `AGENTS.md` hard rules and "Picking up
+this repo" read order, `USAGE.md`, `README.md` and `docs/` state the
+claim and derive the in-flight view from worktrees, remote claim
+branches and draft pull requests. Bootstrap already wrote no dashboard
+and no `.gitignore` entry (plan 0038 deleted the template outright), so
+scope item 2 needed only the claim wording and the run prompt's new
+Claim step. agent-wave hands the reserved block out in the wave
+specification and requires it back in each pull request, with no
+dashboard write, cleanup or reservation release on any path including
+the stop path. ship-item and the run prompt remove no row and end the
+claim by deleting the branch. Audit check 10 derives the in-flight set
+and fails on an item claimed twice or a claim with no item, reports a
+stale claim as hygiene with a prune offer, treats a detached worktree as
+neither, and reports the view unverifiable without a remote; check 11's
+three collisions are FAIL.
+
+Scope item 6b named the amendment "ADR 0038 r2"; r2 was already consumed
+by the acceptance commit, so it landed as **r3** — the fixed
+`claim/<item-key>` branch replacing `<actor>/NNNN-<slug>`, the claim
+commit before the push, a remote claim at or behind the integration
+branch not counting, the per-mode claim, the stale definition, AC6's
+branch deletion, the reworded rejected alternative, "wave
+specification", and the templates' partition sentence. Everything
+downstream states the r3 form. ADR 0010 r3 and ADR 0014 r4 landed with
+it, both still Implemented. ADR 0038 -> Implemented (r4).
+
+This is the first item shipped under the rule that landed in PR #4: the
+completion changes are the last commit on this branch, before the pull
+request was marked ready, not a follow-up commit on `main`.
