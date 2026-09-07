@@ -61,3 +61,22 @@ When this ships, ADR 0037 advances Accepted → Implemented.
 - Plan 0038 (the per-mode file set this removal assumes).
 - Shares `ship-item/SKILL.md`, `_agent-prompts-autonomous.md`, and
   `bootstrap/SKILL.md` with plans 0040 and 0041 — sequential.
+
+---
+
+Shipped at HEAD `18a373d` via PR #4
+(https://github.com/EvolveHQ/docflow/pull/4), merged 2026-09-07 as
+`64e8af3`. ship-item appends nothing and its `_agent/` presence gate
+is gone; the run prompt, agent-wave, and bootstrap carry no worklog,
+template, or `merge=union` entry; audit reports a worklog as legacy
+derived state for the plan 0042 migration; docs updated. ADR 0037 r3 landed on the
+branch: under pull-request integration the completion changes are the
+last commit on the claim branch before the request is marked ready,
+and the footer names the pull request rather than a SHA.
+
+This item is the transitional case for its own rule — the completion
+changes could not ride on the branch that was still defining them, so
+they land here as a follow-up commit on `main`. From plan 0040 the
+r3 rule applies: the worker ships on its claim branch before marking
+the request ready. This repository's own `_agent/WORKLOG.md` is out of
+scope and is removed by plan 0042. ADR 0037 → Implemented (r4).

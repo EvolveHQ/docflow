@@ -12,7 +12,10 @@ in order before any tool calls:
    work.
 5. `INDEX.md` — the ADR catalogue. Look up an ADR's filename and
    dependency chain. Sorted by ADR number, not by work order.
-6. Tail of `_agent/WORKLOG.md` (last 30 lines) — confirms what landed.
+6. The newest entries in `plan/done/` and `git log --first-parent -20`
+   — together these confirm what landed. (ADR 0037: the shipped record
+   is git history and `plan/done/`; the worklog is retired and this
+   repository's own copy is removed by plan 0042.)
 7. The next queue item at `plan/todo/NNNN-*.md` — and the ADR(s) it
    names — read in full before implementing.
 

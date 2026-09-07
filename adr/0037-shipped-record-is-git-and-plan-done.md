@@ -1,7 +1,7 @@
 ---
 adr: 0037
 title: The shipped-work record is git history and plan/done
-status: Accepted
+status: Implemented
 date: 2026-09-04
 owner: Eugenio Minardi
 supersedes:
@@ -141,6 +141,7 @@ whereas a generated worklog would list what `git log` already lists.
 | 2026-09-04 | r1 | Eugenio Minardi | Initial draft (Proposed), from the approved brainstorm: worklog retired; the completion commit, the `plan/done/` footer, and first-parent git history are the shipped record; union-merge attribute and per-agent split removed. Bounded and generated worklogs considered and rejected. |
 | 2026-09-05 | r2 | Eugenio Minardi | Status Proposed → Accepted; acceptance delegated to the session by the operator. No open questions. Plan 0039 authorised; its ADR 0037 r2 amendment (completion changes ride in the pull request under pull-request integration; the footer names the SHA under direct-to-main and the pull request otherwise) lands with the item. |
 | 2026-09-05 | r3 | Eugenio Minardi | Pull-request integration clarified: completion changes (plan move, Status removal, ADR advance, INDEX regeneration) are the last commit on the claim branch before the request is marked ready; the merge is the completion event and no integration-branch follow-up commit is made. Footers name the HEAD SHA for direct-to-main and the pull request for pull-request integration. |
+| 2026-09-07 | r4 | Eugenio Minardi | Status Accepted → Implemented. Plan 0039 shipped via PR #4: ship-item appends nothing and loses its `_agent/` presence gate, the run prompt and agent-wave record in the commit and report, bootstrap writes no worklog template or `merge=union` entry, audit reports a worklog as legacy derived state, and the docs describe the shipped record as git history and `plan/done/`. |
 
 ## Approvals
 

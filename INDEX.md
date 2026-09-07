@@ -41,8 +41,8 @@ ADR change.
 | [0034](adr/0034-adr-shape-as-declared-metadata.md) | ADR shape as declared metadata, one contiguous sequence | Implemented | 2026-09-04 | 0001, 0007, 0029, 0030 |
 | [0035](adr/0035-range-numbered-catalogue-migration.md) | Compatibility and migration for range-numbered catalogues | Implemented | 2026-09-04 | 0034, 0003, 0028 |
 | [0036](adr/0036-coordination-directory-holds-only-what-git-cannot-tell-you.md) | The coordination directory holds only what git cannot tell you | Implemented | 2026-09-04 | 0001, 0005, 0006, 0016 |
-| [0037](adr/0037-shipped-record-is-git-and-plan-done.md) | The shipped-work record is git history and plan/done | Accepted | 2026-09-04 | 0036, 0001, 0007 |
-| [0038](adr/0038-in-flight-state-derived-from-branches-and-pull-requests.md) | In-flight state is derived from branches and pull requests | Proposed | 2026-09-04 | 0036, 0006, 0010, 0014 |
+| [0037](adr/0037-shipped-record-is-git-and-plan-done.md) | The shipped-work record is git history and plan/done | Implemented | 2026-09-04 | 0036, 0001, 0007 |
+| [0038](adr/0038-in-flight-state-derived-from-branches-and-pull-requests.md) | In-flight state is derived from branches and pull requests | Accepted | 2026-09-04 | 0036, 0006, 0010, 0014 |
 | [0039](adr/0039-plan-item-carries-its-own-status.md) | A plan item carries its own live status; the snapshot file is retired | Proposed | 2026-09-04 | 0036, 0001 |
 | [0040](adr/0040-coordination-directory-migration.md) | Compatibility, clean-up, and migration of existing coordination directories | Proposed | 2026-09-04 | 0036, 0037, 0038, 0039, 0033, 0035 |
 | [0041](adr/0041-status-at-a-glance-reporting-convention.md) | Status at a glance — every report says what was achieved and what is missing | Proposed | 2026-09-04 | 0001, 0007 |

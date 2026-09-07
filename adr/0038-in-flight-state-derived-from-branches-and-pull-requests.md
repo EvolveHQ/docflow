@@ -1,7 +1,7 @@
 ---
 adr: 0038
 title: In-flight state is derived from branches and pull requests
-status: Proposed
+status: Accepted
 date: 2026-09-04
 owner: Eugenio Minardi
 supersedes:
@@ -161,6 +161,7 @@ branch already carries the same information.
 | Date | Revision | Author | Change |
 |------|----------|--------|--------|
 | 2026-09-04 | r1 | Eugenio Minardi | Initial draft (Proposed), from the approved brainstorm: dashboard retired; the claim is a pushed branch named for the item plus a draft pull request; the in-flight view is computed from worktrees, branches, and pull requests; reservation is orchestrator state carried in the brief and the pull request. Orchestrator-only dashboard and claim commits considered and rejected. |
+| 2026-09-07 | r2 | Eugenio Minardi | Status Proposed → Accepted; acceptance delegated to the session by the operator. Plan 0040 authorised. The open question on the branch prefix is left open here and is resolved by the ADR 0038 r3 amendment that lands with plan 0040, which replaces the actor-prefixed claim branch with the fixed `claim/<item-key>` form so that the push itself is the exclusion. |
 
 ## Approvals
 
