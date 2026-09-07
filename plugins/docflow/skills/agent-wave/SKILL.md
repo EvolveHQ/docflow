@@ -107,19 +107,30 @@ every merge.
   both edit the same ADR in one wave — the merge would concatenate
   contradictory edits into an incoherent document.
 - Show the assignment — item, agent, reserved identifier block — in the
-  wave plan you put to the operator before spawning, and hand each
-  agent its own block in its brief. Write it to no file under `_agent/`:
-  no coordination mode prescribes one, and the branch each agent pushes
-  is the visible claim.
+  wave specification you put to the operator before spawning, and hand
+  each agent its own block there. **Require each agent to restate its
+  block, and the artefacts it is the single writer of, in its
+  pull-request description** — or in the first commit on its branch
+  under direct-to-main. Write it to no file under `_agent/`: no
+  coordination mode prescribes one, the reservation is orchestrator
+  state that expires with the wave, and the branch each agent pushes is
+  the visible claim. There is nothing to clean up when the wave ends.
 
 ## Step 3 — Spawn the wave
 
 Spawn N subagents in parallel, each in an isolated worktree
-(`isolation: worktree`). Brief each with: its assigned queue item, the
-instruction to follow `_agent/prompts/autonomous.md` end-to-end for that
-one item (orient → implement → verify → **check before merge (G2)** →
-integrate per the repo's model → ship), and to report back a structured
-result (item, pass/fail, HEAD or PR link, any blocker). The G2 step:
+(`isolation: worktree`). Brief each with: its assigned queue item, its
+reserved identifier block, the instruction to follow
+`_agent/prompts/autonomous.md` end-to-end for that
+one item (orient → **claim** → implement → verify → **check before
+merge (G2)** → integrate per the repo's model → ship), and to report
+back a structured result (item, pass/fail, HEAD or PR link, any
+blocker). The claim step: commit, then push `claim/<item-key>` for the
+assigned item — the queue file name without its extension — and open a
+draft pull request from it where integration is pull-request based. A
+**rejected push means another writer already holds that item**: the
+agent stops and reports rather than working it anyway, and the wave
+re-plans around it. The G2 step:
 before integrating, sync onto the current `main` and run the **audit**
 skill; if the item's new ADR/plan number now clashes with what landed,
 renumber locally
@@ -150,3 +161,8 @@ On stop, leave every worktree in a committed or cleanly-abandoned state
 and report the outcome to the operator in the wave summary. Ensure each
 item's outcome is visible in its own commit or pull request; shipped
 items are recorded by their commits, pull requests, and `plan/done/`.
+There is **no dashboard to write and no reservation to release** — the
+reservation was orchestrator state and expires with the wave. An
+abandoned item's claim branch is the one loose end: say in the summary
+which claim branches are still standing without work behind them, so
+the operator can delete them and free the item.

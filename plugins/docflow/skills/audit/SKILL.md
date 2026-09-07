@@ -155,6 +155,36 @@ the same way: it is a template, not the first technology ADR.
       cleared automatically. Where the audit cannot attribute a row to a
       commit at all (no matching actor in the history), it is uncertain,
       not stale.
+    - **The in-flight view is derived, not read from a file.** Compute
+      it and render it in the report: `git worktree list` for the
+      worktrees on this machine, the remote branches matching the claim
+      convention (`claim/<item-key>`, the queue file name without its
+      extension), and the open draft pull requests where a pull-request
+      host is reachable. Then check it:
+      - **Fail** on an **item claimed twice** — two claim branches for
+        one item key, or a claim branch and a claim recorded on the item
+        naming different actors. One item maps to one ref precisely so
+        this cannot happen quietly; if it has, name both claims and the
+        item.
+      - **Fail** on a **claim with no item** — a claim branch whose item
+        key matches no file in `plan/todo/`. Either the item shipped and
+        the branch outlived it, or the key is wrong; both need a human.
+      - **Stale claim** — a worktree, or a claim recorded on an item,
+        whose remote claim branch no longer exists. Report it as
+        **hygiene** and **offer to prune the worktree**
+        (`git worktree prune`, or `git worktree remove <path>` for a
+        named one) — never prune unasked: a worktree may hold
+        uncommitted work. A **detached** worktree, sitting on no claim
+        branch at all, is neither a claim nor stale; do not report it as
+        either.
+      - A claim branch whose tip is **at or behind the integration
+        branch** carries no work and is not a claim. Report it as a
+        leftover ref to delete, not as a claim on its item.
+      - **No remote, no verdict.** Where no remote is reachable the
+        branch and pull-request halves cannot be computed at all. Report
+        the in-flight view **unverifiable**, naming what could not be
+        reached — never PASS. Worktrees are still listed; they just do
+        not answer the question on their own.
     - **Legacy layout.** Where the offending files are the former
       scaffolded set — `WORKLOG.md`, `worklog/`, `CURRENT_FOCUS.md`,
       `IN_FLIGHT.md`, `HANDOFF.md`, a `merge=union` attribute for the
@@ -165,7 +195,9 @@ the same way: it is a template, not the first technology ADR.
       onto the new one is a migration of its own.
 11. **Cross-worktree collisions** (repos that record several writers on
     separate worktrees, or any audit that spans unmerged branches).
-    These catch semantic conflicts that a line-level git merge cannot:
+    These catch semantic conflicts that a line-level git merge cannot,
+    and all three are **FAIL**, never hygiene — each one merges clean and
+    lands an incoherent catalogue:
     - **Duplicate ADR or plan/todo numbers** — two ADR files, or two
       `plan/todo/` items, (across branches/worktrees) claiming the same
       `NNNN`. Distinct from check 1, which only sees one tree. This is the
@@ -177,10 +209,13 @@ the same way: it is a template, not the first technology ADR.
     - **Same ADR edited on two unmerged branches** — compare ADR files
       across the live worktrees / open PRs; flag any ADR modified in
       more than one. A `merge=union` would concatenate them silently.
-    Cross-check against the identifier blocks reserved for the wave and
-    the branch each worktree pushed: every collision should correspond
-    to a writer working outside its reserved block or editing an
-    artefact another branch claims.
+    Cross-check against the identifier blocks the wave reserved — read
+    them from each branch's pull-request description, or its first commit
+    message under direct-to-main, and from the claim branch each worktree
+    pushed. Every collision should correspond to a writer working outside
+    its reserved block or editing an artefact another claim names. There
+    is no file to cross-check against: the blocks are stated where the
+    work is.
 12. **Cross-repo (federation) checks** — only when a `federation.md`
     exists; run from the **index-holding** repo (`Role: central`, `home`,
     or `coordinator` — whichever holds `federation-index.md`). Reach each

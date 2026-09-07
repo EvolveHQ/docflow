@@ -204,10 +204,13 @@ A standalone repo has none of them.
    files — nothing else is written there. In a **shared checkout**, an
    agent appends a row to `_agent/LOCKS.md`
    (`<agent-id> | <path> | <ISO-8601 timestamp>`) before editing and
-   removes it on commit; that ledger is the one real mutex. In
-   **separate worktrees** the pushed branch and its draft pull request
-   are the claim, and no ledger is kept. Under **a single writer**
-   there is nothing to serialise. No mode keeps duplicate shipped state,
+   removes it on commit; that ledger is the one real mutex, and a queue
+   item is claimed on the item itself. In **separate worktrees** a queue
+   item is claimed by pushing `claim/<item-key>` — the queue file name
+   without its extension — plus a draft pull request from it where
+   integration is pull-request based; the push is what excludes the
+   second writer, and no ledger is kept. Under **a single writer**
+   there is nothing to serialise and nothing to claim. No mode keeps duplicate shipped state,
    a dashboard of what is in flight, or a snapshot of the current state:
    git history and `plan/done/` are the record, and the live branches
    and pull requests are what is in flight.
@@ -375,7 +378,7 @@ default (the operator may decline it — see Step 5 item 5b).
    - **Several writers, separate worktrees / PR branches.** Named
      writers in `_agent/ROLES.md`, plus the run prompt where the repo is
      eligible for it (gate + plan queue). **No lock ledger:** the pushed
-     branch and its draft pull
+     `claim/<item-key>` branch and its draft pull
      request are the claim, worktrees cannot collide on the filesystem,
      and an advisory ledger nobody can rely on is noise.
 
@@ -602,8 +605,8 @@ Keep the pointer in sync if a later re-run migrates the root.
    the single writer of, from the Q5 answer.
 9. `_agent/LOCKS.md` — from `templates/_agent-LOCKS.md`, **shared
    checkout only.** Not written for a single writer, and not in
-   separate-worktree mode (the branch and its pull request are the
-   claim there).
+   separate-worktree mode (the pushed `claim/<item-key>` branch and its
+   pull request are the claim there).
 10. `_agent/prompts/autonomous.md` — from
     `templates/_agent-prompts-autonomous.md`, **only** if Q8 confirmed a
     verify gate **and** Q4a kept the plan queue — in every Q5 answer.
@@ -613,7 +616,10 @@ Keep the pointer in sync if a later re-run migrates the root.
     Q4b: the **direct-to-main** variant (`git merge --ff-only`, commit
     completion changes, then push) or the **PR-based** variant (draft
     pull request → completion commit → CI → ready → merge). Drop the
-    unused variant.
+    unused variant. Keep the **Claim** step matching Q5: the claim-branch
+    block for separate worktrees, the item-and-locks block for a shared
+    checkout, and **drop the whole step for a single writer** — nothing
+    else can take the item, so there is nothing to claim.
 11. `INDEX.md` — header + the seed ADR's row (item 5b); an empty table only
     if the seed was declined. In a **two-shape** repo (Q2) the table
     carries a **Shape** column, filled from each ADR's `shape:` field

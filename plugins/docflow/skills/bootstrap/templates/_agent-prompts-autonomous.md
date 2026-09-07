@@ -21,24 +21,55 @@ name. Finish by reading the queue item you are about to work,
 
 `ls plan/todo/` and pick the lowest-numbered file (priority order).
 
-## Step 3 — Implement
+## Step 3 — Claim the item
+
+<!-- Single writer: DROP this whole step. Nothing else can take the
+item, so there is nothing to claim. -->
+
+Claim the item before you work it, so a second writer cannot start the
+same thing.
+
+<!-- Several writers, separate worktrees / PR branches. Keep this block:
+
+- Branch and make the first commit, then push the claim:
+  `git push -u origin claim/<item-key>` — the item key is the queue file
+  name without its extension, so `plan/todo/0007-rate-limit.md` is
+  claimed by `claim/0007-rate-limit`. Commit first: a claim branch at or
+  behind `main` carries no work and is not a claim.
+- **A rejected push means someone else holds this item.** One item maps
+  to one ref, so the push is the exclusion. Do not force it and do not
+  work the item anyway — take the next unclaimed item, or stop and
+  report.
+- Where integration is PR-based, the draft pull request opens from this
+  branch at integrate time (Step 7) and carries the claim from there.
+-->
+
+<!-- Several writers, one shared checkout. Keep this block instead:
+
+- There is no branch per item here. Record the claim on the item
+  itself — your actor id and the date — and commit it before you start.
+- Claim each file you edit in `_agent/LOCKS.md` as you go; that ledger
+  is the mutex.
+-->
+
+## Step 4 — Implement
 
 Implement against the ADR's numbered acceptance criteria. Add or
 update tests that map back to those criteria.
 
-## Step 4 — Verify
+## Step 5 — Verify
 
 Run the project's verify gate: `<command from Q8>`.
 
 Do not proceed if the gate fails. Surface the failure, fix the root
 cause, re-run. Do not bypass with `--no-verify` or equivalent.
 
-## Step 5 — Commit
+## Step 6 — Commit
 
 Conventional Commits per `AGENTS.md` §Git contract. `Rationale:`
 footer required on any commit touching an ADR.
 
-## Step 6 — Integrate
+## Step 7 — Integrate
 
 <!-- Concurrency guardrail G2 (multi-writer / PR-based repos) — keep this
 step if CONVENTIONS.md has a §Concurrency Guardrails section; drop it for
@@ -61,21 +92,24 @@ direct-to-main projects:
 - Fast-forward the work branch onto `main`:
   `git merge --ff-only <work-branch>` (or commit directly on `main`
   if that is the project's flow).
-- Do not push yet. The completion commit in Step 7 must ride with the
+- Do not push yet. The completion commit in Step 8 must ride with the
   work, and the successful push is the completion event.
-- The verify gate has already passed locally (Step 4); no CI wait.
+- The verify gate has already passed locally (Step 5); no CI wait.
 -->
 
 <!-- PR-based (required CI green). Keep this block for PR-based
 projects:
 
-- Push the work branch: `git push -u origin <work-branch>`.
-- Open a draft PR: `gh pr create --draft --fill`.
-- Keep the PR draft until Step 7 commits the completion changes as the
+- The claim branch is already pushed (Step 3); push the commits made
+  since.
+- Open a draft PR from it: `gh pr create --draft --fill`. State in its
+  description the identifier block reserved for you and the artefacts
+  you are the single writer of.
+- Keep the PR draft until Step 8 commits the completion changes as the
   last branch commit before the request is marked ready.
 -->
 
-## Step 7 — Ship the queue item
+## Step 8 — Ship the queue item
 
 Make the completion changes before the completion event:
 
@@ -104,8 +138,16 @@ Make the completion changes before the completion event:
   `--rebase`). The merge is the completion event; confirm it landed on
   `main`, and make no follow-up commit on the integration branch.
 
+Then **end the claim**: delete the remote claim branch
+(`git push origin --delete claim/<item-key>`, or let the host's
+delete-on-merge do it) and the local branch once no worktree holds it.
+The in-flight view is derived from the branches, so a claim branch left
+standing reads as an item still being worked. A single writer has no
+claim branch and skips this.
+
 That commit, the moved file, and its footer are the record of the run.
-Write no separate shipped-state file.
+Write no separate shipped-state file, and remove no row from one —
+nothing recorded that this item was in flight.
 
 ## Stop conditions
 

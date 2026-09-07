@@ -35,7 +35,8 @@ fix the root cause, re-run.
   the work is already on `main`) so the integration branch contains
   the verified work locally. Do not push yet: the completion commit in
   Step 7 must ride with the work, and the push is the completion event.
-- **PR-based:** push the branch and open a draft pull request. Keep it
+- **PR-based:** push the claim branch and open a draft pull request from
+  it if the claim did not already open one. Keep it
   draft until Steps 4-7 commit the completion changes as the last
   branch commit before the request is marked ready.
 
@@ -75,10 +76,11 @@ Then:
 
 ## Step 6 — Record
 
-**Nothing else to write.** The completion commit, the moved
-`plan/done/` file and its shipped footer are the record; the
+**Nothing else to write, and no row to remove.** The completion commit,
+the moved `plan/done/` file and its shipped footer are the record; the
 coordination mode prescribes no shipped-state file, dashboard or
-snapshot to update.
+snapshot to update. The claim is not cleared by editing anything: the
+merge and the deletion of the claim branch (Step 8) are what end it.
 
 One transitional exception: a repo scaffolded before this convention
 may still *record* a log or snapshot step in its own `AGENTS.md` /
@@ -103,3 +105,19 @@ commit message names the plan item and the owning ADR(s).
   merge with the repo's strategy. The merge is the completion event;
   confirm it landed on `main`, and make no follow-up commit on the
   integration branch.
+
+## Step 8 — End the claim
+
+The work has landed, so the claim must stop reading as live: the
+in-flight view is derived from the branches, and a claim branch left
+standing looks like an item still being worked.
+
+- **Delete the remote claim branch** —
+  `git push origin --delete claim/<item-key>`, or let the pull-request
+  host's delete-on-merge do it where that is configured.
+- **Delete the local branch once no worktree holds it** —
+  `git branch -d claim/<item-key>`. If it is still checked out, typically
+  in the worktree that did the work, remove or move that worktree first;
+  never force-delete the branch to get past this.
+- **A single writer has no claim branch.** Nothing to delete; skip the
+  step.
