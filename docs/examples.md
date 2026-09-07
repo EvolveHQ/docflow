@@ -198,8 +198,11 @@ New work now follows the same loop: `/new-adr` → `/new-plan` → `/ship-item`.
 3. `/bootstrap` choosing **several writers in separate worktrees + PR
    integration** → `_agent/` holds `ROLES.md`, and a PR-based
    `prompts/autonomous.md` where a verify gate and the `plan/todo/` queue
-   it walks both exist. No lock ledger: the pushed branch and its draft
-   pull request are the claim.
+   it walks both exist. No lock ledger and no dashboard: a queue item is
+   claimed by pushing `claim/<item-key>` — the queue file name without its
+   extension — and opening a draft pull request from it, and what is in
+   flight is read back from the worktrees, those branches, and the open
+   draft PRs.
 
 ### new-adr
 
@@ -295,10 +298,11 @@ New work now follows the same loop: `/new-adr` → `/new-plan` → `/ship-item`.
 > **Concurrent numbering.** ADR/plan numbers are assigned at authoring time,
 > so parallel branches can collide on "next". docflow keeps the contiguous
 > numbers and closes the race with process guardrails — *decide-before-do*,
-> *check-before-merge* (sync + audit + renumber locally), and a *merge-gate
-> backstop* — pre-wired only for several-writer (shared-checkout or
-> separate-worktree) or pull-request repos. A single writer on
-> direct-to-main needs none of it. See
+> *check-before-merge* (sync + audit + renumber locally), a *merge-gate
+> backstop*, and *claim-before-do* (push `claim/<item-key>` for the item,
+> so the push itself excludes the second writer) — pre-wired only for
+> several-writer (shared-checkout or separate-worktree) or pull-request
+> repos. A single writer on direct-to-main needs none of it. See
 > [USAGE → Concurrent ADR/plan creation](https://github.com/EvolveHQ/docflow/blob/main/USAGE.md).
 
 ### rollup

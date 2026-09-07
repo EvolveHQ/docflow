@@ -185,7 +185,7 @@ recommendation and what it changes up front helps you answer quickly.
 | 2 | **ADR shape** — a single shape, or two shapes (capability and technology) declared by a `shape:` field in each ADR's metadata. No number boundary is asked for: both shapes share one contiguous sequence. | **Single shape.** Start simple; add the second shape later if long-lived product requirements clearly outlive their implementations. | Whether `adr/0000-template-technology.md` is created in addition to `adr/0000-template.md`. The `shape:` field and section-order rules in `CONVENTIONS.md` §ADR Shapes and `AGENTS.md` §Hard rules. Whether `INDEX.md` carries a Shape column. |
 | 3 | **Status lifecycle** — full or shorter. | **Full lifecycle.** The `Implemented` rung is cheap and gives a clear "what's shipped" signal. | Status table in `CONVENTIONS.md` §ADR Files and `plan/README.md` §Status semantics. Whether the `Implemented` rung exists at all. |
 | 4 | **Plan folder + integration model.** Q4a: use `plan/todo/` + `plan/done/` or skip. Q4b: how work reaches `main` — **direct-to-main (fast-forward)** or **PR-based (required CI green)**. Asked after Q5, because the Q4b recommendation depends on the coordination answer. | **Q4a: use it.** **Q4b: direct-to-main if Q5 = single writer; PR-based if Q5 = several writers.** | Whether `plan/` is created — and with it whether `_agent/prompts/autonomous.md` can be written at all, since the prompt walks `plan/todo/`. The completion-event sentence in `CONVENTIONS.md` §Plan Folder, `plan/README.md`, `AGENTS.md` §Plan folder. The integration block in `AGENTS.md` / `CONVENTIONS.md` §Git contract. Which variant of `_agent/prompts/autonomous.md` Step 6 is kept: direct-to-main prepares a local fast-forward before the completion commit and push; PR-based opens a draft PR, commits completion metadata on the branch, then waits for CI, marks ready, and merges. |
-| 5 | **Coordination — by number of writers** — pick one of three: (1) single writer; (2) several writers, one shared checkout; (3) several writers, separate worktrees / PR branches. It keys on *writers* (integration concurrency), not on how many agents you run, and it fixes which `_agent/` files exist — switching later is not free. | **Single writer.** Small projects shouldn't pay the coordination cost. | Which `_agent/` files are written: single writer → `prompts/autonomous.md` alone, and only where Q8 records a verify gate *and* Q4a keeps the plan queue (fail either → **no `_agent/` at all**); shared checkout → `ROLES.md` + `LOCKS.md` (the one real mutex) + the prompt on that same condition; separate worktrees → `ROLES.md` + the prompt on that same condition, with the pushed branch and its draft PR as the claim instead of a ledger. `AGENTS.md` §Multi-agent workflow, its §Picking up this repo read order, and `CONVENTIONS.md` §Multi-Agent Rules each take the matching variant. No answer writes a duplicate shipped-state file, dashboard, snapshot or hand-off, or a `.gitattributes` / `.gitignore` entry. |
+| 5 | **Coordination — by number of writers** — pick one of three: (1) single writer; (2) several writers, one shared checkout; (3) several writers, separate worktrees / PR branches. It keys on *writers* (integration concurrency), not on how many agents you run, and it fixes which `_agent/` files exist — switching later is not free. | **Single writer.** Small projects shouldn't pay the coordination cost. | Which `_agent/` files are written: single writer → `prompts/autonomous.md` alone, and only where Q8 records a verify gate *and* Q4a keeps the plan queue (fail either → **no `_agent/` at all**); shared checkout → `ROLES.md` + `LOCKS.md` (the one real mutex) + the prompt on that same condition; separate worktrees → `ROLES.md` + the prompt on that same condition, with the pushed `claim/<item-key>` branch and its draft PR as the claim instead of a ledger. `AGENTS.md` §Multi-agent workflow, its §Picking up this repo read order, and `CONVENTIONS.md` §Multi-Agent Rules each take the matching variant. No answer writes a duplicate shipped-state file, dashboard, snapshot or hand-off, or a `.gitattributes` / `.gitignore` entry. |
 | 6 | **Git contract** — Conventional Commits, `Rationale:` footer, signed commits, ADR-revision tags, `Co-Authored-By` trailer. | **Conventional Commits ON, `Rationale:` footer ON, signed commits ON, ADR-revision tags OFF, `Co-Authored-By` trailer OFF.** | `AGENTS.md` §Git contract and `CONVENTIONS.md` §Git Contract bullets. |
 | 7 | **Optional artefacts** — `domains/` grouping, `GLOSSARY.md`, technology-ADR template (the second ADR shape). | **`domains/`: enable when the project has distinct areas or you expect >20 ADRs** (navigation by area). `GLOSSARY.md` / technology template: defer until terminology drift / a product–technology split appears. | Whether those files / directories are created. The technology template answer must agree with Q2 — the bootstrap cross-checks the two. |
 | 8 | **Verify gate** — what command(s) decide a change is shippable. | *No default — project-specific.* | Whether `_agent/prompts/autonomous.md` is written. The prompt needs both halves of its loop: the skill **refuses** to write it without a real verify gate, and equally without the `plan/todo/` queue it walks (Q4a). The Step 4 line of the prompt is filled with your command. |
@@ -404,11 +404,32 @@ scheme:
   and `INDEX.md`).
 - **G3 — gate backstop:** the single-threaded merge gate rejects a
   duplicate; the later author renumbers.
-- **G4 — claim before do:** before implementing a queued item, claim it (a
-  draft PR referencing it, or a work branch pushed for it) so two writers
-  don't build the same unclaimed `plan/todo` item — G1–G3 protect the
-  *number*, G4 protects the *work assignment*; the audit's
-  duplicate-plan-ownership check is the backstop.
+- **G4 — claim before do:** before implementing a queued item, claim it so
+  two writers don't build the same unclaimed `plan/todo` item — G1–G3
+  protect the *number*, G4 protects the *work assignment*; the audit's
+  duplicate-plan-ownership check is the backstop. **The claim is a pushed
+  branch named for the item:** `claim/<item-key>`, the queue file name
+  without its extension (`plan/todo/0007-rate-limit.md` →
+  `claim/0007-rate-limit`), plus a draft PR opened from it where
+  integration is PR-based. The prefix is fixed rather than the actor's, so
+  one item maps to exactly one ref and **the push is the exclusion** — the
+  second writer's push is rejected rather than landing quietly beside the
+  first. Commit before you push; a claim branch at or behind the
+  integration branch carries no work and is not a claim, and a merged or
+  deleted branch is no longer one. In a **shared checkout** there is no
+  branch per item, so the claim is recorded on the item and the
+  `_agent/LOCKS.md` rows serialise the files; a **single writer** claims
+  nothing.
+
+**Nothing records what is in flight — it is derived.** There is no
+dashboard file in any layout. The live set is `git worktree list`, the
+remote branches matching `claim/*`, and the open draft PRs; `ship-item`
+deletes the remote claim branch (and the local one, once no worktree
+holds it) as the last step, so a claim disappears when the work lands.
+The audit renders that view, fails on an item claimed twice or a claim
+with no queue item, flags a worktree whose claim branch is gone, and
+reports the view **unverifiable** rather than passing where no remote is
+reachable.
 
 `bootstrap` **pre-wires** these into `CONVENTIONS.md` + an `AGENTS.md`
 hard rule **only** for several-writer or PR-based repos.

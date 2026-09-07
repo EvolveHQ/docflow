@@ -153,32 +153,49 @@ there is no `_agent/` directory at all.
 Regenerate `INDEX.md` after any ADR status change or new ADR.
 
 <!-- Several writers, one shared checkout. Replace with:
-Work is partitioned across named writers (see `_agent/ROLES.md`).
-Claim a file in `_agent/LOCKS.md` before editing it; remove the row on
-commit. In one checkout that ledger is the only thing stopping two
-writers editing the same file, so it is the one lock that matters.
+Named actors answer for areas (see `_agent/ROLES.md`); work is assigned
+by claim. There is one working tree and no branch per item here, so a
+queue item is claimed on the item itself — the actor and the date, in
+the item's own status section where it has one — and `_agent/LOCKS.md`
+serialises the files. Claim a file there before editing it; remove the
+row on commit. In one checkout that ledger is the only thing stopping
+two writers editing the same file, so it is the one lock that matters.
 The shipped record is git history and `plan/done/`. Regenerate
 `INDEX.md` after any ADR status change or new ADR.
 -->
 
 <!-- Several writers, separate worktrees / PR branches. Replace with:
-Work is partitioned across named writers (see `_agent/ROLES.md`).
-Each writer works in its own worktree / PR branch.
-- **The pushed branch and its draft pull request are the claim.** No
-  lock ledger is kept: worktrees cannot collide on the filesystem, and
-  an advisory ledger nobody can rely on is noise.
-- **Identifier reservation.** Before parallel worktrees are spawned,
-  each is given a disjoint block of ADR numbers / `plan/todo` slots in
-  the brief it is spawned with. A writer creates new ADRs/plans only
-  from its reserved block, so two worktrees never claim the same next
-  number. `agent-wave` performs the reservation.
+Named actors answer for areas (see `_agent/ROLES.md`); work is assigned
+by claim. Each writer works in its own worktree / PR branch.
+- **The claim on a queue item is a pushed branch named for it,**
+  `claim/<item-key>` — the queue file name without its extension, so
+  `plan/todo/0007-rate-limit.md` is claimed by `claim/0007-rate-limit` —
+  together with a draft pull request opened from it where integration is
+  pull-request based. The prefix is fixed rather than the actor's, so one
+  item maps to exactly one ref and **the push itself is the exclusion**:
+  two writers racing for the same item race for the same ref, and the
+  loser's push is rejected. Commit before pushing — a claim branch at or
+  behind the integration branch carries no work and is not a claim. A
+  merged or deleted branch is no longer a claim.
+- **No lock ledger is kept:** worktrees cannot collide on the filesystem,
+  and an advisory ledger nobody can rely on is noise.
+- **Identifier reservation.** Before parallel worktrees are spawned, each
+  is given a disjoint block of ADR numbers / `plan/todo` slots in the
+  wave specification it is spawned with, and states that block — with the
+  artefacts it is the single writer of — in its pull-request description,
+  or its first commit message under direct-to-main. A writer creates new
+  ADRs/plans only from its reserved block, so two worktrees never claim
+  the same next number. `agent-wave` performs the reservation; no
+  committed file records it.
 - **Single writer per artefact.** An ADR body or a given `plan/` item
-  is edited by at most one worktree at a time — the one whose branch
-  claims it. Contradictory edits to one ADR across two worktrees must
-  never happen; the audit skill flags duplicate numbers, duplicate plan
-  ownership, and the same ADR edited on two unmerged branches.
-- The live branches, worktrees and open pull requests are what is in
-  flight; git history and `plan/done/` are what shipped.
+  is edited by at most one worktree at a time — the one whose claim
+  branch and pull request name it. Contradictory edits to one ADR across
+  two worktrees must never happen; the audit skill flags duplicate
+  numbers, duplicate plan ownership, and the same ADR edited on two
+  unmerged branches.
+- **What is in flight is derived, never stored:** `git worktree list`,
+  the remote `claim/*` branches, and the open draft pull requests. Git
+  history and `plan/done/` are what shipped.
 - Regenerate `INDEX.md` after any ADR status change or new ADR.
 -->
 
@@ -238,13 +255,24 @@ once merged:
   duplicate number as the last line of defence, and the later author
   renumbers.
 - **G4 — claim before do.** Before implementing a queued item, **claim it**
-  so two writers don't build the same thing: open a draft PR referencing
-  the item (the authoritative claim in PR-based / worktree repos), or push
-  a work branch named for it. An unclaimed `plan/todo` item on
-  `main` (which G1 deliberately puts there) is otherwise an open invitation
-  to duplicate effort. G1–G3 protect the *number*; G4 protects the *work
-  assignment*. The audit skill's duplicate-plan-ownership check is the
-  backstop.
+  so two writers don't build the same thing. In separate worktrees / PR
+  branches the claim is a **pushed branch named for the item**,
+  `claim/<item-key>` — the queue file name without its extension, e.g.
+  `claim/0007-rate-limit` — plus a draft PR opened from it where
+  integration is PR-based. The prefix is fixed rather than the actor's, so
+  one item maps to one ref and the push itself is the exclusion: the
+  second writer's push is rejected instead of quietly succeeding beside
+  the first. Commit before pushing; a claim branch at or behind the
+  integration branch is not a claim, and a merged or deleted branch is no
+  longer one. In a **shared checkout** there is no branch per item, so the
+  claim is recorded on the item and the `_agent/LOCKS.md` rows serialise
+  the files. A **single writer** claims nothing — nothing else can take
+  the item. An unclaimed `plan/todo` item on `main` (which G1 deliberately
+  puts there) is otherwise an open invitation to duplicate effort.
+  G1–G3 protect the *number*; G4 protects the *work assignment*. The
+  audit skill's duplicate-plan-ownership check is the backstop, and what
+  is in flight is read from worktrees, `claim/*` branches and draft PRs —
+  never from a file.
 -->
 
 <!-- Federation (multi-repo) — bootstrap INCLUDES this section

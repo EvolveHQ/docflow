@@ -144,8 +144,12 @@ directory at all. -->
 
 <!-- Several writers, one shared checkout. Replace the block above with: -->
 <!--
-Work is partitioned across named writers (see `_agent/ROLES.md`).
+Named actors answer for areas (see `_agent/ROLES.md`); work is assigned
+by claim.
 Coordination rules:
+- One working tree means no branch per item: claim a queue item **on the
+  item itself** — the actor and the date, in its own status section where
+  it has one — before you start it.
 - Before editing a file, claim it in `_agent/LOCKS.md` by appending
   `<agent-id> | <path> | <ISO-8601 timestamp>`. Remove the line on
   commit. LOCKS is the one real mutex — it prevents simultaneous
@@ -156,16 +160,23 @@ Coordination rules:
 <!-- Several writers, separate worktrees / PR branches. Replace the
 block above with: -->
 <!--
-Work is partitioned across named writers (see `_agent/ROLES.md`).
-Each writer works in its own git worktree or PR branch.
+Named actors answer for areas (see `_agent/ROLES.md`); work is assigned
+by claim. Each writer works in its own git worktree or PR branch.
 Coordination rules:
-- **The pushed branch and its draft pull request are the claim.** There
-  is no lock ledger: worktrees cannot collide on the filesystem, and an
-  advisory ledger nobody can rely on is noise. What has to be guarded
-  against is duplicated work and contradictory merges — see the
-  guardrails below.
-- What is in flight is the set of live branches, worktrees and open
-  pull requests; what shipped is git history and `plan/done/`.
+- **The claim on a queue item is the branch `claim/<item-key>` pushed
+  for it** — the queue file name without its extension, e.g.
+  `claim/0007-rate-limit` — plus its draft pull request where
+  integration is PR-based. Commit, then push: the push is what excludes
+  the second writer, because one item maps to one ref. There is no lock
+  ledger: worktrees cannot collide on the filesystem, and an advisory
+  ledger nobody can rely on is noise. What has to be guarded against is
+  duplicated work and contradictory merges — see the guardrails below.
+- **State what you own** in the pull-request description, or the
+  branch's first commit message under direct-to-main: the identifier
+  block reserved for you and the artefacts you are the single writer of.
+- What is in flight is **derived** — `git worktree list`, the remote
+  `claim/*` branches, and the open draft pull requests — not read from a
+  file; what shipped is git history and `plan/done/`.
 -->
 
 <!-- Concurrency guardrails hard rule — bootstrap INCLUDES this bullet
@@ -179,6 +190,13 @@ ONLY for several-writer (shared-checkout / worktree) OR PR-based repos
   integrating. The single-threaded merge gate rejects a duplicate as the
   backstop. Numbers are immutable once merged. (G1 — landing the ADR
   before implementation — is recommended guidance, in CONVENTIONS.md.)
+- **Claim a queued item before implementing it (G4).** In separate
+  worktrees / PR branches, commit and then push `claim/<item-key>` — the
+  queue file name without its extension — and open a draft PR from it
+  where integration is PR-based; the push is the exclusion, so a rejected
+  push means someone else holds the item. In a shared checkout, claim the
+  item on the item itself. A single writer claims nothing. Never start a
+  queued item you have not claimed.
 -->
 
 ## Plan folder

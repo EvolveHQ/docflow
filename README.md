@@ -65,7 +65,10 @@ ADR catalogue.
   recorded — otherwise no `_agent/` at all; a **shared checkout** gets
   `ROLES.md`, `LOCKS.md`, and the prompt on the same condition;
   **separate worktrees** get `ROLES.md` and the prompt on the same
-  condition.
+  condition. No mode writes a dashboard of what is in flight: a queue
+  item is claimed by pushing a branch named for it (`claim/<item-key>`)
+  and, where integration is PR-based, a draft pull request, and the live
+  set is read back from the worktrees, those branches and those PRs.
 - `domains/<slug>/README.md` — **grouping**: per-area indexes (e.g.
   `domains/auth/`) over the flat catalogue, for navigating a large catalogue
   by area. Organisational only — ADRs keep their number; `new-adr` files
