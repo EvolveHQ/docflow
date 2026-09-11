@@ -49,5 +49,11 @@ When this ships, ADR 0015 returns to Implemented (r5).
 ## Status
 
 - **Claimed by:** Codex, 2026-09-11, `kmox83/0040-claim-by-branch` (PR #5; operator-authorised expanded scope).
-- **Blockers:**
+- **Blockers:** pi/GitHub Copilot GPT-4.1 failed the supplied bootstrap choices twice; Cowork's cloud connector denied target .git writes. Signed remote pushes and delegated rungs are not yet observed.
 - **Stopped:**
+
+## Remaining release evidence
+
+Also retains ADR 0012 in Accepted until the outstanding full behavioural
+release matrix is executed. Independent Docker receipts cover scoped runs;
+the deterministic runner's skipped cases are not a release pass.

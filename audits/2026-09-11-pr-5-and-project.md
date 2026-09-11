@@ -34,4 +34,3 @@ R1 and R5 independently confirm the existing automated review comments; they rem
 4. Run a small external-repository pilot. Measure time to first useful decision, manual corrections, interruptions and maintenance effort before expanding reporting conventions.
 
 **Verification limits:** static gate and deterministic evals executed at the PR head; catalogue/title/coverage checks and workflow walkthroughs performed. Claim probes used an isolated bare fixture and dry-runs only. Behavioural workflows and five-host installations were not executed. No implementation changes, commits, GitHub comments or remote pushes were made.
-

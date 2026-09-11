@@ -41,7 +41,7 @@ resolves paths, and removes the other blocks. -->
 <!-- SEPARATE WORKTREES
 Create a clean worktree at the fetched integration tip, with branch
 `claim/<item-key>` (queue filename without extension). The first commit
-contains the item status; its message names wave, owned artefacts and
+contains the item status; its message names the actual claim branch, wave, owned artefacts and
 reserved identifiers, including "none". Commit before acquisition.
 
 Acquire the remote ref with an explicit empty expected value:

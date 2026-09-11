@@ -126,7 +126,8 @@ Pass this complete brief with the item's specification, unchanged at all rungs:
    mismatch is blocked, never permission to work another item.
 2. **Claim.** Fetch again. For a new separate-worktree item create
    `claim/<item-key>` from the base; commit Claimed by with actor/date/branch
-   and put wave, reservations and owned artefacts in its first commit message.
+   and put the actual claim branch, wave, reservations and owned artefacts
+   in its first commit message.
    Validate the key with `git check-ref-format --branch`; never use a literal
    placeholder. Acquire with
    `git push --porcelain --force-with-lease=refs/heads/claim/<item-key>: origin HEAD:refs/heads/claim/<item-key>`.
@@ -178,6 +179,21 @@ No return means unknown. Outcome is separate from Overall's vocabulary.
 Report each item and a wave summary with Status at a glance; any unknown
 caps the wave at partially verified. Include excluded/withdrawn claims,
 effective width, rung, gate results, hooks/signing origins and remaining work.
+
+In the final response, retain one Status at a glance block for **each item**,
+then a separate block for the wave. Each has This run, Overall and Yet to do.
+A per-item outcomes table may accompany these blocks but never replaces
+them, including at the sequential rung. Check their count before returning.
+Put the item key or "Wave" in a separate heading above its block. Keep the
+block heading exactly `Status at a glance`, with no item suffix. For example:
+
+```markdown
+## Item <key>
+### Status at a glance
+- **This run:** <observed actions and gate output/exit>
+- **Overall:** <allowed vocabulary>
+- **Yet to do:** <remaining work or None>
+```
 
 Checkpoint asks before another wave. Continuous mode recollects from git
 and proceeds within the confirmed budget. Read the shell clock at first

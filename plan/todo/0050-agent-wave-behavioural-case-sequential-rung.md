@@ -1,6 +1,6 @@
 # 0050 — agent-wave behavioural case at the sequential rung
 
-Owning ADR: adr/0012-skill-behavioural-evals.md (r4 — reopened
+Owning ADR: adr/0012-skill-behavioural-evals.md (r5 — reopened
 Implemented → Accepted on landing, → Implemented on ship; AC2's list
 extends to agent-wave)
 
@@ -53,8 +53,8 @@ extended by r4:
 
 1. The agent-wave case exists with the fixture, parameters, and PASS
    criterion above; the second case asserts exclusion. → AC2 (extended)
-2. The case runs green on committed skills through the workflow
-   runner. → AC3 / AC4 as recorded
+2. The case runs green on a source-pinned snapshot through an actual
+   vendor host or the opt-in workflow runner. → AC3 / AC4 as recorded
 3. Fixture commit separate, reason named; verify gate green.
 
 When this ships, ADR 0012 returns to Implemented (r4).
@@ -69,3 +69,11 @@ When this ships, ADR 0012 returns to Implemented (r4).
 - **Claimed by:** Codex, 2026-09-11, `kmox83/0040-claim-by-branch` (PR #5; operator-authorised expanded scope).
 - **Blockers:**
 - **Stopped:**
+
+## Verification method
+
+The approved vendor-host alternative exercises the sequential wave and live
+third-claim exclusion together in `evals/hosts/wave-fixture.py`. Independent
+file/Git assertions and three final report blocks determine the verdict.
+Unsigned local fixture commits are isolated from this repo's signed contract.
+Delegation rungs and the wider release matrix remain under plan 0051.

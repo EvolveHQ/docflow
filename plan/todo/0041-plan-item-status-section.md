@@ -53,3 +53,9 @@ When this ships, ADR 0039 advances Accepted → Implemented.
 
 - Plans 0038, 0039, 0040 (shared edits to ship-item, the prompt
   template, bootstrap, and audit) — sequential.
+
+## Status
+
+- **Claimed by:** Codex, 2026-09-11, `kmox83/0040-claim-by-branch` (operator-authorised PR #5).
+- **Blockers:**
+- **Stopped:**

@@ -149,8 +149,13 @@ never introduce such files into a modern layout.
 
 ## Cleanup and report
 
-After confirmed completion, delete the branch-backed remote claim or
-confirm host deletion. Remove clean owned executor worktrees; leave dirty
+After confirmed completion, delete the branch-backed remote claim only if
+its tip still equals the source verified for this integration. Use an
+explicit expected-tip lease on deletion:
+`git push --force-with-lease=refs/heads/claim/<item-key>:<verified-source-sha> origin :refs/heads/claim/<item-key>`.
+A changed ref is a cleanup blocker: preserve it and report the new work.
+If the host already deleted the branch, confirm absence. Remove clean owned
+executor worktrees; leave dirty
 ones and report them. Delete the local claim only when no worktree holds
 it and there are no unpushed changes. For a rebased claim, forced local
 branch deletion is permissible only after these proofs and confirmed
