@@ -167,7 +167,16 @@ Pass this complete brief with the item's specification, unchanged at all rungs:
 
 Dispatch the declared wave with the derived mechanism. Effective width is
 one at rung three and for shared checkouts. At rung three finish and
-integrate each item before starting the next. For parallel direct work,
+integrate each item before starting the next. **Before advancing the loop,
+check the last executor's gate result. An environment blocker terminates the
+entire wave immediately, even if the next item is independent and the budget
+has room. Do not start the next item or another integration.** This rule takes
+precedence over continuous supervision and the numerical failure threshold.
+Collect already-running executors without starting new work, then report the
+systemic blocker. Preserve their recoverable claims. A successful base probe
+does not override an environment failure after implementation.
+
+For parallel direct work,
 invoke ship-item's integrating mode for ready claims in queue order, using
 the detached integration worktree. Integration mechanics live in ship-item,
 not in a second procedure here. PR hosts serialise authorised PR merges.
