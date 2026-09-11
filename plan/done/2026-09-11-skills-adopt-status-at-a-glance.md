@@ -55,3 +55,5 @@ When this ships, ADR 0042 advances Accepted → Implemented.
 - Plan 0043 (the convention the skills adopt).
 - Edits every SKILL.md; runs after any coordination item still
   touching the same skills.
+
+Shipped at HEAD `576851598dd533740501d39ac2d6ecbe1f03350a` via [PR #5](https://github.com/EvolveHQ/docflow/pull/5). Prepared on the PR branch; effective only on the required-checks-passing merge into main.

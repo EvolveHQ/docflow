@@ -46,3 +46,21 @@ tracks the human ordering of work, not the ADR catalogue ordering.
 | Deprecated | Was real; the world moved on; no successor. |
 
 See `CONVENTIONS.md` §Status lifecycle for the canonical definition.
+
+## Item status
+
+Every new queue item carries this section, initially empty:
+
+```markdown
+## Status
+
+- Claimed by:
+- Blockers:
+- Stopped:
+```
+
+At start, record actor, date and actual branch in Claimed by (no invented
+claim branch for shared checkouts or single writers). The owner maintains
+Blockers. On stop, record date and reason in Stopped with the three Status
+at a glance labels. Commit status with the work. Remove the section in
+the completion move to plan/done; the shipped footer replaces it.

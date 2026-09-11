@@ -19,7 +19,8 @@ Owning ADR: adr/0039-plan-item-carries-its-own-status.md
    section with a live claim, else lowest number), uncommitted work
    (`git status`), last shipped (`plan/done/`), next item (queue
    order).
-4. **Audit.** Flag a Claimed by whose branch is gone as stale; list
+4. **Audit.** Flag branch-backed ownership after confirmed remote disappearance;
+   evaluate shared claims from item/locks instead; list
    every todo item with a Stopped entry under "needs a human".
 5. **Docs.** `USAGE.md` states where unqueued candidates live
    (brainstorm conversation → new-adr / new-plan; never a status
@@ -53,3 +54,5 @@ When this ships, ADR 0039 advances Accepted → Implemented.
 
 - Plans 0038, 0039, 0040 (shared edits to ship-item, the prompt
   template, bootstrap, and audit) — sequential.
+
+Shipped at HEAD `576851598dd533740501d39ac2d6ecbe1f03350a` via [PR #5](https://github.com/EvolveHQ/docflow/pull/5). Prepared on the PR branch; effective only on the required-checks-passing merge into main.

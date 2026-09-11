@@ -51,3 +51,5 @@ When this ships, ADR 0043 advances Accepted → Implemented.
 - Plan 0041 (the Status section this item shapes).
 - Plans 0043 and 0044 (the convention and the agent-wave / audit
   closing steps this item extends) — sequential.
+
+Shipped at HEAD `576851598dd533740501d39ac2d6ecbe1f03350a` via [PR #5](https://github.com/EvolveHQ/docflow/pull/5). Prepared on the PR branch; effective only on the required-checks-passing merge into main.

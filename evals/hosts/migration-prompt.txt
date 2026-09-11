@@ -1,0 +1,19 @@
+Use the installed audit skill in /workspace/migration/repo, a disposable copy
+of the legacy-coordination fixture. Load the skill through the host's normal
+facility. The artefact root is .docflow/. The local bare origin is reachable;
+there is no GitHub service or PR profile in this fixture.
+
+Perform the dry run first, then apply the legacy coordination migration and
+stale-content cleanup: both are explicitly approved. Preserve the live owner
+executor-live, its remote claim/0001-example and its blocker "Awaiting fixture
+data". Remove only obsolete coordination files and their own union/ignore
+entries; preserve the custom OPERATIONS.md note, ROLES and unrelated entries.
+Regenerate the autonomous prompt with the recorded root and exact gate.
+Keep the gate unchanged. Local unsigned migration commits and a local origin
+main push are authorised. Do not implement the live item, alter its claim,
+install dependencies, access credentials or use external services.
+
+Run the gate and audit again. Check migration findings are resolved; report
+any unrelated audit finding separately and honestly. End with Status at a
+glance, exact gate output/exit, and an inventory of removed files and where
+their useful content went. Do not ask questions: these are explicit approvals.

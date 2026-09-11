@@ -87,3 +87,5 @@ Implemented.
 - Plan 0039 (record step removed), plan 0040 (claim convention and
   ADR 0038 r2), plan 0041 (Status section), plan 0044 (closing block),
   plan 0047 (denylist in force) — sequential.
+
+Shipped at HEAD `576851598dd533740501d39ac2d6ecbe1f03350a` via [PR #5](https://github.com/EvolveHQ/docflow/pull/5). Prepared on the PR branch; effective only on the required-checks-passing merge into main.

@@ -106,3 +106,5 @@ Maps to the three owning ADRs' acceptance criteria:
 
 - Plans 0040, 0041, 0042 (artefact-root repair of agent-wave), 0044,
   0045, 0047, and 0048 — sequential.
+
+Shipped at HEAD `576851598dd533740501d39ac2d6ecbe1f03350a` via [PR #5](https://github.com/EvolveHQ/docflow/pull/5). Prepared on the PR branch; effective only on the required-checks-passing merge into main.

@@ -86,3 +86,5 @@ When this ships, ADR 0040 advances Accepted → Implemented.
 - Plans 0038–0041 (the target state this migrates to). Items 5 and 6
   (doc drift, eval fixture) may proceed alongside plan 0041; item 7
   only after 0041 ships.
+
+Shipped at HEAD `576851598dd533740501d39ac2d6ecbe1f03350a` via [PR #5](https://github.com/EvolveHQ/docflow/pull/5). Prepared on the PR branch; effective only on the required-checks-passing merge into main.

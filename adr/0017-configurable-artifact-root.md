@@ -88,9 +88,10 @@ against it.
 | 2026-06-17 | r1 | Eugenio Minardi | Initial decision. Make the artefact root configurable at bootstrap (docs/ default, root, or .docflow/), keeping AGENTS.md/CLAUDE.md at repo root. |
 | 2026-06-23 | r2 | Eugenio Minardi | Implemented (commit 5895168): bootstrap Q12 placement question + CONVENTIONS "Artifact root" record; new-adr/new-plan/ship-item/audit resolve paths against it; README documents it; migration offered not forced. AC1-5 met. |
 | 2026-06-30 | r3 | Eugenio Minardi | Default placement changed `docs/` → **`.docflow/`** (hidden root, cleanest footprint) at the maintainer's request. The question is unchanged — still asks `.docflow/` (default) · `docs/` · root. Updated Q12, both placement notes, the CONVENTIONS template menu, and the README. |
+| 2026-09-11 | r4 | Eugenio Minardi | Clarify that every lifecycle and coordination path, including _agent, resolves against the recorded artefact root. The nested-root migration fixture covers the former omission (plan 0042). |
 
 ## Approvals
 
 | Role | Name | Date | Signature |
 |------|------|------|-----------|
-| Maintainer | Eugenio Minardi | 2026-06-17 | — |
+| Maintainer | Eugenio Minardi | 2026-09-11 | Operator-authorised PR #5 expansion |

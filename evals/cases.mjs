@@ -5,6 +5,10 @@
 
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
+import { readFileSync } from 'node:fs';
+import assert from 'node:assert/strict';
+import { assertStatusReports } from './reporting.mjs';
+import { assertClaimAcquisition } from './claim-race.mjs';
 import {
   assertTree, assertContiguousAdrs, assertIndexSync, assertAdrStatus,
   assertPlanShipped, assertAbsent, assertFileContains, assertCommandSucceeds,
@@ -32,6 +36,66 @@ const LEGACY_DONE_NUMBERS = ['0101'];
 
 export const cases = [
   {
+    name: 'reports: missing blocks and invalid overall verdicts fail',
+    skill: null,
+    agentDependent: false,
+    assert() {
+      const valid = '## Status at a glance\n\n- **This run:** gate exit 0.\n- **Overall:** partially verified.\n- **Yet to do:** integration.\n';
+      assertStatusReports(valid);
+      assert.throws(() => assertStatusReports('Everything passed'));
+      assert.throws(() => assertStatusReports(valid, 3));
+      assert.throws(() => assertStatusReports(valid.replace('partially verified', 'pass')));
+      assert.throws(() => assertStatusReports(valid.replace('Yet to do:', 'Later:')));
+    },
+  },
+  {
+    name: 'claims: create-only push excludes same-tip, descendant and concurrent claimants',
+    skill: null,
+    agentDependent: false,
+    assert: assertClaimAcquisition,
+  },
+  {
+    name: 'self-check: legacy coordination fixture retains migration evidence',
+    skill: null,
+    agentDependent: false,
+    repo: join(evalsDir, 'fixtures/legacy-coordination'),
+    assert(repo) {
+      assertTree(repo, ['.docflow/_agent/WORKLOG.md', '.docflow/_agent/HANDOFF.md',
+        '.docflow/_agent/LOCKS.md', '.docflow/plan/todo/0001-example.md']);
+      assertFileContains(repo, '.docflow/_agent/IN_FLIGHT.md', 'claim/0001-example');
+      assertFileContains(repo, '.docflow/_agent/IN_FLIGHT.md', 'claim/0002-abandoned');
+      assertFileContains(repo, '.docflow/_agent/IN_FLIGHT.md', 'Awaiting fixture data');
+      assertFileContains(repo, '.docflow/_agent/CURRENT_FOCUS.md', 'Queue empty');
+      assertFileContains(repo, '.gitattributes', 'merge=union');
+      assertFileContains(repo, '.gitignore', '.docflow/_agent/CURRENT_FOCUS.md');
+      assertCommandSucceeds(repo, 'node tools/verify.mjs');
+    },
+  },
+  {
+    name: 'audit: migrate legacy coordination while preserving live ownership',
+    skill: 'audit',
+    inputs: { fixture: 'evals/fixtures/legacy-coordination', confirm: 'cleanup and migration approved; preserve the live claim' },
+    assert(repo) {
+      assertAbsent(repo, ['.docflow/_agent/WORKLOG.md', '.docflow/_agent/IN_FLIGHT.md',
+        '.docflow/_agent/CURRENT_FOCUS.md', '.docflow/_agent/HANDOFF.md', '.docflow/_agent/LOCKS.md']);
+      assertTree(repo, ['.docflow/_agent/ROLES.md', '.docflow/_agent/prompts/autonomous.md']);
+      assertFileContains(repo, '.docflow/plan/todo/0001-example.md', '## Status');
+      assertFileContains(repo, '.docflow/plan/todo/0001-example.md', 'executor-live');
+      assertFileContains(repo, '.docflow/plan/todo/0001-example.md', 'Awaiting fixture data');
+      assertFileContains(repo, 'AGENTS.md', 'Picking up this repo');
+      assertFileContains(repo, 'AGENTS.md', '.docflow/');
+      assertFileContains(repo, 'OPERATIONS.md', 'operator sign-off');
+      assertFileContains(repo, '.docflow/_agent/prompts/autonomous.md', 'node tools/verify.mjs');
+      for (const [path, stale] of [['.gitattributes', 'merge=union'], ['.gitignore', 'CURRENT_FOCUS.md']]) {
+        let text = '';
+        try { text = readFileSync(join(repo, path), 'utf8'); }
+        catch (e) { if (e.code !== 'ENOENT') throw e; }
+        if (text.includes(stale)) throw Error(`Legacy coordination rule remains in ${path}`);
+      }
+      assertCommandSucceeds(repo, 'node tools/verify.mjs');
+    },
+  },
+  {
     // Runs NOW. This repo is a valid bootstrapped fixture, so the
     // deterministic assertion layer is exercised end-to-end without an
     // agent — proving the helpers work before a runner is wired.
@@ -43,7 +107,7 @@ export const cases = [
       assertTree(repo, [
         'AGENTS.md', 'CONVENTIONS.md', 'INDEX.md',
         'adr/0000-template.md', 'plan/todo', 'plan/done',
-        '_agent/ROLES.md', 'scripts/verify.mjs',
+        'scripts/verify.mjs',
       ]);
       assertContiguousAdrs(repo);
       assertIndexSync(repo);

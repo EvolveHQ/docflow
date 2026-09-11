@@ -110,6 +110,10 @@ The product is the `plugins/docflow/skills/` tree. When adding or editing a skil
 - **Only `bootstrap` carries `templates/`.** The lifecycle skills act on
   the copies the bootstrap wrote into the target repo; they ship no
   templates of their own.
+- **Declarative sidecars only.** Optional host interface files such as
+  `agents/openai.yaml` ship on every path and agree with SKILL.md. They
+  contain no executable code or catalogue identifiers. Every host can use
+  SKILL.md alone; the full skill tree is privacy-scanned.
 
 ## ADR Privacy
 
@@ -138,8 +142,9 @@ instead.
 
 ## Multi-Agent Rules
 
-A single agent owns this repo. The `_agent/` directory tracks live
-state and history; no LOCKS discipline.
+A single writer owns this repo. `_agent/prompts/autonomous.md` records the
+run contract. Item Status carries live ownership, blockers and stop reasons;
+git and plan/done record history. No duplicate dashboard or role ledger.
 
 ## Plan Folder
 
@@ -150,13 +155,14 @@ Pending and shipped work live in `plan/` at the repository root:
 - `plan/done/<YYYY-MM-DD>-<slug>.md` — shipped work, chronological. A
   `git mv` from `todo/` to `done/` is the completion event.
 
-The completion event is: the change is fast-forwarded onto `main` and
-the remote push succeeds (verify gate green locally first). No PRs, no
-merge commits.
+Each todo item has a Status section with Claimed by, Blockers and Stopped,
+empty when created. Claims name the actor, date and actual PR branch.
 
-When a `plan/todo/` item ships, the file moves to `plan/done/` AND the
-owning ADR(s)' `status:` advances from `Accepted` to `Implemented`.
-`INDEX.md` is regenerated to match.
+Prepare completion atomically on the PR: move todo to done, remove Status,
+advance only fully verified owning ADRs to Implemented, regenerate INDEX,
+and record the verified work HEAD plus PR URL. Completion takes effect on
+the checked PR merge into main. Before merge this is prepared work, not a
+shipped result. Unverified items stay todo and their decisions stay Accepted.
 
 ## Audit Trail Policy
 
@@ -180,7 +186,32 @@ Commit messages follow Conventional Commits with a mandatory
   onward. (Commits predating the bootstrap that carry the trailer are
   left untouched — history is not rewritten.)
 
-Integration model: direct-to-main, **fast-forward only**. Changes are
-fast-forwarded onto `main`; no merge commits. The verify gate runs
-locally and must pass before push. A change is "shipped" when it is on
-`main` and pushed.
+Integration model: PR-based integration into `main`, using standard merge commits. Run
+`node scripts/verify.mjs` and `node evals/run.mjs` locally before pushing;
+the required `verify` CI check must pass on the current PR head. Constituent
+commits are signed. Updating a PR does not authorise merging or releasing it.
+
+## Reporting
+Final skill results and persisted verification, PR, wave and stop reports
+end with a section headed exactly **Status at a glance**, with three labels:
+
+- **This run** — what was attempted, actual outcomes, exact gate output and exit code.
+- **Overall** — implemented, partially verified, verified, blocked, failed or unknown.
+- **Yet to do** — all remaining work, checks, findings, cleanup and required input; None only when the complete task is verifiably finished.
+
+1. Report exact process outcomes, including timeouts and interruptions.
+2. A passing sub-step is not an overall pass; require complete evidence.
+3. Missing returns or incomplete evidence remain unknown or partially verified.
+4. Do not omit remaining work when a budget or session ends.
+
+The reader must be able to distinguish what was achieved from what is
+missing. Routine progress updates remain concise and need no closing block.
+Repository-specific reporting rules extend this numbered list.
+
+Example:
+
+**Status at a glance**
+
+- **This run:** prepared the PR; `verify: OK`, exit 0.
+- **Overall:** partially verified — CI is still pending.
+- **Yet to do:** required CI, authorised merge and branch cleanup.

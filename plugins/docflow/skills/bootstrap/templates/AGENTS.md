@@ -21,7 +21,7 @@ Read these, in order, before any tool calls:
 1. `AGENTS.md` (this file) — the hard rules. Read in full.
 2. `CONVENTIONS.md` — authoring rules, ADR status semantics, the git
    contract.
-<!-- If plan folder skipped (Q4a): drop lines 3, 4 and 8. -->
+<!-- If plan folder skipped (Q4a): drop lines 3, 4 and 9. -->
 3. `plan/README.md` — how the work queue is used.
 4. The newest `plan/done/` entries and
    `git log --first-parent --oneline -n 20` — the shipped-work record.
@@ -33,7 +33,15 @@ writer. -->
 6. `_agent/ROLES.md` — who writes what.
 7. `_agent/LOCKS.md` — which files are currently claimed; claim yours
    here before editing.
-8. The queue item you are about to work, `plan/todo/NNNN-<slug>.md`, and
+<!-- Keep 8 in separate-worktree mode and in any pull-request repo; drop
+it elsewhere. -->
+8. **What is in flight** — no file records it, so derive it:
+   `git worktree list`, then `git fetch` and
+   `git branch -r --list 'origin/claim/*'`, plus open draft and ready pull
+   requests (`gh pr list --state open`) where a host is reachable. A
+   `claim/<item-key>` branch means that queue item is already claimed —
+   exclude it unless the operator explicitly requests continuation.
+9. The queue item you are about to work, `plan/todo/NNNN-<slug>.md`, and
    the ADR(s) it names — both in full.
 
 ## Repository structure
@@ -144,8 +152,12 @@ directory at all. -->
 
 <!-- Several writers, one shared checkout. Replace the block above with: -->
 <!--
-Work is partitioned across named writers (see `_agent/ROLES.md`).
+Named actors answer for areas (see `_agent/ROLES.md`); work is assigned
+by claim.
 Coordination rules:
+- One working tree means no branch per item: claim a queue item **on the
+  item itself** — the actor and the date, in its own status section where
+  it has one — before you start it.
 - Before editing a file, claim it in `_agent/LOCKS.md` by appending
   `<agent-id> | <path> | <ISO-8601 timestamp>`. Remove the line on
   commit. LOCKS is the one real mutex — it prevents simultaneous
@@ -156,16 +168,20 @@ Coordination rules:
 <!-- Several writers, separate worktrees / PR branches. Replace the
 block above with: -->
 <!--
-Work is partitioned across named writers (see `_agent/ROLES.md`).
-Each writer works in its own git worktree or PR branch.
+Named actors answer for areas (see `_agent/ROLES.md`); work is assigned
+by claim. Each writer works in its own git worktree or PR branch.
 Coordination rules:
-- **The pushed branch and its draft pull request are the claim.** There
-  is no lock ledger: worktrees cannot collide on the filesystem, and an
-  advisory ledger nobody can rely on is noise. What has to be guarded
-  against is duplicated work and contradictory merges — see the
-  guardrails below.
-- What is in flight is the set of live branches, worktrees and open
-  pull requests; what shipped is git history and `plan/done/`.
+- **Acquire a claim exclusively** using the CONVENTIONS.md protocol:
+  `claim/<item-key>`, a first claim commit, empty expected remote ref and
+  porcelain new-ref confirmation. Ordinary success/up-to-date is not
+  ownership. Open the draft PR immediately before implementation when PR
+  integration applies. No lock ledger is kept in separate worktrees.
+- **State what you own** in the pull-request description, or the
+  branch's first commit message under direct-to-main: the identifier
+  block reserved for you and the artefacts you are the single writer of.
+- What is in flight is **derived** — `git worktree list`, the remote
+  `claim/*` branches, and open draft and ready pull requests — not read from a
+  file; what shipped is git history and `plan/done/`.
 -->
 
 <!-- Concurrency guardrails hard rule — bootstrap INCLUDES this bullet
@@ -179,6 +195,12 @@ ONLY for several-writer (shared-checkout / worktree) OR PR-based repos
   integrating. The single-threaded merge gate rejects a duplicate as the
   backstop. Numbers are immutable once merged. (G1 — landing the ADR
   before implementation — is recommended guidance, in CONVENTIONS.md.)
+- **Claim before implementing (G4).** Use the recorded mode's claim:
+  exclusive create-only branch acquisition in separate worktrees, item
+  status plus locks in shared checkouts, no exclusive claim for a single
+  writer. Follow CONVENTIONS.md's exact acquisition protocol. PR drafts
+  open before implementation; ordinary single-writer PRs use work branches.
+
 -->
 
 ## Plan folder
@@ -225,3 +247,8 @@ gate sentence):
   branch before it is marked ready; no follow-up commit is made on the
   integration branch after merge.
 -->
+
+## Reporting
+
+End final results and persisted reports with **Status at a glance**:
+**This run**, **Overall**, **Yet to do**, per CONVENTIONS.md §Reporting.

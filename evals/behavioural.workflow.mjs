@@ -18,14 +18,29 @@ export const meta = {
 
 const VERDICT = {
   type: 'object',
-  required: ['pass', 'detail'],
+  required: ['pass', 'detail', 'report'],
   properties: {
     pass: { type: 'boolean', description: 'true only if the gate passed (exit 0) and the asserted outcome holds' },
     detail: { type: 'string', description: 'what the skill produced + the exact verify.mjs output line and exit code' },
+    report: { type: 'string', description: 'The final report verbatim, including Status at a glance with This run, Overall and Yet to do' },
   },
 }
 
 const CASES = [
+  {
+    key: 'agent-wave',
+    prompt:
+      'Behavioural eval of agent-wave using the same local-remote fixture as the vendor-host Docker runs. ' +
+      'Create a fresh owned scratch directory outside this checkout. Set DOCFLOW_PLUGIN_ROOT to this checkout\'s ' +
+      'absolute plugins/docflow directory; run python3 evals/hosts/wave-fixture.py <scratch> to prepare it. ' +
+      'The fixture has distinct plan/ADR numbers, two accepted items and a third live claim that must remain untouched. ' +
+      'Read plugins/docflow/skills/agent-wave/SKILL.md and evals/hosts/wave-prompt.txt; apply that approved specification ' +
+      'with the fixture path changed to <scratch>/repo. Use rung 3, requested width 2, budget 2 items, continuous supervision. ' +
+      'Unsigned commits and pushes to the fixture local bare origin only are authorised. Never push this checkout. ' +
+      'Run python3 evals/hosts/check-wave.py <scratch> after the wave and report its exact output and exit. ' +
+      'PASS requires every assertion, two per-item Status at a glance blocks and a wave block. Preserve all failures; ' +
+      'do not repair the tested fixture outside the skill and call its original result passing.',
+  },
   {
     key: 'new-adr',
     prompt:
@@ -124,10 +139,16 @@ const CASES = [
 ]
 
 phase('Eval')
+const { assertStatusReports } = await import('./reporting.mjs')
 const results = await parallel(
   CASES.map((c) => () =>
-    agent(c.prompt, { label: `eval:${c.key}`, phase: 'Eval', schema: VERDICT, isolation: 'worktree' })
-      .then((v) => ({ key: c.key, ...(v || { pass: false, detail: 'no verdict returned' }) }))),
+    agent(c.prompt + ' End the final report with Status at a glance: This run, Overall, Yet to do. Return that report verbatim in the report field.', { label: `eval:${c.key}`, phase: 'Eval', schema: VERDICT, isolation: 'worktree' })
+      .then((v) => {
+        const result = { key: c.key, ...(v || { pass: false, detail: 'no verdict returned' }) }
+        try { assertStatusReports(result.report, c.key === 'agent-wave' ? 3 : 1) }
+        catch (e) { result.pass = false; result.detail += '; ' + e.message }
+        return result
+      })),
 )
 
 const passed = results.filter((r) => r.pass)

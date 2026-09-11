@@ -12,7 +12,13 @@ over the *mechanism* described here — nothing about any other project.
 
 ## Step 1 — Detect the situation
 
-Inspect the repo before asking anything.
+Inspect the repo before asking anything. Reuse explicit answers and sign-off
+already supplied in this session; never replace them with profile defaults
+or ask for them again. Before writing, summarise the resolved artefact root,
+depth, queue, gate and coordination/integration modes against those answers.
+If a host mirrors a selected folder into a sandbox, identify the actual
+target path and how verified outputs reach the selected folder; never call
+an untouched target complete merely because a scratch mirror passed.
 
 - **Fresh repo** (no source, no docs): you are scaffolding from zero.
 - **Existing repo**: you are retrofitting.
@@ -204,10 +210,13 @@ A standalone repo has none of them.
    files — nothing else is written there. In a **shared checkout**, an
    agent appends a row to `_agent/LOCKS.md`
    (`<agent-id> | <path> | <ISO-8601 timestamp>`) before editing and
-   removes it on commit; that ledger is the one real mutex. In
-   **separate worktrees** the pushed branch and its draft pull request
-   are the claim, and no ledger is kept. Under **a single writer**
-   there is nothing to serialise. No mode keeps duplicate shipped state,
+   removes it on commit; that ledger is the one real mutex, and a queue
+   item is claimed on the item itself. In **separate worktrees** a queue
+   item is claimed by pushing `claim/<item-key>` — the queue file name
+   without its extension — plus a draft pull request from it where
+   integration is pull-request based; the push is what excludes the
+   second writer, and no ledger is kept. Under **a single writer**
+   there is nothing to serialise and nothing to claim. No mode keeps duplicate shipped state,
    a dashboard of what is in flight, or a snapshot of the current state:
    git history and `plan/done/` are the record, and the live branches
    and pull requests are what is in flight.
@@ -375,7 +384,7 @@ default (the operator may decline it — see Step 5 item 5b).
    - **Several writers, separate worktrees / PR branches.** Named
      writers in `_agent/ROLES.md`, plus the run prompt where the repo is
      eligible for it (gate + plan queue). **No lock ledger:** the pushed
-     branch and its draft pull
+     `claim/<item-key>` branch and its draft pull
      request are the claim, worktrees cannot collide on the filesystem,
      and an advisory ledger nobody can rely on is noise.
 
@@ -485,10 +494,12 @@ express run is internally consistent by construction and skips this
 check; guided and full runs, and any run that switched tiers
 mid-flight, get the full scan.)
 
-- **Q5 separate worktrees + Q4b direct-to-main.** Unusual: each
-  worktree would have to rebase onto main before fast-forwarding.
-  Ask the user to confirm or switch to PR-based — PR-based is the
-  near-universal fit for worktree work.
+- **Q5 separate worktrees + Q4b direct-to-main.** Require recorded
+  concurrency guardrails and serial integration through ship-item.
+  This is a supported combination; retain it when already confirmed.
+- **Q5 shared checkout + Q4b PR-based.** Ordinary sequential PR work
+  needs an actual work branch. PR waves require separate worktrees;
+  never generate a claim-branch workflow for a shared checkout.
 - **Q4a plan-folder skipped + Q8 records a real gate.** The autonomous
   prompt walks `plan/todo/`; with no plan folder it has nothing to
   drive. Do not write the autonomous prompt — a gate alone does not make
@@ -507,6 +518,16 @@ mid-flight, get the full scan.)
 - **Q11 = join but no confirmable home pointer.** Joining needs a
   home/federation pointer you can confirm. If none exists yet, you are
   really *establishing* — switch Q11a to establish.
+
+The sign-off includes final/persisted Status at a glance reporting at every
+depth. Offer the opt-out at full depth; if explicitly declined, omit the
+Reporting section, AGENTS pointer and prompt Report step together. Domain
+reporting rules extend the one numbered Reporting list.
+
+For an existing legacy coordination layout, use audit's coordination
+migration procedure: show removals and content destinations, respect prior
+explicit migration approval or obtain it, preserve live owner/blocker
+content on queue items, then regenerate the prompt from recorded answers.
 
 ## Step 5 — Output sequence (after sign-off)
 
@@ -546,8 +567,10 @@ Keep the pointer in sync if a later re-run migrates the root.
    queue; when the queue exists, include the newest `plan/done/`
    entries and a first-parent `git log` command as the shipped record;
    drop `_agent/ROLES.md` unless Q5 chose several writers; drop
-   `_agent/LOCKS.md` unless Q5 chose a shared checkout; and renumber
-   what remains. The section must never name a file this repo does not
+   `_agent/LOCKS.md` unless Q5 chose a shared checkout; keep the derived
+   in-flight line — worktrees, remote claim branches, draft pull
+   requests — in separate-worktree mode and in any pull-request repo,
+   and drop it elsewhere; and renumber what remains. The section must never name a file this repo does not
    have; it is the only read order, and no hand-off file is written.
 3. `CLAUDE.md` — from `templates/CLAUDE.md` (single line `@AGENTS.md`).
 4. `adr/0000-template.md` — from `templates/adr-capability.md`.
@@ -602,18 +625,18 @@ Keep the pointer in sync if a later re-run migrates the root.
    the single writer of, from the Q5 answer.
 9. `_agent/LOCKS.md` — from `templates/_agent-LOCKS.md`, **shared
    checkout only.** Not written for a single writer, and not in
-   separate-worktree mode (the branch and its pull request are the
-   claim there).
-10. `_agent/prompts/autonomous.md` — from
-    `templates/_agent-prompts-autonomous.md`, **only** if Q8 confirmed a
-    verify gate **and** Q4a kept the plan queue — in every Q5 answer.
-    The prompt's whole loop is "take the next `plan/todo/` item, ship it
-    through the gate", so neither half is optional. Keep the integration
-    block matching
-    Q4b: the **direct-to-main** variant (`git merge --ff-only`, commit
-    completion changes, then push) or the **PR-based** variant (draft
-    pull request → completion commit → CI → ready → merge). Drop the
-    unused variant.
+   separate-worktree mode (the pushed `claim/<item-key>` branch and its
+   pull request are the claim there).
+10. `_agent/prompts/autonomous.md` — from its template, only when Q8
+    names a real gate and Q4a retains the queue. Resolve every artefact path
+    including `_agent/` beneath Q12's root. Keep and uncomment exactly one
+    mode block: SEPARATE WORKTREES, SHARED CHECKOUT or SINGLE WRITER. Keep
+    PR START plus PR INTEGRATION only for PR mode; otherwise keep DIRECT
+    INTEGRATION. Drop the unused blocks and all generation comments.
+    Single-writer PRs create ordinary work branches; only separate
+    worktrees acquire claim branches. Shared PR waves require separate
+    worktrees, while ordinary shared PR work remains serialised. Keep the
+    item Status, Stop and final Report instructions in every eligible mode.
 11. `INDEX.md` — header + the seed ADR's row (item 5b); an empty table only
     if the seed was declined. In a **two-shape** repo (Q2) the table
     carries a **Shape** column, filled from each ADR's `shape:` field
@@ -654,6 +677,15 @@ no `Co-Authored-By` trailer unless Q6 asked for one.
 
 For an existing repo, prefer Edit over Write where files exist, and
 call out every merge decision in the commit message.
+
+### Verify the generated result
+
+Before claiming bootstrap complete, compare the actual output with the
+confirmed answers: root pointer, assessment depth, ADR shape and metadata,
+seed and INDEX row, plan queue, coordination files and mode-specific branch
+instructions. Run the recorded gate if present and retain its exact output
+and exit code. A wrong root, missing requested queue/seed or failed gate is
+an incomplete scaffold, not a host limitation. Correct it before reporting.
 
 ## Step 6 — Offer backfill (existing repos; re-runnable for emergent work)
 
@@ -742,3 +774,19 @@ were recorded after the fact), write the matching `plan/done` entries, and
 regenerate `INDEX.md`. A large development is never *outside* the
 catalogue — it is an ADR not yet written. The audit skill's coverage check
 surfaces such gaps so they are captured, not silently kept.
+
+Name the scaffold, preserved content, chosen profile/root and any incomplete setup.
+
+<!-- docflow:closing-report -->
+## Closing report
+
+End every run, including blocked, failed and stopped runs, with a section
+headed exactly **Status at a glance**, containing these three labels:
+
+- **This run:** only actions actually attempted and their outcomes; quote each verify gate's exact output and exit code, including timeouts or interruptions.
+- **Overall:** implemented, partially verified, verified, blocked, failed or unknown. A passing sub-step is not an overall pass; incomplete or missing evidence never becomes success.
+- **Yet to do:** every remaining action, unresolved finding, verification, cleanup or required input. Write None only when the whole task is verifiably complete; never omit work because a budget ended.
+
+Routine progress messages need no block. Keep final results brief and
+distinguish work prepared on a PR from work confirmed shipped.
+<!-- /docflow:closing-report -->
