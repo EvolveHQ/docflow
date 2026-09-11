@@ -18,10 +18,11 @@ export const meta = {
 
 const VERDICT = {
   type: 'object',
-  required: ['pass', 'detail'],
+  required: ['pass', 'detail', 'report'],
   properties: {
     pass: { type: 'boolean', description: 'true only if the gate passed (exit 0) and the asserted outcome holds' },
     detail: { type: 'string', description: 'what the skill produced + the exact verify.mjs output line and exit code' },
+    report: { type: 'string', description: 'The final report verbatim, including Status at a glance with This run, Overall and Yet to do' },
   },
 }
 
@@ -124,10 +125,16 @@ const CASES = [
 ]
 
 phase('Eval')
+const { assertStatusReports } = await import('./reporting.mjs')
 const results = await parallel(
   CASES.map((c) => () =>
-    agent(c.prompt, { label: `eval:${c.key}`, phase: 'Eval', schema: VERDICT, isolation: 'worktree' })
-      .then((v) => ({ key: c.key, ...(v || { pass: false, detail: 'no verdict returned' }) }))),
+    agent(c.prompt + ' End the final report with Status at a glance: This run, Overall, Yet to do. Return that report verbatim in the report field.', { label: `eval:${c.key}`, phase: 'Eval', schema: VERDICT, isolation: 'worktree' })
+      .then((v) => {
+        const result = { key: c.key, ...(v || { pass: false, detail: 'no verdict returned' }) }
+        try { assertStatusReports(result.report) }
+        catch (e) { result.pass = false; result.detail += '; ' + e.message }
+        return result
+      })),
 )
 
 const passed = results.filter((r) => r.pass)

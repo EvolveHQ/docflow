@@ -1,6 +1,6 @@
 """Create a disposable local-remote wave fixture inside a test container."""
 from pathlib import Path
-import subprocess, json, sys, re
+import subprocess, json, sys, re, os
 
 base = Path(sys.argv[1]).resolve()
 if base.exists(): raise SystemExit('Refuse to overwrite an existing fixture')
@@ -42,7 +42,8 @@ Report Status at a glance with This run, Overall and Yet to do; distinguish
 item outcome from Overall (implemented, partially verified, verified,
 blocked, failed, unknown). Preserve other owners' claims.
 ''')
-source=Path('/opt/docflow-source/plugins/docflow/skills/bootstrap/templates/_agent-prompts-autonomous.md').read_text()
+plugin=Path(os.environ.get('DOCFLOW_PLUGIN_ROOT','/opt/docflow-source/plugins/docflow'))
+source=(plugin/'skills/bootstrap/templates/_agent-prompts-autonomous.md').read_text()
 keep={'SEPARATE WORKTREES','DIRECT INTEGRATION'}
 source=re.sub(r'<!-- (SEPARATE WORKTREES|SHARED CHECKOUT|SINGLE WRITER|PR START|DIRECT INTEGRATION|PR INTEGRATION)\n([\s\S]*?)-->',lambda m:m[2].strip() if m[1] in keep else '',source)
 source=re.sub(r'<!--[\s\S]*?-->','',source).replace('<command from Q8>','node tools/verify.mjs')

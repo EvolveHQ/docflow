@@ -13,12 +13,13 @@ p.add_argument('--fixture',required=True)
 p.add_argument('--prompt',type=Path,required=True)
 p.add_argument('--output',type=Path,required=True)
 p.add_argument('--model')
+p.add_argument('--plugin-dir',default='/opt/docflow-source/plugins/docflow')
 p.add_argument('--timeout',type=int,default=900)
 a=p.parse_args()
 a.output.mkdir(parents=True,exist_ok=True)
 prompt=a.prompt.read_text(encoding='utf-8')
 commands={
- 'claude':['claude','--plugin-dir','/opt/docflow-source/plugins/docflow','-p','--output-format','stream-json','--verbose','--no-session-persistence','--allowedTools','Read,Write,Edit,Bash,Skill,Glob,Grep','--strict-mcp-config','--effort','medium'],
+ 'claude':['claude','--plugin-dir',a.plugin_dir,'-p','--output-format','stream-json','--verbose','--no-session-persistence','--allowedTools','Read,Write,Edit,Bash,Skill,Glob,Grep','--strict-mcp-config','--effort','medium'],
  'codex':['codex','exec','--ephemeral','-s','danger-full-access','-c','approval_policy="never"','-m',a.model or 'gpt-6-astra','-c','model_reasoning_effort="medium"','--json','-'],
  'pi':['pi','--provider','github-copilot','--model',a.model or 'gpt-4.1','--thinking','off','--no-session','--mode','json','-p','--approve'],
  'opencode':['opencode','run','--model',a.model or 'opencode/big-pickle','--format','json','--auto',prompt],

@@ -24,9 +24,9 @@ const skip = results.filter((r) => r.status === 'SKIPPED').length;
 console.log(`\n${pass} passed, ${fail} failed, ${skip} skipped`);
 if (skip) {
   console.log(
-    'SKIPPED cases are behavioural (agent-driven) — run them via the ' +
-    'Workflow tool: evals/behavioural.workflow.mjs. The runner is a ' +
-    'worktree subagent per case (ADR 0012).',
+    'SKIPPED cases were not executed by this deterministic command. ' +
+    'Use the opt-in workflow or the vendor-host Docker harness in evals/hosts; ' +
+    'retain independent assertions and a source-pinned receipt for every run.',
   );
 }
 process.exit(fail ? 1 : 0);

@@ -6,6 +6,8 @@
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { readFileSync } from 'node:fs';
+import assert from 'node:assert/strict';
+import { assertStatusReports } from './reporting.mjs';
 import { assertClaimAcquisition } from './claim-race.mjs';
 import {
   assertTree, assertContiguousAdrs, assertIndexSync, assertAdrStatus,
@@ -33,6 +35,19 @@ const LEGACY_MAP = { '0101': '0004', '0102': '0005' };
 const LEGACY_DONE_NUMBERS = ['0101'];
 
 export const cases = [
+  {
+    name: 'reports: missing blocks and invalid overall verdicts fail',
+    skill: null,
+    agentDependent: false,
+    assert() {
+      const valid = '## Status at a glance\n\n- **This run:** gate exit 0.\n- **Overall:** partially verified.\n- **Yet to do:** integration.\n';
+      assertStatusReports(valid);
+      assert.throws(() => assertStatusReports('Everything passed'));
+      assert.throws(() => assertStatusReports(valid, 3));
+      assert.throws(() => assertStatusReports(valid.replace('partially verified', 'pass')));
+      assert.throws(() => assertStatusReports(valid.replace('Yet to do:', 'Later:')));
+    },
+  },
   {
     name: 'claims: create-only push excludes same-tip, descendant and concurrent claimants',
     skill: null,
