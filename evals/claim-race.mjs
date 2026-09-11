@@ -48,7 +48,12 @@ export async function assertClaimAcquisition() {
     assert.equal(ordinary.status, 0, 'ordinary fast-forward push is not exclusive');
     assert.equal(acquired(ordinary), false);
 
-    ok(['push', 'origin', '--delete', ref], repo);
+    const cleanup = git(['push', '--porcelain', `--force-with-lease=${ref}:${first}`, 'origin', `:${ref}`], repo);
+    assert.notEqual(cleanup.status, 0, 'cleanup must not delete a claim advanced since the verified source');
+    assert.equal(ok(['rev-parse', ref], remote), ok(['rev-parse', 'HEAD'], repo));
+    ok(['push', '--porcelain', `--force-with-lease=${ref}:${ok(['rev-parse', 'HEAD'], repo)}`, 'origin', `:${ref}`], repo);
+    assert.notEqual(git(['rev-parse', '--verify', ref], remote).status, 0, 'unchanged owned ref can be deleted');
+
     const race = tip => new Promise((resolve, reject) => {
       const child = spawn('git', args(tip), { cwd: repo });
       let stdout = ''; let stderr = '';

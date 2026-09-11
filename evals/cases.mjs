@@ -5,6 +5,7 @@
 
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
+import { readFileSync } from 'node:fs';
 import { assertClaimAcquisition } from './claim-race.mjs';
 import {
   assertTree, assertContiguousAdrs, assertIndexSync, assertAdrStatus,
@@ -70,6 +71,12 @@ export const cases = [
       assertFileContains(repo, 'AGENTS.md', '.docflow/');
       assertFileContains(repo, 'OPERATIONS.md', 'operator sign-off');
       assertFileContains(repo, '.docflow/_agent/prompts/autonomous.md', 'node tools/verify.mjs');
+      for (const [path, stale] of [['.gitattributes', 'merge=union'], ['.gitignore', 'CURRENT_FOCUS.md']]) {
+        let text = '';
+        try { text = readFileSync(join(repo, path), 'utf8'); }
+        catch (e) { if (e.code !== 'ENOENT') throw e; }
+        if (text.includes(stale)) throw Error(`Legacy coordination rule remains in ${path}`);
+      }
       assertCommandSucceeds(repo, 'node tools/verify.mjs');
     },
   },

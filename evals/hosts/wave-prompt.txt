@@ -1,0 +1,21 @@
+This is an authorised disposable-container behavioural test. Work only in
+/workspace/wave/repo and owned scratch worktrees under /workspace/wave.
+Use the installed agent-wave skill through this host's normal skill loader.
+Read its entire instructions and the installed ship-item skill when integrating.
+
+Confirmed specification: full assessment, requested width 2, budget 2 items,
+continuous supervision, direct-to-main using origin and main as recorded.
+Force the available sequential fallback (rung 3); no delegation. All parameters
+are approved; do not ask questions. Use actual wall clock. No token budget.
+Process the next two eligible items in order. Reserve no new identifiers.
+Each item owns its own plan, ADR, and outputs/<slug>.txt; regenerate INDEX.
+Do not continue an existing live/stopped claim. An existing claim is deliberate
+test evidence and must remain untouched. Unsigned commits and local bare-remote
+pushes are authorised for this synthetic fixture only. No external services,
+GitHub operations, dependency installation or credential access are authorised.
+
+Run and verify both items through the recorded completion event. Return the
+observed rung/effective width, per-item outcomes, excluded claims, gate output
+and exit codes, integration SHAs, signing/hooks origins, and final Status at a
+glance. A tool error or missing evidence is not success. Preserve recoverable
+work if blocked and record the precise reason.
