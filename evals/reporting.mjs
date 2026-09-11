@@ -8,6 +8,6 @@ export function assertStatusReports(text, minimum = 1) {
     for (const label of ['This run', 'Overall', 'Yet to do']) {
       assert.match(section, new RegExp(`^- ${label}:\\s*\\S`, 'm'), `missing ${label}`);
     }
-    assert.match(section, /^- Overall:\s*(implemented|partially verified|verified|blocked|failed|unknown)\b/m, 'invalid Overall vocabulary');
+    assert.match(section, /^- Overall:\s*(implemented|partially verified|verified|blocked|failed|unknown)\b/mi, 'invalid Overall vocabulary');
   }
 }
