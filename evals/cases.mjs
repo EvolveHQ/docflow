@@ -5,6 +5,7 @@
 
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
+import { assertClaimAcquisition } from './claim-race.mjs';
 import {
   assertTree, assertContiguousAdrs, assertIndexSync, assertAdrStatus,
   assertPlanShipped, assertAbsent, assertFileContains, assertCommandSucceeds,
@@ -31,6 +32,47 @@ const LEGACY_MAP = { '0101': '0004', '0102': '0005' };
 const LEGACY_DONE_NUMBERS = ['0101'];
 
 export const cases = [
+  {
+    name: 'claims: create-only push excludes same-tip, descendant and concurrent claimants',
+    skill: null,
+    agentDependent: false,
+    assert: assertClaimAcquisition,
+  },
+  {
+    name: 'self-check: legacy coordination fixture retains migration evidence',
+    skill: null,
+    agentDependent: false,
+    repo: join(evalsDir, 'fixtures/legacy-coordination'),
+    assert(repo) {
+      assertTree(repo, ['.docflow/_agent/WORKLOG.md', '.docflow/_agent/HANDOFF.md',
+        '.docflow/_agent/LOCKS.md', '.docflow/plan/todo/0001-example.md']);
+      assertFileContains(repo, '.docflow/_agent/IN_FLIGHT.md', 'claim/0001-example');
+      assertFileContains(repo, '.docflow/_agent/IN_FLIGHT.md', 'claim/0002-abandoned');
+      assertFileContains(repo, '.docflow/_agent/IN_FLIGHT.md', 'Awaiting fixture data');
+      assertFileContains(repo, '.docflow/_agent/CURRENT_FOCUS.md', 'Queue empty');
+      assertFileContains(repo, '.gitattributes', 'merge=union');
+      assertFileContains(repo, '.gitignore', '.docflow/_agent/CURRENT_FOCUS.md');
+      assertCommandSucceeds(repo, 'node tools/verify.mjs');
+    },
+  },
+  {
+    name: 'audit: migrate legacy coordination while preserving live ownership',
+    skill: 'audit',
+    inputs: { fixture: 'evals/fixtures/legacy-coordination', confirm: 'cleanup and migration approved; preserve the live claim' },
+    assert(repo) {
+      assertAbsent(repo, ['.docflow/_agent/WORKLOG.md', '.docflow/_agent/IN_FLIGHT.md',
+        '.docflow/_agent/CURRENT_FOCUS.md', '.docflow/_agent/HANDOFF.md', '.docflow/_agent/LOCKS.md']);
+      assertTree(repo, ['.docflow/_agent/ROLES.md', '.docflow/_agent/prompts/autonomous.md']);
+      assertFileContains(repo, '.docflow/plan/todo/0001-example.md', '## Status');
+      assertFileContains(repo, '.docflow/plan/todo/0001-example.md', 'executor-live');
+      assertFileContains(repo, '.docflow/plan/todo/0001-example.md', 'Awaiting fixture data');
+      assertFileContains(repo, 'AGENTS.md', 'Picking up this repo');
+      assertFileContains(repo, 'AGENTS.md', '.docflow/');
+      assertFileContains(repo, 'OPERATIONS.md', 'operator sign-off');
+      assertFileContains(repo, '.docflow/_agent/prompts/autonomous.md', 'node tools/verify.mjs');
+      assertCommandSucceeds(repo, 'node tools/verify.mjs');
+    },
+  },
   {
     // Runs NOW. This repo is a valid bootstrapped fixture, so the
     // deterministic assertion layer is exercised end-to-end without an
