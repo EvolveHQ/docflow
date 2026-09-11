@@ -1,13 +1,15 @@
-# 0051 — Verify agent-wave per host; record observed rungs
+# 0051 â€” Verify agent-wave per host; record observed rungs
 
-Owning ADR: adr/0015-multi-target-portability.md (r6 — reopened
-Implemented → Accepted on landing, → Implemented on ship; AC5's
+Owning ADR: adr/0015-multi-target-portability.md (r6 â€” reopened
+Implemented â†’ Accepted on landing, â†’ Implemented on ship; AC5's
 "bootstrap plus one lifecycle skill" extends to agent-wave)
 
 ## Scope
 
-Operator-run, as the earlier multi-target verification was; it cannot
-run from a single host session.
+Operator-authorised independent Docker runs of the real vendor hosts,
+plus interactive checks where the host requires them. Record failures and
+unperformed checks honestly; do not replace a missing observation with an
+assumption. The operator expanded PR #5 to fix findings these runs expose.
 
 1. **On Claude Cowork, pi, Codex, OpenCode.** Install per README;
    bootstrap a throwaway repo in separate-worktrees mode with a gate
@@ -25,7 +27,7 @@ run from a single host session.
    without bypassed permissions, recording whether executors could
    commit and push without per-agent prompts.
 3. **README.** Replace every "assumed, verify" row with the observed
-   row; 0015 r6 records the runs.
+   row; 0015 r5 records the runs.
 
 Out of scope:
 - Fixing what the runs find; each finding becomes its own item.
@@ -33,13 +35,13 @@ Out of scope:
 ## Exit criteria
 
 1. Four host rows observed and recorded; the Claude Code rung-1 and
-   rung-2 runs recorded. → AC5 (extended)
+   rung-2 runs recorded. â†’ AC5 (extended)
 2. README rows carry no "assumed, verify" marker.
-3. ADR 0015 r6 row present; INDEX regenerated; verify gate green.
+3. ADR 0015 r5 row present; INDEX regenerated; verify gate green.
 
-When this ships, ADR 0015 returns to Implemented (r6).
+When this ships, ADR 0015 returns to Implemented (r5).
 
 ## Dependencies
 
-- Plan 0049 (the skill under test) — sequential; plan 0050 may run in
+- Plan 0049 (the skill under test) â€” sequential; plan 0050 may run in
   parallel with the host runs.

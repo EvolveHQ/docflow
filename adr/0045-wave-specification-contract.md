@@ -1,7 +1,7 @@
 ---
 adr: 0045
 title: The wave specification is the contract between the orchestrator and the executor
-status: Proposed
+status: Accepted
 date: 2026-09-04
 owner: Eugenio Minardi
 supersedes:
@@ -62,10 +62,10 @@ fixed fields, and every execution mechanism consumes it unchanged:
   ancestor of the integration branch means blocked "claimed by
   <branch>"; otherwise create `claim/<item-key>` from the base, fill
   Claimed by, make the claim commit — which states the reserved block,
-  the owned artefacts, and the wave's name — and only then push with
-  upstream tracking. A branch is never pushed before its claim commit
-  exists, so a second push to the same name with divergent history is
-  rejected by the remote and the claim is git-exclusive; a signing or
+  the owned artefacts, and the wave's name — and only then acquire the remote ref with an explicit empty
+  force-with-lease expectation and porcelain new-ref confirmation. Open
+  the draft PR immediately, before implementation. Existing refs, including
+  same-tip and fast-forward results, do not grant ownership; a signing or
   push failure surfaces here, before any implementation is spent. In a
   shared checkout: a lock row for every file the item edits and for
   every record it will create, and Claimed by committed with the work.
@@ -146,8 +146,8 @@ adr/0043-persisted-reports-carry-status-at-a-glance.md's.
    execution mechanism receives it unchanged.
 3. The claim step commits Claimed by before any push, treats an
    existing claim branch whose tip is not an ancestor of the
-   integration branch as live, and relies on the remote's rejection
-   of divergent pushes as the exclusion.
+   integration branch as live, and requires atomic create-only acquisition plus porcelain new-ref
+   confirmation as the exclusion; the draft PR precedes implementation.
 4. The verify step never bypasses the recorded gate; when the gate
    cannot run, the work is committed and pushed and the outcome is
    blocked with the exact failure line.
@@ -205,8 +205,10 @@ adr/0043-persisted-reports-carry-status-at-a-glance.md's.
 | Date | Revision | Author | Change |
 |------|----------|--------|--------|
 | 2026-09-04 | r1 | Eugenio Minardi | Initial draft (Proposed), from the approved two-round brainstorm: fixed specification fields, the canonical brief with its claim-before-push invariant and gate-cannot-run rule, per-profile integration including the pull-request retry loop, normalised result fields with an outcome vocabulary distinct from Overall, budget and stop rules. Unshaped results, shipped schemas, in-primitive wave loops, and budget conversion considered and rejected. |
+| 2026-09-11 | r2 | Eugenio Minardi | Proposed → Accepted. Align the canonical brief with exclusive claim acquisition and immediate draft PR creation; retain the agreed mode mapping and explicit continuation. |
 
 ## Approvals
 
 | Role | Name | Date | Signature |
 |------|------|------|-----------|
+| Maintainer | Eugenio Minardi | 2026-09-11 | Approved in operator session; PR #5 expansion |

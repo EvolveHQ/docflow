@@ -50,12 +50,15 @@ never stored in a file:
   item, `claim/<item-key>`, where the item key is the queue file name
   without its extension (`plan/todo/0007-rate-limit.md` gives
   `claim/0007-rate-limit`), together with a draft pull request opened
-  from it where integration is pull-request based. The prefix is
+  immediately after acquisition and before implementation where integration
+  is pull-request based. The prefix is
   **fixed, not the actor's**: every claim is then greppable without
   knowing the actor set, and — because one item maps to exactly one ref
-  — **the push itself is the exclusion**. Two writers racing for the
-  same item race for the same ref, and the loser's push is rejected
-  rather than quietly succeeding beside the winner's. The claiming
+  — **an atomic create-only push is the exclusion**. Use an explicit empty
+  expected value for the full destination ref with force-with-lease and
+  inspect porcelain output: only a new-ref (`*`) result acquires the claim.
+  Ordinary successful, fast-forward and up-to-date pushes do not acquire it.
+  Any other result leaves the item unclaimed by this executor. The claiming
   commit exists **before** the branch is pushed, so a claim ref never
   appears empty; a remote claim branch whose tip is at or behind the
   integration branch carries no work and **is not a claim**. A merged
@@ -86,9 +89,10 @@ never stored in a file:
   nothing is written to a committed file, so there is nothing to clean
   up when the wave ends, and an unused reservation expires with the
   wave. Collision detection remains the safety, as it always was.
-- A claim is **stale** when the thing holding it outlives the claim
-  itself: a worktree, or a `Claimed by`, whose remote claim branch no
-  longer exists. Audit names it and offers to prune the worktree. A
+- A branch-backed claim is **stale** when its worktree or `Claimed by`
+  outlives a remote claim branch confirmed absent after a successful fetch.
+  Shared-checkout claims have no remote branch; evaluate their owner and
+  lock rows, never remote absence. Audit names it and offers to prune the worktree. A
   **detached** worktree — one sitting on no claim branch at all — is
   neither a claim nor stale, and is reported as neither.
 
@@ -134,8 +138,10 @@ objection does not apply.
 2. Bootstrap writes no in-flight dashboard in any mode.
 3. Audit's coordination-hygiene check derives the in-flight set from
    worktrees, remote branches matching the convention, and draft pull
-   requests; it fails on an item claimed by two branches and on a
-   claim whose item is not in `plan/todo/`, flags a worktree whose
+   requests; it fails on duplicate ownership and a claim with no matching item at
+   the integration base or claim tip. A ready PR may have moved the item to
+   `plan/done/`; its linked PR and move establish ownership. It flags a
+   branch-backed worktree whose
    branch no longer exists as stale and offers to prune it, and
    reports the view as unverifiable — never as passing — when no
    remote is reachable.
@@ -151,7 +157,9 @@ objection does not apply.
    the stop path.
 6. `ship-item` and the run prompt remove no dashboard row; the merge
    ends the claim, and shipping deletes the remote claim branch and
-   deletes the local branch once no worktree holds it.
+   deletes the local branch once no worktree holds it. This cleanup applies
+   only to branches actually created by the selected mode; shared checkouts
+   release their locks and single writers have no claim branch.
 7. adr/0010-worktree-conflict-reconciliation.md carries a revision
    naming the claiming branch and pull request as the ownership
    record, and adr/0014-concurrency-guardrails.md carries a revision
@@ -195,6 +203,7 @@ objection does not apply.
 | 2026-09-07 | r2 | Eugenio Minardi | Status Proposed → Accepted; acceptance delegated to the session by the operator. Plan 0040 authorised. The open question on the branch prefix is left open here and is resolved by the ADR 0038 r3 amendment that lands with plan 0040, which replaces the actor-prefixed claim branch with the fixed `claim/<item-key>` form so that the push itself is the exclusion. |
 | 2026-09-07 | r3 | Eugenio Minardi | Claim branch fixed at `claim/<item-key>` (the queue file name without its extension), replacing `<actor>/NNNN-<slug>`, so one item maps to one ref and the push is the exclusion; the open question is resolved. The claim commit exists before the push, and a remote claim at or behind the integration branch is not a claim. The claim is stated per coordination mode (branch in separate worktrees; `Claimed by` plus lock rows in a shared checkout; none under a single writer). Stale redefined as a worktree or `Claimed by` whose remote claim branch is gone, a detached worktree being neither. AC1 and AC5 reworded; AC6 gains remote and local branch deletion at ship. The rejected claim-commit alternative is carved out for the shared checkout; "spawn brief" reads "wave specification"; the templates' work-partition sentence becomes named actors answering for areas with work assigned by claim. |
 | 2026-09-07 | r4 | Eugenio Minardi | Status Accepted → Implemented. Plan 0040 shipped via PR #5: the scaffolded conventions, AGENTS hard rules and read order, USAGE and the docs state the `claim/<item-key>` claim and derive the in-flight view; bootstrap writes no dashboard in any mode and keeps the run prompt's Claim step per coordination mode; agent-wave hands out the reserved block in the wave specification and requires it in each pull request, with no dashboard write or cleanup on any path; ship-item and the run prompt remove no row and end the claim by deleting the branch; audit derives the in-flight set and fails on duplicate claims, claims without an item, reporting stale worktrees with a prune offer and the view as unverifiable without a remote, with check 11's collisions at FAIL. ADR 0010 r3 and ADR 0014 r4 landed with it. AC1–AC8 met. |
+| 2026-09-11 | r5 | Eugenio Minardi | Repair audit R1–R5: exclusive create-only acquisition, early draft PRs, ready-PR item lookup and mode-specific stale/cleanup rules. Historical completion in r4 was prepared on PR #5; the PR was still open at this review. Existing live claims require explicit continuation. |
 
 ## Approvals
 
@@ -202,3 +211,4 @@ objection does not apply.
 |------|------|------|-----------|
 | Maintainer | Eugenio Minardi | 2026-09-07 | — (delegated) |
 | Maintainer | Eugenio Minardi | 2026-09-07 | — (delegated) |
+| Maintainer | Eugenio Minardi | 2026-09-11 | Approved in operator session; PR #5 expansion |

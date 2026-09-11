@@ -1,7 +1,7 @@
 ---
 adr: 0015
 title: Multi-target portability — one skill source, many coding agents
-status: Implemented
+status: Accepted
 date: 2026-06-03
 owner: Eugenio Minardi
 supersedes: ["0008"]
@@ -77,7 +77,10 @@ installs the existing Claude Code plugin.
    marketplace add`; OpenCode install (auto-discovery / symlink) is
    documented. The verify gate version-syncs all three plugin manifests.
 5. **Behavioural verification:** `bootstrap` plus one lifecycle skill run
-   successfully on Codex, OpenCode, and Cowork, with the result recorded.
+   successfully on all five named hosts, and agent-wave is exercised with
+   observed host rungs and blocked-at-verify behaviour. Results identify the
+   source revision, host/model, permissions and limitations. Unperformed
+   checks remain pending and cannot satisfy this criterion.
 6. ADR 0008 is superseded by this ADR.
 
 ## Out of scope
@@ -109,9 +112,11 @@ installs the existing Claude Code plugin.
 | 2026-06-03 | r2 | Eugenio Minardi | Codex has a native plugin marketplace (initial r1 wrongly scoped a one-command Codex installer out). Add a native Codex plugin (`.codex-plugin/` + `.agents/plugins/marketplace.json`); verify gate version-syncs three manifests; AC4 + Out-of-scope revised. |
 | 2026-06-04 | r3 | Eugenio Minardi | Codex requires the plugin (incl. its skills) in a subdirectory — root `source: "."`/`"./"` does not resolve. Restructure to `plugins/docflow/` holding the skills + all three plugin manifests; both marketplaces point to `./plugins/docflow`; `package.json` (`pi.skills`/`files`) + `verify.mjs` repointed. **Verified on real Codex** (`marketplace add` → `plugin add docflow@evolvehq` → all 8 skills installed). |
 | 2026-06-29 | r4 | Eugenio Minardi | Implemented. AC5 met: maintainer confirms `bootstrap` + lifecycle skills run on **Codex, OpenCode, and Cowork** via real usage (also pi, and mimocode beyond the documented five). plan 0010 → done. |
+| 2026-09-11 | r5 | Eugenio Minardi | Reopen AC5 for the current coordination changes: verify bootstrap, a lifecycle action, and wave execution on each named host. Record observed capability rungs, authentication, signing/push and desktop limitations; historical usage is not current-revision evidence. |
 
 ## Approvals
 
 | Role | Name | Date | Signature |
 |------|------|------|-----------|
 | Maintainer | Eugenio Minardi | 2026-06-03 | — |
+| Maintainer | Eugenio Minardi | 2026-09-11 | Approved in operator session; PR #5 expansion |

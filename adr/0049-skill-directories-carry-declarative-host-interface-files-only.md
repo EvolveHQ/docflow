@@ -1,7 +1,7 @@
 ---
 adr: 0049
 title: Skill directories carry SKILL.md plus declarative host interface files only
-status: Proposed
+status: Accepted
 date: 2026-09-04
 owner: Eugenio Minardi
 supersedes:
@@ -120,8 +120,10 @@ skill-authoring conventions document the sidecar class.
 | Date | Revision | Author | Change |
 |------|----------|--------|--------|
 | 2026-09-04 | r1 | Eugenio Minardi | Initial draft (Proposed), from the approved two-round brainstorm: the sidecar class regularised, no shipped orchestration script, the gate extended to scan sidecars and to reject host tokens in skill bodies with today's three occurrences repaired. A shipped workflow script, a runner subdirectory, undocumented sidecars, and a shared code module considered and rejected. |
+| 2026-09-11 | r2 | Eugenio Minardi | Proposed → Accepted. Operator authorised the queued coordination rollout in PR #5; implementation and verification remain pending. |
 
 ## Approvals
 
 | Role | Name | Date | Signature |
 |------|------|------|-----------|
+| Maintainer | Eugenio Minardi | 2026-09-11 | Approved in operator session; PR #5 expansion |

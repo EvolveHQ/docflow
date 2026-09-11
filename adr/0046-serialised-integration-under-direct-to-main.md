@@ -1,7 +1,7 @@
 ---
 adr: 0046
 title: Orchestrated waves integrate serially in queue order under direct-to-main
-status: Proposed
+status: Accepted
 date: 2026-09-04
 owner: Eugenio Minardi
 supersedes:
@@ -205,8 +205,10 @@ in practice — and its cost is sequential integration.
 | Date | Revision | Author | Change |
 |------|----------|--------|--------|
 | 2026-09-04 | r1 | Eugenio Minardi | Initial draft (Proposed), from the approved two-round brainstorm with every git behaviour verified in scratch repositories: implement-only briefs, a detached integration worktree, ship-item's integrating mode with the six-step sequence, the index exemption, and the ended claim. By-executor push with retry, integration in the primary checkout, worktree removal before integration, cherry-picking, merge commits, and a separate integrate skill considered and rejected. |
+| 2026-09-11 | r2 | Eugenio Minardi | Proposed → Accepted. Operator authorised the queued coordination rollout in PR #5; implementation and verification remain pending. |
 
 ## Approvals
 
 | Role | Name | Date | Signature |
 |------|------|------|-----------|
+| Maintainer | Eugenio Minardi | 2026-09-11 | Approved in operator session; PR #5 expansion |

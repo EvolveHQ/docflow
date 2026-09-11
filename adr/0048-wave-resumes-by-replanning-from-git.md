@@ -1,7 +1,7 @@
 ---
 adr: 0048
 title: A wave resumes by re-planning from git
-status: Proposed
+status: Accepted
 date: 2026-09-04
 owner: Eugenio Minardi
 supersedes:
@@ -33,29 +33,37 @@ can.
 
 The orchestrator holds no state a re-plan cannot recompute. A
 **collect step** runs before every wave, not only at invocation, and
-classifies each queue item from git alone after a fetch:
+classifies queue and completion entries after a fetch. Apply precedence
+in this order: unverifiable, shipped, merged but unshipped, stopped, live,
+stale, eligible. Conflicting evidence is unverifiable. PR merge state and
+the item move establish completion when squash/rebase changes ancestry:
+
 
 - **shipped** — under `plan/done/` with a footer naming a commit
-  reachable from the integration branch;
+  reachable from the integration branch, or a named PR confirmed merged
+  into it;
 - **merged but unshipped** — a claim branch for a still-queued item
   whose tip is an ancestor of the integration branch; listed for a
   human, never re-assigned, deleted at the next ship;
 - **live** — a `claim/<item-key>` branch, or its draft pull request
   where integration is pull-request based, whose tip is not such an
-  ancestor; a reachable pull-request host only refines a live claim,
-  never changes its class;
+  ancestor; both draft and ready unmerged PRs remain live; a confirmed merge
+  changes its class even if squash/rebase removed source ancestry;
 - **stopped** — a Stopped entry on the integration branch or at the
   claim tip;
-- **stale** — a local worktree, or a Claimed-by field, whose remote
-  claim branch no longer exists; a detached worktree, the wave's own
+- **stale** — a local worktree, or a Claimed-by field, backed by a branch whose remote
+  ref is confirmed absent; shared-checkout claims use locks and owner fields; a detached worktree, the wave's own
   integration worktree included, is neither a claim nor stale;
+- **eligible** — still queued, owning decisions Accepted, dependencies
+  satisfied, no live/stopped/stale or ambiguous ownership;
 - **unverifiable** — the remote cannot be fetched; no parallel wave
   starts, and the run stops with that word, never a green check.
 
 In a shared checkout the view is the lock ledger plus the Claimed-by
 fields; no branch is consulted. Live, stopped, merged-but-unshipped,
-and unverifiable items are excluded from the wave. A claim on an item
-no longer queued is audit's "claim without an item".
+and unverifiable items are excluded from the wave. A claim is orphaned only if the item is absent at both the integration
+base and claim tip and no linked PR explains its move into plan/done.
+Stale ownership is reported for reconciliation rather than reassigned.
 
 The one structured question — **continue on this branch?** — is
 high-impact and is asked at guided and full depth only when at least
@@ -80,9 +88,9 @@ first-parent history.
 
 Overlap is safe by construction. A claim pushed before a collect is
 seen and excluded; one pushed after it is caught by the executor's
-own fetch-check immediately before its push; two pushes in the same
-instant to one name are resolved by the remote, which rejects the
-second, and that executor returns blocked "claimed by"; audit's
+own fetch-check immediately before its push; each acquisition uses an atomic create-only push with explicit empty
+expected ref and requires the porcelain new-ref result, so an existing
+same-tip or descendant push never grants ownership, and that executor returns blocked "claimed by"; audit's
 duplicate-claim failure and the check-before-merge remain the
 backstop, and the wave block names every claim withdrawn.
 Reservations are recomputed from the landed catalogue every wave, so
@@ -111,7 +119,7 @@ upon.
 ## Acceptance criteria
 
 1. The collect step runs before every wave, fetches first, and
-   classifies every queue item into exactly one of the six classes as
+   classifies every queue item into exactly one of the seven classes as
    stated; unverifiable stops the run.
 2. Live, stopped, merged-but-unshipped, and unverifiable items are
    excluded from the wave, and a merged-but-unshipped item is listed
@@ -131,8 +139,8 @@ upon.
    block names withdrawn claims.
 7. No coordination file is written on a stop; Yet to do enumerates
    every unmerged branch, leftover checkout, and stopped item.
-8. Audit's stale rule reads: a worktree or Claimed-by field whose
-   remote claim branch no longer exists; a detached worktree is
+8. Audit's stale rule reads: a worktree or Claimed-by field backed by a branch whose
+   remote ref is confirmed absent; shared claims use their lock ledger; a detached worktree is
    neither a claim nor stale.
 
 ## Out of scope
@@ -162,8 +170,10 @@ upon.
 | Date | Revision | Author | Change |
 |------|----------|--------|--------|
 | 2026-09-04 | r1 | Eugenio Minardi | Initial draft (Proposed), from the approved two-round brainstorm: collect-first classification into six classes, exclusion of live claims by default, the high-impact continue question with its express default and invocation shortcut, claims ended by deletion, overlap settled by the remote. Auto-continue, exclude-with-no-way-back, a committed resume marker, and host replay as the record considered and rejected. |
+| 2026-09-11 | r2 | Eugenio Minardi | Proposed → Accepted. Add the missing eligible class and precedence; distinguish ready PRs from orphan claims, recognise confirmed PR merges, restrict remote staleness to branch-backed claims, and use exclusive acquisition. |
 
 ## Approvals
 
 | Role | Name | Date | Signature |
 |------|------|------|-----------|
+| Maintainer | Eugenio Minardi | 2026-09-11 | Approved in operator session; PR #5 expansion |

@@ -1,7 +1,7 @@
 ---
 adr: 0042
 title: docflow's own skills end every run with Status at a glance
-status: Proposed
+status: Accepted
 date: 2026-09-04
 owner: Eugenio Minardi
 supersedes:
@@ -121,8 +121,10 @@ convention the product ignores teaches agents to ignore it.
 | Date | Revision | Author | Change |
 |------|----------|--------|--------|
 | 2026-09-04 | r1 | Eugenio Minardi | Initial draft (Proposed), from the approved brainstorm: every lifecycle skill ends with the block via one canonical instruction; per-skill bullet contents; static gate parity check and behavioural eval requirement. Free-form skill reports considered and rejected. |
+| 2026-09-11 | r2 | Eugenio Minardi | Proposed → Accepted. Operator authorised the queued coordination rollout in PR #5; implementation and verification remain pending. |
 
 ## Approvals
 
 | Role | Name | Date | Signature |
 |------|------|------|-----------|
+| Maintainer | Eugenio Minardi | 2026-09-11 | Approved in operator session; PR #5 expansion |

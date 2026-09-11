@@ -1,7 +1,7 @@
 ---
 adr: 0041
 title: Status at a glance — every report says what was achieved and what is missing
-status: Proposed
+status: Accepted
 date: 2026-09-04
 owner: Eugenio Minardi
 supersedes:
@@ -39,7 +39,7 @@ verdicts — are that repository's domain rules, added on top.
 
 ## Capability statement
 
-Every progress, verification, or hand-off report ends with a section
+Every final skill result and persisted verification or hand-off report ends with a section
 headed exactly **Status at a glance**, carrying three labelled bullets:
 
 - **This run** — only what was actually attempted in the current run,
@@ -63,6 +63,8 @@ unknown, inconclusive, or failed, never as passed. Remaining work is
 never omitted because the run reached a limit. The principle behind
 them: a report gives a sense of what was achieved and what is missing,
 and never lets an unverified outcome read as a pass.
+
+Routine progress updates do not require the block.
 
 The scaffold places the convention once. `CONVENTIONS.md` carries the
 full statement under a Reporting section with one worked example.
@@ -144,8 +146,10 @@ conventions.
 | Date | Revision | Author | Change |
 |------|----------|--------|--------|
 | 2026-09-04 | r1 | Eugenio Minardi | Initial draft (Proposed), from the approved brainstorm: the Status at a glance block (This run / Overall / Yet to do), four generic honesty rules and the achieved-and-missing principle; one full statement in CONVENTIONS.md, a pointer rule in AGENTS.md, a Report step in the run prompt; default at every depth with a full-depth opt-out; repository-specific rules extend the section. |
+| 2026-09-11 | r2 | Eugenio Minardi | Proposed → Accepted. Apply the closing block to final skill results and persisted reports; routine progress updates remain concise. |
 
 ## Approvals
 
 | Role | Name | Date | Signature |
 |------|------|------|-----------|
+| Maintainer | Eugenio Minardi | 2026-09-11 | Approved in operator session; PR #5 expansion |

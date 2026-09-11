@@ -16,10 +16,10 @@ ADR change.
 | [0009](adr/0009-distribution-marketplace-npm.md) | Distribution via self-hosted marketplace and npm/pi package | Implemented | 2026-05-22 | 0008 |
 | [0010](adr/0010-worktree-conflict-reconciliation.md) | Content-level conflict reconciliation across worktrees | Implemented | 2026-06-01 | 0005, 0007 |
 | [0011](adr/0011-static-skill-validation.md) | Static structural validation of skills and manifests | Implemented | 2026-06-01 | 0001, 0007, 0008 |
-| [0012](adr/0012-skill-behavioural-evals.md) | Behavioural and end-to-end evaluation of skill outcomes | Implemented | 2026-06-01 | 0001, 0011 |
+| [0012](adr/0012-skill-behavioural-evals.md) | Behavioural and end-to-end evaluation of skill outcomes | Accepted | 2026-06-01 | 0001, 0011 |
 | [0013](adr/0013-interactive-assessment-protocol.md) | Standard interactive assessment protocol for skills | Implemented | 2026-06-02 | 0006, 0007 |
 | [0014](adr/0014-concurrency-guardrails.md) | Concurrency guardrails for ADR and plan creation | Implemented | 2026-06-02 | 0001, 0006, 0010, 0013 |
-| [0015](adr/0015-multi-target-portability.md) | Multi-target portability — one skill source, many coding agents | Implemented | 2026-06-03 | 0001, 0007, 0009 |
+| [0015](adr/0015-multi-target-portability.md) | Multi-target portability — one skill source, many coding agents | Accepted | 2026-06-03 | 0001, 0007, 0009 |
 | [0016](adr/0016-layered-artifact-model.md) | Layered artifact model — minimal core, opt-in layers | Implemented | 2026-06-17 | 0001 |
 | [0017](adr/0017-configurable-artifact-root.md) | Configurable artifact root — control the repo footprint | Implemented | 2026-06-17 | 0013, 0016 |
 | [0018](adr/0018-wip-stays-out-of-catalogue.md) | Work-in-progress stays out of the ADR catalogue | Implemented | 2026-06-17 | 0001, 0013, 0014 |
@@ -43,14 +43,15 @@ ADR change.
 | [0036](adr/0036-coordination-directory-holds-only-what-git-cannot-tell-you.md) | The coordination directory holds only what git cannot tell you | Implemented | 2026-09-04 | 0001, 0005, 0006, 0016 |
 | [0037](adr/0037-shipped-record-is-git-and-plan-done.md) | The shipped-work record is git history and plan/done | Implemented | 2026-09-04 | 0036, 0001, 0007 |
 | [0038](adr/0038-in-flight-state-derived-from-branches-and-pull-requests.md) | In-flight state is derived from branches and pull requests | Implemented | 2026-09-04 | 0036, 0006, 0010, 0014 |
-| [0039](adr/0039-plan-item-carries-its-own-status.md) | A plan item carries its own live status; the snapshot file is retired | Proposed | 2026-09-04 | 0036, 0001 |
-| [0040](adr/0040-coordination-directory-migration.md) | Compatibility, clean-up, and migration of existing coordination directories | Proposed | 2026-09-04 | 0036, 0037, 0038, 0039, 0033, 0035 |
-| [0041](adr/0041-status-at-a-glance-reporting-convention.md) | Status at a glance — every report says what was achieved and what is missing | Proposed | 2026-09-04 | 0001, 0007 |
-| [0042](adr/0042-skills-end-every-run-with-status-at-a-glance.md) | docflow's own skills end every run with Status at a glance | Proposed | 2026-09-04 | 0041, 0007, 0011, 0012 |
-| [0043](adr/0043-persisted-reports-carry-status-at-a-glance.md) | Persisted reports carry Status at a glance — pull-request bodies, wave summaries, stop entries | Proposed | 2026-09-04 | 0041, 0006, 0038, 0039 |
+| [0039](adr/0039-plan-item-carries-its-own-status.md) | A plan item carries its own live status; the snapshot file is retired | Accepted | 2026-09-04 | 0036, 0001 |
+| [0040](adr/0040-coordination-directory-migration.md) | Compatibility, clean-up, and migration of existing coordination directories | Accepted | 2026-09-04 | 0036, 0037, 0038, 0039, 0033, 0035 |
+| [0041](adr/0041-status-at-a-glance-reporting-convention.md) | Status at a glance — every report says what was achieved and what is missing | Accepted | 2026-09-04 | 0001, 0007 |
+| [0042](adr/0042-skills-end-every-run-with-status-at-a-glance.md) | docflow's own skills end every run with Status at a glance | Accepted | 2026-09-04 | 0041, 0007, 0011, 0012 |
+| [0043](adr/0043-persisted-reports-carry-status-at-a-glance.md) | Persisted reports carry Status at a glance — pull-request bodies, wave summaries, stop entries | Accepted | 2026-09-04 | 0041, 0006, 0038, 0039 |
 | [0044](adr/0044-development-returns-to-main.md) | Development returns to main — candidate branches archived unmerged | Implemented | 2026-09-04 | 0001, 0006, 0009 |
-| [0045](adr/0045-wave-specification-contract.md) | The wave specification is the contract between the orchestrator and the executor | Proposed | 2026-09-04 | 0010, 0014, 0034, 0035, 0038, 0039, 0041, 0043 |
-| [0046](adr/0046-serialised-integration-under-direct-to-main.md) | Orchestrated waves integrate serially in queue order under direct-to-main | Proposed | 2026-09-04 | 0006, 0007, 0014, 0037, 0038, 0039, 0045 |
-| [0047](adr/0047-agent-wave-adapts-to-host-orchestration-capability.md) | agent-wave adapts to the orchestration capability the host exposes | Proposed | 2026-09-04 | 0006, 0007, 0013, 0014, 0015, 0031, 0036, 0038, 0044, 0045 |
-| [0048](adr/0048-wave-resumes-by-replanning-from-git.md) | A wave resumes by re-planning from git | Proposed | 2026-09-04 | 0013, 0031, 0037, 0038, 0039, 0045, 0046 |
-| [0049](adr/0049-skill-directories-carry-declarative-host-interface-files-only.md) | Skill directories carry SKILL.md plus declarative host interface files only | Proposed | 2026-09-04 | 0004, 0011, 0013, 0015 |
+| [0045](adr/0045-wave-specification-contract.md) | The wave specification is the contract between the orchestrator and the executor | Accepted | 2026-09-04 | 0010, 0014, 0034, 0035, 0038, 0039, 0041, 0043 |
+| [0046](adr/0046-serialised-integration-under-direct-to-main.md) | Orchestrated waves integrate serially in queue order under direct-to-main | Accepted | 2026-09-04 | 0006, 0007, 0014, 0037, 0038, 0039, 0045 |
+| [0047](adr/0047-agent-wave-adapts-to-host-orchestration-capability.md) | agent-wave adapts to the orchestration capability the host exposes | Accepted | 2026-09-04 | 0006, 0007, 0013, 0014, 0015, 0031, 0036, 0038, 0044, 0045 |
+| [0048](adr/0048-wave-resumes-by-replanning-from-git.md) | A wave resumes by re-planning from git | Accepted | 2026-09-04 | 0013, 0031, 0037, 0038, 0039, 0045, 0046 |
+| [0049](adr/0049-skill-directories-carry-declarative-host-interface-files-only.md) | Skill directories carry SKILL.md plus declarative host interface files only | Accepted | 2026-09-04 | 0004, 0011, 0013, 0015 |
+| [0050](adr/0050-repository-changes-integrate-through-checked-pull-requests.md) | Repository changes integrate through checked pull requests | Accepted | 2026-09-11 | 0006, 0011, 0044 |
