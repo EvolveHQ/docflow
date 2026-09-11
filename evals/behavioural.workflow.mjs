@@ -28,6 +28,20 @@ const VERDICT = {
 
 const CASES = [
   {
+    key: 'agent-wave',
+    prompt:
+      'Behavioural eval of agent-wave using the same local-remote fixture as the vendor-host Docker runs. ' +
+      'Create a fresh owned scratch directory outside this checkout. Set DOCFLOW_PLUGIN_ROOT to this checkout\'s ' +
+      'absolute plugins/docflow directory; run python3 evals/hosts/wave-fixture.py <scratch> to prepare it. ' +
+      'The fixture has distinct plan/ADR numbers, two accepted items and a third live claim that must remain untouched. ' +
+      'Read plugins/docflow/skills/agent-wave/SKILL.md and evals/hosts/wave-prompt.txt; apply that approved specification ' +
+      'with the fixture path changed to <scratch>/repo. Use rung 3, requested width 2, budget 2 items, continuous supervision. ' +
+      'Unsigned commits and pushes to the fixture local bare origin only are authorised. Never push this checkout. ' +
+      'Run python3 evals/hosts/check-wave.py <scratch> after the wave and report its exact output and exit. ' +
+      'PASS requires every assertion, two per-item Status at a glance blocks and a wave block. Preserve all failures; ' +
+      'do not repair the tested fixture outside the skill and call its original result passing.',
+  },
+  {
     key: 'new-adr',
     prompt:
       'Behavioural eval of the docflow `new-adr` skill. Work ONLY in your worktree; do NOT commit or push. ' +
@@ -131,7 +145,7 @@ const results = await parallel(
     agent(c.prompt + ' End the final report with Status at a glance: This run, Overall, Yet to do. Return that report verbatim in the report field.', { label: `eval:${c.key}`, phase: 'Eval', schema: VERDICT, isolation: 'worktree' })
       .then((v) => {
         const result = { key: c.key, ...(v || { pass: false, detail: 'no verdict returned' }) }
-        try { assertStatusReports(result.report) }
+        try { assertStatusReports(result.report, c.key === 'agent-wave' ? 3 : 1) }
         catch (e) { result.pass = false; result.detail += '; ' + e.message }
         return result
       })),

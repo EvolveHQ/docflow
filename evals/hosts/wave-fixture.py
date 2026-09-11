@@ -54,8 +54,11 @@ write('adr/0000-template.md','# Template\nUse the existing capability shape.\n')
 (repo/'plan/done').mkdir()
 write('plan/done/.gitkeep','')
 rows=[]
+items=[]
 for n,slug in enumerate(['alpha','beta','held'],1):
     key=f'{n:04d}-{slug}'
+    plan_key=f'{n+6:04d}-{slug}'
+    items.append({'adr':n,'key':plan_key,'slug':slug})
     write('adr/'+key+'.md',f'''---
 adr: {n:04d}
 title: Write {slug}
@@ -90,7 +93,7 @@ CONVENTIONS.md
 |---|---|---|---|
 | Operator | docflow-eval | 2026-09-11 | Fixture approval |
 ''')
-    write('plan/todo/'+key+'.md',f'''# {key}
+    write('plan/todo/'+plan_key+'.md',f'''# {plan_key}
 
 Owning ADR: adr/{key}.md
 ## Scope
@@ -117,12 +120,12 @@ git('commit','-qm','test: initialise independent wave fixture\n\nRationale: synt
 git('init','-q','--bare','--initial-branch=main',str(base/'origin.git'))
 git('remote','add','origin',str(base/'origin.git'))
 git('push','-qu','origin','main')
-git('switch','-qc','claim/0003-held')
-p=repo/'plan/todo/0003-held.md';p.write_text(p.read_text().replace('- Claimed by:','- Claimed by: executor-other, 2026-09-11, claim/0003-held'),encoding='utf-8')
-git('add','plan/todo/0003-held.md')
-git('commit','-qm','chore: claim held fixture\n\nWave: other; Reservations: none; Owned: outputs/held.txt, adr/0003-held.md, plan/todo/0003-held.md.')
+git('switch','-qc','claim/0009-held')
+p=repo/'plan/todo/0009-held.md';p.write_text(p.read_text().replace('- Claimed by:','- Claimed by: executor-other, 2026-09-11, claim/0009-held'),encoding='utf-8')
+git('add','plan/todo/0009-held.md')
+git('commit','-qm','chore: claim held fixture\n\nWave: other; Reservations: none; Owned: outputs/held.txt, adr/0003-held.md, plan/todo/0009-held.md.')
 git('push','-q','origin','HEAD')
 held=git('rev-parse','HEAD')
 git('switch','-q','main')
-(base/'fixture.json').write_text(json.dumps({'held':held,'base':git('rev-parse','HEAD')}),encoding='utf-8')
+(base/'fixture.json').write_text(json.dumps({'held':held,'base':git('rev-parse','HEAD'),'items':items}),encoding='utf-8')
 print(json.dumps({'fixture':str(repo),'held':held}))
