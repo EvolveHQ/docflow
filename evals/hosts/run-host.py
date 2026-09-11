@@ -34,7 +34,7 @@ with (a.output/'transcript.jsonl').open('w',encoding='utf-8') as out,(a.output/'
     except subprocess.TimeoutExpired:
         # A dedicated container belongs to this one test. Stop it so no model
         # continues acting after a timeout; stopping also drops tmpfs auth.
-        subprocess.run(['docker','stop','--time','10',a.container],capture_output=True)
+        subprocess.run(['docker','stop','--timeout','10',a.container],capture_output=True)
         process.kill();process.communicate();code=124
 receipt={'host':a.host,'container':a.container,'fixture':a.fixture,'host_exit':code,'seconds':round(time.monotonic()-start,1),'model_requested':a.model,'behavioural_verdict':'unverified: run independent assertions'}
 (a.output/'process.json').write_text(json.dumps(receipt,indent=2),encoding='utf-8')
