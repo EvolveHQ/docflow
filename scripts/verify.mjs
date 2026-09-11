@@ -9,7 +9,7 @@
 
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { dirname, join } from 'node:path';
+import { dirname, join, extname } from 'node:path';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const errors = [];
@@ -84,6 +84,10 @@ const skillDirs = readdirSync(skillsDir, { withFileTypes: true })
 // (descriptions may carry trigger hints; bodies must stay agent-neutral).
 const SKILL_NAMES = skillDirs.join('|');
 const invocationRe = new RegExp(`(^|\\s)/(?:skill:)?(?:${SKILL_NAMES})\\b`);
+const hostTokenRe = new RegExp(
+  `AskUserQuestion|isolation:\\s*worktree|/schedule\\b|Workflow\\(|ultracode|\\$(?:${SKILL_NAMES})\\b`,
+);
+let closingContract;
 
 for (const name of skillDirs) {
   const rel = `plugins/docflow/skills/${name}/SKILL.md`;
@@ -103,12 +107,35 @@ for (const name of skillDirs) {
   if (!fields.description) fail(`${rel}: frontmatter missing 'description'`);
   if (!/^#\s+\S/m.test(body)) fail(`${rel}: body has no H1 heading`);
 
+  const closing = [...body.matchAll(/<!-- docflow:closing-report -->([\s\S]*?)<!-- \/docflow:closing-report -->/g)];
+  if (closing.length !== 1 || !closing[0][1].includes('Status at a glance') ||
+      !['This run:', 'Overall:', 'Yet to do:'].every(label => closing[0][1].includes(label))) {
+    fail(`${rel}: missing or malformed closing-report contract`);
+  } else if (closingContract === undefined) {
+    closingContract = closing[0][1];
+  } else if (closingContract !== closing[0][1]) {
+    fail(`${rel}: closing-report contract differs from other skills`);
+  }
+
+  const sidecar = `plugins/docflow/skills/${name}/agents/openai.yaml`;
+  if (existsSync(join(root, sidecar))) {
+    const yaml = read(sidecar);
+    if (!yaml.includes(`display_name: "docflow: ${name}"`) ||
+        !/^  short_description: "[^"\n]+"$/m.test(yaml) ||
+        !/^  default_prompt: "[^"\n]+"$/m.test(yaml)) {
+      fail(`${sidecar}: malformed interface or display name does not match skill`);
+    }
+  }
+
   body.split('\n').forEach((line, i) => {
     if (invocationRe.test(line)) {
       fail(
         `${rel}:${i + 2}: agent-specific invocation "${line.trim()}" in ` +
         `body — keep skill prose agent-neutral (ADR 0008)`,
       );
+    }
+    if (hostTokenRe.test(line)) {
+      fail(`${rel}:${i + 2}: host-specific token in skill body`);
     }
   });
 }
@@ -237,6 +264,23 @@ function scanLeakTree(rel) {
 for (const name of skillDirs) {
   scanLeaks(`plugins/docflow/skills/${name}/SKILL.md`);
 }
+// The product contains only declarative text. Scan every file, including
+// newly introduced sidecar formats, rather than an extension-only subset.
+function checkSkillTree(rel) {
+  for (const entry of readdirSync(join(root, rel), { withFileTypes: true })) {
+    const child = `${rel}/${entry.name}`;
+    if (entry.isDirectory()) checkSkillTree(child);
+    else if (!entry.isFile()) fail(`${child}: skill entries must be regular declarative files`);
+    else {
+      scanLeaks(child);
+      if (!['.md', '.yaml', '.yml', '.json', '.txt'].includes(extname(child).toLowerCase()) ||
+          /^#!/.test(read(child))) {
+        fail(`${child}: executable or unsupported file under skills; declarative text only`);
+      }
+    }
+  }
+}
+checkSkillTree('plugins/docflow/skills');
 for (const f of ['README.md', 'USAGE.md']) scanLeaks(f);
 // The docs site is public/user-visible too; scan text-like site files
 // while skipping binary assets such as PNG/ICO previews.
