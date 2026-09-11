@@ -51,3 +51,9 @@ When this ships, ADR 0043 advances Accepted → Implemented.
 - Plan 0041 (the Status section this item shapes).
 - Plans 0043 and 0044 (the convention and the agent-wave / audit
   closing steps this item extends) — sequential.
+
+## Status
+
+- **Claimed by:** Codex, 2026-09-11, `kmox83/0040-claim-by-branch` (PR #5; operator-authorised expanded scope).
+- **Blockers:**
+- **Stopped:**

@@ -37,10 +37,10 @@ writer. -->
 it elsewhere. -->
 8. **What is in flight** — no file records it, so derive it:
    `git worktree list`, then `git fetch` and
-   `git branch -r --list 'origin/claim/*'`, plus the open draft pull
-   requests (`gh pr list --draft`) where a host is reachable. A
+   `git branch -r --list 'origin/claim/*'`, plus open draft and ready pull
+   requests (`gh pr list --state open`) where a host is reachable. A
    `claim/<item-key>` branch means that queue item is already claimed —
-   take another one.
+   exclude it unless the operator explicitly requests continuation.
 9. The queue item you are about to work, `plan/todo/NNNN-<slug>.md`, and
    the ADR(s) it names — both in full.
 
@@ -171,19 +171,16 @@ block above with: -->
 Named actors answer for areas (see `_agent/ROLES.md`); work is assigned
 by claim. Each writer works in its own git worktree or PR branch.
 Coordination rules:
-- **The claim on a queue item is the branch `claim/<item-key>` pushed
-  for it** — the queue file name without its extension, e.g.
-  `claim/0007-rate-limit` — plus its draft pull request where
-  integration is PR-based. Commit, then push: the push is what excludes
-  the second writer, because one item maps to one ref. There is no lock
-  ledger: worktrees cannot collide on the filesystem, and an advisory
-  ledger nobody can rely on is noise. What has to be guarded against is
-  duplicated work and contradictory merges — see the guardrails below.
+- **Acquire a claim exclusively** using the CONVENTIONS.md protocol:
+  `claim/<item-key>`, a first claim commit, empty expected remote ref and
+  porcelain new-ref confirmation. Ordinary success/up-to-date is not
+  ownership. Open the draft PR immediately before implementation when PR
+  integration applies. No lock ledger is kept in separate worktrees.
 - **State what you own** in the pull-request description, or the
   branch's first commit message under direct-to-main: the identifier
   block reserved for you and the artefacts you are the single writer of.
 - What is in flight is **derived** — `git worktree list`, the remote
-  `claim/*` branches, and the open draft pull requests — not read from a
+  `claim/*` branches, and open draft and ready pull requests — not read from a
   file; what shipped is git history and `plan/done/`.
 -->
 
@@ -198,13 +195,12 @@ ONLY for several-writer (shared-checkout / worktree) OR PR-based repos
   integrating. The single-threaded merge gate rejects a duplicate as the
   backstop. Numbers are immutable once merged. (G1 — landing the ADR
   before implementation — is recommended guidance, in CONVENTIONS.md.)
-- **Claim a queued item before implementing it (G4).** In separate
-  worktrees / PR branches, commit and then push `claim/<item-key>` — the
-  queue file name without its extension — and open a draft PR from it
-  where integration is PR-based; the push is the exclusion, so a rejected
-  push means someone else holds the item. In a shared checkout, claim the
-  item on the item itself. A single writer claims nothing. Never start a
-  queued item you have not claimed.
+- **Claim before implementing (G4).** Use the recorded mode's claim:
+  exclusive create-only branch acquisition in separate worktrees, item
+  status plus locks in shared checkouts, no exclusive claim for a single
+  writer. Follow CONVENTIONS.md's exact acquisition protocol. PR drafts
+  open before implementation; ordinary single-writer PRs use work branches.
+
 -->
 
 ## Plan folder
@@ -251,3 +247,8 @@ gate sentence):
   branch before it is marked ready; no follow-up commit is made on the
   integration branch after merge.
 -->
+
+## Reporting
+
+End final results and persisted reports with **Status at a glance**:
+**This run**, **Overall**, **Yet to do**, per CONVENTIONS.md §Reporting.

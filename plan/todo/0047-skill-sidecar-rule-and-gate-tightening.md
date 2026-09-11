@@ -60,3 +60,9 @@ returns to Implemented (r5).
 None on the chain. Queue order after plan 0045; its one-line repairs
 touch `bootstrap/SKILL.md` and `agent-wave/SKILL.md`, which plans
 0036–0045 also edit, so it runs after them rather than ahead.
+
+## Status
+
+- **Claimed by:** Codex, 2026-09-11, `kmox83/0040-claim-by-branch` (PR #5; operator-authorised expanded scope).
+- **Blockers:**
+- **Stopped:**

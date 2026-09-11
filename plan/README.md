@@ -10,9 +10,9 @@ tracks the human ordering of work, not the ADR catalogue ordering.
   (lower numbers run first). Each file names the owning ADR(s), the
   scope, the exit criteria, and any dependencies.
 - `plan/done/<YYYY-MM-DD>-<slug>.md` — shipped work, ordered
-  chronologically. The `git mv` from `todo/` to `done/` is the
-  completion event; the file's body is amended with a "Shipped"
-  footer naming the HEAD SHA and any release tag / npm version.
+  chronologically. The PR prepares a `git mv` from `todo/` to `done/`
+  with a footer naming the verified work HEAD and PR URL; the checked
+  merge into main is the completion event.
 
 ## Convention
 
@@ -38,3 +38,17 @@ tracks the human ordering of work, not the ADR catalogue ordering.
 | Deprecated | Was real; the world moved on; no successor. |
 
 See `CONVENTIONS.md` §Status lifecycle for the canonical definition.
+
+## Current completion and live status
+
+The checked PR contract in CONVENTIONS.md governs completion. A prepared
+move on an unmerged PR is ready, not shipped. Each todo carries:
+
+## Status
+
+- **Claimed by:**
+- **Blockers:**
+- **Stopped:**
+
+Record actor, date and actual branch at start; clear resolved blockers.
+Remove this section from completed items.

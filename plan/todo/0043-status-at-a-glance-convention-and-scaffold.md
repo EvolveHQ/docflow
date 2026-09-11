@@ -57,3 +57,9 @@ None. Independent of the coordination items 0038–0042; shares
 `bootstrap/SKILL.md`, `templates/AGENTS.md`, and
 `templates/CONVENTIONS.md` with them, so it runs sequentially in queue
 order unless renumbered ahead.
+
+## Status
+
+- **Claimed by:** Codex, 2026-09-11, `kmox83/0040-claim-by-branch` (PR #5; operator-authorised expanded scope).
+- **Blockers:**
+- **Stopped:**

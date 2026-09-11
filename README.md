@@ -29,7 +29,7 @@ agent the same skills are invoked as `/skill:<name>` (e.g.
 | add-convention | `/add-convention` | Assess whether a convention is worth codifying, route it to the right home (or to an ADR), then add it. Use it to enable optional practices (e.g. TDD) on demand — see [USAGE §5a](USAGE.md). |
 | audit | `/audit` | Lint the repo against its own conventions — numbering, INDEX sync, plan coverage, **ADR-privacy leaks**, more. |
 | brainstorm | `/brainstorm` | Decompose a problem into candidate ADRs + plan items (proposes drafts; writes nothing until approved). |
-| agent-wave | `/agent-wave` | Orchestrate a wave of parallel worktree subagents over the queue, with checkpoint or continuous supervision. |
+| agent-wave | `/agent-wave` | Run a bounded queue wave using available parallel agents or sequential execution, with checkpoint or continuous supervision. |
 | rollup | `/rollup` | For a multi-repo product: aggregate every member repo's ADRs into one derived, product-wide roll-up (run from the home repo). |
 
 The lifecycle skills all **read `CONVENTIONS.md` first** and honour the
@@ -170,7 +170,7 @@ read natively by any agent that loads `AGENTS.md`; the **skills** are
 | Agent | Output | Skills | Install | Invoke |
 |-------|:------:|:------:|---------|--------|
 | Claude Code | native | ✅ | marketplace (below) | `/bootstrap` |
-| Claude Cowork | native | ✅ | same Claude Code plugin | `/bootstrap` |
+| Claude Cowork | native | ✅ | desktop plugin upload | `/bootstrap` |
 | pi | native | ✅ | `pi install npm:@evolvehq/docflow` | `/skill:bootstrap` |
 | Codex | native | ✅ | `codex plugin marketplace add EvolveHQ/docflow` | `$bootstrap` / `/skills` |
 | OpenCode | native | ✅ | auto-discovered, or symlink into `~/.config/opencode/skills` | auto, by description |
@@ -190,10 +190,12 @@ matching requests too).
 
 ### Claude Cowork
 
-Cowork uses the **same plugin system** as Claude Code, so install the
-docflow plugin exactly as above (`/plugin marketplace add
-EvolveHQ/docflow`, then install) — or from Anthropic's community
-marketplace once listed. No separate packaging.
+Cowork accepts the same plugin bundle through **Customise → Plugins → Add →
+Upload plugin**. ZIP the contents of `plugins/docflow/`, including its hidden
+`.claude-plugin` directory, and upload it. Use a configured marketplace when
+available. The desktop interface and execution permissions differ from the
+Claude Code CLI; a loaded plugin does not guarantee Git access to an attached
+folder. Verify file changes and Git history in the actual target folder.
 
 ### pi coding agent
 
@@ -238,6 +240,7 @@ OpenCode's global directory (one command, stays in sync with the clone):
 
 ```
 git clone https://github.com/EvolveHQ/docflow ~/.docflow-src
+mkdir -p ~/.config/opencode/skills
 ln -s ~/.docflow-src/plugins/docflow/skills/* ~/.config/opencode/skills/
 ```
 
@@ -251,13 +254,14 @@ support via the same skill-discovery path; no separate packaging.
 ### Claude Code — local development (no install)
 
 ```
-claude --plugin-dir <path-to-this-repo>
+claude --plugin-dir <path-to-this-repo>/plugins/docflow
 ```
 
 ### Direct skill clone (no plugin lifecycle)
 
 ```
 git clone https://github.com/EvolveHQ/docflow ~/.docflow-src
+mkdir -p ~/.claude/skills
 ln -s ~/.docflow-src/plugins/docflow/skills/* ~/.claude/skills/
 ```
 
@@ -328,15 +332,24 @@ docflow/
     skills/                         #   the one skill source
       bootstrap/
         SKILL.md                    #   bootstrap: assessment + output sequence + backfill
+        agents/openai.yaml          #   optional declarative host interface
         templates/                  #   files the bootstrap reads and writes into target repos
       new-adr/SKILL.md              #   lifecycle skills — operate on a bootstrapped repo,
+      new-adr/agents/openai.yaml
       new-plan/SKILL.md             #     read CONVENTIONS.md, honour its choices
+      new-plan/agents/openai.yaml
       ship-item/SKILL.md
+      ship-item/agents/openai.yaml
       add-convention/SKILL.md
+      add-convention/agents/openai.yaml
       audit/SKILL.md
+      audit/agents/openai.yaml
       brainstorm/SKILL.md
+      brainstorm/agents/openai.yaml
       agent-wave/SKILL.md
+      agent-wave/agents/openai.yaml
       rollup/SKILL.md
+      rollup/agents/openai.yaml
   README.md
   USAGE.md
 ```
@@ -350,3 +363,29 @@ their own.
 
 MIT. Use it, fork it, change it. If you improve a template, a PR is
 welcome.
+
+## Runtime verification
+
+The same files install on all five targets; behaviour also depends on the
+selected model and the host's permissions. Independent Docker tests on
+2026-09-11 ran bootstrap and new-adr on the reviewed source snapshot:
+
+| Host / model | Observed result | Limit |
+|---|---|---|
+| Claude Code 2.1.269 / Opus 5 | Generated scaffold and decision passed file, gate and Git checks. | Delegated wave and signed remote push not yet verified. |
+| Codex 0.154.0 / GPT-6 Astra | Same checks passed. | Delegated wave and signed remote push not yet verified. |
+| OpenCode 1.18.30 / Big Pickle | Same checks passed. | Original fixture gate remained untracked; delegated wave not verified. |
+| pi 0.84.4 / GitHub Copilot GPT-4.1 | Failed: ignored supplied root/profile and seed/queue choices. | Exit zero was not behavioural success; other advertised models were unavailable. |
+| Cowork 1.52386.0 / Opus 5 High | Target files and gate passed; exported Git bundle verified. | Cloud connector denied target `.git` writes; target Git integration remains unverified. |
+
+These are scoped observations, not a guarantee for every host capability.
+The repeatable test method and newer receipts live under `evals/hosts/`.
+Wave execution reports the observed capability rung and falls back to one
+executor where delegation is unavailable. A failed gate stops the run.
+
+Optional `agents/openai.yaml` files under each skill are declarative interface
+metadata. Every target receives them; SKILL.md remains sufficient alone.
+
+Each queued item carries **Claimed by**, **Blockers**, and **Stopped**. Final
+skill results and persisted reports end with **Status at a glance**: This run,
+Overall, Yet to do. Routine progress is exempt; a ready PR is not shipped work.

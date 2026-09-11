@@ -63,3 +63,9 @@ When this ships, ADR 0012 returns to Implemented (r4).
 
 - Plan 0044 (verdict field) and plan 0049 (the skill under test) —
   sequential.
+
+## Status
+
+- **Claimed by:** Codex, 2026-09-11, `kmox83/0040-claim-by-branch` (PR #5; operator-authorised expanded scope).
+- **Blockers:**
+- **Stopped:**

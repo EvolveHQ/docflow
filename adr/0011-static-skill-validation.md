@@ -1,7 +1,7 @@
 ---
 adr: 0011
 title: Static structural validation of skills and manifests
-status: Implemented
+status: Accepted
 date: 2026-06-01
 owner: Eugenio Minardi
 supersedes:
@@ -79,6 +79,10 @@ runs before every push.
 8. The gate fails when an `INDEX.md` row's status, date, or depends-on
    disagrees with the ADR's frontmatter.
 9. The gate fails when a `plan/done/` file carries no HEAD-SHA footer.
+10. The gate scans declarative sidecars for privacy leaks, rejects executable
+    files under skills, and rejects host-specific tool tokens in skill bodies.
+11. Every skill has the same closing-report contract with the three fixed
+    labels and closed outcome vocabulary; malformed or divergent blocks fail.
 
 ## Out of scope
 
@@ -111,9 +115,10 @@ runs before every push.
 | 2026-06-01 | r2 | Eugenio Minardi | Implemented in scripts/verify.mjs (plan item 0001). Status Accepted → Implemented. |
 | 2026-07-02 | r3 | Eugenio Minardi | Reopened: extend the gate with catalogue/queue checks — section order, numbered acceptance criteria, depends-on resolution, INDEX row fidelity, done-footer SHA (AC5–9). Motivated by the 2026-07-02 consistency review: every enforced rule held, every unenforced rule had drifted. Status Implemented → Accepted pending plan 0032. |
 | 2026-07-02 | r4 | Eugenio Minardi | Implemented (plan 0032, commit 77cf25b): all five checks live in scripts/verify.mjs, each mutation-tested. AC5–9 met; AC4 (no network/model) preserved. Status Accepted → Implemented. |
+| 2026-09-11 | r5 | Eugenio Minardi | Reopened Implemented → Accepted under plan 0047: extend privacy scanning to the full skill tree, reject executable sidecars and host-specific body tokens, and validate closing-report consistency. Completion evidence remains pending. |
 
 ## Approvals
 
 | Role | Name | Date | Signature |
 |------|------|------|-----------|
-| Maintainer | Eugenio Minardi | 2026-07-02 | — |
+| Maintainer | Eugenio Minardi | 2026-09-11 | Operator-authorised PR #5 expansion |

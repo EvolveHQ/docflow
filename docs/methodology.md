@@ -417,3 +417,8 @@ boundary, and a federation model.
 
 See the [examples]({{ '/examples/' | relative_url }}) for the method applied, or the
 [source on GitHub](https://github.com/EvolveHQ/docflow).
+
+Live coordination state belongs to each queued item: Claimed by, Blockers and
+Stopped. Historical completion is derived from git and the done footer.
+Final results and persisted reports use Status at a glance (This run, Overall,
+Yet to do), distinguishing prepared PR work from completed integration.

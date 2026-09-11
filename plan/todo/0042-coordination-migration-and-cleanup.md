@@ -86,3 +86,9 @@ When this ships, ADR 0040 advances Accepted → Implemented.
 - Plans 0038–0041 (the target state this migrates to). Items 5 and 6
   (doc drift, eval fixture) may proceed alongside plan 0041; item 7
   only after 0041 ships.
+
+## Status
+
+- **Claimed by:** Codex, 2026-09-11, `kmox83/0040-claim-by-branch` (PR #5; operator-authorised expanded scope).
+- **Blockers:**
+- **Stopped:**

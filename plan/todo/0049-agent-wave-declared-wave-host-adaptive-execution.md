@@ -106,3 +106,9 @@ Maps to the three owning ADRs' acceptance criteria:
 
 - Plans 0040, 0041, 0042 (artefact-root repair of agent-wave), 0044,
   0045, 0047, and 0048 — sequential.
+
+## Status
+
+- **Claimed by:** Codex, 2026-09-11, `kmox83/0040-claim-by-branch` (PR #5; operator-authorised expanded scope).
+- **Blockers:**
+- **Stopped:**

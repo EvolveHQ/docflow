@@ -4,7 +4,7 @@
 
 Project name: <name>.
 
-Artefact root: `<.docflow/ | docs/ | .>` — `adr/`, `plan/`, `INDEX.md`, and
+Artefact root: `<.docflow/ | docs/ | .>` — `adr/`, `plan/`, `INDEX.md`, `_agent/`, and
 this file live under this root; `AGENTS.md` and `CLAUDE.md` always stay at
 the repository root. Every lifecycle skill resolves paths against this root.
 
@@ -167,16 +167,18 @@ The shipped record is git history and `plan/done/`. Regenerate
 <!-- Several writers, separate worktrees / PR branches. Replace with:
 Named actors answer for areas (see `_agent/ROLES.md`); work is assigned
 by claim. Each writer works in its own worktree / PR branch.
-- **The claim on a queue item is a pushed branch named for it,**
-  `claim/<item-key>` — the queue file name without its extension, so
-  `plan/todo/0007-rate-limit.md` is claimed by `claim/0007-rate-limit` —
-  together with a draft pull request opened from it where integration is
-  pull-request based. The prefix is fixed rather than the actor's, so one
-  item maps to exactly one ref and **the push itself is the exclusion**:
-  two writers racing for the same item race for the same ref, and the
-  loser's push is rejected. Commit before pushing — a claim branch at or
-  behind the integration branch carries no work and is not a claim. A
-  merged or deleted branch is no longer a claim.
+- **The claim is an exclusively created remote branch**, `claim/<item-key>`
+  (the queue filename without extension). Commit Claimed by, ownership and
+  reservations first. Acquire with
+  `git push --porcelain --force-with-lease=refs/heads/claim/<item-key>: origin HEAD:refs/heads/claim/<item-key>`.
+  Require exit zero and the porcelain `*` new-ref result for that ref.
+  An ordinary successful push, up-to-date result or descendant push grants
+  no ownership. Never drop the lease or overwrite an existing claim.
+  Open the draft PR immediately after acquisition and before implementation
+  where PR integration is recorded, with owner, item and reservations in
+  its body. Continue existing live claims only on an explicit operator
+  choice. A merged ref is leftover state, not a live claim; confirm PR merge
+  state where squash/rebase changed ancestry before deciding it is live.
 - **No lock ledger is kept:** worktrees cannot collide on the filesystem,
   and an advisory ledger nobody can rely on is noise.
 - **Identifier reservation.** Before parallel worktrees are spawned, each
@@ -254,25 +256,17 @@ once merged:
 - **G3 — gate backstop.** Integration is single-threaded; it rejects a
   duplicate number as the last line of defence, and the later author
   renumbers.
-- **G4 — claim before do.** Before implementing a queued item, **claim it**
-  so two writers don't build the same thing. In separate worktrees / PR
-  branches the claim is a **pushed branch named for the item**,
-  `claim/<item-key>` — the queue file name without its extension, e.g.
-  `claim/0007-rate-limit` — plus a draft PR opened from it where
-  integration is PR-based. The prefix is fixed rather than the actor's, so
-  one item maps to one ref and the push itself is the exclusion: the
-  second writer's push is rejected instead of quietly succeeding beside
-  the first. Commit before pushing; a claim branch at or behind the
-  integration branch is not a claim, and a merged or deleted branch is no
-  longer one. In a **shared checkout** there is no branch per item, so the
-  claim is recorded on the item and the `_agent/LOCKS.md` rows serialise
-  the files. A **single writer** claims nothing — nothing else can take
-  the item. An unclaimed `plan/todo` item on `main` (which G1 deliberately
-  puts there) is otherwise an open invitation to duplicate effort.
-  G1–G3 protect the *number*; G4 protects the *work assignment*. The
-  audit skill's duplicate-plan-ownership check is the backstop, and what
-  is in flight is read from worktrees, `claim/*` branches and draft PRs —
-  never from a file.
+- **G4 — claim before do.** In separate worktrees, follow the exclusive
+  acquisition protocol in Multi-Agent Rules: first claim commit, explicit
+  empty expected remote ref, exit zero AND porcelain new-ref confirmation.
+  Immediately open the draft PR before implementation for PR integration.
+  Existing refs, ordinary successful pushes and up-to-date results are not
+  acquisition. In shared checkouts, the item and LOCKS ledger carry the
+  claim; single writers have no exclusive claim. Item status still records
+  who is working in every mode. Derive in-flight state from git and both
+  draft and ready PRs; explicitly continued claims retain ownership history.
+  G1–G3 protect identifiers; G4 protects work assignment.
+
 -->
 
 <!-- Federation (multi-repo) — bootstrap INCLUDES this section
@@ -371,3 +365,47 @@ CI green. Completion changes are committed on the pull-request branch
 before it is marked ready; no follow-up commit is made on the
 integration branch after merge.
 -->
+
+## Reporting
+
+Final skill results and persisted verification, PR, wave and stop reports
+end with a section headed exactly **Status at a glance**, with three labels:
+
+- **This run** — what was attempted, actual outcomes, exact gate output and exit code.
+- **Overall** — implemented, partially verified, verified, blocked, failed or unknown.
+- **Yet to do** — all remaining work, checks, findings, cleanup and required input; None only when the complete task is verifiably finished.
+
+1. Report exact process outcomes, including timeouts and interruptions.
+2. A passing sub-step is not an overall pass; require complete evidence.
+3. Missing returns or incomplete evidence remain unknown or partially verified.
+4. Do not omit remaining work when a budget or session ends.
+
+The reader must be able to distinguish what was achieved from what is
+missing. Routine progress updates remain concise and need no closing block.
+Repository-specific reporting rules extend this numbered list.
+
+Example:
+
+**Status at a glance**
+
+- **This run:** prepared the PR; `verify: OK`, exit 0.
+- **Overall:** partially verified — CI is still pending.
+- **Yet to do:** required CI, authorised merge and branch cleanup.
+
+## Item status
+
+Every new queue item carries this section, initially empty:
+
+```markdown
+## Status
+
+- Claimed by:
+- Blockers:
+- Stopped:
+```
+
+At start, record actor, date and actual branch in Claimed by (no invented
+claim branch for shared checkouts or single writers). The owner maintains
+Blockers. On stop, record date and reason in Stopped with the three Status
+at a glance labels. Commit status with the work. Remove the section in
+the completion move to plan/done; the shipped footer replaces it.

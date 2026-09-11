@@ -16,7 +16,7 @@ is plain Markdown read natively by any agent that loads `AGENTS.md`; the
 | Agent | Install | Invoke |
 |-------|---------|--------|
 | **Claude Code** | `/plugin marketplace add EvolveHQ/docflow` then `/plugin install docflow@evolvehq` | `/bootstrap` |
-| **Claude Cowork** | the **same** Claude Code plugin (`/plugin marketplace add …`) — Cowork shares the plugin system | `/bootstrap` |
+| **Claude Cowork** | the same plugin bundle, uploaded through Customise → Plugins → Add | `/bootstrap` |
 | **pi** | `pi install npm:@evolvehq/docflow` (or `pi install git:github.com/EvolveHQ/docflow`) | `/skill:bootstrap` |
 | **Codex** | `codex plugin marketplace add EvolveHQ/docflow` then `codex plugin add docflow@evolvehq` (native plugin) | `$bootstrap` / `/skills` |
 | **OpenCode** | auto-discovers `.claude`/`.agents`/`.opencode` skills (so a Claude Code / Codex install is picked up), or symlink into `~/.config/opencode/skills` | auto, by description |
@@ -280,7 +280,7 @@ picks; a fully-specified request lets you skip straight through.
 | `/add-convention` | Assesses whether a convention is worth codifying (triages out one-offs, duplicates, churn-prone, vague), routes it to AGENTS.md / CONVENTIONS.md / GLOSSARY / an ADR, then writes it. |
 | `/audit` | Lints the repo against its own conventions and reports a punch list — numbering, INDEX sync, plan coverage, section completeness, status validity, cross-refs, language mandate, and **ADR-privacy leaks into user-visible code**. Offers to fix the mechanical issues, and offers the number-range migration (§5b) if your catalogue predates the `shape:` field. |
 | `/brainstorm` | Decomposes a problem into candidate ADRs + plan items with dependency edges and ordering. Proposes drafts only; writes nothing until approved, then hands off to `/new-adr` and `/new-plan`. |
-| `/agent-wave` | Orchestrates parallel worktree subagents over the queue. Asks wave width, budget (items/waves; hours as a soft cap), and supervision (checkpoint vs. continuous). Requires several writers; refuses a single-writer repo. |
+| `/agent-wave` | Runs a bounded queue wave with available parallel agents or sequential execution. Asks wave width, budget (items/waves; hours as a soft cap), and supervision (checkpoint vs. continuous). Requires several writers; refuses a single-writer repo. |
 | `/rollup` | For a **multi-repo product**: from the home repo, aggregate every member repo's `INDEX` into one derived, product-wide roll-up. Members not checked out are listed as "not aggregated this run". |
 
 ### agent-wave: what it can and can't do
@@ -581,7 +581,7 @@ To remove the plugin entirely:
 
 **Other agents:**
 
-- **Cowork** — same as Claude Code (`/plugin marketplace update` →
+- **Cowork** — update through the desktop Plugins interface; the CLI flow (`/plugin marketplace update` →
   install).
 - **pi** — re-run `pi install npm:@evolvehq/docflow` (or the `git:` form).
 - **Codex** — `codex plugin marketplace upgrade`, then re-add with
@@ -621,3 +621,24 @@ Claude Code version).
 - **Existing repo merge looks wrong.** Stop and surface it. The skill
   is instructed to preserve existing content; if it overwrote
   something, that's a bug — file an issue with the merge diff.
+
+### Coordination and result reporting
+
+Live status belongs to each queue item: Claimed by (actor, date, actual
+branch), Blockers, and Stopped (date and reason). The section is removed at
+completion; git and the done footer retain history. Unqueued ideas remain
+in the brainstorm conversation until explicitly approved and queued.
+
+Separate worktrees acquire a remote claim exclusively before implementation
+and open the draft PR immediately when PR integration is configured. Existing
+live claims are excluded unless explicitly continued. Shared-checkout waves
+run sequentially under direct integration; PR waves require separate worktrees.
+A single writer uses its sequential autonomous prompt and an ordinary PR branch.
+
+Final skill results and persisted reports end with Status at a glance:
+This run, Overall, Yet to do. They distinguish ready work from a confirmed merge or
+push. Routine progress updates do not need this block. Existing repositories
+can use audit to preview and migrate legacy coordination files, preserving
+live ownership and custom rules. Prior explicit migration approval is reused.
+
+See README's runtime verification table for observed host behaviour and limits.

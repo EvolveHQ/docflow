@@ -288,7 +288,7 @@ New work now follows the same loop: `/new-adr` → `/new-plan` → `/ship-item`.
 
 ### agent-wave
 
-1. `/agent-wave "3 agents, checkpoint after each wave"` → spawns 3 worktree
+1. `/agent-wave "3 agents, checkpoint after each wave"` → requests up to 3 available worktree
    subagents, one queue item each, reviews after each wave.
 2. *"fan out the next 5 todo items in parallel"* → one wave, budget = 5 items.
 3. *"run the queue continuously until empty (PR-based)"* → continuous mode; CI
@@ -445,3 +445,8 @@ catalogue, viewed by area.*
 ---
 
 [← Back to docflow](../)
+
+Final skill results report This run, Overall and Yet to do under Status at a glance.
+Live ownership, blockers and stop reasons are recorded on the queue item.
+Wave width adapts to host capabilities; unavailable delegation uses sequential
+execution. Ready PRs remain live until their checked merge.

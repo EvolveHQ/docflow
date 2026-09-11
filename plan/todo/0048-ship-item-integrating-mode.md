@@ -87,3 +87,9 @@ Implemented.
 - Plan 0039 (record step removed), plan 0040 (claim convention and
   ADR 0038 r2), plan 0041 (Status section), plan 0044 (closing block),
   plan 0047 (denylist in force) — sequential.
+
+## Status
+
+- **Claimed by:** Codex, 2026-09-11, `kmox83/0040-claim-by-branch` (PR #5; operator-authorised expanded scope).
+- **Blockers:**
+- **Stopped:**

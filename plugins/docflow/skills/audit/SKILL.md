@@ -18,7 +18,7 @@ This is the enforcement `AGENTS.md` cannot guarantee on its own.
    lifecycle, integration model, multi-agent mode,
    language mandate, optional artefacts present (GLOSSARY, domains/),
    and any Q10 domain hard rules, and the **artefact root** (default:
-   repository root) — resolve `adr/`, `plan/`, `INDEX.md` against it and
+   repository root) — resolve `adr/`, `plan/`, `INDEX.md`, `_agent/` against it and
    honour it in the cross-reference and INDEX-sync checks.
 3. If a `federation.md` exists, this repo is part of a multi-repo
    product. Note its `Role` (`central` / `home` / `coordinator`
@@ -113,7 +113,10 @@ the same way: it is a template, not the first technology ADR.
     unattended run behaves — and holds nothing git already records.
     N/A if the repo has no `_agent/` directory (a valid state: a single
     writer that is not eligible for the run prompt has none). Otherwise
-    read the recorded coordination mode and check three things:
+    read the recorded coordination mode. First recognise the legacy marker set
+    below: it gets one non-failing migration-available finding, and its
+    recorded hygiene rules remain active until migration. Modern-only file
+    and derived-state failures below do not duplicate that finding. Check:
     - **Only the prescribed files exist.** Single writer:
       `prompts/autonomous.md` and nothing else. Shared checkout:
       `ROLES.md`, `LOCKS.md`, `prompts/autonomous.md`. Separate
@@ -159,27 +162,31 @@ the same way: it is a template, not the first technology ADR.
       it and render it in the report: `git worktree list` for the
       worktrees on this machine, the remote branches matching the claim
       convention (`claim/<item-key>`, the queue file name without its
-      extension), and the open draft pull requests where a pull-request
+      extension), and open pull requests, draft or ready, where a pull-request
       host is reachable. Then check it:
       - **Fail** on an **item claimed twice** — two claim branches for
         one item key, or a claim branch and a claim recorded on the item
         naming different actors. One item maps to one ref precisely so
         this cannot happen quietly; if it has, name both claims and the
         item.
-      - **Fail** on a **claim with no item** — a claim branch whose item
-        key matches no file in `plan/todo/`. Either the item shipped and
-        the branch outlived it, or the key is wrong; both need a human.
-      - **Stale claim** — a worktree, or a claim recorded on an item,
-        whose remote claim branch no longer exists. Report it as
-        **hygiene** and **offer to prune the worktree**
-        (`git worktree prune`, or `git worktree remove <path>` for a
-        named one) — never prune unasked: a worktree may hold
-        uncommitted work. A **detached** worktree, sitting on no claim
-        branch at all, is neither a claim nor stale; do not report it as
-        either.
-      - A claim branch whose tip is **at or behind the integration
-        branch** carries no work and is not a claim. Report it as a
-        leftover ref to delete, not as a claim on its item.
+      - **Resolve the item at the integration base and claim tip**, not
+        only in the auditor's checkout. An unmerged ready PR can already
+        contain the todo-to-done move: use its item reference and git move
+        history to connect the done entry. Only fail an orphan claim when
+        neither tree nor the linked PR explains its item. Missing read
+        access makes this unverifiable, not an orphan.
+      - **Stale branch-backed claim:** after successful fetch/prune, its
+        remote ref is confirmed absent. Offer cleanup with evidence, never
+        delete an uncommitted or unnamed worktree. Detached worktrees are
+        neither claims nor stale. Shared-checkout Claimed by and lock rows
+        have no remote claim branch: use the ownership evidence above;
+        absent remote refs and absent diffs alone prove nothing.
+      - Confirmed merged PRs and claim tips already reachable from the
+        integration branch are not live. An item still queued is merged but
+        unshipped and needs reconciliation; a linked completion entry on
+        the base is shipped. Use PR merge state when squash/rebase changed
+        ancestry. Unmerged draft and ready PRs remain live. Normal actor
+        changes in a continued claim's history are not duplicate ownership.
       - **No remote, no verdict.** Where no remote is reachable the
         branch and pull-request halves cannot be computed at all. Report
         the in-flight view **unverifiable**, naming what could not be
@@ -190,9 +197,10 @@ the same way: it is a template, not the first technology ADR.
       `IN_FLIGHT.md`, `HANDOFF.md`, a `merge=union` attribute for the
       worklog, or a `.gitignore` entry for the snapshot — report them
       as **one** finding naming the layout and every file in it, not
-      one finding per file. Do **not** offer to remove them and do not
-      edit them: a repo on the old layout still works, and moving it
-      onto the new one is a migration of its own.
+      one finding per file, at non-failing **migration available** severity.
+      Include a mode-inappropriate ROLES or LOCKS file as a marker too.
+      Offer the coordination migration below. Separately offer evidenced
+      stale-content cleanup; keep valid legacy rules if migration is declined.
 11. **Cross-worktree collisions** (repos that record several writers on
     separate worktrees, or any audit that spans unmerged branches).
     These catch semantic conflicts that a line-level git merge cannot,
@@ -271,6 +279,16 @@ the same way: it is a template, not the first technology ADR.
     declared-field scheme is available (Step 4). Never split it into a
     second finding — a template numbered off `0000` and a recorded
     cutoff are the same condition — and never fail the audit for it.
+
+16. **Item status and reports.** Surface every nonempty Stopped field for
+    human attention. Modern queued items carry Claimed by / Blockers /
+    Stopped; done entries carry no live Status section. Check that the
+    Reporting convention and AGENTS pointer both exist or are both opted
+    out, with the same heading/labels. Inspect accessible PR bodies, wave
+    item/summary reports and stop records for Status at a glance, the three
+    labels, exact gate outcomes and outstanding work. Missing/inconsistent
+    blocks are drift; inaccessible reports are unverifiable. Draft PRs may
+    report verification as not run; they must never imply success.
 
 ## Step 2 — Report
 
@@ -403,3 +421,48 @@ template numbered other than `0000`. The catalogue must pass with **no
 manual edit**. If anything fails, the migration is incomplete — finish
 it in the same commit rather than leaving a half-migrated catalogue,
 which is the one state neither rule set describes.
+
+## Coordination migration
+
+This is independent of range-number migration. Recognise any legacy
+worklog file/directory, IN_FLIGHT dashboard, CURRENT_FOCUS snapshot,
+HANDOFF, mode-inappropriate ROLES/LOCKS, worklog union attribute or snapshot
+ignore entry. Do not combine its report with unrelated semantic failures.
+
+1. **Dry run:** list each removal and its evidence/content destination.
+   Match live claims against git/PRs; carry owner, reservations and blockers
+   into the corresponding queue item or claim commit/PR. Preserve custom
+   operating instructions in their appropriate convention or run prompt.
+   Shipped history stays in git and plan/done. Uncertain ownership stays
+   unresolved and is never cleared merely because there is no pending diff.
+2. **Approval:** apply an existing explicit grant covering this migration,
+   or ask for approval of the displayed changes. Audit acceptance alone
+   is not migration approval. If declined, keep the old conventions/files.
+   Stale-content cleanup can be approved separately, per named removal.
+3. **Apply:** retire the legacy files and only their attribute/ignore rows;
+   preserve unrelated entries. Remove ROLES for a single writer and LOCKS
+   for separate worktrees. Add Status to open items, retaining live facts.
+   Write AGENTS' Picking up this repo from actual files: conventions,
+   catalogue, queue/status, newest done entries, first-parent git log,
+   and applicable worktree/claim/PR commands. Rewrite coordination rules;
+   regenerate the prompt from recorded root, mode, integration and gate.
+4. **Commit:** one migration commit lists every removed/moved file and
+   where its content now lives. Do not remove live branches or worktrees as
+   a side effect. Run the gate and repeat the audit under the new rules;
+   finish any incomplete migration before claiming it passed.
+
+Name checked scope, unresolved findings, inaccessible evidence and any applied fixes.
+
+<!-- docflow:closing-report -->
+## Closing report
+
+End every run, including blocked, failed and stopped runs, with a section
+headed exactly **Status at a glance**, containing these three labels:
+
+- **This run:** only actions actually attempted and their outcomes; quote each verify gate's exact output and exit code, including timeouts or interruptions.
+- **Overall:** implemented, partially verified, verified, blocked, failed or unknown. A passing sub-step is not an overall pass; incomplete or missing evidence never becomes success.
+- **Yet to do:** every remaining action, unresolved finding, verification, cleanup or required input. Write None only when the whole task is verifiably complete; never omit work because a budget ended.
+
+Routine progress messages need no block. Keep final results brief and
+distinguish work prepared on a PR from work confirmed shipped.
+<!-- /docflow:closing-report -->
