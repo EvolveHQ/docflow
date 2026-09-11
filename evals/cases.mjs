@@ -85,7 +85,7 @@ export const cases = [
       assertTree(repo, [
         'AGENTS.md', 'CONVENTIONS.md', 'INDEX.md',
         'adr/0000-template.md', 'plan/todo', 'plan/done',
-        '_agent/ROLES.md', 'scripts/verify.mjs',
+        'scripts/verify.mjs',
       ]);
       assertContiguousAdrs(repo);
       assertIndexSync(repo);
