@@ -1,7 +1,7 @@
 ---
 adr: 0047
 title: agent-wave adapts to the orchestration capability the host exposes
-status: Accepted
+status: Implemented
 date: 2026-09-04
 owner: Eugenio Minardi
 supersedes:
@@ -192,6 +192,7 @@ rung three, the path every host shares.
 | 2026-09-04 | r1 | Eugenio Minardi | Initial draft (Proposed), from the approved two-round brainstorm: the three-rung capability ladder derived in capability vocabulary, never solicited; writer-keyed mode mapping with the two refusals; remote, base, ahead-or-behind, and probe preconditions; the operator's checkout left alone. A runner question, a planner-only skill, a separate run-wave skill, width-one waves for single writers, a clean-checkout precondition, and coupling to the host tool considered and rejected. |
 | 2026-09-11 | r2 | Eugenio Minardi | Proposed → Accepted. Operator authorised the queued coordination rollout in PR #5; implementation and verification remain pending. |
 | 2026-09-11 | r3 | Eugenio Minardi | Resolve the ahead-local-checkout ambiguity: all rungs use the fetched integration base; unpushed local work requires reconciliation and cannot be silently bypassed by selecting rung three. |
+| 2026-09-11 | r4 | Eugenio Minardi | Implementation and scoped verification prepared in PR #5; status becomes effective on its checked merge. Independent Docker receipts, deterministic checks and the audit report record evidence and remaining host limits. |
 
 ## Approvals
 

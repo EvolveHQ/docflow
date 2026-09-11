@@ -1,7 +1,7 @@
 ---
 adr: 0050
 title: Repository changes integrate through checked pull requests
-status: Accepted
+status: Implemented
 date: 2026-09-11
 owner: Eugenio Minardi
 supersedes:
@@ -64,6 +64,7 @@ they become shipped only when that PR is confirmed merged into main.
 | Date | Revision | Author | Change |
 |------|----------|--------|--------|
 | 2026-09-11 | r1 | Eugenio Minardi | Proposed and accepted in the operator session: checked PRs with standard merge commits replace this repository's direct-to-main profile. Implementation pending. |
+| 2026-09-11 | r2 | Eugenio Minardi | Implementation and scoped verification prepared in PR #5; status becomes effective on its checked merge. Independent Docker receipts, deterministic checks and the audit report record evidence and remaining host limits. |
 
 ## Approvals
 

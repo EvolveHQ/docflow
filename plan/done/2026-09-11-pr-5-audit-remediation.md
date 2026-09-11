@@ -54,8 +54,4 @@ are not requested.
    the reviewed revision; the existing PR is updated with accurate scope.
 5. No release, publication, merge, or unrelated repository change occurs.
 
-## Status
-
-- Claimed by: Codex; existing PR branch kmox83/0040-claim-by-branch.
-- Blockers:
-- Stopped:
+Shipped at HEAD `576851598dd533740501d39ac2d6ecbe1f03350a` via [PR #5](https://github.com/EvolveHQ/docflow/pull/5). Prepared on the PR branch; effective only on the required-checks-passing merge into main.

@@ -39,7 +39,8 @@ scope. Unperformed host capabilities remain pending rather than inferred.
 2. README rows carry no "assumed, verify" marker.
 3. ADR 0015 r5 row present; INDEX regenerated; verify gate green.
 
-When this ships, ADR 0015 returns to Implemented (r5).
+When its full criteria are verified, append the next substantive revision
+and return ADR 0015 to Implemented.
 
 ## Dependencies
 
@@ -57,3 +58,21 @@ When this ships, ADR 0015 returns to Implemented (r5).
 Also retains ADR 0012 in Accepted until the outstanding full behavioural
 release matrix is executed. Independent Docker receipts cover scoped runs;
 the deterministic runner's skipped cases are not a release pass.
+
+## Observed and pending
+
+Bootstrap/new-adr: Claude Code, Codex and OpenCode passed independent file/Git
+checks. Cowork passed target files/gate and its exported bundle matched all
+14 tracked target files, but the connector denied target .git writes. pi's
+Copilot GPT-4.1 configuration failed twice; saved Anthropic and OpenAI logins
+could not refresh, and other advertised Copilot models were unavailable.
+
+Claude Code rung 3 passed the final wave, including independent plan/ADR
+numbers and held-claim exclusion. Codex passed nested-root migration and the
+whole-wave environment-stop case. OpenCode's original stop case failed; its
+rerun was rejected by the provider (HTTP 400 prompt_cache_key) before acting.
+
+Next: refresh pi's supported provider login and rerun; recheck OpenCode's
+stop path once its provider accepts requests; verify a Cowork runtime with
+target Git capability; then execute signed-push and delegated-rung checks
+and the full release matrix. None of these is inferred from install parity.

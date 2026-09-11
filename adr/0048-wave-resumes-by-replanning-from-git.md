@@ -1,7 +1,7 @@
 ---
 adr: 0048
 title: A wave resumes by re-planning from git
-status: Accepted
+status: Implemented
 date: 2026-09-04
 owner: Eugenio Minardi
 supersedes:
@@ -171,6 +171,7 @@ upon.
 |------|----------|--------|--------|
 | 2026-09-04 | r1 | Eugenio Minardi | Initial draft (Proposed), from the approved two-round brainstorm: collect-first classification into six classes, exclusion of live claims by default, the high-impact continue question with its express default and invocation shortcut, claims ended by deletion, overlap settled by the remote. Auto-continue, exclude-with-no-way-back, a committed resume marker, and host replay as the record considered and rejected. |
 | 2026-09-11 | r2 | Eugenio Minardi | Proposed → Accepted. Add the missing eligible class and precedence; distinguish ready PRs from orphan claims, recognise confirmed PR merges, restrict remote staleness to branch-backed claims, and use exclusive acquisition. |
+| 2026-09-11 | r3 | Eugenio Minardi | Implementation and scoped verification prepared in PR #5; status becomes effective on its checked merge. Independent Docker receipts, deterministic checks and the audit report record evidence and remaining host limits. |
 
 ## Approvals
 

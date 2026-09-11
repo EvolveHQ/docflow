@@ -1,7 +1,7 @@
 ---
 adr: 0041
 title: Status at a glance — every report says what was achieved and what is missing
-status: Accepted
+status: Implemented
 date: 2026-09-04
 owner: Eugenio Minardi
 supersedes:
@@ -147,6 +147,7 @@ conventions.
 |------|----------|--------|--------|
 | 2026-09-04 | r1 | Eugenio Minardi | Initial draft (Proposed), from the approved brainstorm: the Status at a glance block (This run / Overall / Yet to do), four generic honesty rules and the achieved-and-missing principle; one full statement in CONVENTIONS.md, a pointer rule in AGENTS.md, a Report step in the run prompt; default at every depth with a full-depth opt-out; repository-specific rules extend the section. |
 | 2026-09-11 | r2 | Eugenio Minardi | Proposed → Accepted. Apply the closing block to final skill results and persisted reports; routine progress updates remain concise. |
+| 2026-09-11 | r3 | Eugenio Minardi | Implementation and scoped verification prepared in PR #5; status becomes effective on its checked merge. Independent Docker receipts, deterministic checks and the audit report record evidence and remaining host limits. |
 
 ## Approvals
 

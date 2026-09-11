@@ -17,7 +17,8 @@ Two commits, per the gate-integrity convention.
    ADR identifiers; agrees with the frontmatter; never executable).
    `AGENTS.md` structure bullet mentions them. ADR 0011 r5 and 0015 r5
    rows with Rationale footers; INDEX regenerated.
-2. **Tighten and repair**, reason named in the message: `scripts/verify.mjs`
+2. **Tighten after prior repairs**, reason named in the message (the
+   stricter standalone ordering permitted by ADR 0049 r3): `scripts/verify.mjs`
    section D walks `plugins/docflow/skills` (sidecars included) beside
    the existing SKILL.md and template scans; section B adds the
    host-token denylist on skill bodies (`AskUserQuestion`,
@@ -49,7 +50,7 @@ acceptance criteria:
    repaired. → AC4
 5. Sidecar descriptions agree with frontmatter; agent-wave's reworded.
    → AC5
-6. Stricter checks and repairs in one commit, reason named. → AC6
+6. Stricter checks alone after prior repair commits, with reasons named. → AC6
 7. Gate green; five-target parity preserved.
 
 When this ships, ADR 0049 advances Accepted → Implemented; ADR 0011
@@ -61,8 +62,4 @@ None on the chain. Queue order after plan 0045; its one-line repairs
 touch `bootstrap/SKILL.md` and `agent-wave/SKILL.md`, which plans
 0036–0045 also edit, so it runs after them rather than ahead.
 
-## Status
-
-- **Claimed by:** Codex, 2026-09-11, `kmox83/0040-claim-by-branch` (PR #5; operator-authorised expanded scope).
-- **Blockers:**
-- **Stopped:**
+Shipped at HEAD `576851598dd533740501d39ac2d6ecbe1f03350a` via [PR #5](https://github.com/EvolveHQ/docflow/pull/5). Prepared on the PR branch; effective only on the required-checks-passing merge into main.

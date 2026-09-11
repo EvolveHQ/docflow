@@ -1,8 +1,7 @@
 # 0050 — agent-wave behavioural case at the sequential rung
 
-Owning ADR: adr/0012-skill-behavioural-evals.md (r5 — reopened
-Implemented → Accepted on landing, → Implemented on ship; AC2's list
-extends to agent-wave)
+Owning ADR: adr/0012-skill-behavioural-evals.md (r5). This item verifies
+the sequential wave; the broader release matrix remains under plan 0051.
 
 ## Scope
 
@@ -49,7 +48,7 @@ Out of scope:
 ## Exit criteria
 
 Maps to adr/0012-skill-behavioural-evals.md acceptance criteria as
-extended by r4:
+extended by r5:
 
 1. The agent-wave case exists with the fixture, parameters, and PASS
    criterion above; the second case asserts exclusion. → AC2 (extended)
@@ -57,18 +56,12 @@ extended by r4:
    vendor host or the opt-in workflow runner. → AC3 / AC4 as recorded
 3. Fixture commit separate, reason named; verify gate green.
 
-When this ships, ADR 0012 returns to Implemented (r4).
+ADR 0012 remains Accepted pending plan 0051's remaining release evidence.
 
 ## Dependencies
 
 - Plan 0044 (verdict field) and plan 0049 (the skill under test) —
   sequential.
-
-## Status
-
-- **Claimed by:** Codex, 2026-09-11, `kmox83/0040-claim-by-branch` (PR #5; operator-authorised expanded scope).
-- **Blockers:**
-- **Stopped:**
 
 ## Verification method
 
@@ -77,3 +70,21 @@ third-claim exclusion together in `evals/hosts/wave-fixture.py`. Independent
 file/Git assertions and three final report blocks determine the verdict.
 Unsigned local fixture commits are isolated from this repo's signed contract.
 Delegation rungs and the wider release matrix remain under plan 0051.
+
+## Recorded evidence
+
+The latest actual Claude Code Docker run passed the shared fixture with
+plan items 0007/0008 owning ADRs 0001/0002; the live 0009 claim was excluded
+and preserved. External assertions verified claim metadata, completion
+footers, INDEX/ADR status, outputs, remote state and cleanup. Three exact
+report blocks passed independently. The same fixture is now exposed by the
+opt-in workflow. Its wrapper syntax was checked; execution of that native
+driver remains unobserved and belongs to the host matrix in plan 0051.
+
+The operator-approved vendor-host method replaces model-authored fixture
+setup with a deterministic fixture, combines the success and held-claim
+scenarios, and verifies fidelity outside the model. Historical failures
+remain in the receipts. ADR 0012 remains Accepted because the wider
+behavioural release matrix is still pending under plan 0051.
+
+Shipped at HEAD `576851598dd533740501d39ac2d6ecbe1f03350a` via [PR #5](https://github.com/EvolveHQ/docflow/pull/5). Prepared on the PR branch; effective only on the required-checks-passing merge into main.

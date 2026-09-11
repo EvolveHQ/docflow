@@ -1,7 +1,7 @@
 ---
 adr: 0045
 title: The wave specification is the contract between the orchestrator and the executor
-status: Accepted
+status: Implemented
 date: 2026-09-04
 owner: Eugenio Minardi
 supersedes:
@@ -206,6 +206,7 @@ adr/0043-persisted-reports-carry-status-at-a-glance.md's.
 |------|----------|--------|--------|
 | 2026-09-04 | r1 | Eugenio Minardi | Initial draft (Proposed), from the approved two-round brainstorm: fixed specification fields, the canonical brief with its claim-before-push invariant and gate-cannot-run rule, per-profile integration including the pull-request retry loop, normalised result fields with an outcome vocabulary distinct from Overall, budget and stop rules. Unshaped results, shipped schemas, in-primitive wave loops, and budget conversion considered and rejected. |
 | 2026-09-11 | r2 | Eugenio Minardi | Proposed → Accepted. Align the canonical brief with exclusive claim acquisition and immediate draft PR creation; retain the agreed mode mapping and explicit continuation. |
+| 2026-09-11 | r3 | Eugenio Minardi | Implementation and scoped verification prepared in PR #5; status becomes effective on its checked merge. Independent Docker receipts, deterministic checks and the audit report record evidence and remaining host limits. |
 
 ## Approvals
 

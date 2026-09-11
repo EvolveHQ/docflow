@@ -378,6 +378,12 @@ selected model and the host's permissions. Independent Docker tests on
 | pi 0.84.4 / GitHub Copilot GPT-4.1 | Failed: ignored supplied root/profile and seed/queue choices. | Exit zero was not behavioural success; other advertised models were unavailable. |
 | Cowork 1.52386.0 / Opus 5 High | Target files and gate passed; exported Git bundle verified. | Cloud connector denied target `.git` writes; target Git integration remains unverified. |
 
+Revised-snapshot runs also passed Codex/OpenCode bootstrap, a Claude Code
+sequential wave (including held-claim exclusion and independent queue numbers),
+Codex coordination migration, and Codex's whole-wave environment stop. pi still
+failed. OpenCode's original stop case continued incorrectly; the clarified rule
+was verified on Codex, while OpenCode's rerun was rejected by its provider.
+
 These are scoped observations, not a guarantee for every host capability.
 The repeatable test method and newer receipts live under `evals/hosts/`.
 Wave execution reports the observed capability rung and falls back to one

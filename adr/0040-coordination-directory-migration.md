@@ -1,7 +1,7 @@
 ---
 adr: 0040
 title: Compatibility, clean-up, and migration of existing coordination directories
-status: Accepted
+status: Implemented
 date: 2026-09-04
 owner: Eugenio Minardi
 supersedes:
@@ -152,6 +152,7 @@ confirmation, and both show what they will change first.
 |------|----------|--------|--------|
 | 2026-09-04 | r1 | Eugenio Minardi | Initial draft (Proposed), from the approved brainstorm with the operator's addition: legacy coordination layouts stay recognised; a stale-content clean-up is offered even when migration is declined; the migration removes the caches, carries live claims and blockers into plan items, rewrites the conventions, and lands as one commit naming where every removed file's content lives. |
 | 2026-09-11 | r2 | Eugenio Minardi | Proposed → Accepted. Operator authorised the queued coordination rollout in PR #5; implementation and verification remain pending. |
+| 2026-09-11 | r3 | Eugenio Minardi | Implementation and scoped verification prepared in PR #5; status becomes effective on its checked merge. Independent Docker receipts, deterministic checks and the audit report record evidence and remaining host limits. |
 
 ## Approvals
 

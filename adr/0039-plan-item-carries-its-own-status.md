@@ -1,7 +1,7 @@
 ---
 adr: 0039
 title: A plan item carries its own live status; the snapshot file is retired
-status: Accepted
+status: Implemented
 date: 2026-09-04
 owner: Eugenio Minardi
 supersedes:
@@ -132,6 +132,7 @@ per task.
 | 2026-09-04 | r1 | Eugenio Minardi | Initial draft (Proposed), from the approved brainstorm: snapshot file retired; queue items carry a Status section (Claimed by, Blockers, Stopped) that travels with the work and is dropped at ship; derivable fields answered by git and the plan folder. Bounded-and-audited snapshot considered and rejected. |
 | 2026-09-11 | r2 | Eugenio Minardi | Proposed → Accepted. Operator authorised the queued coordination rollout in PR #5; implementation and verification remain pending. |
 | 2026-09-11 | r3 | Eugenio Minardi | Align stale detection with the approved coordination modes: only branch-backed ownership depends on a remote claim ref; shared claims use item status and locks. |
+| 2026-09-11 | r4 | Eugenio Minardi | Implementation and scoped verification prepared in PR #5; status becomes effective on its checked merge. Independent Docker receipts, deterministic checks and the audit report record evidence and remaining host limits. |
 
 ## Approvals
 

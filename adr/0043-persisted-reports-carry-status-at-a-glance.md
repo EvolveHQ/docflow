@@ -1,7 +1,7 @@
 ---
 adr: 0043
 title: Persisted reports carry Status at a glance — pull-request bodies, wave summaries, stop entries
-status: Accepted
+status: Implemented
 date: 2026-09-04
 owner: Eugenio Minardi
 supersedes:
@@ -119,6 +119,7 @@ the persisted artefacts are where "what is missing" matters most.
 |------|----------|--------|--------|
 | 2026-09-04 | r1 | Eugenio Minardi | Initial draft (Proposed), from the approved brainstorm: pull-request bodies, wave summaries, and plan-item stop entries carry the block; audit checks the reachable forms and reports unverifiable otherwise. Conversation-only reporting considered and rejected. |
 | 2026-09-11 | r2 | Eugenio Minardi | Proposed → Accepted. Operator authorised the queued coordination rollout in PR #5; implementation and verification remain pending. |
+| 2026-09-11 | r3 | Eugenio Minardi | Implementation and scoped verification prepared in PR #5; status becomes effective on its checked merge. Independent Docker receipts, deterministic checks and the audit report record evidence and remaining host limits. |
 
 ## Approvals
 
