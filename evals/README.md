@@ -25,9 +25,20 @@ especially when a host caches an installation or a working tree has edits.
 
 Final reports are checked by `reporting.mjs`; missing blocks fail independently
 of a model's verdict. Host evidence and remaining gaps are recorded in
-`hosts/results/2026-09-11.json`. The full delegated-host/release matrix remains
-pending while pi's tested configuration fails and Cowork cannot write target
-Git history in its observed cloud-connector session.
+`hosts/results/2026-09-13.json`; earlier receipts remain historical evidence.
+The six skipped model cases have now been mapped to independently checked
+native-host runs, plus the Workflow wrapper's additional wave case. These
+receipts are separate from the deterministic command's skips. The complete
+five-host release requirement remains pending on pi authentication and a
+usable Cowork runtime with actual target Git capability.
+
+`behavioural.workflow.mjs` is a custom Workflow script: `meta` is exported,
+`phase`, `parallel`, `agent` and `log` are injected, and its body has a top-level
+return. Do not run it with plain `node` or `node --check`. The current run used
+the equivalent vendor-host route below; the complete wrapper was not invoked.
+Its revised ship and range cases require actual fixture commits, since a
+filesystem move or hypothetical migration message cannot prove Git completion
+or historical identity.
 
 ## Fixtures
 

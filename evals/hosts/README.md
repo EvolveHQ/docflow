@@ -45,8 +45,19 @@ Codex uses unrestricted execution only inside the isolated disposable container.
 pi/OpenCode use their native approval mode. Record these permission differences.
 On timeout the dedicated container is stopped so the model cannot keep acting.
 
+For native Claude tests, explicitly choose `--claude-delegation subagents`
+(Agent) or `workflow` (Workflow opt-in through ultracode effort and its tool
+allowlist). Both retain ordinary manual permissions. Do not call sequential
+execution delegation. Codex native delegation uses `--codex-persist-session`:
+the normal ephemeral runner produced a missing-parent-thread error before
+dispatch. Native session files stay on the disposable home tmpfs; preserve
+sanitised parent/child provenance before cleanup. Codex/OpenCode workers can
+be directed into separate Git worktrees without host-enforced isolation;
+record that distinction. `--provider` selects a supported pi provider.
+
 - **Bootstrap/new-adr:** initialise an empty main checkout, configure an unsigned
-  synthetic Git identity, and provide the unchanged `fixtures/scratch-gate/verify.mjs`
+  synthetic Git identity (or configure an ephemeral signing key for signed
+  coverage), and provide the unchanged `fixtures/scratch-gate/verify.mjs`
   as `tools/verify.mjs`. Supply full depth, root `.`, single writer, direct
   integration, queue and seed enabled, en-GB, no federation/domains, that exact
   gate, and approval for local fixture commits only. Author Proposed decision
@@ -74,6 +85,57 @@ The assertions are deliberately external to the model's verdict. Preserve
 original failures when rerunning a repaired skill. Do not repair a failed
 fixture and relabel the original run as passing.
 
+### Signed and concurrent coverage
+
+Configure GPG and `commit.gpgsign=true` in the disposable home, then use
+`wave-fixture.py <base> --signed --blocked`. The gate passes at the fetched
+base and fails only after alpha's output exists. `check-blocked.py <base>
+--signed` requires beta to remain unstarted; add `--concurrent` when a native
+worker has already started beta. Both claims and the unrelated held claim
+must survive without main integration. Existing completion history must
+remain byte-identical on the checkout and claims.
+
+To test the complete bootstrap-to-wave path, first independently verify a
+native separate-worktree bootstrap, then run
+`prepare-bootstrap-wave.py <bootstrap-repo> <new-base>`. It clones that actual
+Git history, keeps the scaffold and adoption history, adds three accepted
+fixture decisions and a local bare remote, and installs the gate trap before
+the model's fresh-checkout probe. Two items are eligible; the third is held.
+This fixture extension is preparation, not a claimed model bootstrap.
+
+`test-host-assertions.py --bootstrap <verified-full-bootstrap> --gate
+<original-gate>` tests eight positive/negative controls, including missing
+Git, untracked output, unsigned commits, actual beta work and changed history.
+`test-release-assertions.mjs <verified-express-bootstrap>` accepts plain/code/
+bold express values and rejects guided/full values. These are checker
+regressions, not native-host runs. The synthetic wave checker separately has
+nine regression scenarios.
+
+### Explicit release-case mapping
+
+The current release evidence uses these actual vendor-host executions, with
+`check-release.mjs <case> <target-repo> <frozen-source>` run outside the model.
+Run the corresponding host checker and `reporting.mjs` too where listed.
+
+| Case | Native execution | Independent evidence |
+|---|---|---|
+| Full bootstrap | Claude Code and Codex, full single-writer profile | `bootstrap-full`; `check-bootstrap.py --signed`, unchanged gate, tracked output, clean signed history |
+| Express bootstrap | OpenCode, fixed minimal profile | `bootstrap-express`, exact profile/tree, clean target commit; incidental Markdown tolerated |
+| New decision | Claude Code, Codex, OpenCode after separate-worktree bootstrap | `new-adr` / bootstrap checks: exactly seed Implemented plus one Proposed decision, contiguous numbers and linked INDEX metadata |
+| Ship item | Claude Code on `prepare-ship.py <base> --signed` | `ship-item`: real claim integration, completion footer ancestor, remote main match, signatures, unchanged beta/held/index statuses |
+| Range migration | Codex read-only detection, separately approved map, apply, post-audit | `legacy-range-detect` before apply: hash/HEAD unchanged; `legacy-range` after apply: sections, map, references, INDEX, done bytes preserved |
+| Coordination migration | Claude Code on the nested fixture with a live local claim | `legacy-coordination` plus all `check-migration.py` checks, gate unchanged, live ref and custom instructions preserved |
+| Wave (additional Workflow case) | Claude Code native rungs 1/2; Codex/OpenCode native rung 2 and sequential blocked controls | `check-wave.py` / `check-blocked.py --signed [--concurrent]`, native tool/session evidence and all item/wave reports |
+
+The range post-audit resolved preserved done references through the actual
+migration commit and file rename evidence. A fresh negative copy changed the
+owner to a nonexistent filename sharing the old number; the real audit
+rejected both its link and coverage, and before/after hashes proved it read-only.
+Optional hygiene and unrelated fixture findings remain explicit. The first
+OpenCode native wave passed state checks but failed its final report; a separate
+read-only reporting phase tested the clarified report instructions. It is not
+another delegation run or an uninterrupted initial pass.
+
 ## Cowork desktop
 
 Cowork requires interactive desktop login and native plugin installation.
@@ -97,6 +159,8 @@ unperformed capabilities. Keep raw logs and bundles outside the repository.
 After collecting evidence, stop/remove only the named test containers so tmpfs
 authentication is discarded. Never prune unrelated Docker resources.
 
-Results for the current audit are recorded in `results/2026-09-11.json` and
+Results for the current audit are recorded in `results/2026-09-13.json` and
 the internal audit report. Passing a subset does not establish a green release
-suite or prove signed remote pushes, GitHub permissions or delegation rungs.
+suite. Signed local pushes and native delegation have bounded evidence;
+GitHub permissions, pi's successful lifecycle/wave and current Cowork target
+Git integration remain unverified. `results/2026-09-11.json` is historical.

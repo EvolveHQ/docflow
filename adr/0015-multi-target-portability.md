@@ -103,6 +103,8 @@ installs the existing Claude Code plugin.
 - adr/0008-dual-target-packaging.md (superseded by this ADR)
 - adr/0009-distribution-marketplace-npm.md (the Claude Code / npm channels)
 - adr/0007-lifecycle-skills.md
+- `audits/2026-09-13-host-verification.md` and `evals/hosts/results/2026-09-13.json`
+  (current bounded observations; pi/Cowork acceptance remains outstanding)
 
 ## Revision History
 
@@ -113,6 +115,7 @@ installs the existing Claude Code plugin.
 | 2026-06-04 | r3 | Eugenio Minardi | Codex requires the plugin (incl. its skills) in a subdirectory — root `source: "."`/`"./"` does not resolve. Restructure to `plugins/docflow/` holding the skills + all three plugin manifests; both marketplaces point to `./plugins/docflow`; `package.json` (`pi.skills`/`files`) + `verify.mjs` repointed. **Verified on real Codex** (`marketplace add` → `plugin add docflow@evolvehq` → all 8 skills installed). |
 | 2026-06-29 | r4 | Eugenio Minardi | Implemented. AC5 met: maintainer confirms `bootstrap` + lifecycle skills run on **Codex, OpenCode, and Cowork** via real usage (also pi, and mimocode beyond the documented five). plan 0010 → done. |
 | 2026-09-11 | r5 | Eugenio Minardi | Reopen AC5 for the current coordination changes: verify bootstrap, a lifecycle action, and wave execution on each named host. Record observed capability rungs, authentication, signing/push and desktop limitations; historical usage is not current-revision evidence. |
+| 2026-09-13 | r6 | Codex, operator-authorised | Record dedicated PR #6 evidence: Claude Code native Workflow/Agent rungs and signed local transport; Codex/OpenCode native workers with explicit Git worktrees and preserved concurrent blocked work; exact-source bootstrap/lifecycle and sidecar checks. Preserve original failures and targeted report repairs. AC5 remains unmet on pi and Cowork; support scope unchanged, status remains Accepted. |
 
 ## Approvals
 
@@ -120,3 +123,4 @@ installs the existing Claude Code plugin.
 |------|------|------|-----------|
 | Maintainer | Eugenio Minardi | 2026-06-03 | — |
 | Maintainer | Eugenio Minardi | 2026-09-11 | Approved in operator session; PR #5 expansion |
+| Operator | Eugenio Minardi | 2026-09-13 | Explicit dedicated-worktree continuation and necessary fixes authorised for 0051; no merge or release approval |

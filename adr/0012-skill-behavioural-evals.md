@@ -94,6 +94,8 @@ edits, but must identify its digest and cannot claim to test a later commit.
 
 - adr/0011-static-skill-validation.md
 - adr/0007-lifecycle-skills.md
+- `evals/hosts/README.md` (explicit six-case plus wave mapping)
+- `audits/2026-09-13-host-verification.md` (results, original failures and limits)
 
 ## Revision History
 
@@ -103,6 +105,7 @@ edits, but must identify its digest and cannot claim to test a later commit.
 | 2026-06-02 | r2 | Eugenio Minardi | Resolved runner open question: host subagent mechanism (worktree Agent/Workflow), no external CLI/pinned model. Noted committed-state worktree consequence. Demonstrated via a new-adr subagent eval. |
 | 2026-06-02 | r3 | Eugenio Minardi | Implemented (plan item 0002): evals/ deterministic layer + behavioural.workflow.mjs; all three subagent evals (new-adr, ship-item, bootstrap) PASS against HEAD. Status Accepted → Implemented. |
 | 2026-09-11 | r4 | Eugenio Minardi | Reopen for the approved wave regressions and independent Docker host harness. Operator explicitly authorised real vendor CLI/desktop runs; observable outcomes, not model self-report, determine pass. |
+| 2026-09-13 | r5 | Codex, operator-authorised | Execute all six core model cases plus wave through the documented real-host route with independent target/report checks. Repair malformed legacy fixture sections, incidental Markdown assertions, real ship/migration history, historical identity audit and native-session dispatch. Preserve failed runs, overwritten-receipt limitations and reporting-only recovery. Deterministic six skips remain skips; the custom Workflow suite itself was not run. Keep Accepted while the owning five-host release work remains blocked. |
 
 ## Approvals
 
@@ -110,3 +113,4 @@ edits, but must identify its digest and cannot claim to test a later commit.
 |------|------|------|-----------|
 | Maintainer | Eugenio Minardi | 2026-06-01 | — |
 | Maintainer | Eugenio Minardi | 2026-09-11 | Approved in operator session; PR #5 expansion |
+| Operator | Eugenio Minardi | 2026-09-13 | Explicit 0051 continuation includes independent behavioural release checks and necessary repairs |

@@ -1,0 +1,3058 @@
+{
+  "date": "2026-09-13",
+  "base_main": "9eead9978070d29fe7066c9a640e2d85d7616bc1",
+  "pr": "https://github.com/EvolveHQ/docflow/pull/6",
+  "method": "Real installed vendor hosts in dedicated Docker containers, frozen exact source, independent target filesystem/Git/report assertions; local bare remotes only. Raw transcripts and synthetic fixture archives remain outside Git.",
+  "sources": {
+    "main": {
+      "revision": "9eead9978070d29fe7066c9a640e2d85d7616bc1",
+      "plugin_sha256": "d8a20c31f4aba8627f814951c9a15bba9d36d3b41f1aef0ad541e97bc919222c",
+      "method": "sorted plugins-relative-to-snapshot path NUL bytes NUL; git archive",
+      "tracked_source_only": true,
+      "changed_plugin_files_against_final": [
+        "plugins/docflow/skills/agent-wave/SKILL.md",
+        "plugins/docflow/skills/audit/SKILL.md",
+        "plugins/docflow/skills/bootstrap/SKILL.md",
+        "plugins/docflow/skills/new-adr/SKILL.md"
+      ]
+    },
+    "fixed": {
+      "revision": "40c60ead55aea05ea9ddb9f31faf0bbf3bf39baf",
+      "plugin_sha256": "5e9f63b7fd985e2c9e7f1ee404304513310c265808ffdacb9b289969ed07e07a",
+      "method": "sorted snapshot-relative plugins path NUL bytes NUL; git archive",
+      "changed_plugin_files_against_final": [
+        "plugins/docflow/skills/agent-wave/SKILL.md",
+        "plugins/docflow/skills/audit/SKILL.md"
+      ]
+    },
+    "release": {
+      "revision": "fcf9ac53cbe39ba28035a8b97cb39fe5e5c49891",
+      "plugin_sha256": "8e7c2791f0d571aa72b1280d596fed7f1c7d62d9af3ee1a9524c1f19fa1254f8",
+      "method": "sorted snapshot-relative plugins path NUL bytes NUL; git archive",
+      "changed_plugin_files_against_final": [
+        "plugins/docflow/skills/agent-wave/SKILL.md",
+        "plugins/docflow/skills/audit/SKILL.md"
+      ]
+    },
+    "audit": {
+      "revision": "6ff452003f1a677d324e63803e32add62da533df",
+      "plugin_sha256": "2969c2bc72882df060bd8a00eacd2dd0013dedaec1c423dd9ed03aa5950ce30d",
+      "method": "sorted snapshot-relative plugins path NUL bytes NUL; git archive",
+      "changed_plugin_files_against_final": [
+        "plugins/docflow/skills/agent-wave/SKILL.md",
+        "plugins/docflow/skills/audit/SKILL.md"
+      ]
+    },
+    "history": {
+      "revision": "d7a484613b6aa580a6dbb65dfbcdb3b4627bb4db",
+      "plugin_sha256": "1aa010bffb15fb3e55b0607198b9405ca6205a8b1a2109b4a3256f682118013d",
+      "method": "sorted snapshot-relative plugins path NUL bytes NUL; git archive",
+      "changed_plugin_files_against_final": [
+        "plugins/docflow/skills/agent-wave/SKILL.md",
+        "plugins/docflow/skills/audit/SKILL.md"
+      ]
+    },
+    "identity": {
+      "revision": "5f97bd510d33724ed6b309940f1114888aca4ee4",
+      "plugin_sha256": "d7d7e2b3569b437f28c69389a21f4f9cef2af38397c3c639f733e5c6d2a89e23",
+      "method": "sorted snapshot-relative plugins path NUL bytes NUL; git archive",
+      "changed_plugin_files_against_final": [
+        "plugins/docflow/skills/agent-wave/SKILL.md"
+      ]
+    },
+    "final": {
+      "revision": "3e98a00e62ae0ed28aa66459628d1ab71cda6953",
+      "plugin_sha256": "9f3c47ef1aa5bb2305f76dfed0ac5fe5d68345f797bdb95065eab085cf828c8c",
+      "method": "sorted snapshot-relative plugins path NUL bytes NUL; git archive",
+      "changed_plugin_files_against_final": []
+    }
+  },
+  "installation_provenance": {
+    "claude": {
+      "source": "final",
+      "discovery_root": "/opt/docflow-final/plugins/docflow",
+      "parity": {
+        "files": [
+          {
+            "path": ".claude-plugin/plugin.json",
+            "sha256": "0a653771d522aebd06233f6ba31581dbac5a5e31d45a6c53f4524c3c95e3fac4",
+            "matches": true
+          },
+          {
+            "path": ".codex-plugin/plugin.json",
+            "sha256": "e3883af2686e4871cdc81c5f3921f8800cf0a7eda0ce22d3383afe821a062243",
+            "matches": true
+          },
+          {
+            "path": "skills/add-convention/SKILL.md",
+            "sha256": "fc6bf2d61eb64da70c5f742b1956f875cc8e28c3c36c99f4afa6dfe1423bdcf9",
+            "matches": true
+          },
+          {
+            "path": "skills/add-convention/agents/openai.yaml",
+            "sha256": "99673f2e89c450229b787255b2437aa2eebe82a978947c89aa907ad0e19a8e29",
+            "matches": true
+          },
+          {
+            "path": "skills/agent-wave/SKILL.md",
+            "sha256": "1f2db0a13f80918134780c76097ae58b02026d459d5918c727fe50717aeb767c",
+            "matches": true
+          },
+          {
+            "path": "skills/agent-wave/agents/openai.yaml",
+            "sha256": "982c777f77acd7857e38eef023d6984201ac34d2d9b813fc13ca159c18ff87c1",
+            "matches": true
+          },
+          {
+            "path": "skills/audit/SKILL.md",
+            "sha256": "249ce026b1dd9b12ddc327bca098786ca45a8859cd4dc1d52708bfa2fe6e035a",
+            "matches": true
+          },
+          {
+            "path": "skills/audit/agents/openai.yaml",
+            "sha256": "650e18361b32fa096bfecd70db89f97ea62f619b1769ba02316d86f5066b0139",
+            "matches": true
+          },
+          {
+            "path": "skills/bootstrap/SKILL.md",
+            "sha256": "f25a4aa16a73708a85c6dbeff05b44586e38815167c16ea772f7accbc62d320d",
+            "matches": true
+          },
+          {
+            "path": "skills/bootstrap/agents/openai.yaml",
+            "sha256": "b198168e010948c54038016d0941fb0a398dcb23ccebc99a8d15344edc429b72",
+            "matches": true
+          },
+          {
+            "path": "skills/bootstrap/templates/AGENTS.md",
+            "sha256": "b36ea4c1df13cd73c0530415688163e3d24657a91fec3969354600a7e7db52fe",
+            "matches": true
+          },
+          {
+            "path": "skills/bootstrap/templates/CLAUDE.md",
+            "sha256": "d631d88045f74623d568adfb4783b72e3d1b732330d749bc6c72e6648d4581d3",
+            "matches": true
+          },
+          {
+            "path": "skills/bootstrap/templates/CONVENTIONS.md",
+            "sha256": "c774844c14752de1a7e2d4057864c06774ccee5ab4013c467f8e8c6a0984f0a6",
+            "matches": true
+          },
+          {
+            "path": "skills/bootstrap/templates/_agent-LOCKS.md",
+            "sha256": "1e7004866a1af37341600b5fe5511269e316a0ba6e49dd6ce8d523bdbe154e9d",
+            "matches": true
+          },
+          {
+            "path": "skills/bootstrap/templates/_agent-ROLES.md",
+            "sha256": "72fb30323066841aedacc5a3fdd33559d493d307c2a98f693924308c1f6bb3aa",
+            "matches": true
+          },
+          {
+            "path": "skills/bootstrap/templates/_agent-prompts-autonomous.md",
+            "sha256": "8d73c171dd372955b1e128511e874b769dbf5fa91853713b41d83ffa70784d4b",
+            "matches": true
+          },
+          {
+            "path": "skills/bootstrap/templates/adr-0001-seed.md",
+            "sha256": "494e28aeadd823ab31b36130de49175efb82b221ae17bfaba064d933b4d15fc1",
+            "matches": true
+          },
+          {
+            "path": "skills/bootstrap/templates/adr-capability.md",
+            "sha256": "cbe943a34e4ed46013b0b0b34fcc3c4fe26c351bd357f225b47515ace2ec2887",
+            "matches": true
+          },
+          {
+            "path": "skills/bootstrap/templates/adr-technology.md",
+            "sha256": "0c4fb4aca7796e2c0a70dca5cad533e407c1bc24882b4ff49cb37e1d9ca747b1",
+            "matches": true
+          },
+          {
+            "path": "skills/bootstrap/templates/federation-config.md",
+            "sha256": "6ec9254da1f482665e8acdaab599a87e4fdb099b1a185ea16d2604ec8553c597",
+            "matches": true
+          },
+          {
+            "path": "skills/bootstrap/templates/federation-index.md",
+            "sha256": "ffe5f7bf55ef195a6ee822b14f6d7aa4ee970eeca65a74957ab7544a290fbf63",
+            "matches": true
+          },
+          {
+            "path": "skills/bootstrap/templates/plan-README.md",
+            "sha256": "25f5c5e2d2da8cd3b74a0620cfb8c874e73eed305973d30da78ea60a917aa82e",
+            "matches": true
+          },
+          {
+            "path": "skills/brainstorm/SKILL.md",
+            "sha256": "8f30618f0cfe420a21b481133074edce42bf64b42ae1c0048740c3eca9dacf5b",
+            "matches": true
+          },
+          {
+            "path": "skills/brainstorm/agents/openai.yaml",
+            "sha256": "05db32ddca3244b810503c1075fc77c3083dec30e0d48576ebafeff135a3b4e7",
+            "matches": true
+          },
+          {
+            "path": "skills/new-adr/SKILL.md",
+            "sha256": "07da8df41ffc1083ba513c4540be2441643cf9de91d33040c18dda6e9d38eb4e",
+            "matches": true
+          },
+          {
+            "path": "skills/new-adr/agents/openai.yaml",
+            "sha256": "69ec1dceed0fcc6f9c7ad8714fb878f2157d82eeb2d55ff44e5dc9b25809505a",
+            "matches": true
+          },
+          {
+            "path": "skills/new-plan/SKILL.md",
+            "sha256": "ee31bd1ceabef71b3511576c5bcc8c2e5172ca9f35c7ae5499cdbb0aa5b0d871",
+            "matches": true
+          },
+          {
+            "path": "skills/new-plan/agents/openai.yaml",
+            "sha256": "fed150c69d6ceaf1b4c8fa30c8505c18a2ec363ad72c40f1e9412203cdd7232b",
+            "matches": true
+          },
+          {
+            "path": "skills/rollup/SKILL.md",
+            "sha256": "82502cb7d1e33c3061605e1418b1036d43cf70e30635225f34ea814c2d82d195",
+            "matches": true
+          },
+          {
+            "path": "skills/rollup/agents/openai.yaml",
+            "sha256": "210a578e922f01ace9ab23d6af698a33679a24df7b7a120bbc6359c37ce4db07",
+            "matches": true
+          },
+          {
+            "path": "skills/ship-item/SKILL.md",
+            "sha256": "1f0fb68eaa5b31aadf2bef0f8cc626d3d5f73fac2ceff9d5bc10648519e726b6",
+            "matches": true
+          },
+          {
+            "path": "skills/ship-item/agents/openai.yaml",
+            "sha256": "680c9085704a79d57ffd91a89b7f1b69a8f05ce4f3745c450fdb956c803cf2d0",
+            "matches": true
+          }
+        ],
+        "matched": true,
+        "sidecars": 9
+      },
+      "image": "sha256:2f40913e553914b115cb94eb7f1729d68437215f22462a1bf069388f9ddfba84",
+      "home_tmpfs": {
+        "/home/node": "rw,uid=1000,gid=1000,mode=0700"
+      },
+      "version_command": [
+        "docker",
+        "exec",
+        "docflow-0051-claude",
+        "claude",
+        "--version"
+      ],
+      "version_output": "2.1.269 (Claude Code)",
+      "version_exit": 0,
+      "pr_cli": {
+        "command": [
+          "docker",
+          "exec",
+          "docflow-0051-claude",
+          "gh",
+          "--version"
+        ],
+        "output": "gh version 2.23.0 (2023-02-27 Debian 2.23.0+dfsg1-1)\nhttps://github.com/cli/cli/releases/tag/v2.23.0",
+        "exit": 0,
+        "authenticated_operations": "not tested"
+      }
+    },
+    "codex": {
+      "source": "history",
+      "discovery_root": "/home/node/.codex/plugins/cache/evolvehq/docflow/0.9.4",
+      "parity": {
+        "files": [
+          {
+            "path": ".claude-plugin/plugin.json",
+            "sha256": "0a653771d522aebd06233f6ba31581dbac5a5e31d45a6c53f4524c3c95e3fac4",
+            "matches": true
+          },
+          {
+            "path": ".codex-plugin/plugin.json",
+            "sha256": "e3883af2686e4871cdc81c5f3921f8800cf0a7eda0ce22d3383afe821a062243",
+            "matches": true
+          },
+          {
+            "path": "skills/add-convention/SKILL.md",
+            "sha256": "fc6bf2d61eb64da70c5f742b1956f875cc8e28c3c36c99f4afa6dfe1423bdcf9",
+            "matches": true
+          },
+          {
+            "path": "skills/add-convention/agents/openai.yaml",
+            "sha256": "99673f2e89c450229b787255b2437aa2eebe82a978947c89aa907ad0e19a8e29",
+            "matches": true
+          },
+          {
+            "path": "skills/agent-wave/SKILL.md",
+            "sha256": "7f771d4ced5bedf56090d5c4cf32bae331670062af132713046141006818d13f",
+            "matches": true
+          },
+          {
+            "path": "skills/agent-wave/agents/openai.yaml",
+            "sha256": "982c777f77acd7857e38eef023d6984201ac34d2d9b813fc13ca159c18ff87c1",
+            "matches": true
+          },
+          {
+            "path": "skills/audit/SKILL.md",
+            "sha256": "e800024d4f4252efd0ae240468f73adca5879e60afeafe7723e3e492e64e5af0",
+            "matches": true
+          },
+          {
+            "path": "skills/audit/agents/openai.yaml",
+            "sha256": "650e18361b32fa096bfecd70db89f97ea62f619b1769ba02316d86f5066b0139",
+            "matches": true
+          },
+          {
+            "path": "skills/bootstrap/SKILL.md",
+            "sha256": "f25a4aa16a73708a85c6dbeff05b44586e38815167c16ea772f7accbc62d320d",
+            "matches": true
+          },
+          {
+            "path": "skills/bootstrap/agents/openai.yaml",
+            "sha256": "b198168e010948c54038016d0941fb0a398dcb23ccebc99a8d15344edc429b72",
+            "matches": true
+          },
+          {
+            "path": "skills/bootstrap/templates/AGENTS.md",
+            "sha256": "b36ea4c1df13cd73c0530415688163e3d24657a91fec3969354600a7e7db52fe",
+            "matches": true
+          },
+          {
+            "path": "skills/bootstrap/templates/CLAUDE.md",
+            "sha256": "d631d88045f74623d568adfb4783b72e3d1b732330d749bc6c72e6648d4581d3",
+            "matches": true
+          },
+          {
+            "path": "skills/bootstrap/templates/CONVENTIONS.md",
+            "sha256": "c774844c14752de1a7e2d4057864c06774ccee5ab4013c467f8e8c6a0984f0a6",
+            "matches": true
+          },
+          {
+            "path": "skills/bootstrap/templates/_agent-LOCKS.md",
+            "sha256": "1e7004866a1af37341600b5fe5511269e316a0ba6e49dd6ce8d523bdbe154e9d",
+            "matches": true
+          },
+          {
+            "path": "skills/bootstrap/templates/_agent-ROLES.md",
+            "sha256": "72fb30323066841aedacc5a3fdd33559d493d307c2a98f693924308c1f6bb3aa",
+            "matches": true
+          },
+          {
+            "path": "skills/bootstrap/templates/_agent-prompts-autonomous.md",
+            "sha256": "8d73c171dd372955b1e128511e874b769dbf5fa91853713b41d83ffa70784d4b",
+            "matches": true
+          },
+          {
+            "path": "skills/bootstrap/templates/adr-0001-seed.md",
+            "sha256": "494e28aeadd823ab31b36130de49175efb82b221ae17bfaba064d933b4d15fc1",
+            "matches": true
+          },
+          {
+            "path": "skills/bootstrap/templates/adr-capability.md",
+            "sha256": "cbe943a34e4ed46013b0b0b34fcc3c4fe26c351bd357f225b47515ace2ec2887",
+            "matches": true
+          },
+          {
+            "path": "skills/bootstrap/templates/adr-technology.md",
+            "sha256": "0c4fb4aca7796e2c0a70dca5cad533e407c1bc24882b4ff49cb37e1d9ca747b1",
+            "matches": true
+          },
+          {
+            "path": "skills/bootstrap/templates/federation-config.md",
+            "sha256": "6ec9254da1f482665e8acdaab599a87e4fdb099b1a185ea16d2604ec8553c597",
+            "matches": true
+          },
+          {
+            "path": "skills/bootstrap/templates/federation-index.md",
+            "sha256": "ffe5f7bf55ef195a6ee822b14f6d7aa4ee970eeca65a74957ab7544a290fbf63",
+            "matches": true
+          },
+          {
+            "path": "skills/bootstrap/templates/plan-README.md",
+            "sha256": "25f5c5e2d2da8cd3b74a0620cfb8c874e73eed305973d30da78ea60a917aa82e",
+            "matches": true
+          },
+          {
+            "path": "skills/brainstorm/SKILL.md",
+            "sha256": "8f30618f0cfe420a21b481133074edce42bf64b42ae1c0048740c3eca9dacf5b",
+            "matches": true
+          },
+          {
+            "path": "skills/brainstorm/agents/openai.yaml",
+            "sha256": "05db32ddca3244b810503c1075fc77c3083dec30e0d48576ebafeff135a3b4e7",
+            "matches": true
+          },
+          {
+            "path": "skills/new-adr/SKILL.md",
+            "sha256": "07da8df41ffc1083ba513c4540be2441643cf9de91d33040c18dda6e9d38eb4e",
+            "matches": true
+          },
+          {
+            "path": "skills/new-adr/agents/openai.yaml",
+            "sha256": "69ec1dceed0fcc6f9c7ad8714fb878f2157d82eeb2d55ff44e5dc9b25809505a",
+            "matches": true
+          },
+          {
+            "path": "skills/new-plan/SKILL.md",
+            "sha256": "ee31bd1ceabef71b3511576c5bcc8c2e5172ca9f35c7ae5499cdbb0aa5b0d871",
+            "matches": true
+          },
+          {
+            "path": "skills/new-plan/agents/openai.yaml",
+            "sha256": "fed150c69d6ceaf1b4c8fa30c8505c18a2ec363ad72c40f1e9412203cdd7232b",
+            "matches": true
+          },
+          {
+            "path": "skills/rollup/SKILL.md",
+            "sha256": "82502cb7d1e33c3061605e1418b1036d43cf70e30635225f34ea814c2d82d195",
+            "matches": true
+          },
+          {
+            "path": "skills/rollup/agents/openai.yaml",
+            "sha256": "210a578e922f01ace9ab23d6af698a33679a24df7b7a120bbc6359c37ce4db07",
+            "matches": true
+          },
+          {
+            "path": "skills/ship-item/SKILL.md",
+            "sha256": "1f0fb68eaa5b31aadf2bef0f8cc626d3d5f73fac2ceff9d5bc10648519e726b6",
+            "matches": true
+          },
+          {
+            "path": "skills/ship-item/agents/openai.yaml",
+            "sha256": "680c9085704a79d57ffd91a89b7f1b69a8f05ce4f3745c450fdb956c803cf2d0",
+            "matches": true
+          }
+        ],
+        "matched": true,
+        "sidecars": 9
+      },
+      "image": "sha256:aaec77988842e7925138169e7c545beef1722ba9aeffcfa554a57df1fc40c712",
+      "home_tmpfs": {
+        "/home/node": "rw,uid=1000,gid=1000,mode=0700"
+      },
+      "version_command": [
+        "docker",
+        "exec",
+        "docflow-0051-codex",
+        "codex",
+        "--version"
+      ],
+      "version_output": "codex-cli 0.154.0",
+      "version_exit": 0,
+      "pr_cli": {
+        "command": [
+          "docker",
+          "exec",
+          "docflow-0051-codex",
+          "gh",
+          "--version"
+        ],
+        "output": "gh version 2.23.0 (2023-02-27 Debian 2.23.0+dfsg1-1)\nhttps://github.com/cli/cli/releases/tag/v2.23.0",
+        "exit": 0,
+        "authenticated_operations": "not tested"
+      }
+    },
+    "opencode": {
+      "source": "final",
+      "discovery_root": "/home/node/.config/opencode/skills",
+      "parity": {
+        "files": [
+          {
+            "path": "add-convention/SKILL.md",
+            "sha256": "fc6bf2d61eb64da70c5f742b1956f875cc8e28c3c36c99f4afa6dfe1423bdcf9",
+            "matches": true
+          },
+          {
+            "path": "add-convention/agents/openai.yaml",
+            "sha256": "99673f2e89c450229b787255b2437aa2eebe82a978947c89aa907ad0e19a8e29",
+            "matches": true
+          },
+          {
+            "path": "agent-wave/SKILL.md",
+            "sha256": "1f2db0a13f80918134780c76097ae58b02026d459d5918c727fe50717aeb767c",
+            "matches": true
+          },
+          {
+            "path": "agent-wave/agents/openai.yaml",
+            "sha256": "982c777f77acd7857e38eef023d6984201ac34d2d9b813fc13ca159c18ff87c1",
+            "matches": true
+          },
+          {
+            "path": "audit/SKILL.md",
+            "sha256": "249ce026b1dd9b12ddc327bca098786ca45a8859cd4dc1d52708bfa2fe6e035a",
+            "matches": true
+          },
+          {
+            "path": "audit/agents/openai.yaml",
+            "sha256": "650e18361b32fa096bfecd70db89f97ea62f619b1769ba02316d86f5066b0139",
+            "matches": true
+          },
+          {
+            "path": "bootstrap/SKILL.md",
+            "sha256": "f25a4aa16a73708a85c6dbeff05b44586e38815167c16ea772f7accbc62d320d",
+            "matches": true
+          },
+          {
+            "path": "bootstrap/agents/openai.yaml",
+            "sha256": "b198168e010948c54038016d0941fb0a398dcb23ccebc99a8d15344edc429b72",
+            "matches": true
+          },
+          {
+            "path": "bootstrap/templates/AGENTS.md",
+            "sha256": "b36ea4c1df13cd73c0530415688163e3d24657a91fec3969354600a7e7db52fe",
+            "matches": true
+          },
+          {
+            "path": "bootstrap/templates/CLAUDE.md",
+            "sha256": "d631d88045f74623d568adfb4783b72e3d1b732330d749bc6c72e6648d4581d3",
+            "matches": true
+          },
+          {
+            "path": "bootstrap/templates/CONVENTIONS.md",
+            "sha256": "c774844c14752de1a7e2d4057864c06774ccee5ab4013c467f8e8c6a0984f0a6",
+            "matches": true
+          },
+          {
+            "path": "bootstrap/templates/_agent-LOCKS.md",
+            "sha256": "1e7004866a1af37341600b5fe5511269e316a0ba6e49dd6ce8d523bdbe154e9d",
+            "matches": true
+          },
+          {
+            "path": "bootstrap/templates/_agent-ROLES.md",
+            "sha256": "72fb30323066841aedacc5a3fdd33559d493d307c2a98f693924308c1f6bb3aa",
+            "matches": true
+          },
+          {
+            "path": "bootstrap/templates/_agent-prompts-autonomous.md",
+            "sha256": "8d73c171dd372955b1e128511e874b769dbf5fa91853713b41d83ffa70784d4b",
+            "matches": true
+          },
+          {
+            "path": "bootstrap/templates/adr-0001-seed.md",
+            "sha256": "494e28aeadd823ab31b36130de49175efb82b221ae17bfaba064d933b4d15fc1",
+            "matches": true
+          },
+          {
+            "path": "bootstrap/templates/adr-capability.md",
+            "sha256": "cbe943a34e4ed46013b0b0b34fcc3c4fe26c351bd357f225b47515ace2ec2887",
+            "matches": true
+          },
+          {
+            "path": "bootstrap/templates/adr-technology.md",
+            "sha256": "0c4fb4aca7796e2c0a70dca5cad533e407c1bc24882b4ff49cb37e1d9ca747b1",
+            "matches": true
+          },
+          {
+            "path": "bootstrap/templates/federation-config.md",
+            "sha256": "6ec9254da1f482665e8acdaab599a87e4fdb099b1a185ea16d2604ec8553c597",
+            "matches": true
+          },
+          {
+            "path": "bootstrap/templates/federation-index.md",
+            "sha256": "ffe5f7bf55ef195a6ee822b14f6d7aa4ee970eeca65a74957ab7544a290fbf63",
+            "matches": true
+          },
+          {
+            "path": "bootstrap/templates/plan-README.md",
+            "sha256": "25f5c5e2d2da8cd3b74a0620cfb8c874e73eed305973d30da78ea60a917aa82e",
+            "matches": true
+          },
+          {
+            "path": "brainstorm/SKILL.md",
+            "sha256": "8f30618f0cfe420a21b481133074edce42bf64b42ae1c0048740c3eca9dacf5b",
+            "matches": true
+          },
+          {
+            "path": "brainstorm/agents/openai.yaml",
+            "sha256": "05db32ddca3244b810503c1075fc77c3083dec30e0d48576ebafeff135a3b4e7",
+            "matches": true
+          },
+          {
+            "path": "new-adr/SKILL.md",
+            "sha256": "07da8df41ffc1083ba513c4540be2441643cf9de91d33040c18dda6e9d38eb4e",
+            "matches": true
+          },
+          {
+            "path": "new-adr/agents/openai.yaml",
+            "sha256": "69ec1dceed0fcc6f9c7ad8714fb878f2157d82eeb2d55ff44e5dc9b25809505a",
+            "matches": true
+          },
+          {
+            "path": "new-plan/SKILL.md",
+            "sha256": "ee31bd1ceabef71b3511576c5bcc8c2e5172ca9f35c7ae5499cdbb0aa5b0d871",
+            "matches": true
+          },
+          {
+            "path": "new-plan/agents/openai.yaml",
+            "sha256": "fed150c69d6ceaf1b4c8fa30c8505c18a2ec363ad72c40f1e9412203cdd7232b",
+            "matches": true
+          },
+          {
+            "path": "rollup/SKILL.md",
+            "sha256": "82502cb7d1e33c3061605e1418b1036d43cf70e30635225f34ea814c2d82d195",
+            "matches": true
+          },
+          {
+            "path": "rollup/agents/openai.yaml",
+            "sha256": "210a578e922f01ace9ab23d6af698a33679a24df7b7a120bbc6359c37ce4db07",
+            "matches": true
+          },
+          {
+            "path": "ship-item/SKILL.md",
+            "sha256": "1f0fb68eaa5b31aadf2bef0f8cc626d3d5f73fac2ceff9d5bc10648519e726b6",
+            "matches": true
+          },
+          {
+            "path": "ship-item/agents/openai.yaml",
+            "sha256": "680c9085704a79d57ffd91a89b7f1b69a8f05ce4f3745c450fdb956c803cf2d0",
+            "matches": true
+          }
+        ],
+        "matched": true,
+        "sidecars": 9
+      },
+      "image": "sha256:1b1c2b3dd6eaf4294e454583aeed31e0da5b99beee5f9c2c982ff6029c7b38df",
+      "home_tmpfs": {
+        "/home/node": "rw,uid=1000,gid=1000,mode=0700"
+      },
+      "version_command": [
+        "docker",
+        "exec",
+        "docflow-0051-opencode",
+        "opencode",
+        "--version"
+      ],
+      "version_output": "1.18.30",
+      "version_exit": 0,
+      "pr_cli": {
+        "command": [
+          "docker",
+          "exec",
+          "docflow-0051-opencode",
+          "gh",
+          "--version"
+        ],
+        "output": "gh version 2.23.0 (2023-02-27 Debian 2.23.0+dfsg1-1)\nhttps://github.com/cli/cli/releases/tag/v2.23.0",
+        "exit": 0,
+        "authenticated_operations": "not tested"
+      }
+    },
+    "pi": {
+      "source": "main",
+      "discovery_root": "/opt/docflow-source/plugins/docflow",
+      "parity": {
+        "files": [
+          {
+            "path": ".claude-plugin/plugin.json",
+            "sha256": "0a653771d522aebd06233f6ba31581dbac5a5e31d45a6c53f4524c3c95e3fac4",
+            "matches": true
+          },
+          {
+            "path": ".codex-plugin/plugin.json",
+            "sha256": "e3883af2686e4871cdc81c5f3921f8800cf0a7eda0ce22d3383afe821a062243",
+            "matches": true
+          },
+          {
+            "path": "skills/add-convention/SKILL.md",
+            "sha256": "fc6bf2d61eb64da70c5f742b1956f875cc8e28c3c36c99f4afa6dfe1423bdcf9",
+            "matches": true
+          },
+          {
+            "path": "skills/add-convention/agents/openai.yaml",
+            "sha256": "99673f2e89c450229b787255b2437aa2eebe82a978947c89aa907ad0e19a8e29",
+            "matches": true
+          },
+          {
+            "path": "skills/agent-wave/SKILL.md",
+            "sha256": "7f771d4ced5bedf56090d5c4cf32bae331670062af132713046141006818d13f",
+            "matches": true
+          },
+          {
+            "path": "skills/agent-wave/agents/openai.yaml",
+            "sha256": "982c777f77acd7857e38eef023d6984201ac34d2d9b813fc13ca159c18ff87c1",
+            "matches": true
+          },
+          {
+            "path": "skills/audit/SKILL.md",
+            "sha256": "b54166f1b56fd94d812063d61a53a1d902b6a6ac59aab646a2cfc17c242e2f1f",
+            "matches": true
+          },
+          {
+            "path": "skills/audit/agents/openai.yaml",
+            "sha256": "650e18361b32fa096bfecd70db89f97ea62f619b1769ba02316d86f5066b0139",
+            "matches": true
+          },
+          {
+            "path": "skills/bootstrap/SKILL.md",
+            "sha256": "a384225fc4b17c8def42dca2275bc6d43d350bc9cfcb1d666f77622a7f2e1a4b",
+            "matches": true
+          },
+          {
+            "path": "skills/bootstrap/agents/openai.yaml",
+            "sha256": "b198168e010948c54038016d0941fb0a398dcb23ccebc99a8d15344edc429b72",
+            "matches": true
+          },
+          {
+            "path": "skills/bootstrap/templates/AGENTS.md",
+            "sha256": "b36ea4c1df13cd73c0530415688163e3d24657a91fec3969354600a7e7db52fe",
+            "matches": true
+          },
+          {
+            "path": "skills/bootstrap/templates/CLAUDE.md",
+            "sha256": "d631d88045f74623d568adfb4783b72e3d1b732330d749bc6c72e6648d4581d3",
+            "matches": true
+          },
+          {
+            "path": "skills/bootstrap/templates/CONVENTIONS.md",
+            "sha256": "c774844c14752de1a7e2d4057864c06774ccee5ab4013c467f8e8c6a0984f0a6",
+            "matches": true
+          },
+          {
+            "path": "skills/bootstrap/templates/_agent-LOCKS.md",
+            "sha256": "1e7004866a1af37341600b5fe5511269e316a0ba6e49dd6ce8d523bdbe154e9d",
+            "matches": true
+          },
+          {
+            "path": "skills/bootstrap/templates/_agent-ROLES.md",
+            "sha256": "72fb30323066841aedacc5a3fdd33559d493d307c2a98f693924308c1f6bb3aa",
+            "matches": true
+          },
+          {
+            "path": "skills/bootstrap/templates/_agent-prompts-autonomous.md",
+            "sha256": "8d73c171dd372955b1e128511e874b769dbf5fa91853713b41d83ffa70784d4b",
+            "matches": true
+          },
+          {
+            "path": "skills/bootstrap/templates/adr-0001-seed.md",
+            "sha256": "494e28aeadd823ab31b36130de49175efb82b221ae17bfaba064d933b4d15fc1",
+            "matches": true
+          },
+          {
+            "path": "skills/bootstrap/templates/adr-capability.md",
+            "sha256": "cbe943a34e4ed46013b0b0b34fcc3c4fe26c351bd357f225b47515ace2ec2887",
+            "matches": true
+          },
+          {
+            "path": "skills/bootstrap/templates/adr-technology.md",
+            "sha256": "0c4fb4aca7796e2c0a70dca5cad533e407c1bc24882b4ff49cb37e1d9ca747b1",
+            "matches": true
+          },
+          {
+            "path": "skills/bootstrap/templates/federation-config.md",
+            "sha256": "6ec9254da1f482665e8acdaab599a87e4fdb099b1a185ea16d2604ec8553c597",
+            "matches": true
+          },
+          {
+            "path": "skills/bootstrap/templates/federation-index.md",
+            "sha256": "ffe5f7bf55ef195a6ee822b14f6d7aa4ee970eeca65a74957ab7544a290fbf63",
+            "matches": true
+          },
+          {
+            "path": "skills/bootstrap/templates/plan-README.md",
+            "sha256": "25f5c5e2d2da8cd3b74a0620cfb8c874e73eed305973d30da78ea60a917aa82e",
+            "matches": true
+          },
+          {
+            "path": "skills/brainstorm/SKILL.md",
+            "sha256": "8f30618f0cfe420a21b481133074edce42bf64b42ae1c0048740c3eca9dacf5b",
+            "matches": true
+          },
+          {
+            "path": "skills/brainstorm/agents/openai.yaml",
+            "sha256": "05db32ddca3244b810503c1075fc77c3083dec30e0d48576ebafeff135a3b4e7",
+            "matches": true
+          },
+          {
+            "path": "skills/new-adr/SKILL.md",
+            "sha256": "077f9fe9eec17f53c1f9c5caef283f334bf1284cbbcda16bd32ba1ba44d9a5a7",
+            "matches": true
+          },
+          {
+            "path": "skills/new-adr/agents/openai.yaml",
+            "sha256": "69ec1dceed0fcc6f9c7ad8714fb878f2157d82eeb2d55ff44e5dc9b25809505a",
+            "matches": true
+          },
+          {
+            "path": "skills/new-plan/SKILL.md",
+            "sha256": "ee31bd1ceabef71b3511576c5bcc8c2e5172ca9f35c7ae5499cdbb0aa5b0d871",
+            "matches": true
+          },
+          {
+            "path": "skills/new-plan/agents/openai.yaml",
+            "sha256": "fed150c69d6ceaf1b4c8fa30c8505c18a2ec363ad72c40f1e9412203cdd7232b",
+            "matches": true
+          },
+          {
+            "path": "skills/rollup/SKILL.md",
+            "sha256": "82502cb7d1e33c3061605e1418b1036d43cf70e30635225f34ea814c2d82d195",
+            "matches": true
+          },
+          {
+            "path": "skills/rollup/agents/openai.yaml",
+            "sha256": "210a578e922f01ace9ab23d6af698a33679a24df7b7a120bbc6359c37ce4db07",
+            "matches": true
+          },
+          {
+            "path": "skills/ship-item/SKILL.md",
+            "sha256": "1f0fb68eaa5b31aadf2bef0f8cc626d3d5f73fac2ceff9d5bc10648519e726b6",
+            "matches": true
+          },
+          {
+            "path": "skills/ship-item/agents/openai.yaml",
+            "sha256": "680c9085704a79d57ffd91a89b7f1b69a8f05ce4f3745c450fdb956c803cf2d0",
+            "matches": true
+          }
+        ],
+        "matched": true,
+        "sidecars": 9
+      },
+      "image": "sha256:edf1cd940f8a3018212e7677640c652548b14ee353b8d6b5d5b0f32877963e93",
+      "home_tmpfs": {
+        "/home/node": "rw,uid=1000,gid=1000,mode=0700"
+      },
+      "version_command": [
+        "docker",
+        "exec",
+        "docflow-0051-pi",
+        "pi",
+        "--version"
+      ],
+      "version_output": "0.84.4",
+      "version_exit": 0,
+      "pr_cli": {
+        "command": [
+          "docker",
+          "exec",
+          "docflow-0051-pi",
+          "gh",
+          "--version"
+        ],
+        "output": "gh version 2.23.0 (2023-02-27 Debian 2.23.0+dfsg1-1)\nhttps://github.com/cli/cli/releases/tag/v2.23.0",
+        "exit": 0,
+        "authenticated_operations": "not tested"
+      }
+    }
+  },
+  "runs": [
+    {
+      "id": "claude-bootstrap-full",
+      "source": "main",
+      "source_revision": "9eead9978070d29fe7066c9a640e2d85d7616bc1",
+      "plugin_sha256": "d8a20c31f4aba8627f814951c9a15bba9d36d3b41f1aef0ad541e97bc919222c",
+      "process": {
+        "host": "claude",
+        "container": "docflow-0051-claude",
+        "fixture": "/workspace/bootstrap-full/repo",
+        "host_exit": 0,
+        "seconds": 159.2,
+        "model_requested": null,
+        "provider_requested": null,
+        "claude_delegation_opt_in": "none",
+        "permission_context": "manual with explicit fixture tool allowlist",
+        "behavioural_verdict": "unverified: run independent assertions"
+      },
+      "model_argument": "default; init event identifies claude-opus-5[1m]",
+      "target_assertions": {
+        "command": [
+          "docker",
+          "exec",
+          "docflow-0051-claude",
+          "python3",
+          "/results/check-bootstrap.py",
+          "/workspace/bootstrap-full/repo",
+          "/opt/docflow-source/evals/fixtures/scratch-gate/verify.mjs",
+          "--signed"
+        ],
+        "exit": 0,
+        "result": {
+          "checks": {
+            "required_files": true,
+            "root_pointer": true,
+            "two_adrs": true,
+            "seed_implemented": true,
+            "new_adr_proposed": true,
+            "three_criteria": true,
+            "index_rows": true,
+            "plan_queue": true,
+            "seed_completion": true,
+            "recorded_gate": true,
+            "autonomous_gate": true,
+            "gate_unchanged": true,
+            "gate": true,
+            "no_obsolete_coordination": true,
+            "roles_match_mode": true,
+            "requested_coordination": true,
+            "requested_integration": true,
+            "reporting_contract": true,
+            "target_git_history": true,
+            "target_git_clean": true,
+            "target_files_tracked": true,
+            "valid_signatures": true,
+            "recorded_signing": true
+          },
+          "passed": true,
+          "gate_stdout": "verify: OK (fixture gate)",
+          "gate_exit": 0,
+          "target_git_complete": true,
+          "commits": "3ed955e docs(adr): add 0002 export a plain text summary\n16040a5 docs: bootstrap documentation-led conventions"
+        }
+      },
+      "report_assertions": {
+        "exit": 0,
+        "output": "report: OK",
+        "error": ""
+      },
+      "signatures": {
+        "exit": 0,
+        "commits": [
+          "3ed955e296ac42c66c305c90dc2654ef29062578 G docs(adr): add 0002 export a plain text summary",
+          "16040a5a48121c29b4938d6bcb2bd00da6e4b60a G docs: bootstrap documentation-led conventions"
+        ]
+      },
+      "raw_transcript_sha256": "828feb515afe3ce0d7b72dd4a515a5778bf4aa43c93af9046cebad823c53e316",
+      "final_report_sha256": "8db086a69c18e5ea34d8f1393a178f5131c3ee239b8a5a1544c37d4764c59021"
+    },
+    {
+      "id": "codex-bootstrap-full",
+      "source": "main",
+      "source_revision": "9eead9978070d29fe7066c9a640e2d85d7616bc1",
+      "plugin_sha256": "d8a20c31f4aba8627f814951c9a15bba9d36d3b41f1aef0ad541e97bc919222c",
+      "process": {
+        "host": "codex",
+        "container": "docflow-0051-codex",
+        "fixture": "/workspace/bootstrap-full/repo",
+        "host_exit": 0,
+        "seconds": 180.4,
+        "model_requested": null,
+        "provider_requested": null,
+        "claude_delegation_opt_in": null,
+        "permission_context": "danger-full-access, approval never, inside disposable container",
+        "behavioural_verdict": "unverified: run independent assertions"
+      },
+      "model_argument": "gpt-6-astra",
+      "target_assertions": {
+        "command": [
+          "docker",
+          "exec",
+          "docflow-0051-codex",
+          "python3",
+          "/results/check-bootstrap.py",
+          "/workspace/bootstrap-full/repo",
+          "/opt/docflow-source/evals/fixtures/scratch-gate/verify.mjs",
+          "--signed"
+        ],
+        "exit": 0,
+        "result": {
+          "checks": {
+            "required_files": true,
+            "root_pointer": true,
+            "two_adrs": true,
+            "seed_implemented": true,
+            "new_adr_proposed": true,
+            "three_criteria": true,
+            "index_rows": true,
+            "plan_queue": true,
+            "seed_completion": true,
+            "recorded_gate": true,
+            "autonomous_gate": true,
+            "gate_unchanged": true,
+            "gate": true,
+            "no_obsolete_coordination": true,
+            "roles_match_mode": true,
+            "requested_coordination": true,
+            "requested_integration": true,
+            "reporting_contract": true,
+            "target_git_history": true,
+            "target_git_clean": true,
+            "target_files_tracked": true,
+            "valid_signatures": true,
+            "recorded_signing": true
+          },
+          "passed": true,
+          "gate_stdout": "verify: OK (fixture gate)",
+          "gate_exit": 0,
+          "target_git_complete": true,
+          "commits": "514b895 docs(adr): propose plain text summary export\na95dd4b docs: bootstrap docflow host eval"
+        }
+      },
+      "report_assertions": {
+        "exit": 0,
+        "output": "report: OK",
+        "error": ""
+      },
+      "signatures": {
+        "exit": 0,
+        "commits": [
+          "514b8952fd6eabe81a68589359053c987a1da8a6 G docs(adr): propose plain text summary export",
+          "a95dd4bbcfa9c12b95b3e24730b584fe33b215ed G docs: bootstrap docflow host eval"
+        ]
+      },
+      "raw_transcript_sha256": "608223bc7b8d0f2a70ca6fa926adccaa0feebedf72c625c2cba0d751c863e396",
+      "final_report_sha256": "9232e2dd0ac5729af24c4bd31cf1b9165dc4a922fc55b83fdac08973c1967b0c"
+    },
+    {
+      "id": "opencode-bootstrap-full",
+      "source": "main",
+      "source_revision": "9eead9978070d29fe7066c9a640e2d85d7616bc1",
+      "plugin_sha256": "d8a20c31f4aba8627f814951c9a15bba9d36d3b41f1aef0ad541e97bc919222c",
+      "process": {
+        "host": "opencode",
+        "container": "docflow-0051-opencode",
+        "fixture": "/workspace/bootstrap-full/repo",
+        "host_exit": 0,
+        "seconds": 291.7,
+        "model_requested": null,
+        "provider_requested": null,
+        "claude_delegation_opt_in": null,
+        "permission_context": "--auto approves permissions not explicitly denied",
+        "behavioural_verdict": "unverified: run independent assertions"
+      },
+      "model_argument": "opencode/big-pickle",
+      "target_assertions": {
+        "command": [
+          "docker",
+          "exec",
+          "docflow-0051-opencode",
+          "python3",
+          "/results/check-bootstrap.py",
+          "/workspace/bootstrap-full/repo",
+          "/opt/docflow-source/evals/fixtures/scratch-gate/verify.mjs",
+          "--signed"
+        ],
+        "exit": 1,
+        "result": {
+          "checks": {
+            "required_files": true,
+            "root_pointer": true,
+            "two_adrs": true,
+            "seed_implemented": true,
+            "new_adr_proposed": true,
+            "three_criteria": true,
+            "index_rows": false,
+            "plan_queue": true,
+            "seed_completion": true,
+            "recorded_gate": true,
+            "autonomous_gate": true,
+            "gate_unchanged": true,
+            "gate": true,
+            "no_obsolete_coordination": true,
+            "roles_match_mode": true,
+            "requested_coordination": true,
+            "requested_integration": true,
+            "reporting_contract": true,
+            "target_git_history": true,
+            "target_git_clean": true,
+            "target_files_tracked": true,
+            "valid_signatures": true,
+            "recorded_signing": true
+          },
+          "passed": false,
+          "gate_stdout": "verify: OK (fixture gate)",
+          "gate_exit": 0,
+          "target_git_complete": true,
+          "commits": "c600c90 docs(adr): add ADR 0002 export a plain text summary\n7342867 docs: bootstrap documentation-led conventions for docflow"
+        }
+      },
+      "report_assertions": {
+        "exit": 0,
+        "output": "report: OK",
+        "error": ""
+      },
+      "signatures": {
+        "exit": 0,
+        "commits": [
+          "c600c9052f677a34b17357e287ed7a5212cd06db G docs(adr): add ADR 0002 export a plain text summary",
+          "7342867963fb9e835ae5c2d0c8588ffa6e41c8e9 G docs: bootstrap documentation-led conventions for docflow"
+        ]
+      },
+      "raw_transcript_sha256": "a817fc0a0cf6d20716e1a0c772f7a632643d4ff9c575a29923bb2f190d818599",
+      "final_report_sha256": "ba135973cf76756333a16082dfb428c4e46f7f9d3050d68e2a875f66645a6dbb",
+      "interpretation": "FAIL: generated INDEX rows were not linked to decision filenames; repaired source rerun uses a fresh separate-worktree bootstrap."
+    },
+    {
+      "id": "claude-bootstrap-separate",
+      "source": "fixed",
+      "source_revision": "40c60ead55aea05ea9ddb9f31faf0bbf3bf39baf",
+      "plugin_sha256": "5e9f63b7fd985e2c9e7f1ee404304513310c265808ffdacb9b289969ed07e07a",
+      "process": {
+        "host": "claude",
+        "container": "docflow-0051-claude",
+        "fixture": "/workspace/bootstrap-separate/repo",
+        "host_exit": 0,
+        "seconds": 217.9,
+        "model_requested": "opus",
+        "provider_requested": null,
+        "claude_delegation_opt_in": "none",
+        "permission_context": "manual with explicit fixture tool allowlist",
+        "behavioural_verdict": "unverified: run independent assertions"
+      },
+      "model_argument": "default; init event identifies claude-opus-5[1m]",
+      "target_assertions": {
+        "command": [
+          "docker",
+          "exec",
+          "docflow-0051-claude",
+          "python3",
+          "/results/check-bootstrap.py",
+          "/workspace/bootstrap-separate/repo",
+          "/opt/docflow-source/evals/fixtures/scratch-gate/verify.mjs",
+          "--signed",
+          "--coordination",
+          "separate"
+        ],
+        "exit": 0,
+        "result": {
+          "checks": {
+            "required_files": true,
+            "root_pointer": true,
+            "two_adrs": true,
+            "seed_implemented": true,
+            "new_adr_proposed": true,
+            "three_criteria": true,
+            "index_rows": true,
+            "plan_queue": true,
+            "seed_completion": true,
+            "recorded_gate": true,
+            "autonomous_gate": true,
+            "gate_unchanged": true,
+            "gate": true,
+            "no_obsolete_coordination": true,
+            "roles_match_mode": true,
+            "requested_coordination": true,
+            "requested_integration": true,
+            "reporting_contract": true,
+            "target_git_history": true,
+            "target_git_clean": true,
+            "target_files_tracked": true,
+            "valid_signatures": true,
+            "recorded_signing": true
+          },
+          "passed": true,
+          "gate_stdout": "verify: OK (fixture gate)",
+          "gate_exit": 0,
+          "target_git_complete": true,
+          "commits": "b11dde8 docs(adr): propose ADR 0002 export a plain text summary\ne59cfc8 docs: bootstrap documentation-led conventions"
+        }
+      },
+      "report_assertions": {
+        "exit": 0,
+        "output": "report: OK",
+        "error": ""
+      },
+      "signatures": {
+        "exit": 0,
+        "commits": [
+          "b11dde85c67b7233133211647f3372f85904f6e4 G docs(adr): propose ADR 0002 export a plain text summary",
+          "e59cfc8198ea6035dab853d6bd50d4666764cef8 G docs: bootstrap documentation-led conventions"
+        ]
+      },
+      "raw_transcript_sha256": "ed8c62a794bd3805ceedba62fde1a047fd1d66e9c52d3dc243eef82144fab590",
+      "final_report_sha256": "a5c0408361152c328827d7d2a695182282af385ce75fea9f08ddf2380e2a7ca2"
+    },
+    {
+      "id": "codex-bootstrap-separate",
+      "source": "fixed",
+      "source_revision": "40c60ead55aea05ea9ddb9f31faf0bbf3bf39baf",
+      "plugin_sha256": "5e9f63b7fd985e2c9e7f1ee404304513310c265808ffdacb9b289969ed07e07a",
+      "process": {
+        "host": "codex",
+        "container": "docflow-0051-codex",
+        "fixture": "/workspace/bootstrap-separate/repo",
+        "host_exit": 0,
+        "seconds": 213.7,
+        "model_requested": null,
+        "provider_requested": null,
+        "claude_delegation_opt_in": null,
+        "permission_context": "danger-full-access, approval never, inside disposable container",
+        "behavioural_verdict": "unverified: run independent assertions"
+      },
+      "model_argument": "gpt-6-astra",
+      "target_assertions": {
+        "command": [
+          "docker",
+          "exec",
+          "docflow-0051-codex",
+          "python3",
+          "/results/check-bootstrap.py",
+          "/workspace/bootstrap-separate/repo",
+          "/opt/docflow-source/evals/fixtures/scratch-gate/verify.mjs",
+          "--signed",
+          "--coordination",
+          "separate"
+        ],
+        "exit": 0,
+        "result": {
+          "checks": {
+            "required_files": true,
+            "root_pointer": true,
+            "two_adrs": true,
+            "seed_implemented": true,
+            "new_adr_proposed": true,
+            "three_criteria": true,
+            "index_rows": true,
+            "plan_queue": true,
+            "seed_completion": true,
+            "recorded_gate": true,
+            "autonomous_gate": true,
+            "gate_unchanged": true,
+            "gate": true,
+            "no_obsolete_coordination": true,
+            "roles_match_mode": true,
+            "requested_coordination": true,
+            "requested_integration": true,
+            "reporting_contract": true,
+            "target_git_history": true,
+            "target_git_clean": true,
+            "target_files_tracked": true,
+            "valid_signatures": true,
+            "recorded_signing": true
+          },
+          "passed": true,
+          "gate_stdout": "verify: OK (fixture gate)",
+          "gate_exit": 0,
+          "target_git_complete": true,
+          "commits": "a3d3c2c docs(adr): propose plain text summary export\nffbd227 docs: bootstrap documentation-led fixture"
+        }
+      },
+      "report_assertions": {
+        "exit": 0,
+        "output": "report: OK",
+        "error": ""
+      },
+      "signatures": {
+        "exit": 0,
+        "commits": [
+          "a3d3c2c5ff77fe8b081f0e8f7a98af2294d09773 G docs(adr): propose plain text summary export",
+          "ffbd22711f2694f18ef9c05947edbbb981a2a199 G docs: bootstrap documentation-led fixture"
+        ]
+      },
+      "raw_transcript_sha256": "bfca9e31255c390a813915b291fc03c7bb35db3a80cdafa79b2cb59d8d3f228f",
+      "final_report_sha256": "dc5e2ed5c65c4499ddc3b255f5038b96c6c77f93b86bdd381e752d0f7152832b"
+    },
+    {
+      "id": "opencode-bootstrap-separate",
+      "source": "fixed",
+      "source_revision": "40c60ead55aea05ea9ddb9f31faf0bbf3bf39baf",
+      "plugin_sha256": "5e9f63b7fd985e2c9e7f1ee404304513310c265808ffdacb9b289969ed07e07a",
+      "process": {
+        "host": "opencode",
+        "container": "docflow-0051-opencode",
+        "fixture": "/workspace/bootstrap-separate/repo",
+        "host_exit": 0,
+        "seconds": 428.4,
+        "model_requested": null,
+        "provider_requested": null,
+        "claude_delegation_opt_in": null,
+        "permission_context": "--auto approves permissions not explicitly denied",
+        "behavioural_verdict": "unverified: run independent assertions"
+      },
+      "model_argument": "opencode/big-pickle",
+      "target_assertions": {
+        "command": [
+          "docker",
+          "exec",
+          "docflow-0051-opencode",
+          "python3",
+          "/results/check-bootstrap.py",
+          "/workspace/bootstrap-separate/repo",
+          "/opt/docflow-source/evals/fixtures/scratch-gate/verify.mjs",
+          "--signed",
+          "--coordination",
+          "separate"
+        ],
+        "exit": 0,
+        "result": {
+          "checks": {
+            "required_files": true,
+            "root_pointer": true,
+            "two_adrs": true,
+            "seed_implemented": true,
+            "new_adr_proposed": true,
+            "three_criteria": true,
+            "index_rows": true,
+            "plan_queue": true,
+            "seed_completion": true,
+            "recorded_gate": true,
+            "autonomous_gate": true,
+            "gate_unchanged": true,
+            "gate": true,
+            "no_obsolete_coordination": true,
+            "roles_match_mode": true,
+            "requested_coordination": true,
+            "requested_integration": true,
+            "reporting_contract": true,
+            "target_git_history": true,
+            "target_git_clean": true,
+            "target_files_tracked": true,
+            "valid_signatures": true,
+            "recorded_signing": true
+          },
+          "passed": true,
+          "gate_stdout": "verify: OK (fixture gate)",
+          "gate_exit": 0,
+          "target_git_complete": true,
+          "commits": "9e054b3 docs(adr): add ADR 0002 export a plain text summary\n8f09146 docs(plan): record adoption of the docflow method\n6d03cab docs(docflow): bootstrap documentation-led conventions"
+        }
+      },
+      "report_assertions": {
+        "exit": 0,
+        "output": "report: OK",
+        "error": ""
+      },
+      "signatures": {
+        "exit": 0,
+        "commits": [
+          "9e054b352d7e0f79477f886c1edc86b574928e5c G docs(adr): add ADR 0002 export a plain text summary",
+          "8f091467d80cfd428a1f23f57250123b983e8459 G docs(plan): record adoption of the docflow method",
+          "6d03cab5c11a97364a02baf21ff01107888fb22c G docs(docflow): bootstrap documentation-led conventions"
+        ]
+      },
+      "raw_transcript_sha256": "6eb6dee17240a59a8426f41207ae5bdeb70fce404efa75d4eaafda82d8cf6e50",
+      "final_report_sha256": "43c9fc3fa1b2ed9e9b443b728bfa54071dbe1472acee00fc834ddc2279e40b9a"
+    },
+    {
+      "id": "claude-rung2",
+      "source": "main",
+      "source_revision": "9eead9978070d29fe7066c9a640e2d85d7616bc1",
+      "plugin_sha256": "d8a20c31f4aba8627f814951c9a15bba9d36d3b41f1aef0ad541e97bc919222c",
+      "process": {
+        "host": "claude",
+        "container": "docflow-0051-claude",
+        "fixture": "/workspace/rung2/repo",
+        "host_exit": 0,
+        "seconds": 270.9,
+        "model_requested": "opus",
+        "provider_requested": null,
+        "claude_delegation_opt_in": "subagents",
+        "permission_context": "manual with explicit fixture tool allowlist",
+        "behavioural_verdict": "unverified: run independent assertions"
+      },
+      "model_argument": "default; init event identifies claude-opus-5[1m]",
+      "target_assertions": {
+        "command": [
+          "docker",
+          "exec",
+          "docflow-0051-claude",
+          "python3",
+          "/results/check-wave.py",
+          "/workspace/rung2"
+        ],
+        "exit": 0,
+        "result": {
+          "checks": {
+            "held_claim_untouched": true,
+            "completed_claims_removed": true,
+            "two_outputs": true,
+            "held_output_absent": true,
+            "only_held_queued": true,
+            "operator_checkout_clean": true,
+            "operator_matches_remote": true,
+            "owned_worktrees_removed": true,
+            "alpha_implemented": true,
+            "alpha_done": true,
+            "alpha_footer_reachable": true,
+            "alpha_index_status": true,
+            "alpha_footer_claim": true,
+            "alpha_claim_commit_metadata": true,
+            "beta_implemented": true,
+            "beta_done": true,
+            "beta_footer_reachable": true,
+            "beta_index_status": true,
+            "beta_footer_claim": true,
+            "beta_claim_commit_metadata": true,
+            "gate": true,
+            "gate_unchanged": true,
+            "independent_plan_numbers": true,
+            "valid_signatures": true
+          },
+          "passed": true,
+          "gate_stdout": "verify: OK (wave fixture)",
+          "gate_exit": 0,
+          "log": "9886eb5 chore(plan): ship 0008-beta\ne8735de feat(outputs): write beta output\na0ff3fa chore(plan): claim 0008-beta\nf7028c1 chore(plan): ship 0007-alpha\n2dbf3f4 feat(outputs): write alpha output\nf6b6bb5 chore(plan): claim 0007-alpha\n722cfa6 chore: claim held fixture\nfc8aab1 test: initialise independent wave fixture",
+          "refs": "9886eb59332cacd10ab27ff5a1eb8a2307ba97ca\tHEAD\n722cfa6f3721b1ef29358d928b6dab420917386e\trefs/heads/claim/0009-held\n9886eb59332cacd10ab27ff5a1eb8a2307ba97ca\trefs/heads/main"
+        }
+      },
+      "report_assertions": {
+        "exit": 0,
+        "output": "report: OK",
+        "error": ""
+      },
+      "signatures": {
+        "exit": 0,
+        "commits": [
+          "9886eb59332cacd10ab27ff5a1eb8a2307ba97ca G chore(plan): ship 0008-beta",
+          "e8735de5516559d9430fb3b85e631e5b09bd1193 G feat(outputs): write beta output",
+          "a0ff3fa81d2fb3099a4133a591d853231ec7b1ec G chore(plan): claim 0008-beta",
+          "f7028c152742f4e18ecd0df6526c9f05b74f60ea G chore(plan): ship 0007-alpha",
+          "2dbf3f41bf5c9e2ecec19117f18af6f8753913cb G feat(outputs): write alpha output",
+          "f6b6bb588c9ed7ba10313ebb749457db07832bf3 G chore(plan): claim 0007-alpha",
+          "722cfa6f3721b1ef29358d928b6dab420917386e G chore: claim held fixture",
+          "fc8aab18a10f4df4feb5cdc888319beb1a539c95 G test: initialise independent wave fixture"
+        ]
+      },
+      "raw_transcript_sha256": "6f8292934eca11475cace7761ec0a818c8a1c9f8d3fc86f21f017f4b0e2ad782",
+      "final_report_sha256": "8d7d232e624f46d7b2170c89bd7d7809d7cbea437f19389d90e701edc44ef538"
+    },
+    {
+      "id": "claude-rung1-blocked",
+      "source": "main",
+      "source_revision": "9eead9978070d29fe7066c9a640e2d85d7616bc1",
+      "plugin_sha256": "d8a20c31f4aba8627f814951c9a15bba9d36d3b41f1aef0ad541e97bc919222c",
+      "process": {
+        "host": "claude",
+        "container": "docflow-0051-claude",
+        "fixture": "/workspace/rung1-blocked/repo",
+        "host_exit": 0,
+        "seconds": 564.1,
+        "model_requested": "opus",
+        "provider_requested": null,
+        "claude_delegation_opt_in": "workflow",
+        "permission_context": "manual with explicit fixture tool allowlist",
+        "behavioural_verdict": "unverified: run independent assertions"
+      },
+      "model_argument": "default; init event identifies claude-opus-5[1m]",
+      "target_assertions": {
+        "command": [
+          "docker",
+          "exec",
+          "docflow-0051-claude",
+          "python3",
+          "/results/check-blocked.py",
+          "/workspace/rung1-blocked",
+          "--signed",
+          "--concurrent"
+        ],
+        "exit": 0,
+        "result": {
+          "checks": {
+            "main_unchanged": true,
+            "held_untouched": true,
+            "alpha_claim_preserved": true,
+            "alpha_recoverable_output": true,
+            "status_records_blocker": true,
+            "gate_unchanged": true,
+            "no_completed_items": true,
+            "concurrent_beta_claim_preserved": true,
+            "concurrent_beta_work_preserved": true,
+            "valid_signatures": true,
+            "alpha_has_signed_claim_and_work": true
+          },
+          "passed": true,
+          "refs": {
+            "HEAD": "6b95b803554a56ee6139e7be817c2ca30084f78a",
+            "refs/heads/claim/0007-alpha": "487429ca60e137a5bb64e08918221ad4efbf09b9",
+            "refs/heads/claim/0008-beta": "dc5db7f74fb48394b1cbb0b8004f0459289e05ff",
+            "refs/heads/claim/0009-held": "9b2cb694d959bfe4f8a130ee34d66137f712072b",
+            "refs/heads/main": "6b95b803554a56ee6139e7be817c2ca30084f78a"
+          },
+          "blocker_status": "# 0007-alpha\n\nOwning ADR: adr/0001-alpha.md\n## Scope\nCreate outputs/alpha.txt; honour the owning ADR and gate.\n## Exit criteria\n1. Output bytes match the owning ADR.\n2. Gate passes; complete the item using the recorded direct profile.\n## Status\n- Claimed by: wave-executor-0007-alpha, 2026-09-13, claim/0007-alpha\n- Blockers: Environment. Gate command `node tools/verify.mjs`, run from the\n  worktree root at 737e8c620e6d5c230897f234f27bdaebad3f72ab, exited 1. The gate\n  imports `@docflow-eval/unavailable-fixture-dependency` when outputs/alpha.txt\n  exists. That package is not installed. It is outside the owned paths, and the\n  executor may not install dependencies or edit the gate. Complete output:\n\n  ```text\n  node:internal/modules/package_json_reader:314\n    throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);\n          ^\n\n  Error [ERR_MODULE_NOT_FOUND]: Cannot find package '@docflow-eval/unavailable-fixture-dependency' imported from /workspace/rung1-blocked/repo/.claude/worktrees/wf_9821ceb7-f3a-1/tools/verify.mjs\n      at Object.getPackageJSONURL (node:internal/modules/package_json_reader:314:9)\n      at packageResolve (node:internal/modules/esm/resolve:768:81)\n      at moduleResolve (node:internal/modules/esm/resolve:855:18)\n      at defaultResolve (node:internal/modules/esm/resolve:985:11)\n      at #cachedDefaultResolve (node:internal/modules/esm/loader:747:20)\n      at ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)\n      at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)\n      at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:680:36)\n      at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\n      at ModuleLoader.import (node:internal/modules/esm/loader:679:21) {\n    code: 'ERR_MODULE_NOT_FOUND'\n  }\n\n  Node.js v22.23.2\n  ```\n\n  Exit code: 1\n- Stopped: 2026-09-13T19:49:12Z. Reason: the recorded gate cannot run to\n  completion because a dependency is missing (environment); no install or gate\n  change is permitted.\n  - **This run:** Wrote claim status and acquired claim/0007-alpha as a new ref.\n    Wrote outputs/alpha.txt (bytes 61 6c 70 68 61 0a) and committed it as\n    737e8c6. Ran `node tools/verify.mjs` twice; both runs exited 1 with\n    ERR_MODULE_NOT_FOUND for `@docflow-eval/unavailable-fixture-dependency`.\n  - **Overall:** blocked\n  - **Yet to do:** Make `@docflow-eval/unavailable-fixture-dependency` available\n    to the gate without an executor install, or have the operator decide on the\n    gate. Then rerun `node tools/verify.mjs` on claim/0007-alpha. On a pass, the\n    orchestrator runs ship-item integration to main, ADR 0001 is advanced, INDEX\n    is regenerated, and the claim is cleaned up."
+        }
+      },
+      "report_assertions": {
+        "exit": 0,
+        "output": "report: OK",
+        "error": ""
+      },
+      "signatures": {
+        "exit": 0,
+        "commits": [
+          "487429ca60e137a5bb64e08918221ad4efbf09b9 G chore(plan): record 0007-alpha blocker",
+          "737e8c620e6d5c230897f234f27bdaebad3f72ab G feat(outputs): write alpha output",
+          "dc5db7f74fb48394b1cbb0b8004f0459289e05ff G feat(outputs): write beta output",
+          "f74ba3796f3b3163ba95c85d61137b08e32c23fc G chore(plan): claim 0008-beta",
+          "03b3211a1b2c4e6e540fbf153e16fa1143c0312a G chore(plan): claim 0007-alpha",
+          "9b2cb694d959bfe4f8a130ee34d66137f712072b G chore: claim held fixture",
+          "6b95b803554a56ee6139e7be817c2ca30084f78a G test: initialise independent wave fixture"
+        ]
+      },
+      "raw_transcript_sha256": "95ab5f5f10a7b0b4adcb4eab068f45cf28b3e16af436367866adb2838690556b",
+      "final_report_sha256": "d6ec77d2bbfc776c0fd7ea08d730df10af8257b12d3255c4d9cb3711a9fe16de"
+    },
+    {
+      "id": "codex-blocked",
+      "source": "main",
+      "source_revision": "9eead9978070d29fe7066c9a640e2d85d7616bc1",
+      "plugin_sha256": "d8a20c31f4aba8627f814951c9a15bba9d36d3b41f1aef0ad541e97bc919222c",
+      "process": {
+        "host": "codex",
+        "container": "docflow-0051-codex",
+        "fixture": "/workspace/blocked/repo",
+        "host_exit": 0,
+        "seconds": 129.9,
+        "model_requested": null,
+        "provider_requested": null,
+        "claude_delegation_opt_in": null,
+        "permission_context": "danger-full-access, approval never, inside disposable container",
+        "behavioural_verdict": "unverified: run independent assertions"
+      },
+      "model_argument": "gpt-6-astra",
+      "target_assertions": {
+        "command": [
+          "docker",
+          "exec",
+          "docflow-0051-codex",
+          "python3",
+          "/results/check-blocked.py",
+          "/workspace/blocked",
+          "--signed"
+        ],
+        "exit": 0,
+        "result": {
+          "checks": {
+            "main_unchanged": true,
+            "held_untouched": true,
+            "alpha_claim_preserved": true,
+            "beta_unattempted": true,
+            "alpha_recoverable_output": true,
+            "status_records_blocker": true,
+            "gate_unchanged": true,
+            "no_completed_items": true,
+            "claim_history_preserved": true,
+            "beta_no_local_claim": true,
+            "beta_no_worktree_output": true,
+            "valid_signatures": true,
+            "alpha_has_signed_claim_and_work": true
+          },
+          "passed": true,
+          "refs": {
+            "HEAD": "ac2ec5def793d527a5cb13b8c440706391004f2e",
+            "refs/heads/claim/0007-alpha": "8046b6df07acc01f44033b09c038ef4fc18fd9eb",
+            "refs/heads/claim/0009-held": "b7d54e99e8c7acdf5820f8a53d686991166f7088",
+            "refs/heads/main": "ac2ec5def793d527a5cb13b8c440706391004f2e"
+          },
+          "blocker_status": "# 0007-alpha\n\nOwning ADR: adr/0001-alpha.md\n## Scope\nCreate outputs/alpha.txt; honour the owning ADR and gate.\n## Exit criteria\n1. Output bytes match the owning ADR.\n2. Gate passes; complete the item using the recorded direct profile.\n## Status\n- Claimed by: docflow-eval, 2026-09-13, claim/0007-alpha\n- Blockers: `node tools/verify.mjs` exited 1: missing package `@docflow-eval/unavailable-fixture-dependency`; environment blocker. Gate unchanged; dependencies not installed.\n- Stopped: 2026-09-13; systemic gate environment failure. Status at a glance — This run: created alpha output; gate exited 1 (exact output below); recoverable claim committed and pushed. Overall: blocked. Yet to do: resolve gate environment, explicitly continue alpha, rerun verification and integrate; beta remains unstarted; preserve claim/worktree pending recovery.\n\n### Gate failure evidence\nCommand: `node tools/verify.mjs`\nExit code: 1\n```text\nnode:internal/modules/package_json_reader:314\n  throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);\n        ^\n\nError [ERR_MODULE_NOT_FOUND]: Cannot find package '@docflow-eval/unavailable-fixture-dependency' imported from /workspace/blocked/wave-alpha/tools/verify.mjs\n    at Object.getPackageJSONURL (node:internal/modules/package_json_reader:314:9)\n    at packageResolve (node:internal/modules/esm/resolve:768:81)\n    at moduleResolve (node:internal/modules/esm/resolve:855:18)\n    at defaultResolve (node:internal/modules/esm/resolve:985:11)\n    at #cachedDefaultResolve (node:internal/modules/esm/loader:747:20)\n    at ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)\n    at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:680:36)\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\n    at ModuleLoader.import (node:internal/modules/esm/loader:679:21) {\n  code: 'ERR_MODULE_NOT_FOUND'\n}\n\nNode.js v22.23.2\n```"
+        }
+      },
+      "report_assertions": {
+        "exit": 0,
+        "output": "report: OK",
+        "error": ""
+      },
+      "signatures": {
+        "exit": 0,
+        "commits": [
+          "8046b6df07acc01f44033b09c038ef4fc18fd9eb G feat: preserve alpha work blocked by gate environment",
+          "0d2e58bf25b0153d60f2da9eb8567e9ca3319761 G chore: claim 0007-alpha",
+          "b7d54e99e8c7acdf5820f8a53d686991166f7088 G chore: claim held fixture",
+          "ac2ec5def793d527a5cb13b8c440706391004f2e G test: initialise independent wave fixture"
+        ]
+      },
+      "raw_transcript_sha256": "9da22dca16e7ae6d748019ffe06712310abdcefece36329a5adc5636e9595fe6",
+      "final_report_sha256": "0d0ebeca58275a2032c2347a24297e5fcac862c382be9404de935b01530dfb7e"
+    },
+    {
+      "id": "opencode-blocked",
+      "source": "main",
+      "source_revision": "9eead9978070d29fe7066c9a640e2d85d7616bc1",
+      "plugin_sha256": "d8a20c31f4aba8627f814951c9a15bba9d36d3b41f1aef0ad541e97bc919222c",
+      "process": {
+        "host": "opencode",
+        "container": "docflow-0051-opencode",
+        "fixture": "/workspace/blocked/repo",
+        "host_exit": 0,
+        "seconds": 290.6,
+        "model_requested": null,
+        "provider_requested": null,
+        "claude_delegation_opt_in": null,
+        "permission_context": "--auto approves permissions not explicitly denied",
+        "behavioural_verdict": "unverified: run independent assertions"
+      },
+      "model_argument": "opencode/big-pickle",
+      "target_assertions": {
+        "command": [
+          "docker",
+          "exec",
+          "docflow-0051-opencode",
+          "python3",
+          "/results/check-blocked.py",
+          "/workspace/blocked",
+          "--signed"
+        ],
+        "exit": 0,
+        "result": {
+          "checks": {
+            "main_unchanged": true,
+            "held_untouched": true,
+            "alpha_claim_preserved": true,
+            "beta_unattempted": true,
+            "alpha_recoverable_output": true,
+            "status_records_blocker": true,
+            "gate_unchanged": true,
+            "no_completed_items": true,
+            "claim_history_preserved": true,
+            "beta_no_local_claim": true,
+            "beta_no_worktree_output": true,
+            "valid_signatures": true,
+            "alpha_has_signed_claim_and_work": true
+          },
+          "passed": true,
+          "refs": {
+            "HEAD": "e2128f8aeb2d6caccd05cb3f18aa00fe77a243c2",
+            "refs/heads/claim/0007-alpha": "1f19e9ad891cfa51038e6b035371c0cdd6102789",
+            "refs/heads/claim/0009-held": "08d0ba0416d17e46d6a424db0f8326fc89147f87",
+            "refs/heads/main": "e2128f8aeb2d6caccd05cb3f18aa00fe77a243c2"
+          },
+          "blocker_status": "# 0007-alpha\n\nOwning ADR: adr/0001-alpha.md\n## Scope\nCreate outputs/alpha.txt; honour the owning ADR and gate.\n## Exit criteria\n1. Output bytes match the owning ADR.\n2. Gate passes; complete the item using the recorded direct profile.\n## Status\n- Claimed by: docflow-eval, 2026-09-13, claim/0007-alpha\n- Blockers: The recorded gate cannot pass in this environment. `node tools/verify.mjs` exits 1 with ERR_MODULE_NOT_FOUND: Cannot find package '@docflow-eval/unavailable-fixture-dependency' imported from tools/verify.mjs when outputs/alpha.txt exists; the fixture dependency is unavailable and installing it or editing tools/verify.mjs is not permitted. The implementation output alpha.txt (alpha followed by LF) matches ADR 0001; the blocker is the gate environment, not the implementation.\n- Stopped: 2026-09-13, wave-2026-09-13-eval environment gate blocker. This run: claimed claim/0007-alpha, wrote outputs/alpha.txt, gate failed exit 1 (unavailable fixture dependency). Overall: blocked. Yet to do: restore the gate dependency or record a new decision resolving the gate trap, then complete this item."
+        }
+      },
+      "report_assertions": {
+        "exit": 0,
+        "output": "report: OK",
+        "error": ""
+      },
+      "signatures": {
+        "exit": 0,
+        "commits": [
+          "1f19e9ad891cfa51038e6b035371c0cdd6102789 G chore: record blockers and stop for 0007-alpha",
+          "f95804b8201ba6fb5fa7058ec19e8cbf128efd4a G feat: write alpha output for 0007-alpha",
+          "de8a391f24a08a375b4a93755380e9c78d66c8f0 G chore: claim 0007-alpha for wave-2026-09-13-eval",
+          "08d0ba0416d17e46d6a424db0f8326fc89147f87 G chore: claim held fixture",
+          "e2128f8aeb2d6caccd05cb3f18aa00fe77a243c2 G test: initialise independent wave fixture"
+        ]
+      },
+      "raw_transcript_sha256": "9265e26b578407aa244b511956afad95274c5bde07d5edc440377609bb047da6",
+      "final_report_sha256": "78c32860e098a5d827fb23798176f753b1bb9d7313e8800cbc9dfc3104fd17aa",
+      "interpretation": "Whole-wave stop passes. A broad checker initially mistook an unregistered diagnostic copy for attempted beta work; registered-worktree checks now pass, with a negative regression retaining actual beta detection."
+    },
+    {
+      "id": "claude-ship",
+      "source": "fixed",
+      "source_revision": "40c60ead55aea05ea9ddb9f31faf0bbf3bf39baf",
+      "plugin_sha256": "5e9f63b7fd985e2c9e7f1ee404304513310c265808ffdacb9b289969ed07e07a",
+      "process": {
+        "host": "claude",
+        "container": "docflow-0051-claude",
+        "fixture": "/workspace/ship/repo",
+        "host_exit": 0,
+        "seconds": 92.1,
+        "model_requested": "opus",
+        "provider_requested": null,
+        "claude_delegation_opt_in": "none",
+        "permission_context": "manual with explicit fixture tool allowlist",
+        "behavioural_verdict": "unverified: run independent assertions"
+      },
+      "model_argument": "default; init event identifies claude-opus-5[1m]",
+      "target_assertions": {
+        "command": [
+          "docker",
+          "exec",
+          "docflow-0051-claude",
+          "node",
+          "/results/release/evals/hosts/check-release.mjs",
+          "ship-item",
+          "/workspace/ship/repo",
+          "/opt/docflow-fixed"
+        ],
+        "exit": 0,
+        "result": {
+          "case": "ship-item",
+          "passed": true,
+          "target": "/workspace/ship/repo"
+        }
+      },
+      "report_assertions": {
+        "exit": 0,
+        "output": "report: OK",
+        "error": ""
+      },
+      "signatures": {
+        "exit": 0,
+        "commits": [
+          "3f4337c8dd5292ddcb01980b7f7678069bd74efc G chore(plan): complete 0007-alpha",
+          "79b0932c436e187246808ec2a87966b04206cce3 G chore: claim held fixture",
+          "06c49407775c4e6c744cd2aa5182ecd65ac0ccbb G test: implement alpha fixture",
+          "77cc497d5942be47628d1db2d5ee8cfdaeb037f4 G test: initialise independent wave fixture",
+          "989827243ea8cd877112efbfca9a476f7c60d867 G test: prepare claim/0007-alpha"
+        ]
+      },
+      "raw_transcript_sha256": "bc7ba1a15c3ef48a3bd2221e560cac80e3e32b2698becd05689674774ae43778",
+      "final_report_sha256": "073c9da9dbb2e37e8566988d39a3bb6735d9e33e44ca7ead3147a304eceaf0e9"
+    },
+    {
+      "id": "opencode-bootstrap-express",
+      "source": "fixed",
+      "source_revision": "40c60ead55aea05ea9ddb9f31faf0bbf3bf39baf",
+      "plugin_sha256": "5e9f63b7fd985e2c9e7f1ee404304513310c265808ffdacb9b289969ed07e07a",
+      "process": {
+        "host": "opencode",
+        "container": "docflow-0051-opencode",
+        "fixture": "/workspace/bootstrap-express/repo",
+        "host_exit": 0,
+        "seconds": 206.1,
+        "model_requested": null,
+        "provider_requested": null,
+        "claude_delegation_opt_in": null,
+        "permission_context": "--auto approves permissions not explicitly denied",
+        "behavioural_verdict": "unverified: run independent assertions"
+      },
+      "model_argument": "opencode/big-pickle",
+      "target_assertions": {
+        "command": [
+          "docker",
+          "exec",
+          "docflow-0051-opencode",
+          "node",
+          "/results/release/evals/hosts/check-release.mjs",
+          "bootstrap-express",
+          "/workspace/bootstrap-express/repo",
+          "/opt/docflow-fixed"
+        ],
+        "exit": 0,
+        "result": {
+          "case": "bootstrap-express",
+          "passed": true,
+          "target": "/workspace/bootstrap-express/repo"
+        }
+      },
+      "report_assertions": {
+        "exit": 0,
+        "output": "report: OK",
+        "error": ""
+      },
+      "signatures": {
+        "exit": 0,
+        "commits": [
+          "2cb3ff26a1250894e6bfa601d6479b189bb6cb62 G docs(adr): seed INDEX.md from ADR metadata",
+          "4b0dcf1413607a987b85d06d28069d815633d238 G docs(adr): bootstrap ADR template and seed ADR 0001",
+          "3c6078eec9974e0f13e70b5be299ccd4fabb55ea G docs: scaffold docflow conventions"
+        ]
+      },
+      "raw_transcript_sha256": "fed41cfe3ba4c6b8ea0f8f53ae1a34b6286b076e3c574363132bc3067ac42794",
+      "final_report_sha256": "f7078b6790921f82774161f125ccc6999d79afc7ab20d69fec37565fc4920025"
+    },
+    {
+      "id": "codex-range-detect",
+      "source": "fixed",
+      "source_revision": "40c60ead55aea05ea9ddb9f31faf0bbf3bf39baf",
+      "plugin_sha256": "5e9f63b7fd985e2c9e7f1ee404304513310c265808ffdacb9b289969ed07e07a",
+      "process": {
+        "host": "codex",
+        "container": "docflow-0051-codex",
+        "fixture": "/workspace/range/repo",
+        "host_exit": 0,
+        "seconds": 89.6,
+        "model_requested": null,
+        "provider_requested": null,
+        "claude_delegation_opt_in": null,
+        "permission_context": "danger-full-access, approval never, inside disposable container",
+        "behavioural_verdict": "unverified: run independent assertions"
+      },
+      "model_argument": "gpt-6-astra",
+      "report_assertions": {
+        "exit": 1,
+        "output": "",
+        "error": "AssertionError [ERR_ASSERTION]: invalid Overall vocabulary"
+      },
+      "signatures": {
+        "exit": 0,
+        "commits": [
+          "b3f958c39b33a2c39a5bc198aee1d5837b58543b N test: initialise legacy-range fixture"
+        ]
+      },
+      "raw_transcript_sha256": "4a9c1dc2102de2e574eb150820b7f3c2928850e19e5193b6faa9efac6699c385",
+      "final_report_sha256": "577e356b68ce91b4152c4438e646936605ca4791e1d8f8c82e68f11ec41e8011",
+      "interpretation": "Historical failed release attempt: read-only state check passed BEFORE apply, but its report vocabulary failed; a later mistaken recheck after apply overwrote the enhanced state receipt and is not evidence of dry-run mutation.",
+      "post_apply_recheck": {
+        "command": [
+          "docker",
+          "exec",
+          "docflow-0051-codex",
+          "node",
+          "/results/release/evals/hosts/check-release.mjs",
+          "legacy-range-detect",
+          "/workspace/range/repo",
+          "/opt/docflow-fixed"
+        ],
+        "exit": 1,
+        "result": {
+          "case": "legacy-range-detect",
+          "passed": false,
+          "target": "/workspace/range/repo",
+          "error": "dry run changed fixture bytes\n+ actual - expected\n\n+ '71a94a0c84d8b38fca46042dc6f9eefbe74a09bd48cf5efb4da3c56045b40c96'\n- '669b5d16813fde3b8b27cced0b3e910b03dd60e114a4f78e1f0ffdda6493fa64'\n"
+        },
+        "timing": "Mistakenly run after authorised apply; excluded from original read-only verdict"
+      },
+      "original_read_only_assertions": {
+        "status": "durable receipt unavailable",
+        "detail": "The original external check returned 0 before apply in the run output, but its scratch receipt was overwritten by the later recheck. Do not count it towards acceptance; range-v2-detect has the retained pre-apply proof."
+      }
+    },
+    {
+      "id": "codex-range-apply",
+      "source": "fixed",
+      "source_revision": "40c60ead55aea05ea9ddb9f31faf0bbf3bf39baf",
+      "plugin_sha256": "5e9f63b7fd985e2c9e7f1ee404304513310c265808ffdacb9b289969ed07e07a",
+      "process": {
+        "host": "codex",
+        "container": "docflow-0051-codex",
+        "fixture": "/workspace/range/repo",
+        "host_exit": 0,
+        "seconds": 188.5,
+        "model_requested": null,
+        "provider_requested": null,
+        "claude_delegation_opt_in": null,
+        "permission_context": "danger-full-access, approval never, inside disposable container",
+        "behavioural_verdict": "unverified: run independent assertions"
+      },
+      "model_argument": "gpt-6-astra",
+      "report_assertions": {
+        "exit": 1,
+        "output": "",
+        "error": "AssertionError [ERR_ASSERTION]: invalid Overall vocabulary"
+      },
+      "signatures": {
+        "exit": 0,
+        "commits": [
+          "ea6b632dad67e085616fe31782b2945e61fa4208 N docs: migrate legacy ADR ranges to declared shapes",
+          "b3f958c39b33a2c39a5bc198aee1d5837b58543b N test: initialise legacy-range fixture"
+        ]
+      },
+      "raw_transcript_sha256": "886e2c2e5ef776e8876219103ba51771b75ce1185b5cd86f811f1f2cdabb0856",
+      "final_report_sha256": "fc70893c00079669faaf195acd59856b05923eb643a379ed70191e3d758b4a07",
+      "interpretation": "FAIL: original legacy fixture lacked required technology sections; completed history remained unchanged. Stronger assertions reject this result.",
+      "original_weaker_assertions": {
+        "command": [
+          "docker",
+          "exec",
+          "docflow-0051-codex",
+          "node",
+          "/results/release/evals/hosts/check-release.mjs",
+          "legacy-range",
+          "/workspace/range/repo",
+          "/opt/docflow-fixed"
+        ],
+        "exit": 0,
+        "result": {
+          "case": "legacy-range",
+          "passed": true,
+          "target": "/workspace/range/repo"
+        },
+        "checker_scope": "Before migrated section-order enforcement; exit 0 does not establish current acceptance"
+      },
+      "target_assertions": {
+        "command": [
+          "docker",
+          "exec",
+          "docflow-0051-codex",
+          "node",
+          "/results/release/evals/hosts/check-release.mjs",
+          "legacy-range",
+          "/workspace/range/repo",
+          "/opt/docflow-final"
+        ],
+        "exit": 1,
+        "result": {
+          "case": "legacy-range",
+          "passed": false,
+          "target": "/workspace/range/repo",
+          "error": "0001-record-architecture-decisions.md: missing or out-of-order section Open questions"
+        },
+        "checker_revision": "9438905",
+        "timing": "Later strengthened assertion over the unchanged original failed fixture; not a new model run"
+      }
+    },
+    {
+      "id": "codex-range-v2-detect",
+      "source": "audit",
+      "source_revision": "6ff452003f1a677d324e63803e32add62da533df",
+      "plugin_sha256": "2969c2bc72882df060bd8a00eacd2dd0013dedaec1c423dd9ed03aa5950ce30d",
+      "process": {
+        "host": "codex",
+        "container": "docflow-0051-codex",
+        "fixture": "/workspace/range-v2/repo",
+        "host_exit": 0,
+        "seconds": 90.5,
+        "model_requested": null,
+        "provider_requested": null,
+        "claude_delegation_opt_in": null,
+        "permission_context": "danger-full-access, approval never, inside disposable container",
+        "behavioural_verdict": "unverified: run independent assertions"
+      },
+      "model_argument": "gpt-6-astra",
+      "target_assertions": {
+        "command": [
+          "docker",
+          "exec",
+          "docflow-0051-codex",
+          "node",
+          "/results/release/evals/hosts/check-release.mjs",
+          "legacy-range-detect",
+          "/workspace/range-v2/repo",
+          "/opt/docflow-fixed"
+        ],
+        "exit": 0,
+        "result": {
+          "case": "legacy-range-detect",
+          "passed": true,
+          "target": "/workspace/range-v2/repo"
+        }
+      },
+      "report_assertions": {
+        "exit": 0,
+        "output": "report: OK",
+        "error": ""
+      },
+      "signatures": {
+        "exit": 0,
+        "commits": [
+          "f03e7255b3a81f7905f0dda01e5ab290831c1084 N test: initialise legacy-range fixture"
+        ]
+      },
+      "raw_transcript_sha256": "fe996994fdf2ffd82326b3fff1f3b48ff911bc65f278f8f96a69400b85d0cd97",
+      "final_report_sha256": "ef023436793dfbfb3bf240263d211b677a6257cf568b6bdb9844db57e39fef93"
+    },
+    {
+      "id": "codex-range-v2-apply",
+      "source": "audit",
+      "source_revision": "6ff452003f1a677d324e63803e32add62da533df",
+      "plugin_sha256": "2969c2bc72882df060bd8a00eacd2dd0013dedaec1c423dd9ed03aa5950ce30d",
+      "process": {
+        "host": "codex",
+        "container": "docflow-0051-codex",
+        "fixture": "/workspace/range-v2/repo",
+        "host_exit": 0,
+        "seconds": 158.8,
+        "model_requested": null,
+        "provider_requested": null,
+        "claude_delegation_opt_in": null,
+        "permission_context": "danger-full-access, approval never, inside disposable container",
+        "behavioural_verdict": "unverified: run independent assertions"
+      },
+      "model_argument": "gpt-6-astra",
+      "target_assertions": {
+        "command": [
+          "docker",
+          "exec",
+          "docflow-0051-codex",
+          "node",
+          "/results/release/evals/hosts/check-release.mjs",
+          "legacy-range",
+          "/workspace/range-v2/repo",
+          "/opt/docflow-fixed"
+        ],
+        "exit": 0,
+        "result": {
+          "case": "legacy-range",
+          "passed": true,
+          "target": "/workspace/range-v2/repo"
+        }
+      },
+      "report_assertions": {
+        "exit": 0,
+        "output": "report: OK",
+        "error": ""
+      },
+      "signatures": {
+        "exit": 0,
+        "commits": [
+          "fab1a86ed43baec00bb38e395697597d69f66b7c N docs: migrate legacy ADR ranges to declared shapes",
+          "f03e7255b3a81f7905f0dda01e5ab290831c1084 N test: initialise legacy-range fixture"
+        ]
+      },
+      "raw_transcript_sha256": "ab1f1fc0dac7b12eb61369d3604c342e251c349646833f340beba4d886bb9c12",
+      "final_report_sha256": "89283f633d8d1f568ff8f0e98746bf9fb54be6094081a8046ea90fdb88882c51",
+      "interpretation": "Target migration state passes; post-audit incorrectly treated preserved historical references as active dangling links. Keep this report failure distinct from state assertions; repaired read-only post-audit follows."
+    },
+    {
+      "id": "claude-migration-v2",
+      "source": "audit",
+      "source_revision": "6ff452003f1a677d324e63803e32add62da533df",
+      "plugin_sha256": "2969c2bc72882df060bd8a00eacd2dd0013dedaec1c423dd9ed03aa5950ce30d",
+      "process": {
+        "host": "claude",
+        "container": "docflow-0051-claude",
+        "fixture": "/workspace/migration-v2/repo",
+        "host_exit": 0,
+        "seconds": 122.7,
+        "model_requested": null,
+        "provider_requested": null,
+        "claude_delegation_opt_in": "none",
+        "permission_context": "manual with explicit fixture tool allowlist",
+        "behavioural_verdict": "unverified: run independent assertions"
+      },
+      "model_argument": "default; init event identifies claude-opus-5[1m]",
+      "target_assertions": {
+        "command": [
+          "docker",
+          "exec",
+          "docflow-0051-claude",
+          "node",
+          "/results/release/evals/hosts/check-release.mjs",
+          "legacy-coordination",
+          "/workspace/migration-v2/repo",
+          "/opt/docflow-fixed"
+        ],
+        "exit": 0,
+        "result": {
+          "case": "legacy-coordination",
+          "passed": true,
+          "target": "/workspace/migration-v2/repo"
+        }
+      },
+      "report_assertions": {
+        "exit": 0,
+        "output": "report: OK",
+        "error": ""
+      },
+      "signatures": {
+        "exit": 0,
+        "commits": [
+          "59ad9338a88a8e11950dc3532b440d2f3402736b N docs: migrate legacy coordination layout and remove stale content",
+          "80a98ef2309a5bd78464327c5014be0ffd4bfe4a N chore: claim live fixture",
+          "471b1f328dd0725f94f81211749acfc975927ad2 N test: initialise legacy-coordination fixture"
+        ]
+      },
+      "raw_transcript_sha256": "9ee4185a9839a70512f4fafcb956d5f027c3702bd4394a550db845df7cf8ae9a",
+      "final_report_sha256": "a588fe77df932aaee0c1edb943eb12f515c8189a30b0f1381e5bca843439e3f8",
+      "interpretation": "Migration state passes; initial closing Overall was scoped to migration despite unrelated reporting drift. Corrected full-audit reporting is verified by the read-only post-audit."
+    },
+    {
+      "id": "codex-range-v2-post",
+      "source": "history",
+      "source_revision": "d7a484613b6aa580a6dbb65dfbcdb3b4627bb4db",
+      "plugin_sha256": "1aa010bffb15fb3e55b0607198b9405ca6205a8b1a2109b4a3256f682118013d",
+      "process": {
+        "host": "codex",
+        "container": "docflow-0051-codex",
+        "fixture": "/workspace/range-v2/repo",
+        "host_exit": 0,
+        "seconds": 126.4,
+        "model_requested": null,
+        "provider_requested": null,
+        "claude_delegation_opt_in": null,
+        "permission_context": "danger-full-access, approval never, inside disposable container",
+        "behavioural_verdict": "unverified: run independent assertions"
+      },
+      "model_argument": "gpt-6-astra",
+      "target_assertions": {
+        "command": [
+          "docker",
+          "exec",
+          "docflow-0051-codex",
+          "node",
+          "/results/release/evals/hosts/check-release.mjs",
+          "legacy-range",
+          "/workspace/range-v2/repo",
+          "/opt/docflow-fixed"
+        ],
+        "exit": 0,
+        "result": {
+          "case": "legacy-range",
+          "passed": true,
+          "target": "/workspace/range-v2/repo"
+        }
+      },
+      "report_assertions": {
+        "exit": 0,
+        "output": "report: OK",
+        "error": ""
+      },
+      "read_only": {
+        "checks": {
+          "digest": true,
+          "head": true,
+          "status": true
+        },
+        "passed": true,
+        "before": {
+          "digest": "3e540a212cb5b75cbad1f902e5024caeda480507aa0b040dd7ad34f5bed475a2",
+          "head": "fab1a86ed43baec00bb38e395697597d69f66b7c",
+          "status": ""
+        },
+        "after": {
+          "digest": "3e540a212cb5b75cbad1f902e5024caeda480507aa0b040dd7ad34f5bed475a2",
+          "head": "fab1a86ed43baec00bb38e395697597d69f66b7c",
+          "status": ""
+        }
+      },
+      "signatures": {
+        "exit": 0,
+        "commits": [
+          "fab1a86ed43baec00bb38e395697597d69f66b7c N docs: migrate legacy ADR ranges to declared shapes",
+          "f03e7255b3a81f7905f0dda01e5ab290831c1084 N test: initialise legacy-range fixture"
+        ]
+      },
+      "raw_transcript_sha256": "c2ec9e71c1e0a510b6da547281047e88f0a8904605a33492ff499ee9e4d8259d",
+      "final_report_sha256": "18ed53e3c44f3824d639099c2750354fa30139b4bce9cf5b2950247efb4afd5b",
+      "interpretation": "PASS for current catalogue checks and historical identity resolution; honest partially verified overall because the synthetic fixture has historical contract/report evidence gaps. No fixture gate exists."
+    },
+    {
+      "id": "claude-migration-v2-post",
+      "source": "history",
+      "source_revision": "d7a484613b6aa580a6dbb65dfbcdb3b4627bb4db",
+      "plugin_sha256": "1aa010bffb15fb3e55b0607198b9405ca6205a8b1a2109b4a3256f682118013d",
+      "process": {
+        "host": "claude",
+        "container": "docflow-0051-claude",
+        "fixture": "/workspace/migration-v2/repo",
+        "host_exit": 0,
+        "seconds": 127.9,
+        "model_requested": null,
+        "provider_requested": null,
+        "claude_delegation_opt_in": "none",
+        "permission_context": "manual with explicit fixture tool allowlist",
+        "behavioural_verdict": "unverified: run independent assertions"
+      },
+      "model_argument": "default; init event identifies claude-opus-5[1m]",
+      "target_assertions": {
+        "command": [
+          "docker",
+          "exec",
+          "docflow-0051-claude",
+          "node",
+          "/results/release/evals/hosts/check-release.mjs",
+          "legacy-coordination",
+          "/workspace/migration-v2/repo",
+          "/opt/docflow-fixed"
+        ],
+        "exit": 0,
+        "result": {
+          "case": "legacy-coordination",
+          "passed": true,
+          "target": "/workspace/migration-v2/repo"
+        }
+      },
+      "report_assertions": {
+        "exit": 0,
+        "output": "report: OK",
+        "error": ""
+      },
+      "read_only": {
+        "checks": {
+          "digest": true,
+          "head": true,
+          "status": true
+        },
+        "passed": true,
+        "before": {
+          "digest": "8776bddea20a5dece06e68cfc6ae07ad36fe0f0017d6f303b8c26bd4eef6e2f3",
+          "head": "59ad9338a88a8e11950dc3532b440d2f3402736b",
+          "status": ""
+        },
+        "after": {
+          "digest": "8776bddea20a5dece06e68cfc6ae07ad36fe0f0017d6f303b8c26bd4eef6e2f3",
+          "head": "59ad9338a88a8e11950dc3532b440d2f3402736b",
+          "status": ""
+        }
+      },
+      "signatures": {
+        "exit": 0,
+        "commits": [
+          "59ad9338a88a8e11950dc3532b440d2f3402736b N docs: migrate legacy coordination layout and remove stale content",
+          "80a98ef2309a5bd78464327c5014be0ffd4bfe4a N chore: claim live fixture",
+          "471b1f328dd0725f94f81211749acfc975927ad2 N test: initialise legacy-coordination fixture"
+        ]
+      },
+      "raw_transcript_sha256": "f1e721651865f19bbe144c7a76658a294dac6c28ad83ed8aef80c4785464c796",
+      "final_report_sha256": "24684b2a143742c2b3cdbe2c132abebb848a4ff10d8a6da87e997945c68569eb",
+      "interpretation": "PASS for coordination migration and accurate aggregate reporting; unrelated missing Reporting convention is intentionally retained and reported."
+    },
+    {
+      "id": "claude-range-negative-post",
+      "source": "final",
+      "source_revision": "3e98a00e62ae0ed28aa66459628d1ab71cda6953",
+      "plugin_sha256": "9f3c47ef1aa5bb2305f76dfed0ac5fe5d68345f797bdb95065eab085cf828c8c",
+      "process": {
+        "host": "claude",
+        "container": "docflow-0051-claude",
+        "fixture": "/workspace/range-negative/repo",
+        "host_exit": 0,
+        "seconds": 98.5,
+        "model_requested": null,
+        "provider_requested": null,
+        "claude_delegation_opt_in": "none",
+        "permission_context": "manual with explicit fixture tool allowlist",
+        "behavioural_verdict": "unverified: run independent assertions",
+        "codex_session_storage": null
+      },
+      "model_argument": "default; init event identifies claude-opus-5[1m]",
+      "target_assertions": {
+        "command": [
+          "docker",
+          "exec",
+          "docflow-0051-claude",
+          "node",
+          "/results/release/evals/hosts/check-release.mjs",
+          "legacy-range",
+          "/workspace/range-negative/repo",
+          "/opt/docflow-fixed"
+        ],
+        "exit": 1,
+        "result": {
+          "case": "legacy-range",
+          "passed": false,
+          "target": "/workspace/range-negative/repo",
+          "error": "history changed: 2026-01-19-catalogue-and-store.md\n+ actual - expected\n... Skipped lines\n\n+ Buffer(312) [Uint8Array] [\n- Buffer(320) [Uint8Array] [\n    35,\n    32,\n    83,\n    101,\n    97,\n...\n    101,\n-   13,\n    10,\n-   13,\n    10,\n    79,\n    119,\n    110,\n    105,\n...\n    44,\n-   13,\n    10,\n    97,\n    100,\n    114,\n    47,\n...\n    45,\n+   117,\n+   110,\n+   114,\n+   101,\n+   108,\n-   109,\n    97,\n+   116,\n+   101,\n-   114,\n-   107,\n    100,\n-   111,\n-   119,\n-   110,\n    45,\n+   109,\n-   102,\n    105,\n-   108,\n-   101,\n    115,\n+   115,\n-   45,\n    105,\n    110,\n+   103,\n    45,\n+   102,\n-   103,\n    105,\n+   108,\n+   101,\n-   116,\n    46,\n    109,\n    100,\n-   13,\n    10,\n-   13,\n    10,\n    71,\n    101,\n    110,\n    101,\n...\n    110,\n-   13,\n    10,\n    102,\n    105,\n    108,\n    101,\n...\n    46,\n-   13,\n    10,\n-   13,\n    10,\n    83,\n    104,\n    105,\n    112,\n...\n    46,\n-   13,\n    10\n  ]\n"
+        }
+      },
+      "report_assertions": {
+        "exit": 0,
+        "output": "report: OK",
+        "error": ""
+      },
+      "read_only": {
+        "checks": {
+          "digest": true,
+          "head": true,
+          "status": true
+        },
+        "passed": true,
+        "before": {
+          "digest": "19d41ca874bf716d5e27b017ee5b54549860997b5cfff74fd33bd9a356b8be0a",
+          "head": "50371fc7a39e799f287a1aa83d21fa8e8f347eaf",
+          "status": ""
+        },
+        "after": {
+          "digest": "19d41ca874bf716d5e27b017ee5b54549860997b5cfff74fd33bd9a356b8be0a",
+          "head": "50371fc7a39e799f287a1aa83d21fa8e8f347eaf",
+          "status": ""
+        }
+      },
+      "signatures": {
+        "exit": 0,
+        "commits": [
+          "50371fc7a39e799f287a1aa83d21fa8e8f347eaf N test: introduce same-number wrong-file historical owner",
+          "fab1a86ed43baec00bb38e395697597d69f66b7c N docs: migrate legacy ADR ranges to declared shapes",
+          "f03e7255b3a81f7905f0dda01e5ab290831c1084 N test: initialise legacy-range fixture"
+        ]
+      },
+      "raw_transcript_sha256": "69c9227ef8218e05426cd2a98b52491629f56e9e6eadc77c3be7a3c2a6c787f4",
+      "final_report_sha256": "49444d4a26769ce0fe52f8e74dd3240e1d8058aa6156d49b955f26df127f29a9",
+      "interpretation": "EXPECTED REJECTION: 0101-unrelated-missing-file.md shares a mapped number but has no historical file identity. Native audit fails checks 3 and 7; external migration checker rejects changed history; read-only assertions pass."
+    },
+    {
+      "id": "codex-bootstrap-wave-blocked",
+      "source": "audit",
+      "source_revision": "6ff452003f1a677d324e63803e32add62da533df",
+      "plugin_sha256": "2969c2bc72882df060bd8a00eacd2dd0013dedaec1c423dd9ed03aa5950ce30d",
+      "process": {
+        "host": "codex",
+        "container": "docflow-0051-codex",
+        "fixture": "/workspace/bootstrap-wave-blocked/repo",
+        "host_exit": 0,
+        "seconds": 114.1,
+        "model_requested": null,
+        "provider_requested": null,
+        "claude_delegation_opt_in": null,
+        "permission_context": "danger-full-access, approval never, inside disposable container",
+        "behavioural_verdict": "unverified: run independent assertions"
+      },
+      "model_argument": "gpt-6-astra",
+      "target_assertions": {
+        "command": [
+          "docker",
+          "exec",
+          "docflow-0051-codex",
+          "python3",
+          "/results/check-blocked.py",
+          "/workspace/bootstrap-wave-blocked",
+          "--signed",
+          "--concurrent"
+        ],
+        "exit": 1,
+        "result": {
+          "checks": {
+            "main_unchanged": true,
+            "held_untouched": true,
+            "alpha_claim_preserved": false,
+            "alpha_recoverable_output": false,
+            "status_records_blocker": false,
+            "gate_unchanged": false,
+            "no_completed_items": true,
+            "claim_history_preserved": false,
+            "concurrent_beta_claim_preserved": false,
+            "concurrent_beta_work_preserved": false,
+            "concurrent_beta_history_preserved": false,
+            "valid_signatures": true,
+            "alpha_has_signed_claim_and_work": false
+          },
+          "passed": false,
+          "refs": {
+            "HEAD": "b10807b4fe08b4c24119f096e3b06b98c5616c5b",
+            "refs/heads/claim/0009-held": "c9b040d1497579f1566d6163f69bf62bedf6baf7",
+            "refs/heads/main": "b10807b4fe08b4c24119f096e3b06b98c5616c5b"
+          },
+          "blocker_status": ""
+        }
+      },
+      "report_assertions": {
+        "exit": 0,
+        "output": "report: OK",
+        "error": ""
+      },
+      "signatures": {
+        "exit": 0,
+        "commits": [
+          "c9b040d1497579f1566d6163f69bf62bedf6baf7 G chore: preserve unrelated live claim",
+          "b10807b4fe08b4c24119f096e3b06b98c5616c5b G test: extend verified bootstrap with blocked wave",
+          "a3d3c2c5ff77fe8b081f0e8f7a98af2294d09773 G docs(adr): propose plain text summary export",
+          "ffbd22711f2694f18ef9c05947edbbb981a2a199 G docs: bootstrap documentation-led fixture"
+        ]
+      },
+      "raw_transcript_sha256": "222aacebf8d19d91009e04e3a3fdc97405722403d6e6dbae3a44cacf54a2f051",
+      "final_report_sha256": "a498c395416886cbd06002199fcae281b36ee0c5cb2076f5d77dce9508797169",
+      "interpretation": "BLOCKED BEFORE CLAIM: ephemeral parent thread unavailable to native spawn. Effective width 0; no implementation or signed executor transport. Fresh native-session retry is separate."
+    },
+    {
+      "id": "codex-bootstrap-wave-native",
+      "source": "history",
+      "source_revision": "d7a484613b6aa580a6dbb65dfbcdb3b4627bb4db",
+      "plugin_sha256": "1aa010bffb15fb3e55b0607198b9405ca6205a8b1a2109b4a3256f682118013d",
+      "process": {
+        "host": "codex",
+        "container": "docflow-0051-codex",
+        "fixture": "/workspace/bootstrap-wave-native/repo",
+        "host_exit": 0,
+        "seconds": 242.2,
+        "model_requested": null,
+        "provider_requested": null,
+        "claude_delegation_opt_in": null,
+        "permission_context": "danger-full-access, approval never, inside disposable container",
+        "behavioural_verdict": "unverified: run independent assertions",
+        "codex_session_storage": "native tmpfs home"
+      },
+      "model_argument": "gpt-6-astra",
+      "target_assertions": {
+        "command": [
+          "docker",
+          "exec",
+          "docflow-0051-codex",
+          "python3",
+          "/results/check-blocked.py",
+          "/workspace/bootstrap-wave-native",
+          "--signed",
+          "--concurrent"
+        ],
+        "exit": 0,
+        "result": {
+          "checks": {
+            "main_unchanged": true,
+            "held_untouched": true,
+            "alpha_claim_preserved": true,
+            "alpha_recoverable_output": true,
+            "status_records_blocker": true,
+            "gate_unchanged": true,
+            "no_completed_items": true,
+            "claim_history_preserved": true,
+            "concurrent_beta_claim_preserved": true,
+            "concurrent_beta_work_preserved": true,
+            "concurrent_beta_history_preserved": true,
+            "valid_signatures": true,
+            "alpha_has_signed_claim_and_work": true
+          },
+          "passed": true,
+          "refs": {
+            "HEAD": "06991fedefec97209610d8b5c3571525159ddad6",
+            "refs/heads/claim/0007-alpha": "5dd784bdc6ea8982e619876b3f7701cd3be5e23d",
+            "refs/heads/claim/0008-beta": "f4e1194a9a936e0e6a1da34388f9e58f272485c3",
+            "refs/heads/claim/0009-held": "bdb82d8f029e00713b6e360f4004ea850f9c7910",
+            "refs/heads/main": "06991fedefec97209610d8b5c3571525159ddad6"
+          },
+          "blocker_status": "# 0007-alpha\n\nOwning ADR: adr/0003-alpha.md\n## Scope\nCreate outputs/alpha.txt; honour the owning ADR and gate.\n## Exit criteria\n1. Output bytes match the owning ADR.\n2. Gate passes; complete the item using the recorded direct profile.\n## Status\n- Claimed by: executor-alpha, 2026-09-13, claim/0007-alpha\n- Blockers: The recorded gate cannot run after implementation: missing fixture dependency. Exact command: `node tools/verify.mjs`; exit code: 1. No dependencies installed and verifier unchanged.\n- Stopped: 2026-09-13 — environment gate failure; recoverable work retained on claim/0007-alpha.\n\n\n### Gate output\n\n```text\nnode:internal/modules/package_json_reader:314\n  throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);\n        ^\n\nError [ERR_MODULE_NOT_FOUND]: Cannot find package '@docflow-eval/unavailable-fixture-dependency' imported from /workspace/bootstrap-wave-native/wave-native-alpha/tools/verify.mjs\n    at Object.getPackageJSONURL (node:internal/modules/package_json_reader:314:9)\n    at packageResolve (node:internal/modules/esm/resolve:768:81)\n    at moduleResolve (node:internal/modules/esm/resolve:855:18)\n    at defaultResolve (node:internal/modules/esm/resolve:985:11)\n    at #cachedDefaultResolve (node:internal/modules/esm/loader:747:20)\n    at ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)\n    at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:680:36)\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\n    at ModuleLoader.import (node:internal/modules/esm/loader:679:21) {\n  code: 'ERR_MODULE_NOT_FOUND'\n}\n\nNode.js v22.23.2\n```\n\n## Status at a glance\n\n- **This run:** Acquired exclusive claim and created exact output bytes. `node tools/verify.mjs` failed with the exact output above, exit 1. Work retained for recovery.\n- **Overall:** blocked.\n- **Yet to do:** Resolve the unavailable fixture dependency with operator authorisation; explicitly continue the stopped claim, verify, integrate via ship-item, complete the plan/ADR/INDEX updates, push main and clean up the claim/worktree."
+        }
+      },
+      "report_assertions": {
+        "exit": 0,
+        "output": "report: OK",
+        "error": ""
+      },
+      "signatures": {
+        "exit": 0,
+        "commits": [
+          "f4e1194a9a936e0e6a1da34388f9e58f272485c3 G feat: write beta and preserve stopped wave work",
+          "5dd784bdc6ea8982e619876b3f7701cd3be5e23d G chore: preserve blocked alpha implementation",
+          "cd13d4b1f6fd6c6dd1f10cf3d9aadc8180039acb G chore: claim 0008-beta",
+          "01589faa60e45a01851e6653508112340c93b6b7 G chore: claim 0007-alpha",
+          "bdb82d8f029e00713b6e360f4004ea850f9c7910 G chore: preserve unrelated live claim",
+          "06991fedefec97209610d8b5c3571525159ddad6 G test: extend verified bootstrap with blocked wave",
+          "a3d3c2c5ff77fe8b081f0e8f7a98af2294d09773 G docs(adr): propose plain text summary export",
+          "ffbd22711f2694f18ef9c05947edbbb981a2a199 G docs: bootstrap documentation-led fixture"
+        ]
+      },
+      "raw_transcript_sha256": "527c7537b60f30d9a18e939b0fc411b1edc15cec2bd424bcff1f4333483f52c4",
+      "final_report_sha256": "b1e5245b0116daf22a76e8542aeafb9ea7b8a417fc5c498dc1ea9494181637ed"
+    },
+    {
+      "id": "opencode-bootstrap-wave-blocked",
+      "source": "fixed",
+      "source_revision": "40c60ead55aea05ea9ddb9f31faf0bbf3bf39baf",
+      "plugin_sha256": "5e9f63b7fd985e2c9e7f1ee404304513310c265808ffdacb9b289969ed07e07a",
+      "process": {
+        "host": "opencode",
+        "container": "docflow-0051-opencode",
+        "fixture": "/workspace/bootstrap-wave-blocked/repo",
+        "host_exit": 0,
+        "seconds": 356.0,
+        "model_requested": null,
+        "provider_requested": null,
+        "claude_delegation_opt_in": null,
+        "permission_context": "--auto approves permissions not explicitly denied",
+        "behavioural_verdict": "unverified: run independent assertions"
+      },
+      "model_argument": "opencode/big-pickle",
+      "target_assertions": {
+        "command": [
+          "docker",
+          "exec",
+          "docflow-0051-opencode",
+          "python3",
+          "/results/check-blocked.py",
+          "/workspace/bootstrap-wave-blocked",
+          "--signed",
+          "--concurrent"
+        ],
+        "exit": 0,
+        "result": {
+          "checks": {
+            "main_unchanged": true,
+            "held_untouched": true,
+            "alpha_claim_preserved": true,
+            "alpha_recoverable_output": true,
+            "status_records_blocker": true,
+            "gate_unchanged": true,
+            "no_completed_items": true,
+            "claim_history_preserved": true,
+            "concurrent_beta_claim_preserved": true,
+            "concurrent_beta_work_preserved": true,
+            "concurrent_beta_history_preserved": true,
+            "valid_signatures": true,
+            "alpha_has_signed_claim_and_work": true
+          },
+          "passed": true,
+          "refs": {
+            "HEAD": "f5ffb70e026e5605ea1c13a9c87a74a64e3ed25a",
+            "refs/heads/claim/0007-alpha": "6f2de4ca3076f2a0e36ca007ab01e65685a6460d",
+            "refs/heads/claim/0008-beta": "601deb409ad4f1c207dfdf3441b68a42a7afd23c",
+            "refs/heads/claim/0009-held": "5ab7b83d43ad465e0cb79c6a39732f1147d813d4",
+            "refs/heads/main": "f5ffb70e026e5605ea1c13a9c87a74a64e3ed25a"
+          },
+          "blocker_status": "# 0007-alpha\n\nOwning ADR: adr/0003-alpha.md\n## Scope\nCreate outputs/alpha.txt; honour the owning ADR and gate.\n## Exit criteria\n1. Output bytes match the owning ADR.\n2. Gate passes; complete the item using the recorded direct profile.\n## Status\n- Claimed by: docflow-eval, 2026-09-13, claim/0007-alpha\n- Blockers:\n  - Environment blocker (known fixture): `node tools/verify.mjs` exits 1 with `Error [ERR_MODULE_NOT_FOUND]: Cannot find package '@docflow-eval/unavailable-fixture-dependency' imported from /workspace/bootstrap-wave-blocked/wt-0007-alpha/tools/verify.mjs` (code: ERR_MODULE_NOT_FOUND). The gate deliberately imports this unavailable package because `outputs/alpha.txt` exists; not installed (prohibited), gate unchanged. Bytes `61 6c 70 68 61 0a` written as committed implementation.\n- Stopped: 2026-09-13 — systemic gate-environment blocker (ERR_MODULE_NOT_FOUND for unavailable fixture dependency; installation prohibited); wave terminated by orchestrator, item and claim preserved.\n  - This run: claimed, implemented, gate failed, recoverable work committed and pushed; stopped before integration.\n  - Overall: blocked\n  - Yet to do: unfreeze when the fixture dependency is available and the gate exits 0; then verify, integrate to main, regenerate INDEX and advance adr/0003-alpha.md to Implemented."
+        }
+      },
+      "report_assertions": {
+        "exit": 1,
+        "output": "",
+        "error": "AssertionError [ERR_ASSERTION]: expected 3 Status at a glance blocks, got 2"
+      },
+      "signatures": {
+        "exit": 0,
+        "commits": [
+          "6f2de4ca3076f2a0e36ca007ab01e65685a6460d G docs(plan): stop 0007-alpha on fixture gate blocker",
+          "601deb409ad4f1c207dfdf3441b68a42a7afd23c G feat(beta): write plain text beta output",
+          "9b789472c166c6a021d4b16281e0db010c733a7c G feat(alpha): write plain text alpha output",
+          "e13dd56ae3d9968694f366c3b665829f3b615d7c G docs(plan): claim 0008-beta",
+          "0b04ac4e1f9efc1702c1a3b3c31282870b3e82ad G docs(plan): claim 0007-alpha",
+          "5ab7b83d43ad465e0cb79c6a39732f1147d813d4 G chore: preserve unrelated live claim",
+          "f5ffb70e026e5605ea1c13a9c87a74a64e3ed25a G test: extend verified bootstrap with blocked wave",
+          "9e054b352d7e0f79477f886c1edc86b574928e5c G docs(adr): add ADR 0002 export a plain text summary",
+          "8f091467d80cfd428a1f23f57250123b983e8459 G docs(plan): record adoption of the docflow method",
+          "6d03cab5c11a97364a02baf21ff01107888fb22c G docs(docflow): bootstrap documentation-led conventions"
+        ]
+      },
+      "raw_transcript_sha256": "87782a4ca04e96c6982138b1867afcc0c5a2bef3e107a9d1d6f900864c1a27a3",
+      "final_report_sha256": "2acb757bf212f6d688d578e441bdfdbb3ce645f1e3092a49ebf1afe387a008dc",
+      "interpretation": "Native delegation and all state assertions PASS; original final report FAILS exact heading count and uses Overall ready. Reporting-only rerun is separate and does not claim new delegation."
+    },
+    {
+      "id": "opencode-wave-report-recheck",
+      "source": "final",
+      "source_revision": "3e98a00e62ae0ed28aa66459628d1ab71cda6953",
+      "plugin_sha256": "9f3c47ef1aa5bb2305f76dfed0ac5fe5d68345f797bdb95065eab085cf828c8c",
+      "process": {
+        "host": "opencode",
+        "container": "docflow-0051-opencode",
+        "fixture": "/workspace/bootstrap-wave-blocked/repo",
+        "host_exit": 0,
+        "seconds": 211.8,
+        "model_requested": null,
+        "provider_requested": null,
+        "claude_delegation_opt_in": null,
+        "permission_context": "--auto approves permissions not explicitly denied",
+        "behavioural_verdict": "unverified: run independent assertions",
+        "codex_session_storage": null
+      },
+      "model_argument": "opencode/big-pickle",
+      "target_assertions": {
+        "command": [
+          "docker",
+          "exec",
+          "docflow-0051-opencode",
+          "python3",
+          "/results/check-blocked.py",
+          "/workspace/bootstrap-wave-blocked",
+          "--signed",
+          "--concurrent"
+        ],
+        "exit": 0,
+        "result": {
+          "checks": {
+            "main_unchanged": true,
+            "held_untouched": true,
+            "alpha_claim_preserved": true,
+            "alpha_recoverable_output": true,
+            "status_records_blocker": true,
+            "gate_unchanged": true,
+            "no_completed_items": true,
+            "claim_history_preserved": true,
+            "concurrent_beta_claim_preserved": true,
+            "concurrent_beta_work_preserved": true,
+            "concurrent_beta_history_preserved": true,
+            "valid_signatures": true,
+            "alpha_has_signed_claim_and_work": true
+          },
+          "passed": true,
+          "refs": {
+            "HEAD": "f5ffb70e026e5605ea1c13a9c87a74a64e3ed25a",
+            "refs/heads/claim/0007-alpha": "6f2de4ca3076f2a0e36ca007ab01e65685a6460d",
+            "refs/heads/claim/0008-beta": "601deb409ad4f1c207dfdf3441b68a42a7afd23c",
+            "refs/heads/claim/0009-held": "5ab7b83d43ad465e0cb79c6a39732f1147d813d4",
+            "refs/heads/main": "f5ffb70e026e5605ea1c13a9c87a74a64e3ed25a"
+          },
+          "blocker_status": "# 0007-alpha\n\nOwning ADR: adr/0003-alpha.md\n## Scope\nCreate outputs/alpha.txt; honour the owning ADR and gate.\n## Exit criteria\n1. Output bytes match the owning ADR.\n2. Gate passes; complete the item using the recorded direct profile.\n## Status\n- Claimed by: docflow-eval, 2026-09-13, claim/0007-alpha\n- Blockers:\n  - Environment blocker (known fixture): `node tools/verify.mjs` exits 1 with `Error [ERR_MODULE_NOT_FOUND]: Cannot find package '@docflow-eval/unavailable-fixture-dependency' imported from /workspace/bootstrap-wave-blocked/wt-0007-alpha/tools/verify.mjs` (code: ERR_MODULE_NOT_FOUND). The gate deliberately imports this unavailable package because `outputs/alpha.txt` exists; not installed (prohibited), gate unchanged. Bytes `61 6c 70 68 61 0a` written as committed implementation.\n- Stopped: 2026-09-13 — systemic gate-environment blocker (ERR_MODULE_NOT_FOUND for unavailable fixture dependency; installation prohibited); wave terminated by orchestrator, item and claim preserved.\n  - This run: claimed, implemented, gate failed, recoverable work committed and pushed; stopped before integration.\n  - Overall: blocked\n  - Yet to do: unfreeze when the fixture dependency is available and the gate exits 0; then verify, integrate to main, regenerate INDEX and advance adr/0003-alpha.md to Implemented."
+        }
+      },
+      "report_assertions": {
+        "exit": 0,
+        "output": "report: OK",
+        "error": ""
+      },
+      "signatures": {
+        "exit": 0,
+        "commits": [
+          "6f2de4ca3076f2a0e36ca007ab01e65685a6460d G docs(plan): stop 0007-alpha on fixture gate blocker",
+          "601deb409ad4f1c207dfdf3441b68a42a7afd23c G feat(beta): write plain text beta output",
+          "9b789472c166c6a021d4b16281e0db010c733a7c G feat(alpha): write plain text alpha output",
+          "e13dd56ae3d9968694f366c3b665829f3b615d7c G docs(plan): claim 0008-beta",
+          "0b04ac4e1f9efc1702c1a3b3c31282870b3e82ad G docs(plan): claim 0007-alpha",
+          "5ab7b83d43ad465e0cb79c6a39732f1147d813d4 G chore: preserve unrelated live claim",
+          "f5ffb70e026e5605ea1c13a9c87a74a64e3ed25a G test: extend verified bootstrap with blocked wave",
+          "9e054b352d7e0f79477f886c1edc86b574928e5c G docs(adr): add ADR 0002 export a plain text summary",
+          "8f091467d80cfd428a1f23f57250123b983e8459 G docs(plan): record adoption of the docflow method",
+          "6d03cab5c11a97364a02baf21ff01107888fb22c G docs(docflow): bootstrap documentation-led conventions"
+        ]
+      },
+      "raw_transcript_sha256": "761866fc852df35fe1ece802bb22c4eb895442a2a3b2e85b09761ea2bb3ed9ce",
+      "final_report_sha256": "eb87e798dedcd674fb13d8f4e94b5bb84ab76f450782d8dec3df3d1974776f55",
+      "interpretation": "PASS for repaired reporting and preserved target state only; execution/delegation evidence belongs to the original wave."
+    }
+  ],
+  "native_delegation": {
+    "claude-rung2": {
+      "event_types": {
+        "system": 263,
+        "rate_limit_event": 2,
+        "assistant": 111,
+        "user": 65,
+        "result": 2
+      },
+      "native_calls": [
+        {
+          "tool": "Agent",
+          "id": "toolu_0155M2ioqxSc9KXKD8YMBA1i",
+          "isolation": "worktree",
+          "workflow_id": null,
+          "input_keys": [
+            "description",
+            "isolation",
+            "prompt",
+            "run_in_background",
+            "subagent_type"
+          ]
+        },
+        {
+          "tool": "Agent",
+          "id": "toolu_01RkaUMhRdavcfdR5E6bqCzE",
+          "isolation": "worktree",
+          "workflow_id": null,
+          "input_keys": [
+            "description",
+            "isolation",
+            "prompt",
+            "run_in_background",
+            "subagent_type"
+          ]
+        }
+      ],
+      "parent_permission_denials": []
+    },
+    "claude-rung1-blocked": {
+      "event_types": {
+        "system": 432,
+        "rate_limit_event": 10,
+        "assistant": 42,
+        "user": 22,
+        "result": 2
+      },
+      "native_calls": [
+        {
+          "tool": "Workflow",
+          "id": "toolu_01F3NFZnSxdZhjCJserrBKBk",
+          "isolation": null,
+          "workflow_id": null,
+          "input_keys": [
+            "args",
+            "script"
+          ]
+        }
+      ],
+      "parent_permission_denials": []
+    },
+    "codex-bootstrap-wave-blocked": {
+      "event_types": {
+        "thread.started": 1,
+        "turn.started": 1,
+        "agent_message": 4,
+        "command_execution": 24,
+        "turn.completed": 1
+      },
+      "native_calls": [],
+      "parent_permission_denials": []
+    },
+    "codex-bootstrap-wave-native": {
+      "event_types": {
+        "thread.started": 1,
+        "turn.started": 1,
+        "agent_message": 6,
+        "command_execution": 24,
+        "collab_tool_call": 10,
+        "turn.completed": 1
+      },
+      "native_calls": [
+        {
+          "id": "item_10",
+          "type": "collab_tool_call",
+          "tool": "wait",
+          "sender_thread_id": "01a09c6d-d46a-7a71-85cb-6f421b692131",
+          "receiver_thread_ids": [],
+          "status": "in_progress"
+        },
+        {
+          "id": "item_10",
+          "type": "collab_tool_call",
+          "tool": "wait",
+          "sender_thread_id": "01a09c6d-d46a-7a71-85cb-6f421b692131",
+          "receiver_thread_ids": [],
+          "status": "completed"
+        },
+        {
+          "id": "item_12",
+          "type": "collab_tool_call",
+          "tool": "wait",
+          "sender_thread_id": "01a09c6d-d46a-7a71-85cb-6f421b692131",
+          "receiver_thread_ids": [],
+          "status": "in_progress"
+        },
+        {
+          "id": "item_12",
+          "type": "collab_tool_call",
+          "tool": "wait",
+          "sender_thread_id": "01a09c6d-d46a-7a71-85cb-6f421b692131",
+          "receiver_thread_ids": [],
+          "status": "completed"
+        },
+        {
+          "id": "item_14",
+          "type": "collab_tool_call",
+          "tool": "wait",
+          "sender_thread_id": "01a09c6d-d46a-7a71-85cb-6f421b692131",
+          "receiver_thread_ids": [],
+          "status": "in_progress"
+        },
+        {
+          "id": "item_14",
+          "type": "collab_tool_call",
+          "tool": "wait",
+          "sender_thread_id": "01a09c6d-d46a-7a71-85cb-6f421b692131",
+          "receiver_thread_ids": [],
+          "status": "completed"
+        },
+        {
+          "id": "item_15",
+          "type": "collab_tool_call",
+          "tool": "wait",
+          "sender_thread_id": "01a09c6d-d46a-7a71-85cb-6f421b692131",
+          "receiver_thread_ids": [],
+          "status": "in_progress"
+        },
+        {
+          "id": "item_15",
+          "type": "collab_tool_call",
+          "tool": "wait",
+          "sender_thread_id": "01a09c6d-d46a-7a71-85cb-6f421b692131",
+          "receiver_thread_ids": [],
+          "status": "completed"
+        },
+        {
+          "id": "item_17",
+          "type": "collab_tool_call",
+          "tool": "wait",
+          "sender_thread_id": "01a09c6d-d46a-7a71-85cb-6f421b692131",
+          "receiver_thread_ids": [],
+          "status": "in_progress"
+        },
+        {
+          "id": "item_17",
+          "type": "collab_tool_call",
+          "tool": "wait",
+          "sender_thread_id": "01a09c6d-d46a-7a71-85cb-6f421b692131",
+          "receiver_thread_ids": [],
+          "status": "completed"
+        }
+      ],
+      "parent_permission_denials": []
+    },
+    "opencode-bootstrap-wave-blocked": {
+      "event_types": {
+        "step_start": 26,
+        "tool_use": 39,
+        "text": 13,
+        "step_finish": 26
+      },
+      "native_calls": [
+        {
+          "tool": "task",
+          "id": "call_94b17152631d470da2f1739f",
+          "subagent_type": "general",
+          "status": "completed"
+        },
+        {
+          "tool": "task",
+          "id": "call_6f0e2b983bf74797a79b1211",
+          "subagent_type": "general",
+          "status": "completed"
+        }
+      ],
+      "parent_permission_denials": []
+    },
+    "codex_session_headers": [
+      {
+        "id": "01a09c6d-d46a-7a71-85cb-6f421b692131",
+        "timestamp": "2026-09-13T20:20:38.644Z",
+        "cwd": "/workspace/bootstrap-wave-native/repo",
+        "cli_version": "0.154.0",
+        "source": "exec",
+        "model_provider": "openai",
+        "tool_names": {
+          "spawn_agent": 2,
+          "list_agents": 1,
+          "wait_agent": 5,
+          "send_message": 3
+        }
+      },
+      {
+        "id": "01a09c6e-b627-7aa1-8d33-fd6fc4388288",
+        "forked_from_id": "01a09c6d-d46a-7a71-85cb-6f421b692131",
+        "timestamp": "2026-09-13T20:21:36.427Z",
+        "cwd": "/workspace/bootstrap-wave-native/repo",
+        "cli_version": "0.154.0",
+        "source": {
+          "subagent": {
+            "thread_spawn": {
+              "parent_thread_id": "01a09c6d-d46a-7a71-85cb-6f421b692131",
+              "depth": 1,
+              "agent_path": "/root/alpha",
+              "agent_nickname": "Leibniz",
+              "agent_role": null
+            }
+          }
+        },
+        "agent_nickname": "Leibniz",
+        "model_provider": "openai",
+        "tool_names": {
+          "send_message": 2
+        }
+      },
+      {
+        "id": "01a09c6e-f9c2-7621-a1da-96e1fa9b9f63",
+        "forked_from_id": "01a09c6d-d46a-7a71-85cb-6f421b692131",
+        "timestamp": "2026-09-13T20:21:53.734Z",
+        "cwd": "/workspace/bootstrap-wave-native/repo",
+        "cli_version": "0.154.0",
+        "source": {
+          "subagent": {
+            "thread_spawn": {
+              "parent_thread_id": "01a09c6d-d46a-7a71-85cb-6f421b692131",
+              "depth": 1,
+              "agent_path": "/root/beta",
+              "agent_nickname": "Poincare",
+              "agent_role": null
+            }
+          }
+        },
+        "agent_nickname": "Poincare",
+        "model_provider": "openai",
+        "tool_names": {
+          "send_message": 2
+        }
+      }
+    ],
+    "claude_workflow": {
+      "run_id": "wf_9821ceb7-f3a",
+      "journal_sha256": "eab5512273f0adfa23d9cccfa242324934043f19dcac25b0547a0f446d738be0",
+      "opt_in": "--effort ultracode plus allowed Workflow tool; manual permissions",
+      "worker_count": 2,
+      "worker_permission_observation": "One compound commit command was denied by the native worktree boundary guard; separate permitted Git commands succeeded without user prompts."
+    }
+  },
+  "external_blockers": {
+    "pi": {
+      "version": "0.84.4",
+      "discovery": "pi install /opt/docflow-source; 9 sidecars tolerated; all plugin bytes match main",
+      "current_probe": "github-copilot/gpt-5-mini: HTTP 400 model_not_supported before actions, despite host exit 0",
+      "auth": "GitHub Copilot auth ready; saved openai-codex and anthropic auth check returns invalid_state",
+      "required_action": "Operator completes pi /login -> OpenAI Codex through the supported browser flow; no credentials in text",
+      "unperformed": [
+        "successful current bootstrap/lifecycle",
+        "wave rung",
+        "native facilities during successful execution",
+        "executor signing/push",
+        "blocked gate scenario"
+      ]
+    },
+    "cowork": {
+      "desktop_version": "1.52386.3.0 (Windows installed runtime)",
+      "runtime": "Existing desktop produced a loading screen, no usable attached-folder session; no fresh Cowork container/login established",
+      "historical_evidence": "2026-09-11 target files/gate passed but cloud connector denied target .git writes; bundle validated only the mirror",
+      "required_action": "Usable supported Cowork session with disposable attached target and actual target Git capability",
+      "unperformed": [
+        "current-source installation/discovery",
+        "selection and rung",
+        "native facilities",
+        "executor signing/push",
+        "PR CLI",
+        "current target branches/blockers",
+        "current bootstrap/lifecycle/wave"
+      ]
+    }
+  },
+  "scope_limits": [
+    "No hosted GitHub fixture workflow or host-managed GitHub signing/push permissions proved; gh binary availability alone is not authentication.",
+    "Codex/OpenCode used native workers directed into explicit Git worktrees, not host-enforced worktree isolation.",
+    "Claude native Workflow/Agent used host worktree isolation and ordinary manual allowlisted permissions, never bypass mode.",
+    "Selection reused explicitly supplied inputs; structured selection UI was not exercised.",
+    "Older successful runs retain their exact source; changed files versus final are listed. Audit and reporting changes received targeted reruns; there is no claim that every old host run loaded the entire final snapshot.",
+    "OpenCode reporting recovery is a separate read-only phase; the original native run remains a report failure.",
+    "The custom Workflow release wrapper was syntax checked, not invoked as a complete suite. Its cases were mapped to the documented independent host route.",
+    "Deterministic node evals/run.mjs still skips 6 model cases; mapped native evidence is separate."
+  ],
+  "core_release_assertions": {
+    "checker_revision": "9438905dcd2d4b77bb828f2d64fb5dc0bfecd21e",
+    "cases": [
+      {
+        "case": "bootstrap-full",
+        "host": "claude",
+        "command": [
+          "docker",
+          "exec",
+          "docflow-0051-claude",
+          "node",
+          "/results/release/evals/hosts/check-release.mjs",
+          "bootstrap-full",
+          "/workspace/bootstrap-full/repo",
+          "/opt/docflow-final"
+        ],
+        "exit": 0,
+        "result": {
+          "case": "bootstrap-full",
+          "passed": true,
+          "target": "/workspace/bootstrap-full/repo"
+        }
+      },
+      {
+        "case": "bootstrap-express",
+        "host": "opencode",
+        "command": [
+          "docker",
+          "exec",
+          "docflow-0051-opencode",
+          "node",
+          "/results/release/evals/hosts/check-release.mjs",
+          "bootstrap-express",
+          "/workspace/bootstrap-express/repo",
+          "/opt/docflow-final"
+        ],
+        "exit": 0,
+        "result": {
+          "case": "bootstrap-express",
+          "passed": true,
+          "target": "/workspace/bootstrap-express/repo"
+        }
+      },
+      {
+        "case": "new-adr",
+        "host": "claude",
+        "command": [
+          "docker",
+          "exec",
+          "docflow-0051-claude",
+          "node",
+          "/results/release/evals/hosts/check-release.mjs",
+          "new-adr",
+          "/workspace/bootstrap-separate/repo",
+          "/opt/docflow-final"
+        ],
+        "exit": 0,
+        "result": {
+          "case": "new-adr",
+          "passed": true,
+          "target": "/workspace/bootstrap-separate/repo"
+        }
+      },
+      {
+        "case": "ship-item",
+        "host": "claude",
+        "command": [
+          "docker",
+          "exec",
+          "docflow-0051-claude",
+          "node",
+          "/results/release/evals/hosts/check-release.mjs",
+          "ship-item",
+          "/workspace/ship/repo",
+          "/opt/docflow-final"
+        ],
+        "exit": 0,
+        "result": {
+          "case": "ship-item",
+          "passed": true,
+          "target": "/workspace/ship/repo"
+        }
+      },
+      {
+        "case": "legacy-range",
+        "host": "codex",
+        "command": [
+          "docker",
+          "exec",
+          "docflow-0051-codex",
+          "node",
+          "/results/release/evals/hosts/check-release.mjs",
+          "legacy-range",
+          "/workspace/range-v2/repo",
+          "/opt/docflow-final"
+        ],
+        "exit": 0,
+        "result": {
+          "case": "legacy-range",
+          "passed": true,
+          "target": "/workspace/range-v2/repo"
+        }
+      },
+      {
+        "case": "legacy-coordination",
+        "host": "claude",
+        "command": [
+          "docker",
+          "exec",
+          "docflow-0051-claude",
+          "node",
+          "/results/release/evals/hosts/check-release.mjs",
+          "legacy-coordination",
+          "/workspace/migration-v2/repo",
+          "/opt/docflow-final"
+        ],
+        "exit": 0,
+        "result": {
+          "case": "legacy-coordination",
+          "passed": true,
+          "target": "/workspace/migration-v2/repo"
+        }
+      }
+    ],
+    "coordination_extra": {
+      "command": [
+        "docker",
+        "exec",
+        "docflow-0051-claude",
+        "python3",
+        "/results/check-migration.py",
+        "/workspace/migration-v2"
+      ],
+      "exit": 0,
+      "result": {
+        "checks": {
+          "legacy_files_removed": true,
+          "roles_preserved": true,
+          "nested_prompt": true,
+          "no_root_agent_dir": true,
+          "live_status_preserved": true,
+          "remote_claim_untouched": true,
+          "union_rule_removed": true,
+          "snapshot_ignore_removed": true,
+          "custom_note_preserved": true,
+          "read_order_updated": true,
+          "gate": true,
+          "gate_unchanged": true
+        },
+        "passed": true,
+        "gate_stdout": "verify: OK (legacy coordination fixture)",
+        "gate_exit": 0,
+        "commits": "59ad933 docs: migrate legacy coordination layout and remove stale content\n471b1f3 test: initialise legacy-coordination fixture"
+      }
+    }
+  },
+  "cleanup": {
+    "archives": [
+      {
+        "container": "docflow-0051-claude",
+        "label": "0051-20260913",
+        "image": "sha256:2f40913e553914b115cb94eb7f1729d68437215f22462a1bf069388f9ddfba84",
+        "fixture_archive": "docflow-0051-claude-fixtures.tar.gz",
+        "bytes": 431992,
+        "sha256": "22605851afc8eefd7360f995bcaf36657f014adce3bff588c770d5a8c8d4c4c5",
+        "synthetic_public_key_exported": true,
+        "home_archived": false
+      },
+      {
+        "container": "docflow-0051-codex",
+        "label": "0051-20260913",
+        "image": "sha256:aaec77988842e7925138169e7c545beef1722ba9aeffcfa554a57df1fc40c712",
+        "fixture_archive": "docflow-0051-codex-fixtures.tar.gz",
+        "bytes": 668888,
+        "sha256": "9eff2b2409c88f84f022e2f8b59bb73d42bc6933a32ed633b99ea7d4bac13b2e",
+        "synthetic_public_key_exported": true,
+        "home_archived": false
+      },
+      {
+        "container": "docflow-0051-opencode",
+        "label": "0051-20260913",
+        "image": "sha256:1b1c2b3dd6eaf4294e454583aeed31e0da5b99beee5f9c2c982ff6029c7b38df",
+        "fixture_archive": "docflow-0051-opencode-fixtures.tar.gz",
+        "bytes": 337348,
+        "sha256": "ccb7fa07277875b92e2d561636a5ec00427d18615c3e22341d35c0621e8a4cd3",
+        "synthetic_public_key_exported": true,
+        "home_archived": false
+      },
+      {
+        "container": "docflow-0051-pi",
+        "label": "0051-20260913",
+        "image": "sha256:edf1cd940f8a3018212e7677640c652548b14ee353b8d6b5d5b0f32877963e93",
+        "fixture_archive": "docflow-0051-pi-fixtures.tar.gz",
+        "bytes": 109,
+        "sha256": "595e96e9917a68f3034b3ecb8a36c9b9dd841865578eceec51ef9c0dd3c2d885",
+        "synthetic_public_key_exported": false,
+        "home_archived": false
+      }
+    ],
+    "removed": [
+      "docflow-0051-claude",
+      "docflow-0051-codex",
+      "docflow-0051-opencode",
+      "docflow-0051-pi"
+    ],
+    "ephemeral_auth_discarded": true,
+    "source_worktree_retained": true,
+    "unrelated_containers_touched": false
+  },
+  "status_at_a_glance": {
+    "This run": "Core behavioural cases, native Claude rungs 1/2, Codex/OpenCode delegation and signed local transport observed; original failures and targeted repairs retained.",
+    "Overall": "partially verified",
+    "Yet to do": "pi authentication and successful native cases; usable Cowork runtime and actual target Git evidence; required CI on the pushed PR head."
+  }
+}

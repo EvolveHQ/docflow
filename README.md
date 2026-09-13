@@ -367,22 +367,26 @@ welcome.
 ## Runtime verification
 
 The same files install on all five targets; behaviour also depends on the
-selected model and the host's permissions. Independent Docker tests on
-2026-09-11 ran bootstrap and new-adr on the reviewed source snapshot:
+selected model and the host's permissions. Independent vendor-host tests on
+2026-09-13 checked frozen source snapshots and the actual target Git state:
 
 | Host / model | Observed result | Limit |
 |---|---|---|
-| Claude Code 2.1.269 / Opus 5 | Generated scaffold and decision passed file, gate and Git checks. | Delegated wave and signed remote push not yet verified. |
-| Codex 0.154.0 / GPT-6 Astra | Same checks passed. | Delegated wave and signed remote push not yet verified. |
-| OpenCode 1.18.30 / Big Pickle | Same checks passed. | Original fixture gate remained untracked; delegated wave not verified. |
-| pi 0.84.4 / GitHub Copilot GPT-4.1 | Failed: ignored supplied root/profile and seed/queue choices. | Exit zero was not behavioural success; other advertised models were unavailable. |
-| Cowork 1.52386.0 / Opus 5 High | Target files and gate passed; exported Git bundle verified. | Cloud connector denied target `.git` writes; target Git integration remains unverified. |
+| Claude Code 2.1.269 / Opus 5 | Bootstrap/new-adr, native Workflow rung 1 and Agent rung 2 passed; workers signed and pushed to local remotes. | Ordinary manual permissions with fixture tools allowed; one worktree guard denial recovered through permitted commands. Hosted PR operations untested. |
+| Codex 0.154.0 / GPT-6 Astra | Bootstrap/new-adr and native rung 2 passed; signed concurrent work survived the whole-wave gate failure. | Native dispatch needed session storage on the disposable home; ephemeral dispatch failed. Workers used explicitly assigned Git worktrees, without host-enforced isolation. |
+| OpenCode 1.18.30 / Big Pickle | Bootstrap/new-adr and native rung 2 target checks passed; signed concurrent claims survived the gate failure. | Original wave report failed formatting; a separate read-only reporting rerun passed. Workers used explicitly assigned Git worktrees. |
+| pi 0.84.4 / GitHub Copilot | Native package discovery and sidecars verified; the current advertised-model probe returned HTTP 400 before actions. | Earlier GPT-4.1 bootstrap runs failed supplied choices; saved alternative-provider logins are invalid. Successful current lifecycle/wave evidence remains pending. |
+| Cowork 1.52386 family | Earlier cloud-session target files and gate passed; an exported bundle verified only its mirror. | Earlier connector denied target `.git` writes. The current Windows desktop did not provide a usable test session; current-source behaviour remains pending. |
 
-Revised-snapshot runs also passed Codex/OpenCode bootstrap, a Claude Code
-sequential wave (including held-claim exclusion and independent queue numbers),
-Codex coordination migration, and Codex's whole-wave environment stop. pi still
-failed. OpenCode's original stop case continued incorrectly; the clarified rule
-was verified on Codex, while OpenCode's rerun was rejected by its provider.
+The six core model-driven cases have independent target assertions through
+the vendor-host runner, including express bootstrap, signed item completion
+and both migrations. Historical failures remain recorded. Later source changes
+received targeted checks; the receipts identify the exact snapshot for each
+run. The full five-host release requirement remains blocked on pi and Cowork.
+
+Signed transport tests used isolated local bare remotes. They do not prove a
+hosted GitHub PR workflow or GitHub authentication. Selection reused explicitly
+supplied inputs; interactive selection controls were not exercised.
 
 These are scoped observations, not a guarantee for every host capability.
 The repeatable test method and newer receipts live under `evals/hosts/`.
