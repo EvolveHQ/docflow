@@ -51,6 +51,10 @@ identity.
 
 - Backfilling decisions predating this record.
 
+## Open questions
+
+None.
+
 ## References
 
 - `CONVENTIONS.md`

@@ -168,6 +168,18 @@ export function assertLegacyRange(root, { cutoff, shapeExceptions = [] }) {
         `-shaped, but the range says ${expectTech ? 'technology' : 'capability'}`,
       );
     }
+    const sections = ['Context', ...(expectTech
+      ? ['Decision', 'Rationale', 'Consequences']
+      : ['Capability statement', 'User stories / scenarios']),
+      'Acceptance criteria', 'Out of scope', 'Open questions', 'References',
+      'Revision History', 'Approvals'];
+    const headings = [...body.matchAll(/^## (.+)$/gm)].map((m) => m[1]);
+    let previous = -1;
+    for (const section of sections) {
+      const position = headings.indexOf(section);
+      if (position <= previous) throw new Error(`${adr.file}: missing or out-of-order legacy section ${section}`);
+      previous = position;
+    }
   }
   // Contiguous WITHIN each block; the gap at the cutoff is expected.
   for (const block of [adrs.filter((a) => a.num < cutoff),

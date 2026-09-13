@@ -45,6 +45,10 @@ files, which keeps the conventions concrete.
 
 - Behavioural checks that need an agent in the loop.
 
+## Open questions
+
+None.
+
 ## References
 
 - adr/0002-searchable-decision-catalogue.md

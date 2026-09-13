@@ -46,6 +46,10 @@ renaming a file is a real refactor: every relative link has to follow.
 
 - Rendering the catalogue as a site.
 
+## Open questions
+
+None.
+
 ## References
 
 - adr/0002-searchable-decision-catalogue.md
