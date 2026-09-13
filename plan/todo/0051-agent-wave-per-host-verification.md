@@ -50,9 +50,9 @@ and return ADR 0015 to Implemented.
 
 ## Status
 
-- **Claimed by:** Codex (Orca worker), 2026-09-13, `kmox83/0051-host-verification-astra` ([PR #6](https://github.com/EvolveHQ/docflow/pull/6); new dedicated worktree; explicitly resumed after PR #5 merged).
-- **Blockers:** pi needs a supported provider login: current Copilot model probe returned HTTP 400 before actions; saved OpenAI Codex and Anthropic sessions report invalid_state. Cowork's current desktop did not provide a usable attached-target session; earlier cloud connector denied target .git writes. Successful current pi/Cowork lifecycle and wave checks remain unverified.
-- **Stopped:** 2026-09-13 — independent work is prepared on draft PR #6; external pi login and usable Cowork target-Git runtime are still required. See the closing Status at a glance and the audit for verified scope.
+- **Claimed by:** Codex (Orca worker, dispatch `ctx_92a3bae7230f`), 2026-09-13, `kmox83/0051-host-verification-astra` ([PR #6](https://github.com/EvolveHQ/docflow/pull/6); resumed for the operator's pi provider correction).
+- **Blockers:** Cowork's current desktop did not provide a usable attached-target session; earlier cloud connector denied target .git writes. The operator selected pi's existing `llama-server/qwen3.8-27b-coding` route; cloud login is not a prerequisite. Pi inference, lifecycle and wave checks on that route remain to be verified.
+- **Stopped:**
 
 ## Remaining release evidence
 
