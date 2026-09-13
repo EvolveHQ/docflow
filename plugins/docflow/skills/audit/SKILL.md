@@ -75,7 +75,11 @@ the same way: it is a template, not the first technology ADR.
    ways. After a range migration, resolve an unchanged done entry's old
    identity through the migration commit's recorded old-to-new map before
    checking coverage. Cite that commit and pair; do not require history to
-   name today's number. Missing mapping evidence is unverifiable, not proof
+   name today's number. Bind the full old path in the pre-migration tree
+   to the mapped current file using that commit's tree/rename evidence;
+   an equal number or title alone never establishes identity. A different
+   filename sharing the old prefix gains no exemption. Missing mapping or
+   tree evidence is unverifiable, not proof
    of coverage. Unrelated or unmapped missing entries remain findings.
 4. **Section completeness.** Each ADR has the required sections in the
    order its **declared shape** mandates — read the `shape:` field:
@@ -107,7 +111,8 @@ the same way: it is a template, not the first technology ADR.
    files. Glossary anchors (if used) resolve. Preserved `plan/done/` entries
    and historical commit messages or tags are checked in their historical
    context. A retired path explained by the migration commit's old-to-new
-   map is not a dangling active link; cite the evidence instead of rewriting
+   map and the full file-identity evidence from check 3 is not a dangling
+   active link; cite the evidence instead of rewriting
    history. This exception never excuses an unresolved current ADR, INDEX,
    domain listing or todo reference.
 8. **Language mandate.** If set, spot-check user-facing docs for the
