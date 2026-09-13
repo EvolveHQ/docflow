@@ -155,7 +155,10 @@ If this ADR replaces an existing one:
 
 ## Step 5 — Wire up
 
-- Regenerate `INDEX.md` from ADR metadata. In a two-shape repo the table
+- Regenerate `INDEX.md` from ADR metadata, retaining every existing decision
+  row. Link each row's number or title to its actual ADR file relative to
+  INDEX; verify every destination exists and its title, status and date
+  agree with the row. In a two-shape repo the table
   carries a **Shape** column, filled from each ADR's `shape:` field (an
   absent field renders as `capability`); a single-shape repo has none,
   and neither does a legacy range-encoded one — its shape is read from

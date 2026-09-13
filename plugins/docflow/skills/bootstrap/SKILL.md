@@ -638,7 +638,10 @@ Keep the pointer in sync if a later re-run migrates the root.
     worktrees, while ordinary shared PR work remains serialised. Keep the
     item Status, Stop and final Report instructions in every eligible mode.
 11. `INDEX.md` — header + the seed ADR's row (item 5b); an empty table only
-    if the seed was declined. In a **two-shape** repo (Q2) the table
+    if the seed was declined. Link each row's number or title to the actual
+    ADR file using a path relative to INDEX. Check that every link resolves
+    and the row's title, status and date match the file's metadata.
+    In a **two-shape** repo (Q2) the table
     carries a **Shape** column, filled from each ADR's `shape:` field
     (blank field → `capability`); a single-shape repo has no such column.
     Neither `0000-` template appears in the table — templates are not
