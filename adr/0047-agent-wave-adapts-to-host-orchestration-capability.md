@@ -1,7 +1,7 @@
 ---
 adr: 0047
 title: agent-wave adapts to the orchestration capability the host exposes
-status: Proposed
+status: Implemented
 date: 2026-09-04
 owner: Eugenio Minardi
 supersedes:
@@ -82,9 +82,9 @@ parallel rungs.
 **Preconditions**, checked before any parameter question: the
 repository is bootstrapped with a queue and a run prompt; a remote is
 reachable and carries the integration branch; the local integration
-branch is compared with its remote — ahead is reported with the offer
-to push first or run at rung three in this checkout, behind and clean
-is fast-forwarded; the base is the remote tip after a fetch and is
+branch is compared with its remote — ahead or divergent work is reported
+and must be reconciled before the wave; switching to rung three does not
+change the declared base. A behind, clean checkout may be fast-forwarded; the base is the remote tip after a fetch and is
 printed, so an empty remote queue is explained. After the operator has
 confirmed the parameters, in separate-worktrees mode the detached
 integration worktree
@@ -190,8 +190,12 @@ rung three, the path every host shares.
 | Date | Revision | Author | Change |
 |------|----------|--------|--------|
 | 2026-09-04 | r1 | Eugenio Minardi | Initial draft (Proposed), from the approved two-round brainstorm: the three-rung capability ladder derived in capability vocabulary, never solicited; writer-keyed mode mapping with the two refusals; remote, base, ahead-or-behind, and probe preconditions; the operator's checkout left alone. A runner question, a planner-only skill, a separate run-wave skill, width-one waves for single writers, a clean-checkout precondition, and coupling to the host tool considered and rejected. |
+| 2026-09-11 | r2 | Eugenio Minardi | Proposed → Accepted. Operator authorised the queued coordination rollout in PR #5; implementation and verification remain pending. |
+| 2026-09-11 | r3 | Eugenio Minardi | Resolve the ahead-local-checkout ambiguity: all rungs use the fetched integration base; unpushed local work requires reconciliation and cannot be silently bypassed by selecting rung three. |
+| 2026-09-11 | r4 | Eugenio Minardi | Implementation and scoped verification prepared in PR #5; status becomes effective on its checked merge. Independent Docker receipts, deterministic checks and the audit report record evidence and remaining host limits. |
 
 ## Approvals
 
 | Role | Name | Date | Signature |
 |------|------|------|-----------|
+| Maintainer | Eugenio Minardi | 2026-09-11 | Approved in operator session; PR #5 expansion |

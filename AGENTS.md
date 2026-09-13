@@ -18,7 +18,9 @@ below describe how docflow itself is built and maintained.
 - `plugins/docflow/skills/` — **the product**. `bootstrap/` (with
   `templates/`) plus the lifecycle skills (`new-adr`, `new-plan`,
   `ship-item`, `add-convention`, `audit`, `brainstorm`, `agent-wave`,
-  `rollup`). This is what gets installed. One source for every target.
+  `rollup`). Declarative `agents/openai.yaml` sidecars provide optional
+  host interface metadata; SKILL.md remains sufficient on every target.
+  This is what gets installed. One source for every target.
 - `plugins/docflow/.claude-plugin/plugin.json` — Claude Code / Cowork
   plugin manifest; `plugins/docflow/.codex-plugin/plugin.json` — Codex.
 - `.claude-plugin/marketplace.json` + `.agents/plugins/marketplace.json`
@@ -35,8 +37,8 @@ below describe how docflow itself is built and maintained.
 - `CONVENTIONS.md` — authoring rules (read before editing anything).
 - `plan/todo/NNNN-<slug>.md` — pending work, lower numbers run first.
 - `plan/done/<YYYY-MM-DD>-<slug>.md` — shipped work, chronological.
-- `_agent/` — coordination: `ROLES.md`, `WORKLOG.md`,
-  `CURRENT_FOCUS.md`, `HANDOFF.md`, `prompts/`.
+- `_agent/prompts/autonomous.md` — the single-writer run contract.
+  Live ownership, blockers and stop reasons belong to each queued item.
 - `scripts/verify.mjs` — the static verify gate (manifests + version
   sync, skill structure + parity, ADR catalogue + INDEX sync,
   ADR-privacy leak scan).
@@ -106,19 +108,36 @@ These come from `CONVENTIONS.md` and override default behaviour:
 
 ## Multi-agent workflow
 
-A single agent owns this repo. The `_agent/` directory tracks live
-state and history; LOCKS discipline is not in use.
+A single writer owns this repo; no claim branch or lock ledger is required.
+Use the operator-named PR branch, otherwise `work/<item-key>`. Keep item
+status on that branch. Parallel implementation requires a separate decision.
+
+## Picking up this repo
+
+1. Read CONVENTIONS.md and the owning ADRs.
+2. Inspect `git status`, the current branch and fetched `origin/main`.
+3. Inspect open PRs, the plan queue and each item's Status; a ready PR can
+   carry the completion move on its branch while it remains unmerged.
+4. Resume only an explicitly named live/stopped item; otherwise select the
+   first eligible item. Read `_agent/prompts/autonomous.md` before running it.
 
 ## Plan folder
 
-- A pending item gets a `plan/todo/NNNN-<slug>.md` file BEFORE work
-  starts, naming the owning ADR(s), scope, and exit criteria.
-- The completion event is: the change is fast-forwarded onto `main` and
-  the remote push succeeds. On completion, `git mv` the file to
-  `plan/done/<YYYY-MM-DD>-<slug>.md` with a footer naming the HEAD SHA
-  (and any release tag / npm version).
-- The owning ADR(s) advance `Accepted → Implemented` on the same
-  commit. Regenerate `INDEX.md`.
+Write a pending item before implementation, naming its owning decisions,
+scope and testable exit criteria. Each todo carries `## Status` with
+Claimed by, Blockers and Stopped. Remove it at completion.
+
+Prepare the atomic completion move, owning ADR status and regenerated INDEX
+on the PR branch, with a footer naming the verified work HEAD and PR URL.
+It becomes shipped only when the PR is merged into main with required checks
+green. A ready, unmerged PR is still live; never report it as shipped.
+Keep items with unverified exit criteria in todo and their ADRs Accepted.
+
+## Reporting
+
+Final skill results and persisted reports end with **Status at a glance**:
+**This run**, **Overall**, **Yet to do**. Follow CONVENTIONS.md §Reporting;
+routine progress does not need the block.
 
 ## Git contract
 
@@ -128,7 +147,7 @@ state and history; LOCKS discipline is not in use.
 - ADR-revision tags `adr-NNNN-rN`: no.
 - Co-Authored-By trailer: no.
 - Cross-references between ADRs use relative paths (`adr/NNNN-*.md`).
-- **Integration:** direct-to-main, **fast-forward only**. No merge
-  commits on `main`. The verify gate (`node scripts/verify.mjs`) runs
-  locally and must pass before push. Completion event: fast-forwarded
-  to `main` + remote push succeeded.
+- **Integration:** PR-based integration into `main`, using standard merge commits. Run
+`node scripts/verify.mjs` and `node evals/run.mjs` locally before pushing;
+the required `verify` CI check must pass on the current PR head. Constituent
+commits are signed. Updating a PR does not authorise merging or releasing it.

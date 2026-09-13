@@ -181,3 +181,19 @@ A new ADR is `Proposed`, not actionable yet. Offer to:
 - Walk it to `Accepted` (populate Approvals, change status, regen INDEX)
   when the user is ready; and
 - Create a `plan/todo/` item for it (hand off to the **new-plan** skill).
+
+Name the authored decision, status, numbering and INDEX result; do not imply implementation.
+
+<!-- docflow:closing-report -->
+## Closing report
+
+End every run, including blocked, failed and stopped runs, with a section
+headed exactly **Status at a glance**, containing these three labels:
+
+- **This run:** only actions actually attempted and their outcomes; quote each verify gate's exact output and exit code, including timeouts or interruptions.
+- **Overall:** implemented, partially verified, verified, blocked, failed or unknown. A passing sub-step is not an overall pass; incomplete or missing evidence never becomes success.
+- **Yet to do:** every remaining action, unresolved finding, verification, cleanup or required input. Write None only when the whole task is verifiably complete; never omit work because a budget ended.
+
+Routine progress messages need no block. Keep final results brief and
+distinguish work prepared on a PR from work confirmed shipped.
+<!-- /docflow:closing-report -->

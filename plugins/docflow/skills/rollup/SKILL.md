@@ -76,3 +76,19 @@ Tell the user how many members were aggregated, how many were skipped as
 unreachable (and which), and the total ADR count in the roll-up. Remind
 them the file is derived: re-run this skill to refresh it rather than
 editing it by hand.
+
+Name catalogue coverage and unavailable members; partial coverage is not verification.
+
+<!-- docflow:closing-report -->
+## Closing report
+
+End every run, including blocked, failed and stopped runs, with a section
+headed exactly **Status at a glance**, containing these three labels:
+
+- **This run:** only actions actually attempted and their outcomes; quote each verify gate's exact output and exit code, including timeouts or interruptions.
+- **Overall:** implemented, partially verified, verified, blocked, failed or unknown. A passing sub-step is not an overall pass; incomplete or missing evidence never becomes success.
+- **Yet to do:** every remaining action, unresolved finding, verification, cleanup or required input. Write None only when the whole task is verifiably complete; never omit work because a budget ended.
+
+Routine progress messages need no block. Keep final results brief and
+distinguish work prepared on a PR from work confirmed shipped.
+<!-- /docflow:closing-report -->

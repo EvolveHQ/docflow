@@ -1,7 +1,7 @@
 ---
 adr: 0012
 title: Behavioural and end-to-end evaluation of skill outcomes
-status: Implemented
+status: Accepted
 date: 2026-06-01
 owner: Eugenio Minardi
 supersedes:
@@ -42,18 +42,21 @@ The eval harness reuses the fixtures and assertion helpers from the
 static tier where possible. It runs as a release-gating suite rather than
 on every push.
 
-**Runner.** The agent that drives a skill is the host's own **subagent
-mechanism** — an in-session worktree subagent (the `Agent` tool), or a
-`Workflow` that fans one subagent out per case — not an external headless
-CLI and not a pinned API model. Each case spawns a worktree-isolated
-subagent that runs the named skill against the fixture, then the
-deterministic layer (`scripts/verify.mjs` plus `evals/assertions.mjs`)
-verifies the resulting worktree state. This needs no API key or CI model
-budget; the orchestrating agent already exists. Consequence: a worktree
-subagent sees **committed state** (its worktree is cut from a committed
-ref, e.g. `origin/main`), so behavioural evals validate committed/pushed
-skills, not uncommitted local edits — commit (and, for shared runs, push)
-before evaluating.
+**Runner.** Use the host's own subagent mechanism where available, or
+the real vendor CLI/desktop in an independent disposable Docker container.
+Both execute the installed skills with scripted operator answers. A
+separate deterministic process judges the resulting files, git history,
+gate result and final report. Never replace a vendor host with another
+host and call it a portability pass. Record source commit and content
+digest, host version, model, discovery path, permissions and limitations.
+
+Containers use read-only plugin snapshots and disposable fixture repos;
+credentials stay out of images, source trees and reports. Local fixture
+remotes and unsigned synthetic commits do not prove GitHub or signing
+permissions. A desktop login, VM blocker, timeout or skipped case remains
+pending or failed. Model process exit zero alone never proves a pass.
+Subagent worktrees see committed refs. A read-only snapshot may test local
+edits, but must identify its digest and cannot claim to test a later commit.
 
 ## User stories / scenarios
 
@@ -82,9 +85,8 @@ before evaluating.
 ## Open questions
 
 - ~~Which runner executes the agent in CI headlessly, and whether evals
-  run against a pinned model?~~ Resolved: the runner is the host's
-  subagent mechanism (worktree `Agent`/`Workflow`), not an external
-  headless CLI or pinned model. Demonstrated by running `new-adr` through
+  run against a pinned model?~~ Resolved in r4: native subagents and isolated real vendor hosts are
+  supported; report the exact host and model used. Demonstrated by running `new-adr` through
   a worktree subagent and verifying with the static gate. See Capability
   statement §Runner.
 
@@ -100,9 +102,11 @@ before evaluating.
 | 2026-06-01 | r1 | Eugenio Minardi | Initial decision. |
 | 2026-06-02 | r2 | Eugenio Minardi | Resolved runner open question: host subagent mechanism (worktree Agent/Workflow), no external CLI/pinned model. Noted committed-state worktree consequence. Demonstrated via a new-adr subagent eval. |
 | 2026-06-02 | r3 | Eugenio Minardi | Implemented (plan item 0002): evals/ deterministic layer + behavioural.workflow.mjs; all three subagent evals (new-adr, ship-item, bootstrap) PASS against HEAD. Status Accepted → Implemented. |
+| 2026-09-11 | r4 | Eugenio Minardi | Reopen for the approved wave regressions and independent Docker host harness. Operator explicitly authorised real vendor CLI/desktop runs; observable outcomes, not model self-report, determine pass. |
 
 ## Approvals
 
 | Role | Name | Date | Signature |
 |------|------|------|-----------|
 | Maintainer | Eugenio Minardi | 2026-06-01 | — |
+| Maintainer | Eugenio Minardi | 2026-09-11 | Approved in operator session; PR #5 expansion |

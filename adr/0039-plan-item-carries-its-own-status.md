@@ -1,7 +1,7 @@
 ---
 adr: 0039
 title: A plan item carries its own live status; the snapshot file is retired
-status: Proposed
+status: Implemented
 date: 2026-09-04
 owner: Eugenio Minardi
 supersedes:
@@ -93,9 +93,10 @@ per task.
    name none; the "Picking up this repo" read order names the status
    section, `git status`, and the queue order as the answers the
    snapshot used to give.
-5. Audit flags a **Claimed by** whose branch no longer exists as
-   stale, and surfaces every item in `plan/todo/` with a **Stopped**
-   entry as needing a human in its report.
+5. Audit flags branch-backed ownership as stale only after confirming its
+   remote branch disappeared. Shared-checkout ownership uses item status
+   and locks, not remote branch absence. Every **Stopped** item needs human
+   attention in the report.
 6. No scaffolded file holds unqueued candidate decisions; `USAGE.md`
    says where candidates live until they are queued.
 7. `README.md`, `USAGE.md`, and `docs/` describe live status as part
@@ -129,8 +130,12 @@ per task.
 | Date | Revision | Author | Change |
 |------|----------|--------|--------|
 | 2026-09-04 | r1 | Eugenio Minardi | Initial draft (Proposed), from the approved brainstorm: snapshot file retired; queue items carry a Status section (Claimed by, Blockers, Stopped) that travels with the work and is dropped at ship; derivable fields answered by git and the plan folder. Bounded-and-audited snapshot considered and rejected. |
+| 2026-09-11 | r2 | Eugenio Minardi | Proposed → Accepted. Operator authorised the queued coordination rollout in PR #5; implementation and verification remain pending. |
+| 2026-09-11 | r3 | Eugenio Minardi | Align stale detection with the approved coordination modes: only branch-backed ownership depends on a remote claim ref; shared claims use item status and locks. |
+| 2026-09-11 | r4 | Eugenio Minardi | Implementation and scoped verification prepared in PR #5; status becomes effective on its checked merge. Independent Docker receipts, deterministic checks and the audit report record evidence and remaining host limits. |
 
 ## Approvals
 
 | Role | Name | Date | Signature |
 |------|------|------|-----------|
+| Maintainer | Eugenio Minardi | 2026-09-11 | Approved in operator session; PR #5 expansion |

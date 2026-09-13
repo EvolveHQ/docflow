@@ -1,7 +1,7 @@
 ---
 adr: 0038
 title: In-flight state is derived from branches and pull requests
-status: Accepted
+status: Implemented
 date: 2026-09-04
 owner: Eugenio Minardi
 supersedes:
@@ -47,10 +47,31 @@ What is in flight is **derived from branches and pull requests**,
 never stored in a file:
 
 - **The claim** on a queue item is a pushed work branch named for that
-  item, `<actor>/NNNN-<slug>` where `NNNN` is the plan number and the
-  actor is an agent id or a human handle, together with a draft pull
-  request opened from it where integration is pull-request based. A
-  merged or deleted branch is no longer a claim.
+  item, `claim/<item-key>`, where the item key is the queue file name
+  without its extension (`plan/todo/0007-rate-limit.md` gives
+  `claim/0007-rate-limit`), together with a draft pull request opened
+  immediately after acquisition and before implementation where integration
+  is pull-request based. The prefix is
+  **fixed, not the actor's**: every claim is then greppable without
+  knowing the actor set, and — because one item maps to exactly one ref
+  — **an atomic create-only push is the exclusion**. Use an explicit empty
+  expected value for the full destination ref with force-with-lease and
+  inspect porcelain output: only a new-ref (`*`) result acquires the claim.
+  Ordinary successful, fast-forward and up-to-date pushes do not acquire it.
+  Any other result leaves the item unclaimed by this executor. The claiming
+  commit exists **before** the branch is pushed, so a claim ref never
+  appears empty; a remote claim branch whose tip is at or behind the
+  integration branch carries no work and **is not a claim**. A merged
+  or deleted branch is no longer a claim.
+- **The claim takes the form its coordination mode allows.** In
+  **separate worktrees** it is the branch above, plus the draft pull
+  request where integration is pull-request based. In a **shared
+  checkout** there is one working tree and no branch per item, so the
+  claim is the item's own `Claimed by`
+  (adr/0039-plan-item-carries-its-own-status.md) together with the
+  `_agent/LOCKS.md` rows serialising the files it edits. Under **a
+  single writer** there is no claim to make: nothing else can take the
+  item.
 - **The in-flight view** is computed on demand from `git worktree
   list`, the remote branches matching the naming convention, and the
   draft pull requests when a remote and a pull-request host are
@@ -63,31 +84,39 @@ never stored in a file:
   first commit message) lists the reserved identifier block and the
   artefacts the worktree is the single writer of.
 - **Reservation** for an orchestrated wave is orchestrator state: the
-  reserved block is handed to each agent in its spawn brief and stated
-  by the agent in its pull-request description or first commit;
+  reserved block is handed to each agent in its wave specification and
+  stated by the agent in its pull-request description or first commit;
   nothing is written to a committed file, so there is nothing to clean
   up when the wave ends, and an unused reservation expires with the
   wave. Collision detection remains the safety, as it always was.
-- A **stale** claim is one whose branch, pull request, or worktree no
-  longer exists; audit names it and offers to prune the worktree.
+- A branch-backed claim is **stale** when its worktree or `Claimed by`
+  outlives a remote claim branch confirmed absent after a successful fetch.
+  Shared-checkout claims have no remote branch; evaluate their owner and
+  lock rows, never remote absence. Audit names it and offers to prune the worktree. A
+  **detached** worktree — one sitting on no claim branch at all — is
+  neither a claim nor stale, and is reported as neither.
 
 Alternatives considered: a dashboard written **only by the
 orchestrator on `main`** before spawning — rejected, because it works
 only for orchestrated waves under direct-to-main integration, has the
 same visibility problem under pull requests, and is stale the moment
 the wave ends; a **claim commit to `main`** before branching —
-rejected, because under pull-request integration nothing reaches
-`main` without a pull request, and under direct-to-main the pushed
-branch already carries the same information.
+rejected wherever there is a branch to carry the claim, because under
+pull-request integration nothing reaches `main` without a pull request
+and under direct-to-main the pushed branch already carries the same
+information. The shared checkout is the one carve-out: it has no branch
+per item, so its claim is committed on the item itself and the
+objection does not apply.
 
 ## User stories / scenarios
 
 - As an agent about to pick an item, I list the remote branches and
   draft pull requests and see every claim, including claims made ten
   seconds ago on another machine.
-- As an agent claiming an item, I push a branch named for it and open
-  a draft pull request; I edit no shared file and remove nothing when
-  I finish.
+- As an agent claiming an item, I commit, push `claim/<item-key>`, and
+  open a draft pull request; if someone beat me to that item my push is
+  rejected and I learn it before I have done the work. I edit no shared
+  file and remove nothing when I finish.
 - As an orchestrator, I hand each agent its reserved block in the
   brief and read the wave's state from the branches it pushed.
 - As an auditor, I flag two branches claiming one item, a claim for an
@@ -99,14 +128,20 @@ branch already carries the same information.
 ## Acceptance criteria
 
 1. The scaffolded `CONVENTIONS.md` and `AGENTS.md` state the claim
-   convention — a pushed branch named `<actor>/NNNN-<slug>` for the
-   item, plus a draft pull request where integration is pull-request
-   based — as the G4 mechanism, and `USAGE.md` documents it.
+   convention — a pushed branch `claim/<item-key>` for the item, the
+   item key being the queue file name without its extension, plus a
+   draft pull request where integration is pull-request based, and the
+   shared-checkout and single-writer forms of the same claim — as the
+   G4 mechanism; their work-partition sentence reads that named actors
+   answer for areas and work is assigned by claim, not that work is
+   partitioned across writers; and `USAGE.md` documents it.
 2. Bootstrap writes no in-flight dashboard in any mode.
 3. Audit's coordination-hygiene check derives the in-flight set from
    worktrees, remote branches matching the convention, and draft pull
-   requests; it fails on an item claimed by two branches and on a
-   claim whose item is not in `plan/todo/`, flags a worktree whose
+   requests; it fails on duplicate ownership and a claim with no matching item at
+   the integration base or claim tip. A ready PR may have moved the item to
+   `plan/done/`; its linked PR and move establish ownership. It flags a
+   branch-backed worktree whose
    branch no longer exists as stale and offers to prune it, and
    reports the view as unverifiable — never as passing — when no
    remote is reachable.
@@ -116,12 +151,15 @@ branch already carries the same information.
    adr/0010-worktree-conflict-reconciliation.md; the cross-check
    against a dashboard file is removed.
 5. `agent-wave` hands each agent its reserved identifier block in the
-   spawn brief, requires the agent to state the block and its owned
+   wave specification, requires the agent to state the block and its owned
    artefacts in the pull-request description or first commit message,
    and has no dashboard write or cleanup step in any phase, including
    the stop path.
 6. `ship-item` and the run prompt remove no dashboard row; the merge
-   and branch deletion end the claim.
+   ends the claim, and shipping deletes the remote claim branch and
+   deletes the local branch once no worktree holds it. This cleanup applies
+   only to branches actually created by the selected mode; shared checkouts
+   release their locks and single writers have no claim branch.
 7. adr/0010-worktree-conflict-reconciliation.md carries a revision
    naming the claiming branch and pull request as the ownership
    record, and adr/0014-concurrency-guardrails.md carries a revision
@@ -142,10 +180,11 @@ branch already carries the same information.
 
 ## Open questions
 
-- The branch prefix: the actor id, or a fixed `plan/` prefix that
-  makes claims greppable without knowing the actor set. Draft
-  position: the actor id, because it also answers "who" in the
-  in-flight view.
+- ~~The branch prefix: the actor id, or a fixed prefix that makes
+  claims greppable without knowing the actor set.~~ Resolved (r3): a
+  fixed `claim/` prefix over the item key, so one item maps to one ref
+  and the push is the exclusion. "Who" is answered by the branch's
+  author and its pull request, which the actor prefix only duplicated.
 
 ## References
 
@@ -162,8 +201,15 @@ branch already carries the same information.
 |------|----------|--------|--------|
 | 2026-09-04 | r1 | Eugenio Minardi | Initial draft (Proposed), from the approved brainstorm: dashboard retired; the claim is a pushed branch named for the item plus a draft pull request; the in-flight view is computed from worktrees, branches, and pull requests; reservation is orchestrator state carried in the brief and the pull request. Orchestrator-only dashboard and claim commits considered and rejected. |
 | 2026-09-07 | r2 | Eugenio Minardi | Status Proposed → Accepted; acceptance delegated to the session by the operator. Plan 0040 authorised. The open question on the branch prefix is left open here and is resolved by the ADR 0038 r3 amendment that lands with plan 0040, which replaces the actor-prefixed claim branch with the fixed `claim/<item-key>` form so that the push itself is the exclusion. |
+| 2026-09-07 | r3 | Eugenio Minardi | Claim branch fixed at `claim/<item-key>` (the queue file name without its extension), replacing `<actor>/NNNN-<slug>`, so one item maps to one ref and the push is the exclusion; the open question is resolved. The claim commit exists before the push, and a remote claim at or behind the integration branch is not a claim. The claim is stated per coordination mode (branch in separate worktrees; `Claimed by` plus lock rows in a shared checkout; none under a single writer). Stale redefined as a worktree or `Claimed by` whose remote claim branch is gone, a detached worktree being neither. AC1 and AC5 reworded; AC6 gains remote and local branch deletion at ship. The rejected claim-commit alternative is carved out for the shared checkout; "spawn brief" reads "wave specification"; the templates' work-partition sentence becomes named actors answering for areas with work assigned by claim. |
+| 2026-09-07 | r4 | Eugenio Minardi | Status Accepted → Implemented. Plan 0040 shipped via PR #5: the scaffolded conventions, AGENTS hard rules and read order, USAGE and the docs state the `claim/<item-key>` claim and derive the in-flight view; bootstrap writes no dashboard in any mode and keeps the run prompt's Claim step per coordination mode; agent-wave hands out the reserved block in the wave specification and requires it in each pull request, with no dashboard write or cleanup on any path; ship-item and the run prompt remove no row and end the claim by deleting the branch; audit derives the in-flight set and fails on duplicate claims, claims without an item, reporting stale worktrees with a prune offer and the view as unverifiable without a remote, with check 11's collisions at FAIL. ADR 0010 r3 and ADR 0014 r4 landed with it. AC1–AC8 met. |
+| 2026-09-11 | r5 | Eugenio Minardi | Repair audit R1–R5: exclusive create-only acquisition, early draft PRs, ready-PR item lookup and mode-specific stale/cleanup rules. Historical completion in r4 was prepared on PR #5; the PR was still open at this review. Existing live claims require explicit continuation. |
+| 2026-09-11 | r6 | Eugenio Minardi | Tighten claim retirement after verified integration: remote deletion uses an explicit lease against the verified source SHA. A concurrently advanced claim is preserved and reported as a cleanup blocker; deterministic transport tests cover rejection and unchanged-ref deletion. |
 
 ## Approvals
 
 | Role | Name | Date | Signature |
 |------|------|------|-----------|
+| Maintainer | Eugenio Minardi | 2026-09-07 | — (delegated) |
+| Maintainer | Eugenio Minardi | 2026-09-07 | — (delegated) |
+| Maintainer | Eugenio Minardi | 2026-09-11 | Approved in operator session; PR #5 expansion |

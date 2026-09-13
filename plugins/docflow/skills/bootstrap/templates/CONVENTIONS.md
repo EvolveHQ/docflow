@@ -4,7 +4,7 @@
 
 Project name: <name>.
 
-Artefact root: `<.docflow/ | docs/ | .>` — `adr/`, `plan/`, `INDEX.md`, and
+Artefact root: `<.docflow/ | docs/ | .>` — `adr/`, `plan/`, `INDEX.md`, `_agent/`, and
 this file live under this root; `AGENTS.md` and `CLAUDE.md` always stay at
 the repository root. Every lifecycle skill resolves paths against this root.
 
@@ -153,32 +153,51 @@ there is no `_agent/` directory at all.
 Regenerate `INDEX.md` after any ADR status change or new ADR.
 
 <!-- Several writers, one shared checkout. Replace with:
-Work is partitioned across named writers (see `_agent/ROLES.md`).
-Claim a file in `_agent/LOCKS.md` before editing it; remove the row on
-commit. In one checkout that ledger is the only thing stopping two
-writers editing the same file, so it is the one lock that matters.
+Named actors answer for areas (see `_agent/ROLES.md`); work is assigned
+by claim. There is one working tree and no branch per item here, so a
+queue item is claimed on the item itself — the actor and the date, in
+the item's own status section where it has one — and `_agent/LOCKS.md`
+serialises the files. Claim a file there before editing it; remove the
+row on commit. In one checkout that ledger is the only thing stopping
+two writers editing the same file, so it is the one lock that matters.
 The shipped record is git history and `plan/done/`. Regenerate
 `INDEX.md` after any ADR status change or new ADR.
 -->
 
 <!-- Several writers, separate worktrees / PR branches. Replace with:
-Work is partitioned across named writers (see `_agent/ROLES.md`).
-Each writer works in its own worktree / PR branch.
-- **The pushed branch and its draft pull request are the claim.** No
-  lock ledger is kept: worktrees cannot collide on the filesystem, and
-  an advisory ledger nobody can rely on is noise.
-- **Identifier reservation.** Before parallel worktrees are spawned,
-  each is given a disjoint block of ADR numbers / `plan/todo` slots in
-  the brief it is spawned with. A writer creates new ADRs/plans only
-  from its reserved block, so two worktrees never claim the same next
-  number. `agent-wave` performs the reservation.
+Named actors answer for areas (see `_agent/ROLES.md`); work is assigned
+by claim. Each writer works in its own worktree / PR branch.
+- **The claim is an exclusively created remote branch**, `claim/<item-key>`
+  (the queue filename without extension). Commit Claimed by, ownership and
+  reservations first. Acquire with
+  `git push --porcelain --force-with-lease=refs/heads/claim/<item-key>: origin HEAD:refs/heads/claim/<item-key>`.
+  Require exit zero and the porcelain `*` new-ref result for that ref.
+  An ordinary successful push, up-to-date result or descendant push grants
+  no ownership. Never drop the lease or overwrite an existing claim.
+  Open the draft PR immediately after acquisition and before implementation
+  where PR integration is recorded, with owner, item and reservations in
+  its body. Continue existing live claims only on an explicit operator
+  choice. A merged ref is leftover state, not a live claim; confirm PR merge
+  state where squash/rebase changed ancestry before deciding it is live.
+- **No lock ledger is kept:** worktrees cannot collide on the filesystem,
+  and an advisory ledger nobody can rely on is noise.
+- **Identifier reservation.** Before parallel worktrees are spawned, each
+  is given a disjoint block of ADR numbers / `plan/todo` slots in the
+  wave specification it is spawned with, and states that block — with the
+  artefacts it is the single writer of — in its pull-request description,
+  or its first commit message under direct-to-main. A writer creates new
+  ADRs/plans only from its reserved block, so two worktrees never claim
+  the same next number. `agent-wave` performs the reservation; no
+  committed file records it.
 - **Single writer per artefact.** An ADR body or a given `plan/` item
-  is edited by at most one worktree at a time — the one whose branch
-  claims it. Contradictory edits to one ADR across two worktrees must
-  never happen; the audit skill flags duplicate numbers, duplicate plan
-  ownership, and the same ADR edited on two unmerged branches.
-- The live branches, worktrees and open pull requests are what is in
-  flight; git history and `plan/done/` are what shipped.
+  is edited by at most one worktree at a time — the one whose claim
+  branch and pull request name it. Contradictory edits to one ADR across
+  two worktrees must never happen; the audit skill flags duplicate
+  numbers, duplicate plan ownership, and the same ADR edited on two
+  unmerged branches.
+- **What is in flight is derived, never stored:** `git worktree list`,
+  the remote `claim/*` branches, and the open draft pull requests. Git
+  history and `plan/done/` are what shipped.
 - Regenerate `INDEX.md` after any ADR status change or new ADR.
 -->
 
@@ -237,14 +256,17 @@ once merged:
 - **G3 — gate backstop.** Integration is single-threaded; it rejects a
   duplicate number as the last line of defence, and the later author
   renumbers.
-- **G4 — claim before do.** Before implementing a queued item, **claim it**
-  so two writers don't build the same thing: open a draft PR referencing
-  the item (the authoritative claim in PR-based / worktree repos), or push
-  a work branch named for it. An unclaimed `plan/todo` item on
-  `main` (which G1 deliberately puts there) is otherwise an open invitation
-  to duplicate effort. G1–G3 protect the *number*; G4 protects the *work
-  assignment*. The audit skill's duplicate-plan-ownership check is the
-  backstop.
+- **G4 — claim before do.** In separate worktrees, follow the exclusive
+  acquisition protocol in Multi-Agent Rules: first claim commit, explicit
+  empty expected remote ref, exit zero AND porcelain new-ref confirmation.
+  Immediately open the draft PR before implementation for PR integration.
+  Existing refs, ordinary successful pushes and up-to-date results are not
+  acquisition. In shared checkouts, the item and LOCKS ledger carry the
+  claim; single writers have no exclusive claim. Item status still records
+  who is working in every mode. Derive in-flight state from git and both
+  draft and ready PRs; explicitly continued claims retain ownership history.
+  G1–G3 protect identifiers; G4 protects work assignment.
+
 -->
 
 <!-- Federation (multi-repo) — bootstrap INCLUDES this section
@@ -343,3 +365,47 @@ CI green. Completion changes are committed on the pull-request branch
 before it is marked ready; no follow-up commit is made on the
 integration branch after merge.
 -->
+
+## Reporting
+
+Final skill results and persisted verification, PR, wave and stop reports
+end with a section headed exactly **Status at a glance**, with three labels:
+
+- **This run** — what was attempted, actual outcomes, exact gate output and exit code.
+- **Overall** — implemented, partially verified, verified, blocked, failed or unknown.
+- **Yet to do** — all remaining work, checks, findings, cleanup and required input; None only when the complete task is verifiably finished.
+
+1. Report exact process outcomes, including timeouts and interruptions.
+2. A passing sub-step is not an overall pass; require complete evidence.
+3. Missing returns or incomplete evidence remain unknown or partially verified.
+4. Do not omit remaining work when a budget or session ends.
+
+The reader must be able to distinguish what was achieved from what is
+missing. Routine progress updates remain concise and need no closing block.
+Repository-specific reporting rules extend this numbered list.
+
+Example:
+
+**Status at a glance**
+
+- **This run:** prepared the PR; `verify: OK`, exit 0.
+- **Overall:** partially verified — CI is still pending.
+- **Yet to do:** required CI, authorised merge and branch cleanup.
+
+## Item status
+
+Every new queue item carries this section, initially empty:
+
+```markdown
+## Status
+
+- Claimed by:
+- Blockers:
+- Stopped:
+```
+
+At start, record actor, date and actual branch in Claimed by (no invented
+claim branch for shared checkouts or single writers). The owner maintains
+Blockers. On stop, record date and reason in Stopped with the three Status
+at a glance labels. Commit status with the work. Remove the section in
+the completion move to plan/done; the shipped footer replaces it.

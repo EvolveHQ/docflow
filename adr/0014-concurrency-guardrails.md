@@ -61,11 +61,18 @@ guardrails:
   renumbers (a local, trivial change — a new ADR references its own number
   only in its file and the INDEX row).
 - **G4 — claim before do.** Before implementing a queued item, **claim it**
-  — a draft PR referencing it (the authoritative lock in PR/worktree
-  repos), or an `owner` / `_agent/IN_FLIGHT.md` entry — so two writers do
-  not build the same thing. G1–G3 protect the *number*; G4 protects the
-  *work assignment*. `audit`'s duplicate-plan-ownership check (check 11) is
-  the backstop.
+  so two writers do not build the same thing. In separate worktrees / PR
+  branches the claim is the branch `claim/<item-key>` pushed for the item
+  — the queue file name without its extension — plus a draft pull request
+  opened from it where integration is pull-request based
+  (adr/0038-in-flight-state-derived-from-branches-and-pull-requests.md).
+  Because the prefix is fixed rather than the actor's, one item maps to
+  one ref and the push itself is the exclusion: the second writer's push
+  is rejected rather than landing quietly beside the first. In a shared
+  checkout, which has no branch per item, the claim is recorded on the
+  item and the lock ledger serialises the files; a single writer claims
+  nothing. G1–G3 protect the *number*; G4 protects the *work assignment*.
+  `audit`'s duplicate-plan-ownership check (check 11) is the backstop.
 
 The guardrails are **pre-wired conditionally**: `bootstrap` writes them
 into a repo's `CONVENTIONS.md` (and an `AGENTS.md` hard-rule bullet) only
@@ -104,9 +111,12 @@ merging and G3 enforces at the gate.
    the stable cross-reference key; no slug/opaque-id mechanism is
    introduced.
 7. The guardrails block includes **G4 (claim before do)**: claim a queued
-   item (draft PR / `IN_FLIGHT` / `owner`) before implementing it, so two
-   writers do not duplicate effort on an unclaimed `plan/todo` item;
-   `audit`'s duplicate-plan-ownership check is the backstop.
+   item before implementing it — the pushed `claim/<item-key>` branch and
+   its draft pull request in separate worktrees / PR branches, a claim
+   recorded on the item plus the lock ledger in a shared checkout, and
+   nothing under a single writer — so two writers do not duplicate effort
+   on an unclaimed `plan/todo` item; `audit`'s duplicate-plan-ownership
+   check is the backstop.
 
 ## Out of scope
 
@@ -124,6 +134,7 @@ merging and G3 enforces at the gate.
 - adr/0001-adr-driven-workflow.md (numbering this protects)
 - adr/0006-integration-model.md (the merge gate that confirms the number)
 - adr/0010-worktree-conflict-reconciliation.md (orchestrated instance of the same idea)
+- adr/0038-in-flight-state-derived-from-branches-and-pull-requests.md (the claim G4 names)
 - adr/0013-interactive-assessment-protocol.md (bootstrap offers it via assessment)
 
 ## Revision History
@@ -133,9 +144,11 @@ merging and G3 enforces at the gate.
 | 2026-06-02 | r1 | Eugenio Minardi | Initial decision. Process guardrails for concurrent ADR/plan numbering; mechanism alternatives (slug/opaque-id/merge-rewrite) considered and rejected. |
 | 2026-06-02 | r2 | Eugenio Minardi | Implemented (plan items 0007, 0008): conditional guardrails in templates + bootstrap/agent-wave/audit, docs in USAGE + site. Status Accepted → Implemented. |
 | 2026-06-28 | r3 | Eugenio Minardi | Added G4 (claim before do): claim a queued item before implementing so two writers don't duplicate effort on an unclaimed plan/todo item; added to the §Concurrency Guardrails block + AGENTS hard-rule bullet. Extends scope from numbering to work-assignment. Stays Implemented. |
+| 2026-09-07 | r4 | Eugenio Minardi | G4 names the claim rather than a menu of ways to make one: the pushed `claim/<item-key>` branch and its draft pull request in separate worktrees / PR branches, a claim on the item plus the lock ledger in a shared checkout, nothing under a single writer. The dashboard and `owner` forms are gone with the dashboard. The fixed prefix makes the push itself the exclusion, so G4 is enforced by the remote rather than by convention alone. AC7 reworded. Stays Implemented. |
 
 ## Approvals
 
 | Role | Name | Date | Signature |
 |------|------|------|-----------|
 | Maintainer | Eugenio Minardi | 2026-06-02 | — |
+| Maintainer | Eugenio Minardi | 2026-09-07 | — (delegated) |

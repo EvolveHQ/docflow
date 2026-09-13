@@ -9,45 +9,25 @@ Two tiers of testing back this plugin:
   through a coding agent against a fixture repo and asserts the result.
   Model-in-the-loop; a release gate, not a per-push gate.
 
-## The runner is the subagent mechanism
+## Two supported behavioural runners
 
-There is **no external headless runner, API key, or pinned model**. The
-agent that drives a skill is the host's own subagent mechanism: one
-worktree-isolated subagent per case runs the named skill, then runs the
-deterministic layer (`scripts/verify.mjs` + `assertions.mjs`) inside its
-worktree and reports PASS/FAIL.
+The opt-in `behavioural.workflow.mjs` uses native worktree subagents. The
+independent vendor-host Docker runner under [hosts/](hosts/README.md) uses
+actual installed CLIs or the Cowork desktop and externally checks target
+files and Git state. Record the actual model and permission context; a
+model's success claim or CLI exit zero is insufficient.
 
-A plain `node` process cannot spawn subagents, so the suite splits in two:
+`node evals/run.mjs` runs deterministic checks and explicitly skips model
+cases. It is not a complete behavioural release gate. Model tests use
+disposable fixtures and local bare remotes; the real repo is never writable.
+Freeze the tested plugin snapshot and record its revision plus digest,
+especially when a host caches an installation or a working tree has edits.
 
-| Layer | File | How to run |
-|-------|------|------------|
-| Deterministic self-check + assertion helpers | `assertions.mjs`, `cases.mjs`, `harness.mjs`, `run.mjs` | `npm run evals` |
-| Behavioural (subagent-driven) suite | `behavioural.workflow.mjs` | the Workflow tool (opt-in) |
-
-```
-npm run evals                                  # deterministic; self-check PASS, behavioural cases SKIP
-Workflow({ scriptPath: 'evals/behavioural.workflow.mjs' })   # spawns a worktree subagent per skill case
-```
-
-### Caveat: evals see committed state
-
-A worktree subagent's checkout is cut from a **committed ref** (e.g.
-`origin/main`), so the behavioural suite evaluates committed/pushed
-skills — not uncommitted local edits. Commit (and push, for shared runs)
-before evaluating. This was confirmed empirically: an early `new-adr`
-subagent eval ran against `origin/main` and so saw the pre-expansion
-`verify.mjs`.
-
-## Status
-
-- Deterministic layer: **done**. `npm run evals` self-check passes
-  against this repo as a fixture.
-- Behavioural layer: **authored** as `behavioural.workflow.mjs` with
-  cases for `new-adr`, `ship-item`, `bootstrap`, and the legacy-range
-  migration. The `new-adr` path has
-  been demonstrated live (a worktree subagent produced a contiguous ADR +
-  INDEX row; the static gate passed). Running the full suite as a green
-  release gate is the remaining step for plan item 0002.
+Final reports are checked by `reporting.mjs`; missing blocks fail independently
+of a model's verdict. Host evidence and remaining gaps are recorded in
+`hosts/results/2026-09-11.json`. The full delegated-host/release matrix remains
+pending while pi's tested configuration fails and Cowork cannot write target
+Git history in its observed cloud-connector session.
 
 ## Fixtures
 

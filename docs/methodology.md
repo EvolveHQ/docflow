@@ -381,7 +381,15 @@ An honest method states where it costs more than it returns.
   boundary; teams must calibrate and will disagree.
 - **Numbering contends under parallelism.** Contiguous numbers are a shared
   resource; concurrent branches can claim the same next number. Guardrails
-  mitigate but do not remove the friction.
+  mitigate but do not remove the friction. Work *assignment* is the
+  sharper edge of the same problem, and it is closed rather than
+  mitigated: a queue item is claimed by pushing one branch named for it,
+  so the second writer's push is rejected instead of duplicating the work.
+- **What is in flight is derived, so it is only as good as the remote.**
+  The live set is computed from the worktrees, the claim branches and the
+  open draft pull requests rather than written down. That cannot go stale
+  — but where no remote is reachable it cannot be computed either, and the
+  audit says so instead of reporting a clean run.
 - **The catalogue can lag reality.** ADRs are the intended spec; nothing
   physically prevents code from diverging. The method *surfaces* divergence
   through audit and review but cannot *prevent* it.
@@ -409,3 +417,8 @@ boundary, and a federation model.
 
 See the [examples]({{ '/examples/' | relative_url }}) for the method applied, or the
 [source on GitHub](https://github.com/EvolveHQ/docflow).
+
+Live coordination state belongs to each queued item: Claimed by, Blockers and
+Stopped. Historical completion is derived from git and the done footer.
+Final results and persisted reports use Status at a glance (This run, Overall,
+Yet to do), distinguishing prepared PR work from completed integration.

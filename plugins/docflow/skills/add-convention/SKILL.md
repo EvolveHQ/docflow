@@ -103,3 +103,19 @@ Apply the edit(s). If a convention rises to a hard rule, ensure
 `AGENTS.md` and `CONVENTIONS.md` stay consistent. Conventional Commit
 (`docs: ...`); no ADR touched means no `Rationale:` footer is required,
 but add one if the repo's contract asks for it on convention changes.
+
+Name the rule and propagation performed; list repositories not updated.
+
+<!-- docflow:closing-report -->
+## Closing report
+
+End every run, including blocked, failed and stopped runs, with a section
+headed exactly **Status at a glance**, containing these three labels:
+
+- **This run:** only actions actually attempted and their outcomes; quote each verify gate's exact output and exit code, including timeouts or interruptions.
+- **Overall:** implemented, partially verified, verified, blocked, failed or unknown. A passing sub-step is not an overall pass; incomplete or missing evidence never becomes success.
+- **Yet to do:** every remaining action, unresolved finding, verification, cleanup or required input. Write None only when the whole task is verifiably complete; never omit work because a budget ended.
+
+Routine progress messages need no block. Keep final results brief and
+distinguish work prepared on a PR from work confirmed shipped.
+<!-- /docflow:closing-report -->

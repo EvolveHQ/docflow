@@ -25,7 +25,7 @@ export async function runCase(testCase) {
     return {
       name,
       status: 'SKIPPED',
-      reason: 'behavioural — run via Workflow evals/behavioural.workflow.mjs',
+      reason: 'behavioural — run with the opt-in workflow or isolated vendor-host harness (evals/hosts)',
     };
   }
   try {

@@ -1,0 +1,689 @@
+{
+  "date": "2026-09-11",
+  "method": "Actual vendor hosts in independent Linux Docker containers; external assertions over disposable target fixtures. Raw transcripts and authentication excluded.",
+  "docker": "29.7.2",
+  "images": {
+    "claude": "sha256:2f40913e553914b115cb94eb7f1729d68437215f22462a1bf069388f9ddfba84",
+    "codex": "sha256:aaec77988842e7925138169e7c545beef1722ba9aeffcfa554a57df1fc40c712",
+    "pi": "sha256:edf1cd940f8a3018212e7677640c652548b14ee353b8d6b5d5b0f32877963e93",
+    "opencode": "sha256:1b1c2b3dd6eaf4294e454583aeed31e0da5b99beee5f9c2c982ff6029c7b38df",
+    "cowork": "sha256:a32cb96c9d5f12e85f2e4e75a94522863757307d71678621e8bee79fd709cd5c"
+  },
+  "hosts": {
+    "claude": {
+      "version": "2.1.269",
+      "model": "claude-opus-5[1m]",
+      "permissions": "Read, Write, Edit, Bash, Skill, Glob, Grep allowlist; no bypass flag"
+    },
+    "codex": {
+      "version": "0.154.0",
+      "model": "gpt-6-astra",
+      "permissions": "danger-full-access; approval_policy never; disposable Docker only"
+    },
+    "pi": {
+      "version": "0.84.4",
+      "model": "github-copilot/gpt-4.1",
+      "permissions": "native --approve"
+    },
+    "opencode": {
+      "version": "1.18.30",
+      "model": "opencode/big-pickle",
+      "permissions": "native --auto"
+    },
+    "cowork": {
+      "version": "1.52386.0",
+      "model": "Opus 5 High (desktop label)",
+      "permissions": "authenticated desktop, cloud/local-folder connector; target .git writes denied"
+    }
+  },
+  "sources": {
+    "baseline": {
+      "revision": "a6a1d458cf45c072802b705b5906f7faa3cf6cec",
+      "sha256": "772a4703d778332712e085279ea14f4a197a62152b62393c749e54aa3c73416e",
+      "normalised_git_match": true
+    },
+    "revised": {
+      "revision": "2f6247b",
+      "sha256": "6211114813d8cb77999b6b8fd7df7d4b8a5323a86b1a27540dd8232493967919",
+      "normalised_git_match": true
+    },
+    "wave-v2": {
+      "revision": null,
+      "note": "Intermediate working-tree snapshot; digest is authoritative",
+      "sha256": "c99da4b2f637f2a4a81378d625dead6a9e6240f762f55be522661cf95a453c57"
+    },
+    "wave-v3": {
+      "revision": "4c8465c",
+      "sha256": "edc88d41ef25c46e42bb1a054a159fbbdf7b7a72320fb862c1f49ba6055a9913",
+      "normalised_git_match": true
+    },
+    "latest": {
+      "revision": "b7d3048",
+      "sha256": "774f3e4069663b9bd840e0b8cc80786d0c0b420ab0af5e313b55eb9ce4e92741",
+      "normalised_git_match": true
+    }
+  },
+  "baseline_bootstrap": [
+    {
+      "host": "claude",
+      "seconds": 183.0,
+      "host_exit": 0,
+      "assertion_exit": 0,
+      "evidence": {
+        "checks": {
+          "required_files": true,
+          "two_adrs": true,
+          "index_rows": true,
+          "no_obsolete_coordination": true,
+          "gate": true,
+          "root_pointer": true,
+          "seed_implemented": true,
+          "new_adr_proposed": true,
+          "new_adr_number": true,
+          "criteria_count": true,
+          "plan_queue": true,
+          "seed_completion": true,
+          "recorded_gate": true,
+          "autonomous_gate": true,
+          "fixture_gate_unchanged": true
+        },
+        "adrs": [
+          "0001-record-architecture-decisions.md",
+          "0002-export-a-plain-text-summary.md"
+        ],
+        "gate_stdout": "verify: OK (fixture gate)",
+        "gate_stderr": "",
+        "gate_exit": 0,
+        "git_status": "",
+        "commits": "29aaf5c docs(adr): add ADR 0002 export a plain text summary\n7a224ca docs: bootstrap documentation-led conventions"
+      },
+      "structural_pass": true
+    },
+    {
+      "host": "codex",
+      "seconds": 170.0,
+      "host_exit": 0,
+      "assertion_exit": 0,
+      "evidence": {
+        "checks": {
+          "required_files": true,
+          "two_adrs": true,
+          "index_rows": true,
+          "no_obsolete_coordination": true,
+          "gate": true,
+          "root_pointer": true,
+          "seed_implemented": true,
+          "new_adr_proposed": true,
+          "new_adr_number": true,
+          "criteria_count": true,
+          "plan_queue": true,
+          "seed_completion": true,
+          "recorded_gate": true,
+          "autonomous_gate": true,
+          "fixture_gate_unchanged": true
+        },
+        "adrs": [
+          "0001-record-architecture-decisions.md",
+          "0002-export-a-plain-text-summary.md"
+        ],
+        "gate_stdout": "verify: OK (fixture gate)",
+        "gate_stderr": "",
+        "gate_exit": 0,
+        "git_status": "",
+        "commits": "3a1b089 docs(adr): propose plain text summary export\n323e7af docs: bootstrap documentation-led conventions"
+      },
+      "structural_pass": true
+    },
+    {
+      "host": "pi",
+      "seconds": 44.5,
+      "host_exit": 0,
+      "assertion_exit": 0,
+      "evidence": {
+        "checks": {
+          "required_files": false,
+          "two_adrs": false,
+          "index_rows": false,
+          "no_obsolete_coordination": true,
+          "gate": false,
+          "root_pointer": false,
+          "seed_implemented": false,
+          "new_adr_proposed": false,
+          "new_adr_number": false,
+          "criteria_count": false,
+          "plan_queue": false,
+          "seed_completion": false,
+          "recorded_gate": false,
+          "autonomous_gate": false,
+          "fixture_gate_unchanged": true
+        },
+        "adrs": [],
+        "gate_stdout": "",
+        "gate_stderr": "verify: CONVENTIONS.md missing\nverify: INDEX.md missing\nverify: adr missing",
+        "gate_exit": 1,
+        "git_status": "?? tools/",
+        "commits": "ead5983 docs(adr): add Proposed ADR 0001 'Export a plain text summary'\n4b85cd2 docs(bootstrap): scaffold documentation-led repo layout for docflow host eval test"
+      },
+      "structural_pass": false
+    },
+    {
+      "host": "opencode",
+      "seconds": 351.7,
+      "host_exit": 0,
+      "assertion_exit": 0,
+      "evidence": {
+        "checks": {
+          "required_files": true,
+          "two_adrs": true,
+          "index_rows": true,
+          "no_obsolete_coordination": true,
+          "gate": true,
+          "root_pointer": true,
+          "seed_implemented": true,
+          "new_adr_proposed": true,
+          "new_adr_number": true,
+          "criteria_count": true,
+          "plan_queue": true,
+          "seed_completion": true,
+          "recorded_gate": true,
+          "autonomous_gate": true,
+          "fixture_gate_unchanged": true
+        },
+        "adrs": [
+          "0001-record-architecture-decisions.md",
+          "0002-export-a-plain-text-summary.md"
+        ],
+        "gate_stdout": "verify: OK (fixture gate)",
+        "gate_stderr": "",
+        "gate_exit": 0,
+        "git_status": "?? tools/",
+        "commits": "e787a30 docs(adr): add ADR 0002 export a plain text summary\n1d46c18 docs(plan): record ADR 0001 seed completion at bootstrap\n0d9d0f3 docs: bootstrap docflow conventions"
+      },
+      "structural_pass": true
+    },
+    {
+      "host": "cowork",
+      "version": "1.52386.0",
+      "model": "Opus 5 High (desktop label)",
+      "execution": "Authenticated Linux desktop in Docker; cloud execution and local folder connector",
+      "session_complete": true,
+      "host_exit": null,
+      "structural_pass": true,
+      "target_git_complete": false,
+      "overall": "partially verified",
+      "evidence": {
+        "checks": {
+          "required_files": true,
+          "two_adrs": true,
+          "index_rows": true,
+          "root_pointer": true,
+          "seed_implemented": true,
+          "new_adr_proposed": true,
+          "criteria_count": true,
+          "gate": true,
+          "gate_unchanged": true,
+          "no_obsolete_coordination": true
+        },
+        "adrs": [
+          "0001-record-architecture-decisions.md",
+          "0002-export-plain-text-summary.md"
+        ],
+        "gate_stdout": "verify: OK (fixture gate)",
+        "gate_exit": 0,
+        "git_log_exit": 128,
+        "git_log_stderr": "fatal: your current branch 'main' does not have any commits yet",
+        "bundle_matches_target": true,
+        "bundle_commits": "7701419 docs(adr): add ADR 0002 export a plain text summary\n56575c9 docs(plan): record the ADR-method adoption as shipped\ncf0ed0a docs: bootstrap documentation-led conventions"
+      },
+      "limitation": "Cowork has no device shell in this session; device_commit_files denied writes to .git. Commits verified independently in an exported bundle, not on the selected target."
+    }
+  ],
+  "revised_bootstrap": [
+    {
+      "host": "codex",
+      "source": "revised",
+      "process": 0,
+      "evidence": {
+        "checks": {
+          "required_files": true,
+          "root_pointer": true,
+          "two_adrs": true,
+          "seed_implemented": true,
+          "new_adr_proposed": true,
+          "three_criteria": true,
+          "index_rows": true,
+          "plan_queue": true,
+          "seed_completion": true,
+          "recorded_gate": true,
+          "autonomous_gate": true,
+          "gate_unchanged": true,
+          "gate": true,
+          "no_obsolete_coordination": true,
+          "reporting_contract": true
+        },
+        "passed": true,
+        "gate_stdout": "verify: OK (fixture gate)",
+        "gate_exit": 0,
+        "target_git_complete": true,
+        "commits": "cfe4515 docs(adr): propose plain text summary export\nb46fa0f docs: bootstrap documentation-led fixture",
+        "assertion_exit": 0
+      }
+    },
+    {
+      "host": "pi",
+      "source": "revised",
+      "process": 0,
+      "evidence": {
+        "checks": {
+          "required_files": false,
+          "root_pointer": false,
+          "two_adrs": false,
+          "seed_implemented": false,
+          "new_adr_proposed": false,
+          "three_criteria": false,
+          "index_rows": false,
+          "plan_queue": true,
+          "seed_completion": false,
+          "recorded_gate": true,
+          "autonomous_gate": false,
+          "gate_unchanged": true,
+          "gate": true,
+          "no_obsolete_coordination": true,
+          "reporting_contract": true
+        },
+        "passed": false,
+        "gate_stdout": "verify: OK (fixture gate)",
+        "gate_exit": 0,
+        "target_git_complete": true,
+        "commits": "587990d docs(bootstrap): scaffold docflow conventions and catalogue\n199a2ef chore: add fixture-local verify gate for docflow bootstrap test",
+        "assertion_exit": 1
+      }
+    },
+    {
+      "host": "opencode",
+      "source": "revised",
+      "process": 0,
+      "evidence": {
+        "checks": {
+          "required_files": true,
+          "root_pointer": true,
+          "two_adrs": true,
+          "seed_implemented": true,
+          "new_adr_proposed": true,
+          "three_criteria": true,
+          "index_rows": true,
+          "plan_queue": true,
+          "seed_completion": true,
+          "recorded_gate": true,
+          "autonomous_gate": true,
+          "gate_unchanged": true,
+          "gate": true,
+          "no_obsolete_coordination": true,
+          "reporting_contract": true
+        },
+        "passed": true,
+        "gate_stdout": "verify: OK (fixture gate)",
+        "gate_exit": 0,
+        "target_git_complete": true,
+        "commits": "742da13 docs(adr): add ADR 0002 export a plain text summary\nb96bed1 chore: bootstrap docflow conventions and seed ADR",
+        "assertion_exit": 0
+      }
+    }
+  ],
+  "wave_runs": [
+    {
+      "host": "claude",
+      "source": "revised",
+      "process": {
+        "host": "claude",
+        "container": "docflow-pr5-test-claude",
+        "fixture": "/workspace/wave/repo",
+        "host_exit": 0,
+        "seconds": 181.0,
+        "model_requested": null,
+        "behavioural_verdict": "unverified: run independent assertions"
+      },
+      "evidence": {
+        "checks": {
+          "held_claim_untouched": true,
+          "completed_claims_removed": true,
+          "two_outputs": true,
+          "held_output_absent": true,
+          "only_held_queued": true,
+          "operator_checkout_clean": true,
+          "operator_matches_remote": true,
+          "owned_worktrees_removed": true,
+          "alpha_implemented": true,
+          "alpha_done": true,
+          "alpha_footer_reachable": true,
+          "alpha_index_status": true,
+          "alpha_footer_claim": true,
+          "alpha_claim_commit_metadata": false,
+          "beta_implemented": true,
+          "beta_done": true,
+          "beta_footer_reachable": true,
+          "beta_index_status": true,
+          "beta_footer_claim": true,
+          "beta_claim_commit_metadata": false,
+          "gate": true,
+          "gate_unchanged": true
+        },
+        "passed": false,
+        "gate_stdout": "verify: OK (wave fixture)",
+        "gate_exit": 0,
+        "log": "722188f feat(0002-beta): complete item and advance ADR 0002 to Implemented\ndebb7cc feat(0002-beta): write outputs/beta.txt\n348bcc9 chore(0002-beta): claim item for attended wave\n25e808c feat(0001-alpha): complete item and advance ADR 0001 to Implemented\ncb1685d feat(0001-alpha): write outputs/alpha.txt\ne453802 chore(0001-alpha): claim item for attended wave\n39bfa22 chore: claim held fixture\n84b47bc test: initialise independent wave fixture",
+        "refs": "722188f04bbd64a1936b33e25528785445fa2bb4\tHEAD\n39bfa22139af255f9b63149720214c05bcdea831\trefs/heads/claim/0003-held\n722188f04bbd64a1936b33e25528785445fa2bb4\trefs/heads/main",
+        "assertion_exit": 1
+      },
+      "report_format": {
+        "passed": false,
+        "required_blocks": 3
+      }
+    },
+    {
+      "host": "claude",
+      "source": "wave-v2",
+      "process": {
+        "host": "claude",
+        "container": "docflow-pr5-test-claude",
+        "fixture": "/workspace/wave-v2/repo",
+        "host_exit": 0,
+        "seconds": 146.4,
+        "model_requested": null,
+        "behavioural_verdict": "unverified: run independent assertions"
+      },
+      "evidence": {
+        "checks": {
+          "held_claim_untouched": true,
+          "completed_claims_removed": true,
+          "two_outputs": true,
+          "held_output_absent": true,
+          "only_held_queued": true,
+          "operator_checkout_clean": true,
+          "operator_matches_remote": true,
+          "owned_worktrees_removed": true,
+          "alpha_implemented": true,
+          "alpha_done": true,
+          "alpha_footer_reachable": true,
+          "alpha_index_status": true,
+          "alpha_footer_claim": true,
+          "alpha_claim_commit_metadata": true,
+          "beta_implemented": true,
+          "beta_done": true,
+          "beta_footer_reachable": true,
+          "beta_index_status": true,
+          "beta_footer_claim": true,
+          "beta_claim_commit_metadata": true,
+          "gate": true,
+          "gate_unchanged": true
+        },
+        "passed": true,
+        "gate_stdout": "verify: OK (wave fixture)",
+        "gate_exit": 0,
+        "log": "eb07218 chore(plan): complete 0002-beta\nabb332d feat(outputs): write beta output for 0002-beta\n7973438 chore(plan): claim 0002-beta\n0297029 chore(plan): complete 0001-alpha\n129622a feat(outputs): write alpha output for 0001-alpha\n5f67719 chore(plan): claim 0001-alpha\nefc0603 chore: claim held fixture\nec94b7a test: initialise independent wave fixture",
+        "refs": "eb072186da41db06158c039081d77f78ba06c18f\tHEAD\nefc0603dc621a3493626ce758aa3c6b100efe8c7\trefs/heads/claim/0003-held\neb072186da41db06158c039081d77f78ba06c18f\trefs/heads/main",
+        "assertion_exit": 0
+      },
+      "report_format": {
+        "passed": false,
+        "required_blocks": 3
+      }
+    },
+    {
+      "host": "claude",
+      "source": "wave-v3",
+      "process": {
+        "host": "claude",
+        "container": "docflow-pr5-test-claude",
+        "fixture": "/workspace/wave-v3/repo",
+        "host_exit": 0,
+        "seconds": 233.5,
+        "model_requested": null,
+        "behavioural_verdict": "unverified: run independent assertions"
+      },
+      "evidence": {
+        "checks": {
+          "held_claim_untouched": true,
+          "completed_claims_removed": true,
+          "two_outputs": true,
+          "held_output_absent": true,
+          "only_held_queued": true,
+          "operator_checkout_clean": true,
+          "operator_matches_remote": true,
+          "owned_worktrees_removed": true,
+          "alpha_implemented": true,
+          "alpha_done": true,
+          "alpha_footer_reachable": true,
+          "alpha_index_status": true,
+          "alpha_footer_claim": true,
+          "alpha_claim_commit_metadata": false,
+          "beta_implemented": true,
+          "beta_done": true,
+          "beta_footer_reachable": true,
+          "beta_index_status": true,
+          "beta_footer_claim": true,
+          "beta_claim_commit_metadata": false,
+          "gate": true,
+          "gate_unchanged": true
+        },
+        "passed": false,
+        "gate_stdout": "verify: OK (wave fixture)",
+        "gate_exit": 0,
+        "log": "9c6c858 chore(plan): complete 0002-beta\n2d40b58 feat(beta): write outputs/beta.txt per ADR 0002\n57c7418 chore(plan): claim 0002-beta\n57863d6 chore(plan): complete 0001-alpha\n081bb83 feat(alpha): write outputs/alpha.txt per ADR 0001\n273150b chore(plan): claim 0001-alpha\n6792ad2 chore: claim held fixture\n558f1ee test: initialise independent wave fixture",
+        "refs": "9c6c858c95d651b77830944a932da34871f19ae0\tHEAD\n6792ad2d82edac876a417dcb5f2dcf1417dce809\trefs/heads/claim/0003-held\n9c6c858c95d651b77830944a932da34871f19ae0\trefs/heads/main",
+        "assertion_exit": 1
+      },
+      "report_format": {
+        "passed": true,
+        "required_blocks": 3
+      }
+    },
+    {
+      "host": "claude",
+      "source": "latest",
+      "process": {
+        "host": "claude",
+        "container": "docflow-pr5-test-claude",
+        "fixture": "/workspace/wave-final/repo",
+        "host_exit": 0,
+        "seconds": 151.8,
+        "model_requested": null,
+        "behavioural_verdict": "unverified: run independent assertions"
+      },
+      "evidence": {
+        "checks": {
+          "held_claim_untouched": true,
+          "completed_claims_removed": true,
+          "two_outputs": true,
+          "held_output_absent": true,
+          "only_held_queued": true,
+          "operator_checkout_clean": true,
+          "operator_matches_remote": true,
+          "owned_worktrees_removed": true,
+          "alpha_implemented": true,
+          "alpha_done": true,
+          "alpha_footer_reachable": true,
+          "alpha_index_status": true,
+          "alpha_footer_claim": true,
+          "alpha_claim_commit_metadata": true,
+          "beta_implemented": true,
+          "beta_done": true,
+          "beta_footer_reachable": true,
+          "beta_index_status": true,
+          "beta_footer_claim": true,
+          "beta_claim_commit_metadata": true,
+          "gate": true,
+          "gate_unchanged": true,
+          "independent_plan_numbers": true
+        },
+        "passed": true,
+        "gate_stdout": "verify: OK (wave fixture)",
+        "gate_exit": 0,
+        "log": "4b49234 feat(0008-beta): complete item and advance ADR 0002\n8013b50 feat(0008-beta): write outputs/beta.txt\nf70136d chore(0008-beta): claim item\nc5f9844 feat(0007-alpha): complete item and advance ADR 0001\nd2f016f feat(0007-alpha): write outputs/alpha.txt\nea558f9 chore(0007-alpha): claim item\n70e123e chore: claim held fixture\neeff1e4 test: initialise independent wave fixture",
+        "refs": "4b492340117629981e7ce2123b9ad7a4000e045c\tHEAD\n70e123ecf068f7b2a4509a9f48a0ed8e2c9f2cb6\trefs/heads/claim/0009-held\n4b492340117629981e7ce2123b9ad7a4000e045c\trefs/heads/main",
+        "assertion_exit": 0
+      },
+      "report_format": {
+        "passed": true,
+        "required_blocks": 3
+      }
+    }
+  ],
+  "known_limits": [
+    "pi saved openai-codex refresh rejected (401); advertised Copilot GPT-5.6 Luna and Claude Haiku models rejected (400); GPT-4.1 ran but failed supplied bootstrap choices twice.",
+    "Cowork produced target files but Git commits existed only in its cloud mirror; exported bundle verified independently and all 14 tracked files matched the target.",
+    "Signed remote pushes, GitHub permissions from each vendor host, delegated rungs 1/2 and the complete behavioural release matrix remain unverified.",
+    "OpenCode blocked-path rerun rejected upstream before execution (HTTP 400 prompt_cache_key); corrected stop rule verified on Codex, not yet reverified on OpenCode. Native opt-in Workflow execution remains unobserved; wrapper syntax and equivalent vendor-host fixtures were checked."
+  ],
+  "migration": {
+    "host": "codex",
+    "source": "revised",
+    "process": {
+      "host": "codex",
+      "container": "docflow-pr5-test-codex",
+      "fixture": "/workspace/migration/repo",
+      "host_exit": 0,
+      "seconds": 210.3,
+      "model_requested": null,
+      "behavioural_verdict": "unverified: run independent assertions"
+    },
+    "evidence": {
+      "checks": {
+        "legacy_files_removed": true,
+        "roles_preserved": true,
+        "nested_prompt": true,
+        "no_root_agent_dir": true,
+        "live_status_preserved": true,
+        "remote_claim_untouched": true,
+        "union_rule_removed": true,
+        "snapshot_ignore_removed": true,
+        "custom_note_preserved": true,
+        "read_order_updated": true,
+        "gate": true,
+        "gate_unchanged": true
+      },
+      "passed": true,
+      "gate_stdout": "verify: OK (legacy coordination fixture)",
+      "gate_exit": 0,
+      "commits": "f879592 docs: migrate legacy coordination and remove stale snapshots\n49cbb41 test: legacy migration fixture",
+      "assertion_exit": 0
+    },
+    "report_format": {
+      "passed": true,
+      "required_blocks": 1
+    }
+  },
+  "blocked_runs": [
+    {
+      "host": "opencode",
+      "source": "revised",
+      "process": {
+        "host": "opencode",
+        "container": "docflow-pr5-test-opencode",
+        "fixture": "/workspace/blocked/repo",
+        "host_exit": 0,
+        "seconds": 254.4,
+        "model_requested": null,
+        "behavioural_verdict": "unverified: run independent assertions"
+      },
+      "evidence": {
+        "checks": {
+          "main_unchanged": false,
+          "held_untouched": true,
+          "alpha_claim_preserved": true,
+          "beta_unattempted": false,
+          "alpha_recoverable_output": true,
+          "status_records_blocker": true,
+          "gate_unchanged": true,
+          "no_completed_items": false
+        },
+        "passed": false,
+        "refs": {
+          "HEAD": "ce9041482cbf12212a6ad263afce46948ea2dc87",
+          "refs/heads/claim/0001-alpha": "dd6de01c9a9e04a5315fdb3c7bc7a247db368ce5",
+          "refs/heads/claim/0003-held": "3e9194bfe012a2a5b85d1b275352b2d2e96cd34f",
+          "refs/heads/main": "ce9041482cbf12212a6ad263afce46948ea2dc87"
+        },
+        "blocker_status": "# 0001-alpha\n\nOwning ADR: adr/0001-alpha.md\n## Scope\nCreate outputs/alpha.txt; honour the owning ADR and gate.\n## Exit criteria\n1. Output bytes match the owning ADR.\n2. Gate passes; complete the item using the recorded direct profile.\n## Status\n- Claimed by: docflow-eval, 2026-09-11, claim/0001-alpha\n- Blockers: Gate cannot pass after implementation. `node tools/verify.mjs` exits 1 with ERR_MODULE_NOT_FOUND: Cannot find package '@docflow-eval/unavailable-fixture-dependency' imported from .../tools/verify.mjs. The gate imports that fixture dependency only once outputs/alpha.txt exists. Dependency is deliberately unavailable and must not be installed; gate must stay unchanged.\n- Stopped: 2026-09-11. This run: implemented outputs/alpha.txt (bytes exactly alpha\\n), gate fails (exit 1, ERR_MODULE_NOT_FOUND), recoverable work pushed to claim/0001-alpha. Overall: blocked (item not verifiable, not shipped). Yet to do: item must be continued only once the gate no longer requires the unavailable fixture dependency.",
+        "assertion_exit": 1
+      }
+    },
+    {
+      "host": "opencode",
+      "source": "latest",
+      "process": {
+        "host": "opencode",
+        "container": "docflow-pr5-test-opencode",
+        "fixture": "/workspace/blocked-v2/repo",
+        "host_exit": 1,
+        "seconds": 4.6,
+        "model_requested": null,
+        "behavioural_verdict": "unverified: run independent assertions"
+      },
+      "verdict": "unperformed: provider rejected request before model execution",
+      "error": "HTTP 400 invalid_request_error: Unrecognized request argument supplied: prompt_cache_key"
+    },
+    {
+      "host": "codex",
+      "source": "latest",
+      "process": {
+        "host": "codex",
+        "container": "docflow-pr5-test-codex",
+        "fixture": "/workspace/blocked/repo",
+        "host_exit": 0,
+        "seconds": 117.6,
+        "model_requested": null,
+        "behavioural_verdict": "unverified: run independent assertions"
+      },
+      "evidence": {
+        "checks": {
+          "main_unchanged": true,
+          "held_untouched": true,
+          "alpha_claim_preserved": true,
+          "beta_unattempted": true,
+          "alpha_recoverable_output": true,
+          "status_records_blocker": true,
+          "gate_unchanged": true,
+          "no_completed_items": true
+        },
+        "passed": true,
+        "refs": {
+          "HEAD": "cc0512ca70466c0688f20241f35393aaeef5701f",
+          "refs/heads/claim/0001-alpha": "908c5be9716ae9b6e2b2794aa9015d504de9e6ac",
+          "refs/heads/claim/0003-held": "b19493028d082564b1bfc88b6074c930a251c76b",
+          "refs/heads/main": "cc0512ca70466c0688f20241f35393aaeef5701f"
+        },
+        "blocker_status": "# 0001-alpha\n\nOwning ADR: adr/0001-alpha.md\n## Scope\nCreate outputs/alpha.txt; honour the owning ADR and gate.\n## Exit criteria\n1. Output bytes match the owning ADR.\n2. Gate passes; complete the item using the recorded direct profile.\n## Status\n- Claimed by: Codex, 2026-09-11, claim/0001-alpha\n- Blockers: `node tools/verify.mjs` exited 1: ERR_MODULE_NOT_FOUND for @docflow-eval/unavailable-fixture-dependency. Environment blocker; gate unchanged and no dependencies installed.\n- Stopped: 2026-09-11; systemic gate environment failure ends wave blocked-20260911 before beta or integration. Status at a glance \u2014 This run: acquired claim, wrote exact alpha LF bytes, gate exited 1; Overall: blocked; Yet to do: resolve environment under a new authorised run, explicitly continue this claim, rerun verification and completion gates, integrate alpha, then process beta and clean up owned claim/worktree.\n\nGate output (`node tools/verify.mjs`, exit 1):\n```text\nnode:internal/modules/package_json_reader:314\n  throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);\n        ^\n\nError [ERR_MODULE_NOT_FOUND]: Cannot find package '@docflow-eval/unavailable-fixture-dependency' imported from /workspace/blocked/wave-alpha/tools/verify.mjs\n    at Object.getPackageJSONURL (node:internal/modules/package_json_reader:314:9)\n    at packageResolve (node:internal/modules/esm/resolve:768:81)\n    at moduleResolve (node:internal/modules/esm/resolve:855:18)\n    at defaultResolve (node:internal/modules/esm/resolve:985:11)\n    at #cachedDefaultResolve (node:internal/modules/esm/loader:747:20)\n    at ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)\n    at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:680:36)\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\n    at ModuleLoader.import (node:internal/modules/esm/loader:679:21) {\n  code: 'ERR_MODULE_NOT_FOUND'\n}\n\nNode.js v22.23.2\n```",
+        "assertion_exit": 0
+      },
+      "report_format": {
+        "passed": true,
+        "required_blocks": 2
+      }
+    }
+  ],
+  "cowork_bundle": {
+    "sha256": "55db3156fcb2b1dcb3fa46526f369c2c4afd2b67c0cfc5b3bc942a74ffb928e3",
+    "verified_tip": "7701419566750b6ca8ca3665266fc389e8510fd0",
+    "tracked_files_matching_target": 14,
+    "target_git_complete": false
+  },
+  "pi_anthropic_attempt": {
+    "model": "anthropic/claude-opus-5",
+    "host_exit": 0,
+    "model_actions": 0,
+    "verdict": "unperformed: saved pi Anthropic login could not refresh",
+    "error": "HTTP 400 invalid_grant: Refresh token not found or invalid"
+  },
+  "cleanup": {
+    "containers_removed": [
+      "docflow-pr5-test-claude",
+      "docflow-pr5-test-codex",
+      "docflow-pr5-test-pi",
+      "docflow-pr5-test-opencode",
+      "docflow-pr5-test-cowork"
+    ],
+    "tmpfs_authentication_discarded": true,
+    "fixture_archives": "Preserved outside the repository in the task scratch directory; credential-free test images retained."
+  }
+}
