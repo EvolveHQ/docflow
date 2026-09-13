@@ -169,6 +169,14 @@ Commits. Broadened checks have named reasons in standalone gate commits;
 negative controls preserve their intended detection. ADR edits carry a
 Rationale footer. No Co-Authored-By trailers or revision tags were added.
 
+The code/evidence head `3f0911f1bf75a07cac5df54ed9433d4fc5de1dca` passed the
+required [verify CI job](https://github.com/EvolveHQ/docflow/actions/runs/34781703524/job/103789793734)
+on 2026-09-13. All 23 constituent commits at that review point verified with
+good signatures; PR reviews and inline review comments contained no findings.
+The final documentation head is checked separately before worker settlement
+and named with its check URL in the final PR/worker report. CI does not satisfy
+the missing pi/Cowork behavioural acceptance.
+
 Cleanup completed for exactly `docflow-0051-claude`, `docflow-0051-codex`,
 `docflow-0051-opencode` and `docflow-0051-pi`, after checking their ownership
 labels and preserving sanitised receipts, private fixture archives and
@@ -197,8 +205,9 @@ receipt. Required CI on the pushed PR head is recorded in the final PR report.
 - **This run:** prepared PR #6 fixes and bounded exact-source host evidence;
   the listed local gates and independent core case checks passed. Original
   failures, reporting recovery and unavailable evidence remain explicit.
+  Code/evidence CI passed and all owned containers were cleaned up.
 - **Overall:** partially verified — 0051 and the complete five-host release
   requirement remain blocked on pi and Cowork.
-- **Yet to do:** the operator/runtime steps above and their real-host checks;
-  required CI on the pushed PR head. No item completion, merge or release is
-  claimed here.
+- **Yet to do:** the operator/runtime steps above and their real-host checks,
+  followed by full acceptance and an authorised completion move. No item
+  completion, merge or release is claimed here.

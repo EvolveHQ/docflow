@@ -3050,9 +3050,18 @@
     "source_worktree_retained": true,
     "unrelated_containers_touched": false
   },
+  "review": {
+    "verified_code_evidence_head": "3f0911f1bf75a07cac5df54ed9433d4fc5de1dca",
+    "base_main": "9eead9978070d29fe7066c9a640e2d85d7616bc1",
+    "verify_ci": "SUCCESS",
+    "verify_job_url": "https://github.com/EvolveHQ/docflow/actions/runs/34781703524/job/103789793734",
+    "signed_constituent_commits": 23,
+    "actionable_review_findings": 0,
+    "final_documentation_head": "Checked separately and recorded in the PR body and final worker report"
+  },
   "status_at_a_glance": {
-    "This run": "Core behavioural cases, native Claude rungs 1/2, Codex/OpenCode delegation and signed local transport observed; original failures and targeted repairs retained.",
+    "This run": "Core behavioural/native-host evidence and repairs reviewed; local gates and code/evidence CI passed; owned containers and ephemeral auth cleaned up. Original failures retained.",
     "Overall": "partially verified",
-    "Yet to do": "pi authentication and successful native cases; usable Cowork runtime and actual target Git evidence; required CI on the pushed PR head."
+    "Yet to do": "pi authentication and successful native cases; usable Cowork runtime and actual target Git evidence; remaining full acceptance and authorised completion move."
   }
 }

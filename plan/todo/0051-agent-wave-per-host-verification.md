@@ -52,7 +52,7 @@ and return ADR 0015 to Implemented.
 
 - **Claimed by:** Codex (Orca worker), 2026-09-13, `kmox83/0051-host-verification-astra` ([PR #6](https://github.com/EvolveHQ/docflow/pull/6); new dedicated worktree; explicitly resumed after PR #5 merged).
 - **Blockers:** pi needs a supported provider login: current Copilot model probe returned HTTP 400 before actions; saved OpenAI Codex and Anthropic sessions report invalid_state. Cowork's current desktop did not provide a usable attached-target session; earlier cloud connector denied target .git writes. Successful current pi/Cowork lifecycle and wave checks remain unverified.
-- **Stopped:**
+- **Stopped:** 2026-09-13 — independent work is prepared on draft PR #6; external pi login and usable Cowork target-Git runtime are still required. See the closing Status at a glance and the audit for verified scope.
 
 ## Remaining release evidence
 
@@ -110,8 +110,9 @@ pass. Neither this item nor ADRs 0012/0015 is marked complete.
 ## Status at a glance
 
 - **This run:** prepared independently checked native-host evidence and fixes
-  on PR #6; local verify, mutation and deterministic eval commands passed.
+  on PR #6; local verify, mutation and deterministic eval commands passed,
+  code/evidence CI passed, and all owned containers were cleaned up.
 - **Overall:** partially verified — the five-host requirement remains blocked.
 - **Yet to do:** supported pi login and successful native cases; usable Cowork
-  runtime with actual target Git evidence; required CI on the pushed PR head. Keep
+  runtime with actual target Git evidence; full remaining acceptance. Keep
   this item in todo and both owning decisions Accepted until all criteria pass.
