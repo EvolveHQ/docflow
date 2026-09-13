@@ -40,5 +40,8 @@ checks['gate']=gate.returncode==0
 checks['gate_unchanged']=git('show',metadata['base']+':tools/verify.mjs')==(repo/'tools/verify.mjs').read_text().strip()
 if 'items' in metadata:
     checks['independent_plan_numbers']=all(int(i['key'][:4])!=i['adr'] for i in items)
+if metadata.get('signed'):
+    signatures=git('log','--all','--format=%G?').splitlines()
+    checks['valid_signatures']=len(signatures)>=8 and all(s=='G' for s in signatures)
 print(json.dumps({'checks':checks,'passed':all(checks.values()),'gate_stdout':gate.stdout.strip(),'gate_exit':gate.returncode,'log':git('log','--oneline','--all','--max-count=15'),'refs':refs},indent=2))
 sys.exit(0 if all(checks.values()) else 1)
