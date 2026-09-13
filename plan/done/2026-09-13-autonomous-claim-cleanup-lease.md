@@ -35,8 +35,4 @@ version change, merge, release, additional PR or host matrix run is in scope.
    branch. Required verify CI passes at the exact new head. Completion takes
    effect only on an authorised checked merge; plan 0051 stays open.
 
-## Status
-
-- **Claimed by:** Codex ChatGPT Astra, 2026-09-13, local `kmox83/pr5-review-astra`, updating `kmox83/0040-claim-by-branch` in PR #5; sole operator-authorised writer.
-- **Blockers:**
-- **Stopped:**
+Shipped at HEAD `32f944eda50cd651cf461602cc8e243f85a4cedc` via [PR #5](https://github.com/EvolveHQ/docflow/pull/5). This names the verified work HEAD. Completion prepared on the PR branch; effective only on the required-checks-passing merge into main.
