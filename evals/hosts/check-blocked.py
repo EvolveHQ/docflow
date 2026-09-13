@@ -25,13 +25,15 @@ checks={
  'alpha_recoverable_output':bool(alpha) and git('show',alpha+':outputs/alpha.txt',check=False)=='alpha',
  'status_records_blocker':all(t in status for t in ['Blockers','Stopped','ERR_MODULE_NOT_FOUND']),
  'gate_unchanged':bool(alpha) and git('show',alpha+':tools/verify.mjs',check=False)==gate,
- 'no_completed_items':not list((r/'plan/done').glob('*.md')),
+ 'no_completed_items':git('ls-tree','-r',m['base'],'--','plan/done')==git('ls-tree','-r','HEAD','--','plan/done'),
 }
+checks['claim_history_preserved']=bool(alpha) and git('ls-tree','-r',m['base'],'--','plan/done')==git('ls-tree','-r',alpha,'--','plan/done')
 if a.concurrent:
     beta=refs.get('refs/heads/claim/'+beta_key)
     checks.pop('beta_unattempted')
     checks['concurrent_beta_claim_preserved']=bool(beta)
     checks['concurrent_beta_work_preserved']=bool(beta) and git('show',beta+':outputs/beta.txt',check=False)=='beta'
+    checks['concurrent_beta_history_preserved']=bool(beta) and git('ls-tree','-r',m['base'],'--','plan/done')==git('ls-tree','-r',beta,'--','plan/done')
 else:
     checks['beta_no_local_claim']=not git('for-each-ref','--format=%(refname)','refs/heads/claim/'+beta_key)
     worktrees=[Path(line.removeprefix('worktree ')) for line in git('worktree','list','--porcelain').splitlines() if line.startswith('worktree ')]
