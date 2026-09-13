@@ -166,7 +166,11 @@ Pass this complete brief with the item's specification, unchanged at all rungs:
 ## Execute, integrate and collect results
 
 Dispatch the declared wave with the derived mechanism. Effective width is
-one at rung three and for shared checkouts. At rung three finish and
+one at rung three and for shared checkouts. At rung three, claiming starts
+an item: create local or remote claim branches and fill Claimed by only for
+the current item, never preclaim the remaining batch. Inspect its gate result
+before issuing the next item's commands. A later preclaim is not an
+already-running executor. At rung three finish and
 integrate each item before starting the next. **Before advancing the loop,
 check the last executor's gate result. An environment blocker terminates the
 entire wave immediately, even if the next item is independent and the budget
