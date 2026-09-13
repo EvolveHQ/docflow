@@ -27,7 +27,13 @@ for item in items[:2]:
     checks[s+'_footer_claim']='claim/'+key in footer
     history=git('log','--first-parent','--format=%H','origin/main').splitlines()[::-1]
     claimed=[sha for sha in history if subprocess.run(['git','show',sha+':plan/todo/'+key+'.md'],cwd=repo,capture_output=True,text=True).stdout.find('Claimed by:')>=0]
-    claim_commits=[sha for sha in claimed if all(t in git('show','-s','--format=%B',sha) for t in ['claim/'+key,'Reserved','Owned'])]
+    claim_commits=[]
+    for sha in claimed:
+        message=git('show','-s','--format=%B',sha)
+        # The brief names reservations/owned artefacts without prescribing label case.
+        if ('claim/'+key in message and re.search(r'\breserv(?:ed|ations?)\b',message,re.I)
+                and re.search(r'\bowned\b',message,re.I)):
+            claim_commits.append(sha)
     checks[s+'_claim_commit_metadata']=bool(claim_commits)
 gate=subprocess.run(['node','tools/verify.mjs'],cwd=repo,text=True,capture_output=True)
 checks['gate']=gate.returncode==0
