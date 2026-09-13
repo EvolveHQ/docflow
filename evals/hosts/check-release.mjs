@@ -59,6 +59,17 @@ try {
     const before = JSON.parse(readFileSync(join(repo, '../fixture.json')));
     assertPlanShipped(repo, 'alpha'); assertAdrStatus(repo, 1, 'Implemented');
     assertAdrStatus(repo, 2, 'Accepted'); assertAdrStatus(repo, 3, 'Accepted');
+    const index = read('INDEX.md').split('\n');
+    for (const item of before.items) {
+      const file = `adr/${String(item.adr).padStart(4, '0')}-${item.slug}.md`;
+      const status = item.slug === 'alpha' ? 'Implemented' : 'Accepted';
+      assert(index.some((row) => row.includes(file) && row.includes(`| ${status} |`)), `INDEX status missing: ${item.slug} ${status}`);
+      if (item.slug !== 'alpha') {
+        const plan = `plan/todo/${item.key}.md`;
+        assert.equal(read(plan).trim(), git('show', `${before.base}:${plan}`), `unselected plan changed: ${item.key}`);
+        assert.equal(read(file).trim(), git('show', `${before.base}:${file}`), `unselected decision changed: ${item.slug}`);
+      }
+    }
     const done = readdirSync(join(repo, 'plan/done')).filter((f) => f.endsWith('alpha.md'));
     assert.equal(done.length, 1);
     const body = read(`plan/done/${done[0]}`);
