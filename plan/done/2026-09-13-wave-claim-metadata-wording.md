@@ -32,8 +32,4 @@ open and ADR 0012 remains Accepted for its broader incomplete release matrix.
    the existing PR. Required verify passes at the final remote head; no merge
    or release is performed.
 
-## Status
-
-- **Claimed by:** Codex ChatGPT Astra, 2026-09-13, local `kmox83/pr5-review-astra`, updating `kmox83/0040-claim-by-branch` in PR #5; sole operator-authorised writer.
-- **Blockers:**
-- **Stopped:**
+Shipped at HEAD `07076810290c6573597ba3a3cb543f52f155fac6` via [PR #5](https://github.com/EvolveHQ/docflow/pull/5). This names the verified work HEAD. Completion prepared on the PR branch; effective only on the required-checks-passing merge into main.
