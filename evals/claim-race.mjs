@@ -5,6 +5,7 @@ import { mkdtempSync, writeFileSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { spawnSync, spawn } from 'node:child_process';
+import { documentedCleanupCommands } from './claim-cleanup.mjs';
 
 export async function assertClaimAcquisition() {
   const scratch = mkdtempSync(join(tmpdir(), 'docflow-claims-'));
@@ -48,11 +49,33 @@ export async function assertClaimAcquisition() {
     assert.equal(ordinary.status, 0, 'ordinary fast-forward push is not exclusive');
     assert.equal(acquired(ordinary), false);
 
-    const cleanup = git(['push', '--porcelain', `--force-with-lease=${ref}:${first}`, 'origin', `:${ref}`], repo);
-    assert.notEqual(cleanup.status, 0, 'cleanup must not delete a claim advanced since the verified source');
-    assert.equal(ok(['rev-parse', ref], remote), ok(['rev-parse', 'HEAD'], repo));
-    ok(['push', '--porcelain', `--force-with-lease=${ref}:${ok(['rev-parse', 'HEAD'], repo)}`, 'origin', `:${ref}`], repo);
-    assert.notEqual(git(['rev-parse', '--verify', ref], remote).status, 0, 'unchanged owned ref can be deleted');
+    const advanced = ok(['rev-parse', 'HEAD'], repo);
+    // Reproduce the unsafe cleanup in this disposable remote: plain deletion
+    // removes work added after the integrated source. Restore it for the guards.
+    ok(['push', 'origin', `:${ref}`], repo);
+    assert.notEqual(git(['rev-parse', '--verify', ref], remote).status, 0);
+    ok(['push', 'origin', `${advanced}:${ref}`], repo);
+
+    for (const { path, args: documented } of documentedCleanupCommands()) {
+      const cleanupArgs = documented.map(arg => arg
+        .replaceAll('<item-key>', '0001-example')
+        .replaceAll('<verified-source-sha>', first));
+      // Fetching a later tip must not refresh the explicit expected-source lease.
+      ok(['fetch', 'origin'], repo);
+      const cleanup = git(cleanupArgs, repo);
+      assert.notEqual(cleanup.status, 0, `${path}: advanced claim must survive cleanup`);
+      assert.equal(ok(['rev-parse', ref], remote), advanced);
+
+      // A distinct unchanged claim at the verified source may be retired.
+      const unchangedRef = 'refs/heads/claim/0002-unchanged';
+      ok(['push', 'origin', `${first}:${unchangedRef}`], repo);
+      ok(cleanupArgs.map(arg => arg.replaceAll(ref, unchangedRef)), repo);
+      assert.notEqual(git(['rev-parse', '--verify', unchangedRef], remote).status, 0,
+        `${path}: unchanged verified claim can be deleted`);
+    }
+
+    // Fixture teardown before racing new acquisitions, with the known owned tip.
+    ok(['push', `--force-with-lease=${ref}:${advanced}`, 'origin', `:${ref}`], repo);
 
     const race = tip => new Promise((resolve, reject) => {
       const child = spawn('git', args(tip), { cwd: repo });

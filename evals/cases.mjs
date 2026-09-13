@@ -9,6 +9,7 @@ import { readFileSync } from 'node:fs';
 import assert from 'node:assert/strict';
 import { assertStatusReports } from './reporting.mjs';
 import { assertClaimAcquisition } from './claim-race.mjs';
+import { assertClaimCleanupContract } from './claim-cleanup.mjs';
 import {
   assertTree, assertContiguousAdrs, assertIndexSync, assertAdrStatus,
   assertPlanShipped, assertAbsent, assertFileContains, assertCommandSucceeds,
@@ -47,6 +48,12 @@ export const cases = [
       assert.throws(() => assertStatusReports(valid.replace('partially verified', 'pass')));
       assert.throws(() => assertStatusReports(valid.replace('Yet to do:', 'Later:')));
     },
+  },
+  {
+    name: 'claims: prompts preserve the verified cleanup source',
+    skill: null,
+    agentDependent: false,
+    assert: assertClaimCleanupContract,
   },
   {
     name: 'claims: create-only push excludes same-tip, descendant and concurrent claimants',
