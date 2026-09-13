@@ -49,7 +49,7 @@ and return ADR 0015 to Implemented.
 
 ## Status
 
-- **Claimed by:** Codex, 2026-09-11, `kmox83/0040-claim-by-branch` (PR #5; operator-authorised expanded scope).
+- **Claimed by:** Codex (Orca worker), 2026-09-13, `kmox83/0051-host-verification-astra` (new dedicated worktree; explicitly resumed after PR #5 merged; new PR pending creation).
 - **Blockers:** pi/GitHub Copilot GPT-4.1 failed the supplied bootstrap choices twice; Cowork's cloud connector denied target .git writes. Signed remote pushes and delegated rungs are not yet observed.
 - **Stopped:**
 
