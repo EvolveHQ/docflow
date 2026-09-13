@@ -16,3 +16,5 @@ jobs:
       - run: node scripts/verify.mjs
       - run: node scripts/verify-mutations.mjs
       - run: node evals/run.mjs
+      - run: python3 -B evals/hosts/test-run-host.py
+      - run: python3 -B evals/hosts/test-pi-wave-events.py
