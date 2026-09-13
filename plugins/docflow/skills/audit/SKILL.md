@@ -307,6 +307,9 @@ optional hygiene finding alone does not lower that status. Use partially
 verified or failed for unresolved failed checks, and blocked or unknown
 when required evidence is unavailable. Keep the issue count, severity and
 optional next steps in the explanation, not in place of that status value.
+Overall covers the complete requested audit, including unrelated findings;
+do not label it "verified for the migration" while another required check
+fails. Put the successful migration outcome under This run instead.
 
 Lead with a one-line verdict (clean / N issues). Then the punch list,
 grouped by severity: **blocking** (privacy leaks, status/lifecycle
