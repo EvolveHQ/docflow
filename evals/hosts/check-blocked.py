@@ -34,7 +34,8 @@ if a.concurrent:
     checks['concurrent_beta_work_preserved']=bool(beta) and git('show',beta+':outputs/beta.txt',check=False)=='beta'
 else:
     checks['beta_no_local_claim']=not git('for-each-ref','--format=%(refname)','refs/heads/claim/'+beta_key)
-    checks['beta_no_worktree_output']=not any(p.is_file() for p in base.glob('**/outputs/beta.txt'))
+    worktrees=[Path(line.removeprefix('worktree ')) for line in git('worktree','list','--porcelain').splitlines() if line.startswith('worktree ')]
+    checks['beta_no_worktree_output']=not any((path/'outputs/beta.txt').is_file() for path in worktrees)
 if a.signed:
     signatures=git('log','--all','--format=%G?').splitlines()
     checks['valid_signatures']=len(signatures)>=4 and all(s=='G' for s in signatures)
