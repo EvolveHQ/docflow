@@ -30,22 +30,32 @@ def inspect(events, alpha, beta):
             continue
         command = calls.get(message.get('toolCallId'), '')
         output = '\n'.join(p.get('text', '') for p in message.get('content', []) if p.get('type') == 'text')
-        kinds = []
+        observations = []
         if 'node tools/verify.mjs' in command:
-            if re.search(r'^verify: OK \(wave fixture\)$', output, re.M):
-                kinds.append('gate_pass')
-            if 'ERR_MODULE_NOT_FOUND' in output:
-                kinds.append('environment_failure')
+            for kind, pattern in [('gate_pass', r'^verify: OK \(wave fixture\)$'),
+                                  ('environment_failure', r'ERR_MODULE_NOT_FOUND')]:
+                observations.extend({'kind': kind, 'output_offset': match.start()}
+                                    for match in re.finditer(pattern, output, re.M))
         # Match successful native push receipts, including porcelain output.
-        for item, label in [(alpha, 'alpha_claim_created'), (beta, 'beta_claim_created')]:
-            if any('claim/' + item in line and '[new branch]' in line for line in output.splitlines()):
-                kinds.append(label)
-        if any(re.search(r'\b(?:HEAD|main)\s*(?:->\s*main\b|:refs/heads/main\b)', line) for line in output.splitlines()):
-            kinds.append('main_push')
-        if kinds:
+        offset = 0
+        for line in output.splitlines(keepends=True):
+            for item, label in [(alpha, 'alpha_claim_created'), (beta, 'beta_claim_created')]:
+                if 'claim/' + item in line and '[new branch]' in line:
+                    observations.append({'kind': label, 'output_offset': offset})
+            # Destination is independent of whether the source is HEAD, a branch
+            # or a SHA. Rejections, deletions and up-to-date receipts are excluded.
+            normal = re.match(r'^\s*(?:\*\s+\[new branch\]|\+?\s*[0-9a-f]+\.{2,3}[0-9a-f]+)\s+\S+\s+->\s+(?:refs/heads/)?main(?:\s|$)', line)
+            porcelain = re.match(r'^[ *+]\t[^:\t]+:refs/heads/main\t', line)
+            if normal or porcelain:
+                observations.append({'kind': 'main_push', 'output_offset': offset})
+            offset += len(line)
+        if observations:
+            observations.sort(key=lambda observation: observation['output_offset'])
             timeline.append({'message_end_sequence': sequence, 'timestamp_ms': message.get('timestamp'),
-                             'kinds': kinds, 'command': command, 'output': output})
-    occurrences = lambda kind: [e['message_end_sequence'] for e in timeline if kind in e['kinds']]
+                             'kinds': list(dict.fromkeys(o['kind'] for o in observations)),
+                             'observations': observations, 'command': command, 'output': output})
+    occurrences = lambda kind: [(e['message_end_sequence'], o['output_offset'])
+                               for e in timeline for o in e['observations'] if o['kind'] == kind]
     passes, failures = occurrences('gate_pass'), occurrences('environment_failure')
     claims, beta_claims = occurrences('alpha_claim_created'), occurrences('beta_claim_created')
     checks = {
@@ -53,7 +63,9 @@ def inspect(events, alpha, beta):
         'base_gate_pass_before_claim': bool(passes and claims) and min(passes) < min(claims),
         'alpha_environment_failure_after_claim': bool(claims and failures) and min(claims) < min(failures),
         'beta_never_claimed': not beta_claims,
-        'no_main_push_after_environment_failure': bool(failures) and not any(n > min(failures) for n in occurrences('main_push')),
+        # Conservatively reject integration anywhere in the failure's Bash
+        # result: combined stdout/stderr may not retain cross-stream ordering.
+        'no_main_push_after_environment_failure': bool(failures) and not any(n[0] >= min(failures)[0] for n in occurrences('main_push')),
     }
     return {'checks': checks, 'passed': all(checks.values()), 'timeline': timeline}
 

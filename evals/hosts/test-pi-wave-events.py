@@ -43,6 +43,38 @@ class OrderingTests(unittest.TestCase):
                                       'abc123..def456 HEAD -> main') + [{'type': 'agent_settled'}]
         self.assertFalse(self.check(events)['checks']['no_main_push_after_environment_failure'])
 
+    def test_ordered_probe_claim_failure_in_one_result_passes(self):
+        events = action('batch', 'node tools/verify.mjs; git push origin HEAD:claim/0007-alpha; node tools/verify.mjs',
+                        'verify: OK (wave fixture)\n * [new branch] HEAD -> claim/0007-alpha\nError [ERR_MODULE_NOT_FOUND]')
+        self.assertTrue(self.check(events + [{'type': 'agent_settled'}])['passed'])
+
+    def test_failure_and_integration_in_one_result_fails(self):
+        for output in ['Error [ERR_MODULE_NOT_FOUND]\nabc123..def456 HEAD -> main',
+                       'abc123..def456 HEAD -> main\nError [ERR_MODULE_NOT_FOUND]']:
+            with self.subTest(output=output):
+                events = valid_run()[:-2] + action('batch', 'node tools/verify.mjs; git push origin HEAD:main', output)
+                self.assertFalse(self.check(events + [{'type': 'agent_settled'}])['checks']['no_main_push_after_environment_failure'])
+
+    def test_main_destination_from_branch_or_sha_fails(self):
+        for receipt in ['abc123..def456 claim/0008-beta -> main',
+                        'abc123..def456 123456abc -> refs/heads/main',
+                        ' \tclaim/0008-beta:refs/heads/main\tabc123..def456',
+                        '+\t123456abc:refs/heads/main\tabc123...def456 (forced update)',
+                        '* [new branch] claim/0008-beta -> main',
+                        '+ abc123...def456 claim/0008-beta -> main (forced update)']:
+            with self.subTest(receipt=receipt):
+                events = valid_run() + action('integrate', 'git push origin claim/0008-beta:main', receipt)
+                self.assertFalse(self.check(events + [{'type': 'agent_settled'}])['checks']['no_main_push_after_environment_failure'])
+
+    def test_rejected_deleted_and_unchanged_pushes_are_not_integration(self):
+        for receipt in [' ! [rejected] claim/0008-beta -> main (non-fast-forward)',
+                        '!\tclaim/0008-beta:refs/heads/main\t[rejected]',
+                        '=\tmain:refs/heads/main\t[up to date]',
+                        '-\t:refs/heads/main\t[deleted]']:
+            with self.subTest(receipt=receipt):
+                events = valid_run() + action('push', 'git push origin main', receipt)
+                self.assertTrue(self.check(events + [{'type': 'agent_settled'}])['passed'])
+
     def test_narrative_and_partial_stream_are_not_proof(self):
         self.assertFalse(self.check(valid_run())['passed'])
         narrative = [{'type': 'message_end', 'message': {'role': 'assistant', 'content': [
