@@ -5,10 +5,11 @@ export const meta = {
 }
 
 // Behavioural eval suite (ADR 0012). The RUNNER is the subagent mechanism:
-// each case spawns a worktree-isolated subagent that runs one lifecycle
-// skill against this repo (a bootstrapped docflow fixture), then runs the
-// static gate `node scripts/verify.mjs` inside its own worktree and
-// reports the result. No external CLI, no API key.
+// each case spawns a worktree-isolated subagent that runs a lifecycle skill
+// against its specified disposable fixture, then checks its actual target.
+// This is a Workflow script with injected globals and a top-level return,
+// not a plain Node module. Independent vendor-host execution is documented
+// in hosts/README.md and supplies externally asserted release evidence.
 //
 // Worktrees are cut from a committed ref, so this evaluates COMMITTED
 // skills — commit (and push for shared runs) before evaluating.
@@ -69,10 +70,12 @@ const CASES = [
   {
     key: 'legacy-range-migration',
     prompt:
-      'Behavioural eval of the docflow `audit` skill against a RANGE-NUMBERED catalogue. Work ONLY in your ' +
-      'worktree; do NOT commit or push, and do NOT modify evals/fixtures/legacy-range itself. ' +
+      'Behavioural eval of the docflow `audit` skill against a RANGE-NUMBERED catalogue. Never modify, commit ' +
+      'or push this source checkout or evals/fixtures/legacy-range itself. ' +
       'FIRST copy evals/fixtures/legacy-range to a scratch directory (e.g. ../legacy-scratch) and work THERE — ' +
-      'that copy is the repo under audit for the rest of this case. ' +
+      'that copy is the repo under audit for the rest of this case. Initialise Git on main in that copy, ' +
+      'configure a synthetic identity and unsigned commits only there, and commit its initial files with ' +
+      'a Rationale footer. The operator expressly authorises these local synthetic commits and no push. ' +
       'Read plugins/docflow/skills/audit/SKILL.md, then: ' +
       '(1) DETECTION — audit the scratch repo and report whether it recognised the legacy range encoding, from ' +
       'which signal(s), and confirm the run produced exactly ONE "migration available" finding, that the finding ' +
@@ -81,12 +84,13 @@ const CASES = [
       '(2) OFFER — produce the dry-run old-to-new number map WITHOUT writing anything, and state the file count ' +
       'changed so far (it must be zero). The expected map is 0101 -> 0004 and 0102 -> 0005, with 0001-0003 ' +
       'unchanged and 0001 keeping its number. ' +
-      '(3) MIGRATION — confirm the map, then apply the migration to the scratch repo exactly as the skill ' +
+      '(3) MIGRATION — the operator explicitly approves the displayed map 0101 -> 0004, 0102 -> 0005, ' +
+      '0001-0003 unchanged; apply it after the read-only dry run, exactly as the skill ' +
       'specifies (renumber, stamp shape: on every ADR, rewrite depends-on / supersede links / relative ' +
       'adr/NNNN-*.md links / INDEX rows / domains listings / plan/todo owning-ADR lines, retire the boundary ' +
       'template in favour of adr/0000-template-technology.md, rewrite CONVENTIONS §ADR Shapes and drop the ' +
-      'recorded-exception clause, regenerate INDEX with the Shape column). Leave plan/done footers alone. ' +
-      'State the single commit message you WOULD use, listing every old-to-new pair (do not actually commit). ' +
+      'recorded-exception clause, regenerate INDEX with the Shape column). Preserve every plan/done file byte for byte. ' +
+      'Make the single local migration commit, listing every old-to-new pair and a Rationale footer; no push. ' +
       '(4) POST-MIGRATION AUDIT — re-run the checks with the legacy rules off and confirm the catalogue passes ' +
       'with NO manual edit. ' +
       'THEN run the deterministic assertions from the docflow checkout against the scratch repo: ' +
@@ -134,7 +138,7 @@ const CASES = [
       'adr/0001-record-architecture-decisions.md under the DEFAULT artefact root .docflow/; (3) NO plan/, _agent/ ' +
       '(express records a single writer and no verify gate, so no coordination directory at all), ' +
       'GLOSSARY.md, domains/, or federation files anywhere (root or .docflow/); (4) .docflow/CONVENTIONS.md contains ' +
-      '"Assessment depth: express" and records direct-to-main fast-forward integration. Report the file tree and ' +
+      'the express assessment depth (incidental Markdown around the value is allowed) and records direct-to-main fast-forward integration. Report the file tree and ' +
       'each of the four checks explicitly.',
   },
 ]
