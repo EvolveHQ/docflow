@@ -354,12 +354,12 @@ was recorded (Q8), drop the gate sentence.
 
 Direct-to-main:
 Changes are fast-forwarded onto `main`; no merge commits. The verify
-gate runs locally and must pass before push. A change is "shipped"
+gate (`<command from Q8>`) runs locally and must pass before push. A change is "shipped"
 when it is on `main` and pushed.
 
 PR-based:
 Every change ships via a pull request with required CI. The verify
-gate runs in CI on the PR. Merge strategy is <squash | merge |
+gate (`<command from Q8>`) runs in CI on the PR. Merge strategy is <squash | merge |
 rebase>. A change is "shipped" when its PR is merged to `main` with
 CI green. Completion changes are committed on the pull-request branch
 before it is marked ready; no follow-up commit is made on the

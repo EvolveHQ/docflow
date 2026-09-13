@@ -552,7 +552,9 @@ it when the root is `.docflow/` (the directory itself is the marker).
 Keep the pointer in sync if a later re-run migrates the root.
 
 1. `CONVENTIONS.md` — from `templates/CONVENTIONS.md`. Spec other files
-   reference. Include the **§Concurrency Guardrails** section only if Q5
+   reference. Record the exact Q8 verify command(s), when supplied, in its
+   Git Contract; the phrase "verify gate" alone does not identify a command.
+   Include the **§Concurrency Guardrails** section only if Q5
    is shared checkout or separate worktrees **or** Q4b is PR-based;
    omit it for single-writer direct-to-main repos (no numbering race). Include the **§Federation
    (multi-repo)** section only if Q11 = yes; fill `<product>` and state
@@ -686,7 +688,9 @@ call out every merge decision in the commit message.
 Before claiming bootstrap complete, compare the actual output with the
 confirmed answers: root pointer, assessment depth, ADR shape and metadata,
 seed and INDEX row, plan queue, coordination files and mode-specific branch
-instructions. Run the recorded gate if present and retain its exact output
+instructions. Confirm the exact supplied gate command appears consistently
+in `CONVENTIONS.md`, `AGENTS.md` and the autonomous prompt when written.
+Run the recorded gate if present and retain its exact output
 and exit code. A wrong root, missing requested queue/seed or failed gate is
 an incomplete scaffold, not a host limitation. Correct it before reporting.
 
