@@ -54,16 +54,17 @@ const CASES = [
   {
     key: 'ship-item',
     prompt:
-      'Behavioural eval of the docflow `ship-item` skill. Work ONLY in your worktree; do NOT push. ' +
-      'FIRST set up a fixture to ship (the queue may be empty): author a minimal ADR ' +
-      'adr/<next-contiguous-number>-eval-ship.md with status Accepted (fill the capability template briefly), ' +
-      'regenerate INDEX.md, and create a matching plan/todo/<same-number>-eval-ship.md naming that ADR as owner. ' +
-      'THEN, following plugins/docflow/skills/ship-item/SKILL.md, run the completion event for that item: git mv it to ' +
-      'plan/done/<date>-eval-ship.md with a shipped footer, advance the owning ADR Accepted->Implemented, ' +
-      'regenerate INDEX.md. Then run `node scripts/verify.mjs`. PASS only if exit 0 AND the ' +
-      'item is under plan/done AND its owning ADR reads Implemented. You MAY use git mv/add within your worktree ' +
-      'but do NOT commit or push. Report what you created, what moved, the ADR status change, and the exact ' +
-      'verify.mjs output + exit code.',
+      'Behavioural eval of ship-item against a disposable local bare remote. Never modify or push this checkout. ' +
+      'Create a fresh owned scratch directory outside it, set DOCFLOW_PLUGIN_ROOT to this checkout\'s absolute ' +
+      'plugins/docflow directory and run python3 evals/hosts/prepare-ship.py <scratch>. This creates a verified ' +
+      'pushed claim/0007-alpha, an unselected beta item and an unrelated held claim. Read the installed ship-item ' +
+      'skill and complete ONLY claim/0007-alpha using its detached integrating mode and the recorded direct profile. ' +
+      'Unsigned synthetic commits and pushes to this fixture local origin are expressly authorised; no external ' +
+      'remote or hosted PR is authorised. Keep gate, beta, held claim and existing identifiers unchanged. Perform ' +
+      'the real commit, completion and local-remote push, verify the remote tip and do the applicable owned cleanup. ' +
+      'Then run node evals/hosts/check-release.mjs ship-item <scratch>/repo from this checkout. PASS requires exit 0, ' +
+      'reachable completion history, matching target/remote state and a valid final Status at a glance report. ' +
+      'Report exact gate/assertion outputs and exits; a prepared filesystem move alone is not completion.',
   },
   {
     key: 'legacy-range-migration',
