@@ -120,6 +120,8 @@ INDEX is exempt from exclusive ownership, unlike decision and item bodies.
    complete scope and Status at a glance. Require all repository checks at
    the current head before ready; skipped, absent, pending or neutral checks
    do not stand in for a required passing check.
+   For a branch-backed claim, retain this exact verified PR head as the
+   cleanup source before merge.
 5. Without merge authorisation return ready, with merge outstanding. With
    authorisation request the repository's recorded strategy and wait for
    confirmation that this PR merged into the integration branch. A queued
@@ -149,14 +151,18 @@ never introduce such files into a modern layout.
 
 ## Cleanup and report
 
-After confirmed completion, delete the branch-backed remote claim only if
-its tip still equals the source verified for this integration. Use an
-explicit expected-tip lease on deletion:
+Retain the source SHA verified for this integration before integrating.
+Never replace it with a newly read remote tip. After confirmed completion,
+delete the branch-backed remote claim only if its tip still equals that
+source. Use an explicit expected-tip lease on deletion:
 `git push --force-with-lease=refs/heads/claim/<item-key>:<verified-source-sha> origin :refs/heads/claim/<item-key>`.
-A changed ref is a cleanup blocker: preserve it and report the new work.
-If the host already deleted the branch, confirm absence. Remove clean owned
-executor worktrees; leave dirty
-ones and report them. Delete the local claim only when no worktree holds
+A changed ref is a cleanup blocker: preserve it and report the branch plus
+expected and observed SHAs. If the verified source is missing or the remote
+state is unverifiable, preserve the claim and report that cleanup blocker.
+Keep the confirmed integration outcome; list unresolved cleanup under
+Yet to do. If the host already deleted the branch, confirm absence. Remove
+only clean owned executor worktrees with no unpushed changes; leave others
+and report them. Delete the local claim only when no worktree holds
 it and there are no unpushed changes. For a rebased claim, forced local
 branch deletion is permissible only after these proofs and confirmed
 integration; ordinary merged branches use normal deletion.

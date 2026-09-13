@@ -79,6 +79,8 @@ Substantive conflicts stop the item. Rerun the gate on the reconciled tree.
 ## Integrate and prepare completion
 
 Use ship-item; it owns the order of the completion event.
+For a branch-backed claim, retain its verified source SHA before integration
+so End the claim can lease deletion against that same source.
 
 Keep using the actual branch and draft PR. Prepare the todo-to-done move,
 remove Status, advance owning decisions and regenerate INDEX together in
@@ -93,12 +95,24 @@ preserve the claim and report failure. No completion follow-up on the base.
 
 ## End the claim
 
-Only after confirmed completion, delete a branch-backed remote claim (or
-confirm the host deleted it). Remove only clean owned executor worktrees;
-delete the local branch once no worktree holds it. Shared checkouts release
-their own lock rows. Single writers have no claim branch to delete. An
-ordinary PR work branch is separate from a claim: clean it up only when
-owned and unused. List all unmerged or dirty leftovers under Yet to do.
+Retain the source SHA verified for this integration before integrating.
+Never replace it with a newly read remote tip. Only after confirmed
+completion, delete a branch-backed remote claim with an explicit lease:
+`git push --force-with-lease=refs/heads/claim/<item-key>:<verified-source-sha> origin :refs/heads/claim/<item-key>`.
+A changed ref is a cleanup blocker: preserve the ref and its work, and
+report the branch plus expected and observed SHAs. If the verified source
+is missing or the remote state is unverifiable, preserve the claim and
+report that cleanup blocker. Keep the confirmed integration outcome;
+list unresolved cleanup under Yet to do. If the host already deleted the
+branch, confirm absence.
+
+Remove only clean owned executor worktrees with no unpushed changes;
+delete the local claim branch once no worktree holds it and no unpushed
+work remains, following ship-item's cleanup protocol. Shared checkouts
+release only their own lock rows. Single writers have no claim branch to
+delete. An ordinary PR work branch is separate from a claim: clean it up
+only when owned and unused. List all unmerged or dirty leftovers under
+Yet to do.
 
 ## Stop
 

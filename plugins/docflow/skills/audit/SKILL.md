@@ -310,7 +310,12 @@ Offer to fix the **mechanical** issues automatically: regenerate
 claim refs check 10 named, fix broken relative links. A worktree is
 pruned only on a confirmation naming it — it may hold uncommitted
 work — and a claim branch is deleted only where its item has shipped or
-the operator says the work is abandoned. **Only** rows with
+the operator says the work is abandoned. For shipped claims, follow
+ship-item's cleanup protocol using the source verified for integration;
+preserve the claim if that source is unavailable or the ref has changed.
+For explicitly abandoned work, lease deletion against the exact tip covered
+by the operator's confirmation; a later tip requires fresh confirmation.
+**Only** rows with
 that evidence are clearable: clearing a live claim in a shared checkout
 removes another writer's only mutex and lets two writers edit the same
 file. Uncertain rows are listed for the operator to confirm one at a
