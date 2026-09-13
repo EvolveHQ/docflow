@@ -44,6 +44,10 @@ with tempfile.TemporaryDirectory(prefix='docflow-host-assertions-') as temporary
     prepared=command([sys.executable,str(here/'wave-fixture.py'),str(base),'--signed','--blocked'])
     assert prepared.returncode==0,prepared.stderr
     repo=base/'repo';key='0007-alpha'
+    (repo/'plan/done/2026-09-13-historical.md').write_text('# Historical completion\n\nKeep these exact bytes.\n')
+    git(repo,'add','.');git(repo,'commit','-qm','test: retain a prior completed item');git(repo,'push','-q','origin','main')
+    metadata=json.loads((base/'fixture.json').read_text());metadata['base']=git(repo,'rev-parse','HEAD')
+    (base/'fixture.json').write_text(json.dumps(metadata))
     git(repo,'switch','-qc','claim/'+key)
     item=repo/'plan/todo'/f'{key}.md'
     item.write_text(item.read_text().replace('- Claimed by:','- Claimed by: regression, claim/'+key))
@@ -59,5 +63,11 @@ with tempfile.TemporaryDirectory(prefix='docflow-host-assertions-') as temporary
     beta=base/'beta-worktree';git(repo,'worktree','add','--detach',str(beta),'main')
     (beta/'outputs').mkdir();(beta/'outputs/beta.txt').write_text('beta\n')
     check('registered worktree beta is rejected','check-blocked.py',[base,'--signed'],1,'beta_no_worktree_output')
+    (beta/'outputs/beta.txt').unlink()
+    git(repo,'switch','-q','claim/'+key)
+    (repo/'plan/done/2026-09-13-historical.md').write_text('# Rewritten history\n')
+    git(repo,'add','.');git(repo,'commit','-qm','test: corrupt completion history');git(repo,'push','-q','origin','HEAD')
+    git(repo,'switch','-q','main')
+    check('claim history rewrite is rejected','check-blocked.py',[base,'--signed'],1,'claim_history_preserved')
 
 print(json.dumps({'passed':True,'cases':results},indent=2))
