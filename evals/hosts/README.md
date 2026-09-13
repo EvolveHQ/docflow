@@ -55,6 +55,23 @@ sanitised parent/child provenance before cleanup. Codex/OpenCode workers can
 be directed into separate Git worktrees without host-enforced isolation;
 record that distinction. `--provider` selects a supported pi provider.
 
+Pi preserves its native configured provider and model when the runner's
+`--provider` and `--model` flags are omitted. Explicit flags override only
+their corresponding selection; the runner does not inject a cloud fallback.
+Record both the requested flags and the actual provider/model in Pi's native
+transcript. `python -B evals/hosts/test-run-host.py` checks all four omitted,
+explicit and partial-override combinations without calling a provider.
+
+For an operator-selected local provider, install its native provider extension
+in the disposable tmpfs home with the matching native settings. Preserve its
+API compatibility options and headers. When the extension uses host loopback,
+adapt only that address to a verified route from the container; do not change
+the user's settings or model server. Stream any credential-bearing extension
+through stdin to its supported tmpfs location, never into an image, command
+argument or report. Record sanitised provenance and prove a real tool call
+works before running longer fixtures. A failed cloud probe does not make cloud
+login a prerequisite for a configured local provider.
+
 - **Bootstrap/new-adr:** initialise an empty main checkout, configure an unsigned
   synthetic Git identity (or configure an ephemeral signing key for signed
   coverage), and provide the unchanged `fixtures/scratch-gate/verify.mjs`
