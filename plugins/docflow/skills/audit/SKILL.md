@@ -292,6 +292,12 @@ the same way: it is a template, not the first technology ADR.
 
 ## Step 2 — Report
 
+Translate the audit verdict into the closing block's Overall vocabulary:
+verified only when all in-scope checks are complete and clean; partially
+verified when findings remain; blocked or unknown when required evidence
+is unavailable. Put the issue count and severity in the explanation, not
+in place of that status value.
+
 Lead with a one-line verdict (clean / N issues). Then the punch list,
 grouped by severity: **blocking** (privacy leaks, status/lifecycle
 violations, broken cross-refs), **drift** (INDEX out of sync, missing
