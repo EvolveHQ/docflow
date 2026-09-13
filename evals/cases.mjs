@@ -224,7 +224,9 @@ export const cases = [
         'GLOSSARY.md', '.docflow/domains', 'domains',
         '.docflow/federation.md', 'federation.md',
       ]);
-      assertFileContains(repo, '.docflow/CONVENTIONS.md', 'Assessment depth: express');
+      const conventions = readFileSync(join(repo, '.docflow/CONVENTIONS.md'), 'utf8');
+      assert.match(conventions.replace(/[`*]/g, ''), /^Assessment depth:\s*express\b/m,
+        'expected the express assessment depth');
       assertFileContains(repo, '.docflow/CONVENTIONS.md', 'fast-forward');
     },
   },
