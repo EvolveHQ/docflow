@@ -28,8 +28,4 @@ metadata. Update only PR #5; the operator retains merge authority.
    INDEX from metadata. Record the versions, rationale and delivery evidence
    in the audit/PR report, effective only on the operator's checked merge.
 
-## Status
-
-- **Claimed by:** Codex ChatGPT Astra, 2026-09-13, local `kmox83/pr5-review-astra`, updating `kmox83/0040-claim-by-branch` in PR #5; sole operator-authorised writer.
-- **Blockers:**
-- **Stopped:**
+Shipped at HEAD `0dc3a9523767a185f50919c1cb4ea13535bffafb` via [PR #5](https://github.com/EvolveHQ/docflow/pull/5). This names the verified work HEAD. Completion prepared on the PR branch; effective only on the required-checks-passing merge into main.
