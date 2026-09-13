@@ -32,8 +32,11 @@ class PiSelectionTests(unittest.TestCase):
         command, receipt = self.launch()
         self.assertNotIn('--provider', command)
         self.assertNotIn('--model', command)
+        self.assertNotIn('--thinking', command)
         self.assertIsNone(receipt['provider_requested'])
         self.assertIsNone(receipt['model_requested'])
+        self.assertIsNone(receipt['thinking_requested'])
+        self.assertEqual(receipt['pi_thinking_selection'], 'native configured default')
 
     def test_explicit_provider_and_model_are_used(self):
         command, receipt = self.launch('--provider', 'fixture-local', '--model', 'fixture-coding')
@@ -51,6 +54,21 @@ class PiSelectionTests(unittest.TestCase):
         command, _ = self.launch('--model', 'fixture-local/fixture-coding')
         self.assertEqual(command[command.index('--model') + 1], 'fixture-local/fixture-coding')
         self.assertNotIn('--provider', command)
+
+    def test_thinking_only_preserves_native_provider_and_model(self):
+        command, receipt = self.launch('--thinking', 'high')
+        self.assertEqual(command[command.index('--thinking') + 1], 'high')
+        self.assertNotIn('--provider', command)
+        self.assertNotIn('--model', command)
+        self.assertEqual(receipt['thinking_requested'], 'high')
+        self.assertEqual(receipt['pi_thinking_selection'], 'explicit override')
+
+    def test_explicit_thinking_off_is_retained(self):
+        command, receipt = self.launch('--provider', 'fixture-local', '--model', 'fixture-coding', '--thinking', 'off')
+        self.assertEqual(command[command.index('--thinking') + 1], 'off')
+        self.assertEqual(receipt['thinking_requested'], 'off')
+        self.assertEqual(command[command.index('--provider') + 1], 'fixture-local')
+        self.assertEqual(command[command.index('--model') + 1], 'fixture-coding')
 
 
 if __name__ == '__main__':
