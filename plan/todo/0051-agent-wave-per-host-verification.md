@@ -61,7 +61,7 @@ and return ADR 0015 to Implemented.
 ## Status
 
 - **Claimed by:** Codex, 2026-09-14, `kmox83/docflow-release-verification`; operator-requested new worktree continuation after PR #6 merged as `d4f65bf02b836889bc1662c8627ccf9aa3ae7136`.
-- **Blockers:** Native-high Pi normal passes initial publication, ordering, completion and fresh-clone checks. A fresh bootstrap/new-decision run settles naturally at 2,935.8 seconds, exit 0, and passes all 24 signed scaffold checks, exact seed reference, new-decision and reporting assertions. Its actual history now supplies the remaining blocked-wave run. The operator reports backend resource contention and requests limited concurrency; only one Qwen inference runs at a time, with native high unchanged. Earlier 503 failures and interrupted repetition remain separate. Cowork's actual-target bootstrap-derived wave, child acquisition ordering and private-key cleanup pass independent checks. OpenCode's fourth wave wrongly integrates beta after alpha's environment failure and remains rejected; its fifth wave passes state, initial-claim and final-report checks, followed by a separately checked native Status-only reporting correction. That runtime is archived and stopped. Preserve every original failure and the Docker Desktop interruption; five-host acceptance awaits the remaining Pi evidence.
+- **Blockers:**
 - **Stopped:**
 
 ## Operator continuation, 2026-09-14
@@ -186,11 +186,12 @@ name; this metadata failure remains separate from the passing stop flow.
 All installations matched frozen Windows export bytes; Git blobs match only
 after CRLF-to-LF normalisation, as the receipt explicitly records.
 
-Exit 1 remains partially verified because Pi's full contract is unverified;
-Cowork has scoped native observations with explicit source/permission limits.
-Exit 2 is verified: README has observed rows and no assumed marker. Exit 3
-retains the required r5 history and regenerated metadata INDEX; local gates
-pass. Neither this item nor ADRs 0012/0015 is marked complete.
+At that earlier checkpoint, exit 1 remained partially verified because Pi's
+full contract was unverified; Cowork had scoped native observations with
+explicit source/permission limits. Exit 2 was verified: README had observed
+rows and no assumed marker. Exit 3 retained the required r5 history and
+regenerated metadata INDEX; local gates passed. Neither this item nor ADRs
+0012/0015 was marked complete at that checkpoint.
 
 ## Current operator run — 14 September 2026
 
@@ -201,17 +202,32 @@ receipts above remain historical. New observations include a complete native-hig
 Pi normal pass, fresh CLI release cases and native isolation, a scoped Cowork
 denial pass with broader failures retained, actual-target lifecycle recovery,
 and a controlled existing Clarity clone pilot. An infrastructure interruption
-stopped Pi's separate bootstrap before implementation; a fresh blocked run
-retains the same local model and native high setting.
+and later failed attempts remain preserved. Fresh Pi bootstrap/new-decision
+settles naturally at 2,935.8 seconds, exit 0; its actual history supplies the
+fresh blocked wave, which settles at 2,209.1 seconds, exit 0. All 13 state,
+11 initial-claim/order, five temporal and 15 fresh-clone/stop assertions pass,
+with three final reports and complete persisted stopped labels. The final
+bootstrap and blocked run are serial on the existing local Qwen/high route.
+All owned CLI runtimes are archived and stopped; the private signers are
+discarded while public keys and recoverable histories remain.
+
+The final assessment maps all six core cases and five hosts to actual execution
+and independent assertions on bef25d8. OpenCode's successful stopped state has
+a separate native Status-only reporting correction; this staged result and
+earlier failures remain explicit. Cowork retains its permission/transport
+limits. Pi's full published-claim and stop contracts are verified; incidental
+report abbreviations and unsupported hosted-PR inferences are corrected in the
+independent report review. No support or acceptance criterion is reduced.
 
 ## Status at a glance
 
 - **This run:** Source-pinned repairs and fresh independent native observations
-  are being consolidated in draft PR #7. Pi normal passes all 24 state and 19
-  initial-publication/order checks; its fresh-clone gate returns
-  `verify: OK (wave fixture)`, exit 0. Original failures remain preserved.
-- **Overall:** partially verified.
-- **Yet to do:** Complete remaining Pi blocked-wave evidence,
-  review final reports and cleanup, then final-head gates and PR CI. Keep this
-  item todo and decisions 0012/0015 Accepted until every real criterion passes.
-  A checked PR merge and release each need separate operator authorisation.
+  are consolidated for draft PR #7. Pi normal and blocked contracts pass;
+  fresh main gates return `verify: OK (wave fixture)`, exit 0, while the blocked
+  alpha reproduces `ERR_MODULE_NOT_FOUND`, exit 1. Original failures remain
+  preserved and owned runtimes are stopped.
+- **Overall:** verified within the existing scope; completion preparation pending.
+- **Yet to do:** Run the verified work-head gate, prepare this item's completion
+  and decisions 0012/0015 atomically, then final-head checks and PR CI. Keep the
+  worktree for review; generated Python cache cleanup was rejected by automatic
+  approval review. A checked PR merge and release each need separate authorisation.

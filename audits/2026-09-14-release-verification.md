@@ -8,6 +8,13 @@ parent workspace's factual documentation refresh. Work is on
 Main remains the checked PR #6 merge `d4f65bf02b836889bc1662c8627ccf9aa3ae7136`.
 Nothing in this report authorises integration or release.
 
+| Operator task | Final verification outcome |
+|---|---|
+| Pi initial claims and normal/blocked runs | Verified on the existing local Qwen route with native high. Fresh normal completion and bootstrap-derived blocked execution pass initial publication, acquisition ordering, signed transport, held-claim and fresh-clone checks. |
+| Remaining release cases and existing-repository pilot | All six mapped cases and five host observations have source-pinned evidence. OpenCode includes a separate native reporting correction; the isolated Clarity pilot verifies completion and recoverable stop without claiming human adoption. |
+| Cowork permission-denial regression | The historical bypass fails the regression; a focused fresh native denial stops with no subsequent tool call and unchanged target bytes. Broader failed observations remain recorded. |
+| Workspace documentation | The authorised factual refresh is verified separately; historical audits, proposed scope and concurrent edits are preserved. |
+
 The [sanitised receipt](../evals/hosts/results/2026-09-14-release-verification.json)
 contains exact source hashes, native process outcomes, independent assertion
 commands/results, preserved failures and evidence limits. Raw native events,
@@ -83,7 +90,7 @@ route supplies actual execution for the following cases on the pinned bytes.
 | Codex wave | Native child-session headers establish two actual workers. The bootstrap-derived blocked wave passes 13 state checks and three final report blocks. |
 | OpenCode waves | First attempt loses committed recovery for alpha; the second passes state but fails reporting and describes an invalid implementation-bearing probe. Both remain failures. A fresh third fixture passes 13 state checks and three report blocks; actual native Task records show two overlapping worker sessions. Its report has detail after the final status block, so literal end-of-report placement remains a formatting caveat. |
 | Pi normal wave | Native high settles naturally in 2338.5 seconds, exit 0. All 24 target and 19 initial-publication/order checks pass, with three valid reports and a successful unchanged gate in a fresh local-remote clone. |
-| Pi blocked/bootstrap continuation | Earlier interruptions and local-backend 503 failures remain recorded below. A fresh bootstrap/new-decision run settles naturally at 2,935.8 seconds, exit 0, and passes all 24 signed scaffold checks, the exact seed-introduction check, new-decision assertions and its final report. Its actual history supplies the next serial blocked-wave fixture. |
+| Pi blocked/bootstrap continuation | Fresh bootstrap/new-decision settles naturally at 2,935.8 seconds, exit 0, and passes all 24 signed scaffold checks, exact seed introduction, new-decision and reporting assertions. Its actual history supplies a fresh blocked wave, settling naturally at 2,209.1 seconds, exit 0; 13 state, 11 initial-claim/order, five temporal, 15 fresh-clone/stop checks and three final reports pass. Earlier interruptions and 503 failures remain separate. |
 | Cowork bootstrap-derived wave | The supported target-scoped recovery passes signed bootstrap/new-adr checks. Its actual history is extended into a fresh native Workflow fixture; 13 blocked-wave state checks, both initial signed claims and three reports pass independently. Expanded native launch and actual child-event extraction cards corroborate acquisition-before-write and overlapping workers. |
 
 The first published Pi claims are
@@ -114,13 +121,32 @@ held claim `d84cda5e20f0dd1f4914248bc550bee88f4586a1`.
 
 The operator reports another client had drained the local backend's resources
 and asks for limited concurrency. That cause is operator-reported, not a
-controller diagnosis. This continuation runs one Qwen inference at a time;
+controller diagnosis. From that capacity update onward, this continuation
+runs one Qwen inference at a time;
 the bootstrap settles and passes independent checks before the blocked wave
 starts. Earlier 503 retries and empty reports remain failed observations.
 The first fresh blocked attempt was interrupted after repeated planning
 without tools. A later bootstrap emitted over 5,000 consecutive slash characters
 and was interrupted at 4,244.6 seconds, exit 130, with incomplete uncommitted
 scaffolding. Neither interruption is replaced by the fresh bootstrap pass.
+
+The fresh blocked wave publishes initial claim
+`e640d38d046a139d279814f7afeb64fe2b90d7e5`; the completed acquisition event
+at sequence 11767 precedes the first output call at 12052. Implementation
+`b1624ee84b2211a11a8a29bf9a368b9b49e45eeb` and persisted stop
+`79fbc8071d754d580f1d16331c28de373369246f` are signed and pushed locally.
+The stop includes its date, precise error and all three reporting labels.
+Beta is never claimed or started, no integration occurs, and main/held refs
+remain at their original values. Fresh clones reproduce `verify: OK (wave
+fixture)`, exit 0, on main and `ERR_MODULE_NOT_FOUND`, exit 1, on alpha, with
+identical gate bytes. This is a fresh uninterrupted native run, separate from
+every earlier failed attempt.
+
+The final-report review retains two bounded narrative corrections: one push
+abbreviation says `e64c` instead of `e640`, and failed unauthenticated `gh`
+queries cannot establish external PR absence. Exact full Git SHAs and local
+transport are independently verified; no hosted-PR inference is accepted.
+The primary outcomes and final/persisted reporting contract match the evidence.
 
 Docker Desktop disappeared during the first separate Pi bootstrap; the native
 process was interrupted at 996.5 seconds, before implementation. The controller
@@ -275,7 +301,9 @@ verification task's implementation authority.
 
 Items 0052 and 0053 have prepared completion records naming verified work
 `fd0fe0d9c25653e5c1e78dbe80f6421e4796c319` and PR #7. They become shipped only
-on an authorised checked merge. Item 0051 and decisions 0012/0015 remain open.
+on an authorised checked merge. The final source-pinned assessment now verifies
+0051's existing exit criteria and the owning five-host requirement; its completion
+and decisions 0012/0015 are ready for atomic preparation after the work-head gate.
 The first prepared footer wording failed the unchanged static check; a separate
 documentation correction adds the required Shipped/HEAD markers while retaining
 the explicit pending-merge qualification. No gate was changed for that repair.
@@ -283,7 +311,7 @@ the explicit pending-merge qualification. No gate was changed for that repair.
 Required local checks pass: static verification, 15 rejected mutations, six
 deterministic eval passes/zero failures/six skips, six runner controls, eight
 temporal controls, 17 claim controls, 12 permission-denial controls and 18 seed
-controls. Required CI passes on PR head `5e187ba`; later heads still require
+controls. Required CI passes on PR head `4213562`; later heads still require
 their own check.
 Static output now counts 66 done records on this PR
 branch; main still contains 64 shipped records.
@@ -291,18 +319,22 @@ branch; main still contains 64 shipped records.
 Automatic approval review rejects removal of the generated
 `evals/hosts/__pycache__/check-pi-claims.cpython-312.pyc`, including a retry
 limited to that single file, with “blocked by policy”. It remains untracked.
-The completed Pi blocked and OpenCode containers are archived and stopped.
-The active Pi normal container still needs cleanup after its native runs;
-the worktree and recoverable fixture histories are retained for review.
+All owned CLI verification runtimes are archived and stopped. Ten final Pi
+archive checks preserve the normal and blocked fixture metadata, first-publication
+receipts, exact refs and bootstrap history. No model process remains in that
+runtime before stop; stopping its disposable home tmpfs discards the private
+signer. Public keys, the worktree and recoverable fixture histories remain.
 
 ## Status at a glance
 
 - **This run:** Product and focused gate fixes are signed separately; native
   release cases, the denial regression, the isolated pilot and factual workspace
-  refresh have independent evidence. Native continuation and final-head validation
-  remain in progress; this report does not claim a green release gate.
-- **Overall:** partially verified.
-- **Yet to do:** Finish the remaining native Pi blocked-wave evidence,
-  retain earlier reporting/timeline caveats, record cleanup, run final-head
-  gates and obtain green PR CI. Keep unverified plan 0051 and decisions 0012/0015
-  open. PR integration and release require separate operator authorisation.
+  refresh have independent evidence. Native-high Pi normal and blocked contracts
+  pass, and owned runtimes are stopped. Original failures and scoped narrative,
+  reporting, permission and transport limits remain explicit.
+- **Overall:** verified within the recorded scope; completion preparation and
+  final-head validation remain.
+- **Yet to do:** Prepare 0051 and its owning decisions atomically after the
+  work-head gate, then run final-head checks and obtain green PR CI. Keep the
+  worktree for operator review. The untracked generated Python cache remains
+  after rejected cleanup. PR integration and release require separate authorisation.

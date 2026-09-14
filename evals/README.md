@@ -31,9 +31,11 @@ model cases are mapped to independently checked native-host runs, plus the
 Workflow wrapper's additional wave case. These receipts are separate from the
 deterministic command's skips. Native Cowork actual-target Git and lifecycle
 checks now have evidence. Pi's existing local Qwen route passes fresh native-high
-bootstrap/new-decision and normal-wave checks; the remaining blocked-wave
-contract is still being verified. Staged reporting corrections and original
-failed runs remain explicit in the release audit.
+bootstrap/new-decision, normal completion and blocked-wave checks, including
+initial publication, completed-event ordering and fresh-clone gates. The
+source-pinned release assessment now covers all five hosts. Staged reporting
+corrections, original failed runs and permission/transport limits remain explicit
+in the release audit; green verification does not authorise merge or release.
 
 `behavioural.workflow.mjs` is a custom Workflow script: `meta` is exported,
 `phase`, `parallel`, `agent` and `log` are injected, and its body has a top-level
