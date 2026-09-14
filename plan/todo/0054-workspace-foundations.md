@@ -8,7 +8,8 @@ adr/0052-workspace-authority-and-attempt-records.md.
 - **Claimed by:** Codex, Orca task task_bdc6fa916a05, 2026-09-15,
   branch `kmox83/docflow-v1-workspace-foundations`.
 - **Blockers:** None for bounded implementation; native host, Clarity and
-  full V1 qualification are separate later work.
+  full V1 qualification are separate later work. Final-main review and the
+  actual completion event remain pending; this item is integration-ready.
 - **Stopped:**
 
 ## Scope
@@ -52,7 +53,14 @@ the coordinator owns serial integration. No main push, merge or release.
 
 ## Status at a glance
 
-- **This run:** Recorded ownership and approved bounded scope before implementation.
-- **Overall:** partially verified — implementation and gates pending.
-- **Yet to do:** Initial signed commit, gates and draft PR; implementation,
-  targeted controls, current-head CI and coordinator review/integration.
+- **This run:** Signed ownership `8d9770e` preceded PR #8 and implementation
+  `42ba9322e7b46e603f2a79d3185afbfee5327327`; static gate exit 0,
+  deterministic evals 7 passed/0 failed/6 skipped exit 0, 63 targeted tests
+  passed exit 0 and 15 mutation controls rejected exit 0. Required verify CI
+  passed on that source. Full outputs and acceptance mapping are in
+  audits/2026-09-15-workspace-foundations.md and its JSON receipt.
+- **Overall:** verified — integration-ready foundations, not shipped to main.
+- **Yet to do:** Current-head report CI and coordinator inspection/serial
+  integration through https://github.com/EvolveHQ/docflow/pull/8; operator
+  main review and actual completion event. Keep this item todo and owning
+  decisions Accepted. Later W3/W4/Clarity/full V1 qualification stays separate.
