@@ -61,7 +61,7 @@ and return ADR 0015 to Implemented.
 ## Status
 
 - **Claimed by:** Codex, 2026-09-14, `kmox83/docflow-release-verification`; operator-requested new worktree continuation after PR #6 merged as `d4f65bf02b836889bc1662c8627ccf9aa3ae7136`.
-- **Blockers:** Fresh native-high Pi normal and blocked full-contract evidence remains outstanding, including initial published branch metadata and acquisition-before-write. Remaining release cases must be tied to the repaired installed bytes. Historical Cowork denial/source/permission limits remain recorded; plan 0052 owns the denial regression and plan 0053 the isolated existing-repository pilot. Five-host acceptance is incomplete.
+- **Blockers:** Native-high Pi normal passes initial publication, ordering, completion and fresh-clone checks. Its blocked retry exhausts local-backend 503 retries before claims; separate bootstrap remains active on the unchanged native high setting. The fresh Cowork bootstrap-derived wave passes independent state, initial-claim and report checks; actual child ordering receipts are being consolidated. Fresh CLI release cases, the focused denial regression and isolated Clarity pilot have scoped evidence. Preserve all failed attempts and the Docker Desktop interruption; five-host acceptance is not yet complete.
 - **Stopped:**
 
 ## Operator continuation, 2026-09-14
@@ -192,13 +192,26 @@ Exit 2 is verified: README has observed rows and no assumed marker. Exit 3
 retains the required r5 history and regenerated metadata INDEX; local gates
 pass. Neither this item nor ADRs 0012/0015 is marked complete.
 
+## Current operator run — 14 September 2026
+
+See [the release audit](../../audits/2026-09-14-release-verification.md) and its
+separate sanitised receipt. Product and gate changes are signed separately;
+all fresh installed plugin files are exact Git bytes from bef25d8. The original
+receipts above remain historical. New observations include a complete native-high
+Pi normal pass, fresh CLI release cases and native isolation, a scoped Cowork
+denial pass with broader failures retained, actual-target lifecycle recovery,
+and a controlled existing Clarity clone pilot. An infrastructure interruption
+stopped Pi's separate bootstrap before implementation; a fresh blocked run
+retains the same local model and native high setting.
+
 ## Status at a glance
 
-- **This run:** independently verified Cowork signing, original lifecycle,
-  concurrent wave and temporal evidence, plus the seed-reference repair on a
-  fresh exact-source bootstrap. Original and export-only failures are preserved.
-- **Overall:** partially verified — the five-host requirement remains blocked.
-- **Yet to do:** successful native-high Pi complete-contract evidence in a later
-  authorised run and remaining release review, retaining the
-  broader agent-state uncertainty after bounded private-key cleanup. Keep
-  this item in todo and both owning decisions Accepted until all criteria pass.
+- **This run:** Source-pinned repairs and fresh independent native observations
+  are being consolidated in draft PR #7. Pi normal passes all 24 state and 19
+  initial-publication/order checks; its fresh-clone gate returns
+  `verify: OK (wave fixture)`, exit 0. Original failures remain preserved.
+- **Overall:** partially verified.
+- **Yet to do:** Complete remaining Pi bootstrap/blocked and Cowork wave evidence,
+  review final reports and cleanup, then final-head gates and PR CI. Keep this
+  item todo and decisions 0012/0015 Accepted until every real criterion passes.
+  A checked PR merge and release each need separate operator authorisation.

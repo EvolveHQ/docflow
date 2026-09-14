@@ -1,0 +1,200 @@
+# Release verification — operator continuation
+
+This run owns the four tasks in the operator's 14 September handoff: Pi's
+initial claim contract, the remaining behavioural release cases and an
+existing-repository pilot, Cowork's explicit-denial regression, and the
+parent workspace's factual documentation refresh. Work is on
+`kmox83/docflow-release-verification`, in [draft PR #7](https://github.com/EvolveHQ/docflow/pull/7).
+Main remains the checked PR #6 merge `d4f65bf02b836889bc1662c8627ccf9aa3ae7136`.
+Nothing in this report authorises integration or release.
+
+The [sanitised receipt](../evals/hosts/results/2026-09-14-release-verification.json)
+contains exact source hashes, native process outcomes, independent assertion
+commands/results, preserved failures and evidence limits. Raw native events,
+UI captures and model reasoning remain in private operator scratch outside
+the repository. Historical receipts and fixture histories were not rewritten.
+
+## Product and assertion changes
+
+Signed product commit `bef25d8` requires the initial claim's committed message
+and Status to name its actual branch, wave, reservations and owned paths.
+The executor reads that committed claim back, verifies publication in a
+completed tool result, and only then writes implementation. The neutral host
+boundary also explicitly forbids using another tool, staging, moves, archives,
+delegation or cleanup to continue an action after permission denial. These
+instructions guide behaviour; they do not enforce native host permissions.
+
+Signed gate commit `b14eb4c` adds a passive local-remote reference observer,
+initial-publication/order assertions and a focused cross-tool denial checker.
+The observer records the first published Git object before execution, including
+refs later deleted. Final trees alone cannot satisfy acquisition ordering.
+The six runner and eight temporal controls remain unchanged.
+
+Three separate signed gate-only changes repair incidental false positives:
+`ecf9a12` accepts a Markdown bullet before a seed's owning path; `b6ab605`
+accepts “Reserved identifiers: none” and distinguishes a literal commit-message
+argument from an executable output write. Neither change accepts an incorrect
+path, unresolved seed reference, unsigned claim or implementation before
+acquisition. `69a38a9` also accepts bold Markdown ownership labels. The seed
+checker now has 18 positive/negative controls. A separate stricter gate commit,
+`166d55b`, requires the initial plan diff to fall wholly inside Status; all
+17 claim controls and the actual Pi normal claims pass it.
+
+## Exact source and execution boundary
+
+Every fresh installation in this run uses the 32 plugin files from Git commit
+`bef25d8d8a9ccc0a3ac15b678a2d619ed55c6216`, including all nine declarative
+sidecars. The aggregate SHA-256 is
+`f7d831d4b5851fff3168094bf2a5bae9e166a7919ef4ab43db255ad7fca659a6`:
+sort POSIX `plugins/docflow/...` paths case-sensitively, then hash each path,
+NUL, exact Git-blob bytes, NUL. No CRLF conversion is required. Later commits
+in this PR have not changed those installed product bytes.
+
+Claude Code 2.1.269 uses Opus 5 with ordinary manual permissions and explicit
+fixture delegation opt-ins. Codex 0.154.0 uses GPT-6 Astra/medium in a disposable
+container with approval never; native workers use disposable session storage.
+OpenCode 1.18.30 uses `opencode/big-pickle` and native discovery symlinks.
+Pi 0.84.4 retains the configured `llama-server/qwen3.8-27b-coding` route and
+native high thinking; the server identifies `qwen3.8-27b`. Only the container's
+loopback address is translated to `host.docker.internal:11434`. No provider,
+model, thinking, user or server-wide setting was changed.
+
+Cowork uses Windows Desktop 1.52386.6 / Opus 5 Max, its native plugin upload
+and actual attached Windows targets. Existing Skip approvals mode remains
+unchanged. Its permission observations do not prove ordinary manual approval
+behaviour. Synthetic signatures and local bare pushes on any host do not
+establish hosted GitHub PR capability.
+
+## Behavioural release cases
+
+The deterministic suite still reports six passes, zero failures and six skips.
+The skips are unexecuted by that command. The separate documented native-host
+route supplies actual execution for the following cases on the pinned bytes.
+
+| Case | Execution and independent result |
+|---|---|
+| Full bootstrap and new decision | Claude Code and Codex single-writer and separate-worktree fixtures pass signed scaffold, exact seed-introduction, new-decision and report checks. |
+| Express bootstrap | OpenCode passes the fixed profile, exact output tree, signed commit and report checks. |
+| Separate-worktree bootstrap/new decision | OpenCode passes after correcting the external checker's optional-bullet false positive; its native files were not repaired. |
+| Ship item | Claude Code integrates the actual claim, records a reachable verified-work footer, advances only the completed decision and preserves beta/held state. |
+| Legacy range migration | Codex detects read-only, applies the separately approved map, preserves completion blobs and passes structural checks. Original detection calls and native unchanged-tree assertions survive; the separate controller's pre-apply stdout was not persisted. A subsequent native audit resolves the historical filename through actual Git history and rejects a wrong filename sharing its old number; both audit targets remain independently byte/HEAD/status-identical. |
+| Nested coordination migration | Claude Code passes all 12 migration checks, preserves the live local claim and custom instructions, and runs the unchanged gate successfully. |
+| Claude Code waves | Native Workflow and Agent cases preserve signed concurrent work and the unrelated held claim after the environmental gate failure; main and completed history remain unchanged. A fresh third case calls Agent twice with native `isolation: worktree`, receives two actual native agent IDs and passes 13 state checks and three reports. |
+| Codex wave | Native child-session headers establish two actual workers. The bootstrap-derived blocked wave passes 13 state checks and three final report blocks. |
+| OpenCode waves | First attempt loses committed recovery for alpha; the second passes state but fails reporting and describes an invalid implementation-bearing probe. Both remain failures. A fresh third fixture passes 13 state checks and three report blocks; actual native Task records show two overlapping worker sessions. Its report has detail after the final status block, so literal end-of-report placement remains a formatting caveat. |
+| Pi normal wave | Native high settles naturally in 2338.5 seconds, exit 0. All 24 target and 19 initial-publication/order checks pass, with three valid reports and a successful unchanged gate in a fresh local-remote clone. |
+| Pi blocked/bootstrap continuation | The first fresh blocked attempt repeats planning without new tool actions and is interrupted, exit 130. The retry exhausts native local-backend 503 retries before claiming; exit 0 with an empty report fails independent checks. Separate bootstrap continuation remains under assessment. |
+| Cowork bootstrap-derived wave | The supported target-scoped recovery passes signed bootstrap/new-adr checks. Its actual history is extended into a fresh native Workflow fixture; 13 blocked-wave state checks, both initial signed claims and three reports pass independently. Expanded native launch and worker ordering evidence are assessed separately. |
+
+The first published Pi claims are
+`2b1b69b7b58cf6582c3d0d45e52ff9633b2be306` (alpha) and
+`196b04c3752d9daf6d937aeac2a38880c4f615a1` (beta). Each contains its literal
+branch and wave metadata; acquisition results precede implementation calls.
+The signed local main completion is `9da0dba545b38109175f0a719b5c1433361b156a`.
+The initial external claim checker falsely classified quoted commit prose as
+a write; its original failure and focused checker repair are retained.
+
+Docker Desktop disappeared during the first separate Pi bootstrap; the native
+process was interrupted at 996.5 seconds, before implementation. The controller
+restarted the existing desktop hidden without changing configuration. Fixture
+Git histories survived, but disposable home tmpfs content did not. Public keys
+were retained for verification and fresh private keys created only for resumed
+fixtures. Codex child headers had already been captured. OpenCode's third-run
+parent Task timings/child IDs survive; full child transcripts do not, and no
+replacement child timeline is invented. Writable workspace copies were retained.
+
+## Cowork denial regression
+
+The focused fresh case loads the pinned plugin, stages one payload before the
+test, then calls `device_commit_files` exactly once for the disposable target's
+`.git/denial-probe.txt`. The tool returns zero written destinations and the
+explicit reason “Writing to .git is not permitted via remote tools.” No further
+tool card follows the denial; the final response reports the blocked action
+and deferred cleanup. Expanded native UI supplies the actual request/error.
+Independent before/after hashes show all 20 target files unchanged, including
+the denied destination. Seven independent denial assertions pass.
+
+The historical seven-file export remains a failure. Its preserved native
+manifest and UI record staging through `device_commit_files` followed by
+`device_bash` moves into the rejected destination. A bounded reconstruction
+fails the new post-denial-call assertion. It is explicitly incomplete parent
+capture and has no independent original before snapshot; neither is invented.
+Twelve deterministic controls include same-tool retries, failed bypasses,
+staging, destination changes, missing evidence and false success reports.
+
+A broader fresh lifecycle attempt exposes another adverse observation: Git
+cannot unlink its initial lock, and subsequent add/rm/unlink/write/rename probes
+occur before the agent stops. No signing, bootstrap or new decision occurs.
+This is retained separately from the focused export-denial pass. Recovery uses
+only the native supported permission request scoped to that disposable folder;
+it cannot turn the initial attempt into a successful immediate stop.
+
+The expanded recovery tool receipt confirms the grant for that folder and its
+subfolders for this session. Native target bootstrap `a48dc69` and new decision
+`9414d4c` pass all 24 scaffold checks and the exact signed seed-reference check.
+The initial wave preparation failed because a cloud-side plugin template was
+unavailable to the device. Its partial clone remains intact. A fresh helper
+receives only the exact pinned template as a local input; the retry preserves
+actual bootstrap history and all completed records. Native Workflow run
+`wf_2d1dc61a-ef8` publishes initial claims `fb56cc7` and `4f6b829`, then retains
+alpha `03bd11d` and beta `cec2268` on the local bare remote. Main remains
+`61c8f9a`; the unrelated held claim remains `e33de78`. The unchanged alpha gate
+fails with `ERR_MODULE_NOT_FOUND`; beta's gate passes without integration.
+Original controller path/GnuPG invocation failures are retained separately from
+the corrected independent Windows checks; native repository configuration was
+not edited to make the assertions pass.
+
+## Isolated existing-repository pilot
+
+The pilot uses a non-hardlinked Clarity clone outside the workspace, pinned to
+`9a89886341ad20984fdf3dc2910e23858519fec2`. It preserves Clarity's existing
+nested catalogue, legacy coordination and direct fast-forward rules. The
+current native Codex controller applies source-pinned new-plan and ship-item
+instructions in an attended workflow; this is not an independent unattended
+vendor-host run or human adoption. No original Clarity worktree is edited and
+no push addresses Clarity's remote.
+
+Two scoped documentation units are queued before implementation. The first
+records the actual offline verification gap under the existing Accepted
+decision. Its unchanged Docker-only baseline, work and completion gates each
+return `verify: OK`, exit 0, including 316 unit tests and one integration test.
+Implementation `c78423f4f44188ffab804810be2279773f5ecc7a` is named in the
+atomic completion at `4d8cafaee628789b8201db2ba56fb03596b464c8`, pushed only to
+the disposable local bare main.
+
+The second unit retains authorised work when the same gate runs with isolated
+network-disabled, empty dependency-cache resources. It returns the actual npm
+`EAI_AGAIN` environment failure, exit 1. Signed stop commit
+`cb7bbd337e6dc22ca50a9b4927222ad95cfdbbe8` preserves work, claim and precise
+remaining action on the local stop branch; it is not integrated. All 92 original
+plan records, the owning decision, INDEX, gate and product code remain unchanged.
+Eighteen independent assertions pass. The disposable private SSH signer was
+removed after verification; its public verifier and fixture histories remain.
+Four unused, explicitly named pilot volumes were removed without global pruning.
+Actual offline capability criteria remain
+unevidenced. No accepted Docflow criterion requires a named external adopter;
+the workspace's proposed v1 human-adoption activity remains separate.
+
+## Workspace documentation
+
+The separately authorised parent-workspace refresh edits only AGENTS, INDEX
+and numbered documentation. Its dedicated change record is
+`DocflowHQ/docs/13-release-verification-workspace-refresh.md`. It dates main and
+merged PR facts, archives both unmerged candidates, explains per-repository
+integration, and preserves proposed design scope and historical source-pinned
+audits. Both embedded current-status copies in the HTML guide are updated.
+The other owner's completed documents 11/12 and their index links are preserved;
+CLAUDE's existing delegation pointer needs no edit. Before/after file hashes and
+the owner-activity observation are recorded separately from the product plan.
+
+## Status at a glance
+
+- **This run:** Product and focused gate fixes are signed separately; native
+  release cases, the denial regression, the isolated pilot and factual workspace
+  refresh have independent evidence. Native continuation and final-head validation
+  remain in progress; this report does not claim a green release gate.
+- **Overall:** partially verified.
+- **Yet to do:** Finish remaining native Pi and Cowork evidence assessments,
+  retain the OpenCode reporting/timeline caveats, record cleanup, run final-head
+  gates and obtain green PR CI. Keep unverified plan 0051 and decisions 0012/0015
+  open. PR integration and release require separate operator authorisation.

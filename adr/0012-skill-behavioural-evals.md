@@ -103,6 +103,8 @@ does not prove attachment, model execution or target Git access.
 - `audits/2026-09-13-pi-qwen-continuation.md` (native Pi repair/retry and temporal assertion controls)
 - `audits/2026-09-14-cowork-continuation.md` (native target lifecycle, signed concurrent wave, seed-reference regression and retained permission failures)
 
+- `audits/2026-09-14-release-verification.md` (operator continuation: exact Git-byte installs, claim/denial regressions, native release cases and isolated existing-repository pilot)
+
 ## Revision History
 
 | Date | Revision | Author | Change |
@@ -114,6 +116,7 @@ does not prove attachment, model execution or target Git access.
 | 2026-09-13 | r5 | Codex, operator-authorised | Execute all six core model cases plus wave through the documented real-host route with independent target/report checks. Repair malformed legacy fixture sections, incidental Markdown assertions, real ship/migration history, historical identity audit and native-session dispatch. Preserve failed runs, overwritten-receipt limitations and reporting-only recovery. Deterministic six skips remain skips; the custom Workflow suite itself was not run. Keep Accepted while the owning five-host release work remains blocked. |
 | 2026-09-14 | r6 | Codex, operator-authorised | Preserve native Pi provider/model/thinking defaults and add completed-event claim/integration checks, including batched output and arbitrary push source refs. Retain original failures, bounded off repair/retry passes, off positive contract failure, high positive repetition and the inconclusive recovered interruption. The corrective high run passes stop-flow/acquisition checks but its published initial claim omits the branch name. Bound installed bytes to the tested Windows export, with Git-blob equality only after line-ending normalisation. Six deterministic skips remain skips; full Pi/Cowork acceptance remains incomplete. |
 | 2026-09-14 | r7 | Codex, operator-authorised | Distinguish native Windows Cowork fixtures from CLI containers. Independently verify actual-target signing, bootstrap/new-adr and an opted-in concurrent Workflow wave with preserved blocked work and held claim. Original child events verify acquisition ordering; retain the manifest timestamp correction and unavailable parent failure receipt. A stricter seed-reference check exposes the original generic footer; 14 regressions and a fresh native bootstrap on repaired eff3130 pass. Preserve initial unlink denial, supported recovery in existing Skip approvals mode and the separate post-wave export boundary violation. Six deterministic skips remain skips; full release acceptance remains incomplete. |
+| 2026-09-14 | r8 | Codex, operator-authorised | Execute the four-task release continuation on exact Git blobs from bef25d8. Strengthen initial published claim and completed-event checks; add a focused native Cowork export-denial regression and preserve broader permission failures. Verify fresh native release cases and an attended isolated Clarity completion/stop pilot with unchanged history and Docker-only gates. Record separate incidental Markdown checker repairs, original failures and the Docker Desktop interruption. The current audit/receipt bounds every result; deterministic six skips remain skips and Accepted status remains until full release evidence is complete. |
 
 ## Approvals
 
@@ -124,3 +127,4 @@ does not prove attachment, model execution or target Git access.
 | Operator | Eugenio Minardi | 2026-09-13 | Explicit 0051 continuation includes independent behavioural release checks and necessary repairs |
 | Operator | Eugenio Minardi | 2026-09-13 | Local-provider Pi continuation and necessary runner/assertion repairs authorised; full five-host exit criteria retained |
 | Operator | Eugenio Minardi | 2026-09-14 | Unlocked/visible native Cowork continuation and necessary evidence updates authorised; no support or exit-criteria reduction |
+| Operator | Eugenio Minardi | 2026-09-14 | Explicit new-worktree handoff authorises all four verification/fix tasks and a new draft PR; no merge, release, paid service or support reduction |
