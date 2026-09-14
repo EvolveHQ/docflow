@@ -60,9 +60,22 @@ and return ADR 0015 to Implemented.
 
 ## Status
 
-- **Claimed by:** Codex (Orca worker, dispatch `ctx_35d5b332d1f2`), 2026-09-14, `kmox83/0051-host-verification-astra` ([PR #6](https://github.com/EvolveHQ/docflow/pull/6); resumed for the operator-confirmed visible Cowork desktop).
-- **Blockers:** Full native-high Pi acceptance remains unmet: the positive control repeated generation before work; the corrective blocked run passed stop-flow checks but failed initial claim branch-name metadata. No Pi rerun is authorised here. Cowork now has actual-target signing, original bootstrap/new-ADR, opted-in concurrent Workflow wave and repaired seed-bootstrap evidence; source and permission limits remain explicit. A post-wave receipt export crossed a denied remote-tool .git boundary before the controller's stop completed; retain that distinct adverse observation and the earlier connector/unlink failures. Full five-host release review remains incomplete. Bounded native private-key cleanup is observed; broader agent state remains unverified after correction of the original cleanup overclaim.
-- **Stopped:** 2026-09-14 after the bounded native Cowork continuation; Pi's full contract remains unverified. The evidence stays on draft PR #6 for review, with current-head CI recorded on the PR and final dispatch report. No completion move, merge or release is claimed.
+- **Claimed by:** Codex, 2026-09-14, `kmox83/docflow-release-verification`; operator-requested new worktree continuation after PR #6 merged as `d4f65bf02b836889bc1662c8627ccf9aa3ae7136`.
+- **Blockers:** Fresh native-high Pi normal and blocked full-contract evidence remains outstanding, including initial published branch metadata and acquisition-before-write. Remaining release cases must be tied to the repaired installed bytes. Historical Cowork denial/source/permission limits remain recorded; plan 0052 owns the denial regression and plan 0053 the isolated existing-repository pilot. Five-host acceptance is incomplete.
+- **Stopped:**
+
+## Operator continuation, 2026-09-14
+
+The new handoff expressly resumes Pi on the existing local Qwen route with
+native high thinking and authorises necessary fixes, release verification,
+an isolated existing-repository pilot, and a new draft PR. Earlier no-rerun,
+stopped and draft-PR-6 statements below are historical. Preserve their receipts.
+No merge, release, version bump, paid external service or support reduction is
+authorised. Verify fresh normal and blocked runs, committed/publication metadata,
+completed-event ordering, signed local transport, held claims, fresh-clone gates
+and truthful reports. Keep this item todo and ADRs 0012/0015 Accepted until their
+real exit criteria pass. Workspace documentation has a separate derived change
+record outside this product plan.
 
 ## Cowork continuation, 2026-09-14
 
