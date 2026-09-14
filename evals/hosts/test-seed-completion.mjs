@@ -100,6 +100,16 @@ test('a seed-labelled link to another path is rejected', () => fixture((f) => {
   f.scaffold(); f.write(f.done, f.body(f.precise).replace('Owning ADR: adr/0001-method.md', 'Owning ADR: [adr/0001-method.md](../../other/0001-method.md)'));
   f.commit('test: misleading ownership label'); assert.throws(() => f.check(), /does not own the seed/);
 }));
+test('a bold owner label resolves its exact linked seed path', () => fixture((f) => {
+  f.scaffold(); f.write(f.done, f.body(f.precise).replace('Owning ADR: adr/0001-method.md', '**Owning ADR:** [seed](../../adr/0001-method.md)'));
+  const introduction = f.commit('test: bold seed owner');
+  assert.equal(f.check().reference, introduction);
+}));
+test('a bold owner label cannot conceal a wrong linked path', () => fixture((f) => {
+  f.scaffold(); f.write(f.done, f.body(f.precise).replace('Owning ADR: adr/0001-method.md', '**Owning ADR:** [adr/0001-method.md](../../other/0001-method.md)'));
+  f.commit('test: wrong bold seed owner');
+  assert.throws(() => f.check(), /does not own the seed/);
+}));
 test('a verified-work footer does not need a particular heading', () => fixture((f) => {
   f.scaffold('Historical adoption.'); const scaffold = f.commit('test: scaffold');
   f.write(f.done, f.body(`Shipped at HEAD ${scaffold}`).replace('## Shipped\n\n', '---\n\n')); f.commit('test: record verified work');

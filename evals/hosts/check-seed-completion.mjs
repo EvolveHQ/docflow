@@ -23,7 +23,7 @@ export function checkSeedCompletion(repoPath, { root = '.', signed = false } = {
   const done = rel(join(artefacts, 'plan/done', doneNames[0]));
   const body = readFileSync(join(repo, done), 'utf8');
   const owner = body.split('\n')
-    .map((line) => line.replace(/^\s*[-*+]\s+/, ''))
+    .map((line) => line.replace(/^\s*[-*+]\s+/, '').replace(/^(\*\*|__)(Owning ADR:)\1/, '$2'))
     .find((line) => /^Owning ADR:/.test(line)) || '';
   const ownerPath = owner.match(/\[[^\]]*\]\(([^)]+)\)/)?.[1]
     ?? owner.slice('Owning ADR:'.length).trim().replaceAll('`', '');
