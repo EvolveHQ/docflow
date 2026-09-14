@@ -45,5 +45,9 @@ if a.signed:
     signatures=subprocess.run(['git','log','--format=%G?'],cwd=r,text=True,capture_output=True)
     checks['valid_signatures']=signatures.returncode==0 and len(signatures.stdout.splitlines())>=2 and all(s=='G' for s in signatures.stdout.splitlines())
     checks['recorded_signing']=bool(re.search(r'\bsigned\b',read('CONVENTIONS.md'),re.I)) and not re.search(r'\bunsigned\b',read('CONVENTIONS.md'),re.I)
-print(json.dumps({'checks':checks,'passed':all(checks.values()),'gate_stdout':gate.stdout.strip(),'gate_exit':gate.returncode,'target_git_complete':checks['target_git_history'] and checks['target_files_tracked'],'commits':git.stdout.strip()},indent=2))
+seed_command=['node',str(Path(__file__).with_name('check-seed-completion.mjs')),str(r.resolve())]
+if a.signed:seed_command.append('--signed')
+seed_result=subprocess.run(seed_command,text=True,capture_output=True)
+checks['seed_completion_reference']=seed_result.returncode==0
+print(json.dumps({'checks':checks,'passed':all(checks.values()),'gate_stdout':gate.stdout.strip(),'gate_exit':gate.returncode,'target_git_complete':checks['target_git_history'] and checks['target_files_tracked'],'commits':git.stdout.strip(),'seed_completion_check':{'command':seed_command,'exit':seed_result.returncode,'stdout':seed_result.stdout.strip(),'stderr':seed_result.stderr.strip()}},indent=2))
 sys.exit(0 if all(checks.values()) else 1)
