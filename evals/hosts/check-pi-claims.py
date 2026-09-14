@@ -11,6 +11,11 @@ import shlex
 from pathlib import Path
 
 
+def only_status_changed(before, after):
+    section = r'(?ms)^## Status[ \t]*\r?\n.*?(?=^## |\Z)'
+    return bool(re.search(section, before) and re.search(section, after)) and re.sub(section, '', before) == re.sub(section, '', after)
+
+
 def inspect_claim(branch, plan, owned, message, changed, status):
     owner = next((line for line in status.splitlines() if re.search(r'Claimed by', line, re.I)), '')
     return {
@@ -109,6 +114,7 @@ def main():
         changed = git('diff-tree', '--no-commit-id', '--name-only', '-r', sha).splitlines()
         status = git('show', sha + ':' + plan)
         result = inspect_claim(branch, plan, owned, message, changed, status)
+        result['initial_commit_status_only'] &= only_status_changed(git('show', sha + '^:' + plan), status)
         result['initial_signature_valid'] = git('show', '-s', '--format=%G?', sha) == 'G'
         checks.update({key + '_' + k: v for k, v in result.items()})
         published[key] = {'sha': sha, 'message': message, 'changed': changed}

@@ -57,6 +57,16 @@ class Claims(unittest.TestCase):
     def test_initial_commit_cannot_include_output(self):
         self.assertFalse(metadata(changed=[plan, 'outputs/alpha.txt'])['initial_commit_status_only'])
 
+    def test_initial_commit_changes_only_status_content(self):
+        before = '# Item\n\n## Scope\nWrite alpha.\n\n## Status\n- Claimed by:\n\n## References\nKeep this.\n'
+        after = before.replace('- Claimed by:', '- Claimed by: eval, claim/0007-alpha')
+        self.assertTrue(claims.only_status_changed(before, after))
+        self.assertFalse(claims.only_status_changed(before, after.replace('Write alpha.', 'Write beta.')))
+        self.assertFalse(claims.only_status_changed(before, after.replace('Keep this.', 'Changed.')))
+
+    def test_claim_without_status_section_is_not_status_only(self):
+        self.assertFalse(claims.only_status_changed('# Item\n', '# Item\n- Claimed by: eval\n'))
+
     def test_completed_acquisition_before_write(self):
         self.assertTrue(all(claims.event_checks(events(), {key: 'alpha'})[0].values()))
 
