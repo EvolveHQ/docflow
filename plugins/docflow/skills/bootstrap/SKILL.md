@@ -603,6 +603,28 @@ Keep the pointer in sync if a later re-run migrates the root.
    seed's completion event is this bootstrap), so plan-coverage stays
    satisfied. On a **retrofit/backfill** (Step 6), the seed is `0001`, ahead
    of the reconstructed decisions.
+
+   **Seed completion evidence.** Keep the complete scaffold atomic; do not
+   split it into an incomplete intermediate tree to make a supplied gate pass.
+   For a direct-integration seed created in that same commit, use this
+   seed-only footer, replacing the path with the actual repository-relative
+   adoption record and quoting it for the host:
+
+   ```text
+   Shipped by bootstrap introduction: `<repo-relative done path>`.
+   Resolve: `git log --follow --diff-filter=A --format=%H -- "<repo-relative done path>"`
+   ```
+
+   After committing, resolve that exact path to one introducing commit.
+   Require it to be reachable and to contain this adoption record, the
+   Implemented seed, its INDEX row and the complete verified scaffold;
+   verify its signature when signing is required. Report the resolved SHA.
+   A generic description such as "the bootstrap commit" is insufficient.
+   If later repairs changed the scaffold, cite the existing verified repair
+   HEAD in a subsequent record commit instead. Never invent a future/self SHA.
+   Ordinary shipped items still name their existing verified implementation
+   tip. Under pull-request integration use the actual pull-request reference;
+   a missing reference or unconfirmed merge remains explicitly unverified.
 6. `plan/README.md` — from `templates/plan-README.md`. Create empty
    `plan/todo/.gitkeep` and `plan/done/.gitkeep`.
 7. **`_agent/` — write exactly what Q5, Q8 and Q4a prescribe, and
@@ -693,6 +715,10 @@ in `CONVENTIONS.md`, `AGENTS.md` and the autonomous prompt when written.
 Run the recorded gate if present and retain its exact output
 and exit code. A wrong root, missing requested queue/seed or failed gate is
 an incomplete scaffold, not a host limitation. Correct it before reporting.
+When the plan layer includes the seed adoption record, also verify its
+completion reference as described above. Do not claim complete when the
+reference is missing, ambiguous, unreachable or points to an earlier incomplete
+scaffold. Preserve the failed observation and report the remaining repair.
 
 ## Step 6 — Offer backfill (existing repos; re-runnable for emergent work)
 

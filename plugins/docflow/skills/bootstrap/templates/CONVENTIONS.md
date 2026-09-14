@@ -214,11 +214,26 @@ Pending and shipped work live in `plan/` at the repository root:
   Each file names the owning ADR(s), scope, and exit criteria.
 - `plan/done/<YYYY-MM-DD>-<slug>.md` — shipped work, chronological.
   Under direct-to-main integration, the completion commit moves the
-  item here and its footer names the HEAD SHA. Under pull-request
+  item here and its footer names the verified implementation HEAD recorded
+  before the completion commit. Under pull-request
   integration, the move happens on the pull-request branch before it is
   marked ready and the footer names the pull request.
 
 The completion event is: `<from Q4>`.
+
+The bootstrap seed's adoption record is created with the complete scaffold.
+For that seed alone, a direct-integration footer may use this form, with its
+actual repository-relative path and host-appropriate quoting:
+
+```text
+Shipped by bootstrap introduction: `<repository-relative done path>`.
+Resolve: `git log --follow --diff-filter=A --format=%H -- "<repository-relative done path>"`
+```
+
+Resolve it after committing to one reachable introducing commit containing
+the record, Implemented seed and verified scaffold; verify the signature when
+required. A generic bootstrap label or future/self SHA is not evidence.
+Ordinary completion footers name an existing verified implementation SHA.
 
 When a `plan/todo/` item ships, the file moves to `plan/done/`, any
 plan-item Status section is removed, the owning ADR(s)' `status:`

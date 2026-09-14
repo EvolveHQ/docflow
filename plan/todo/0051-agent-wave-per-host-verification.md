@@ -4,6 +4,11 @@ Owning ADR: adr/0015-multi-target-portability.md (r5 — reopened
 Implemented → Accepted on landing, → Implemented on ship; AC5's
 "bootstrap plus one lifecycle skill" extends to agent-wave)
 
+Also affected by the native continuation: adr/0029-seed-adr-recording-the-method.md
+and adr/0037-shipped-record-is-git-and-plan-done.md, for a precise bootstrap-only
+introduction-commit reference that avoids a future/self SHA while retaining
+Implemented-on-creation, atomic scaffolding and the ordinary verified-work footer.
+
 ## Scope
 
 Operator-authorised independent Docker runs of the real vendor hosts,
@@ -32,6 +37,11 @@ item in a new dedicated worktree and authorised necessary fixes and PR #6.
 
 Fixes exposed by these runs are included in the operator-authorised scope
 of PR #6. Unperformed host capabilities remain pending rather than inferred.
+The native bootstrap exposed a hashless seed completion footer not covered by
+the existing assertions. Preserve that result, add a focused resolver check,
+clarify the skill/templates and owning decisions, then obtain targeted native
+evidence on the changed snapshot. Do not exempt ordinary shipped items or make
+an arbitrary supplied gate pass on an incomplete intermediate scaffold.
 
 ## Exit criteria
 
@@ -51,7 +61,7 @@ and return ADR 0015 to Implemented.
 ## Status
 
 - **Claimed by:** Codex (Orca worker, dispatch `ctx_35d5b332d1f2`), 2026-09-14, `kmox83/0051-host-verification-astra` ([PR #6](https://github.com/EvolveHQ/docflow/pull/6); resumed for the operator-confirmed visible Cowork desktop).
-- **Blockers:** Full native-high Pi acceptance remains unmet: the positive control repeated generation before work; the corrective blocked run passed stop-flow checks but failed initial claim branch-name metadata. No Pi rerun is authorised here. Cowork's screenshots are now visible and its Add folder picker opened, but folder-field automation returned `value_not_settable` and focus was unverified. The coordinator awaits manual selection of the prepared target; no new probe has run. Actual target Git, installation/discovery, bootstrap/lifecycle and wave checks remain unverified; the earlier cloud connector denied target .git writes.
+- **Blockers:** Full native-high Pi acceptance remains unmet: the positive control repeated generation before work; the corrective blocked run passed stop-flow checks but failed initial claim branch-name metadata. No Pi rerun is authorised here. Cowork native signing and original bootstrap/new-ADR pass their existing checks, but the new focused check rejects the generic seed footer; the clarification requires a fresh exact-source native run. Actual Workflow execution preserved signed concurrent blocked work and the held claim; final recovery/temporal review is pending. A post-wave receipt export crossed a denied remote-tool .git boundary before the controller's stop completed; retain that distinct adverse observation. Earlier connector and initial unlink failures remain recorded.
 - **Stopped:**
 
 ## Cowork continuation, 2026-09-14
@@ -65,6 +75,23 @@ and the native folder picker; the 08:19 receipt still shows a marker-only actual
 target with no `.git` or probe response. The coordinator operates the GUI and
 verifies native target actions; this worker prepares fixtures/assertions and
 writes evidence, without initialising the actual target or inferring success.
+At 08:28 UTC the operator confirmed attachment; the active dispatch continues
+for the coordinator's native execution and independent actual-target observations.
+The original probe then passed seven independent file/Git assertions; staging
+initially failed because the session could not unlink Git locks. A separately
+authorised native deletion grant scoped to the disposable target recovered it,
+with seven staging assertions independently passing. All 32 loaded plugin files
+and nine sidecars match the frozen export. A later host-autosaved report appeared
+under `Claude outputs`; preserve it with the native fixture-local exclude rather
+than treating the model's contrary self-report as proof. Native signing passed
+eleven independent checks; original bootstrap/new-ADR passed 23 existing checks
+and six ancestry/release checks. A further focused check rejects the preserved
+seed footer's generic wording, so the clarification needs a fresh native run.
+The opted-in native Workflow ran two executors with signed local claims/work;
+main and the held claim survived the environmental gate failure. A separate
+post-wave export violated its tool's Git-path boundary and is not a wave pass.
+See the
+[current audit](../../audits/2026-09-14-cowork-continuation.md) and its receipt.
 
 ## Remaining release evidence
 
@@ -144,11 +171,12 @@ pass. Neither this item nor ADRs 0012/0015 is marked complete.
 
 ## Status at a glance
 
-- **This run:** resumed Cowork verification on the existing draft PR after
-  visible desktop progress; actual target attachment and probe remain pending.
-  Prior passing gates, failed native controls and cleanup evidence are retained.
+- **This run:** independently verified Cowork setup, loaded source, signing,
+  original lifecycle checks and bounded wave state. Added a focused seed
+  reference check and clarification; targeted verification and final temporal
+  review continue, with export-only adverse behaviour preserved.
 - **Overall:** partially verified — the five-host requirement remains blocked.
 - **Yet to do:** successful native-high Pi complete-contract evidence in a later
-  authorised run; operator Cowork folder selection and actual target Git,
-  installation/discovery and remaining behavioural evidence. Keep
+  authorised run; Cowork fresh seed-reference verification, final native wave
+  evidence/cleanup and remaining behavioural criteria. Keep
   this item in todo and both owning decisions Accepted until all criteria pass.

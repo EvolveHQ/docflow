@@ -53,9 +53,14 @@ nothing else is written:
   The merge is the completion event, and nothing is committed to the
   integration branch afterwards.
 - The `plan/done/` file is the chronological, one-per-item record; its
-  shipped footer names the HEAD SHA and any release tag or package
+  shipped footer names the existing verified implementation HEAD, recorded
+  before the completion commit, and any release tag or package
   version under direct-to-main integration, and names the pull request
   under pull-request integration.
+  The bootstrap seed alone may use the exact introducing-commit reference
+  defined in adr/0029-seed-adr-recording-the-method.md, because its record and
+  complete scaffold are created together. This does not change ordinary item
+  completion, permit a future/self SHA or claim an unmerged PR as shipped.
 - The first-parent history of the integration branch is the ordered
   log. "What landed recently" is the newest entries in `plan/done/`
   together with `git log --first-parent`; the read order in
@@ -91,7 +96,8 @@ whereas a generated worklog would list what `git log` already lists.
 1. `ship-item`'s record step appends nothing; the completion commit
    message names the plan item and the owning ADR(s). Under
    direct-to-main integration, that commit is the completion event and
-   the `plan/done/` footer names the HEAD SHA and any release
+   the `plan/done/` footer names the existing verified implementation HEAD
+   recorded before that commit and any release
    identifier. Under pull-request integration, the completion changes
    — plan move, Status removal, ADR advance, and INDEX regeneration —
    are the last commit on the claim branch before the request is
@@ -133,6 +139,7 @@ whereas a generated worklog would list what `git log` already lists.
 - adr/0007-lifecycle-skills.md (`ship-item`'s record step)
 - adr/0003-backfill-retrofit.md (backfill wording)
 - adr/0040-coordination-directory-migration.md
+- adr/0029-seed-adr-recording-the-method.md (seed-only introducing-commit reference)
 
 ## Revision History
 
@@ -142,6 +149,7 @@ whereas a generated worklog would list what `git log` already lists.
 | 2026-09-05 | r2 | Eugenio Minardi | Status Proposed → Accepted; acceptance delegated to the session by the operator. No open questions. Plan 0039 authorised; its ADR 0037 r2 amendment (completion changes ride in the pull request under pull-request integration; the footer names the SHA under direct-to-main and the pull request otherwise) lands with the item. |
 | 2026-09-05 | r3 | Eugenio Minardi | Pull-request integration clarified: completion changes (plan move, Status removal, ADR advance, INDEX regeneration) are the last commit on the claim branch before the request is marked ready; the merge is the completion event and no integration-branch follow-up commit is made. Footers name the HEAD SHA for direct-to-main and the pull request for pull-request integration. |
 | 2026-09-07 | r4 | Eugenio Minardi | Status Accepted → Implemented. Plan 0039 shipped via PR #4: ship-item appends nothing and loses its `_agent/` presence gate, the run prompt and agent-wave record in the commit and report, bootstrap writes no worklog template or `merge=union` entry, audit reports a worklog as legacy derived state, and the docs describe the shipped record as git history and `plan/done/`. |
+| 2026-09-14 | r5 | Codex, operator-authorised | Clarify that ordinary direct completion records an existing verified implementation tip, not its own future SHA. Cross-reference the narrow bootstrap seed introduction rule owned by 0029; ordinary shipping and PR merge boundaries are unchanged. |
 
 ## Approvals
 
@@ -149,3 +157,4 @@ whereas a generated worklog would list what `git log` already lists.
 |------|------|------|-----------|
 | Maintainer | Eugenio Minardi | 2026-09-05 | — (delegated) |
 | Maintainer | Eugenio Minardi | 2026-09-05 | — (delegated) |
+| Operator | Eugenio Minardi | 2026-09-14 | Footer clarification authorised within 0051; ordinary completion criteria retained |

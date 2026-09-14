@@ -50,6 +50,13 @@ ahead of any subsequent decisions, keeping numbering contiguous.
   always ADR `0001`, ahead of the reconstructed decisions.
 - The seed uses the repo's ADR shape: the technology shape where the repo
   splits shapes, the single/capability shape otherwise.
+- Where the plan layer exists, its adoption record is created atomically with
+  the complete scaffold. For direct integration it may name its exact
+  repository-relative path with a precise introducing-commit resolver instead
+  of an impossible future/self SHA. Resolve one reachable introduction after
+  commit and verify the record, Implemented seed, INDEX, complete scaffold and
+  required signature. Ordinary work still names an existing verified-work SHA;
+  pull-request completion retains its actual PR reference and merge boundary.
 
 ## User stories / scenarios
 
@@ -76,6 +83,12 @@ ahead of any subsequent decisions, keeping numbering contiguous.
    decisions.
 7. The seed uses the repo's ADR shape (technology where the repo splits,
    single/capability shape otherwise).
+8. A direct bootstrap adoption record names an existing verified scaffold SHA
+   or its exact path plus `git log --follow --diff-filter=A --format=%H -- <path>`.
+   The latter resolves to exactly one reachable introducing commit containing
+   the record, Implemented seed, INDEX row and complete verified scaffold,
+   with a valid signature where required. Generic labels, wrong paths,
+   ambiguous introductions and pre-scaffold references fail verification.
 
 ## Out of scope
 
@@ -97,6 +110,8 @@ ahead of any subsequent decisions, keeping numbering contiguous.
 - adr/0003-backfill-retrofit.md
 - adr/0016-layered-artifact-model.md
 - adr/0018-wip-stays-out-of-catalogue.md
+- adr/0037-shipped-record-is-git-and-plan-done.md
+- `plan/todo/0051-agent-wave-per-host-verification.md` (native footer finding and focused verification)
 - https://github.com/adr/adr-log/blob/main/docs/adr/0000-use-markdown-architectural-decision-records.md (MADR seed-ADR prior art)
 
 ## Revision History
@@ -106,9 +121,11 @@ ahead of any subsequent decisions, keeping numbering contiguous.
 | 2026-06-28 | r1 | Eugenio Minardi | Initial draft. Bootstrap scaffolds a default-on seed ADR at adr/0001 recording the adopted method (Implemented, references CONVENTIONS, generic, anchors backfill). |
 | 2026-06-28 | r2 | Eugenio Minardi | Accepted. All five brainstorm open questions resolved (seed at 0001; default-on/opt-out; Implemented; repo's recommended shape; always 0001 on retrofit). |
 | 2026-06-29 | r3 | Eugenio Minardi | Implemented (commit 188c938): templates/adr-0001-seed.md + bootstrap output item 5b (default-on adr/0001 seed, opt-out at sign-off, conditional plan/done entry, backfill anchor at 0001); README/USAGE document it. AC1-7 met. |
+| 2026-09-14 | r4 | Codex, operator-authorised | Native Cowork exposed a generic hashless seed footer that existing bootstrap checks missed. Specify a seed-only exact introduction reference, preserving atomic scaffolding, arbitrary supplied gates and Implemented-on-creation; ordinary completion keeps an existing verified-work SHA. Add AC8 and focused positive/negative checks. Retain historical Implemented status; targeted native verification of this clarification remains pending in 0051, with the original failed observation preserved. |
 
 ## Approvals
 
 | Role | Name | Date | Signature |
 |------|------|------|-----------|
 | Maintainer | Eugenio Minardi | 2026-06-28 | — |
+| Operator | Eugenio Minardi | 2026-09-14 | Necessary correction authorised within 0051; exact-source native verification required |
