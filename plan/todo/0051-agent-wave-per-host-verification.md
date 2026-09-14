@@ -61,7 +61,7 @@ and return ADR 0015 to Implemented.
 ## Status
 
 - **Claimed by:** Codex, 2026-09-14, `kmox83/docflow-release-verification`; operator-requested new worktree continuation after PR #6 merged as `d4f65bf02b836889bc1662c8627ccf9aa3ae7136`.
-- **Blockers:** Native-high Pi normal passes initial publication, ordering, completion and fresh-clone checks. Its blocked retry exhausts local-backend 503 retries before claims; separate bootstrap remains active on the unchanged native high setting. The fresh Cowork bootstrap-derived wave passes independent state, initial-claim and report checks; actual child ordering receipts are being consolidated. Fresh CLI release cases, the focused denial regression and isolated Clarity pilot have scoped evidence. Preserve all failed attempts and the Docker Desktop interruption; five-host acceptance is not yet complete.
+- **Blockers:** Native-high Pi normal passes initial publication, ordering, completion and fresh-clone checks. Its blocked retry exhausts local-backend 503 retries before claims; the next bootstrap repeats over 5,000 consecutive slash characters and is interrupted after 4,244.6 seconds, without a commit. A fresh bootstrap remains active on the same native high setting. Cowork's actual-target bootstrap-derived wave, child acquisition ordering and private-key cleanup now pass independent checks. OpenCode's fourth wave fixes report placement and publishes valid initial claims, but wrongly integrates beta after alpha's environment failure; unchanged assertions reject it. A fresh fifth case restates the existing whole-wave stop rule. Preserve every original failure and the Docker Desktop interruption; five-host acceptance is not yet complete.
 - **Stopped:**
 
 ## Operator continuation, 2026-09-14
@@ -211,7 +211,7 @@ retains the same local model and native high setting.
   initial-publication/order checks; its fresh-clone gate returns
   `verify: OK (wave fixture)`, exit 0. Original failures remain preserved.
 - **Overall:** partially verified.
-- **Yet to do:** Complete remaining Pi bootstrap/blocked and Cowork wave evidence,
+- **Yet to do:** Complete remaining Pi bootstrap/blocked and fresh OpenCode evidence,
   review final reports and cleanup, then final-head gates and PR CI. Keep this
   item todo and decisions 0012/0015 Accepted until every real criterion passes.
   A checked PR merge and release each need separate operator authorisation.

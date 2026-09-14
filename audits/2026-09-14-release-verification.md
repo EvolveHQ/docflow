@@ -83,7 +83,7 @@ route supplies actual execution for the following cases on the pinned bytes.
 | Codex wave | Native child-session headers establish two actual workers. The bootstrap-derived blocked wave passes 13 state checks and three final report blocks. |
 | OpenCode waves | First attempt loses committed recovery for alpha; the second passes state but fails reporting and describes an invalid implementation-bearing probe. Both remain failures. A fresh third fixture passes 13 state checks and three report blocks; actual native Task records show two overlapping worker sessions. Its report has detail after the final status block, so literal end-of-report placement remains a formatting caveat. |
 | Pi normal wave | Native high settles naturally in 2338.5 seconds, exit 0. All 24 target and 19 initial-publication/order checks pass, with three valid reports and a successful unchanged gate in a fresh local-remote clone. |
-| Pi blocked/bootstrap continuation | The first fresh blocked attempt repeats planning without new tool actions and is interrupted, exit 130. The retry exhausts native local-backend 503 retries before claiming; exit 0 with an empty report fails independent checks. Separate bootstrap continuation remains under assessment. |
+| Pi blocked/bootstrap continuation | The first fresh blocked attempt repeats planning without new tool actions and is interrupted, exit 130. The retry exhausts native local-backend 503 retries before claiming; exit 0 with an empty report fails independent checks. After the infrastructure interruption, another bootstrap emits over 5,000 consecutive slash characters and is interrupted at 4,244.6 seconds, exit 130, with incomplete uncommitted scaffolding. A fresh bootstrap retains the same native local model/high setting. |
 | Cowork bootstrap-derived wave | The supported target-scoped recovery passes signed bootstrap/new-adr checks. Its actual history is extended into a fresh native Workflow fixture; 13 blocked-wave state checks, both initial signed claims and three reports pass independently. Expanded native launch and actual child-event extraction cards corroborate acquisition-before-write and overlapping workers. |
 
 The first published Pi claims are
@@ -102,6 +102,17 @@ were retained for verification and fresh private keys created only for resumed
 fixtures. Codex child headers had already been captured. OpenCode's third-run
 parent Task timings/child IDs survive; full child transcripts do not, and no
 replacement child timeline is invented. Writable workspace copies were retained.
+
+A fourth fresh OpenCode wave extends the already verified native bootstrap
+history with a new disposable signer. It settles at 1,006.8 seconds, exit 0;
+its final block placement and all 18 initial-claim checks pass. Full native
+parent/child exports establish overlapping workers and acquisition before
+each first output write. However, the parent wrongly reclassifies the missing
+gate dependency as an item-only failure, integrates beta at `844c1d7` and deletes
+its claim after alpha's failure. The unchanged state checker and native main-push
+check reject this run. It remains a failed wave, with recoverable histories and
+native receipts retained. A fresh fifth case restates the installed whole-wave
+environment-stop rule explicitly; no product or gate check is weakened.
 
 ## Cowork denial regression
 
@@ -202,6 +213,11 @@ the owner-activity observation are recorded separately from the product plan.
 Another writer later adds the document-14 INDEX row; removing only that row
 from the current raw bytes reproduces this run's recorded after hash. The new
 row is preserved and recorded as a subsequent concurrent change.
+At 18:23 UTC, document 09 also contains another writer's V1 scope note pointing
+to delivery-plan 14 revision 0.2. The recorded prior result is reproducible;
+apart from that note and line endings, its text is unchanged. The factual release
+baseline is preserved. This later scope note is recorded without expanding this
+verification task's implementation authority.
 
 ## Prepared completion and local validation
 
@@ -215,14 +231,15 @@ the explicit pending-merge qualification. No gate was changed for that repair.
 Required local checks pass: static verification, 15 rejected mutations, six
 deterministic eval passes/zero failures/six skips, six runner controls, eight
 temporal controls, 17 claim controls, 12 permission-denial controls and 18 seed
-controls. CI passes at the first evidence head `fd0fe0d`; later PR heads still
-require their own check. Static output now counts 66 done records on this PR
+controls. CI passes at `aec895c`; later PR heads still require their own check.
+Static output now counts 66 done records on this PR
 branch; main still contains 64 shipped records.
 
 Automatic approval review rejects removal of the generated
 `evals/hosts/__pycache__/check-pi-claims.cpython-312.pyc`, including a retry
 limited to that single file, with “blocked by policy”. It remains untracked.
-Pi's active disposable containers still need cleanup after their native runs;
+The completed Pi blocked container is archived and stopped. The active Pi normal
+and restarted OpenCode containers still need cleanup after their native runs;
 the worktree and recoverable fixture histories are retained for review.
 
 ## Status at a glance
@@ -232,7 +249,7 @@ the worktree and recoverable fixture histories are retained for review.
   refresh have independent evidence. Native continuation and final-head validation
   remain in progress; this report does not claim a green release gate.
 - **Overall:** partially verified.
-- **Yet to do:** Finish remaining native Pi and Cowork evidence assessments,
-  retain the OpenCode reporting/timeline caveats, record cleanup, run final-head
+- **Yet to do:** Finish remaining native Pi and fresh OpenCode evidence assessments,
+  retain earlier reporting/timeline caveats, record cleanup, run final-head
   gates and obtain green PR CI. Keep unverified plan 0051 and decisions 0012/0015
   open. PR integration and release require separate operator authorisation.

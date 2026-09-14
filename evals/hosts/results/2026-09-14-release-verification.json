@@ -959,6 +959,165 @@
       "final_report_sha256": "7d20a68838659ae2c69bbfc873187969967e0decb40a1b122d1ebebbc9da8bd7",
       "collector_receipt": "collected.json"
     },
+    "opencode-bootstrap-wave-fourth": {
+      "case": "opencode-bootstrap-wave-fourth",
+      "checker_revision": "aec895c9b288fa668022370ff8e3fc1ade653dde",
+      "process": {
+        "host": "opencode",
+        "container": "docflow-release-opencode",
+        "fixture": "/workspace/bootstrap-wave-fourth/repo",
+        "host_exit": 0,
+        "seconds": 1006.8,
+        "model_requested": null,
+        "provider_requested": null,
+        "claude_delegation_opt_in": null,
+        "permission_context": "--auto approves permissions not explicitly denied",
+        "behavioural_verdict": "unverified: run independent assertions",
+        "codex_session_storage": null,
+        "thinking_requested": null,
+        "pi_thinking_selection": null
+      },
+      "assertions": [
+        {
+          "argv": [
+            "docker",
+            "exec",
+            "docflow-release-opencode",
+            "python3",
+            "-B",
+            "/workspace/evals-opencode-fourth/hosts/check-blocked.py",
+            "/workspace/bootstrap-wave-fourth",
+            "--signed",
+            "--concurrent"
+          ],
+          "exit": 1,
+          "stdout": "{\n  \"checks\": {\n    \"main_unchanged\": false,\n    \"held_untouched\": true,\n    \"alpha_claim_preserved\": true,\n    \"alpha_recoverable_output\": true,\n    \"status_records_blocker\": true,\n    \"gate_unchanged\": true,\n    \"no_completed_items\": false,\n    \"claim_history_preserved\": true,\n    \"concurrent_beta_claim_preserved\": false,\n    \"concurrent_beta_work_preserved\": false,\n    \"concurrent_beta_history_preserved\": false,\n    \"valid_signatures\": false,\n    \"alpha_has_signed_claim_and_work\": true\n  },\n  \"passed\": false,\n  \"refs\": {\n    \"HEAD\": \"844c1d71b8246df8bab4b2d9743595a2d216f5d5\",\n    \"refs/heads/claim/0007-alpha\": \"799c0c5dd55bd6ed6caa3e1d2441d2d3f19c6c04\",\n    \"refs/heads/claim/0009-held\": \"6e5e4ae84c23929e6f859c7fe348367d2dd7da65\",\n    \"refs/heads/main\": \"844c1d71b8246df8bab4b2d9743595a2d216f5d5\"\n  },\n  \"blocker_status\": \"# 0007-alpha\\n\\nOwning ADR: adr/0003-alpha.md\\n## Scope\\nCreate outputs/alpha.txt; honour the owning ADR and gate.\\n## Exit criteria\\n1. Output bytes match the owning ADR.\\n2. Gate passes; complete the item using the recorded direct profile.\\n## Status\\n- Claimed by: docflow-release-retry <eval@example.invalid>, 2026-09-14, branch claim/0007-alpha\\n- Blockers: Gate rejects by fixture design \\u2014 outputs/alpha.txt exists (exactly 6 bytes `alpha\\\\n`), so tools/verify.mjs line 2 `await import('@docflow-eval/unavailable-fixture-dependency')` throws. Exact gate stderr (node v22.23.2):\\n  ```\\n  Error [ERR_MODULE_NOT_FOUND]: Cannot find package '@docflow-eval/unavailable-fixture-dependency' imported from /workspace/bootstrap-wave-fourth/fixture-0007-alpha/tools/verify.mjs\\n      ...  code: 'ERR_MODULE_NOT_FOUND'\\n  Node.js v22.23.2\\n  ```\\n  Exact gate exit code: 1. Stdout: empty. The dependency is deliberately unavailable; installing it or modifying the gate is not authorised.\\n- Stopped: 2026-09-14. The recorded gate cannot pass while the blocking fixture dependency is deliberately unavailable; dependency installation and gate modification are outside the grant, so the item is stopped, not shippable. Recoverable work (output file and status) committed and pushed to claim/0007-alpha.\\n\\n### Status at a glance\\n- **This run:** claim/0007-alpha acquired exclusively (force-with-lease empty-ref porcelain `* [new branch]`); outputs/alpha.txt created with exactly 6 bytes `alpha\\\\n`; gate `node tools/verify.mjs` failed with exit code 1 \\u2014 stderr `Error [ERR_MODULE_NOT_FOUND]: Cannot find package '@docflow-eval/unavailable-fixture-dependency' imported from .../tools/verify.mjs`, code ERR_MODULE_NOT_FOUND, Node.js v22.23.2; stdout empty; status and output committed and pushed to claim/0007-alpha.\\n- **Overall:** blocked.\\n- **Yet to do:** orchestrator must resolve the gate/dependency (or accept the deliberate fixture block) before this item can ship; then run ship-item over the existing claim branch (output bytes verified: 61 6c 70 68 61 0a). Nothing else remains within this executor's grant.\"\n}\n",
+          "stderr": ""
+        },
+        {
+          "argv": [
+            "node",
+            "--input-type=module",
+            "-e",
+            "import {readFileSync} from 'node:fs';import {assertStatusReports} from './evals/reporting.mjs';assertStatusReports(readFileSync(process.argv[1],'utf8'),3);console.log('report: OK');",
+            "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflow-release-verification-20260914\\opencode-bootstrap-wave-fourth\\final-report.md"
+          ],
+          "exit": 0,
+          "stdout": "report: OK\n",
+          "stderr": ""
+        }
+      ],
+      "fixture": {
+        "base": "5472de863fd06b84e168031328d958d59219341b",
+        "held": "6e5e4ae84c23929e6f859c7fe348367d2dd7da65",
+        "items": [
+          {
+            "adr": 3,
+            "key": "0007-alpha",
+            "slug": "alpha"
+          },
+          {
+            "adr": 4,
+            "key": "0008-beta",
+            "slug": "beta"
+          },
+          {
+            "adr": 5,
+            "key": "0009-held",
+            "slug": "held"
+          }
+        ],
+        "signed": true,
+        "blocked": true,
+        "bootstrap_head": "c0a497d998e9800e713d6ba2ceb9161e2890653e"
+      },
+      "initial_claims": {
+        "0007-alpha": {
+          "sha": "38a92d40a9f118cd3cc9ef02775841391f75fcbd",
+          "checks": {
+            "one_initial_publication": true,
+            "initial_message_actual_branch": true,
+            "initial_message_wave": true,
+            "initial_message_reservations": true,
+            "initial_message_owned_paths": true,
+            "initial_status_actual_branch": true,
+            "initial_commit_status_only": true,
+            "status_section_only": true,
+            "signature_valid": true
+          },
+          "message": "chore(plan): claim 0007-alpha\n\nWave: 2026-09-14-alpha-beta-wave-2x2\nClaim branch: claim/0007-alpha\nReservations: none\nOwned artefacts: plan/todo/0007-alpha.md, outputs/alpha.txt",
+          "native_grant": "- Owned artefacts (the only paths you may write): plan/todo/0007-alpha.md (its `## Status` section) and outputs/alpha.txt.",
+          "native_brief_sha256": "e1056e2cc76fd97f6d31a2ec53458713526846261cd70aebc1480cbcc280ddf5"
+        },
+        "0008-beta": {
+          "sha": "3e55918419d200ee41eb009eb6de528094faebbc",
+          "checks": {
+            "one_initial_publication": true,
+            "initial_message_actual_branch": true,
+            "initial_message_wave": true,
+            "initial_message_reservations": true,
+            "initial_message_owned_paths": true,
+            "initial_status_actual_branch": true,
+            "initial_commit_status_only": true,
+            "status_section_only": true,
+            "signature_valid": true
+          },
+          "message": "chore(plan): claim 0008-beta\n\nClaim branch: claim/0008-beta\nWave: 2026-09-14-alpha-beta-wave-2x2\nReservations: none\nOwned artefacts: plan/todo/0008-beta.md, outputs/beta.txt\n\nSigned-off-by: docflow-release-retry <eval@example.invalid>",
+          "native_grant": "- Owned artefacts (the only paths you may write): plan/todo/0008-beta.md (its `## Status` section) and outputs/beta.txt.",
+          "native_brief_sha256": "148325f1df11a7408775a59a314bf85c8be31c582aa11703494dc9c9ae505970"
+        }
+      },
+      "transport": [
+        {
+          "old": "0000000000000000000000000000000000000000",
+          "new": "3e55918419d200ee41eb009eb6de528094faebbc",
+          "ref": "refs/heads/claim/0008-beta",
+          "observed_ns": 1789410035835334559
+        },
+        {
+          "old": "3e55918419d200ee41eb009eb6de528094faebbc",
+          "new": "32359efab74ea54ef13d37b30b86327019c1c8db",
+          "ref": "refs/heads/claim/0008-beta",
+          "observed_ns": 1789410069309437957
+        },
+        {
+          "old": "0000000000000000000000000000000000000000",
+          "new": "38a92d40a9f118cd3cc9ef02775841391f75fcbd",
+          "ref": "refs/heads/claim/0007-alpha",
+          "observed_ns": 1789410172171292601
+        },
+        {
+          "old": "38a92d40a9f118cd3cc9ef02775841391f75fcbd",
+          "new": "799c0c5dd55bd6ed6caa3e1d2441d2d3f19c6c04",
+          "ref": "refs/heads/claim/0007-alpha",
+          "observed_ns": 1789410257186577624
+        },
+        {
+          "old": "5472de863fd06b84e168031328d958d59219341b",
+          "new": "844c1d71b8246df8bab4b2d9743595a2d216f5d5",
+          "ref": "refs/heads/main",
+          "observed_ns": 1789410363695983090
+        },
+        {
+          "old": "5472de863fd06b84e168031328d958d59219341b",
+          "new": "844c1d71b8246df8bab4b2d9743595a2d216f5d5",
+          "ref": "HEAD",
+          "observed_ns": 1789410363696008656
+        },
+        {
+          "old": "32359efab74ea54ef13d37b30b86327019c1c8db",
+          "new": "0000000000000000000000000000000000000000",
+          "ref": "refs/heads/claim/0008-beta",
+          "observed_ns": 1789410366144005467
+        }
+      ],
+      "final_status_block_at_end": true,
+      "passed": false,
+      "private_transcript_sha256": "1843ca1625b8515c0441a3871fb2a42ba40d48d7e2db9020e6f434f321551320",
+      "prompt_receipt": "Exact run-host argv, prompt file and raw native events retained in private operator scratch; no model reasoning published.",
+      "final_report_sha256": "337711ebc8c1f2a1c1cca4c45b587090e1479f9249845e2fd98f73e0fdab0d3f",
+      "collector_receipt": "collected.json"
+    },
     "opencode-bootstrap-wave-retry": {
       "case": "opencode-bootstrap-wave-retry",
       "checker_revision": "b6ab605f5f158f29934c9131acd05067de0a001e",
@@ -1118,6 +1277,78 @@
       "final_report_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "collector_receipt": "collected.json"
     },
+    "pi-bootstrap-retry": {
+      "case": "pi-bootstrap-retry",
+      "checker_revision": "aec895c9b288fa668022370ff8e3fc1ade653dde",
+      "process": {
+        "host": "pi",
+        "container": "docflow-release-pi-normal",
+        "fixture": "/workspace/bootstrap-retry/repo",
+        "host_exit": 130,
+        "seconds": 4244.6,
+        "model_requested": null,
+        "provider_requested": null,
+        "claude_delegation_opt_in": null,
+        "permission_context": "project files trusted with --approve; native tool permissions",
+        "behavioural_verdict": "unverified: run independent assertions",
+        "codex_session_storage": null,
+        "thinking_requested": null,
+        "pi_thinking_selection": "native configured default"
+      },
+      "assertions": [
+        {
+          "argv": [
+            "docker",
+            "exec",
+            "docflow-release-pi-normal",
+            "python3",
+            "/workspace/evals-pi-bootstrap-retry/hosts/check-bootstrap.py",
+            "/workspace/bootstrap-retry/repo",
+            "/workspace/bootstrap-gate-original.mjs",
+            "--signed",
+            "--coordination",
+            "separate"
+          ],
+          "exit": 1,
+          "stdout": "{\n  \"checks\": {\n    \"required_files\": true,\n    \"root_pointer\": true,\n    \"two_adrs\": false,\n    \"seed_implemented\": true,\n    \"new_adr_proposed\": false,\n    \"three_criteria\": false,\n    \"index_rows\": false,\n    \"plan_queue\": true,\n    \"seed_completion\": true,\n    \"recorded_gate\": false,\n    \"autonomous_gate\": false,\n    \"gate_unchanged\": true,\n    \"gate\": true,\n    \"no_obsolete_coordination\": true,\n    \"roles_match_mode\": true,\n    \"requested_coordination\": true,\n    \"requested_integration\": true,\n    \"reporting_contract\": true,\n    \"target_git_history\": false,\n    \"target_git_clean\": false,\n    \"target_files_tracked\": false,\n    \"valid_signatures\": false,\n    \"recorded_signing\": true,\n    \"seed_completion_reference\": false\n  },\n  \"passed\": false,\n  \"gate_stdout\": \"verify: OK (fixture gate)\",\n  \"gate_exit\": 0,\n  \"target_git_complete\": false,\n  \"commits\": \"\",\n  \"seed_completion_check\": {\n    \"command\": [\n      \"node\",\n      \"/workspace/evals-pi-bootstrap-retry/hosts/check-seed-completion.mjs\",\n      \"/workspace/bootstrap-retry/repo\",\n      \"--signed\"\n    ],\n    \"exit\": 1,\n    \"stdout\": \"{\\\"passed\\\":false,\\\"error\\\":\\\"Command failed: git --no-optional-locks log --follow --diff-filter=A --format=%H -- plan/done/2026-09-14-adopt-adr-method.md\\\\nfatal: your current branch 'main' does not have any commits yet\\\\n\\\"}\",\n    \"stderr\": \"\"\n  }\n}\n",
+          "stderr": ""
+        },
+        {
+          "argv": [
+            "docker",
+            "exec",
+            "docflow-release-pi-normal",
+            "node",
+            "/workspace/evals-pi-bootstrap-retry/hosts/check-release.mjs",
+            "new-adr",
+            "/workspace/bootstrap-retry/repo",
+            "/opt/docflow-source"
+          ],
+          "exit": 1,
+          "stdout": "{\"case\":\"new-adr\",\"passed\":false,\"target\":\"/workspace/bootstrap-retry/repo\",\"error\":\"new-adr must add exactly one decision after seed\\n\\n1 !== 2\\n\"}\n",
+          "stderr": ""
+        },
+        {
+          "argv": [
+            "docker",
+            "exec",
+            "docflow-release-pi-normal",
+            "node",
+            "--input-type=module",
+            "-e",
+            "import {readFileSync} from 'node:fs';import {assertStatusReports} from '/workspace/evals-pi-bootstrap-retry/reporting.mjs';assertStatusReports(readFileSync('/workspace/pi-bootstrap-retry-final-report.md','utf8'),1);console.log('report: OK');"
+          ],
+          "exit": 1,
+          "stdout": "",
+          "stderr": "node:internal/modules/run_main:123\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: expected 1 Status at a glance blocks, got 0\n    at assertStatusReports (file:///workspace/evals-pi-bootstrap-retry/reporting.mjs:5:10)\n    at file:///workspace/[eval1]:1:124\n    at ModuleJob.run (node:internal/modules/esm/module_job:343:25)\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:282:26)\n    at async ModuleLoader.executeModuleJob (node:internal/modules/esm/loader:278:20)\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: false,\n  expected: true,\n  operator: '==',\n  diff: 'simple'\n}\n\nNode.js v22.23.2\n"
+        }
+      ],
+      "passed": false,
+      "private_transcript_sha256": "06286c277bd011813a2f34b07e6fcaff3ccb14daf7164eac036caa89b7fa2dd8",
+      "prompt_receipt": "Exact run-host argv, prompt file and raw native events retained in private operator scratch; no model reasoning published.",
+      "final_report_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "collector_receipt": "collected.json"
+    },
     "pi-normal": {
       "case": "pi-normal",
       "checker_revision": "b6ab605f5f158f29934c9131acd05067de0a001e",
@@ -1189,6 +1420,10 @@
     {
       "case": "OpenCode bootstrap-wave-retry",
       "result": "State checks pass but final report vocabulary fails. Native report also describes creating alpha output in the initial probe before claims; this requires separate temporal review and cannot be called a complete contract pass."
+    },
+    {
+      "case": "OpenCode bootstrap-wave-fourth",
+      "result": "Native exit zero; initial signed claim metadata, acquisition ordering and final-block placement pass. Parent misclassifies the unavailable gate dependency as item-only, integrates beta after alpha failure, and deletes beta claim. Unchanged state and native main-push checks reject the wave. Full private native parent/child exports retained through the supported CLI; no original failure is replaced."
     },
     {
       "case": "Cowork initial lifecycle",
@@ -1807,7 +2042,7 @@
       {
         "path": "docs/13-release-verification-workspace-refresh.md",
         "before_sha256": null,
-        "after_sha256": "811f028453341b0042a2d1501aa564ac1fbc1a6d1623a490e5939bbd8c0b0921",
+        "after_sha256": "2273169835eddb9556c10e093be7d857f60f74359d0804f59a9192447622d20f",
         "kind": "new explicit workspace-doc change record"
       }
     ],
@@ -1821,7 +2056,19 @@
       "current_sha256": "8c94eaf75efa8e406adccacec3919ecab0483e0417b3f331d2eae87fbf98c3bf",
       "change": "Another writer added only the document 14 row after this refresh. Removing that exact row from raw bytes reproduces our recorded after hash; preserved unchanged.",
       "our_prior_bytes_reproduced": true
-    }
+    },
+    "subsequent_document_09_change": {
+      "utc": "2026-09-14T18:23:45.218124+00:00",
+      "path": "docs/09-docflow-workspace-concept-and-design.md",
+      "expected_sha256": "d88b208cb637b475af8efa4334c6c3fab07bce2e377cdc78af09321528afccb9",
+      "current_sha256": "61b6ecc320bac66bb2606046c303462527b9d48d9a4cbe0b49cdcd3727f20886",
+      "our_record_reconstructed": true,
+      "only_added_scope_note_after_line_ending_normalisation": true,
+      "factual_baseline_unchanged": true,
+      "diff_sha256": "aa2cda59d229684140ba6eb4868180fad05d27133ed6743c1475319c8d30ce27",
+      "scope": "Subsequent owner note points to delivery-plan 14 revision 0.2. Preserved without treating that document as new implementation authority for this verification task."
+    },
+    "subsequent_current_hash_check": "workspace-refresh-checked.json retains the initial mismatch; workspace-document-09-subsequent.json explains the preserved note and unchanged factual baseline."
   },
   "cowork_lifecycle_recovery": {
     "case": "Cowork supported target-scoped recovery, bootstrap and new-adr",
@@ -2128,6 +2375,101 @@
       "native_response": "Workflow launched in background.",
       "expanded_native_card_sha256": "c49f410f01d799dc68e4b23806e9382a38d28822487390063fe61c4814e08e9d"
     }
+  },
+  "workspace_subsequent_check": {
+    "utc": "2026-09-14T18:22:29.642524+00:00",
+    "checks": [
+      {
+        "path": "AGENTS.md",
+        "actual_sha256": "7bec0be01a919fc02d0d9e4ccbb2ac5e8cce4bd9b7168349c1290158c381caf1",
+        "exact_match": true,
+        "only_preserved_concurrent_document_14_row": false,
+        "passed": true
+      },
+      {
+        "path": "docs/01-workspace-layout.md",
+        "actual_sha256": "de6056df14ea41c517b98b431a72db3368a43363be05432a4344d5f914e1e753",
+        "exact_match": true,
+        "only_preserved_concurrent_document_14_row": false,
+        "passed": true
+      },
+      {
+        "path": "docs/02-repositories.md",
+        "actual_sha256": "4667ac31117fe0f2aeb5b61f44196e82a841c7efbd406a80ab5bec9aa6878500",
+        "exact_match": true,
+        "only_preserved_concurrent_document_14_row": false,
+        "passed": true
+      },
+      {
+        "path": "docs/03-method-and-conventions.md",
+        "actual_sha256": "7ffa9220d410c3e94eacef38f4b505e59b831eb1ec06092eb8843830842fdc9d",
+        "exact_match": true,
+        "only_preserved_concurrent_document_14_row": false,
+        "passed": true
+      },
+      {
+        "path": "docs/06-working-agreements.md",
+        "actual_sha256": "59b4197b74df5777c142b89873851da86738564425d132b150ef205dcc160321",
+        "exact_match": true,
+        "only_preserved_concurrent_document_14_row": false,
+        "passed": true
+      },
+      {
+        "path": "docs/05-status-and-direction.md",
+        "actual_sha256": "53f41a9e95f46964630af148cec9c9da101ae1995b08b603adbebf03286fc62c",
+        "exact_match": true,
+        "only_preserved_concurrent_document_14_row": false,
+        "passed": true
+      },
+      {
+        "path": "docs/09-docflow-workspace-concept-and-design.md",
+        "actual_sha256": "61b6ecc320bac66bb2606046c303462527b9d48d9a4cbe0b49cdcd3727f20886",
+        "exact_match": false,
+        "only_preserved_concurrent_document_14_row": false,
+        "passed": false
+      },
+      {
+        "path": "docs/10-docflow-workspace.html",
+        "actual_sha256": "0c9d4a6f3d2037e88bd8cfd153d542e1c50bd0da6bc6e843066e639cd75b28f3",
+        "exact_match": true,
+        "only_preserved_concurrent_document_14_row": false,
+        "passed": true
+      },
+      {
+        "path": "docs/08-v1-candidates-review-and-roadmap.md",
+        "actual_sha256": "992078276fce77d80b6183454263bffc99957761f5b1ea6d0f78677d19a71128",
+        "exact_match": true,
+        "only_preserved_concurrent_document_14_row": false,
+        "passed": true
+      },
+      {
+        "path": "INDEX.md",
+        "actual_sha256": "7a13b2d344071254c001a24a05ac1a480bcfc267b79e88d2a5dd9e8814ba67a9",
+        "exact_match": false,
+        "only_preserved_concurrent_document_14_row": true,
+        "passed": true
+      },
+      {
+        "path": "docs/13-release-verification-workspace-refresh.md",
+        "actual_sha256": "bc9ed403a83fe18483d72662dc1955707bdfed6de84189f71685924c32499698",
+        "exact_match": true,
+        "only_preserved_concurrent_document_14_row": false,
+        "passed": true
+      }
+    ],
+    "passed": false,
+    "scope": "Read-only verification of this refresh. Existing subsequent INDEX document-14 addition is preserved; other owners and product repositories are untouched."
+  },
+  "workspace_document_09_subsequent": {
+    "utc": "2026-09-14T18:23:45.218124+00:00",
+    "path": "docs/09-docflow-workspace-concept-and-design.md",
+    "expected_sha256": "d88b208cb637b475af8efa4334c6c3fab07bce2e377cdc78af09321528afccb9",
+    "current_sha256": "61b6ecc320bac66bb2606046c303462527b9d48d9a4cbe0b49cdcd3727f20886",
+    "our_record_reconstructed": true,
+    "only_added_scope_note_after_line_ending_normalisation": true,
+    "factual_baseline_unchanged": true,
+    "diff_sha256": "aa2cda59d229684140ba6eb4868180fad05d27133ed6743c1475319c8d30ce27",
+    "scope": "Subsequent owner note points to delivery-plan 14 revision 0.2. Preserved without treating that document as new implementation authority for this verification task."
   },
   "cowork_bootstrap_wave": {
     "original_controller_invocation": {
@@ -2858,6 +3200,431 @@
     ],
     "passed": true
   },
+  "prepared_completion_checks": {
+    "head": "30b3c346a944b9c447a5d12bb542e1bdaef080f3",
+    "commands": [
+      {
+        "argv": [
+          "node",
+          "scripts/verify.mjs"
+        ],
+        "exit": 0,
+        "seconds": 0.58,
+        "stdout": "verify: OK (version 0.9.4, 9 skills, 50 ADRs, 66 shipped plan items)\n",
+        "stderr": ""
+      },
+      {
+        "argv": [
+          "node",
+          "scripts/verify-mutations.mjs"
+        ],
+        "exit": 0,
+        "seconds": 4.72,
+        "stdout": "verify mutations: OK (15 rejected mutations)\n",
+        "stderr": ""
+      },
+      {
+        "argv": [
+          "node",
+          "evals/run.mjs"
+        ],
+        "exit": 0,
+        "seconds": 8.77,
+        "stdout": "docflow behavioural evals\n\n  PASS  reports: missing blocks and invalid overall verdicts fai\n  PASS  claims: prompts preserve the verified cleanup source    \n  PASS  claims: create-only push excludes same-tip, descendant a\n  PASS  self-check: legacy coordination fixture retains migratio\n  SKIP  audit: migrate legacy coordination while preserving live— behavioural — run with the opt-in workflow or isolated vendor-host harness (evals/hosts)\n  PASS  self-check: docflow repo satisfies its own invariants   \n  PASS  self-check: the legacy-range fixture is still range-numb\n  SKIP  audit: legacy range detected, migration offered and appl— behavioural — run with the opt-in workflow or isolated vendor-host harness (evals/hosts)\n  SKIP  bootstrap: fresh repo gets the full scaffold            — behavioural — run with the opt-in workflow or isolated vendor-host harness (evals/hosts)\n  SKIP  bootstrap: express depth scaffolds the fixed minimal pro— behavioural — run with the opt-in workflow or isolated vendor-host harness (evals/hosts)\n  SKIP  new-adr: next contiguous number, INDEX regenerated      — behavioural — run with the opt-in workflow or isolated vendor-host harness (evals/hosts)\n  SKIP  ship-item: todo→done and owning ADR → Implemented       — behavioural — run with the opt-in workflow or isolated vendor-host harness (evals/hosts)\n\n6 passed, 0 failed, 6 skipped\nSKIPPED cases were not executed by this deterministic command. Use the opt-in workflow or the vendor-host Docker harness in evals/hosts; retain independent assertions and a source-pinned receipt for every run.\n",
+        "stderr": ""
+      },
+      {
+        "argv": [
+          "python",
+          "-B",
+          "evals/hosts/test-run-host.py"
+        ],
+        "exit": 0,
+        "seconds": 1.55,
+        "stdout": "",
+        "stderr": "......\n----------------------------------------------------------------------\nRan 6 tests in 0.085s\n\nOK\n"
+      },
+      {
+        "argv": [
+          "python",
+          "-B",
+          "evals/hosts/test-pi-wave-events.py"
+        ],
+        "exit": 0,
+        "seconds": 1.53,
+        "stdout": "",
+        "stderr": "........\n----------------------------------------------------------------------\nRan 8 tests in 0.003s\n\nOK\n"
+      },
+      {
+        "argv": [
+          "python",
+          "-B",
+          "evals/hosts/test-pi-claims.py"
+        ],
+        "exit": 0,
+        "seconds": 1.48,
+        "stdout": "",
+        "stderr": ".................\n----------------------------------------------------------------------\nRan 17 tests in 0.004s\n\nOK\n"
+      },
+      {
+        "argv": [
+          "node",
+          "--test",
+          "evals/hosts/test-permission-denial.mjs"
+        ],
+        "exit": 0,
+        "seconds": 0.27,
+        "stdout": "✔ explicit denial, immediate report and independently unchanged destination pass (2.1748ms)\n✔ original Cowork failure pattern: denial, alternate staging/copy, then stop is rejected (0.4525ms)\n✔ unsuccessful bypass still fails even with unchanged final bytes (0.2026ms)\n✔ same-tool retry fails (0.1673ms)\n✔ staging elsewhere after denial is continuation (0.3752ms)\n✔ gate environment error is not permission-denial evidence (0.2459ms)\n✔ absence of actual denial remains unverified (0.1679ms)\n✔ incomplete capture and unmatched tool calls fail closed (0.2042ms)\n✔ model self-report cannot replace independent hashes (0.6181ms)\n✔ added or deleted denied files fail (0.4007ms)\n✔ false success and omitted remaining work fail (0.2251ms)\n✔ read-only inspection before the denial is allowed (0.1138ms)\nℹ tests 12\nℹ suites 0\nℹ pass 12\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 140.95\n",
+        "stderr": ""
+      },
+      {
+        "argv": [
+          "node",
+          "--test",
+          "evals/hosts/test-seed-completion.mjs"
+        ],
+        "exit": 0,
+        "seconds": 27.8,
+        "stdout": "✔ precise seed reference resolves the introduction after later work (2750.274ms)\n✔ reference resolves under an artefact root containing a space (2087.4405ms)\n✔ generic hashless bootstrap label is rejected (687.7364ms)\n✔ another path cannot stand in for the seed record (710.5321ms)\n✔ a deleted and reintroduced record is ambiguous (2701.538ms)\n✔ a reachable probe-only SHA is not scaffold evidence (1154.1518ms)\n✔ a signed profile rejects an unsigned introduction (1910.7826ms)\n✔ later seed status repair cannot legitimise the introduction (2266.2903ms)\n✔ an ordinary verified scaffold ancestor remains valid (2067.2715ms)\n✔ an unresolved SHA is rejected (1804.0989ms)\n✔ the seed-only form cannot document another decision (514.1769ms)\n✔ a bulleted owner resolves the same exact seed path (1933.0756ms)\n✔ a bulleted owner naming another path is rejected (556.4988ms)\n✔ a seed-labelled link to another path is rejected (597.4287ms)\n✔ a bold owner label resolves its exact linked seed path (1863.1315ms)\n✔ a bold owner label cannot conceal a wrong linked path (1293.8893ms)\n✔ a verified-work footer does not need a particular heading (1391.4792ms)\n✔ a later gate repair cannot legitimise the introduction (1292.231ms)\nℹ tests 18\nℹ suites 0\nℹ pass 18\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 27701.4739\n",
+        "stderr": ""
+      }
+    ],
+    "passed": true
+  },
+  "aec895c_validation": {
+    "head": "aec895c9b288fa668022370ff8e3fc1ade653dde",
+    "plugin_matches": "All 32 current Git plugin blobs match source.json bef25d8 hashes; checked 2026-09-14T18:00:46.895196Z",
+    "required_commands": {
+      "node scripts/verify.mjs": {
+        "exit": 0,
+        "output": "verify: OK (version 0.9.4, 9 skills, 50 ADRs, 66 shipped plan items)"
+      },
+      "node evals/run.mjs": {
+        "exit": 0,
+        "output": "6 passed, 0 failed, 6 skipped"
+      }
+    },
+    "focused_controls_receipt": "prepared-checks.json, unchanged gate code",
+    "scope": "Prepared PR head; no native Pi pass inferred from deterministic checks."
+  },
+  "opencode_fourth_preparation": {
+    "container": "docflow-release-opencode",
+    "source": "bef25d8d8a9ccc0a3ac15b678a2d619ed55c6216",
+    "new_public_fingerprint": "EC23AE6C5EEE2666A43C7CA5AC5246FAE652462A",
+    "version": "1.18.30",
+    "fixture": {
+      "fixture": "/workspace/bootstrap-wave-fourth/repo",
+      "bootstrap_head": "c0a497d998e9800e713d6ba2ceb9161e2890653e",
+      "base": "5472de863fd06b84e168031328d958d59219341b",
+      "held": "6e5e4ae84c23929e6f859c7fe348367d2dd7da65"
+    },
+    "observer": "claim observer installed; fixture transport only\n",
+    "installed_manifest": [
+      {
+        "path": "plugins/docflow/.claude-plugin/plugin.json",
+        "sha256": "190e5280ef1547fd9a8033d7c7c8633f66dda225b2ca427f49be16f1f191c814"
+      },
+      {
+        "path": "plugins/docflow/.codex-plugin/plugin.json",
+        "sha256": "4e875f1e09e3a63bb914f0f89c09edd80e9f7f93218de484735b142c3027a666"
+      },
+      {
+        "path": "plugins/docflow/skills/add-convention/agents/openai.yaml",
+        "sha256": "beb3b65a44326746f4fdea2c83850d731f194ca3f45875822d71b7d901497078"
+      },
+      {
+        "path": "plugins/docflow/skills/add-convention/SKILL.md",
+        "sha256": "b31c865e9897465084fafd74fe2dc34e037656c3dbaa00d31397d8818d459521"
+      },
+      {
+        "path": "plugins/docflow/skills/agent-wave/agents/openai.yaml",
+        "sha256": "a0947c21f73d34be68b2ab03edba337a3fb33a39613f199c25a3703efbab40e9"
+      },
+      {
+        "path": "plugins/docflow/skills/agent-wave/SKILL.md",
+        "sha256": "bb9c352866352fd3e2433bdcebf6ae759769197e594a73000d62208122fc209d"
+      },
+      {
+        "path": "plugins/docflow/skills/audit/agents/openai.yaml",
+        "sha256": "57ee1f02555ae22915a4f445d97ee4a85fb8f6468256c16ff6ea7a59491067b7"
+      },
+      {
+        "path": "plugins/docflow/skills/audit/SKILL.md",
+        "sha256": "06fee6077c4ff5fff559b891707b281879dbe732f0bf021d21ae048868165bbc"
+      },
+      {
+        "path": "plugins/docflow/skills/bootstrap/agents/openai.yaml",
+        "sha256": "47b714a67f5a8508fd9ebe0602499804b17c284aadf86c4c7e176e379df6b501"
+      },
+      {
+        "path": "plugins/docflow/skills/bootstrap/SKILL.md",
+        "sha256": "105357bfd3e30c7b09b03eafd0394b6c470b30997de273869f9f74507c87dd20"
+      },
+      {
+        "path": "plugins/docflow/skills/bootstrap/templates/_agent-LOCKS.md",
+        "sha256": "d489163b3d809f583ed4f400d5f16d5edead61bbc6f3934e1fee85b6e49f26eb"
+      },
+      {
+        "path": "plugins/docflow/skills/bootstrap/templates/_agent-prompts-autonomous.md",
+        "sha256": "f6bbaa2f881961aa72b96a19ff6b278fb0285547d5009a2efa3a39abb0f609e3"
+      },
+      {
+        "path": "plugins/docflow/skills/bootstrap/templates/_agent-ROLES.md",
+        "sha256": "b7c8478b308a3abe4379746041e412b992c21e7405eb799b570cfe7d15de6628"
+      },
+      {
+        "path": "plugins/docflow/skills/bootstrap/templates/adr-0001-seed.md",
+        "sha256": "cfcc060d32ae013634bc788aa20fd9b7f69ae3c90399d18f17a72703ea573b1c"
+      },
+      {
+        "path": "plugins/docflow/skills/bootstrap/templates/adr-capability.md",
+        "sha256": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5"
+      },
+      {
+        "path": "plugins/docflow/skills/bootstrap/templates/adr-technology.md",
+        "sha256": "02abe97bf3f956972621490c0c6c4a5aa4210b259c33114cadc84a2ab7fbffc0"
+      },
+      {
+        "path": "plugins/docflow/skills/bootstrap/templates/AGENTS.md",
+        "sha256": "a15813bbae21dc249632dc15aca6593e8b06c3b2876e1281998eda5fe918534a"
+      },
+      {
+        "path": "plugins/docflow/skills/bootstrap/templates/CLAUDE.md",
+        "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49"
+      },
+      {
+        "path": "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md",
+        "sha256": "b7caef74858cdec8b228e34a72603befb59c44e7b98ffbe6f26505f839b33d2a"
+      },
+      {
+        "path": "plugins/docflow/skills/bootstrap/templates/federation-config.md",
+        "sha256": "27e9a9c0fde4a1edf235c27a69c4aaff1051bc14a17a4e862592c30e9e92421a"
+      },
+      {
+        "path": "plugins/docflow/skills/bootstrap/templates/federation-index.md",
+        "sha256": "7c548fa6c04ef2b0144a183d7b1ab926f559cfa693e0d07d4028eb9ced75add2"
+      },
+      {
+        "path": "plugins/docflow/skills/bootstrap/templates/plan-README.md",
+        "sha256": "d6fb25d7b7ac6da6f4ff3f3e074ce6e8025d0733551a5a171cf7768022a4f6d8"
+      },
+      {
+        "path": "plugins/docflow/skills/brainstorm/agents/openai.yaml",
+        "sha256": "81410e3c4de176623ad6e46bac282391cfa86df8f092e134ee5761fa33fd456f"
+      },
+      {
+        "path": "plugins/docflow/skills/brainstorm/SKILL.md",
+        "sha256": "0ebf634787aab6746270fb3081ca61a036bd193c6125fe068d6ecc84905f66ca"
+      },
+      {
+        "path": "plugins/docflow/skills/new-adr/agents/openai.yaml",
+        "sha256": "c31dbe2082afde99cbf40d8a5b9fe4b15368130d88c33f4334cd5ff3d1b4124d"
+      },
+      {
+        "path": "plugins/docflow/skills/new-adr/SKILL.md",
+        "sha256": "6ff3da714eb6758c042ef9c3285c217c0b54e7a67d1a9c520e77e65de57bfcfc"
+      },
+      {
+        "path": "plugins/docflow/skills/new-plan/agents/openai.yaml",
+        "sha256": "50db151c62309e22396f0ba485bb75eaaecdbca7484814ba34ed6d81900e2378"
+      },
+      {
+        "path": "plugins/docflow/skills/new-plan/SKILL.md",
+        "sha256": "b2c50295a27769b209d929a47f54909005f1004a7a2646f01ffae71f88be0e59"
+      },
+      {
+        "path": "plugins/docflow/skills/rollup/agents/openai.yaml",
+        "sha256": "24ea6030c82b79ccf243ea28dab2481e3433188547f6ca10aee40dec4835b050"
+      },
+      {
+        "path": "plugins/docflow/skills/rollup/SKILL.md",
+        "sha256": "8f3260041ca609501adcf23ab9d17724a9fd9bb31096d08e4fbed68d32c8a6ea"
+      },
+      {
+        "path": "plugins/docflow/skills/ship-item/agents/openai.yaml",
+        "sha256": "3343b8c5acd560e4ccb68e8431c4e74c6fa6506f5ed59001172dc84609c9a5a6"
+      },
+      {
+        "path": "plugins/docflow/skills/ship-item/SKILL.md",
+        "sha256": "b929994d4bf1549db452a0b2e08349a9981e1a13fa5060d9422abde8b128114f"
+      }
+    ],
+    "reason": "Fresh bootstrap-derived wave after third-run final-block placement defect; prior runs retained."
+  },
+  "opencode_fourth_native_check": {
+    "case": "opencode-bootstrap-wave-fourth",
+    "source": "bef25d8d8a9ccc0a3ac15b678a2d619ed55c6216",
+    "parent_session_id": "ses_f5ee16d10ffeUUUI5RAO5DeZ1V",
+    "parent_native_export_sha256": "ff2f1b1523dbb449f622bda17fc610095752a65ffebbb83beaba3de5fdc79b85",
+    "workers": {
+      "alpha": {
+        "session_id": "ses_f5edaa04bffeAKZEwPs2KBQj0S",
+        "parent_id": "ses_f5ee16d10ffeUUUI5RAO5DeZ1V",
+        "model": {
+          "id": "big-pickle",
+          "providerID": "opencode",
+          "variant": "default"
+        },
+        "native_export_sha256": "69df680336913722f5cfcfb6f93b6b7aef1ee154078620524ae6b8edcb4a1101",
+        "native_task": {
+          "call_id": "call_cb806c276a1d456eb48b6013",
+          "time": {
+            "start": 1789409976254,
+            "end": 1789410276422
+          },
+          "status": "completed"
+        },
+        "events": {
+          "acquisition": {
+            "tool_index": 18,
+            "call_id": "call_e83b6c55bfef420a94888664",
+            "tool": "bash",
+            "time": {
+              "start": 1789410172087,
+              "end": 1789410172185
+            },
+            "command": "git -C /workspace/bootstrap-wave-fourth/fixture-0007-alpha push --porcelain --force-with-lease=refs/heads/claim/0007-alpha: origin HEAD:refs/heads/claim/0007-alpha",
+            "workdir": null,
+            "path": "",
+            "output": "To /workspace/bootstrap-wave-fourth/origin.git\n*\tHEAD:refs/heads/claim/0007-alpha\t[new branch]\nDone\n",
+            "exit": 0
+          },
+          "first_write": {
+            "tool_index": 21,
+            "call_id": "call_378a8be2d60841c7a8e407ea",
+            "tool": "write",
+            "time": {
+              "start": 1789410184714,
+              "end": 1789410184724
+            },
+            "command": "",
+            "workdir": null,
+            "path": "/workspace/bootstrap-wave-fourth/fixture-0007-alpha/outputs/alpha.txt",
+            "output": "Wrote file successfully.",
+            "exit": null
+          },
+          "gate": {
+            "tool_index": 24,
+            "call_id": "call_9b6159934dd24ec0bae0c3ca",
+            "tool": "bash",
+            "time": {
+              "start": 1789410194172,
+              "end": 1789410194268
+            },
+            "command": "node tools/verify.mjs; echo \"GATE_EXIT_CODE=$?\"",
+            "workdir": "/workspace/bootstrap-wave-fourth/fixture-0007-alpha",
+            "path": "",
+            "output": "node:internal/modules/package_json_reader:314\n  throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);\n        ^\n\nError [ERR_MODULE_NOT_FOUND]: Cannot find package '@docflow-eval/unavailable-fixture-dependency' imported from /workspace/bootstrap-wave-fourth/fixture-0007-alpha/tools/verify.mjs\n    at Object.getPackageJSONURL (node:internal/modules/package_json_reader:314:9)\n    at packageResolve (node:internal/modules/esm/resolve:768:81)\n    at moduleResolve (node:internal/modules/esm/resolve:855:18)\n    at defaultResolve (node:internal/modules/esm/resolve:985:11)\n    at #cachedDefaultResolve (node:internal/modules/esm/loader:747:20)\n    at ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)\n    at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)\n    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:680:36)\n    at TracingChannel.tracePromise (node:diagnostics_channel:350:14)\n    at ModuleLoader.import (node:internal/modules/esm/loader:679:21) {\n  code: 'ERR_MODULE_NOT_FOUND'\n}\n\nNode.js v22.23.2\nGATE_EXIT_CODE=1\n",
+            "exit": 0
+          }
+        }
+      },
+      "beta": {
+        "session_id": "ses_f5eda6319ffeagpOzrY32rOFwr",
+        "parent_id": "ses_f5ee16d10ffeUUUI5RAO5DeZ1V",
+        "model": {
+          "id": "big-pickle",
+          "providerID": "opencode",
+          "variant": "default"
+        },
+        "native_export_sha256": "1bf3c40016f56da7ff054e0f7947c308858392283aa36c8233c8dda21aece550",
+        "native_task": {
+          "call_id": "call_536e3502d08b4efd83aae686",
+          "time": {
+            "start": 1789409991917,
+            "end": 1789410080433
+          },
+          "status": "completed"
+        },
+        "events": {
+          "acquisition": {
+            "tool_index": 13,
+            "call_id": "call_01533161d6b74285a0ebbf81",
+            "tool": "bash",
+            "time": {
+              "start": 1789410035748,
+              "end": 1789410035848
+            },
+            "command": "git -C /workspace/bootstrap-wave-fourth/fixture-0008-beta push --porcelain --force-with-lease=refs/heads/claim/0008-beta: origin HEAD:refs/heads/claim/0008-beta 2>&1",
+            "workdir": null,
+            "path": "",
+            "output": "To /workspace/bootstrap-wave-fourth/origin.git\n*\tHEAD:refs/heads/claim/0008-beta\t[new branch]\nDone\n",
+            "exit": 0
+          },
+          "first_write": {
+            "tool_index": 16,
+            "call_id": "call_f85560781b57406ebf054ee5",
+            "tool": "bash",
+            "time": {
+              "start": 1789410053761,
+              "end": 1789410053815
+            },
+            "command": "mkdir -p /workspace/bootstrap-wave-fourth/fixture-0008-beta/outputs && printf 'beta\\n' > /workspace/bootstrap-wave-fourth/fixture-0008-beta/outputs/beta.txt && od -c /workspace/bootstrap-wave-fourth/fixture-0008-beta/outputs/beta.txt && git -C /workspace/bootstrap-wave-fourth/fixture-0008-beta status --porcelain",
+            "workdir": null,
+            "path": "",
+            "output": "0000000   b   e   t   a  \\n\n0000005\n?? outputs/\n",
+            "exit": 0
+          },
+          "gate": {
+            "tool_index": 17,
+            "call_id": "call_efb417c1a3e74791b3f7969b",
+            "tool": "bash",
+            "time": {
+              "start": 1789410056044,
+              "end": 1789410056129
+            },
+            "command": "node tools/verify.mjs 2>&1; echo \"GATE_EXIT: $?\"",
+            "workdir": "/workspace/bootstrap-wave-fourth/fixture-0008-beta",
+            "path": "",
+            "output": "verify: OK (wave fixture)\nGATE_EXIT: 0\n",
+            "exit": 0
+          }
+        }
+      }
+    },
+    "checks": {
+      "0007-alpha_native_parent": true,
+      "0007-alpha_native_model": true,
+      "0007-alpha_acquired_before_write": true,
+      "0007-alpha_probe_before_acquisition": true,
+      "0007-alpha_native_gate_output": true,
+      "0007-alpha_gate_in_owned_worktree": true,
+      "0008-beta_native_parent": true,
+      "0008-beta_native_model": true,
+      "0008-beta_acquired_before_write": true,
+      "0008-beta_probe_before_acquisition": true,
+      "0008-beta_native_gate_output": true,
+      "0008-beta_gate_in_owned_worktree": true,
+      "workers_overlap": true,
+      "both_first_writes_before_failure": true,
+      "no_later_native_dispatch": true,
+      "parent_has_no_implementation_write": false,
+      "no_successful_native_main_push": false
+    },
+    "native_clock_anomalies": [
+      {
+        "session": "ses_f5edaa04bffeAKZEwPs2KBQj0S",
+        "call_id": "call_3396da0bbfad45bb9319a430",
+        "time": {
+          "start": 1789410191577,
+          "end": 1789410191113
+        }
+      }
+    ],
+    "scope": "Actual public opencode export records, not model self-report. One correction-tool timestamp ends before its start; retained as observed and unused for acquisition/first-write ordering. Synthetic local transport only.",
+    "passed": false
+  },
+  "opencode_fifth_preparation": {
+    "fixture": {
+      "fixture": "/workspace/bootstrap-wave-fifth/repo",
+      "bootstrap_head": "c0a497d998e9800e713d6ba2ceb9161e2890653e",
+      "base": "f68fbc3853e5fb4ecc76aa9204807364b911fd26",
+      "held": "5fcab910ee0d47b41cfb34bf2e998ff0ec8f7580"
+    },
+    "observer": "claim observer installed; fixture transport only\n",
+    "source": "bef25d8d8a9ccc0a3ac15b678a2d619ed55c6216",
+    "reason": "Fourth run correctly acquires initial claims but parent wrongly classifies missing gate dependency and integrates beta. Fresh case restates installed whole-wave stop rule; fourth history and receipts preserved."
+  },
   "pi_normal_strict_status_check": {
     "argv": [
       "python3",
@@ -2942,6 +3709,16 @@
       "model": "qwen3.8-27b-coding",
       "inference_requests": 0,
       "exit": 0
+    },
+    "bootstrap-third-state": {
+      "provider": "llama-server",
+      "model": "qwen3.8-27b-coding",
+      "thinkingLevel": "high",
+      "fixture": "/workspace/bootstrap-third/repo",
+      "source": "bef25d8d8a9ccc0a3ac15b678a2d619ed55c6216",
+      "rpc_exit": 0,
+      "inference_request": false,
+      "native_flag_overrides": []
     }
   },
   "cleanup": {
@@ -3017,7 +3794,7 @@
       "native_ui_sha256": "0c2318eb46a80e881858e630436cf663df8775c8e4489a296426b31f0e83ec55",
       "preserved": "Public key, keyring directory, all fixture Git histories and recoverable work."
     },
-    "remaining": "Pi continuation containers remain active; worktree and recoverable fixture histories retained. Automatic approval review rejected removal of the generated untracked evals/hosts/__pycache__/check-pi-claims.cpython-312.pyc, including a single-file retry, with blocked by policy; it is left untracked.",
+    "remaining": "Pi normal and restarted OpenCode containers remain active; completed Pi blocked container stopped. Worktree and recoverable fixture histories retained. Automatic approval review rejected removal of the generated untracked evals/hosts/__pycache__/check-pi-claims.cpython-312.pyc, including a single-file retry, with blocked by policy; it is left untracked.",
     "containers": {
       "observed_utc": "2026-09-14T17:54:07.905178+00:00",
       "pi_blocked": {
@@ -3108,6 +3885,49 @@
       "verdict": "interrupted; no full-contract pass"
     },
     "private_transcript_sha256": "5222304cafdd0f4e1acb020f227b00bfdaf7577b3d529814147b79bf1259dcc4"
+  },
+  "pi_bootstrap_retry_interrupted": {
+    "process": {
+      "host": "pi",
+      "container": "docflow-release-pi-normal",
+      "fixture": "/workspace/bootstrap-retry/repo",
+      "host_exit": 130,
+      "seconds": 4244.6,
+      "model_requested": null,
+      "provider_requested": null,
+      "claude_delegation_opt_in": null,
+      "permission_context": "project files trusted with --approve; native tool permissions",
+      "behavioural_verdict": "unverified: run independent assertions",
+      "codex_session_storage": null,
+      "thinking_requested": null,
+      "pi_thinking_selection": "native configured default"
+    },
+    "intervention": {
+      "utc": "2026-09-14T18:14:22.059600+00:00",
+      "action": "SIGINT to native Pi PID 128 only, in the owned container",
+      "reason": "Repeated single slash codepoint without whitespace: over 5000 contiguous characters and no completed tool action since 17:59:39 UTC. Not a completed bootstrap.",
+      "observed_counts": {
+        "active_thinking_words": 1066,
+        "active_thinking_characters": 12046,
+        "maximum_word_length": 5484,
+        "last_100_delta_characters": 100,
+        "last_2000_codepoint_frequencies": [
+          [
+            47,
+            2000
+          ]
+        ],
+        "duplicated_20grams": 16,
+        "maximum_20gram_repeats": 2,
+        "active_delta_types": {
+          "thinking_start": 1,
+          "thinking_delta": 7665
+        }
+      },
+      "last_completed_tool_timestamp": 1789408779050,
+      "native_provider_model_thinking": "llama-server/qwen3.8-27b-coding/high unchanged"
+    },
+    "private_transcript_sha256": "06286c277bd011813a2f34b07e6fcaff3ccb14daf7164eac036caa89b7fa2dd8"
   },
   "limits": [
     "Six deterministic runner skips remain skips; the separate actual-host route executes the mapped release scenarios.",
