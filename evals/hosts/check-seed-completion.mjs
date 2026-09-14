@@ -22,7 +22,9 @@ export function checkSeedCompletion(repoPath, { root = '.', signed = false } = {
   assert.equal(doneNames.length, 1, 'expected one bootstrap adoption record');
   const done = rel(join(artefacts, 'plan/done', doneNames[0]));
   const body = readFileSync(join(repo, done), 'utf8');
-  const owner = body.split('\n').find((line) => /^Owning ADR:/.test(line)) || '';
+  const owner = body.split('\n')
+    .map((line) => line.replace(/^\s*[-*+]\s+/, ''))
+    .find((line) => /^Owning ADR:/.test(line)) || '';
   const ownerPath = owner.match(/\[[^\]]*\]\(([^)]+)\)/)?.[1]
     ?? owner.slice('Owning ADR:'.length).trim().replaceAll('`', '');
   assert(ownerPath && [repo, artefacts, dirname(join(repo, done))]

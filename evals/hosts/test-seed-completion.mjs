@@ -83,6 +83,19 @@ test('the seed-only form cannot document another decision', () => fixture((f) =>
   f.scaffold(); f.write(f.done, f.body(f.precise).replace('0001-method.md', '0002-feature.md')); f.commit('test: wrong owner');
   assert.throws(() => f.check(), /does not own the seed/);
 }));
+
+test('a bulleted owner resolves the same exact seed path', () => fixture((f) => {
+  f.scaffold(); f.write(f.done, f.body(f.precise).replace('Owning ADR:', '- Owning ADR:'));
+  const introduction = f.commit('test: bulleted seed owner');
+  assert.equal(f.check().reference, introduction);
+}));
+
+test('a bulleted owner naming another path is rejected', () => fixture((f) => {
+  f.scaffold(); f.write(f.done, f.body(f.precise)
+    .replace('Owning ADR: adr/0001-method.md', '- Owning ADR: other/0001-method.md'));
+  f.commit('test: wrong bulleted owner');
+  assert.throws(() => f.check(), /does not own the seed/);
+}));
 test('a seed-labelled link to another path is rejected', () => fixture((f) => {
   f.scaffold(); f.write(f.done, f.body(f.precise).replace('Owning ADR: adr/0001-method.md', 'Owning ADR: [adr/0001-method.md](../../other/0001-method.md)'));
   f.commit('test: misleading ownership label'); assert.throws(() => f.check(), /does not own the seed/);
