@@ -55,3 +55,5 @@ ADR change.
 | [0048](adr/0048-wave-resumes-by-replanning-from-git.md) | A wave resumes by re-planning from git | Implemented | 2026-09-04 | 0013, 0031, 0037, 0038, 0039, 0045, 0046 |
 | [0049](adr/0049-skill-directories-carry-declarative-host-interface-files-only.md) | Skill directories carry SKILL.md plus declarative host interface files only | Implemented | 2026-09-04 | 0004, 0011, 0013, 0015 |
 | [0050](adr/0050-repository-changes-integrate-through-checked-pull-requests.md) | Repository changes integrate through checked pull requests | Implemented | 2026-09-11 | 0006, 0011, 0044 |
+| [0051](adr/0051-portable-workspace-memory-contract.md) | Portable workspace memory contract | Accepted | 2026-09-15 | 0015, 0016, 0049 |
+| [0052](adr/0052-workspace-authority-and-attempt-records.md) | Workspace authority and attempt records | Accepted | 2026-09-15 | 0051 |
