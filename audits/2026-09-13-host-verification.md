@@ -1,5 +1,11 @@
 # 0051 — independent host verification, 2026-09-13
 
+**Historical checkpoint, superseded for current Pi status by the
+[local-provider continuation](2026-09-13-pi-qwen-continuation.md).** The
+cloud-login prerequisite below was incorrect for the operator's selected
+local route. That continuation retains these failures and supplies separately
+verified native Pi repair/retry evidence; Cowork remains outstanding.
+
 The core behavioural cases and native Claude Code, Codex and OpenCode
 observations have reviewable evidence. **0051 is not complete:** pi needs a
 usable supported provider login and Cowork needs a usable session with actual
@@ -186,9 +192,9 @@ evidence was preserved separately. No unrelated container or image was
 removed. The source worktree remains available. Archive hashes are in the
 receipt. Required CI on the pushed PR head is recorded in the final PR report.
 
-## Remaining operator input
+## Operator input outstanding at this historical checkpoint
 
-1. In the supported pi UI, complete `/login` → OpenAI Codex through its browser
+1. **Superseded; no longer required for the selected local route.** In the supported pi UI, complete `/login` → OpenAI Codex through its browser
    flow. Reuse that refreshed local login securely, verify the advertised route
    works, then run the missing bootstrap/lifecycle and wave cases. Do not send
    credentials in text. The coordinator's existing question remains pending.

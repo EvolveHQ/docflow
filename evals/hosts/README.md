@@ -9,8 +9,11 @@ The normal deterministic suite does not silently run paid model calls.
 
 1. Export a source snapshot containing `plugins/`, the two marketplace
    directories, `package.json`, README and USAGE. Record the Git revision and
-   any working-tree changes. Compute SHA-256 over sorted plugin paths relative
-   to the snapshot, each followed by NUL, file bytes, NUL. Freeze this snapshot
+   any working-tree changes. Compute SHA-256 over plugin paths relative
+   to the snapshot, sorted as case-sensitive POSIX path strings, each followed
+   by NUL, file bytes, NUL. Do not sort native filesystem Path objects: their
+   ordering differs between Windows and Linux. Compare installed files with
+   the snapshot per path as well as comparing the digest. Freeze this snapshot
    for the whole run; never update an installation underneath a running test.
 2. Build the selected `Dockerfile` target (`claude`, `codex`, `pi`, `opencode`,
    `cowork`). Record the actual CLI/desktop version, model and image ID; package
@@ -55,12 +58,16 @@ sanitised parent/child provenance before cleanup. Codex/OpenCode workers can
 be directed into separate Git worktrees without host-enforced isolation;
 record that distinction. `--provider` selects a supported pi provider.
 
-Pi preserves its native configured provider and model when the runner's
-`--provider` and `--model` flags are omitted. Explicit flags override only
-their corresponding selection; the runner does not inject a cloud fallback.
-Record both the requested flags and the actual provider/model in Pi's native
-transcript. `python -B evals/hosts/test-run-host.py` checks all four omitted,
-explicit and partial-override combinations without calling a provider.
+Pi preserves its native configured provider, model and thinking level when
+the runner's `--provider`, `--model` and `--thinking` flags are omitted.
+Explicit flags override only their corresponding selection; the runner does
+not inject a cloud fallback or disable thinking. Record requested flags,
+isolated native defaults and effective native state separately. The supported
+RPC `get_state` command can inspect the selected model/thinking level without
+an inference request; preserve only sanitised fields and reasoning counts,
+never model thinking text. `python -B evals/hosts/test-run-host.py` checks six
+omitted, explicit and partial-override combinations without calling a provider.
+It and the eight temporal controls run in the required `verify` CI job.
 
 For an operator-selected local provider, install its native provider extension
 in the disposable tmpfs home with the matching native settings. Preserve its
@@ -120,6 +127,16 @@ fixture decisions and a local bare remote, and installs the gate trap before
 the model's fresh-checkout probe. Two items are eligible; the third is held.
 This fixture extension is preparation, not a claimed model bootstrap.
 
+For sequential Pi blocked runs, also run `check-pi-wave-events.py <transcript>`.
+It uses completed native Bash results to detect a beta claim even if later
+deleted, prove probe/claim/failure ordering within or across results, and reject
+successful pushes to main after failure regardless of their source ref. A main
+push anywhere in the failure's Bash result is conservatively rejected because
+combined stdout/stderr can obscure ordering. This parser covers the fixture's
+gate output and ordinary/porcelain Git push receipts; it complements target
+assertions and does not judge arbitrary shell transcripts. Its eight controls
+run with `python -B evals/hosts/test-pi-wave-events.py`.
+
 `test-host-assertions.py --bootstrap <verified-full-bootstrap> --gate
 <original-gate>` tests eight positive/negative controls, including missing
 Git, untracked output, unsigned commits, actual beta work and changed history.
@@ -138,11 +155,11 @@ Run the corresponding host checker and `reporting.mjs` too where listed.
 |---|---|---|
 | Full bootstrap | Claude Code and Codex, full single-writer profile | `bootstrap-full`; `check-bootstrap.py --signed`, unchanged gate, tracked output, clean signed history |
 | Express bootstrap | OpenCode, fixed minimal profile | `bootstrap-express`, exact profile/tree, clean target commit; incidental Markdown tolerated |
-| New decision | Claude Code, Codex, OpenCode after separate-worktree bootstrap | `new-adr` / bootstrap checks: exactly seed Implemented plus one Proposed decision, contiguous numbers and linked INDEX metadata |
+| New decision | Claude Code, Codex, OpenCode; Pi with separately repaired separate-worktree bootstrap | `new-adr` / bootstrap checks: exactly seed Implemented plus one Proposed decision, contiguous numbers and linked INDEX metadata |
 | Ship item | Claude Code on `prepare-ship.py <base> --signed` | `ship-item`: real claim integration, completion footer ancestor, remote main match, signatures, unchanged beta/held/index statuses |
 | Range migration | Codex read-only detection, separately approved map, apply, post-audit | `legacy-range-detect` before apply: hash/HEAD unchanged; `legacy-range` after apply: sections, map, references, INDEX, done bytes preserved |
 | Coordination migration | Claude Code on the nested fixture with a live local claim | `legacy-coordination` plus all `check-migration.py` checks, gate unchanged, live ref and custom instructions preserved |
-| Wave (additional Workflow case) | Claude Code native rungs 1/2; Codex/OpenCode native rung 2 and sequential blocked controls | `check-wave.py` / `check-blocked.py --signed [--concurrent]`, native tool/session evidence and all item/wave reports |
+| Wave (additional Workflow case) | Claude Code native rungs 1/2; Codex/OpenCode native rung 2 and sequential blocked controls; Pi rung 3 stop flow with off and native-high thinking, with claim metadata failure retained | `check-wave.py` / `check-blocked.py --signed [--concurrent]`, native tool/session evidence and all item/wave reports; Pi also uses completed-event ordering and published initial-claim checks |
 
 The range post-audit resolved preserved done references through the actual
 migration commit and file rename evidence. A fresh negative copy changed the
@@ -176,8 +193,20 @@ unperformed capabilities. Keep raw logs and bundles outside the repository.
 After collecting evidence, stop/remove only the named test containers so tmpfs
 authentication is discarded. Never prune unrelated Docker resources.
 
-Results for the current audit are recorded in `results/2026-09-13.json` and
-the internal audit report. Passing a subset does not establish a green release
-suite. Signed local pushes and native delegation have bounded evidence;
-GitHub permissions, pi's successful lifecycle/wave and current Cowork target
-Git integration remain unverified. `results/2026-09-11.json` is historical.
+Results are recorded in `results/2026-09-13.json` and the separate continuation
+`results/2026-09-13-pi-qwen.json`, with corresponding internal audits. Pi's
+original gate-command omission and sequential stop failure remain failures;
+native bootstrap repair and a fresh wave retry passed independently with
+thinking off. The off positive control failed claim/completion rules; a native
+high positive control repeated generation before work and was interrupted.
+The first high blocked control recovered after a request timeout, then was
+interrupted by the controller; that attempt is inconclusive. The corrective
+control settled naturally: stop-flow and acquisition-order checks passed, but
+the published initial claim omitted its actual branch name. Judge the published
+claim, not an unpublished draft. The receipt retains all controller interventions.
+Installed files matched the frozen Windows export byte-for-byte; final Git blobs
+match only after CRLF-to-LF normalisation. Both digests and comparisons are recorded.
+Passing a subset does not establish a green release suite. Signed local pushes and
+native delegation have bounded evidence; hosted GitHub permissions and current
+Cowork target Git integration remain unverified. `results/2026-09-11.json` is
+historical.

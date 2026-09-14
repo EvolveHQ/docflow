@@ -375,14 +375,19 @@ selected model and the host's permissions. Independent vendor-host tests on
 | Claude Code 2.1.269 / Opus 5 | Bootstrap/new-adr, native Workflow rung 1 and Agent rung 2 passed; workers signed and pushed to local remotes. | Ordinary manual permissions with fixture tools allowed; one worktree guard denial recovered through permitted commands. Hosted PR operations untested. |
 | Codex 0.154.0 / GPT-6 Astra | Bootstrap/new-adr and native rung 2 passed; signed concurrent work survived the whole-wave gate failure. | Native dispatch needed session storage on the disposable home; ephemeral dispatch failed. Workers used explicitly assigned Git worktrees, without host-enforced isolation. |
 | OpenCode 1.18.30 / Big Pickle | Bootstrap/new-adr and native rung 2 target checks passed; signed concurrent claims survived the gate failure. | Original wave report failed formatting; a separate read-only reporting rerun passed. Workers used explicitly assigned Git worktrees. |
-| pi 0.84.4 / GitHub Copilot | Native package discovery and sidecars verified; the current advertised-model probe returned HTTP 400 before actions. | Earlier GPT-4.1 bootstrap runs failed supplied choices; saved alternative-provider logins are invalid. Successful current lifecycle/wave evidence remains pending. |
-| Cowork 1.52386 family | Earlier cloud-session target files and gate passed; an exported bundle verified only its mirror. | Earlier connector denied target `.git` writes. The current Windows desktop did not provide a usable test session; current-source behaviour remains pending. |
+| pi 0.84.4 / local Qwen coding route | Thinking-off bootstrap repair/new-adr and native-high rung 3 blocked flow passed independent checks. Installed export bytes and nine sidecars verified. | The high blocked run omitted the claim branch name from its initial commit. The off positive control violated claim/completion rules; the high positive control repeated generation before work and was interrupted. Full wave acceptance remains unmet; local signed transport only. |
+| Cowork 1.52386 family | Earlier cloud-session target files and gate passed; an exported bundle verified only its mirror. | Earlier connector denied target `.git` writes. Current desktop input is blocked pending the operator bringing the app forward; no new target probe has run. |
 
 The six core model-driven cases have independent target assertions through
 the vendor-host runner, including express bootstrap, signed item completion
 and both migrations. Historical failures remain recorded. Later source changes
 received targeted checks; the receipts identify the exact snapshot for each
-run. The full five-host release requirement remains blocked on pi and Cowork.
+run. Pi used the operator's configured `llama-server/qwen3.8-27b-coding`
+selection; the server identifies its response model as `qwen3.8-27b`. Earlier
+cloud-provider failures remain historical and do not require a cloud login
+for this route. The runner now preserves the native thinking setting; earlier
+off results do not establish the operator's full high-thinking configuration.
+The full five-host release requirement remains blocked on Pi and Cowork.
 
 Signed transport tests used isolated local bare remotes. They do not prove a
 hosted GitHub PR workflow or GitHub authentication. Selection reused explicitly
