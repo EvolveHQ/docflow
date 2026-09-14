@@ -4,12 +4,18 @@ Owning ADR: adr/0015-multi-target-portability.md (r5 — reopened
 Implemented → Accepted on landing, → Implemented on ship; AC5's
 "bootstrap plus one lifecycle skill" extends to agent-wave)
 
+Also affected by the native continuation: adr/0029-seed-adr-recording-the-method.md
+and adr/0037-shipped-record-is-git-and-plan-done.md, for a precise bootstrap-only
+introduction-commit reference that avoids a future/self SHA while retaining
+Implemented-on-creation, atomic scaffolding and the ordinary verified-work footer.
+
 ## Scope
 
 Operator-authorised independent Docker runs of the real vendor hosts,
 plus interactive checks where the host requires them. Record failures and
 unperformed checks honestly; do not replace a missing observation with an
-assumption. The operator expanded PR #5 to fix findings these runs expose.
+assumption. PR #5 merged on 2026-09-13. The operator explicitly resumed this
+item in a new dedicated worktree and authorised necessary fixes and PR #6.
 
 1. **On Claude Cowork, pi, Codex, OpenCode.** Install per README;
    bootstrap a throwaway repo in separate-worktrees mode with a gate
@@ -29,8 +35,13 @@ assumption. The operator expanded PR #5 to fix findings these runs expose.
 3. **README.** Replace every "assumed, verify" row with the observed
    row; 0015 records the runs.
 
-Fixes exposed by these runs are included in the operator-authorised PR #5
-scope. Unperformed host capabilities remain pending rather than inferred.
+Fixes exposed by these runs are included in the operator-authorised scope
+of PR #6. Unperformed host capabilities remain pending rather than inferred.
+The native bootstrap exposed a hashless seed completion footer not covered by
+the existing assertions. Preserve that result, add a focused resolver check,
+clarify the skill/templates and owning decisions, then obtain targeted native
+evidence on the changed snapshot. Do not exempt ordinary shipped items or make
+an arbitrary supplied gate pass on an incomplete intermediate scaffold.
 
 ## Exit criteria
 
@@ -49,9 +60,47 @@ and return ADR 0015 to Implemented.
 
 ## Status
 
-- **Claimed by:** Codex, 2026-09-11, `kmox83/0040-claim-by-branch` (PR #5; operator-authorised expanded scope).
-- **Blockers:** pi/GitHub Copilot GPT-4.1 failed the supplied bootstrap choices twice; Cowork's cloud connector denied target .git writes. Signed remote pushes and delegated rungs are not yet observed.
-- **Stopped:**
+- **Claimed by:** Codex (Orca worker, dispatch `ctx_35d5b332d1f2`), 2026-09-14, `kmox83/0051-host-verification-astra` ([PR #6](https://github.com/EvolveHQ/docflow/pull/6); resumed for the operator-confirmed visible Cowork desktop).
+- **Blockers:** Full native-high Pi acceptance remains unmet: the positive control repeated generation before work; the corrective blocked run passed stop-flow checks but failed initial claim branch-name metadata. No Pi rerun is authorised here. Cowork now has actual-target signing, original bootstrap/new-ADR, opted-in concurrent Workflow wave and repaired seed-bootstrap evidence; source and permission limits remain explicit. A post-wave receipt export crossed a denied remote-tool .git boundary before the controller's stop completed; retain that distinct adverse observation and the earlier connector/unlink failures. Full five-host release review remains incomplete. Bounded native private-key cleanup is observed; broader agent state remains unverified after correction of the original cleanup overclaim.
+- **Stopped:** 2026-09-14 after the bounded native Cowork continuation; Pi's full contract remains unverified. The evidence stays on draft PR #6 for review, with current-head CI recorded on the PR and final dispatch report. No completion move, merge or release is claimed.
+
+## Cowork continuation, 2026-09-14
+
+The previous dispatch stopped at `fcc8e2a` with bounded Pi evidence, five
+reviewed continuation containers removed, and Pi/Cowork acceptance incomplete.
+Its failed observations and source/export line-ending boundary remain in the
+linked historical receipts. The operator has now confirmed Windows is unlocked
+and Claude Desktop visible. At 08:15 UTC the coordinator observed screenshots
+and the native folder picker; the 08:19 receipt still shows a marker-only actual
+target with no `.git` or probe response. The coordinator operates the GUI and
+verifies native target actions; this worker prepares fixtures/assertions and
+writes evidence, without initialising the actual target or inferring success.
+At 08:28 UTC the operator confirmed attachment; the active dispatch continues
+for the coordinator's native execution and independent actual-target observations.
+The original probe then passed seven independent file/Git assertions; staging
+initially failed because the session could not unlink Git locks. A separately
+authorised native deletion grant scoped to the disposable target recovered it,
+with seven staging assertions independently passing. All 32 loaded plugin files
+and nine sidecars match the frozen export. A later host-autosaved report appeared
+under `Claude outputs`; preserve it with the native fixture-local exclude rather
+than treating the model's contrary self-report as proof. Native signing passed
+eleven independent checks; original bootstrap/new-ADR passed 23 existing checks
+and six ancestry/release checks. A further focused check rejects the preserved
+seed footer's generic wording. Separate gate and product commits add a precise
+seed-only introduction reference; a fresh native bootstrap on loaded `eff3130`
+passes 25 independent checks. Its resolver identifies signed full-scaffold
+commit `48dcf4ed70db152bb5b375a5ea9d59f512996bb0`; 14 reference regressions pass.
+The opted-in native Workflow ran two executors with signed local claims/work;
+main and the held claim survived the environmental gate failure. A separate
+post-wave export violated its tool's Git-path boundary and is not a wave pass.
+Forty-seven wave assertions and four actual recovery/output checks pass.
+Original child tool events establish acquisition before each output write,
+with both writes beginning before alpha's failure. The native manifest's beta
+timestamp was wrong and is corrected without changing the original; the exact
+parent first-failure receipt remains unavailable. Original lifecycle/wave used
+the `13ea0c2` export, while only the repaired bootstrap ran on `eff3130`.
+See the
+[current audit](../../audits/2026-09-14-cowork-continuation.md) and its receipt.
 
 ## Remaining release evidence
 
@@ -59,7 +108,7 @@ Also retains ADR 0012 in Accepted until the outstanding full behavioural
 release matrix is executed. Independent Docker receipts cover scoped runs;
 the deterministic runner's skipped cases are not a release pass.
 
-## Observed and pending
+## Historical failures retained
 
 Bootstrap/new-adr: Claude Code, Codex and OpenCode passed independent file/Git
 checks. Cowork passed target files/gate and its exported bundle matched all
@@ -72,7 +121,71 @@ numbers and held-claim exclusion. Codex passed nested-root migration and the
 whole-wave environment-stop case. OpenCode's original stop case failed; its
 rerun was rejected by the provider (HTTP 400 prompt_cache_key) before acting.
 
-Next: refresh pi's supported provider login and rerun; recheck OpenCode's
-stop path once its provider accepts requests; verify a Cowork runtime with
-target Git capability; then execute signed-push and delegated-rung checks
-and the full release matrix. None of these is inferred from install parity.
+These are the earlier 2026-09-11 observations, not the current outcomes.
+
+## Current evidence — 2026-09-13
+
+See `audits/2026-09-13-host-verification.md` and
+`evals/hosts/results/2026-09-13.json` for exact source hashes, commands,
+assertion exits, native calls/child threads, original failures and repairs.
+
+- Claude Code: real opted-in Workflow rung 1 and worktree Agent rung 2;
+  ordinary manual permissions, signed claims/work/local pushes. Rung 1
+  preserved concurrent work after the systemic gate failure; rung 2 completed
+  both items with held-claim exclusion.
+- Codex: successful separate-worktree bootstrap/new-adr and native rung 2
+  on its actual bootstrap history; both signed concurrent claims preserved.
+  Ephemeral native dispatch failed before claims; ordinary tmpfs session
+  storage succeeded. Child-thread headers independently prove native workers;
+  explicit Git worktree directions are not host-enforced isolation.
+- OpenCode: successful repaired bootstrap/new-adr, sequential whole-wave stop
+  and native Task rung 2 with signed concurrent claims. The first native wave
+  passed target checks but failed reporting; a separate read-only reporting
+  phase passed on the clarified source. It is not a new native execution.
+- Six core model cases have independent target assertions through the
+  documented vendor-host route, plus the wave case. Migrations preserve
+  completed history/live ownership; positive and wrong-file negative history
+  audits were checked read-only. `node evals/run.mjs` still reports six skips.
+- Native package/plugin bytes and nine sidecars were compared with frozen
+  sources for Claude Code, Codex, pi and OpenCode. This is not Cowork runtime
+  evidence. Local bare remotes are not hosted GitHub workflows.
+
+The later [Pi continuation](../../audits/2026-09-13-pi-qwen-continuation.md)
+and `evals/hosts/results/2026-09-13-pi-qwen.json` supersede Pi's cloud blocker.
+The configured local Qwen route with thinking off passed native bootstrap
+repair/new-adr and a fresh rung 3 wave after the claim clarification. Original bootstrap and wave
+failures remain recorded; signed local pushes, unchanged main/held history,
+unstarted beta, completed-event ordering and fresh-clone gate checks passed.
+
+The subsequent Pi positive control implemented alpha before acquiring its
+remote claim and named the wrong owned plan path. These remain contract
+failures even if final-state checks pass; the full Pi wave contract is not
+verified. It also failed completion/INDEX checks and was interrupted by the
+controller after repeated read-only inspection; no final report exists. The
+runner now preserves the operator's native high thinking. The high positive
+control repeated an exact 848-word cycle four times before claim/work and was
+interrupted. The first high blocked control recovered after a request timeout,
+then was interrupted by the controller; it is inconclusive, not a provider
+unavailability finding. The corrective control settled naturally (exit 0,
+2082.5 s), passing 13 target, five temporal, five fresh-clone gate and three
+acquisition-order checks. Its published initial claim omits the actual branch
+name; this metadata failure remains separate from the passing stop flow.
+All installations matched frozen Windows export bytes; Git blobs match only
+after CRLF-to-LF normalisation, as the receipt explicitly records.
+
+Exit 1 remains partially verified because Pi's full contract is unverified;
+Cowork has scoped native observations with explicit source/permission limits.
+Exit 2 is verified: README has observed rows and no assumed marker. Exit 3
+retains the required r5 history and regenerated metadata INDEX; local gates
+pass. Neither this item nor ADRs 0012/0015 is marked complete.
+
+## Status at a glance
+
+- **This run:** independently verified Cowork signing, original lifecycle,
+  concurrent wave and temporal evidence, plus the seed-reference repair on a
+  fresh exact-source bootstrap. Original and export-only failures are preserved.
+- **Overall:** partially verified — the five-host requirement remains blocked.
+- **Yet to do:** successful native-high Pi complete-contract evidence in a later
+  authorised run and remaining release review, retaining the
+  broader agent-state uncertainty after bounded private-key cleanup. Keep
+  this item in todo and both owning decisions Accepted until all criteria pass.

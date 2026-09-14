@@ -23,3 +23,8 @@ Guidance for coding agents working in this repository.
 
 `plan/todo/NNNN-<slug>.md` is pending work; `git mv` to
 `plan/done/<YYYY-MM-DD>-<slug>.md` is the completion event.
+
+## Reporting
+
+Follow CONVENTIONS.md Reporting. End reports with Status at a glance:
+This run, Overall and Yet to do.

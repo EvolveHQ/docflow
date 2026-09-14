@@ -1,8 +1,13 @@
 """Create a disposable local-remote wave fixture inside a test container."""
 from pathlib import Path
-import subprocess, json, sys, re, os
+import subprocess, json, sys, re, os, argparse
 
-base = Path(sys.argv[1]).resolve()
+p=argparse.ArgumentParser(description=__doc__)
+p.add_argument('base',type=Path)
+p.add_argument('--signed',action='store_true',help='Use the preconfigured synthetic signing identity')
+p.add_argument('--blocked',action='store_true',help='Gate passes on base, then fails environmentally after alpha')
+a=p.parse_args()
+base = a.base.resolve()
 if base.exists(): raise SystemExit('Refuse to overwrite an existing fixture')
 base.mkdir(parents=True)
 repo = base / 'repo'
@@ -14,7 +19,7 @@ def write(p, text):
 git('init','-q','-b','main')
 git('config','user.name','docflow-eval')
 git('config','user.email','eval@example.invalid')
-git('config','commit.gpgsign','false')
+git('config','commit.gpgsign','true' if a.signed else 'false')
 write('.docflow','root: .\n')
 write('AGENTS.md','''# Wave test
 Read CONVENTIONS.md, INDEX.md, the queue item and owning ADR, then
@@ -115,6 +120,12 @@ for (const name of ['alpha','beta','held']) {
 }
 console.log('verify: OK (wave fixture)');
 ''')
+if a.signed:
+    for path in ['AGENTS.md','CONVENTIONS.md']:
+        target=repo/path
+        target.write_text(target.read_text().replace('unsigned','signed'),encoding='utf-8')
+if a.blocked:
+    write('tools/verify.mjs', "import {existsSync} from 'node:fs';\nif(existsSync('outputs/alpha.txt')) await import('@docflow-eval/unavailable-fixture-dependency');\nconsole.log('verify: OK (wave fixture)');\n")
 git('add','.')
 git('commit','-qm','test: initialise independent wave fixture\n\nRationale: synthetic accepted decisions.')
 git('init','-q','--bare','--initial-branch=main',str(base/'origin.git'))
@@ -127,5 +138,5 @@ git('commit','-qm','chore: claim held fixture\n\nWave: other; Reservations: none
 git('push','-q','origin','HEAD')
 held=git('rev-parse','HEAD')
 git('switch','-q','main')
-(base/'fixture.json').write_text(json.dumps({'held':held,'base':git('rev-parse','HEAD'),'items':items}),encoding='utf-8')
+(base/'fixture.json').write_text(json.dumps({'held':held,'base':git('rev-parse','HEAD'),'items':items,'signed':a.signed,'blocked':a.blocked}),encoding='utf-8')
 print(json.dumps({'fixture':str(repo),'held':held}))

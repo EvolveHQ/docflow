@@ -1,16 +1,21 @@
 # Independent vendor-host checks
 
-These tests use actual vendor CLIs or the Cowork desktop in separate Linux
-Docker containers. The model runs the installed skill; an external process
-checks the resulting files and Git state. CLI exit zero is not a test pass.
+These tests use actual vendor CLIs in separate Linux Docker containers, or
+native Cowork desktop sessions with disposable attached target folders. Record
+the desktop platform and runtime separately from historical container runs.
+The model runs the installed skill; an external process checks the actual
+target files and Git state. CLI exit zero is not a test pass.
 The normal deterministic suite does not silently run paid model calls.
 
 ## Isolation and setup
 
 1. Export a source snapshot containing `plugins/`, the two marketplace
    directories, `package.json`, README and USAGE. Record the Git revision and
-   any working-tree changes. Compute SHA-256 over sorted plugin paths relative
-   to the snapshot, each followed by NUL, file bytes, NUL. Freeze this snapshot
+   any working-tree changes. Compute SHA-256 over plugin paths relative
+   to the snapshot, sorted as case-sensitive POSIX path strings, each followed
+   by NUL, file bytes, NUL. Do not sort native filesystem Path objects: their
+   ordering differs between Windows and Linux. Compare installed files with
+   the snapshot per path as well as comparing the digest. Freeze this snapshot
    for the whole run; never update an installation underneath a running test.
 2. Build the selected `Dockerfile` target (`claude`, `codex`, `pi`, `opencode`,
    `cowork`). Record the actual CLI/desktop version, model and image ID; package
@@ -45,8 +50,40 @@ Codex uses unrestricted execution only inside the isolated disposable container.
 pi/OpenCode use their native approval mode. Record these permission differences.
 On timeout the dedicated container is stopped so the model cannot keep acting.
 
+For native Claude tests, explicitly choose `--claude-delegation subagents`
+(Agent) or `workflow` (Workflow opt-in through ultracode effort and its tool
+allowlist). Both retain ordinary manual permissions. Do not call sequential
+execution delegation. Codex native delegation uses `--codex-persist-session`:
+the normal ephemeral runner produced a missing-parent-thread error before
+dispatch. Native session files stay on the disposable home tmpfs; preserve
+sanitised parent/child provenance before cleanup. Codex/OpenCode workers can
+be directed into separate Git worktrees without host-enforced isolation;
+record that distinction. `--provider` selects a supported pi provider.
+
+Pi preserves its native configured provider, model and thinking level when
+the runner's `--provider`, `--model` and `--thinking` flags are omitted.
+Explicit flags override only their corresponding selection; the runner does
+not inject a cloud fallback or disable thinking. Record requested flags,
+isolated native defaults and effective native state separately. The supported
+RPC `get_state` command can inspect the selected model/thinking level without
+an inference request; preserve only sanitised fields and reasoning counts,
+never model thinking text. `python -B evals/hosts/test-run-host.py` checks six
+omitted, explicit and partial-override combinations without calling a provider.
+It and the eight temporal controls run in the required `verify` CI job.
+
+For an operator-selected local provider, install its native provider extension
+in the disposable tmpfs home with the matching native settings. Preserve its
+API compatibility options and headers. When the extension uses host loopback,
+adapt only that address to a verified route from the container; do not change
+the user's settings or model server. Stream any credential-bearing extension
+through stdin to its supported tmpfs location, never into an image, command
+argument or report. Record sanitised provenance and prove a real tool call
+works before running longer fixtures. A failed cloud probe does not make cloud
+login a prerequisite for a configured local provider.
+
 - **Bootstrap/new-adr:** initialise an empty main checkout, configure an unsigned
-  synthetic Git identity, and provide the unchanged `fixtures/scratch-gate/verify.mjs`
+  synthetic Git identity (or configure an ephemeral signing key for signed
+  coverage), and provide the unchanged `fixtures/scratch-gate/verify.mjs`
   as `tools/verify.mjs`. Supply full depth, root `.`, single writer, direct
   integration, queue and seed enabled, en-GB, no federation/domains, that exact
   gate, and approval for local fixture commits only. Author Proposed decision
@@ -74,6 +111,67 @@ The assertions are deliberately external to the model's verdict. Preserve
 original failures when rerunning a repaired skill. Do not repair a failed
 fixture and relabel the original run as passing.
 
+### Signed and concurrent coverage
+
+Configure GPG and `commit.gpgsign=true` in the disposable home, then use
+`wave-fixture.py <base> --signed --blocked`. The gate passes at the fetched
+base and fails only after alpha's output exists. `check-blocked.py <base>
+--signed` requires beta to remain unstarted; add `--concurrent` when a native
+worker has already started beta. Both claims and the unrelated held claim
+must survive without main integration. Existing completion history must
+remain byte-identical on the checkout and claims.
+
+To test the complete bootstrap-to-wave path, first independently verify a
+native separate-worktree bootstrap, then run
+`prepare-bootstrap-wave.py <bootstrap-repo> <new-base>`. It clones that actual
+Git history, keeps the scaffold and adoption history, adds three accepted
+fixture decisions and a local bare remote, and installs the gate trap before
+the model's fresh-checkout probe. Two items are eligible; the third is held.
+This fixture extension is preparation, not a claimed model bootstrap.
+
+For sequential Pi blocked runs, also run `check-pi-wave-events.py <transcript>`.
+It uses completed native Bash results to detect a beta claim even if later
+deleted, prove probe/claim/failure ordering within or across results, and reject
+successful pushes to main after failure regardless of their source ref. A main
+push anywhere in the failure's Bash result is conservatively rejected because
+combined stdout/stderr can obscure ordering. This parser covers the fixture's
+gate output and ordinary/porcelain Git push receipts; it complements target
+assertions and does not judge arbitrary shell transcripts. Its eight controls
+run with `python -B evals/hosts/test-pi-wave-events.py`.
+
+`test-host-assertions.py --bootstrap <verified-full-bootstrap> --gate
+<original-gate>` tests eight positive/negative controls, including missing
+Git, untracked output, unsigned commits, actual beta work and changed history.
+`test-release-assertions.mjs <verified-express-bootstrap>` accepts plain/code/
+bold express values and rejects guided/full values. These are checker
+regressions, not native-host runs. The synthetic wave checker separately has
+nine regression scenarios.
+
+### Explicit release-case mapping
+
+The current release evidence uses these actual vendor-host executions, with
+`check-release.mjs <case> <target-repo> <frozen-source>` run outside the model.
+Run the corresponding host checker and `reporting.mjs` too where listed.
+
+| Case | Native execution | Independent evidence |
+|---|---|---|
+| Full bootstrap | Claude Code and Codex, full single-writer profile | `bootstrap-full`; `check-bootstrap.py --signed`, unchanged gate, tracked output, clean signed history |
+| Express bootstrap | OpenCode, fixed minimal profile | `bootstrap-express`, exact profile/tree, clean target commit; incidental Markdown tolerated |
+| New decision | Claude Code, Codex, OpenCode; Pi with separately repaired separate-worktree bootstrap | `new-adr` / bootstrap checks: exactly seed Implemented plus one Proposed decision, contiguous numbers and linked INDEX metadata |
+| Ship item | Claude Code on `prepare-ship.py <base> --signed` | `ship-item`: real claim integration, completion footer ancestor, remote main match, signatures, unchanged beta/held/index statuses |
+| Range migration | Codex read-only detection, separately approved map, apply, post-audit | `legacy-range-detect` before apply: hash/HEAD unchanged; `legacy-range` after apply: sections, map, references, INDEX, done bytes preserved |
+| Coordination migration | Claude Code on the nested fixture with a live local claim | `legacy-coordination` plus all `check-migration.py` checks, gate unchanged, live ref and custom instructions preserved |
+| Wave (additional Workflow case) | Claude Code native rungs 1/2; Codex/OpenCode native rung 2 and sequential blocked controls; Pi rung 3 stop flow with off and native-high thinking, with claim metadata failure retained | `check-wave.py` / `check-blocked.py --signed [--concurrent]`, native tool/session evidence and all item/wave reports; Pi also uses completed-event ordering and published initial-claim checks |
+
+The range post-audit resolved preserved done references through the actual
+migration commit and file rename evidence. A fresh negative copy changed the
+owner to a nonexistent filename sharing the old number; the real audit
+rejected both its link and coverage, and before/after hashes proved it read-only.
+Optional hygiene and unrelated fixture findings remain explicit. The first
+OpenCode native wave passed state checks but failed its final report; a separate
+read-only reporting phase tested the clarified report instructions. It is not
+another delegation run or an uninterrupted initial pass.
+
 ## Cowork desktop
 
 Cowork requires interactive desktop login and native plugin installation.
@@ -82,12 +180,42 @@ manifest directories) through Customise → Plugins → Add → Upload plugin.
 Attach the disposable fixture folder, then supply the same bootstrap inputs.
 If using a local VNC viewer, bind the published port to 127.0.0.1 only.
 
-Record the actual execution environment. The observed Linux desktop used cloud
+Record the actual execution environment. The historical Linux desktop used cloud
 execution and a local-folder connector, not a local VM shell. File writes can
 succeed while `.git` writes are denied. Verify the selected target separately
 from any cloud mirror. A downloaded Git bundle can be independently verified
 and compared in another scratch clone; it does not prove target Git integration.
 Do not commit desktop screenshots or transcripts containing unrelated chats.
+
+The separate `results/2026-09-14-cowork.json` records native Windows Desktop
+1.52386.6 / Opus 5 Max through a Linux VM/FUSE view of the actual Windows target.
+Independent Windows checks cover signed bootstrap/new-adr and an opted-in
+Workflow rung-1 wave: 47 state assertions plus four exact recovery/output
+assertions, with original child tool events establishing claim-before-write
+and concurrent work before the gate failure. Main and the held claim survive;
+the blocked and already-running peer remain recoverable. Native `gh` is absent;
+signed transport is to the actual target's isolated local bare remote.
+
+Initial unlink denial recovered through the supported target-scoped deletion
+grant; existing Skip approvals mode was unchanged. A later receipt export
+crossed the file API's explicit `.git` denial through another tool before the
+controller's stop completed. Preserve this separate adverse observation, the
+host-autosaved output discrepancy and the corrected native manifest timestamp.
+Do not use protected metadata paths for remote-file exports or treat a second
+tool as permission to bypass a denial.
+
+Expanded native command output verifies all 32 installed files and nine
+sidecars for both the original `13ea0c2` export and corrected `eff3130` export.
+The original bootstrap passed its 23 existing assertions plus six wrapper
+checks; a new focused check rejected its generic seed footer. The repaired
+bootstrap passed 25 independent checks on a fresh native child target.
+`check-seed-completion.mjs <fixture> --signed` resolves the exact seed reference
+and verifies its reachable signed scaffold; `check-bootstrap.py` now includes
+that assertion (24 checks for its signed full bootstrap/new-adr scenario).
+`node --test evals/hosts/test-seed-completion.mjs` covers 14 meaningful positive
+and negative fixtures. These deterministic regressions are not native runs.
+Original results remain unchanged; the new source received a targeted bootstrap
+rerun, not another five-host matrix. Each receipt states the CRLF/Git-blob boundary.
 
 ## Evidence and cleanup
 
@@ -97,6 +225,21 @@ unperformed capabilities. Keep raw logs and bundles outside the repository.
 After collecting evidence, stop/remove only the named test containers so tmpfs
 authentication is discarded. Never prune unrelated Docker resources.
 
-Results for the current audit are recorded in `results/2026-09-11.json` and
-the internal audit report. Passing a subset does not establish a green release
-suite or prove signed remote pushes, GitHub permissions or delegation rungs.
+Results are recorded in `results/2026-09-13.json` and the separate continuation
+`results/2026-09-13-pi-qwen.json`, with corresponding internal audits. Pi's
+original gate-command omission and sequential stop failure remain failures;
+native bootstrap repair and a fresh wave retry passed independently with
+thinking off. The off positive control failed claim/completion rules; a native
+high positive control repeated generation before work and was interrupted.
+The first high blocked control recovered after a request timeout, then was
+interrupted by the controller; that attempt is inconclusive. The corrective
+control settled naturally: stop-flow and acquisition-order checks passed, but
+the published initial claim omitted its actual branch name. Judge the published
+claim, not an unpublished draft. The receipt retains all controller interventions.
+Installed files matched the frozen Windows export byte-for-byte; final Git blobs
+match only after CRLF-to-LF normalisation. Both digests and comparisons are recorded.
+Passing a subset does not establish a green release suite. Signed local pushes and
+native delegation have bounded evidence; hosted GitHub permissions remain
+unverified. Native Cowork target Git evidence is recorded separately in the
+2026-09-14 continuation; Pi's full contract and the owning release gate remain
+incomplete. `results/2026-09-11.json` is historical.

@@ -18,3 +18,9 @@ Maps to adr/0003-queue-driven-implementation.md acceptance criteria:
 ## Dependencies
 
 None.
+
+## Status
+
+- Claimed by:
+- Blockers:
+- Stopped:

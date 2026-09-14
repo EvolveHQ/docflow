@@ -49,3 +49,10 @@ one ADR whose shape does not follow its number.
 
 Conventional Commits, with a mandatory `Rationale:` footer on any commit
 touching an ADR. Signed commits: yes.
+
+## Reporting
+
+End reports with Status at a glance: This run (actual actions and command
+outcomes), Overall (implemented, partially verified, verified, blocked,
+failed or unknown), and Yet to do (all remaining work). A missing or
+unavailable check is not a pass.

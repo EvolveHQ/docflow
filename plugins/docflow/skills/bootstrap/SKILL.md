@@ -552,7 +552,9 @@ it when the root is `.docflow/` (the directory itself is the marker).
 Keep the pointer in sync if a later re-run migrates the root.
 
 1. `CONVENTIONS.md` — from `templates/CONVENTIONS.md`. Spec other files
-   reference. Include the **§Concurrency Guardrails** section only if Q5
+   reference. Record the exact Q8 verify command(s), when supplied, in its
+   Git Contract; the phrase "verify gate" alone does not identify a command.
+   Include the **§Concurrency Guardrails** section only if Q5
    is shared checkout or separate worktrees **or** Q4b is PR-based;
    omit it for single-writer direct-to-main repos (no numbering race). Include the **§Federation
    (multi-repo)** section only if Q11 = yes; fill `<product>` and state
@@ -601,6 +603,28 @@ Keep the pointer in sync if a later re-run migrates the root.
    seed's completion event is this bootstrap), so plan-coverage stays
    satisfied. On a **retrofit/backfill** (Step 6), the seed is `0001`, ahead
    of the reconstructed decisions.
+
+   **Seed completion evidence.** Keep the complete scaffold atomic; do not
+   split it into an incomplete intermediate tree to make a supplied gate pass.
+   For a direct-integration seed created in that same commit, use this
+   seed-only footer, replacing the path with the actual repository-relative
+   adoption record and quoting it for the host:
+
+   ```text
+   Shipped by bootstrap introduction: `<repo-relative done path>`.
+   Resolve: `git log --follow --diff-filter=A --format=%H -- "<repo-relative done path>"`
+   ```
+
+   After committing, resolve that exact path to one introducing commit.
+   Require it to be reachable and to contain this adoption record, the
+   Implemented seed, its INDEX row and the complete verified scaffold;
+   verify its signature when signing is required. Report the resolved SHA.
+   A generic description such as "the bootstrap commit" is insufficient.
+   If later repairs changed the scaffold, cite the existing verified repair
+   HEAD in a subsequent record commit instead. Never invent a future/self SHA.
+   Ordinary shipped items still name their existing verified implementation
+   tip. Under pull-request integration use the actual pull-request reference;
+   a missing reference or unconfirmed merge remains explicitly unverified.
 6. `plan/README.md` — from `templates/plan-README.md`. Create empty
    `plan/todo/.gitkeep` and `plan/done/.gitkeep`.
 7. **`_agent/` — write exactly what Q5, Q8 and Q4a prescribe, and
@@ -638,7 +662,10 @@ Keep the pointer in sync if a later re-run migrates the root.
     worktrees, while ordinary shared PR work remains serialised. Keep the
     item Status, Stop and final Report instructions in every eligible mode.
 11. `INDEX.md` — header + the seed ADR's row (item 5b); an empty table only
-    if the seed was declined. In a **two-shape** repo (Q2) the table
+    if the seed was declined. Link each row's number or title to the actual
+    ADR file using a path relative to INDEX. Check that every link resolves
+    and the row's title, status and date match the file's metadata.
+    In a **two-shape** repo (Q2) the table
     carries a **Shape** column, filled from each ADR's `shape:` field
     (blank field → `capability`); a single-shape repo has no such column.
     Neither `0000-` template appears in the table — templates are not
@@ -683,9 +710,15 @@ call out every merge decision in the commit message.
 Before claiming bootstrap complete, compare the actual output with the
 confirmed answers: root pointer, assessment depth, ADR shape and metadata,
 seed and INDEX row, plan queue, coordination files and mode-specific branch
-instructions. Run the recorded gate if present and retain its exact output
+instructions. Confirm the exact supplied gate command appears consistently
+in `CONVENTIONS.md`, `AGENTS.md` and the autonomous prompt when written.
+Run the recorded gate if present and retain its exact output
 and exit code. A wrong root, missing requested queue/seed or failed gate is
 an incomplete scaffold, not a host limitation. Correct it before reporting.
+When the plan layer includes the seed adoption record, also verify its
+completion reference as described above. Do not claim complete when the
+reference is missing, ambiguous, unreachable or points to an earlier incomplete
+scaffold. Preserve the failed observation and report the remaining repair.
 
 ## Step 6 — Offer backfill (existing repos; re-runnable for emergent work)
 

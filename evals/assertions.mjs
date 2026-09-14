@@ -139,6 +139,21 @@ export function assertAdrStatus(root, num, expected) {
   }
 }
 
+function assertSectionOrder(body, file, technology) {
+  const sections = ['Context', ...(technology
+    ? ['Decision', 'Rationale', 'Consequences']
+    : ['Capability statement', 'User stories / scenarios']),
+    'Acceptance criteria', 'Out of scope', 'Open questions', 'References',
+    'Revision History', 'Approvals'];
+  const headings = [...body.matchAll(/^## (.+)$/gm)].map((m) => m[1]);
+  let previous = -1;
+  for (const section of sections) {
+    const position = headings.indexOf(section);
+    if (position <= previous) throw new Error(`${file}: missing or out-of-order section ${section}`);
+    previous = position;
+  }
+}
+
 // The catalogue is on the LEGACY RANGE ENCODING: shape carried by the
 // number, not by a field. `cutoff` is the first technology number;
 // `shapeExceptions` names ADR numbers below it that are technology-shaped
@@ -168,6 +183,7 @@ export function assertLegacyRange(root, { cutoff, shapeExceptions = [] }) {
         `-shaped, but the range says ${expectTech ? 'technology' : 'capability'}`,
       );
     }
+    assertSectionOrder(body, adr.file, expectTech);
   }
   // Contiguous WITHIN each block; the gap at the cutoff is expected.
   for (const block of [adrs.filter((a) => a.num < cutoff),
@@ -198,6 +214,7 @@ export function assertMigratedToDeclaredShape(root, { map }) {
     if (shape !== 'capability' && shape !== 'technology') {
       throw new Error(`${adr.file}: shape: is "${shape}" — expected capability or technology`);
     }
+    assertSectionOrder(read(root, `adr/${adr.file}`), adr.file, shape === 'technology');
   }
   for (const [oldNum, newNum] of Object.entries(map)) {
     const moved = adrs.find((a) => a.num === Number(newNum));

@@ -47,6 +47,13 @@ conventions section. Cross-references from outside the catalogue
 (commit messages, plan items in `done/`) are left as history. The
 operator confirms before any file is rewritten.
 
+Post-migration audit resolves preserved done references and coverage through
+the migration commit's old-to-new map and actual file identity in the
+pre-migration/current trees. Matching a number or title alone is insufficient;
+an unrelated filename with the old prefix remains a defect. Inaccessible
+mapping/tree evidence is unverifiable. Required historical preservation is
+not itself a dangling active reference or an incomplete migration.
+
 ## User stories / scenarios
 
 - As a maintainer of a repo bootstrapped with a cutoff, my audit stays
@@ -124,9 +131,11 @@ operator confirms before any file is rewritten.
 | 2026-09-04 | r1 | Eugenio Minardi | Initial draft (Proposed), from the approved brainstorm: legacy range encoding stays recognised; audit and bootstrap offer a mechanical migration (append technology ADRs after the last capability number, stamp `shape:`, rewrite references, retire the boundary template); never forced. |
 | 2026-09-04 | r2 | Eugenio Minardi | Status Proposed → Accepted; acceptance delegated to the session by the operator. Open question resolved: no `aliases:` field; the migration commit's old-to-new map is the record. Plan 0037 authorised. |
 | 2026-09-05 | r3 | Eugenio Minardi | Implemented (plan 0037, PR #2, merge ce41a34): audit recognises the legacy encoding from a cutoff or a non-0000 template and keeps applying the range rules with one non-failing migration finding; audit and bootstrap offer the migration with a dry-run map and confirmation; the migration renumbers technology ADRs after the last capability one in order, stamps `shape:`, rewrites in-catalogue references, retires the boundary template, rewrites the conventions section, lands as one commit listing every pair; new-adr gained a legacy clause (scope addition traced to the capability statement); `legacy-range` eval fixture. AC1–9 met. Status Accepted → Implemented. |
+| 2026-09-13 | r4 | Codex, operator-authorised | Clarify the existing AC5/AC7 history-preservation contract after a real post-migration audit falsely rejected unchanged done entries: require map plus full historical file identity for coverage/reference resolution. Positive Codex post-audit and a Claude wrong-file/same-number negative audit verify the boundary; completed files remain byte-identical. See audits/2026-09-13-host-verification.md. |
 
 ## Approvals
 
 | Role | Name | Date | Signature |
 |------|------|------|-----------|
 | Maintainer | Eugenio Minardi | 2026-09-04 | — (delegated) |
+| Operator | Eugenio Minardi | 2026-09-13 | Necessary migration/audit repairs authorised within 0051 |

@@ -166,7 +166,11 @@ Pass this complete brief with the item's specification, unchanged at all rungs:
 ## Execute, integrate and collect results
 
 Dispatch the declared wave with the derived mechanism. Effective width is
-one at rung three and for shared checkouts. At rung three finish and
+one at rung three and for shared checkouts. At rung three, claiming starts
+an item: create local or remote claim branches and fill Claimed by only for
+the current item, never preclaim the remaining batch. Inspect its gate result
+before issuing the next item's commands. A later preclaim is not an
+already-running executor. At rung three finish and
 integrate each item before starting the next. **Before advancing the loop,
 check the last executor's gate result. An environment blocker terminates the
 entire wave immediately, even if the next item is independent and the budget
@@ -185,6 +189,8 @@ Normalise each return to: item key; outcome (shipped, ready, failed,
 blocked, stopped, unknown); claim/actual branch; integration SHA or PR;
 identifiers used/renumbered; blocker; conflict files; final block verbatim.
 No return means unknown. Outcome is separate from Overall's vocabulary.
+For a ready claim awaiting integration, write `Outcome: ready` and
+`Overall: partially verified`; ready and shipped are never Overall values.
 Report each item and a wave summary with Status at a glance; any unknown
 caps the wave at partially verified. Include excluded/withdrawn claims,
 effective width, rung, gate results, hooks/signing origins and remaining work.
@@ -194,7 +200,8 @@ then a separate block for the wave. Each has This run, Overall and Yet to do.
 A per-item outcomes table may accompany these blocks but never replaces
 them, including at the sequential rung. Check their count before returning.
 Put the item key or "Wave" in a separate heading above its block. Keep the
-block heading exactly `Status at a glance`, with no item suffix. For example:
+block heading exactly `Status at a glance`, with no item suffix or wave
+prefix. Put `Wave` on its own scope heading, just as with an item. For example:
 
 ```markdown
 ## Item <key>

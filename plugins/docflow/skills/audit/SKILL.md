@@ -72,7 +72,15 @@ the same way: it is a template, not the first technology ADR.
    from the range — so do not flag its absence.
 3. **Plan coverage.** Every `Accepted` ADR has a `plan/todo/` item;
    every `Implemented` ADR has a `plan/done/` entry. Flag orphans both
-   ways.
+   ways. After a range migration, resolve an unchanged done entry's old
+   identity through the migration commit's recorded old-to-new map before
+   checking coverage. Cite that commit and pair; do not require history to
+   name today's number. Bind the full old path in the pre-migration tree
+   to the mapped current file using that commit's tree/rename evidence;
+   an equal number or title alone never establishes identity. A different
+   filename sharing the old prefix gains no exemption. Missing mapping or
+   tree evidence is unverifiable, not proof
+   of coverage. Unrelated or unmapped missing entries remain findings.
 4. **Section completeness.** Each ADR has the required sections in the
    order its **declared shape** mandates — read the `shape:` field:
    `capability`, or an absent field, means the capability order
@@ -100,7 +108,13 @@ the same way: it is a template, not the first technology ADR.
 6. **Revision/Approvals.** Revision History present; Approvals populated
    for ADRs at `Accepted` or beyond.
 7. **Cross-references.** Relative `adr/NNNN-*.md` links resolve to real
-   files. Glossary anchors (if used) resolve.
+   files. Glossary anchors (if used) resolve. Preserved `plan/done/` entries
+   and historical commit messages or tags are checked in their historical
+   context. A retired path explained by the migration commit's old-to-new
+   map and the full file-identity evidence from check 3 is not a dangling
+   active link; cite the evidence instead of rewriting
+   history. This exception never excuses an unresolved current ADR, INDEX,
+   domain listing or todo reference.
 8. **Language mandate.** If set, spot-check user-facing docs for the
    required spellings.
 9. **ADR-privacy leaks.** Grep source / product directories for ADR
@@ -292,6 +306,16 @@ the same way: it is a template, not the first technology ADR.
 
 ## Step 2 — Report
 
+Translate the audit verdict into the closing block's Overall vocabulary:
+verified when all required checks pass; a non-failing migration offer or
+optional hygiene finding alone does not lower that status. Use partially
+verified or failed for unresolved failed checks, and blocked or unknown
+when required evidence is unavailable. Keep the issue count, severity and
+optional next steps in the explanation, not in place of that status value.
+Overall covers the complete requested audit, including unrelated findings;
+do not label it "verified for the migration" while another required check
+fails. Put the successful migration outcome under This run instead.
+
 Lead with a one-line verdict (clean / N issues). Then the punch list,
 grouped by severity: **blocking** (privacy leaks, status/lifecycle
 violations, broken cross-refs), **drift** (INDEX out of sync, missing
@@ -364,7 +388,7 @@ what follows from it: every `depends-on`, `supersedes` /
 `README.md` listing, and `plan/todo/` owning-ADR reference that names a
 moved number; the boundary template replaced by
 `adr/0000-template-technology.md`; §ADR Shapes rewritten to the declared
-field. Say plainly what is **not** touched: `plan/done/` footers, commit
+field. Say plainly what is **not** touched: entire `plan/done/` entries, commit
 messages, tags, and any reference from outside the catalogue. Those are
 history, and history is not rewritten.
 
@@ -421,11 +445,17 @@ ask for it as its own question, and take silence or ambiguity as a no.
 
 Re-run Step 1 with the legacy rules **off**: one contiguous sequence,
 each ADR's sections matching its declared shape, a Shape column whose
-values agree with the fields, every relative link resolving, and no
+values agree with the fields, every active relative link resolving, and no
 template numbered other than `0000`. The catalogue must pass with **no
 manual edit**. If anything fails, the migration is incomplete — finish
 it in the same commit rather than leaving a half-migrated catalogue,
 which is the one state neither rule set describes.
+
+Preserve every `plan/done/` file byte for byte. Resolve its historical
+identity for coverage and reference checks using the commit map, as checks
+3 and 7 prescribe. A decision's preserved rationale describing the former
+scheme is historical context; only the active shape rules and metadata
+change. Do not treat this required preservation as an incomplete migration.
 
 ## Coordination migration
 

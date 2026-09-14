@@ -19,3 +19,9 @@ Maps to adr/0102-static-verify-script.md acceptance criteria:
 ## Dependencies
 
 - adr/0101-markdown-files-in-git.md is already Implemented.
+
+## Status
+
+- Claimed by:
+- Blockers:
+- Stopped:

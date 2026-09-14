@@ -11,9 +11,24 @@ tracks the human ordering of work, not the ADR catalogue ordering.
   scope, the exit criteria, and any dependencies.
 - `plan/done/<YYYY-MM-DD>-<slug>.md` — shipped work, ordered
   chronologically. The file's body is amended with a "Shipped" footer:
-  under direct-to-main integration it names the HEAD SHA and any
+  under direct-to-main integration it names the verified implementation HEAD
+  recorded before the completion commit and any
   artefact id; under pull-request integration it names the pull request
   and any artefact id.
+
+Under direct integration, the bootstrap seed adoption entry may instead use
+this form, with its exact
+repository-relative path and host-appropriate quoting:
+
+```text
+Shipped by bootstrap introduction: `<repository-relative done path>`.
+Resolve: `git log --follow --diff-filter=A --format=%H -- "<repository-relative done path>"`
+```
+
+This seed-only reference resolves after creation to one reachable,
+verified scaffold commit containing the record and Implemented seed. Verify
+its signature when required; report missing or ambiguous evidence. It does
+not permit generic labels, future/self SHAs or this shortcut for ordinary work.
 
 ## Convention
 

@@ -42,9 +42,10 @@ The eval harness reuses the fixtures and assertion helpers from the
 static tier where possible. It runs as a release-gating suite rather than
 on every push.
 
-**Runner.** Use the host's own subagent mechanism where available, or
-the real vendor CLI/desktop in an independent disposable Docker container.
-Both execute the installed skills with scripted operator answers. A
+**Runner.** Use the host's own subagent mechanism where available, a real
+vendor CLI in an independent disposable Docker container, or native Cowork
+desktop with a disposable attached target. These routes execute the installed
+skills with scripted operator answers. A
 separate deterministic process judges the resulting files, git history,
 gate result and final report. Never replace a vendor host with another
 host and call it a portability pass. Record source commit and content
@@ -57,6 +58,9 @@ permissions. A desktop login, VM blocker, timeout or skipped case remains
 pending or failed. Model process exit zero alone never proves a pass.
 Subagent worktrees see committed refs. A read-only snapshot may test local
 edits, but must identify its digest and cannot claim to test a later commit.
+Native desktop runs record their platform, installed source and actual target
+separately from container isolation. A visible UI or open folder picker alone
+does not prove attachment, model execution or target Git access.
 
 ## User stories / scenarios
 
@@ -94,6 +98,10 @@ edits, but must identify its digest and cannot claim to test a later commit.
 
 - adr/0011-static-skill-validation.md
 - adr/0007-lifecycle-skills.md
+- `evals/hosts/README.md` (explicit six-case plus wave mapping)
+- `audits/2026-09-13-host-verification.md` (results, original failures and limits)
+- `audits/2026-09-13-pi-qwen-continuation.md` (native Pi repair/retry and temporal assertion controls)
+- `audits/2026-09-14-cowork-continuation.md` (native target lifecycle, signed concurrent wave, seed-reference regression and retained permission failures)
 
 ## Revision History
 
@@ -103,6 +111,9 @@ edits, but must identify its digest and cannot claim to test a later commit.
 | 2026-06-02 | r2 | Eugenio Minardi | Resolved runner open question: host subagent mechanism (worktree Agent/Workflow), no external CLI/pinned model. Noted committed-state worktree consequence. Demonstrated via a new-adr subagent eval. |
 | 2026-06-02 | r3 | Eugenio Minardi | Implemented (plan item 0002): evals/ deterministic layer + behavioural.workflow.mjs; all three subagent evals (new-adr, ship-item, bootstrap) PASS against HEAD. Status Accepted → Implemented. |
 | 2026-09-11 | r4 | Eugenio Minardi | Reopen for the approved wave regressions and independent Docker host harness. Operator explicitly authorised real vendor CLI/desktop runs; observable outcomes, not model self-report, determine pass. |
+| 2026-09-13 | r5 | Codex, operator-authorised | Execute all six core model cases plus wave through the documented real-host route with independent target/report checks. Repair malformed legacy fixture sections, incidental Markdown assertions, real ship/migration history, historical identity audit and native-session dispatch. Preserve failed runs, overwritten-receipt limitations and reporting-only recovery. Deterministic six skips remain skips; the custom Workflow suite itself was not run. Keep Accepted while the owning five-host release work remains blocked. |
+| 2026-09-14 | r6 | Codex, operator-authorised | Preserve native Pi provider/model/thinking defaults and add completed-event claim/integration checks, including batched output and arbitrary push source refs. Retain original failures, bounded off repair/retry passes, off positive contract failure, high positive repetition and the inconclusive recovered interruption. The corrective high run passes stop-flow/acquisition checks but its published initial claim omits the branch name. Bound installed bytes to the tested Windows export, with Git-blob equality only after line-ending normalisation. Six deterministic skips remain skips; full Pi/Cowork acceptance remains incomplete. |
+| 2026-09-14 | r7 | Codex, operator-authorised | Distinguish native Windows Cowork fixtures from CLI containers. Independently verify actual-target signing, bootstrap/new-adr and an opted-in concurrent Workflow wave with preserved blocked work and held claim. Original child events verify acquisition ordering; retain the manifest timestamp correction and unavailable parent failure receipt. A stricter seed-reference check exposes the original generic footer; 14 regressions and a fresh native bootstrap on repaired eff3130 pass. Preserve initial unlink denial, supported recovery in existing Skip approvals mode and the separate post-wave export boundary violation. Six deterministic skips remain skips; full release acceptance remains incomplete. |
 
 ## Approvals
 
@@ -110,3 +121,6 @@ edits, but must identify its digest and cannot claim to test a later commit.
 |------|------|------|-----------|
 | Maintainer | Eugenio Minardi | 2026-06-01 | — |
 | Maintainer | Eugenio Minardi | 2026-09-11 | Approved in operator session; PR #5 expansion |
+| Operator | Eugenio Minardi | 2026-09-13 | Explicit 0051 continuation includes independent behavioural release checks and necessary repairs |
+| Operator | Eugenio Minardi | 2026-09-13 | Local-provider Pi continuation and necessary runner/assertion repairs authorised; full five-host exit criteria retained |
+| Operator | Eugenio Minardi | 2026-09-14 | Unlocked/visible native Cowork continuation and necessary evidence updates authorised; no support or exit-criteria reduction |
