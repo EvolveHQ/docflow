@@ -128,11 +128,21 @@ Pass this complete brief with the item's specification, unchanged at all rungs:
    `claim/<item-key>` from the base; commit Claimed by with actor/date/branch
    and put the actual claim branch, wave, reservations and owned artefacts
    in its first commit message.
+   Before publishing, read back `git show -s --format=%B HEAD` and
+   `git show HEAD:<owned-plan-path>`. Check the literal actual branch in
+   both the message and Claimed by, the wave name, reservations (including
+   none), and exact owned paths. Check `git diff-tree --no-commit-id
+   --name-only -r HEAD`: this initial commit changes only the owned item's
+   Status, with no implementation output. Repair missing metadata locally
+   before acquisition. A later commit cannot repair a deficient initial claim.
    Validate the key with `git check-ref-format --branch`; never use a literal
    placeholder. Acquire with
    `git push --porcelain --force-with-lease=refs/heads/claim/<item-key>: origin HEAD:refs/heads/claim/<item-key>`.
    Require exit zero and the porcelain `*` new-ref result for that destination.
    Existing refs, including same-tip/up-to-date results, grant no ownership.
+   Wait for that push to finish and inspect its successful new-ref receipt
+   before issuing any implementation write. Do not batch acquisition and
+   implementation into the same tool call.
    A signing/push failure stops before implementation; preserve unknown
    outcomes. Never overwrite another claim. Set upstream after acquisition.
    For PR mode, immediately open/reuse the draft PR with item, actor, branch,
@@ -217,6 +227,16 @@ dispatch and after each wave; if unavailable report the soft cap as not
 enforced. Stop starting waves past the cap; never cut off an in-flight item.
 
 ## Stop and cleanup
+
+An explicit host/tool permission denial stops the affected operation immediately.
+Do not retry it through another tool, shell, staging directory, move, archive,
+symlink or delegate. Do not probe writes to the denied destination. Report the
+denied action and destination, actual partial effects and required permission
+in the final stopped/blocked report. If recording Status, committing or exporting
+would cross that boundary, report in the current response and leave persistence
+pending. Resume only after explicit permission for that action is supplied.
+This also applies to receipt export and cleanup. An unavailable gate dependency
+is a separate environment blocker; its recovery rules do not override a denial.
 
 Stop on budget/queue exhaustion, operator stop, host limit, unknown/systemic
 gate failure, non-Accepted ownership, ambiguous criteria, repeated substantive

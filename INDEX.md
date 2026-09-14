@@ -16,10 +16,10 @@ ADR change.
 | [0009](adr/0009-distribution-marketplace-npm.md) | Distribution via self-hosted marketplace and npm/pi package | Implemented | 2026-05-22 | 0008 |
 | [0010](adr/0010-worktree-conflict-reconciliation.md) | Content-level conflict reconciliation across worktrees | Implemented | 2026-06-01 | 0005, 0007 |
 | [0011](adr/0011-static-skill-validation.md) | Static structural validation of skills and manifests | Implemented | 2026-06-01 | 0001, 0007, 0008 |
-| [0012](adr/0012-skill-behavioural-evals.md) | Behavioural and end-to-end evaluation of skill outcomes | Accepted | 2026-06-01 | 0001, 0011 |
+| [0012](adr/0012-skill-behavioural-evals.md) | Behavioural and end-to-end evaluation of skill outcomes | Implemented | 2026-06-01 | 0001, 0011 |
 | [0013](adr/0013-interactive-assessment-protocol.md) | Standard interactive assessment protocol for skills | Implemented | 2026-06-02 | 0006, 0007 |
 | [0014](adr/0014-concurrency-guardrails.md) | Concurrency guardrails for ADR and plan creation | Implemented | 2026-06-02 | 0001, 0006, 0010, 0013 |
-| [0015](adr/0015-multi-target-portability.md) | Multi-target portability — one skill source, many coding agents | Accepted | 2026-06-03 | 0001, 0007, 0009 |
+| [0015](adr/0015-multi-target-portability.md) | Multi-target portability — one skill source, many coding agents | Implemented | 2026-06-03 | 0001, 0007, 0009 |
 | [0016](adr/0016-layered-artifact-model.md) | Layered artifact model — minimal core, opt-in layers | Implemented | 2026-06-17 | 0001 |
 | [0017](adr/0017-configurable-artifact-root.md) | Configurable artifact root — control the repo footprint | Implemented | 2026-06-17 | 0013, 0016 |
 | [0018](adr/0018-wip-stays-out-of-catalogue.md) | Work-in-progress stays out of the ADR catalogue | Implemented | 2026-06-17 | 0001, 0013, 0014 |

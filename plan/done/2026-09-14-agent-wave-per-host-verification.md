@@ -58,11 +58,18 @@ and return ADR 0015 to Implemented.
 - Plan 0049 (the skill under test) — sequential; plan 0050 may run in
   parallel with the host runs.
 
-## Status
+## Operator continuation, 2026-09-14
 
-- **Claimed by:** Codex (Orca worker, dispatch `ctx_35d5b332d1f2`), 2026-09-14, `kmox83/0051-host-verification-astra` ([PR #6](https://github.com/EvolveHQ/docflow/pull/6); resumed for the operator-confirmed visible Cowork desktop).
-- **Blockers:** Full native-high Pi acceptance remains unmet: the positive control repeated generation before work; the corrective blocked run passed stop-flow checks but failed initial claim branch-name metadata. No Pi rerun is authorised here. Cowork now has actual-target signing, original bootstrap/new-ADR, opted-in concurrent Workflow wave and repaired seed-bootstrap evidence; source and permission limits remain explicit. A post-wave receipt export crossed a denied remote-tool .git boundary before the controller's stop completed; retain that distinct adverse observation and the earlier connector/unlink failures. Full five-host release review remains incomplete. Bounded native private-key cleanup is observed; broader agent state remains unverified after correction of the original cleanup overclaim.
-- **Stopped:** 2026-09-14 after the bounded native Cowork continuation; Pi's full contract remains unverified. The evidence stays on draft PR #6 for review, with current-head CI recorded on the PR and final dispatch report. No completion move, merge or release is claimed.
+The new handoff expressly resumes Pi on the existing local Qwen route with
+native high thinking and authorises necessary fixes, release verification,
+an isolated existing-repository pilot, and a new draft PR. Earlier no-rerun,
+stopped and draft-PR-6 statements below are historical. Preserve their receipts.
+No merge, release, version bump, paid external service or support reduction is
+authorised. Verify fresh normal and blocked runs, committed/publication metadata,
+completed-event ordering, signed local transport, held claims, fresh-clone gates
+and truthful reports. Keep this item todo and ADRs 0012/0015 Accepted until their
+real exit criteria pass. Workspace documentation has a separate derived change
+record outside this product plan.
 
 ## Cowork continuation, 2026-09-14
 
@@ -173,19 +180,66 @@ name; this metadata failure remains separate from the passing stop flow.
 All installations matched frozen Windows export bytes; Git blobs match only
 after CRLF-to-LF normalisation, as the receipt explicitly records.
 
-Exit 1 remains partially verified because Pi's full contract is unverified;
-Cowork has scoped native observations with explicit source/permission limits.
-Exit 2 is verified: README has observed rows and no assumed marker. Exit 3
-retains the required r5 history and regenerated metadata INDEX; local gates
-pass. Neither this item nor ADRs 0012/0015 is marked complete.
+At that earlier checkpoint, exit 1 remained partially verified because Pi's
+full contract was unverified; Cowork had scoped native observations with
+explicit source/permission limits. Exit 2 was verified: README had observed
+rows and no assumed marker. Exit 3 retained the required r5 history and
+regenerated metadata INDEX; local gates passed. Neither this item nor ADRs
+0012/0015 was marked complete at that checkpoint.
+
+## Current operator run — 14 September 2026
+
+See [the release audit](../../audits/2026-09-14-release-verification.md) and its
+separate sanitised receipt. Product and gate changes are signed separately;
+all fresh installed plugin files are exact Git bytes from bef25d8. The original
+receipts above remain historical. New observations include a complete native-high
+Pi normal pass, fresh CLI release cases and native isolation, a scoped Cowork
+denial pass with broader failures retained, actual-target lifecycle recovery,
+and a controlled existing Clarity clone pilot. An infrastructure interruption
+and later failed attempts remain preserved. Fresh Pi bootstrap/new-decision
+settles naturally at 2,935.8 seconds, exit 0; its actual history supplies the
+fresh blocked wave, which settles at 2,209.1 seconds, exit 0. All 13 state,
+11 initial-claim/order, five temporal and 15 fresh-clone/stop assertions pass,
+with three final reports and complete persisted stopped labels. The final
+bootstrap and blocked run are serial on the existing local Qwen/high route.
+All owned CLI runtimes are archived and stopped; the private signers are
+discarded while public keys and recoverable histories remain.
+
+The final assessment maps all six core cases and five hosts to actual execution
+and independent assertions on bef25d8. OpenCode's successful stopped state has
+a separate native Status-only reporting correction; this staged result and
+earlier failures remain explicit. Cowork retains its permission/transport
+limits. Pi's full published-claim and stop contracts are verified; incidental
+report abbreviations and unsupported hosted-PR inferences are corrected in the
+independent report review. No support or acceptance criterion is reduced.
+
+## Verification and prepared completion
+
+All three exit criteria are verified on the pinned product bytes: the five
+host rows and Claude Code rungs 1/2 are observed; README has observed rows
+without assumed markers; the required revision history remains, the next
+substantive revision prepares the owning decisions as Implemented, and INDEX
+is regenerated from metadata. The six mapped release cases, initial Pi claim
+contract, fresh native-high normal/blocked runs and scoped reporting outcomes
+are independently checked. The final assessment retains staged OpenCode
+reporting correction, original failures and all host/evidence limits.
+
+The verified work-head checks pass: `verify: OK`, exit 0; 15 mutation controls;
+six deterministic eval passes, zero failures and six explicit skips; six runner,
+eight temporal, 17 claim, 12 denial and 18 seed controls. The separate native
+route executes the skipped scenarios. Owned runtimes are stopped; worktree,
+public keys and recoverable fixture histories remain.
+
+Shipped footer prepared for checked merge — verified work HEAD: `2fdbc6e5c291aa423fe75b61d43522de008b9c4c`.
+PR: https://github.com/EvolveHQ/docflow/pull/7
 
 ## Status at a glance
 
-- **This run:** independently verified Cowork signing, original lifecycle,
-  concurrent wave and temporal evidence, plus the seed-reference repair on a
-  fresh exact-source bootstrap. Original and export-only failures are preserved.
-- **Overall:** partially verified — the five-host requirement remains blocked.
-- **Yet to do:** successful native-high Pi complete-contract evidence in a later
-  authorised run and remaining release review, retaining the
-  broader agent-state uncertainty after bounded private-key cleanup. Keep
-  this item in todo and both owning decisions Accepted until all criteria pass.
+- **This run:** Verified the existing host/release criteria and prepared the
+  atomic completion move, owning decisions and regenerated INDEX on PR #7.
+  The work-head gate returns `verify: OK`, exit 0; all required controls pass.
+- **Overall:** verified within the recorded scope; completion is prepared.
+- **Yet to do:** An authorised checked merge, with required checks green on
+  the current PR head, makes completion effective. Release needs separate authorisation. Keep
+  the worktree for review; the generated untracked Python cache remains after
+  automatic approval review rejected cleanup with “blocked by policy”.

@@ -217,6 +217,36 @@ and negative fixtures. These deterministic regressions are not native runs.
 Original results remain unchanged; the new source received a targeted bootstrap
 rerun, not another five-host matrix. Each receipt states the CRLF/Git-blob boundary.
 
+## Current claim and denial assertions
+
+The separate `results/2026-09-14-release-verification.json` and release audit
+record the operator's next continuation on exact Git-blob plugin bytes from
+`bef25d8`; the earlier source-pinned observations above remain historical.
+Fresh target-state success is scoped separately from native tool chronology,
+report format, permission mode and interrupted attempts.
+
+Install `install-claim-observer.py <base>` before a fresh disposable wave. It
+records committed ref transactions outside the model checkout and refuses to
+overwrite existing evidence. Then run `check-pi-claims.py <base> <transcript>`
+after native execution; add `--blocked` for the sequential blocked case. It
+checks the first published object, literal branch in message and ownership,
+wave/reservations/owned paths, a diff confined to the item's Status section,
+signature and a completed acquisition result before the first write call.
+A later metadata repair cannot satisfy this check. The observer is evidence,
+not a permission boundary. Seventeen controls run with
+`python -B evals/hosts/test-pi-claims.py`; the existing six runner and eight
+temporal controls remain unchanged.
+
+`node evals/hosts/check-permission-denial.mjs <receipt.json>` judges a focused
+native denial case from paired tool events and independent destination hashes.
+It requires an explicit denial, no subsequent tool call, unchanged destination
+and a truthful stopped report. Twelve controls run with
+`node --test evals/hosts/test-permission-denial.mjs`. Historical incomplete
+capture remains incomplete even when a particular post-denial failure is
+provable. Ordinary gate dependency failure is tested separately from denial.
+The seed-reference checker now has 18 controls, including incidental bullet/bold
+ownership labels and wrong-file negative cases.
+
 ## Evidence and cleanup
 
 Publish sanitised receipts only: source revision/digest, image/version/model,
@@ -241,5 +271,18 @@ match only after CRLF-to-LF normalisation. Both digests and comparisons are reco
 Passing a subset does not establish a green release suite. Signed local pushes and
 native delegation have bounded evidence; hosted GitHub permissions remain
 unverified. Native Cowork target Git evidence is recorded separately in the
-2026-09-14 continuation; Pi's full contract and the owning release gate remain
-incomplete. `results/2026-09-11.json` is historical.
+2026-09-14 continuation. These statements describe the earlier snapshots;
+`results/2026-09-11.json` is also historical.
+
+The final `results/2026-09-14-release-verification.json` assessment covers all
+five hosts on exact Git bytes from `bef25d8`. Fresh native-high Pi bootstrap,
+normal completion and bootstrap-derived blocked execution pass independent
+initial-publication, completed-event, signed-state, persisted-report and
+fresh-clone checks. The complete native runs settle naturally. OpenCode's
+later wave uses a separately verified native Status-only reporting correction;
+that staged result and all failed attempts remain explicit. The exact mapped
+full-bootstrap assertion also passes on preserved native Claude Code/Codex
+outputs without changing their bytes. No hosted PR or ordinary-manual Cowork
+permission capability is inferred. Owned runtimes are stopped; public keys and
+recoverable histories remain. PR completion and release retain their separate
+authorisation requirements.

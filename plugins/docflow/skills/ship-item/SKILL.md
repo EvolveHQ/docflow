@@ -179,6 +179,17 @@ update Blockers/Stopped on the queued item, or the PR body if already moved,
 with date/reason and This run / Overall / Yet to do. Preserve recoverable
 work within the existing grant. A failed final gate never advances the remote.
 
+## Host permission boundary
+
+An explicit host/tool permission denial stops the affected operation immediately,
+including receipt export and cleanup. Do not retry through another tool, shell,
+staging directory, move, archive, symlink or delegate, or probe writes to the
+denied destination. Report the denied action and destination, actual partial
+effects and missing permission as stopped/blocked. If recording Status or
+committing/exporting would cross that boundary, report in the current response
+and leave persistence pending. Resume only after explicit permission for that
+action. A gate environment failure is distinct and never overrides a denial.
+
 <!-- docflow:closing-report -->
 ## Closing report
 

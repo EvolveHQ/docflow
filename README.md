@@ -374,9 +374,9 @@ selected model and the host's permissions. Independent vendor-host tests on
 |---|---|---|
 | Claude Code 2.1.269 / Opus 5 | Bootstrap/new-adr, native Workflow rung 1 and Agent rung 2 passed; workers signed and pushed to local remotes. | Ordinary manual permissions with fixture tools allowed; one worktree guard denial recovered through permitted commands. Hosted PR operations untested. |
 | Codex 0.154.0 / GPT-6 Astra | Bootstrap/new-adr and native rung 2 passed; signed concurrent work survived the whole-wave gate failure. | Native dispatch needed session storage on the disposable home; ephemeral dispatch failed. Workers used explicitly assigned Git worktrees, without host-enforced isolation. |
-| OpenCode 1.18.30 / Big Pickle | Bootstrap/new-adr and native rung 2 target checks passed; signed concurrent claims survived the gate failure. | Original wave report failed formatting; a separate read-only reporting rerun passed. Workers used explicitly assigned Git worktrees. |
-| pi 0.84.4 / local Qwen coding route | Thinking-off bootstrap repair/new-adr and native-high rung 3 blocked flow passed independent checks. Installed export bytes and nine sidecars verified. | The high blocked run omitted the claim branch name from its initial commit. The off positive control violated claim/completion rules; the high positive control repeated generation before work and was interrupted. Full wave acceptance remains unmet; local signed transport only. |
-| Cowork Windows Desktop 1.52386.6 / Opus 5 Max | Actual-target signed bootstrap/new-adr and opted-in Workflow rung 1 observed; concurrent signed claims and work survived the gate failure. A fresh bootstrap passed after repairing its seed completion reference. All 32 loaded files and nine sidecars matched each tested export. | Existing Skip approvals mode was unchanged; target-scoped deletion permission recovered initial Git lock failure. Native `gh` is absent; pushes used a local bare remote. A later receipt export crossed an explicit Git-path denial; that adverse observation remains separate from the wave checks. |
+| OpenCode 1.18.30 / Big Pickle | Fresh bootstrap/new-adr and native Task rung 2 pass target checks, preserving signed concurrent claims after the gate-environment failure. Full native worker records establish acquisition ordering. | A later attempt wrongly integrates another item after the failure and remains rejected. The fresh retry passes state, initial-claim and final-report checks; a separate native follow-up adds missing labels to the persisted stop entry. Workers use explicitly assigned Git worktrees; this is staged verification, not an uninterrupted pass. |
+| pi 0.84.4 / local Qwen coding route | Fresh native-high bootstrap/new-adr, normal completion and a bootstrap-derived blocked wave pass. Initial published metadata, acquisition-before-write, signed recovery, held-claim exclusion, persisted reports and fresh-clone gates are independently checked. | Earlier missing metadata, interruptions and local-backend 503 failures remain recorded. The final bootstrap and blocked wave ran serially on the same local route. Signed transport is local; unauthenticated CLI probes do not establish hosted PR capability or external PR state. |
+| Cowork Windows Desktop 1.52386.6 / Opus 5 Max | Fresh actual-target signed bootstrap/new-adr and native Workflow rung 1 pass state checks, preserving signed concurrent blocked work. A focused explicit export-denial test stops with no subsequent tools and unchanged destination bytes. | Existing Skip approvals mode is unchanged. A separate lifecycle attempt repeats probes after a Git-lock denial; supported target-scoped permission recovery is recorded separately. The historical export bypass remains a failure. Local bare pushes do not prove hosted PR capability. |
 
 The six core model-driven cases have independent target assertions through
 the vendor-host runner, including express bootstrap, signed item completion
@@ -387,10 +387,12 @@ selection; the server identifies its response model as `qwen3.8-27b`. Earlier
 cloud-provider failures remain historical and do not require a cloud login
 for this route. The runner now preserves the native thinking setting; earlier
 off results do not establish the operator's full high-thinking configuration.
-The full five-host release requirement remains incomplete: Pi's full wave
-contract is unverified. Cowork now has actual-target lifecycle and wave
-evidence, bounded to its observed permission mode and tested snapshots;
-its earlier cloud-connector denial and later export failure remain recorded.
+The current source-pinned assessment covers the five-host release requirement.
+Each continuation records exact installed bytes and independent assertions; earlier failures and
+infrastructure interruptions remain separate. Cowork's focused denial pass
+does not establish a general permission boundary. The isolated existing-repository
+pilot preserves real history through checked completion and a recoverable stop;
+it is controlled verification, not independent human adoption.
 
 Signed transport tests used isolated local bare remotes. They do not prove a
 hosted GitHub PR workflow or GitHub authentication. Selection reused explicitly

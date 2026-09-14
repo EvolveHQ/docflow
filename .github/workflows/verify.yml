@@ -18,4 +18,6 @@ jobs:
       - run: node evals/run.mjs
       - run: python3 -B evals/hosts/test-run-host.py
       - run: python3 -B evals/hosts/test-pi-wave-events.py
+      - run: python3 -B evals/hosts/test-pi-claims.py
+      - run: node --test evals/hosts/test-permission-denial.mjs
       - run: node --test evals/hosts/test-seed-completion.mjs
