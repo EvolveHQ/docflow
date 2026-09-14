@@ -114,6 +114,30 @@ check reject this run. It remains a failed wave, with recoverable histories and
 native receipts retained. A fresh fifth case restates the installed whole-wave
 environment-stop rule explicitly; no product or gate check is weakened.
 
+The fifth OpenCode wave settles at 534.8 seconds, exit 0. All 18 initial-claim
+checks, final-report shape/placement and 13 blocked-state checks pass. The
+state check uses an independent public-only keyring: importing the preserved
+old public key into the restarted native home initially yields valid but
+untrusted `U` results for two bootstrap commits. Trusting the two known synthetic
+identities in the separate verifier yields `G` for all eight commits; native
+keyring and repository configuration are unchanged, and the first failure is
+retained. Actual native child exports establish acquisition before each write.
+Beta was dispatched before alpha's failure and wrote before alpha's result
+could return to the parent; both claims are retained, with no later dispatch
+or main integration. The first private timeline helper over-required both writes
+before the child-local failure and missed lowercase `exit_code=1`; its original
+observations and the corrected contract assessment are both retained.
+
+Alpha's persisted Stopped entry omits the three reporting labels in that fifth
+run. A separately authorised native reporting follow-up settles at 227.5 seconds,
+exit 0, and adds only those three lines. Eleven independent correction checks
+and all 13 state checks pass. Signed recovery tip `b2da7aa` descends from original
+`93075f2`; main `f68fbc3`, beta `9d88927`, held `5fcab91`, outputs, gate and
+completion history remain unchanged. This is a distinct reporting correction,
+not another full wave or an uninterrupted original pass. Complete native
+parent/child exports are retained privately. The completed runtime is archived
+and stopped, dropping its disposable private signer while retaining public keys.
+
 ## Cowork denial regression
 
 The focused fresh case loads the pinned plugin, stages one payload before the
@@ -238,8 +262,8 @@ branch; main still contains 64 shipped records.
 Automatic approval review rejects removal of the generated
 `evals/hosts/__pycache__/check-pi-claims.cpython-312.pyc`, including a retry
 limited to that single file, with “blocked by policy”. It remains untracked.
-The completed Pi blocked container is archived and stopped. The active Pi normal
-and restarted OpenCode containers still need cleanup after their native runs;
+The completed Pi blocked and OpenCode containers are archived and stopped.
+The active Pi normal container still needs cleanup after its native runs;
 the worktree and recoverable fixture histories are retained for review.
 
 ## Status at a glance
@@ -249,7 +273,7 @@ the worktree and recoverable fixture histories are retained for review.
   refresh have independent evidence. Native continuation and final-head validation
   remain in progress; this report does not claim a green release gate.
 - **Overall:** partially verified.
-- **Yet to do:** Finish remaining native Pi and fresh OpenCode evidence assessments,
+- **Yet to do:** Finish the remaining native Pi bootstrap/blocked evidence,
   retain earlier reporting/timeline caveats, record cleanup, run final-head
   gates and obtain green PR CI. Keep unverified plan 0051 and decisions 0012/0015
   open. PR integration and release require separate operator authorisation.
