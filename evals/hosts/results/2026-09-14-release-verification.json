@@ -1564,6 +1564,78 @@
       "final_report_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "collector_receipt": "collected.json"
     },
+    "pi-bootstrap-third": {
+      "case": "pi-bootstrap-third",
+      "checker_revision": "5e187ba96f44506a5d131e93f112a2a47c69434d",
+      "process": {
+        "host": "pi",
+        "container": "docflow-release-pi-normal",
+        "fixture": "/workspace/bootstrap-third/repo",
+        "host_exit": 0,
+        "seconds": 2935.8,
+        "model_requested": null,
+        "provider_requested": null,
+        "claude_delegation_opt_in": null,
+        "permission_context": "project files trusted with --approve; native tool permissions",
+        "behavioural_verdict": "unverified: run independent assertions",
+        "codex_session_storage": null,
+        "thinking_requested": null,
+        "pi_thinking_selection": "native configured default"
+      },
+      "assertions": [
+        {
+          "argv": [
+            "docker",
+            "exec",
+            "docflow-release-pi-normal",
+            "python3",
+            "/workspace/evals-pi-bootstrap-third/hosts/check-bootstrap.py",
+            "/workspace/bootstrap-third/repo",
+            "/workspace/bootstrap-gate-original.mjs",
+            "--signed",
+            "--coordination",
+            "separate"
+          ],
+          "exit": 0,
+          "stdout": "{\n  \"checks\": {\n    \"required_files\": true,\n    \"root_pointer\": true,\n    \"two_adrs\": true,\n    \"seed_implemented\": true,\n    \"new_adr_proposed\": true,\n    \"three_criteria\": true,\n    \"index_rows\": true,\n    \"plan_queue\": true,\n    \"seed_completion\": true,\n    \"recorded_gate\": true,\n    \"autonomous_gate\": true,\n    \"gate_unchanged\": true,\n    \"gate\": true,\n    \"no_obsolete_coordination\": true,\n    \"roles_match_mode\": true,\n    \"requested_coordination\": true,\n    \"requested_integration\": true,\n    \"reporting_contract\": true,\n    \"target_git_history\": true,\n    \"target_git_clean\": true,\n    \"target_files_tracked\": true,\n    \"valid_signatures\": true,\n    \"recorded_signing\": true,\n    \"seed_completion_reference\": true\n  },\n  \"passed\": true,\n  \"gate_stdout\": \"verify: OK (fixture gate)\",\n  \"gate_exit\": 0,\n  \"target_git_complete\": true,\n  \"commits\": \"79e6037 docs(adr): add ADR 0002 Export a plain text summary\\n985574c docs: bootstrap documentation-led ADR conventions\",\n  \"seed_completion_check\": {\n    \"command\": [\n      \"node\",\n      \"/workspace/evals-pi-bootstrap-third/hosts/check-seed-completion.mjs\",\n      \"/workspace/bootstrap-third/repo\",\n      \"--signed\"\n    ],\n    \"exit\": 0,\n    \"stdout\": \"{\\\"passed\\\":true,\\\"kind\\\":\\\"bootstrap-introduction\\\",\\\"done\\\":\\\"plan/done/2026-09-14-adopt-adr-method.md\\\",\\\"seed\\\":\\\"adr/0001-record-architecture-decisions.md\\\",\\\"reference\\\":\\\"985574c007007dc98f3d5a2553fadb6e69269e05\\\",\\\"signature_required\\\":true}\",\n    \"stderr\": \"\"\n  }\n}\n",
+          "stderr": ""
+        },
+        {
+          "argv": [
+            "docker",
+            "exec",
+            "docflow-release-pi-normal",
+            "node",
+            "/workspace/evals-pi-bootstrap-third/hosts/check-release.mjs",
+            "new-adr",
+            "/workspace/bootstrap-third/repo",
+            "/opt/docflow-source"
+          ],
+          "exit": 0,
+          "stdout": "{\"case\":\"new-adr\",\"passed\":true,\"target\":\"/workspace/bootstrap-third/repo\"}\n",
+          "stderr": ""
+        },
+        {
+          "argv": [
+            "docker",
+            "exec",
+            "docflow-release-pi-normal",
+            "node",
+            "--input-type=module",
+            "-e",
+            "import {readFileSync} from 'node:fs';import {assertStatusReports} from '/workspace/evals-pi-bootstrap-third/reporting.mjs';assertStatusReports(readFileSync('/workspace/pi-bootstrap-third-final-report.md','utf8'),1);console.log('report: OK');"
+          ],
+          "exit": 0,
+          "stdout": "report: OK\n",
+          "stderr": ""
+        }
+      ],
+      "passed": true,
+      "private_transcript_sha256": "dae050333133c04ae9f032c40a3207ea79d5319aaa7cf0613fb85b671dd76cca",
+      "prompt_receipt": "Exact run-host argv, prompt file and raw native events retained in private operator scratch; no model reasoning published.",
+      "final_report_sha256": "bb4a9650c79e6f87798dc435c5420720e1fddf26b4131612f9bc16d1bf4c0b46",
+      "collector_receipt": "collected.json"
+    },
     "pi-normal": {
       "case": "pi-normal",
       "checker_revision": "b6ab605f5f158f29934c9131acd05067de0a001e",
@@ -3323,6 +3395,43 @@
       }
     ],
     "health_observations_scope": "Read-only endpoint observations during post-failure investigation; exact wall-clock timestamps were not captured."
+  },
+  "pi_serial_operator_update": {
+    "date": "2026-09-14",
+    "source": "Operator message in this active session",
+    "operator_report": "The local backend should now work; another client had been draining resources, and it cannot handle many concurrent calls.",
+    "verification_boundary": "The cause is operator-reported, not independently diagnosed by this controller. The prior native 503 failures remain failures.",
+    "execution_constraint": "One local Qwen inference run at a time. Finish bootstrap and independent checks before starting the blocked wave. Preserve native provider, model and high thinking; no server-wide settings changed.",
+    "observed_sequence": {
+      "bootstrap_case": "pi-bootstrap-third",
+      "bootstrap_exit": 0,
+      "bootstrap_seconds": 2935.8,
+      "bootstrap_checked_before_next_inference": true,
+      "following_case": "pi-bootstrap-wave-retry"
+    },
+    "status_at_a_glance": {
+      "this_run": "Operator capacity constraint incorporated; fresh bootstrap independently passes before blocked-wave launch.",
+      "overall": "partially verified",
+      "yet_to_do": "Complete the serial blocked-wave run and independent release checks."
+    }
+  },
+  "pi_bootstrap_wave_preparation": {
+    "source": "bef25d8d8a9ccc0a3ac15b678a2d619ed55c6216",
+    "fixture": {
+      "fixture": "/workspace/bootstrap-wave-retry/repo",
+      "bootstrap_head": "79e603791a07aed3fbcaaf814f870988e7218f49",
+      "base": "389e1052d283753890e149e7a9fa46d4bc00bf89",
+      "held": "d84cda5e20f0dd1f4914248bc550bee88f4586a1"
+    },
+    "observer": "claim observer installed; fixture transport only\n",
+    "native_default": {
+      "provider": "llama-server",
+      "model": "qwen3.8-27b-coding",
+      "thinkingLevel": "high"
+    },
+    "rpc_exit": 0,
+    "inference_request_for_state": false,
+    "process_flag_overrides": []
   },
   "required_local_checks": {
     "head": "166d55b8b4b959fd2ed4cacf98fac5c178db25a1",

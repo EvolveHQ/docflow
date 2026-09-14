@@ -24,13 +24,16 @@ Freeze the tested plugin snapshot and record its revision plus digest,
 especially when a host caches an installation or a working tree has edits.
 
 Final reports are checked by `reporting.mjs`; missing blocks fail independently
-of a model's verdict. Host evidence and remaining gaps are recorded in
-`hosts/results/2026-09-13.json`; earlier receipts remain historical evidence.
-The six skipped model cases have now been mapped to independently checked
-native-host runs, plus the Workflow wrapper's additional wave case. These
-receipts are separate from the deterministic command's skips. The complete
-five-host release requirement remains pending on pi authentication and a
-usable Cowork runtime with actual target Git capability.
+of a model's verdict. The current continuation is recorded in
+`hosts/results/2026-09-14-release-verification.json` and the corresponding
+release audit; earlier receipts remain historical evidence. The six skipped
+model cases are mapped to independently checked native-host runs, plus the
+Workflow wrapper's additional wave case. These receipts are separate from the
+deterministic command's skips. Native Cowork actual-target Git and lifecycle
+checks now have evidence. Pi's existing local Qwen route passes fresh native-high
+bootstrap/new-decision and normal-wave checks; the remaining blocked-wave
+contract is still being verified. Staged reporting corrections and original
+failed runs remain explicit in the release audit.
 
 `behavioural.workflow.mjs` is a custom Workflow script: `meta` is exported,
 `phase`, `parallel`, `agent` and `log` are injected, and its body has a top-level

@@ -61,7 +61,7 @@ and return ADR 0015 to Implemented.
 ## Status
 
 - **Claimed by:** Codex, 2026-09-14, `kmox83/docflow-release-verification`; operator-requested new worktree continuation after PR #6 merged as `d4f65bf02b836889bc1662c8627ccf9aa3ae7136`.
-- **Blockers:** Native-high Pi normal passes initial publication, ordering, completion and fresh-clone checks. Its blocked retry exhausts local-backend 503 retries before claims; the next bootstrap repeats over 5,000 consecutive slash characters and is interrupted after 4,244.6 seconds, without a commit. A fresh bootstrap remains active on the same native high setting. Cowork's actual-target bootstrap-derived wave, child acquisition ordering and private-key cleanup pass independent checks. OpenCode's fourth wave wrongly integrates beta after alpha's environment failure and remains rejected; its fifth wave passes state, initial-claim and final-report checks, followed by a separately checked native Status-only reporting correction. That runtime is archived and stopped. Preserve every original failure and the Docker Desktop interruption; five-host acceptance awaits the remaining Pi evidence.
+- **Blockers:** Native-high Pi normal passes initial publication, ordering, completion and fresh-clone checks. A fresh bootstrap/new-decision run settles naturally at 2,935.8 seconds, exit 0, and passes all 24 signed scaffold checks, exact seed reference, new-decision and reporting assertions. Its actual history now supplies the remaining blocked-wave run. The operator reports backend resource contention and requests limited concurrency; only one Qwen inference runs at a time, with native high unchanged. Earlier 503 failures and interrupted repetition remain separate. Cowork's actual-target bootstrap-derived wave, child acquisition ordering and private-key cleanup pass independent checks. OpenCode's fourth wave wrongly integrates beta after alpha's environment failure and remains rejected; its fifth wave passes state, initial-claim and final-report checks, followed by a separately checked native Status-only reporting correction. That runtime is archived and stopped. Preserve every original failure and the Docker Desktop interruption; five-host acceptance awaits the remaining Pi evidence.
 - **Stopped:**
 
 ## Operator continuation, 2026-09-14
@@ -211,7 +211,7 @@ retains the same local model and native high setting.
   initial-publication/order checks; its fresh-clone gate returns
   `verify: OK (wave fixture)`, exit 0. Original failures remain preserved.
 - **Overall:** partially verified.
-- **Yet to do:** Complete remaining Pi bootstrap/blocked evidence,
+- **Yet to do:** Complete remaining Pi blocked-wave evidence,
   review final reports and cleanup, then final-head gates and PR CI. Keep this
   item todo and decisions 0012/0015 Accepted until every real criterion passes.
   A checked PR merge and release each need separate operator authorisation.

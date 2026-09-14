@@ -83,7 +83,7 @@ route supplies actual execution for the following cases on the pinned bytes.
 | Codex wave | Native child-session headers establish two actual workers. The bootstrap-derived blocked wave passes 13 state checks and three final report blocks. |
 | OpenCode waves | First attempt loses committed recovery for alpha; the second passes state but fails reporting and describes an invalid implementation-bearing probe. Both remain failures. A fresh third fixture passes 13 state checks and three report blocks; actual native Task records show two overlapping worker sessions. Its report has detail after the final status block, so literal end-of-report placement remains a formatting caveat. |
 | Pi normal wave | Native high settles naturally in 2338.5 seconds, exit 0. All 24 target and 19 initial-publication/order checks pass, with three valid reports and a successful unchanged gate in a fresh local-remote clone. |
-| Pi blocked/bootstrap continuation | The first fresh blocked attempt repeats planning without new tool actions and is interrupted, exit 130. The retry exhausts native local-backend 503 retries before claiming; exit 0 with an empty report fails independent checks. After the infrastructure interruption, another bootstrap emits over 5,000 consecutive slash characters and is interrupted at 4,244.6 seconds, exit 130, with incomplete uncommitted scaffolding. A fresh bootstrap retains the same native local model/high setting. |
+| Pi blocked/bootstrap continuation | Earlier interruptions and local-backend 503 failures remain recorded below. A fresh bootstrap/new-decision run settles naturally at 2,935.8 seconds, exit 0, and passes all 24 signed scaffold checks, the exact seed-introduction check, new-decision assertions and its final report. Its actual history supplies the next serial blocked-wave fixture. |
 | Cowork bootstrap-derived wave | The supported target-scoped recovery passes signed bootstrap/new-adr checks. Its actual history is extended into a fresh native Workflow fixture; 13 blocked-wave state checks, both initial signed claims and three reports pass independently. Expanded native launch and actual child-event extraction cards corroborate acquisition-before-write and overlapping workers. |
 
 The first published Pi claims are
@@ -93,6 +93,24 @@ branch and wave metadata; acquisition results precede implementation calls.
 The signed local main completion is `9da0dba545b38109175f0a719b5c1433361b156a`.
 The initial external claim checker falsely classified quoted commit prose as
 a write; its original failure and focused checker repair are retained.
+
+Fresh Pi bootstrap commit `985574c007007dc98f3d5a2553fadb6e69269e05` and new
+decision commit `79e603791a07aed3fbcaaf814f870988e7218f49` have valid signatures;
+the unchanged fixture gate returns `verify: OK (fixture gate)`, exit 0. Before
+the next inference, independent assertions pass and native RPC state confirms
+the existing local Qwen route with high thinking. The blocked fixture extends
+that actual history at base `389e1052d283753890e149e7a9fa46d4bc00bf89`, preserving
+held claim `d84cda5e20f0dd1f4914248bc550bee88f4586a1`.
+
+The operator reports another client had drained the local backend's resources
+and asks for limited concurrency. That cause is operator-reported, not a
+controller diagnosis. This continuation runs one Qwen inference at a time;
+the bootstrap settles and passes independent checks before the blocked wave
+starts. Earlier 503 retries and empty reports remain failed observations.
+The first fresh blocked attempt was interrupted after repeated planning
+without tools. A later bootstrap emitted over 5,000 consecutive slash characters
+and was interrupted at 4,244.6 seconds, exit 130, with incomplete uncommitted
+scaffolding. Neither interruption is replaced by the fresh bootstrap pass.
 
 Docker Desktop disappeared during the first separate Pi bootstrap; the native
 process was interrupted at 996.5 seconds, before implementation. The controller
@@ -255,7 +273,8 @@ the explicit pending-merge qualification. No gate was changed for that repair.
 Required local checks pass: static verification, 15 rejected mutations, six
 deterministic eval passes/zero failures/six skips, six runner controls, eight
 temporal controls, 17 claim controls, 12 permission-denial controls and 18 seed
-controls. CI passes at `aec895c`; later PR heads still require their own check.
+controls. Required CI passes on PR head `5e187ba`; later heads still require
+their own check.
 Static output now counts 66 done records on this PR
 branch; main still contains 64 shipped records.
 
@@ -273,7 +292,7 @@ the worktree and recoverable fixture histories are retained for review.
   refresh have independent evidence. Native continuation and final-head validation
   remain in progress; this report does not claim a green release gate.
 - **Overall:** partially verified.
-- **Yet to do:** Finish the remaining native Pi bootstrap/blocked evidence,
+- **Yet to do:** Finish the remaining native Pi blocked-wave evidence,
   retain earlier reporting/timeline caveats, record cleanup, run final-head
   gates and obtain green PR CI. Keep unverified plan 0051 and decisions 0012/0015
   open. PR integration and release require separate operator authorisation.
