@@ -368,7 +368,7 @@ welcome.
 
 The same files install on all five targets; behaviour also depends on the
 selected model and the host's permissions. Independent vendor-host tests on
-2026-09-13 checked frozen source snapshots and the actual target Git state:
+2026-09-13–14 checked frozen source snapshots and the actual target Git state:
 
 | Host / model | Observed result | Limit |
 |---|---|---|
@@ -376,7 +376,7 @@ selected model and the host's permissions. Independent vendor-host tests on
 | Codex 0.154.0 / GPT-6 Astra | Bootstrap/new-adr and native rung 2 passed; signed concurrent work survived the whole-wave gate failure. | Native dispatch needed session storage on the disposable home; ephemeral dispatch failed. Workers used explicitly assigned Git worktrees, without host-enforced isolation. |
 | OpenCode 1.18.30 / Big Pickle | Bootstrap/new-adr and native rung 2 target checks passed; signed concurrent claims survived the gate failure. | Original wave report failed formatting; a separate read-only reporting rerun passed. Workers used explicitly assigned Git worktrees. |
 | pi 0.84.4 / local Qwen coding route | Thinking-off bootstrap repair/new-adr and native-high rung 3 blocked flow passed independent checks. Installed export bytes and nine sidecars verified. | The high blocked run omitted the claim branch name from its initial commit. The off positive control violated claim/completion rules; the high positive control repeated generation before work and was interrupted. Full wave acceptance remains unmet; local signed transport only. |
-| Cowork 1.52386 family | Earlier cloud-session target files and gate passed; an exported bundle verified only its mirror. | Earlier connector denied target `.git` writes. Current desktop input is blocked pending the operator bringing the app forward; no new target probe has run. |
+| Cowork Windows Desktop 1.52386.6 / Opus 5 Max | Actual-target signed bootstrap/new-adr and opted-in Workflow rung 1 observed; concurrent signed claims and work survived the gate failure. A fresh bootstrap passed after repairing its seed completion reference. All 32 loaded files and nine sidecars matched each tested export. | Existing Skip approvals mode was unchanged; target-scoped deletion permission recovered initial Git lock failure. Native `gh` is absent; pushes used a local bare remote. A later receipt export crossed an explicit Git-path denial; that adverse observation remains separate from the wave checks. |
 
 The six core model-driven cases have independent target assertions through
 the vendor-host runner, including express bootstrap, signed item completion
@@ -387,7 +387,10 @@ selection; the server identifies its response model as `qwen3.8-27b`. Earlier
 cloud-provider failures remain historical and do not require a cloud login
 for this route. The runner now preserves the native thinking setting; earlier
 off results do not establish the operator's full high-thinking configuration.
-The full five-host release requirement remains blocked on Pi and Cowork.
+The full five-host release requirement remains incomplete: Pi's full wave
+contract is unverified. Cowork now has actual-target lifecycle and wave
+evidence, bounded to its observed permission mode and tested snapshots;
+its earlier cloud-connector denial and later export failure remain recorded.
 
 Signed transport tests used isolated local bare remotes. They do not prove a
 hosted GitHub PR workflow or GitHub authentication. Selection reused explicitly

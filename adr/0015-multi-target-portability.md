@@ -107,6 +107,8 @@ installs the existing Claude Code plugin.
   (earlier bounded observations, including retained pi/Cowork blockers)
 - `audits/2026-09-13-pi-qwen-continuation.md` and `evals/hosts/results/2026-09-13-pi-qwen.json`
   (Pi local-provider continuation; full Pi/Cowork acceptance remains outstanding)
+- `audits/2026-09-14-cowork-continuation.md` and `evals/hosts/results/2026-09-14-cowork.json`
+  (native Windows actual-target signing/lifecycle/Workflow wave, repaired seed bootstrap and retained permission/source limitations)
 
 ## Revision History
 
@@ -119,6 +121,7 @@ installs the existing Claude Code plugin.
 | 2026-09-11 | r5 | Eugenio Minardi | Reopen AC5 for the current coordination changes: verify bootstrap, a lifecycle action, and wave execution on each named host. Record observed capability rungs, authentication, signing/push and desktop limitations; historical usage is not current-revision evidence. |
 | 2026-09-13 | r6 | Codex, operator-authorised | Record dedicated PR #6 evidence: Claude Code native Workflow/Agent rungs and signed local transport; Codex/OpenCode native workers with explicit Git worktrees and preserved concurrent blocked work; exact-source bootstrap/lifecycle and sidecar checks. Preserve original failures and targeted report repairs. AC5 remains unmet on pi and Cowork; support scope unchanged, status remains Accepted. |
 | 2026-09-14 | r7 | Codex, operator-authorised | Honour Pi's local Qwen route; record separate bootstrap repair/new-adr and sequential blocked-wave passes with thinking off, retaining original gate-command and stop failures. The runner now preserves native high: its positive control repeated generation, the first blocked run was interrupted after recovery, and the corrective blocked run passes stop-flow checks but fails published claim metadata. Installed bytes match the tested Windows export; Git blobs match only after line-ending normalisation. Signed transport remains local-only. Cowork awaits operator foreground and actual target-Git checks; AC5 and Accepted status are unchanged. |
+| 2026-09-14 | r8 | Codex, operator-authorised | Observe native Windows Desktop 1.52386.6 / Opus 5 Max on the actual attached target: signed bootstrap/new-adr and opted-in Workflow rung 1 preserve concurrent signed local claims/work after the gate failure. Initial unlink denial recovers through supported target-scoped permission in existing Skip approvals mode; native gh is absent. Verify all 32 loaded export files and nine sidecars for original 13ea0c2 and repaired eff3130; the latter receives only a targeted fresh bootstrap pass after the seed-reference defect. Preserve the post-wave export denial violation, corrected native timestamp and CRLF/Git source boundary. Pi full-contract evidence and release review remain incomplete; AC5 and Accepted status are unchanged. |
 
 ## Approvals
 
@@ -128,3 +131,4 @@ installs the existing Claude Code plugin.
 | Maintainer | Eugenio Minardi | 2026-09-11 | Approved in operator session; PR #5 expansion |
 | Operator | Eugenio Minardi | 2026-09-13 | Explicit dedicated-worktree continuation and necessary fixes authorised for 0051; no merge or release approval |
 | Operator | Eugenio Minardi | 2026-09-13 | Pi continuation explicitly selects the existing local Qwen provider; necessary repairs and PR #6 update authorised, Cowork acceptance still required |
+| Operator | Eugenio Minardi | 2026-09-14 | Native Cowork continuation after desktop unlock/foreground confirmation authorised; actual target evidence still required |

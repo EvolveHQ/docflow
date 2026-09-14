@@ -1,8 +1,10 @@
 # Independent vendor-host checks
 
-These tests use actual vendor CLIs or the Cowork desktop in separate Linux
-Docker containers. The model runs the installed skill; an external process
-checks the resulting files and Git state. CLI exit zero is not a test pass.
+These tests use actual vendor CLIs in separate Linux Docker containers, or
+native Cowork desktop sessions with disposable attached target folders. Record
+the desktop platform and runtime separately from historical container runs.
+The model runs the installed skill; an external process checks the actual
+target files and Git state. CLI exit zero is not a test pass.
 The normal deterministic suite does not silently run paid model calls.
 
 ## Isolation and setup
@@ -178,12 +180,42 @@ manifest directories) through Customise → Plugins → Add → Upload plugin.
 Attach the disposable fixture folder, then supply the same bootstrap inputs.
 If using a local VNC viewer, bind the published port to 127.0.0.1 only.
 
-Record the actual execution environment. The observed Linux desktop used cloud
+Record the actual execution environment. The historical Linux desktop used cloud
 execution and a local-folder connector, not a local VM shell. File writes can
 succeed while `.git` writes are denied. Verify the selected target separately
 from any cloud mirror. A downloaded Git bundle can be independently verified
 and compared in another scratch clone; it does not prove target Git integration.
 Do not commit desktop screenshots or transcripts containing unrelated chats.
+
+The separate `results/2026-09-14-cowork.json` records native Windows Desktop
+1.52386.6 / Opus 5 Max through a Linux VM/FUSE view of the actual Windows target.
+Independent Windows checks cover signed bootstrap/new-adr and an opted-in
+Workflow rung-1 wave: 47 state assertions plus four exact recovery/output
+assertions, with original child tool events establishing claim-before-write
+and concurrent work before the gate failure. Main and the held claim survive;
+the blocked and already-running peer remain recoverable. Native `gh` is absent;
+signed transport is to the actual target's isolated local bare remote.
+
+Initial unlink denial recovered through the supported target-scoped deletion
+grant; existing Skip approvals mode was unchanged. A later receipt export
+crossed the file API's explicit `.git` denial through another tool before the
+controller's stop completed. Preserve this separate adverse observation, the
+host-autosaved output discrepancy and the corrected native manifest timestamp.
+Do not use protected metadata paths for remote-file exports or treat a second
+tool as permission to bypass a denial.
+
+Expanded native command output verifies all 32 installed files and nine
+sidecars for both the original `13ea0c2` export and corrected `eff3130` export.
+The original bootstrap passed its 23 existing assertions plus six wrapper
+checks; a new focused check rejected its generic seed footer. The repaired
+bootstrap passed 25 independent checks on a fresh native child target.
+`check-seed-completion.mjs <fixture> --signed` resolves the exact seed reference
+and verifies its reachable signed scaffold; `check-bootstrap.py` now includes
+that assertion (24 checks for its signed full bootstrap/new-adr scenario).
+`node --test evals/hosts/test-seed-completion.mjs` covers 14 meaningful positive
+and negative fixtures. These deterministic regressions are not native runs.
+Original results remain unchanged; the new source received a targeted bootstrap
+rerun, not another five-host matrix. Each receipt states the CRLF/Git-blob boundary.
 
 ## Evidence and cleanup
 
@@ -207,6 +239,7 @@ claim, not an unpublished draft. The receipt retains all controller intervention
 Installed files matched the frozen Windows export byte-for-byte; final Git blobs
 match only after CRLF-to-LF normalisation. Both digests and comparisons are recorded.
 Passing a subset does not establish a green release suite. Signed local pushes and
-native delegation have bounded evidence; hosted GitHub permissions and current
-Cowork target Git integration remain unverified. `results/2026-09-11.json` is
-historical.
+native delegation have bounded evidence; hosted GitHub permissions remain
+unverified. Native Cowork target Git evidence is recorded separately in the
+2026-09-14 continuation; Pi's full contract and the owning release gate remain
+incomplete. `results/2026-09-11.json` is historical.

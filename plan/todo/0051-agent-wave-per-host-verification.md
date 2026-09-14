@@ -61,8 +61,8 @@ and return ADR 0015 to Implemented.
 ## Status
 
 - **Claimed by:** Codex (Orca worker, dispatch `ctx_35d5b332d1f2`), 2026-09-14, `kmox83/0051-host-verification-astra` ([PR #6](https://github.com/EvolveHQ/docflow/pull/6); resumed for the operator-confirmed visible Cowork desktop).
-- **Blockers:** Full native-high Pi acceptance remains unmet: the positive control repeated generation before work; the corrective blocked run passed stop-flow checks but failed initial claim branch-name metadata. No Pi rerun is authorised here. Cowork native signing and original bootstrap/new-ADR pass their existing checks, but the new focused check rejects the generic seed footer; the clarification requires a fresh exact-source native run. Actual Workflow execution preserved signed concurrent blocked work and the held claim; final recovery/temporal review is pending. A post-wave receipt export crossed a denied remote-tool .git boundary before the controller's stop completed; retain that distinct adverse observation. Earlier connector and initial unlink failures remain recorded.
-- **Stopped:**
+- **Blockers:** Full native-high Pi acceptance remains unmet: the positive control repeated generation before work; the corrective blocked run passed stop-flow checks but failed initial claim branch-name metadata. No Pi rerun is authorised here. Cowork now has actual-target signing, original bootstrap/new-ADR, opted-in concurrent Workflow wave and repaired seed-bootstrap evidence; source and permission limits remain explicit. A post-wave receipt export crossed a denied remote-tool .git boundary before the controller's stop completed; retain that distinct adverse observation and the earlier connector/unlink failures. Full five-host release review remains incomplete. Bounded native private-key cleanup is observed; broader agent state remains unverified after correction of the original cleanup overclaim.
+- **Stopped:** 2026-09-14 after the bounded native Cowork continuation; Pi's full contract remains unverified. The evidence stays on draft PR #6 for review, with current-head CI recorded on the PR and final dispatch report. No completion move, merge or release is claimed.
 
 ## Cowork continuation, 2026-09-14
 
@@ -86,10 +86,19 @@ under `Claude outputs`; preserve it with the native fixture-local exclude rather
 than treating the model's contrary self-report as proof. Native signing passed
 eleven independent checks; original bootstrap/new-ADR passed 23 existing checks
 and six ancestry/release checks. A further focused check rejects the preserved
-seed footer's generic wording, so the clarification needs a fresh native run.
+seed footer's generic wording. Separate gate and product commits add a precise
+seed-only introduction reference; a fresh native bootstrap on loaded `eff3130`
+passes 25 independent checks. Its resolver identifies signed full-scaffold
+commit `48dcf4ed70db152bb5b375a5ea9d59f512996bb0`; 14 reference regressions pass.
 The opted-in native Workflow ran two executors with signed local claims/work;
 main and the held claim survived the environmental gate failure. A separate
 post-wave export violated its tool's Git-path boundary and is not a wave pass.
+Forty-seven wave assertions and four actual recovery/output checks pass.
+Original child tool events establish acquisition before each output write,
+with both writes beginning before alpha's failure. The native manifest's beta
+timestamp was wrong and is corrected without changing the original; the exact
+parent first-failure receipt remains unavailable. Original lifecycle/wave used
+the `13ea0c2` export, while only the repaired bootstrap ran on `eff3130`.
 See the
 [current audit](../../audits/2026-09-14-cowork-continuation.md) and its receipt.
 
@@ -164,19 +173,19 @@ name; this metadata failure remains separate from the passing stop flow.
 All installations matched frozen Windows export bytes; Git blobs match only
 after CRLF-to-LF normalisation, as the receipt explicitly records.
 
-Exit 1 remains partially verified because Pi/Cowork cannot yet satisfy AC5.
+Exit 1 remains partially verified because Pi's full contract is unverified;
+Cowork has scoped native observations with explicit source/permission limits.
 Exit 2 is verified: README has observed rows and no assumed marker. Exit 3
 retains the required r5 history and regenerated metadata INDEX; local gates
 pass. Neither this item nor ADRs 0012/0015 is marked complete.
 
 ## Status at a glance
 
-- **This run:** independently verified Cowork setup, loaded source, signing,
-  original lifecycle checks and bounded wave state. Added a focused seed
-  reference check and clarification; targeted verification and final temporal
-  review continue, with export-only adverse behaviour preserved.
+- **This run:** independently verified Cowork signing, original lifecycle,
+  concurrent wave and temporal evidence, plus the seed-reference repair on a
+  fresh exact-source bootstrap. Original and export-only failures are preserved.
 - **Overall:** partially verified — the five-host requirement remains blocked.
 - **Yet to do:** successful native-high Pi complete-contract evidence in a later
-  authorised run; Cowork fresh seed-reference verification, final native wave
-  evidence/cleanup and remaining behavioural criteria. Keep
+  authorised run and remaining release review, retaining the
+  broader agent-state uncertainty after bounded private-key cleanup. Keep
   this item in todo and both owning decisions Accepted until all criteria pass.

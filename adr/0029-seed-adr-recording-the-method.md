@@ -122,6 +122,7 @@ ahead of any subsequent decisions, keeping numbering contiguous.
 | 2026-06-28 | r2 | Eugenio Minardi | Accepted. All five brainstorm open questions resolved (seed at 0001; default-on/opt-out; Implemented; repo's recommended shape; always 0001 on retrofit). |
 | 2026-06-29 | r3 | Eugenio Minardi | Implemented (commit 188c938): templates/adr-0001-seed.md + bootstrap output item 5b (default-on adr/0001 seed, opt-out at sign-off, conditional plan/done entry, backfill anchor at 0001); README/USAGE document it. AC1-7 met. |
 | 2026-09-14 | r4 | Codex, operator-authorised | Native Cowork exposed a generic hashless seed footer that existing bootstrap checks missed. Specify a seed-only exact introduction reference, preserving atomic scaffolding, arbitrary supplied gates and Implemented-on-creation; ordinary completion keeps an existing verified-work SHA. Add AC8 and focused positive/negative checks. Retain historical Implemented status; targeted native verification of this clarification remains pending in 0051, with the original failed observation preserved. |
+| 2026-09-14 | r5 | Codex, operator-authorised | Verify the clarification on native Cowork with loaded eff3130 export: 25 independent actual-target checks pass, including the unique reachable signed introduction 48dcf4ed70db152bb5b375a5ea9d59f512996bb0 containing the full tested scaffold. Fourteen deterministic reference regressions pass. Preserve the original generic-footer failure and limit this to the fresh targeted bootstrap; the overall five-host release remains incomplete. |
 
 ## Approvals
 
@@ -129,3 +130,4 @@ ahead of any subsequent decisions, keeping numbering contiguous.
 |------|------|------|-----------|
 | Maintainer | Eugenio Minardi | 2026-06-28 | — |
 | Operator | Eugenio Minardi | 2026-09-14 | Necessary correction authorised within 0051; exact-source native verification required |
+| Operator | Eugenio Minardi | 2026-09-14 | Authorised native corrected-export continuation; independent target verification recorded in the Cowork continuation audit |
