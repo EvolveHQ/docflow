@@ -93,6 +93,16 @@ branch and wave metadata; acquisition results precede implementation calls.
 The signed local main completion is `9da0dba545b38109175f0a719b5c1433361b156a`.
 The initial external claim checker falsely classified quoted commit prose as
 a write; its original failure and focused checker repair are retained.
+The final evidence review adds an exact-command receipt for a new clone of
+that unchanged normal-wave remote: eight checks pass, including the gate,
+all eight public signatures, exact completion/held refs and removed owned claims.
+
+Both preserved Claude Code and Codex full-bootstrap outputs also pass the
+unchanged mapped `bootstrap-full` assertion, supplementing their 24 host checks;
+before/after file digests are identical. The original range detection's completed
+native Python assertions and clean Git diffs are independently extracted from
+its transcript. That corroboration does not replace the missing separate
+controller pre-apply output or create a new native execution.
 
 Fresh Pi bootstrap commit `985574c007007dc98f3d5a2553fadb6e69269e05` and new
 decision commit `79e603791a07aed3fbcaaf814f870988e7218f49` have valid signatures;

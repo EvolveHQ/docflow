@@ -3631,6 +3631,252 @@
     "focused_controls_receipt": "prepared-checks.json, unchanged gate code",
     "scope": "Prepared PR head; no native Pi pass inferred from deterministic checks."
   },
+  "pre_final_source_and_commits": {
+    "utc": "2026-09-14T19:24:14.683931+00:00",
+    "head": "6b01d804693da254aadc7f464710040c1a2f655b",
+    "source_revision": "bef25d8d8a9ccc0a3ac15b678a2d619ed55c6216",
+    "plugin_sha256": "f7d831d4b5851fff3168094bf2a5bae9e166a7919ef4ab43db255ad7fca659a6",
+    "files": {
+      "plugins/docflow/.claude-plugin/plugin.json": "190e5280ef1547fd9a8033d7c7c8633f66dda225b2ca427f49be16f1f191c814",
+      "plugins/docflow/.codex-plugin/plugin.json": "4e875f1e09e3a63bb914f0f89c09edd80e9f7f93218de484735b142c3027a666",
+      "plugins/docflow/skills/add-convention/SKILL.md": "b31c865e9897465084fafd74fe2dc34e037656c3dbaa00d31397d8818d459521",
+      "plugins/docflow/skills/add-convention/agents/openai.yaml": "beb3b65a44326746f4fdea2c83850d731f194ca3f45875822d71b7d901497078",
+      "plugins/docflow/skills/agent-wave/SKILL.md": "bb9c352866352fd3e2433bdcebf6ae759769197e594a73000d62208122fc209d",
+      "plugins/docflow/skills/agent-wave/agents/openai.yaml": "a0947c21f73d34be68b2ab03edba337a3fb33a39613f199c25a3703efbab40e9",
+      "plugins/docflow/skills/audit/SKILL.md": "06fee6077c4ff5fff559b891707b281879dbe732f0bf021d21ae048868165bbc",
+      "plugins/docflow/skills/audit/agents/openai.yaml": "57ee1f02555ae22915a4f445d97ee4a85fb8f6468256c16ff6ea7a59491067b7",
+      "plugins/docflow/skills/bootstrap/SKILL.md": "105357bfd3e30c7b09b03eafd0394b6c470b30997de273869f9f74507c87dd20",
+      "plugins/docflow/skills/bootstrap/agents/openai.yaml": "47b714a67f5a8508fd9ebe0602499804b17c284aadf86c4c7e176e379df6b501",
+      "plugins/docflow/skills/bootstrap/templates/AGENTS.md": "a15813bbae21dc249632dc15aca6593e8b06c3b2876e1281998eda5fe918534a",
+      "plugins/docflow/skills/bootstrap/templates/CLAUDE.md": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+      "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md": "b7caef74858cdec8b228e34a72603befb59c44e7b98ffbe6f26505f839b33d2a",
+      "plugins/docflow/skills/bootstrap/templates/_agent-LOCKS.md": "d489163b3d809f583ed4f400d5f16d5edead61bbc6f3934e1fee85b6e49f26eb",
+      "plugins/docflow/skills/bootstrap/templates/_agent-ROLES.md": "b7c8478b308a3abe4379746041e412b992c21e7405eb799b570cfe7d15de6628",
+      "plugins/docflow/skills/bootstrap/templates/_agent-prompts-autonomous.md": "f6bbaa2f881961aa72b96a19ff6b278fb0285547d5009a2efa3a39abb0f609e3",
+      "plugins/docflow/skills/bootstrap/templates/adr-0001-seed.md": "cfcc060d32ae013634bc788aa20fd9b7f69ae3c90399d18f17a72703ea573b1c",
+      "plugins/docflow/skills/bootstrap/templates/adr-capability.md": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+      "plugins/docflow/skills/bootstrap/templates/adr-technology.md": "02abe97bf3f956972621490c0c6c4a5aa4210b259c33114cadc84a2ab7fbffc0",
+      "plugins/docflow/skills/bootstrap/templates/federation-config.md": "27e9a9c0fde4a1edf235c27a69c4aaff1051bc14a17a4e862592c30e9e92421a",
+      "plugins/docflow/skills/bootstrap/templates/federation-index.md": "7c548fa6c04ef2b0144a183d7b1ab926f559cfa693e0d07d4028eb9ced75add2",
+      "plugins/docflow/skills/bootstrap/templates/plan-README.md": "d6fb25d7b7ac6da6f4ff3f3e074ce6e8025d0733551a5a171cf7768022a4f6d8",
+      "plugins/docflow/skills/brainstorm/SKILL.md": "0ebf634787aab6746270fb3081ca61a036bd193c6125fe068d6ecc84905f66ca",
+      "plugins/docflow/skills/brainstorm/agents/openai.yaml": "81410e3c4de176623ad6e46bac282391cfa86df8f092e134ee5761fa33fd456f",
+      "plugins/docflow/skills/new-adr/SKILL.md": "6ff3da714eb6758c042ef9c3285c217c0b54e7a67d1a9c520e77e65de57bfcfc",
+      "plugins/docflow/skills/new-adr/agents/openai.yaml": "c31dbe2082afde99cbf40d8a5b9fe4b15368130d88c33f4334cd5ff3d1b4124d",
+      "plugins/docflow/skills/new-plan/SKILL.md": "b2c50295a27769b209d929a47f54909005f1004a7a2646f01ffae71f88be0e59",
+      "plugins/docflow/skills/new-plan/agents/openai.yaml": "50db151c62309e22396f0ba485bb75eaaecdbca7484814ba34ed6d81900e2378",
+      "plugins/docflow/skills/rollup/SKILL.md": "8f3260041ca609501adcf23ab9d17724a9fd9bb31096d08e4fbed68d32c8a6ea",
+      "plugins/docflow/skills/rollup/agents/openai.yaml": "24ea6030c82b79ccf243ea28dab2481e3433188547f6ca10aee40dec4835b050",
+      "plugins/docflow/skills/ship-item/SKILL.md": "b929994d4bf1549db452a0b2e08349a9981e1a13fa5060d9422abde8b128114f",
+      "plugins/docflow/skills/ship-item/agents/openai.yaml": "3343b8c5acd560e4ccb68e8431c4e74c6fa6506f5ed59001172dc84609c9a5a6"
+    },
+    "versions": {
+      "package.json": "0.9.4",
+      "plugins/docflow/.claude-plugin/plugin.json": "0.9.4",
+      "plugins/docflow/.codex-plugin/plugin.json": "0.9.4"
+    },
+    "commits": [
+      {
+        "sha": "5e8a02ee96a1bdd8c2347d224ee4c07a7240836c",
+        "signature": "G",
+        "subject": "docs(plan): resume release verification and queue focused follow-ups",
+        "files": [
+          "plan/todo/0051-agent-wave-per-host-verification.md",
+          "plan/todo/0052-permission-denial-regression.md",
+          "plan/todo/0053-existing-repository-release-pilot.md"
+        ],
+        "adr_rationale_present": true,
+        "coauthor_absent": true
+      },
+      {
+        "sha": "bef25d8d8a9ccc0a3ac15b678a2d619ed55c6216",
+        "signature": "G",
+        "subject": "fix(skills): verify initial claims and stop at permission denials",
+        "files": [
+          "plugins/docflow/skills/agent-wave/SKILL.md",
+          "plugins/docflow/skills/bootstrap/SKILL.md",
+          "plugins/docflow/skills/bootstrap/templates/_agent-prompts-autonomous.md",
+          "plugins/docflow/skills/ship-item/SKILL.md"
+        ],
+        "adr_rationale_present": true,
+        "coauthor_absent": true
+      },
+      {
+        "sha": "b14eb4cb975609098554b25093dc0030261f28f5",
+        "signature": "G",
+        "subject": "test(hosts): assert initial publications and cross-tool denial stops",
+        "files": [
+          ".github/workflows/verify.yml",
+          "evals/hosts/check-permission-denial.mjs",
+          "evals/hosts/check-pi-claims.py",
+          "evals/hosts/install-claim-observer.py",
+          "evals/hosts/test-permission-denial.mjs",
+          "evals/hosts/test-pi-claims.py"
+        ],
+        "adr_rationale_present": true,
+        "coauthor_absent": true
+      },
+      {
+        "sha": "ecf9a127f98364a4a9b265a203e26f116714a826",
+        "signature": "G",
+        "subject": "test(hosts): accept bulleted seed ownership metadata",
+        "files": [
+          "evals/hosts/check-seed-completion.mjs",
+          "evals/hosts/test-seed-completion.mjs"
+        ],
+        "adr_rationale_present": true,
+        "coauthor_absent": true
+      },
+      {
+        "sha": "b6ab605f5f158f29934c9131acd05067de0a001e",
+        "signature": "G",
+        "subject": "test(hosts): distinguish claim prose from executable writes",
+        "files": [
+          "evals/hosts/check-pi-claims.py",
+          "evals/hosts/test-pi-claims.py"
+        ],
+        "adr_rationale_present": true,
+        "coauthor_absent": true
+      },
+      {
+        "sha": "69a38a9c6a33bd0bdf8a4cfdc0218967dac9d4f6",
+        "signature": "G",
+        "subject": "test(hosts): accept bold seed ownership labels",
+        "files": [
+          "evals/hosts/check-seed-completion.mjs",
+          "evals/hosts/test-seed-completion.mjs"
+        ],
+        "adr_rationale_present": true,
+        "coauthor_absent": true
+      },
+      {
+        "sha": "166d55b8b4b959fd2ed4cacf98fac5c178db25a1",
+        "signature": "G",
+        "subject": "test(hosts): require claim changes within the Status section",
+        "files": [
+          "evals/hosts/check-pi-claims.py",
+          "evals/hosts/test-pi-claims.py"
+        ],
+        "adr_rationale_present": true,
+        "coauthor_absent": true
+      },
+      {
+        "sha": "fd0fe0d9c25653e5c1e78dbe80f6421e4796c319",
+        "signature": "G",
+        "subject": "docs(audit): record pinned release cases and retained failures",
+        "files": [
+          "README.md",
+          "adr/0012-skill-behavioural-evals.md",
+          "adr/0015-multi-target-portability.md",
+          "audits/2026-09-14-release-verification.md",
+          "evals/hosts/results/2026-09-14-release-verification.json",
+          "plan/todo/0051-agent-wave-per-host-verification.md"
+        ],
+        "adr_rationale_present": true,
+        "coauthor_absent": true
+      },
+      {
+        "sha": "e93fb816c684f94ff50dd6bd7583bdc813ef73de",
+        "signature": "G",
+        "subject": "docs(plan): prepare verified regression and pilot completion",
+        "files": [
+          "plan/done/2026-09-14-existing-repository-release-pilot.md",
+          "plan/done/2026-09-14-permission-denial-regression.md",
+          "plan/todo/0052-permission-denial-regression.md",
+          "plan/todo/0053-existing-repository-release-pilot.md"
+        ],
+        "adr_rationale_present": true,
+        "coauthor_absent": true
+      },
+      {
+        "sha": "9156fcba8b0b397e5c7b8611714e276d52b05961",
+        "signature": "G",
+        "subject": "docs(plan): use canonical prepared shipping footers",
+        "files": [
+          "plan/done/2026-09-14-existing-repository-release-pilot.md",
+          "plan/done/2026-09-14-permission-denial-regression.md"
+        ],
+        "adr_rationale_present": true,
+        "coauthor_absent": true
+      },
+      {
+        "sha": "30b3c346a944b9c447a5d12bb542e1bdaef080f3",
+        "signature": "G",
+        "subject": "docs(audit): corroborate native Cowork ordering and signer cleanup",
+        "files": [
+          "audits/2026-09-14-release-verification.md",
+          "evals/hosts/results/2026-09-14-release-verification.json"
+        ],
+        "adr_rationale_present": true,
+        "coauthor_absent": true
+      },
+      {
+        "sha": "aec895c9b288fa668022370ff8e3fc1ade653dde",
+        "signature": "G",
+        "subject": "docs(evals): document initial-claim and denial receipt checks",
+        "files": [
+          "evals/hosts/README.md"
+        ],
+        "adr_rationale_present": true,
+        "coauthor_absent": true
+      },
+      {
+        "sha": "b7165bdba0d3bca1dd5bed733a23397fb1fa92bc",
+        "signature": "G",
+        "subject": "docs: retain native retry failures and concurrent refresh evidence",
+        "files": [
+          "README.md",
+          "audits/2026-09-14-release-verification.md",
+          "evals/hosts/results/2026-09-14-release-verification.json",
+          "plan/todo/0051-agent-wave-per-host-verification.md"
+        ],
+        "adr_rationale_present": true,
+        "coauthor_absent": true
+      },
+      {
+        "sha": "5e187ba96f44506a5d131e93f112a2a47c69434d",
+        "signature": "G",
+        "subject": "docs: record staged OpenCode stop verification and cleanup",
+        "files": [
+          "README.md",
+          "audits/2026-09-14-release-verification.md",
+          "evals/hosts/results/2026-09-14-release-verification.json",
+          "plan/todo/0051-agent-wave-per-host-verification.md"
+        ],
+        "adr_rationale_present": true,
+        "coauthor_absent": true
+      },
+      {
+        "sha": "6b01d804693da254aadc7f464710040c1a2f655b",
+        "signature": "G",
+        "subject": "docs: record native-high Pi bootstrap and serial continuation",
+        "files": [
+          "README.md",
+          "audits/2026-09-14-release-verification.md",
+          "evals/README.md",
+          "evals/hosts/results/2026-09-14-release-verification.json",
+          "plan/todo/0051-agent-wave-per-host-verification.md"
+        ],
+        "adr_rationale_present": true,
+        "coauthor_absent": true
+      }
+    ],
+    "checks": {
+      "exact_32_plugin_files": true,
+      "aggregate_exact_tested_git_bytes": true,
+      "nine_sidecars": true,
+      "versions_still_0_9_4": true,
+      "every_constituent_commit_signed": true,
+      "adr_rationale_footers_present": true,
+      "no_coauthor_trailers": true
+    },
+    "passed": true,
+    "status_at_a_glance": {
+      "this_run": "Compared current Git product blobs with every installed source hash and inspected constituent signatures/footer discipline.",
+      "overall": "verified",
+      "yet_to_do": "Later commits require their own local/CI checks; no merge or release authority supplied."
+    }
+  },
   "opencode_fourth_preparation": {
     "container": "docflow-release-opencode",
     "source": "bef25d8d8a9ccc0a3ac15b678a2d619ed55c6216",
@@ -4283,6 +4529,304 @@
     "stdout": "{\n  \"checks\": {\n    \"0007-alpha_one_initial_publication\": true,\n    \"0007-alpha_initial_message_actual_branch\": true,\n    \"0007-alpha_initial_message_wave\": true,\n    \"0007-alpha_initial_message_reservations\": true,\n    \"0007-alpha_initial_message_owned_paths\": true,\n    \"0007-alpha_initial_status_actual_branch\": true,\n    \"0007-alpha_initial_commit_status_only\": true,\n    \"0007-alpha_initial_signature_valid\": true,\n    \"0008-beta_one_initial_publication\": true,\n    \"0008-beta_initial_message_actual_branch\": true,\n    \"0008-beta_initial_message_wave\": true,\n    \"0008-beta_initial_message_reservations\": true,\n    \"0008-beta_initial_message_owned_paths\": true,\n    \"0008-beta_initial_status_actual_branch\": true,\n    \"0008-beta_initial_commit_status_only\": true,\n    \"0008-beta_initial_signature_valid\": true,\n    \"native_run_settled\": true,\n    \"0007-alpha_acquired_before_first_write_call\": true,\n    \"0008-beta_acquired_before_first_write_call\": true\n  },\n  \"passed\": true,\n  \"initial_publications\": {\n    \"0007-alpha\": {\n      \"sha\": \"2b1b69b7b58cf6582c3d0d45e52ff9633b2be306\",\n      \"message\": \"chore: claim 0007-alpha for wave wave-20260914-01\\n\\nClaim branch: claim/0007-alpha\\nWave: wave-20260914-01\\nOwning ADR: adr/0001-alpha.md\\nOwned artefacts: plan/todo/0007-alpha.md, outputs/alpha.txt\\nReserved identifiers: none\",\n      \"changed\": [\n        \"plan/todo/0007-alpha.md\"\n      ]\n    },\n    \"0008-beta\": {\n      \"sha\": \"196b04c3752d9daf6d937aeac2a38880c4f615a1\",\n      \"message\": \"chore: claim 0008-beta for wave wave-20260914-01\\n\\nClaim branch: claim/0008-beta\\nWave: wave-20260914-01\\nOwning ADR: adr/0002-beta.md\\nOwned artefacts: plan/todo/0008-beta.md, outputs/beta.txt\\nReserved identifiers: none\",\n      \"changed\": [\n        \"plan/todo/0008-beta.md\"\n      ]\n    }\n  },\n  \"sequences\": {\n    \"acquisition_result_sequences\": {\n      \"0007-alpha\": 7164,\n      \"0008-beta\": 11546\n    },\n    \"first_write_call_sequences\": {\n      \"0007-alpha\": 7423,\n      \"0008-beta\": 11747\n    }\n  }\n}\n",
     "stderr": "",
     "checker_revision": "166d55b8b4b959fd2ed4cacf98fac5c178db25a1"
+  },
+  "pi_normal_fresh_clone": {
+    "utc": "2026-09-14T19:18:18.245214+00:00",
+    "source": "bef25d8d8a9ccc0a3ac15b678a2d619ed55c6216",
+    "purpose": "Persist exact fresh-clone commands and exits alongside the original native normal pass; earlier claims and transcript are unchanged.",
+    "checks": {
+      "fresh_clone_created": true,
+      "correct_cwd_gate_passes": true,
+      "gate_bytes_unchanged": true,
+      "head_exact_native_completion": true,
+      "held_claim_preserved": true,
+      "owned_claims_removed": true,
+      "all_eight_signatures_match_retained_public_key": true,
+      "fresh_clone_clean": true
+    },
+    "passed": true,
+    "commands": [
+      {
+        "argv": [
+          "docker",
+          "exec",
+          "docflow-release-pi-normal",
+          "test",
+          "!",
+          "-e",
+          "/workspace/pi-final-fresh-normal"
+        ],
+        "exit": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      {
+        "argv": [
+          "docker",
+          "exec",
+          "docflow-release-pi-normal",
+          "git",
+          "clone",
+          "--no-hardlinks",
+          "--branch",
+          "main",
+          "/workspace/wave/origin.git",
+          "/workspace/pi-final-fresh-normal"
+        ],
+        "exit": 0,
+        "stdout": "",
+        "stderr": "Cloning into '/workspace/pi-final-fresh-normal'...\ndone.\n"
+      },
+      {
+        "argv": [
+          "docker",
+          "exec",
+          "docflow-release-pi-normal",
+          "git",
+          "-C",
+          "/workspace/pi-final-fresh-normal",
+          "show",
+          "HEAD:tools/verify.mjs"
+        ],
+        "exit": 0,
+        "stdout": "import {existsSync,readFileSync} from 'node:fs';\nfor (const name of ['alpha','beta','held']) {\n  const p='outputs/'+name+'.txt';\n  if(existsSync(p)&&readFileSync(p,'utf8')!==name+'\\n') throw Error('wrong output: '+p);\n}\nconsole.log('verify: OK (wave fixture)');\n",
+        "stderr": ""
+      },
+      {
+        "argv": [
+          "docker",
+          "exec",
+          "docflow-release-pi-normal",
+          "git",
+          "--git-dir=/workspace/wave/origin.git",
+          "show",
+          "040b33fffd82a6de6a6c2acc5f754d730ad33f8b:tools/verify.mjs"
+        ],
+        "exit": 0,
+        "stdout": "import {existsSync,readFileSync} from 'node:fs';\nfor (const name of ['alpha','beta','held']) {\n  const p='outputs/'+name+'.txt';\n  if(existsSync(p)&&readFileSync(p,'utf8')!==name+'\\n') throw Error('wrong output: '+p);\n}\nconsole.log('verify: OK (wave fixture)');\n",
+        "stderr": ""
+      },
+      {
+        "argv": [
+          "docker",
+          "exec",
+          "docflow-release-pi-normal",
+          "sh",
+          "-c",
+          "cd \"$1\" && node tools/verify.mjs",
+          "--",
+          "/workspace/pi-final-fresh-normal"
+        ],
+        "exit": 0,
+        "stdout": "verify: OK (wave fixture)\n",
+        "stderr": ""
+      },
+      {
+        "argv": [
+          "docker",
+          "exec",
+          "docflow-release-pi-normal",
+          "git",
+          "-C",
+          "/workspace/pi-final-fresh-normal",
+          "rev-parse",
+          "HEAD"
+        ],
+        "exit": 0,
+        "stdout": "9da0dba545b38109175f0a719b5c1433361b156a\n",
+        "stderr": ""
+      },
+      {
+        "argv": [
+          "docker",
+          "exec",
+          "docflow-release-pi-normal",
+          "git",
+          "-C",
+          "/workspace/pi-final-fresh-normal",
+          "ls-remote",
+          "origin"
+        ],
+        "exit": 0,
+        "stdout": "9da0dba545b38109175f0a719b5c1433361b156a\tHEAD\n403979bec00eb6ff709962a5b232e578ffb8f8d5\trefs/heads/claim/0009-held\n9da0dba545b38109175f0a719b5c1433361b156a\trefs/heads/main\n",
+        "stderr": ""
+      },
+      {
+        "argv": [
+          "docker",
+          "exec",
+          "docflow-release-pi-normal",
+          "git",
+          "-C",
+          "/workspace/pi-final-fresh-normal",
+          "log",
+          "--all",
+          "--format=%H %G? %GF"
+        ],
+        "exit": 0,
+        "stdout": "9da0dba545b38109175f0a719b5c1433361b156a G 5053EF3F756873280CE8AEF72B524E6F998894F7\n74d2acccabd63fd96dff15f8fea4d126f7944d88 G 5053EF3F756873280CE8AEF72B524E6F998894F7\n196b04c3752d9daf6d937aeac2a38880c4f615a1 G 5053EF3F756873280CE8AEF72B524E6F998894F7\n0cd00460348094c07d6da601212eaa0f130404d5 G 5053EF3F756873280CE8AEF72B524E6F998894F7\n5d7f05df33d9875539a4de7d853dedd898be0566 G 5053EF3F756873280CE8AEF72B524E6F998894F7\n2b1b69b7b58cf6582c3d0d45e52ff9633b2be306 G 5053EF3F756873280CE8AEF72B524E6F998894F7\n403979bec00eb6ff709962a5b232e578ffb8f8d5 G 5053EF3F756873280CE8AEF72B524E6F998894F7\n040b33fffd82a6de6a6c2acc5f754d730ad33f8b G 5053EF3F756873280CE8AEF72B524E6F998894F7\n",
+        "stderr": ""
+      },
+      {
+        "argv": [
+          "docker",
+          "exec",
+          "docflow-release-pi-normal",
+          "git",
+          "-C",
+          "/workspace/pi-final-fresh-normal",
+          "status",
+          "--porcelain"
+        ],
+        "exit": 0,
+        "stdout": "",
+        "stderr": ""
+      }
+    ],
+    "private_final_report_sha256": "5e44d1a8e7bfcbd8eed420ff99983be33dd7990943f5f58a1eaff19239656e5e",
+    "status_at_a_glance": {
+      "this_run": "Fresh clone of retained native normal-wave local remote; gate, exact heads and public signatures checked.",
+      "overall": "verified",
+      "yet_to_do": "Combine with initial-publication and native acquisition checks; finish separate blocked-wave verification."
+    }
+  },
+  "full_bootstrap_mapped_checks": {
+    "utc": "2026-09-14T19:20:10.208460+00:00",
+    "source": "bef25d8d8a9ccc0a3ac15b678a2d619ed55c6216",
+    "purpose": "Run the exact mapped full-bootstrap assertion against preserved actual native target outputs, complementing the earlier 24 host checks. No new native execution or target repair.",
+    "results": [
+      {
+        "case": "claude-bootstrap-full",
+        "archive_head": "5c3c489711e9ad2f0abfcb9d831c2d9b591d0b6a",
+        "before_sha256": "9241f76bbc80bc36aff855e706ca6818be332e5d29450797d2a0337f75f6be1e",
+        "after_sha256": "9241f76bbc80bc36aff855e706ca6818be332e5d29450797d2a0337f75f6be1e",
+        "unchanged": true,
+        "argv": [
+          "node",
+          "evals/hosts/check-release.mjs",
+          "bootstrap-full",
+          "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflow-release-verification-20260914\\recovered-workspaces\\claude\\bootstrap-full\\repo",
+          "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflow-release-verification-20260914\\host-source-bef25d8"
+        ],
+        "exit": 0,
+        "stdout": "{\"case\":\"bootstrap-full\",\"passed\":true,\"target\":\"C:\\\\Users\\\\eugen\\\\AppData\\\\Local\\\\Temp\\\\docflow-release-verification-20260914\\\\recovered-workspaces\\\\claude\\\\bootstrap-full\\\\repo\"}\n",
+        "stderr": "",
+        "passed": true
+      },
+      {
+        "case": "codex-bootstrap-full",
+        "archive_head": "eafb8882a5a7062c6fa5dd0bc4bdc745e59f116e",
+        "before_sha256": "2f3c097aad7a632449133a37ae91151515100cb596c77b1d1fb6515fc6cea177",
+        "after_sha256": "2f3c097aad7a632449133a37ae91151515100cb596c77b1d1fb6515fc6cea177",
+        "unchanged": true,
+        "argv": [
+          "node",
+          "evals/hosts/check-release.mjs",
+          "bootstrap-full",
+          "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflow-release-verification-20260914\\recovered-workspaces\\codex\\bootstrap-full\\repo",
+          "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflow-release-verification-20260914\\host-source-bef25d8"
+        ],
+        "exit": 0,
+        "stdout": "{\"case\":\"bootstrap-full\",\"passed\":true,\"target\":\"C:\\\\Users\\\\eugen\\\\AppData\\\\Local\\\\Temp\\\\docflow-release-verification-20260914\\\\recovered-workspaces\\\\codex\\\\bootstrap-full\\\\repo\"}\n",
+        "stderr": "",
+        "passed": true
+      }
+    ],
+    "passed": true,
+    "status_at_a_glance": {
+      "this_run": "Both preserved native full-bootstrap outputs checked with the unchanged mapped release assertion.",
+      "overall": "verified",
+      "yet_to_do": "Combine with native process and signed host-check receipts; finish the separate Pi blocked wave."
+    }
+  },
+  "range_detection_native_readonly_proof": {
+    "utc": "2026-09-14T19:21:24.292889+00:00",
+    "case": "codex-range-detect",
+    "source": "bef25d8d8a9ccc0a3ac15b678a2d619ed55c6216",
+    "process": {
+      "host": "codex",
+      "container": "docflow-release-codex",
+      "fixture": "/workspace/range/repo",
+      "host_exit": 0,
+      "seconds": 89.9,
+      "model_requested": null,
+      "provider_requested": null,
+      "claude_delegation_opt_in": null,
+      "permission_context": "danger-full-access, approval never, inside disposable container",
+      "behavioural_verdict": "unverified: run independent assertions",
+      "codex_session_storage": "ephemeral",
+      "thinking_requested": null,
+      "pi_thinking_selection": null
+    },
+    "checks": {
+      "native_settled": true,
+      "structural_python3_assertions_succeeded": true,
+      "native_final_changed_count_zero": true,
+      "native_tracked_and_index_diffs_clean": true,
+      "initial_native_head_recorded": true
+    },
+    "passed_within_scope": true,
+    "native_assertion": {
+      "id": "item_9",
+      "command": "/bin/bash -lc \"python3 -B - <<'PY'\nfrom pathlib import Path\nimport re,subprocess\nadrs=[p for p in sorted(Path('adr').glob('*.md')) if 'template' not in p.name]\ncap=['Context','Capability statement','User stories / scenarios','Acceptance criteria','Out of scope','Open questions','References','Revision History','Approvals']\ntech=['Context','Decision','Rationale','Consequences','Acceptance criteria','Out of scope','Open questions','References','Revision History','Approvals']\nindex=Path('INDEX.md').read_text()\nassert [int(p.name[:4]) for p in adrs]==[1,2,3,101,102]\nassert len(re.findall(r'\"'^'\"\\\\| \\\\[',index,re.M))==5\nfor p in adrs:\n s=p.read_text(); n=p.name[:4]; meta=dict(re.findall(r'\"'^([a-z-]+): *(.*)$'\"',s,re.M))\n assert meta['adr']==n\n assert re.findall(r'\"'^## (.+)$'\"',s,re.M)==(tech if n=='0001' or int(n)>=100 else cap)\n row=next(x for x in index.splitlines() if 'adr/'+p.name in x)\n assert all(meta[k] in row for k in ['title','status','date'])\n assert meta['status'] in ['Accepted','Implemented']\n assert re.search(r'\"'^1'\"\\\\. ',s.split('## Acceptance criteria\\\\n')[1].split('\\\\n## ')[0],re.M)\n assert '| Maintainer | eval-bot |' in s.split('## Approvals')[1]\n assert any('adr/'+p.name in q.read_text() for q in Path('plan/'+('todo' if meta['status']=='Accepted' else 'done')).glob('*.md'))\n for dep in re.findall(r'\\\"(\\\\d{4})\\\"',meta['depends-on']): assert any(q.name.startswith(dep+'-') for q in adrs)\nfor p in [*adrs,Path('INDEX.md'),*Path('plan').rglob('*.md'),*Path('domains').rglob('*.md')]:\n for link in re.findall(r'(?:\\\\.\\\\./)*adr/\\\\d{4}-[a-z0-9-]+\\\\.md',p.read_text()):\n  assert (p.parent/link if link.startswith('../') else Path(link)).is_file(),(p,link)\nprint('PASS: legacy numbering, INDEX metadata, sections, numbered criteria, statuses, approvals, plan coverage and active ADR references (5 decisions; 2 templates excluded).')\nchanged=subprocess.check_output(['git','status','--porcelain=v1','--untracked-files=all'],text=True)\nprint('Changed-file count: '+str(len(changed.splitlines())))\nassert not changed\nprint('PASS: fixture matches initial clean working tree; no files changed.')\nPY\"",
+      "exit": 0,
+      "stdout": "PASS: legacy numbering, INDEX metadata, sections, numbered criteria, statuses, approvals, plan coverage and active ADR references (5 decisions; 2 templates excluded).\nChanged-file count: 0\nPASS: fixture matches initial clean working tree; no files changed.\n"
+    },
+    "diff_command": {
+      "id": "item_8",
+      "command": "/bin/bash -lc \"rg -n '010[012]|Recorded exception|Artefact root|Reporting|Stopped:|Claimed by:|Blockers:' CONVENTIONS.md AGENTS.md INDEX.md adr plan domains && git diff --exit-code && git diff --cached --exit-code\"",
+      "exit": 0,
+      "output_sha256": "0bd7282f170fa3c506246e968dde8cb4c1286a6e602701eea051ddd440268671"
+    },
+    "all_completed_commands": [
+      {
+        "id": "item_1",
+        "exit": 0,
+        "command_sha256": "cdfd6d7b207baafda2068f088ac4831cf1b0a1422bdd439229954e2b089e0651"
+      },
+      {
+        "id": "item_2",
+        "exit": 0,
+        "command_sha256": "e6e04e2c791e485c7eb5341b7ad4e868f8c1889f4100bd66ae41a1353c36871f"
+      },
+      {
+        "id": "item_3",
+        "exit": 1,
+        "command_sha256": "c8ffe20f0ea4a39d99daffd72a84538087a7cd361f27fe3d1402269de3638ec7"
+      },
+      {
+        "id": "item_4",
+        "exit": 0,
+        "command_sha256": "d4c6c09796f09ccc1489c1e904738813d7a2331858b3b227fc91cdc8d2403a43"
+      },
+      {
+        "id": "item_5",
+        "exit": 0,
+        "command_sha256": "d2a5d9f74478b24ba6111f82b644365a61d7f705b3631f7ffcf860cd846d2d7b"
+      },
+      {
+        "id": "item_7",
+        "exit": 127,
+        "command_sha256": "4a30509eb7b0a47f693b3df3ae183f83ad1ced9a8636e4eba33aec6dedd7cce2"
+      },
+      {
+        "id": "item_8",
+        "exit": 0,
+        "command_sha256": "e1b82ca40a67d9269176cee1fa63c9c8fdd5816760531411a170f4a552b776a1"
+      },
+      {
+        "id": "item_9",
+        "exit": 0,
+        "command_sha256": "18fd1f8bbfb01813a9169f365a680fd1d292e5c0cd9739a4a08366cfb0e50090"
+      }
+    ],
+    "private_transcript_sha256": "f6b48037dc7b846c22ca0084052f703f37f4712063213b98590e555fee11e1df",
+    "limit": "These are actual native completed deterministic assertions and clean-diff observations, parsed independently from the preserved original transcript. The separate controller pre-apply hash-check stdout was not retained and is not reconstructed or replaced by the later post-migration audit. Original absent .docflow read (exit 1) and unavailable python invocation (127), followed by successful python3, remain in the transcript.",
+    "status_at_a_glance": {
+      "this_run": "Corroborated original read-only detection using actual completed native assertions; no model execution or fixture mutation added.",
+      "overall": "verified",
+      "yet_to_do": "Retain the separate missing-controller-output limitation in the release assessment."
+    }
   },
   "docker_interruption": {
     "observed_utc": "2026-09-14T16:45:09.153878+00:00",
