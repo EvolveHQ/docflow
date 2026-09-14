@@ -84,7 +84,7 @@ route supplies actual execution for the following cases on the pinned bytes.
 | OpenCode waves | First attempt loses committed recovery for alpha; the second passes state but fails reporting and describes an invalid implementation-bearing probe. Both remain failures. A fresh third fixture passes 13 state checks and three report blocks; actual native Task records show two overlapping worker sessions. Its report has detail after the final status block, so literal end-of-report placement remains a formatting caveat. |
 | Pi normal wave | Native high settles naturally in 2338.5 seconds, exit 0. All 24 target and 19 initial-publication/order checks pass, with three valid reports and a successful unchanged gate in a fresh local-remote clone. |
 | Pi blocked/bootstrap continuation | The first fresh blocked attempt repeats planning without new tool actions and is interrupted, exit 130. The retry exhausts native local-backend 503 retries before claiming; exit 0 with an empty report fails independent checks. Separate bootstrap continuation remains under assessment. |
-| Cowork bootstrap-derived wave | The supported target-scoped recovery passes signed bootstrap/new-adr checks. Its actual history is extended into a fresh native Workflow fixture; 13 blocked-wave state checks, both initial signed claims and three reports pass independently. Expanded native launch and worker ordering evidence are assessed separately. |
+| Cowork bootstrap-derived wave | The supported target-scoped recovery passes signed bootstrap/new-adr checks. Its actual history is extended into a fresh native Workflow fixture; 13 blocked-wave state checks, both initial signed claims and three reports pass independently. Expanded native launch and actual child-event extraction cards corroborate acquisition-before-write and overlapping workers. |
 
 The first published Pi claims are
 `2b1b69b7b58cf6582c3d0d45e52ff9633b2be306` (alpha) and
@@ -144,6 +144,19 @@ Original controller path/GnuPG invocation failures are retained separately from
 the corrected independent Windows checks; native repository configuration was
 not edited to make the assertions pass.
 
+The native child receipt is exported to an ordinary authorised fixture file;
+its SHA-256 is `85cf5a2834bafafc3dadd68f3988d6f706e6f87ee6f3691cfd98ef018cb2eb9a`.
+Expanded native extraction requests/results match each child's actual
+acquisition, write, gate and push timestamps. Acquisition results precede the
+first output calls by 4.086 seconds (alpha) and 6.960 seconds (beta); both output
+calls precede alpha's failure. Thirteen independent receipt checks pass.
+The parent awaits one fan-out barrier and has no distinct timestamped first-
+failure observation; this limit remains explicit. No subsequent dispatch or
+integration occurred. GnuPG's supported single-fingerprint deletion returns
+exit 0 in the explicitly pinned session keyring; expanded native output shows
+secret count 1 to 0, zero private-key files and the public key retained. Six
+cleanup assertions pass. All recoverable fixture history is preserved.
+
 ## Isolated existing-repository pilot
 
 The pilot uses a non-hardlinked Clarity clone outside the workspace, pinned to
@@ -186,6 +199,31 @@ audits. Both embedded current-status copies in the HTML guide are updated.
 The other owner's completed documents 11/12 and their index links are preserved;
 CLAUDE's existing delegation pointer needs no edit. Before/after file hashes and
 the owner-activity observation are recorded separately from the product plan.
+Another writer later adds the document-14 INDEX row; removing only that row
+from the current raw bytes reproduces this run's recorded after hash. The new
+row is preserved and recorded as a subsequent concurrent change.
+
+## Prepared completion and local validation
+
+Items 0052 and 0053 have prepared completion records naming verified work
+`fd0fe0d9c25653e5c1e78dbe80f6421e4796c319` and PR #7. They become shipped only
+on an authorised checked merge. Item 0051 and decisions 0012/0015 remain open.
+The first prepared footer wording failed the unchanged static check; a separate
+documentation correction adds the required Shipped/HEAD markers while retaining
+the explicit pending-merge qualification. No gate was changed for that repair.
+
+Required local checks pass: static verification, 15 rejected mutations, six
+deterministic eval passes/zero failures/six skips, six runner controls, eight
+temporal controls, 17 claim controls, 12 permission-denial controls and 18 seed
+controls. CI passes at the first evidence head `fd0fe0d`; later PR heads still
+require their own check. Static output now counts 66 done records on this PR
+branch; main still contains 64 shipped records.
+
+Automatic approval review rejects removal of the generated
+`evals/hosts/__pycache__/check-pi-claims.cpython-312.pyc`, including a retry
+limited to that single file, with “blocked by policy”. It remains untracked.
+Pi's active disposable containers still need cleanup after their native runs;
+the worktree and recoverable fixture histories are retained for review.
 
 ## Status at a glance
 

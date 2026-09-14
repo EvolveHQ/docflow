@@ -2680,6 +2680,54 @@
         "Tool-output excerpts are truncated for length; the untruncated text remains in the referenced transcripts, whose SHA-256 values are recorded above.",
         "Child transcripts live in the session cloud container, not on the device; this receipt is the only exported artefact."
       ]
+    },
+    "native_receipt_checked": {
+      "checks": {
+        "0007-alpha_actual_ui_call_and_result": true,
+        "0007-alpha_successful_new_ref_result": true,
+        "0007-alpha_result_precedes_write": true,
+        "0007-alpha_matches_independent_git_objects": true,
+        "0007-alpha_actual_ui_successful_push": true,
+        "0008-beta_actual_ui_call_and_result": true,
+        "0008-beta_successful_new_ref_result": true,
+        "0008-beta_result_precedes_write": true,
+        "0008-beta_matches_independent_git_objects": true,
+        "0008-beta_actual_ui_successful_push": true,
+        "both_output_calls_before_alpha_failure": true,
+        "both_worker_starts_before_alpha_failure": true,
+        "all_independent_state_checks": true
+      },
+      "passed": true,
+      "native_receipt_sha256": "85cf5a2834bafafc3dadd68f3988d6f706e6f87ee6f3691cfd98ef018cb2eb9a",
+      "expanded_native_ui": [
+        {
+          "private_path": "ui-1789407886937042600.json",
+          "sha256": "9866313ff9f27416cafd1d8626e5528fcaeb9e170fcfbb594401d4046203ccb4"
+        },
+        {
+          "private_path": "ui-1789407967146228300.json",
+          "sha256": "877cc63d13c25b22d44d73b67719976cbf391511deea37a2f00699cd44ef6845"
+        },
+        {
+          "private_path": "ui-1789408015746079900.json",
+          "sha256": "c9809afcf39ffc3cb979b95b5d10f096537785619ed2f462d126773d17b73bd9"
+        }
+      ],
+      "scope": "Native extraction call/result cards inspected directly through supported desktop UI; raw child transcripts stay in the native session. Parent first-failure observation remains unavailable.",
+      "cleanup": {
+        "fingerprint": "136F664BB71B9076184AAB84A9B0F573725DE3D1",
+        "checks": {
+          "correct_pinned_keyring": true,
+          "delete_exit_zero": true,
+          "secret_count_before_one": true,
+          "secret_count_after_zero": true,
+          "private_key_files_zero": true,
+          "public_key_preserved": true
+        },
+        "passed": true,
+        "native_ui_sha256": "0c2318eb46a80e881858e630436cf663df8775c8e4489a296426b31f0e83ec55",
+        "preserved": "Public key, keyring directory, all fixture Git histories and recoverable work."
+      }
     }
   },
   "pi_backend_failure": {
@@ -2886,6 +2934,14 @@
       "provider": "llama-server",
       "model": "qwen3.8-27b-coding",
       "inference_requests": 0
+    },
+    "bootstrap-retry-state": {
+      "success": true,
+      "thinking": "high",
+      "provider": "llama-server",
+      "model": "qwen3.8-27b-coding",
+      "inference_requests": 0,
+      "exit": 0
     }
   },
   "cleanup": {
@@ -2947,7 +3003,32 @@
         "files": 1123
       }
     ],
-    "remaining": "Pi continuation containers and Cowork native disposable signer remain active; worktree and recoverable fixture histories retained."
+    "cowork_private_signer": {
+      "fingerprint": "136F664BB71B9076184AAB84A9B0F573725DE3D1",
+      "checks": {
+        "correct_pinned_keyring": true,
+        "delete_exit_zero": true,
+        "secret_count_before_one": true,
+        "secret_count_after_zero": true,
+        "private_key_files_zero": true,
+        "public_key_preserved": true
+      },
+      "passed": true,
+      "native_ui_sha256": "0c2318eb46a80e881858e630436cf663df8775c8e4489a296426b31f0e83ec55",
+      "preserved": "Public key, keyring directory, all fixture Git histories and recoverable work."
+    },
+    "remaining": "Pi continuation containers remain active; worktree and recoverable fixture histories retained. Automatic approval review rejected removal of the generated untracked evals/hosts/__pycache__/check-pi-claims.cpython-312.pyc, including a single-file retry, with blocked by policy; it is left untracked.",
+    "containers": {
+      "observed_utc": "2026-09-14T17:54:07.905178+00:00",
+      "pi_blocked": {
+        "before_stop": "Only tini, sleep and disposable gpg-agent; no Pi process active",
+        "archived_workspace": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflow-release-verification-20260914\\recovered-workspaces\\pi-blocked",
+        "stop_exit": 0,
+        "tmpfs_home": "Dropped by container stop; public keys preserved outside container",
+        "history_preserved": true
+      },
+      "remaining": "Pi normal container runs the separate native-high bootstrap. Other CLI containers are stopped after Docker Desktop interruption; recovered workspaces retained. No global prune."
+    }
   },
   "range_post_audit": {
     "case": "range migration post-audit positive and wrong-path negative",
