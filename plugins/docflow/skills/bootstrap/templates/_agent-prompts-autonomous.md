@@ -43,6 +43,11 @@ Create a clean worktree at the fetched integration tip, with branch
 `claim/<item-key>` (queue filename without extension). The first commit
 contains the item status; its message names the actual claim branch, wave, owned artefacts and
 reserved identifiers, including "none". Commit before acquisition.
+Read back the first commit message and committed item Status before publishing.
+Both must contain the literal actual claim branch; the message must also name
+the wave, reservations and exact owned paths. Its diff changes only that item's
+Status, with no implementation output. Correct missing metadata before the first
+push, never through a later commit on a deficient published claim.
 
 Acquire the remote ref with an explicit empty expected value:
 `git push --porcelain --force-with-lease=refs/heads/claim/<item-key>: origin HEAD:refs/heads/claim/<item-key>`.
@@ -54,6 +59,8 @@ and return blocked/unknown before implementation. Set tracking only after
 acquisition. To continue an explicitly named claim, detach at its fetched
 tip, retain reservations, update the actor and push back to the same ref;
 do not acquire it again. Report any old worktree still holding it.
+Wait for acquisition's completed successful new-ref receipt before issuing
+implementation writes; use a separate tool call for implementation.
 -->
 
 <!-- SHARED CHECKOUT
@@ -160,6 +167,15 @@ only when owned and unused. List all unmerged or dirty leftovers under
 Yet to do.
 
 ## Stop
+
+An explicit host/tool permission denial immediately stops the affected operation,
+including export or cleanup. Never route it through another tool, shell, staging
+directory, move, archive, symlink or delegate, and never probe writes to the denied
+destination. Report the action, destination, actual partial effects and missing
+permission. If Status/commit/export would cross that boundary, report in the
+current response and leave persistence pending. Resume only with explicit
+permission for that action. A gate environment failure is distinct and grants
+no permission to bypass a denial.
 
 Stop for ambiguous criteria, non-Accepted ownership, exhausted budget,
 unknown/environmental gate failure, contention, substantive conflict,
