@@ -50,9 +50,21 @@ and return ADR 0015 to Implemented.
 
 ## Status
 
-- **Claimed by:** Codex (Orca worker, dispatch `ctx_92a3bae7230f`), 2026-09-13, `kmox83/0051-host-verification-astra` ([PR #6](https://github.com/EvolveHQ/docflow/pull/6); resumed for the operator's pi provider correction).
-- **Blockers:** Full native-high Pi wave acceptance remains unmet: the positive control repeated generation before work; the corrective blocked run passed stop-flow checks but omitted the actual claim branch from its initial commit. Cowork needs the operator to unlock Windows and bring Claude Desktop forward: supported input returned `window_not_focused`, no new prompt ran, and the displayed usage reset does not establish runtime readiness. Actual target Git, installation/discovery, bootstrap/lifecycle and wave checks remain unverified; the earlier cloud connector denied target .git writes. Pi's local route needs no cloud login.
-- **Stopped:** 2026-09-14 UTC — bounded continuation evidence prepared on PR #6; Pi complete-contract and Cowork foreground/actual-target acceptance remain unmet. All owned continuation containers archived and removed after independent review; no further native attempt authorised in this continuation.
+- **Claimed by:** Codex (Orca worker, dispatch `ctx_35d5b332d1f2`), 2026-09-14, `kmox83/0051-host-verification-astra` ([PR #6](https://github.com/EvolveHQ/docflow/pull/6); resumed for the operator-confirmed visible Cowork desktop).
+- **Blockers:** Full native-high Pi acceptance remains unmet: the positive control repeated generation before work; the corrective blocked run passed stop-flow checks but failed initial claim branch-name metadata. No Pi rerun is authorised here. Cowork's screenshots are now visible and its Add folder picker opened, but folder-field automation returned `value_not_settable` and focus was unverified. The coordinator awaits manual selection of the prepared target; no new probe has run. Actual target Git, installation/discovery, bootstrap/lifecycle and wave checks remain unverified; the earlier cloud connector denied target .git writes.
+- **Stopped:**
+
+## Cowork continuation, 2026-09-14
+
+The previous dispatch stopped at `fcc8e2a` with bounded Pi evidence, five
+reviewed continuation containers removed, and Pi/Cowork acceptance incomplete.
+Its failed observations and source/export line-ending boundary remain in the
+linked historical receipts. The operator has now confirmed Windows is unlocked
+and Claude Desktop visible. At 08:15 UTC the coordinator observed screenshots
+and the native folder picker; the 08:19 receipt still shows a marker-only actual
+target with no `.git` or probe response. The coordinator operates the GUI and
+verifies native target actions; this worker prepares fixtures/assertions and
+writes evidence, without initialising the actual target or inferring success.
 
 ## Remaining release evidence
 
@@ -132,12 +144,11 @@ pass. Neither this item nor ADRs 0012/0015 is marked complete.
 
 ## Status at a glance
 
-- **This run:** prepared independently checked native-host evidence and fixes
-  on PR #6; local verify, mutation and deterministic eval commands passed,
-  pushed code CI passed, and all five continuation containers were cleaned up
-  after review. Required current-head CI is recorded on the draft PR.
+- **This run:** resumed Cowork verification on the existing draft PR after
+  visible desktop progress; actual target attachment and probe remain pending.
+  Prior passing gates, failed native controls and cleanup evidence are retained.
 - **Overall:** partially verified — the five-host requirement remains blocked.
-- **Yet to do:** successful native-high Pi complete-contract evidence;
-  operator Cowork foreground action and actual target Git,
+- **Yet to do:** successful native-high Pi complete-contract evidence in a later
+  authorised run; operator Cowork folder selection and actual target Git,
   installation/discovery and remaining behavioural evidence. Keep
   this item in todo and both owning decisions Accepted until all criteria pass.
