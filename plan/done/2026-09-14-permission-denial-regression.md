@@ -36,7 +36,7 @@ Product and gate changes are separate signed commits. Required local checks
 pass, including `verify: OK`, exit 0, six deterministic eval passes, zero
 failures and six explicit skips. The full release gate remains open under 0051.
 
-Verified work HEAD: `fd0fe0d9c25653e5c1e78dbe80f6421e4796c319`.
+Shipped footer prepared for checked merge — verified work HEAD: `fd0fe0d9c25653e5c1e78dbe80f6421e4796c319`.
 PR: https://github.com/EvolveHQ/docflow/pull/7
 
 ## Status at a glance

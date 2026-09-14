@@ -45,7 +45,7 @@ criterion requires a named external participant. This is controlled existing-
 repository verification, not independent human adoption or unattended-host
 evidence; proposed v1 human validation remains outside this completed scope.
 
-Verified work HEAD: `fd0fe0d9c25653e5c1e78dbe80f6421e4796c319`.
+Shipped footer prepared for checked merge — verified work HEAD: `fd0fe0d9c25653e5c1e78dbe80f6421e4796c319`.
 PR: https://github.com/EvolveHQ/docflow/pull/7
 
 ## Status at a glance
