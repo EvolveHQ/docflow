@@ -1,0 +1,39 @@
+{
+  "schema": 1,
+  "home": "example/platform",
+  "purpose": "Coordinate a synthetic API and mobile outcome",
+  "repositories": [
+    {
+      "id": "example/api",
+      "aliases": [
+        "old-example/api"
+      ],
+      "path": "repos/api",
+      "role": "delivery",
+      "instructions": [
+        "AGENTS.md"
+      ]
+    },
+    {
+      "id": "example/mobile",
+      "aliases": [],
+      "path": "repos/mobile",
+      "role": "delivery",
+      "instructions": [
+        "README.md"
+      ]
+    }
+  ],
+  "external_homes": [],
+  "resources": [
+    {
+      "id": "example/shared-staging",
+      "owner": "human:owner",
+      "source": {
+        "repository": "example/api",
+        "path": "evidence.txt",
+        "revision": "1111111111111111111111111111111111111111"
+      }
+    }
+  ]
+}

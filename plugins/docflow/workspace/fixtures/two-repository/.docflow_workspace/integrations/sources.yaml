@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "sources": [
+    {
+      "id": "example/local-guidance",
+      "assets": [
+        {
+          "id": "review",
+          "asset_kind": "skill",
+          "revision": "fixture-1",
+          "location": "README.md",
+          "licence": "MIT",
+          "selection": "approved",
+          "compatibility": "proposed",
+          "owner": "human:owner",
+          "requires": [],
+          "effects": [
+            "Read explicitly scoped files."
+          ],
+          "replacement": null
+        }
+      ]
+    }
+  ]
+}

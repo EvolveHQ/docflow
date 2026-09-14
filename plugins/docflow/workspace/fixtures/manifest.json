@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "evaluated_at": "2026-09-15T13:00:00Z",
+  "valid": "two-repository",
+  "records": {
+    "reliable-exports": ".docflow_workspace/ideas/reliable-exports--123456781111.md",
+    "preserve-legacy-response": ".docflow_workspace/decisions/preserve-legacy-response--234567892222.md",
+    "deliver-compatible-exports": ".docflow_workspace/work/deliver-compatible-exports--345678903333.md",
+    "legacy-client-observation": ".docflow_workspace/knowledge/legacy-client-observation--456789014444.md",
+    "api-interrupted": ".docflow_workspace/runs/api-interrupted--567890125555.md",
+    "api-reassigned": ".docflow_workspace/runs/api-reassigned--678901236666.md",
+    "mobile-revoked": ".docflow_workspace/runs/mobile-revoked--789012347777.md"
+  },
+  "expected": {
+    "agreement": "accepted",
+    "work": "active",
+    "provider_complete": true,
+    "consumer_complete": false,
+    "run_states": [
+      "stopped",
+      "succeeded",
+      "stopped"
+    ],
+    "native_member_state": "Implemented"
+  },
+  "provenance": "Synthetic producer fixture; no independent native execution or approval asserted."
+}

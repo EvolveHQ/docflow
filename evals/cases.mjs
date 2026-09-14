@@ -7,6 +7,7 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { readFileSync } from 'node:fs';
 import assert from 'node:assert/strict';
+import { spawnSync } from 'node:child_process';
 import { assertStatusReports } from './reporting.mjs';
 import { assertClaimAcquisition } from './claim-race.mjs';
 import { assertClaimCleanupContract } from './claim-cleanup.mjs';
@@ -36,6 +37,15 @@ const LEGACY_MAP = { '0101': '0004', '0102': '0005' };
 const LEGACY_DONE_NUMBERS = ['0101'];
 
 export const cases = [
+  {
+    name: 'workspace: real validator, adverse inputs and portable assets',
+    skill: null,
+    agentDependent: false,
+    assert() {
+      const result = spawnSync(process.execPath, ['--test', join(evalsDir, 'workspace.test.mjs')], { encoding: 'utf8', timeout: 120000 });
+      assert.equal(result.status, 0, result.error?.message || result.stdout + result.stderr);
+    },
+  },
   {
     name: 'reports: missing blocks and invalid overall verdicts fail',
     skill: null,
