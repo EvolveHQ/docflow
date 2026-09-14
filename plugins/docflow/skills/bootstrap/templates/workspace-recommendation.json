@@ -1,0 +1,18 @@
+{
+  "id": "review-guidance",
+  "action": "reference",
+  "fit": "optional",
+  "reason": "A scoped review can reuse the local checklist.",
+  "scope": "Assigned review only",
+  "asset": {
+    "source": "example/local-guidance",
+    "asset": "review",
+    "revision": "fixture-1"
+  },
+  "availability": "not_checked",
+  "state": "suggested",
+  "authority": null,
+  "setup_dependency": null,
+  "fallback": "Read native conventions and use ordinary file search.",
+  "success_check": "Identify compatibility findings with exact sources."
+}

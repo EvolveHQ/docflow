@@ -23,6 +23,7 @@
   },
   "files": [
     "plugins/docflow/skills/",
+    "plugins/docflow/workspace/",
     "docs/preview.png",
     "README.md",
     "USAGE.md",

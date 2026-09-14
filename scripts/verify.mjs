@@ -10,6 +10,7 @@
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join, extname } from 'node:path';
+import { validateWorkspace, parseRecord, parseMetadata, checkShape } from '../plugins/docflow/workspace/validate.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const errors = [];
@@ -248,7 +249,7 @@ function scanLeaks(rel) {
   }
 }
 
-const textSurfaceExts = new Set(['.css', '.html', '.md', '.mdx', '.svg', '.yml', '.yaml']);
+const textSurfaceExts = new Set(['.css', '.html', '.md', '.mdx', '.svg', '.yml', '.yaml', '.json', '.mjs', '.txt']);
 function scanLeakTree(rel) {
   if (!existsSync(join(root, rel))) return;
   for (const entry of readdirSync(join(root, rel), { withFileTypes: true })) {
@@ -285,6 +286,7 @@ for (const f of ['README.md', 'USAGE.md']) scanLeaks(f);
 // The docs site is public/user-visible too; scan text-like site files
 // while skipping binary assets such as PNG/ICO previews.
 scanLeakTree('docs');
+scanLeakTree('plugins/docflow/workspace');
 // Bootstrap templates are user-visible (they ship into target repos).
 const tplDir = join(root, 'plugins/docflow/skills/bootstrap/templates');
 if (existsSync(tplDir)) {
@@ -305,6 +307,25 @@ if (existsSync(doneDir)) {
     }
   }
 }
+
+// ── F. Portable workspace foundation: structure, templates and producer ──
+if (!pkg?.files?.includes('plugins/docflow/workspace/')) {
+  fail('package.json: portable workspace assets must be distributed');
+}
+for (const kind of ['ideas', 'decisions', 'work', 'knowledge', 'runs', 'role', 'profile']) {
+  const rel = `plugins/docflow/skills/bootstrap/templates/workspace-${kind}.md`;
+  try { checkShape(parseRecord(read(rel)), kind).forEach(e => fail(`${rel}: ${e}`)); }
+  catch (e) { fail(`${rel}: ${e.message}`); }
+}
+for (const [file, definition] of [['registry.yaml', 'registry'], ['sources.yaml', 'sources'], ['grant.json', 'grant'], ['brief.json', 'brief'], ['receipt.json', 'receipt'], ['recommendation.json', 'recommendation']]) {
+  const rel = `plugins/docflow/skills/bootstrap/templates/workspace-${file}`;
+  try { checkShape(parseMetadata(read(rel)), definition).forEach(e => fail(`${rel}: ${e}`)); }
+  catch (e) { fail(`${rel}: ${e.message}`); }
+}
+try {
+  const result = validateWorkspace(join(root, 'plugins/docflow/workspace/fixtures/two-repository'), { at: '2026-09-15T13:00:00Z' });
+  result.diagnostics.forEach(d => fail(`workspace fixture ${d.path}: ${d.code}: ${d.message}`));
+} catch (e) { fail(`workspace fixture: ${e.message}`); }
 
 // ── Report ──
 if (errors.length) {

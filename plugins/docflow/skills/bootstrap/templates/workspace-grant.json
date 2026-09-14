@@ -1,0 +1,38 @@
+{
+  "id": "api-first",
+  "revisions": [
+    {
+      "revision": 1,
+      "state": "active",
+      "delivery": "provider",
+      "scope_revision": 1,
+      "actor": "agent:api-first",
+      "approved_by": "human:owner",
+      "approved_at": "2026-09-15T08:20:00Z",
+      "mandate": {
+        "repository": "example/api",
+        "path": "evidence.txt",
+        "revision": "1111111111111111111111111111111111111111",
+        "observed_at": "2026-09-15T08:00:00Z",
+        "outcome": "passed",
+        "summary": "Synthetic source-bound observation; not a real host result."
+      },
+      "actions": [
+        "read",
+        "implement",
+        "test",
+        "commit",
+        "push",
+        "open-draft-pr"
+      ],
+      "conditions": [
+        "Preserve native repository checks and compatibility."
+      ],
+      "stop_at": "draft-pr-and-checks-reported",
+      "valid_from": "2026-09-15T09:00:00Z",
+      "expires_at": "2026-09-15T20:00:00Z",
+      "recorded_at": "2026-09-15T09:00:00Z",
+      "reason": "Synthetic existing mandate recorded."
+    }
+  ]
+}

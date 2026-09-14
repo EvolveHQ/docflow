@@ -268,6 +268,18 @@ ln -s ~/.docflow-src/plugins/docflow/skills/* ~/.claude/skills/
 On Windows, copy `plugins\docflow\skills\*` into
 `%USERPROFILE%\.claude\skills\` instead of symlinking.
 
+### Workspace foundation assets
+
+The package also includes the portable workspace contract, validator and
+producer fixtures in `plugins/docflow/workspace/`, with record templates in
+bootstrap's existing template directory. Keep `workspace/` beside `skills/`
+for plugin/npm installations. For standalone skill copies, also copy the
+complete `workspace/` directory as `docflow-workspace/` beside the host's
+`skills/` directory; this applies to shared Codex/OpenCode copies too.
+See the [installation and assembly guide](plugins/docflow/workspace/README.md).
+These foundations do not yet add the four workspace operating skills or
+establish native host and Clarity qualification.
+
 ## Quick start
 
 In any repo, run:

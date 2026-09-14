@@ -1,0 +1,33 @@
+{
+  "returned_at": "2026-09-15T10:00:00Z",
+  "head_revision": "2222222222222222222222222222222222222222",
+  "checks": [
+    {
+      "name": "native-check",
+      "command": "synthetic-check --fixture",
+      "outcome": "skipped",
+      "exit_code": null,
+      "output": "Synthetic expected output; no native process was executed.",
+      "evidence": []
+    }
+  ],
+  "evidence": [
+    {
+      "repository": "example/api",
+      "path": "evidence.txt",
+      "revision": "2222222222222222222222222222222222222222",
+      "observed_at": "2026-09-15T10:00:00Z",
+      "outcome": "passed",
+      "summary": "Synthetic source-bound observation; not a real host result."
+    }
+  ],
+  "blockers": [
+    {
+      "reason": "Attempt stopped at an explicit boundary.",
+      "owner": "human:owner",
+      "next_action": "Reconcile before further mutation."
+    }
+  ],
+  "next_action": "Return evidence; parent completion remains independent.",
+  "used_assets": []
+}

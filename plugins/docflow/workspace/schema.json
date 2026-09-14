@@ -1,0 +1,1985 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:docflow:workspace:1",
+  "title": "Workspace format 1",
+  "$defs": {
+    "recordRef": {
+      "type": "object",
+      "properties": {
+        "home": {
+          "type": "string",
+          "minLength": 1
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "home",
+        "id",
+        "path"
+      ],
+      "additionalProperties": false
+    },
+    "nativeRef": {
+      "type": "object",
+      "properties": {
+        "repository": {
+          "type": "string",
+          "minLength": 1
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "revision": {
+          "type": "string",
+          "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$"
+        }
+      },
+      "required": [
+        "repository",
+        "path",
+        "revision"
+      ],
+      "additionalProperties": false
+    },
+    "evidence": {
+      "type": "object",
+      "properties": {
+        "repository": {
+          "type": "string",
+          "minLength": 1
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "revision": {
+          "type": "string",
+          "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$"
+        },
+        "observed_at": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
+        },
+        "outcome": {
+          "type": "string",
+          "enum": [
+            "passed",
+            "failed",
+            "skipped",
+            "unknown",
+            "stale"
+          ]
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "repository",
+        "path",
+        "revision",
+        "observed_at",
+        "outcome",
+        "summary"
+      ],
+      "additionalProperties": false
+    },
+    "registry": {
+      "type": "object",
+      "properties": {
+        "schema": {
+          "const": 1
+        },
+        "home": {
+          "type": "string",
+          "minLength": 1
+        },
+        "purpose": {
+          "type": "string",
+          "minLength": 1
+        },
+        "repositories": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "aliases": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "minItems": 0
+              },
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "remote": {
+                "type": "string",
+                "minLength": 1
+              },
+              "role": {
+                "type": "string",
+                "enum": [
+                  "delivery",
+                  "reference"
+                ]
+              },
+              "instructions": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "minItems": 1
+              }
+            },
+            "required": [
+              "id",
+              "aliases",
+              "path",
+              "role",
+              "instructions"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 0
+        },
+        "external_homes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "home": {
+                "type": "string",
+                "minLength": 1
+              },
+              "path": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "home",
+              "path"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 0
+        },
+        "resources": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "owner": {
+                "type": "string",
+                "minLength": 1
+              },
+              "source": {
+                "$ref": "#/$defs/nativeRef"
+              }
+            },
+            "required": [
+              "id",
+              "owner",
+              "source"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 0
+        },
+        "extensions": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "schema",
+        "home",
+        "purpose",
+        "repositories",
+        "external_homes",
+        "resources"
+      ],
+      "additionalProperties": false
+    },
+    "history": {
+      "type": "object",
+      "properties": {
+        "state": {
+          "type": "string",
+          "minLength": 1
+        },
+        "at": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
+        },
+        "actor": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "state",
+        "at",
+        "actor",
+        "reason"
+      ],
+      "additionalProperties": false
+    },
+    "ideas": {
+      "type": "object",
+      "properties": {
+        "schema": {
+          "const": 1
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "home": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "owner": {
+          "type": "string",
+          "minLength": 1
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/recordRef"
+          },
+          "minItems": 0
+        },
+        "extensions": {
+          "type": "object"
+        },
+        "kind": {
+          "const": "ideas"
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "backlog",
+            "selected",
+            "rejected",
+            "discarded"
+          ]
+        },
+        "history": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/history"
+          },
+          "minItems": 1
+        },
+        "priority": {
+          "type": "string",
+          "enum": [
+            "low",
+            "normal",
+            "high"
+          ]
+        },
+        "problem": {
+          "type": "string",
+          "minLength": 1
+        },
+        "affected_repositories": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "schema",
+        "id",
+        "home",
+        "title",
+        "owner",
+        "created_at",
+        "links",
+        "kind",
+        "state",
+        "history",
+        "priority",
+        "problem",
+        "affected_repositories"
+      ],
+      "additionalProperties": false
+    },
+    "decisions": {
+      "type": "object",
+      "properties": {
+        "schema": {
+          "const": 1
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "home": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "owner": {
+          "type": "string",
+          "minLength": 1
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/recordRef"
+          },
+          "minItems": 0
+        },
+        "extensions": {
+          "type": "object"
+        },
+        "kind": {
+          "const": "decisions"
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "proposed",
+            "accepted",
+            "rejected",
+            "superseded"
+          ]
+        },
+        "history": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/history"
+          },
+          "minItems": 1
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "affected_repositories": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        },
+        "acceptance": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "by": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "at": {
+                  "type": "string",
+                  "format": "date-time",
+                  "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
+                },
+                "mandate": {
+                  "$ref": "#/$defs/evidence"
+                }
+              },
+              "required": [
+                "by",
+                "at",
+                "mandate"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "adoption": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/nativeRef"
+          },
+          "minItems": 0
+        },
+        "predecessors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/recordRef"
+          },
+          "minItems": 0
+        },
+        "successors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/recordRef"
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "schema",
+        "id",
+        "home",
+        "title",
+        "owner",
+        "created_at",
+        "links",
+        "kind",
+        "state",
+        "history",
+        "scope",
+        "affected_repositories",
+        "acceptance",
+        "adoption",
+        "predecessors",
+        "successors"
+      ],
+      "additionalProperties": false
+    },
+    "knowledge": {
+      "type": "object",
+      "properties": {
+        "schema": {
+          "const": 1
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "home": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "owner": {
+          "type": "string",
+          "minLength": 1
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/recordRef"
+          },
+          "minItems": 0
+        },
+        "extensions": {
+          "type": "object"
+        },
+        "kind": {
+          "const": "knowledge"
+        },
+        "category": {
+          "type": "string",
+          "enum": [
+            "observation",
+            "hypothesis",
+            "constraint",
+            "explanation",
+            "conclusion"
+          ]
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidence"
+          },
+          "minItems": 1
+        },
+        "observed_at": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
+        },
+        "review_when": {
+          "type": "string",
+          "minLength": 1
+        },
+        "predecessors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/recordRef"
+          },
+          "minItems": 0
+        },
+        "successors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/recordRef"
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "schema",
+        "id",
+        "home",
+        "title",
+        "owner",
+        "created_at",
+        "links",
+        "kind",
+        "category",
+        "sources",
+        "observed_at",
+        "review_when",
+        "predecessors",
+        "successors"
+      ],
+      "additionalProperties": false
+    },
+    "criterion": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidence"
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "id",
+        "text",
+        "evidence"
+      ],
+      "additionalProperties": false
+    },
+    "blocker": {
+      "type": "object",
+      "properties": {
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "owner": {
+          "type": "string",
+          "minLength": 1
+        },
+        "next_action": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "reason",
+        "owner",
+        "next_action"
+      ],
+      "additionalProperties": false
+    },
+    "delivery": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "repository": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "scope_revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "required": {
+          "type": "boolean"
+        },
+        "native_work": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/nativeRef"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "required_completion": {
+          "type": "string",
+          "minLength": 1
+        },
+        "depends_on": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        },
+        "observation": {
+          "type": "object",
+          "properties": {
+            "state": {
+              "type": "string",
+              "minLength": 1
+            },
+            "complete": {
+              "type": "boolean"
+            },
+            "observed_at": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time",
+                  "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "source_revision": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 0
+            }
+          },
+          "required": [
+            "state",
+            "complete",
+            "observed_at",
+            "source_revision",
+            "evidence"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "id",
+        "repository",
+        "scope_revision",
+        "scope",
+        "required",
+        "native_work",
+        "required_completion",
+        "depends_on",
+        "observation"
+      ],
+      "additionalProperties": false
+    },
+    "grantRevision": {
+      "type": "object",
+      "properties": {
+        "revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "active",
+            "suspended",
+            "revoked",
+            "closed"
+          ]
+        },
+        "delivery": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scope_revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "actor": {
+          "type": "string",
+          "minLength": 1
+        },
+        "approved_by": {
+          "type": "string",
+          "minLength": 1
+        },
+        "approved_at": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
+        },
+        "mandate": {
+          "$ref": "#/$defs/evidence"
+        },
+        "actions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "read",
+              "report",
+              "implement",
+              "test",
+              "commit",
+              "push",
+              "open-draft-pr",
+              "merge",
+              "release",
+              "deploy",
+              "configure"
+            ]
+          },
+          "minItems": 1
+        },
+        "conditions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        },
+        "stop_at": {
+          "type": "string",
+          "minLength": 1
+        },
+        "valid_from": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
+        },
+        "expires_at": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
+        },
+        "recorded_at": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "revision",
+        "state",
+        "delivery",
+        "scope_revision",
+        "actor",
+        "approved_by",
+        "approved_at",
+        "mandate",
+        "actions",
+        "conditions",
+        "stop_at",
+        "valid_from",
+        "expires_at",
+        "recorded_at",
+        "reason"
+      ],
+      "additionalProperties": false
+    },
+    "grantRef": {
+      "type": "object",
+      "properties": {
+        "work": {
+          "$ref": "#/$defs/recordRef"
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "required": [
+        "work",
+        "id",
+        "revision"
+      ],
+      "additionalProperties": false
+    },
+    "assetRef": {
+      "type": "object",
+      "properties": {
+        "source": {
+          "type": "string",
+          "minLength": 1
+        },
+        "asset": {
+          "type": "string",
+          "minLength": 1
+        },
+        "revision": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "source",
+        "asset",
+        "revision"
+      ],
+      "additionalProperties": false
+    },
+    "recommendation": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "action": {
+          "type": "string",
+          "enum": [
+            "reference",
+            "enable",
+            "use"
+          ]
+        },
+        "fit": {
+          "type": "string",
+          "enum": [
+            "required-by-repo",
+            "recommended",
+            "optional",
+            "incompatible",
+            "unknown"
+          ]
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "asset": {
+          "$ref": "#/$defs/assetRef"
+        },
+        "availability": {
+          "type": "string",
+          "enum": [
+            "not_checked",
+            "not_present",
+            "present",
+            "enabled",
+            "unavailable"
+          ]
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "suggested",
+            "selected",
+            "declined",
+            "deferred",
+            "superseded"
+          ]
+        },
+        "authority": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/grantRef"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "setup_dependency": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/recordRef"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "fallback": {
+          "type": "string",
+          "minLength": 1
+        },
+        "success_check": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "id",
+        "action",
+        "fit",
+        "reason",
+        "scope",
+        "asset",
+        "availability",
+        "state",
+        "authority",
+        "setup_dependency",
+        "fallback",
+        "success_check"
+      ],
+      "additionalProperties": false
+    },
+    "work": {
+      "type": "object",
+      "properties": {
+        "schema": {
+          "const": 1
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "home": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "owner": {
+          "type": "string",
+          "minLength": 1
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/recordRef"
+          },
+          "minItems": 0
+        },
+        "extensions": {
+          "type": "object"
+        },
+        "kind": {
+          "const": "work"
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "planned",
+            "active",
+            "review",
+            "done",
+            "cancelled"
+          ]
+        },
+        "history": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/history"
+          },
+          "minItems": 1
+        },
+        "scope_revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "outcome": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "exclusions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        },
+        "priority": {
+          "type": "string",
+          "enum": [
+            "low",
+            "normal",
+            "high"
+          ]
+        },
+        "criteria": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/criterion"
+          },
+          "minItems": 1
+        },
+        "blockers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/blocker"
+          },
+          "minItems": 0
+        },
+        "dependencies": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/recordRef"
+          },
+          "minItems": 0
+        },
+        "deliveries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/delivery"
+          },
+          "minItems": 0
+        },
+        "grants": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/grant"
+          },
+          "minItems": 0
+        },
+        "recommendations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/recommendation"
+          },
+          "minItems": 0
+        },
+        "next_action": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "schema",
+        "id",
+        "home",
+        "title",
+        "owner",
+        "created_at",
+        "links",
+        "kind",
+        "state",
+        "history",
+        "scope_revision",
+        "outcome",
+        "scope",
+        "exclusions",
+        "priority",
+        "criteria",
+        "blockers",
+        "dependencies",
+        "deliveries",
+        "grants",
+        "recommendations",
+        "next_action"
+      ],
+      "additionalProperties": false
+    },
+    "claim": {
+      "type": "object",
+      "properties": {
+        "mode": {
+          "type": "string",
+          "enum": [
+            "native",
+            "owner-confirmed-serial"
+          ]
+        },
+        "owner": {
+          "type": "string",
+          "minLength": 1
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "held",
+            "released",
+            "unknown"
+          ]
+        },
+        "source": {
+          "$ref": "#/$defs/evidence"
+        },
+        "observed_at": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
+        },
+        "expires_at": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
+        }
+      },
+      "required": [
+        "mode",
+        "owner",
+        "state",
+        "source",
+        "observed_at",
+        "expires_at"
+      ],
+      "additionalProperties": false
+    },
+    "reservation": {
+      "type": "object",
+      "properties": {
+        "resource": {
+          "type": "string",
+          "minLength": 1
+        },
+        "owner": {
+          "type": "string",
+          "minLength": 1
+        },
+        "start": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
+        },
+        "end": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
+        },
+        "source": {
+          "$ref": "#/$defs/evidence"
+        }
+      },
+      "required": [
+        "resource",
+        "owner",
+        "start",
+        "end",
+        "source"
+      ],
+      "additionalProperties": false
+    },
+    "brief": {
+      "type": "object",
+      "properties": {
+        "work": {
+          "$ref": "#/$defs/recordRef"
+        },
+        "delivery": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scope_revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "exclusions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        },
+        "actor": {
+          "type": "string",
+          "minLength": 1
+        },
+        "host": {
+          "type": "string",
+          "minLength": 1
+        },
+        "grant": {
+          "$ref": "#/$defs/grantRef"
+        },
+        "workspace_revision": {
+          "type": "string",
+          "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$"
+        },
+        "base_revision": {
+          "type": "string",
+          "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$"
+        },
+        "native_work": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/nativeRef"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "claim": {
+          "$ref": "#/$defs/claim"
+        },
+        "dependencies": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/recordRef"
+          },
+          "minItems": 0
+        },
+        "resources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/reservation"
+          },
+          "minItems": 0
+        },
+        "required_checks": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "stop_at": {
+          "type": "string",
+          "minLength": 1
+        },
+        "return_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "selected_assets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/assetRef"
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "work",
+        "delivery",
+        "scope_revision",
+        "scope",
+        "exclusions",
+        "actor",
+        "host",
+        "grant",
+        "workspace_revision",
+        "base_revision",
+        "native_work",
+        "claim",
+        "dependencies",
+        "resources",
+        "required_checks",
+        "stop_at",
+        "return_path",
+        "selected_assets"
+      ],
+      "additionalProperties": false
+    },
+    "check": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "command": {
+          "type": "string",
+          "minLength": 1
+        },
+        "outcome": {
+          "type": "string",
+          "enum": [
+            "passed",
+            "failed",
+            "skipped",
+            "unknown"
+          ]
+        },
+        "exit_code": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "output": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidence"
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "name",
+        "command",
+        "outcome",
+        "exit_code",
+        "output",
+        "evidence"
+      ],
+      "additionalProperties": false
+    },
+    "receipt": {
+      "type": "object",
+      "properties": {
+        "returned_at": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
+        },
+        "head_revision": {
+          "type": "string",
+          "pattern": "^(?:[0-9a-f]{40}|[0-9a-f]{64})$"
+        },
+        "checks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/check"
+          },
+          "minItems": 0
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidence"
+          },
+          "minItems": 0
+        },
+        "blockers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/blocker"
+          },
+          "minItems": 0
+        },
+        "next_action": {
+          "type": "string",
+          "minLength": 1
+        },
+        "used_assets": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "asset": {
+                "$ref": "#/$defs/assetRef"
+              },
+              "action": {
+                "type": "string",
+                "enum": [
+                  "reference",
+                  "enable",
+                  "use"
+                ]
+              },
+              "result": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "asset",
+              "action",
+              "result"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "returned_at",
+        "head_revision",
+        "checks",
+        "evidence",
+        "blockers",
+        "next_action",
+        "used_assets"
+      ],
+      "additionalProperties": false
+    },
+    "runs": {
+      "type": "object",
+      "properties": {
+        "schema": {
+          "const": 1
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "home": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "owner": {
+          "type": "string",
+          "minLength": 1
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/recordRef"
+          },
+          "minItems": 0
+        },
+        "extensions": {
+          "type": "object"
+        },
+        "kind": {
+          "const": "runs"
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "running",
+            "succeeded",
+            "failed",
+            "stopped",
+            "unknown"
+          ]
+        },
+        "history": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/history"
+          },
+          "minItems": 1
+        },
+        "started_at": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
+        },
+        "ended_at": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "brief": {
+          "$ref": "#/$defs/brief"
+        },
+        "actions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "at": {
+                "type": "string",
+                "format": "date-time",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
+              },
+              "action": {
+                "type": "string",
+                "enum": [
+                  "read",
+                  "report",
+                  "implement",
+                  "test",
+                  "commit",
+                  "push",
+                  "open-draft-pr",
+                  "merge",
+                  "release",
+                  "deploy",
+                  "configure"
+                ]
+              },
+              "summary": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "at",
+              "action",
+              "summary"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 0
+        },
+        "receipt": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/receipt"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "reconciliation": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "by": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "at": {
+                  "type": "string",
+                  "format": "date-time",
+                  "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
+                },
+                "evidence": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/evidence"
+                  },
+                  "minItems": 1
+                }
+              },
+              "required": [
+                "by",
+                "at",
+                "evidence"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "predecessors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/recordRef"
+          },
+          "minItems": 0
+        },
+        "successors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/recordRef"
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "schema",
+        "id",
+        "home",
+        "title",
+        "owner",
+        "created_at",
+        "links",
+        "kind",
+        "state",
+        "history",
+        "started_at",
+        "ended_at",
+        "brief",
+        "actions",
+        "receipt",
+        "reconciliation",
+        "predecessors",
+        "successors"
+      ],
+      "additionalProperties": false
+    },
+    "role": {
+      "type": "object",
+      "properties": {
+        "schema": {
+          "const": 1
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "owner": {
+          "type": "string",
+          "minLength": 1
+        },
+        "purpose": {
+          "type": "string",
+          "minLength": 1
+        },
+        "soul": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "skills": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/assetRef"
+          },
+          "minItems": 0
+        },
+        "native_mappings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "host": {
+                "type": "string",
+                "minLength": 1
+              },
+              "alias": {
+                "type": "string",
+                "minLength": 1
+              },
+              "mode": {
+                "type": "string",
+                "enum": [
+                  "brief",
+                  "native-profile"
+                ]
+              }
+            },
+            "required": [
+              "host",
+              "alias",
+              "mode"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "schema",
+        "id",
+        "revision",
+        "owner",
+        "purpose",
+        "soul",
+        "skills",
+        "native_mappings"
+      ],
+      "additionalProperties": false
+    },
+    "profile": {
+      "type": "object",
+      "properties": {
+        "schema": {
+          "const": 1
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "owner": {
+          "type": "string",
+          "minLength": 1
+        },
+        "role": {
+          "type": "string",
+          "minLength": 1
+        },
+        "role_revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "assets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/assetRef"
+          },
+          "minItems": 0
+        },
+        "applicability": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "exclusions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "schema",
+        "id",
+        "revision",
+        "owner",
+        "role",
+        "role_revision",
+        "assets",
+        "applicability",
+        "exclusions"
+      ],
+      "additionalProperties": false
+    },
+    "sources": {
+      "type": "object",
+      "properties": {
+        "schema": {
+          "const": 1
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "assets": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "asset_kind": {
+                      "type": "string",
+                      "enum": [
+                        "role",
+                        "skill",
+                        "style",
+                        "recipe",
+                        "tool"
+                      ]
+                    },
+                    "revision": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "location": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "licence": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "selection": {
+                      "type": "string",
+                      "enum": [
+                        "candidate",
+                        "approved",
+                        "retired"
+                      ]
+                    },
+                    "compatibility": {
+                      "type": "string",
+                      "enum": [
+                        "proposed",
+                        "tested",
+                        "limited"
+                      ]
+                    },
+                    "owner": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "requires": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "minItems": 0
+                    },
+                    "effects": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "minItems": 0
+                    },
+                    "replacement": {
+                      "anyOf": [
+                        {
+                          "$ref": "#/$defs/assetRef"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "asset_kind",
+                    "revision",
+                    "location",
+                    "licence",
+                    "selection",
+                    "compatibility",
+                    "owner",
+                    "requires",
+                    "effects",
+                    "replacement"
+                  ],
+                  "additionalProperties": false
+                },
+                "minItems": 0
+              }
+            },
+            "required": [
+              "id",
+              "assets"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "schema",
+        "sources"
+      ],
+      "additionalProperties": false
+    },
+    "grant": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "revisions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/grantRevision"
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "id",
+        "revisions"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "description": "Select a root definition; semantic and temporal checks are defined in CONTRACT.md and validate.mjs."
+}
