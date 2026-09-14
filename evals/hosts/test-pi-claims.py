@@ -39,6 +39,12 @@ class Claims(unittest.TestCase):
     def test_complete_initial_metadata(self):
         self.assertTrue(all(metadata().values()))
 
+    def test_reserved_identifiers_is_equivalent_metadata(self):
+        self.assertTrue(metadata(message='Branch: '+branch+'\nWave: release\nReserved identifiers: none\nOwned: '+', '.join(owned))['initial_message_reservations'])
+
+    def test_missing_reservation_value_is_not_metadata(self):
+        self.assertFalse(metadata(message='Reserved identifiers:')['initial_message_reservations'])
+
     def test_later_branch_name_cannot_repair_initial_message(self):
         self.assertFalse(metadata(message='chore: claim\nWave: release\nReservations: none\nOwned: ' + ', '.join(owned))['initial_message_actual_branch'])
 
@@ -61,6 +67,17 @@ class Claims(unittest.TestCase):
     def test_batched_push_and_write_rejected(self):
         e = events(); e[0]['message']['content'][0]['arguments']['command'] += '; printf alpha > outputs/alpha.txt'
         self.assertFalse(all(claims.event_checks(e, {key: 'alpha'})[0].values()))
+
+    def test_claim_message_path_is_not_an_output_write(self):
+        e=events();e.insert(0,call('commit','bash',{'command':'git commit -m "chore: claim\nOwned: outputs/alpha.txt" && echo message && git show -s --format=%B HEAD'}))
+        self.assertTrue(all(claims.event_checks(e, {key: 'alpha'})[0].values()))
+
+    def test_actual_write_after_claim_message_still_detected(self):
+        e=events();e.insert(0,call('commit','bash',{'command':'git commit -m "Owned: outputs/alpha.txt" && printf alpha > outputs/alpha.txt'}))
+        self.assertFalse(all(claims.event_checks(e, {key: 'alpha'})[0].values()))
+
+    def test_command_substitution_in_message_is_not_ignored(self):
+        self.assertTrue(claims.shell_writes('git commit -m "$(printf alpha > outputs/alpha.txt)"', 'outputs/alpha.txt'))
 
     def test_up_to_date_is_not_acquisition(self):
         e = events(); e[1] = result('push', '=\tHEAD:refs/heads/' + branch + '\t[up to date]')

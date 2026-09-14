@@ -7,6 +7,7 @@ import argparse
 import json
 import re
 import subprocess
+import shlex
 from pathlib import Path
 
 
@@ -15,11 +16,32 @@ def inspect_claim(branch, plan, owned, message, changed, status):
     return {
         'initial_message_actual_branch': branch in message,
         'initial_message_wave': bool(re.search(r'\bwave\b\s*[:=]\s*\S', message, re.I)),
-        'initial_message_reservations': bool(re.search(r'\breserv(?:ed|ations?)\b\s*[:=]\s*\S', message, re.I)),
+        'initial_message_reservations': bool(re.search(r'\b(?:reservations?|reserved(?: identifiers)?)\b\s*[:=]\s*\S', message, re.I)),
         'initial_message_owned_paths': all(path in message for path in owned),
         'initial_status_actual_branch': branch in owner,
         'initial_commit_status_only': set(changed) == {plan},
     }
+
+
+def shell_writes(command, output):
+    # Strip only the argument of git commit -m/--message, which is documentary
+    # text. Keep shell expansions conservatively visible: they may execute.
+    tokens = list(shlex.shlex(command, posix=True, punctuation_chars=';&|<>'))
+    executable = []
+    is_commit = False
+    previous = None
+    for token in tokens:
+        if previous in ('-m', '--message') and is_commit and '$' not in token and '`' not in token:
+            previous = token
+            continue
+        if token in (';', '&&', '||', '|'):
+            is_commit = False
+        if token == 'commit' and previous == 'git':
+            is_commit = True
+        executable.append(token)
+        previous = token
+    code = ' '.join(executable)
+    return output in code and bool(re.search(r'\b(?:printf|echo|tee|cp|mv|touch|sed|python\d*|node)\b|write_text|write_bytes|writeFile', code))
 
 
 def event_checks(events, keys):
@@ -41,7 +63,7 @@ def event_checks(events, keys):
                 for key, slug in keys.items():
                     output = 'outputs/' + slug + '.txt'
                     direct = name in ('write', 'edit') and path.replace('\\', '/').endswith(output)
-                    shell = name == 'bash' and output in command and bool(re.search(r'\b(?:printf|echo|tee|cp|mv|touch|sed|python\d*|node)\b|write_text|write_bytes|writeFile', command))
+                    shell = name == 'bash' and shell_writes(command, output)
                     if direct or shell:
                         writes.setdefault(key, sequence)
         elif message.get('role') == 'toolResult':
