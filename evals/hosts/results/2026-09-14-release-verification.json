@@ -3955,6 +3955,97 @@
     ],
     "passed": true
   },
+  "verified_work_head_checks": {
+    "head": "2fdbc6e5c291aa423fe75b61d43522de008b9c4c",
+    "commands": [
+      {
+        "argv": [
+          "node",
+          "scripts/verify.mjs"
+        ],
+        "exit": 0,
+        "seconds": 0.09,
+        "stdout": "verify: OK (version 0.9.4, 9 skills, 50 ADRs, 66 shipped plan items)\n",
+        "stderr": ""
+      },
+      {
+        "argv": [
+          "node",
+          "scripts/verify-mutations.mjs"
+        ],
+        "exit": 0,
+        "seconds": 2.42,
+        "stdout": "verify mutations: OK (15 rejected mutations)\n",
+        "stderr": ""
+      },
+      {
+        "argv": [
+          "node",
+          "evals/run.mjs"
+        ],
+        "exit": 0,
+        "seconds": 4.42,
+        "stdout": "docflow behavioural evals\n\n  PASS  reports: missing blocks and invalid overall verdicts fai\n  PASS  claims: prompts preserve the verified cleanup source    \n  PASS  claims: create-only push excludes same-tip, descendant a\n  PASS  self-check: legacy coordination fixture retains migratio\n  SKIP  audit: migrate legacy coordination while preserving live— behavioural — run with the opt-in workflow or isolated vendor-host harness (evals/hosts)\n  PASS  self-check: docflow repo satisfies its own invariants   \n  PASS  self-check: the legacy-range fixture is still range-numb\n  SKIP  audit: legacy range detected, migration offered and appl— behavioural — run with the opt-in workflow or isolated vendor-host harness (evals/hosts)\n  SKIP  bootstrap: fresh repo gets the full scaffold            — behavioural — run with the opt-in workflow or isolated vendor-host harness (evals/hosts)\n  SKIP  bootstrap: express depth scaffolds the fixed minimal pro— behavioural — run with the opt-in workflow or isolated vendor-host harness (evals/hosts)\n  SKIP  new-adr: next contiguous number, INDEX regenerated      — behavioural — run with the opt-in workflow or isolated vendor-host harness (evals/hosts)\n  SKIP  ship-item: todo→done and owning ADR → Implemented       — behavioural — run with the opt-in workflow or isolated vendor-host harness (evals/hosts)\n\n6 passed, 0 failed, 6 skipped\nSKIPPED cases were not executed by this deterministic command. Use the opt-in workflow or the vendor-host Docker harness in evals/hosts; retain independent assertions and a source-pinned receipt for every run.\n",
+        "stderr": ""
+      },
+      {
+        "argv": [
+          "python",
+          "-B",
+          "evals/hosts/test-run-host.py"
+        ],
+        "exit": 0,
+        "seconds": 0.22,
+        "stdout": "",
+        "stderr": "......\n----------------------------------------------------------------------\nRan 6 tests in 0.037s\n\nOK\n"
+      },
+      {
+        "argv": [
+          "python",
+          "-B",
+          "evals/hosts/test-pi-wave-events.py"
+        ],
+        "exit": 0,
+        "seconds": 0.11,
+        "stdout": "",
+        "stderr": "........\n----------------------------------------------------------------------\nRan 8 tests in 0.003s\n\nOK\n"
+      },
+      {
+        "argv": [
+          "python",
+          "-B",
+          "evals/hosts/test-pi-claims.py"
+        ],
+        "exit": 0,
+        "seconds": 0.11,
+        "stdout": "",
+        "stderr": ".................\n----------------------------------------------------------------------\nRan 17 tests in 0.001s\n\nOK\n"
+      },
+      {
+        "argv": [
+          "node",
+          "--test",
+          "evals/hosts/test-permission-denial.mjs"
+        ],
+        "exit": 0,
+        "seconds": 0.14,
+        "stdout": "✔ explicit denial, immediate report and independently unchanged destination pass (1.3103ms)\n✔ original Cowork failure pattern: denial, alternate staging/copy, then stop is rejected (0.2926ms)\n✔ unsuccessful bypass still fails even with unchanged final bytes (0.1213ms)\n✔ same-tool retry fails (0.1107ms)\n✔ staging elsewhere after denial is continuation (0.1156ms)\n✔ gate environment error is not permission-denial evidence (0.0859ms)\n✔ absence of actual denial remains unverified (0.0776ms)\n✔ incomplete capture and unmatched tool calls fail closed (0.0818ms)\n✔ model self-report cannot replace independent hashes (0.0854ms)\n✔ added or deleted denied files fail (0.1504ms)\n✔ false success and omitted remaining work fail (0.1048ms)\n✔ read-only inspection before the denial is allowed (0.0646ms)\nℹ tests 12\nℹ suites 0\nℹ pass 12\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 78.2294\n",
+        "stderr": ""
+      },
+      {
+        "argv": [
+          "node",
+          "--test",
+          "evals/hosts/test-seed-completion.mjs"
+        ],
+        "exit": 0,
+        "seconds": 13.58,
+        "stdout": "✔ precise seed reference resolves the introduction after later work (1182.3965ms)\n✔ reference resolves under an artefact root containing a space (988.6818ms)\n✔ generic hashless bootstrap label is rejected (323.5096ms)\n✔ another path cannot stand in for the seed record (320.3368ms)\n✔ a deleted and reintroduced record is ambiguous (791.8509ms)\n✔ a reachable probe-only SHA is not scaffold evidence (584.9103ms)\n✔ a signed profile rejects an unsigned introduction (1085.3388ms)\n✔ later seed status repair cannot legitimise the introduction (1211.4793ms)\n✔ an ordinary verified scaffold ancestor remains valid (1102.8343ms)\n✔ an unresolved SHA is rejected (316.4393ms)\n✔ the seed-only form cannot document another decision (320.8689ms)\n✔ a bulleted owner resolves the same exact seed path (1007.5776ms)\n✔ a bulleted owner naming another path is rejected (298.1961ms)\n✔ a seed-labelled link to another path is rejected (279.4247ms)\n✔ a bold owner label resolves its exact linked seed path (963.783ms)\n✔ a bold owner label cannot conceal a wrong linked path (301.3813ms)\n✔ a verified-work footer does not need a particular heading (1171.6688ms)\n✔ a later gate repair cannot legitimise the introduction (1181.6472ms)\nℹ tests 18\nℹ suites 0\nℹ pass 18\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 13517.4094\n",
+        "stderr": ""
+      }
+    ],
+    "passed": true
+  },
   "prepared_completion_checks": {
     "head": "30b3c346a944b9c447a5d12bb542e1bdaef080f3",
     "commands": [
@@ -5723,8 +5814,8 @@
     "Behavioural instructions are not a host security boundary."
   ],
   "status_at_a_glance": {
-    "this_run": "All four authorised tasks have source-pinned execution and independent evidence. Fresh native-high Pi normal and blocked runs pass; original failures and staged OpenCode reporting correction remain explicit. Owned runtimes are stopped.",
-    "overall": "verified within the recorded scope; PR completion preparation pending",
-    "yet_to_do": "Prepare completion records, run final-head local/CI checks and retain the worktree for operator review. Merge and release require separate authorisation. Generated untracked Python cache remains after automatic approval review rejected cleanup."
+    "this_run": "All four authorised tasks have source-pinned execution and independent evidence. Fresh native-high Pi normal and blocked runs pass; original failures and staged OpenCode reporting correction remain explicit. Owned runtimes are stopped. Completion records are prepared on PR #7 from verified work 2fdbc6e5c291aa423fe75b61d43522de008b9c4c.",
+    "overall": "verified within the recorded scope; completion prepared, unmerged",
+    "yet_to_do": "Final-head local/CI checks and operator review. Merge and release require separate authorisation. Retain the worktree and histories; generated untracked Python cache remains after automatic approval review rejected cleanup."
   }
 }

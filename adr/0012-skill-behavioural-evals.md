@@ -1,7 +1,7 @@
 ---
 adr: 0012
 title: Behavioural and end-to-end evaluation of skill outcomes
-status: Accepted
+status: Implemented
 date: 2026-06-01
 owner: Eugenio Minardi
 supersedes:
@@ -117,6 +117,7 @@ does not prove attachment, model execution or target Git access.
 | 2026-09-14 | r6 | Codex, operator-authorised | Preserve native Pi provider/model/thinking defaults and add completed-event claim/integration checks, including batched output and arbitrary push source refs. Retain original failures, bounded off repair/retry passes, off positive contract failure, high positive repetition and the inconclusive recovered interruption. The corrective high run passes stop-flow/acquisition checks but its published initial claim omits the branch name. Bound installed bytes to the tested Windows export, with Git-blob equality only after line-ending normalisation. Six deterministic skips remain skips; full Pi/Cowork acceptance remains incomplete. |
 | 2026-09-14 | r7 | Codex, operator-authorised | Distinguish native Windows Cowork fixtures from CLI containers. Independently verify actual-target signing, bootstrap/new-adr and an opted-in concurrent Workflow wave with preserved blocked work and held claim. Original child events verify acquisition ordering; retain the manifest timestamp correction and unavailable parent failure receipt. A stricter seed-reference check exposes the original generic footer; 14 regressions and a fresh native bootstrap on repaired eff3130 pass. Preserve initial unlink denial, supported recovery in existing Skip approvals mode and the separate post-wave export boundary violation. Six deterministic skips remain skips; full release acceptance remains incomplete. |
 | 2026-09-14 | r8 | Codex, operator-authorised | Execute the four-task release continuation on exact Git blobs from bef25d8. Strengthen initial published claim and completed-event checks; add a focused native Cowork export-denial regression and preserve broader permission failures. Verify fresh native release cases and an attended isolated Clarity completion/stop pilot with unchanged history and Docker-only gates. Record separate incidental Markdown checker repairs, original failures and the Docker Desktop interruption. The current audit/receipt bounds every result; deterministic six skips remain skips and Accepted status remains until full release evidence is complete. |
+| 2026-09-14 | r9 | Codex, operator-authorised | Verify all six mapped model cases and the five-host release requirement on exact bef25d8 Git bytes. Fresh native-high Pi bootstrap, normal completion and bootstrap-derived blocked execution pass initial publication, completed-event ordering, signed-state, persisted-report and fresh-clone checks. Preserve staged OpenCode reporting correction, native/controller failures and evidence limits. Prepare Implemented with 0051 on PR #7; effective only on its authorised checked merge. The deterministic six skips remain skips; the separate native-host route supplies their execution. |
 
 ## Approvals
 
@@ -128,3 +129,4 @@ does not prove attachment, model execution or target Git access.
 | Operator | Eugenio Minardi | 2026-09-13 | Local-provider Pi continuation and necessary runner/assertion repairs authorised; full five-host exit criteria retained |
 | Operator | Eugenio Minardi | 2026-09-14 | Unlocked/visible native Cowork continuation and necessary evidence updates authorised; no support or exit-criteria reduction |
 | Operator | Eugenio Minardi | 2026-09-14 | Explicit new-worktree handoff authorises all four verification/fix tasks and a new draft PR; no merge, release, paid service or support reduction |
+| Operator | Eugenio Minardi | 2026-09-14 | Existing four-task authorisation applied to independently verified criteria; completion prepared for PR #7, no merge or release approval |

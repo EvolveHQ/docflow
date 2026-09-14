@@ -53,5 +53,5 @@ PR: https://github.com/EvolveHQ/docflow/pull/7
 - **This run:** Verified the isolated pilot and prepared its atomic completion
   move. Completion gates pass, exit 0; the separate stop retains its real exit 1.
 - **Overall:** verified within this item's scope; completion is prepared.
-- **Yet to do:** Required current-head PR checks and an authorised checked
-  merge into main make the completion effective. This is not yet shipped.
+- **Yet to do:** An authorised checked merge into main, with required checks
+  green on the current PR head, makes completion effective. This is not yet shipped.

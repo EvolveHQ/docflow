@@ -301,9 +301,11 @@ verification task's implementation authority.
 
 Items 0052 and 0053 have prepared completion records naming verified work
 `fd0fe0d9c25653e5c1e78dbe80f6421e4796c319` and PR #7. They become shipped only
-on an authorised checked merge. The final source-pinned assessment now verifies
-0051's existing exit criteria and the owning five-host requirement; its completion
-and decisions 0012/0015 are ready for atomic preparation after the work-head gate.
+on an authorised checked merge. The final source-pinned assessment verifies
+0051's existing exit criteria and the owning five-host requirement. Its completion
+record names verified work `2fdbc6e5c291aa423fe75b61d43522de008b9c4c` and PR #7;
+decisions 0012/0015 are prepared as Implemented and INDEX is regenerated in the
+same completion change. All three records remain prepared, not shipped on main.
 The first prepared footer wording failed the unchanged static check; a separate
 documentation correction adds the required Shipped/HEAD markers while retaining
 the explicit pending-merge qualification. No gate was changed for that repair.
@@ -313,7 +315,7 @@ deterministic eval passes/zero failures/six skips, six runner controls, eight
 temporal controls, 17 claim controls, 12 permission-denial controls and 18 seed
 controls. Required CI passes on PR head `4213562`; later heads still require
 their own check.
-Static output now counts 66 done records on this PR
+Static output now counts 67 done records on this PR
 branch; main still contains 64 shipped records.
 
 Automatic approval review rejects removal of the generated
@@ -332,9 +334,9 @@ signer. Public keys, the worktree and recoverable fixture histories remain.
   refresh have independent evidence. Native-high Pi normal and blocked contracts
   pass, and owned runtimes are stopped. Original failures and scoped narrative,
   reporting, permission and transport limits remain explicit.
-- **Overall:** verified within the recorded scope; completion preparation and
-  final-head validation remain.
-- **Yet to do:** Prepare 0051 and its owning decisions atomically after the
-  work-head gate, then run final-head checks and obtain green PR CI. Keep the
-  worktree for operator review. The untracked generated Python cache remains
-  after rejected cleanup. PR integration and release require separate authorisation.
+- **Overall:** verified within the recorded scope; completion is prepared on
+  the unmerged PR.
+- **Yet to do:** Operator review and an authorised checked PR merge, with
+  required checks green on its current head, make completion effective. Release
+  needs separate authorisation. Keep the worktree and histories for review;
+  the untracked generated Python cache remains after rejected cleanup.

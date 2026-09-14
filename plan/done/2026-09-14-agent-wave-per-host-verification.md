@@ -58,12 +58,6 @@ and return ADR 0015 to Implemented.
 - Plan 0049 (the skill under test) — sequential; plan 0050 may run in
   parallel with the host runs.
 
-## Status
-
-- **Claimed by:** Codex, 2026-09-14, `kmox83/docflow-release-verification`; operator-requested new worktree continuation after PR #6 merged as `d4f65bf02b836889bc1662c8627ccf9aa3ae7136`.
-- **Blockers:**
-- **Stopped:**
-
 ## Operator continuation, 2026-09-14
 
 The new handoff expressly resumes Pi on the existing local Qwen route with
@@ -219,15 +213,33 @@ limits. Pi's full published-claim and stop contracts are verified; incidental
 report abbreviations and unsupported hosted-PR inferences are corrected in the
 independent report review. No support or acceptance criterion is reduced.
 
+## Verification and prepared completion
+
+All three exit criteria are verified on the pinned product bytes: the five
+host rows and Claude Code rungs 1/2 are observed; README has observed rows
+without assumed markers; the required revision history remains, the next
+substantive revision prepares the owning decisions as Implemented, and INDEX
+is regenerated from metadata. The six mapped release cases, initial Pi claim
+contract, fresh native-high normal/blocked runs and scoped reporting outcomes
+are independently checked. The final assessment retains staged OpenCode
+reporting correction, original failures and all host/evidence limits.
+
+The verified work-head checks pass: `verify: OK`, exit 0; 15 mutation controls;
+six deterministic eval passes, zero failures and six explicit skips; six runner,
+eight temporal, 17 claim, 12 denial and 18 seed controls. The separate native
+route executes the skipped scenarios. Owned runtimes are stopped; worktree,
+public keys and recoverable fixture histories remain.
+
+Shipped footer prepared for checked merge — verified work HEAD: `2fdbc6e5c291aa423fe75b61d43522de008b9c4c`.
+PR: https://github.com/EvolveHQ/docflow/pull/7
+
 ## Status at a glance
 
-- **This run:** Source-pinned repairs and fresh independent native observations
-  are consolidated for draft PR #7. Pi normal and blocked contracts pass;
-  fresh main gates return `verify: OK (wave fixture)`, exit 0, while the blocked
-  alpha reproduces `ERR_MODULE_NOT_FOUND`, exit 1. Original failures remain
-  preserved and owned runtimes are stopped.
-- **Overall:** verified within the existing scope; completion preparation pending.
-- **Yet to do:** Run the verified work-head gate, prepare this item's completion
-  and decisions 0012/0015 atomically, then final-head checks and PR CI. Keep the
-  worktree for review; generated Python cache cleanup was rejected by automatic
-  approval review. A checked PR merge and release each need separate authorisation.
+- **This run:** Verified the existing host/release criteria and prepared the
+  atomic completion move, owning decisions and regenerated INDEX on PR #7.
+  The work-head gate returns `verify: OK`, exit 0; all required controls pass.
+- **Overall:** verified within the recorded scope; completion is prepared.
+- **Yet to do:** An authorised checked merge, with required checks green on
+  the current PR head, makes completion effective. Release needs separate authorisation. Keep
+  the worktree for review; the generated untracked Python cache remains after
+  automatic approval review rejected cleanup with “blocked by policy”.

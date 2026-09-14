@@ -34,7 +34,8 @@ this focused success is not a general permission boundary.
 
 Product and gate changes are separate signed commits. Required local checks
 pass, including `verify: OK`, exit 0, six deterministic eval passes, zero
-failures and six explicit skips. The full release gate remains open under 0051.
+failures and six explicit skips. Full release evidence is assessed separately
+under 0051.
 
 Shipped footer prepared for checked merge — verified work HEAD: `fd0fe0d9c25653e5c1e78dbe80f6421e4796c319`.
 PR: https://github.com/EvolveHQ/docflow/pull/7
@@ -44,5 +45,5 @@ PR: https://github.com/EvolveHQ/docflow/pull/7
 - **This run:** Verified the focused regression and prepared its atomic
   completion move on the PR branch. Local gates pass, exit 0.
 - **Overall:** verified within this item's scope; completion is prepared.
-- **Yet to do:** Required current-head PR checks and an authorised checked
-  merge into main make the completion effective. This is not yet shipped.
+- **Yet to do:** An authorised checked merge into main, with required checks
+  green on the current PR head, makes completion effective. This is not yet shipped.
