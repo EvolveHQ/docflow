@@ -57,6 +57,17 @@ supply the actual UTC time and retain complete output/exit. Validation checks
 record consistency, not permission, live ownership or proof of execution.
 Unknown, stale, skipped, missing and failed evidence remain distinct.
 
+For external returns, follow the installed asset README's **External returns**
+procedure. A readiness stop before assignment is a report, not an attempt
+receipt: do not invent a run to accommodate it. For an assigned attempt, copy
+only the receipt form's structure, bind the actual run in the external context,
+and keep native session/action metadata outside the strict receipt payload.
+Capture actual UTC when observing evidence and returning the result. Never
+substitute a different event's time or an example value for a missing measurement.
+Use real contained file paths for evidence, not a repository directory or `.`.
+Run the documented read-only shape check before returning; a shape pass does
+not establish source resolution, current authority or truth.
+
 ## Prepare and hand off
 
 1. Orient and reread current work, latest grant and native instructions.

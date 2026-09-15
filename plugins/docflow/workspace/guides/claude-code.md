@@ -19,7 +19,11 @@ native tool policy.
 An existing local plugin or detached skill copy must resolve the same thirteen
 skill sources. Refer to the README for invocation forms. Validate whether
 the member's instructions and external workspace context were actually read.
-Keep the actual session/subagent identity in the receipt. A resumed conversation
+Use the asset README's [external-return procedure](../README.md#external-returns)
+for a read-only executor: keep actual session/subagent identity in the external
+context and the strict canonical payload in `receipt`, then run its read-only
+shape check. A pre-dispatch readiness stop is a report, not a fabricated attempt.
+A resumed conversation
 must recheck grants and claims rather than treating old context as authority.
 
 ## Bounded brief and receipt smoke
