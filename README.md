@@ -31,11 +31,37 @@ agent the same skills are invoked as `/skill:<name>` (e.g.
 | brainstorm | `/brainstorm` | Decompose a problem into candidate ADRs + plan items (proposes drafts; writes nothing until approved). |
 | agent-wave | `/agent-wave` | Run a bounded queue wave using available parallel agents or sequential execution, with checkpoint or continuous supervision. |
 | rollup | `/rollup` | For a multi-repo product: aggregate every member repo's ADRs into one derived, product-wide roll-up (run from the home repo). |
+| workspace-setup | `/workspace-setup` | Deliberately create or adopt a portable workspace home and registry. |
+| workspace-orient | `/workspace-orient` | Read priorities, owners, authority, blockers and next actions. |
+| workspace-plan | `/workspace-plan` | Record shared outcomes and native deliveries without granting execution. |
+| workspace-coordinate | `/workspace-coordinate` | Check current grants and claims, hand off bounded briefs and reconcile receipts. |
 
-The lifecycle skills all **read `CONVENTIONS.md` first** and honour the
+The repository lifecycle skills **read `CONVENTIONS.md` first** and honour the
 choices the bootstrap recorded (ADR shape, status lifecycle, integration
 model, multi-agent mode). They refuse to run on an un-bootstrapped repo
 and point you at `/bootstrap`.
+
+## Portable workspaces
+
+The four workspace skills keep cross-repository memory in an adopter-owned
+Git workspace. Members retain their native methods, instructions and histories.
+Clarity views, copies and prepares handoffs; authorised Docflow sessions edit
+canonical records and reconcile native evidence. Selection and agreement grant
+no execution authority, and delivery completion leaves the agreement accepted.
+
+Install the complete [workspace assets](plugins/docflow/workspace/README.md)
+with all thirteen skills, including for detached skill copies. The
+[six native guides](plugins/docflow/workspace/guides/README.md), four portable
+starter roles, profile examples and ordinary-file search travel in the same
+package. The new guides have source/help checks; full native qualification
+remains pending on the combined candidate.
+
+Use `/workspace-orient` in standalone Claude Code/Cowork skill mode, the
+plugin-qualified form `/docflow:workspace-orient` when exposed by the host,
+`/skill:workspace-orient` in pi, or `$workspace-orient` in Codex/ZCode.
+OpenCode and other native skill pickers use the discovered `workspace-orient`
+name. The same naming applies to the other three workspace skills; verify
+the resolved source in the actual host before acting.
 
 ## What `/bootstrap` installs
 

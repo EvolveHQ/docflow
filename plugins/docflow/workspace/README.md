@@ -2,8 +2,11 @@
 
 Read [CONTRACT.md](CONTRACT.md) for the canonical format and
 [fixtures/README.md](fixtures/README.md) for producer/consumer examples.
-These files provide the W1/W2 foundation. The four workspace operating skills
-and native host/Clarity qualification are separate delivery work.
+Use workspace-setup to establish an adopter home, workspace-orient to read
+current state, workspace-plan to record outcomes and workspace-coordinate
+to prepare and reconcile authorised native assignments. Read the
+[six native guides](guides/README.md); native host/Clarity qualification
+remains separate from deterministic package checks.
 
 ## Install the complete assets
 
@@ -72,9 +75,31 @@ plan. These assets do not initialise Git, clone members or modify a host.
 The overview is a dated derivative of validated records; regenerate it after
 record changes and present diagnostics beside it when validation fails.
 
+## Upgrade and removal
+
+Keep skills and workspace assets pinned to the same package revision. Review
+changes in a scratch copy first, including schema compatibility and native
+host discovery. Replace only installed product assets after confirming their
+ownership; never overwrite adopter templates, canonical records, ignored
+local state or member repositories as part of a plugin update. Existing
+records require no migration or renumbering simply because the package changes.
+
+For detached installations, copy all thirteen skill directories and the full
+workspace directory from the same package. Preserve bootstrap/templates and
+all declarative sidecars; copy workspace to docflow-workspace beside skills.
+No executable belongs in a skill folder. An unavailable Node.js 22+ or missing
+assets blocks validation-dependent writes, with no automatic installation.
+
+Uninstall through the host's documented plugin/skill removal interface or
+remove only the owned installed copies after checking resolved paths. Leave
+README, AGENTS, .docflow_workspace and independent members in the adopter
+workspace intact. Remove an optional retrieval collection only under its
+explicit owner/scope; canonical memory is not an index or plugin cache.
+
 ## Status at a glance
 
-- **This run:** Supplies portable installation and manual assembly instructions.
-- **Overall:** partially verified — deterministic asset tests are separate from native qualification.
+
+- **This run:** Supplies portable installation and operating instructions.
+- **Overall:** partially verified â€” deterministic asset tests are separate from native qualification.
 - **Yet to do:** Author actual scoped records, verify current native authority
-  and complete the later operating-skill and consumer qualification.
+  and complete native host and consumer qualification.
