@@ -162,7 +162,8 @@ The [native current-version export](cowork-native-plugin-export.json) is byte-id
 to the original local restore archive: SHA-256
 `0cafc65f97bb870f53bd2df1086e486e0e1de9a59ee5d637808299c10808b675`,
 32 files and nine skills. The UI supports ZIP upload and retains earlier uploaded
-versions; same-name replacement and restoration effects remain unexecuted.
+versions; the subsequent current-candidate receipt records same-name replacement,
+while original restoration remains pending.
 The [stopped session](cowork-native-session.json) and [independent attached-folder
 snapshot](cowork-native-after-stop.json) establish no completed workspace setup.
 
@@ -181,8 +182,13 @@ attempt receipt; schema and clock limits remain explicit.
 
 The [receipt usability diagnosis](native-receipt-usability.md) and
 [concrete proposed patch](receipt-guidance-proposal.patch) preserve the actual
-handoff failures and propose a bounded guidance correction. It is not applied
-to frozen product bytes.
+handoff failures. The [approved repair](receipt-guidance-repair.md) is committed
+and separately frozen at `eed722c8398b1e85d14ed57fa6dc53d5f5655bd0`; the original
+f47 bytes remain unchanged. Fresh affected-guidance native acceptance is pending.
+
+The [initial read-scope diagnosis](native-read-scope-diagnosis.md) retains the
+independent scenario worker's concrete native failures separately from its
+functional successes. Full receipt import and review are still pending.
 
 ## Status at a glance
 
