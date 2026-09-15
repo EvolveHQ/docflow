@@ -25,7 +25,7 @@ def main():
     tree = subprocess.check_output(["git", "ls-tree", "-rz", "--full-tree", revision])
     entries = []
     roots = ("plugins/", ".claude-plugin/", ".agents/")
-    single = {"package.json", "README.md", "USAGE.md", "LICENSE"}
+    single = {"package.json", "README.md", "USAGE.md", "LICENSE", "docs/preview.png"}
     for entry in tree.split(b"\0"):
         if not entry:
             continue
