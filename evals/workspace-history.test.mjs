@@ -24,9 +24,9 @@ function git(root, args, input, checked = true) {
   if (checked) assert.equal(result.status, 0, result.stderr);
   return checked ? result.stdout.trim() : result;
 }
-function seed(root) {
+function seed(root, format = 'sha1') {
   mkdirSync(root);
-  git(root, ['init', '--quiet']);
+  git(root, ['init', '--quiet', '--object-format=' + format]);
   const blob = git(root, ['hash-object', '-w', '--stdin'], 'Synthetic historical file\n');
   const tree = git(root, ['mktree'], '100644 blob ' + blob + '\twork.md\n');
   const commit = git(root, ['-c', 'commit.gpgsign=false', 'commit-tree', tree], 'Synthetic fixture object\n');
@@ -34,6 +34,14 @@ function seed(root) {
   git(root, ['config', 'uploadpack.allowFilter', 'true']);
   return { blob, tree, commit };
 }
+
+test('real SHA256 repository resolves full commit and tree revisions', () => scratch(temp => {
+  const root = join(temp, 'sha256'), objects = seed(root, 'sha256');
+  assert.equal(objects.commit.length, 64);
+  assert.equal(objects.tree.length, 64);
+  assert.equal(inspectHistoricalFile(root, { revision: objects.commit, path: 'work.md' }), true);
+  assert.equal(inspectHistoricalFile(root, { revision: objects.tree, path: 'work.md' }), true);
+}));
 
 test('historical entry requires exact regular path, revision and object type', () => scratch(temp => {
   const root = join(temp, 'repo'), objects = seed(root);
