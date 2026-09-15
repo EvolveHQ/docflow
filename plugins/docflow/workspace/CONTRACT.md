@@ -28,6 +28,14 @@ No remote URL is fetched or recorded command executed. A missing native file
 may be resolved in its declared local Git revision using read-only Git object
 queries, without hooks or network. This preserves immutable briefs after a
 native path move; historical symlink blobs and escaping paths are rejected.
+Historical lookup requires Git with --no-lazy-fetch support (2.45 or later),
+ignores inherited repository/configuration redirects and replacement objects,
+and requires the exact regular-file entry and blob to exist locally.
+Both SHA-1 (40 hex) and SHA-256 (64 hex) full revisions are accepted.
+A local commit or tree may name the historical source; label the object type
+honestly, since a tree alone does not establish commit ancestry or integration.
+Missing promisor objects or unsupported Git produce an unavailable-path
+diagnostic; validation never fetches them to repair the reference.
 
 `external_homes` maps canonical workspace identities to explicitly supplied
 local workspace roots for cross-workspace resolution. References retain their

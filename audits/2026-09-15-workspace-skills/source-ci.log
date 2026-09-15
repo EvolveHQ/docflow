@@ -1,0 +1,447 @@
+verify	Set up job	﻿2026-09-15T00:23:39.7893280Z Current runner version: '2.337.0'
+verify	Set up job	2026-09-15T00:23:39.7921859Z ##[group]Runner Image Provisioner
+verify	Set up job	2026-09-15T00:23:39.7922907Z Hosted Compute Agent
+verify	Set up job	2026-09-15T00:23:39.7923555Z Version: 20260828.587
+verify	Set up job	2026-09-15T00:23:39.7924204Z Commit: abac92662cab4cc7352de4f9f9d2e2419aad9c29
+verify	Set up job	2026-09-15T00:23:39.7925037Z Build Date: 2026-08-28T16:44:25Z
+verify	Set up job	2026-09-15T00:23:39.7925782Z Worker ID: {9c75b055-946e-44ae-9c4c-9ae03ba4843a}
+verify	Set up job	2026-09-15T00:23:39.7926560Z Azure Region: eastus2
+verify	Set up job	2026-09-15T00:23:39.7927359Z ##[endgroup]
+verify	Set up job	2026-09-15T00:23:39.7928739Z ##[group]Operating System
+verify	Set up job	2026-09-15T00:23:39.7929553Z Ubuntu
+verify	Set up job	2026-09-15T00:23:39.7930108Z 24.04.5
+verify	Set up job	2026-09-15T00:23:39.7930685Z LTS
+verify	Set up job	2026-09-15T00:23:39.7931243Z ##[endgroup]
+verify	Set up job	2026-09-15T00:23:39.7931825Z ##[group]Runner Image
+verify	Set up job	2026-09-15T00:23:39.7932487Z Image: ubuntu-24.04
+verify	Set up job	2026-09-15T00:23:39.7933110Z Version: 20260907.300.1
+verify	Set up job	2026-09-15T00:23:39.7934183Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260907.300/images/ubuntu/Ubuntu2404-Readme.md
+verify	Set up job	2026-09-15T00:23:39.7936063Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260907.300
+verify	Set up job	2026-09-15T00:23:39.7937313Z ##[endgroup]
+verify	Set up job	2026-09-15T00:23:39.7938477Z ##[group]GITHUB_TOKEN Permissions
+verify	Set up job	2026-09-15T00:23:39.7940756Z Contents: read
+verify	Set up job	2026-09-15T00:23:39.7941403Z Metadata: read
+verify	Set up job	2026-09-15T00:23:39.7941979Z ##[endgroup]
+verify	Set up job	2026-09-15T00:23:39.7944206Z Secret source: Actions
+verify	Set up job	2026-09-15T00:23:39.7945223Z Cache mode: write
+verify	Set up job	2026-09-15T00:23:39.7946427Z Prepare workflow directory
+verify	Set up job	2026-09-15T00:23:39.8273464Z Prepare all required actions
+verify	Set up job	2026-09-15T00:23:39.8321493Z Getting action download info
+verify	Set up job	2026-09-15T00:23:40.0594828Z Download action repository 'actions/checkout@v7' (SHA:3d3c42e5aac5ba805825da76410c181273ba90b1)
+verify	Set up job	2026-09-15T00:23:40.1704500Z Download action repository 'actions/setup-node@v7' (SHA:820762786026740c76f36085b0efc47a31fe5020)
+verify	Set up job	2026-09-15T00:23:40.3630667Z Complete job name: verify
+verify	Run actions/checkout@v7	﻿2026-09-15T00:23:40.4398132Z ##[group]Run actions/checkout@v7
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.4399000Z with:
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.4399482Z   repository: EvolveHQ/docflow
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.4403684Z   token: ***
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.4404132Z   ssh-strict: true
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.4404583Z   ssh-user: git
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.4405033Z   persist-credentials: true
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.4405524Z   clean: true
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.4405983Z   sparse-checkout-cone-mode: true
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.4406498Z   fetch-depth: 1
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.4406934Z   fetch-tags: false
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.4407525Z   show-progress: true
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.4407978Z   lfs: false
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.4408393Z   submodules: false
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.4408844Z   set-safe-directory: true
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.4409351Z   allow-unsafe-pr-checkout: false
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.4410061Z ##[endgroup]
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.5421658Z Syncing repository: EvolveHQ/docflow
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.5423528Z ##[group]Getting Git version info
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.5424240Z Working directory is '/home/runner/work/docflow/docflow'
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.5425335Z [command]/usr/bin/git version
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.5493190Z git version 2.55.0
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.5514183Z ##[endgroup]
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.5525702Z Temporarily overriding HOME='/home/runner/work/_temp/36e969c1-aace-44ce-913e-7490c8f6275e' before making global git config changes
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.5528734Z Adding repository directory to the temporary git global config as a safe directory
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.5532180Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/docflow/docflow
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.5590429Z Deleting the contents of '/home/runner/work/docflow/docflow'
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.5591894Z ##[group]Determining repository object format
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.5592813Z ##[endgroup]
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.5593550Z ##[group]Initializing the repository
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.5603247Z [command]/usr/bin/git init /home/runner/work/docflow/docflow
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.5678129Z hint: Using 'master' as the name for the initial branch. This default branch name
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.5683031Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.5684655Z hint: to use in all of your new repositories, which will suppress this warning,
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.5685439Z hint: call:
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.5685860Z hint:
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.5686395Z hint: 	git config --global init.defaultBranch <name>
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.5687265Z hint:
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.5688165Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.5689610Z hint: 'development'. The just-created branch can be renamed via this command:
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.5690754Z hint:
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.5691399Z hint: 	git branch -m <name>
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.5692130Z hint:
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.5692856Z hint: Disable this message with "git config set advice.defaultBranchName false"
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.5694425Z Initialized empty Git repository in /home/runner/work/docflow/docflow/.git/
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.5696884Z [command]/usr/bin/git remote add origin https://github.com/EvolveHQ/docflow
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.5738444Z ##[endgroup]
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.5739468Z ##[group]Disabling automatic garbage collection
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.5742886Z [command]/usr/bin/git config --local gc.auto 0
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.5776943Z ##[endgroup]
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.5778672Z ##[group]Setting up auth
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.5779496Z Removing SSH command configuration
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.5783282Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.5818998Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.6175687Z Removing HTTP extra header
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.6188517Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.6218796Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.6472139Z Removing includeIf entries pointing to credentials config files
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.6478365Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.6516280Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.6765784Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-d6eaa61e-c447-4de0-b0b8-2980b586a6ec.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.6810299Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/docflow/docflow/.git.path /home/runner/work/_temp/git-credentials-d6eaa61e-c447-4de0-b0b8-2980b586a6ec.config
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.6847975Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/docflow/docflow/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-d6eaa61e-c447-4de0-b0b8-2980b586a6ec.config
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.6888054Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-d6eaa61e-c447-4de0-b0b8-2980b586a6ec.config
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.6925071Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-d6eaa61e-c447-4de0-b0b8-2980b586a6ec.config
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.6958857Z ##[endgroup]
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.6959632Z ##[group]Fetching the repository
+verify	Run actions/checkout@v7	2026-09-15T00:23:40.6967503Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +e3ff350fa80a9281b2ce1e03e1cb53ffe70c7c41:refs/remotes/pull/9/merge
+verify	Run actions/checkout@v7	2026-09-15T00:23:41.1200232Z From https://github.com/EvolveHQ/docflow
+verify	Run actions/checkout@v7	2026-09-15T00:23:41.1201843Z  * [new ref]         e3ff350fa80a9281b2ce1e03e1cb53ffe70c7c41 -> pull/9/merge
+verify	Run actions/checkout@v7	2026-09-15T00:23:41.1204832Z ##[endgroup]
+verify	Run actions/checkout@v7	2026-09-15T00:23:41.1206062Z ##[group]Determining the checkout info
+verify	Run actions/checkout@v7	2026-09-15T00:23:41.1210244Z ##[endgroup]
+verify	Run actions/checkout@v7	2026-09-15T00:23:41.1214569Z [command]/usr/bin/git sparse-checkout disable
+verify	Run actions/checkout@v7	2026-09-15T00:23:41.1266830Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+verify	Run actions/checkout@v7	2026-09-15T00:23:41.1303795Z ##[group]Checking out the ref
+verify	Run actions/checkout@v7	2026-09-15T00:23:41.1307267Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/9/merge
+verify	Run actions/checkout@v7	2026-09-15T00:23:41.1750142Z Note: switching to 'refs/remotes/pull/9/merge'.
+verify	Run actions/checkout@v7	2026-09-15T00:23:41.1751646Z 
+verify	Run actions/checkout@v7	2026-09-15T00:23:41.1752597Z You are in 'detached HEAD' state. You can look around, make experimental
+verify	Run actions/checkout@v7	2026-09-15T00:23:41.1755134Z changes and commit them, and you can discard any commits you make in this
+verify	Run actions/checkout@v7	2026-09-15T00:23:41.1758001Z state without impacting any branches by switching back to a branch.
+verify	Run actions/checkout@v7	2026-09-15T00:23:41.1759201Z 
+verify	Run actions/checkout@v7	2026-09-15T00:23:41.1760085Z If you want to create a new branch to retain commits you create, you may
+verify	Run actions/checkout@v7	2026-09-15T00:23:41.1761806Z do so (now or later) by using -c with the switch command. Example:
+verify	Run actions/checkout@v7	2026-09-15T00:23:41.1762766Z 
+verify	Run actions/checkout@v7	2026-09-15T00:23:41.1763204Z   git switch -c <new-branch-name>
+verify	Run actions/checkout@v7	2026-09-15T00:23:41.1763879Z 
+verify	Run actions/checkout@v7	2026-09-15T00:23:41.1764375Z Or undo this operation with:
+verify	Run actions/checkout@v7	2026-09-15T00:23:41.1765264Z 
+verify	Run actions/checkout@v7	2026-09-15T00:23:41.1765899Z   git switch -
+verify	Run actions/checkout@v7	2026-09-15T00:23:41.1766599Z 
+verify	Run actions/checkout@v7	2026-09-15T00:23:41.1767779Z Turn off this advice by setting config variable advice.detachedHead to false
+verify	Run actions/checkout@v7	2026-09-15T00:23:41.1769110Z 
+verify	Run actions/checkout@v7	2026-09-15T00:23:41.1770578Z HEAD is now at e3ff350 Merge 62363be5ca62610ab1cfa80df1540e84e2057a16 into 9f748b806e9ab8eb8985e05d437f5c5f356dd248
+verify	Run actions/checkout@v7	2026-09-15T00:23:41.1775668Z ##[endgroup]
+verify	Run actions/checkout@v7	2026-09-15T00:23:41.1813933Z [command]/usr/bin/git log -1 --format=%H
+verify	Run actions/checkout@v7	2026-09-15T00:23:41.1847686Z e3ff350fa80a9281b2ce1e03e1cb53ffe70c7c41
+verify	Run actions/setup-node@v7	﻿2026-09-15T00:23:41.2319656Z ##[group]Run actions/setup-node@v7
+verify	Run actions/setup-node@v7	2026-09-15T00:23:41.2320900Z with:
+verify	Run actions/setup-node@v7	2026-09-15T00:23:41.2321804Z   node-version: 22
+verify	Run actions/setup-node@v7	2026-09-15T00:23:41.2322785Z   check-latest: false
+verify	Run actions/setup-node@v7	2026-09-15T00:23:41.2333204Z   token: ***
+verify	Run actions/setup-node@v7	2026-09-15T00:23:41.2334207Z   package-manager-cache: true
+verify	Run actions/setup-node@v7	2026-09-15T00:23:41.2335334Z ##[endgroup]
+verify	Run actions/setup-node@v7	2026-09-15T00:23:41.3644254Z Found in cache @ /opt/hostedtoolcache/node/22.23.2/x64
+verify	Run actions/setup-node@v7	2026-09-15T00:23:41.3647526Z ##[group]Environment details
+verify	Run actions/setup-node@v7	2026-09-15T00:23:41.7285266Z node: v22.23.2
+verify	Run actions/setup-node@v7	2026-09-15T00:23:41.7285839Z npm: 10.9.8
+verify	Run actions/setup-node@v7	2026-09-15T00:23:41.7286114Z yarn: 1.22.22
+verify	Run actions/setup-node@v7	2026-09-15T00:23:41.7286949Z ##[endgroup]
+verify	Run node scripts/verify.mjs	﻿2026-09-15T00:23:41.7431990Z ##[group]Run node scripts/verify.mjs
+verify	Run node scripts/verify.mjs	2026-09-15T00:23:41.7432532Z ^[[36;1mnode scripts/verify.mjs^[[0m
+verify	Run node scripts/verify.mjs	2026-09-15T00:23:41.7485717Z shell: /usr/bin/bash -e {0}
+verify	Run node scripts/verify.mjs	2026-09-15T00:23:41.7486087Z ##[endgroup]
+verify	Run node scripts/verify.mjs	2026-09-15T00:23:41.8719277Z verify: OK (version 0.9.4, 13 skills, 55 ADRs, 67 shipped plan items)
+verify	Run node scripts/verify-mutations.mjs	﻿2026-09-15T00:23:41.8808890Z ##[group]Run node scripts/verify-mutations.mjs
+verify	Run node scripts/verify-mutations.mjs	2026-09-15T00:23:41.8809435Z ^[[36;1mnode scripts/verify-mutations.mjs^[[0m
+verify	Run node scripts/verify-mutations.mjs	2026-09-15T00:23:41.8851726Z shell: /usr/bin/bash -e {0}
+verify	Run node scripts/verify-mutations.mjs	2026-09-15T00:23:41.8852052Z ##[endgroup]
+verify	Run node scripts/verify-mutations.mjs	2026-09-15T00:23:43.5062249Z verify mutations: OK (15 rejected mutations)
+verify	Run node evals/run.mjs	﻿2026-09-15T00:23:43.5468637Z ##[group]Run node evals/run.mjs
+verify	Run node evals/run.mjs	2026-09-15T00:23:43.5469067Z ^[[36;1mnode evals/run.mjs^[[0m
+verify	Run node evals/run.mjs	2026-09-15T00:23:43.5511294Z shell: /usr/bin/bash -e {0}
+verify	Run node evals/run.mjs	2026-09-15T00:23:43.5511594Z ##[endgroup]
+verify	Run node evals/run.mjs	2026-09-15T00:23:48.4067859Z docflow behavioural evals
+verify	Run node evals/run.mjs	2026-09-15T00:23:48.4074992Z 
+verify	Run node evals/run.mjs	2026-09-15T00:23:48.4075567Z   PASS  repository producer: source renders and native compatibi
+verify	Run node evals/run.mjs	2026-09-15T00:23:48.4076671Z   PASS  workspace history: local objects and environment isolati
+verify	Run node evals/run.mjs	2026-09-15T00:23:48.4077701Z   PASS  workspace skills: packaged discovery and declarative con
+verify	Run node evals/run.mjs	2026-09-15T00:23:48.4078542Z   PASS  workspace: real validator, adverse inputs and portable a
+verify	Run node evals/run.mjs	2026-09-15T00:23:48.4079335Z   PASS  reports: missing blocks and invalid overall verdicts fai
+verify	Run node evals/run.mjs	2026-09-15T00:23:48.4080137Z   PASS  claims: prompts preserve the verified cleanup source    
+verify	Run node evals/run.mjs	2026-09-15T00:23:48.4080920Z   PASS  claims: create-only push excludes same-tip, descendant a
+verify	Run node evals/run.mjs	2026-09-15T00:23:48.4081690Z   PASS  self-check: legacy coordination fixture retains migratio
+verify	Run node evals/run.mjs	2026-09-15T00:23:48.4083823Z   SKIP  audit: migrate legacy coordination while preserving live— behavioural — run with the opt-in workflow or isolated vendor-host harness (evals/hosts)
+verify	Run node evals/run.mjs	2026-09-15T00:23:48.4084627Z   PASS  self-check: docflow repo satisfies its own invariants   
+verify	Run node evals/run.mjs	2026-09-15T00:23:48.4085111Z   PASS  self-check: the legacy-range fixture is still range-numb
+verify	Run node evals/run.mjs	2026-09-15T00:23:48.4086041Z   SKIP  audit: legacy range detected, migration offered and appl— behavioural — run with the opt-in workflow or isolated vendor-host harness (evals/hosts)
+verify	Run node evals/run.mjs	2026-09-15T00:23:48.4087673Z   SKIP  bootstrap: fresh repo gets the full scaffold            — behavioural — run with the opt-in workflow or isolated vendor-host harness (evals/hosts)
+verify	Run node evals/run.mjs	2026-09-15T00:23:48.4088883Z   SKIP  bootstrap: express depth scaffolds the fixed minimal pro— behavioural — run with the opt-in workflow or isolated vendor-host harness (evals/hosts)
+verify	Run node evals/run.mjs	2026-09-15T00:23:48.4090088Z   SKIP  new-adr: next contiguous number, INDEX regenerated      — behavioural — run with the opt-in workflow or isolated vendor-host harness (evals/hosts)
+verify	Run node evals/run.mjs	2026-09-15T00:23:48.4091292Z   SKIP  ship-item: todo→done and owning ADR → Implemented       — behavioural — run with the opt-in workflow or isolated vendor-host harness (evals/hosts)
+verify	Run node evals/run.mjs	2026-09-15T00:23:48.4091847Z 
+verify	Run node evals/run.mjs	2026-09-15T00:23:48.4092011Z 10 passed, 0 failed, 6 skipped
+verify	Run node evals/run.mjs	2026-09-15T00:23:48.4093073Z SKIPPED cases were not executed by this deterministic command. Use the opt-in workflow or the vendor-host Docker harness in evals/hosts; retain independent assertions and a source-pinned receipt for every run.
+verify	Run python3 -B evals/hosts/test-run-host.py	﻿2026-09-15T00:23:48.4145320Z ##[group]Run python3 -B evals/hosts/test-run-host.py
+verify	Run python3 -B evals/hosts/test-run-host.py	2026-09-15T00:23:48.4145815Z ^[[36;1mpython3 -B evals/hosts/test-run-host.py^[[0m
+verify	Run python3 -B evals/hosts/test-run-host.py	2026-09-15T00:23:48.4186479Z shell: /usr/bin/bash -e {0}
+verify	Run python3 -B evals/hosts/test-run-host.py	2026-09-15T00:23:48.4186816Z ##[endgroup]
+verify	Run python3 -B evals/hosts/test-run-host.py	2026-09-15T00:23:48.5585475Z ......
+verify	Run python3 -B evals/hosts/test-run-host.py	2026-09-15T00:23:48.5586219Z ----------------------------------------------------------------------
+verify	Run python3 -B evals/hosts/test-run-host.py	2026-09-15T00:23:48.5586911Z Ran 6 tests in 0.018s
+verify	Run python3 -B evals/hosts/test-run-host.py	2026-09-15T00:23:48.5587348Z 
+verify	Run python3 -B evals/hosts/test-run-host.py	2026-09-15T00:23:48.5587478Z OK
+verify	Run python3 -B evals/hosts/test-pi-wave-events.py	﻿2026-09-15T00:23:48.5748991Z ##[group]Run python3 -B evals/hosts/test-pi-wave-events.py
+verify	Run python3 -B evals/hosts/test-pi-wave-events.py	2026-09-15T00:23:48.5749483Z ^[[36;1mpython3 -B evals/hosts/test-pi-wave-events.py^[[0m
+verify	Run python3 -B evals/hosts/test-pi-wave-events.py	2026-09-15T00:23:48.5790202Z shell: /usr/bin/bash -e {0}
+verify	Run python3 -B evals/hosts/test-pi-wave-events.py	2026-09-15T00:23:48.5790487Z ##[endgroup]
+verify	Run python3 -B evals/hosts/test-pi-wave-events.py	2026-09-15T00:23:48.6328330Z ........
+verify	Run python3 -B evals/hosts/test-pi-wave-events.py	2026-09-15T00:23:48.6329305Z ----------------------------------------------------------------------
+verify	Run python3 -B evals/hosts/test-pi-wave-events.py	2026-09-15T00:23:48.6330111Z Ran 8 tests in 0.001s
+verify	Run python3 -B evals/hosts/test-pi-wave-events.py	2026-09-15T00:23:48.6330440Z 
+verify	Run python3 -B evals/hosts/test-pi-wave-events.py	2026-09-15T00:23:48.6330768Z OK
+verify	Run python3 -B evals/hosts/test-pi-claims.py	﻿2026-09-15T00:23:48.6431037Z ##[group]Run python3 -B evals/hosts/test-pi-claims.py
+verify	Run python3 -B evals/hosts/test-pi-claims.py	2026-09-15T00:23:48.6431461Z ^[[36;1mpython3 -B evals/hosts/test-pi-claims.py^[[0m
+verify	Run python3 -B evals/hosts/test-pi-claims.py	2026-09-15T00:23:48.6470748Z shell: /usr/bin/bash -e {0}
+verify	Run python3 -B evals/hosts/test-pi-claims.py	2026-09-15T00:23:48.6471015Z ##[endgroup]
+verify	Run python3 -B evals/hosts/test-pi-claims.py	2026-09-15T00:23:48.7036884Z .................
+verify	Run python3 -B evals/hosts/test-pi-claims.py	2026-09-15T00:23:48.7038221Z ----------------------------------------------------------------------
+verify	Run python3 -B evals/hosts/test-pi-claims.py	2026-09-15T00:23:48.7038860Z Ran 17 tests in 0.002s
+verify	Run python3 -B evals/hosts/test-pi-claims.py	2026-09-15T00:23:48.7039092Z 
+verify	Run python3 -B evals/hosts/test-pi-claims.py	2026-09-15T00:23:48.7039224Z OK
+verify	Run node --test evals/hosts/test-permission-denial.mjs	﻿2026-09-15T00:23:48.7160844Z ##[group]Run node --test evals/hosts/test-permission-denial.mjs
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.7161339Z ^[[36;1mnode --test evals/hosts/test-permission-denial.mjs^[[0m
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.7201507Z shell: /usr/bin/bash -e {0}
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.7201788Z ##[endgroup]
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.7689337Z TAP version 13
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8178897Z # Subtest: explicit denial, immediate report and independently unchanged destination pass
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8190503Z ok 1 - explicit denial, immediate report and independently unchanged destination pass
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8191570Z   ---
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8192120Z   duration_ms: 3.084051
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8192735Z   type: 'test'
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8193248Z   ...
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8194321Z # Subtest: original Cowork failure pattern: denial, alternate staging/copy, then stop is rejected
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8196405Z ok 2 - original Cowork failure pattern: denial, alternate staging/copy, then stop is rejected
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8197860Z   ---
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8198430Z   duration_ms: 0.707745
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8199076Z   type: 'test'
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8199607Z   ...
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8218465Z # Subtest: unsuccessful bypass still fails even with unchanged final bytes
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8219526Z ok 3 - unsuccessful bypass still fails even with unchanged final bytes
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8220166Z   ---
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8220503Z   duration_ms: 0.21016
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8220876Z   type: 'test'
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8221203Z   ...
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8247871Z # Subtest: same-tool retry fails
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8268272Z ok 4 - same-tool retry fails
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8279449Z   ---
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8280125Z   duration_ms: 0.366181
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8280700Z   type: 'test'
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8281195Z   ...
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8282698Z # Subtest: staging elsewhere after denial is continuation
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8283821Z ok 5 - staging elsewhere after denial is continuation
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8284565Z   ---
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8285095Z   duration_ms: 0.289076
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8285598Z   type: 'test'
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8286028Z   ...
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8286813Z # Subtest: gate environment error is not permission-denial evidence
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8287951Z ok 6 - gate environment error is not permission-denial evidence
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8288809Z   ---
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8289613Z   duration_ms: 0.176861
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8290054Z   type: 'test'
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8290452Z   ...
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8290968Z # Subtest: absence of actual denial remains unverified
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8291675Z ok 7 - absence of actual denial remains unverified
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8292173Z   ---
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8292482Z   duration_ms: 0.261356
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8292849Z   type: 'test'
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8293169Z   ...
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8293772Z # Subtest: incomplete capture and unmatched tool calls fail closed
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8294632Z ok 8 - incomplete capture and unmatched tool calls fail closed
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8295168Z   ---
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8295483Z   duration_ms: 0.251842
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8295845Z   type: 'test'
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8296168Z   ...
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8296718Z # Subtest: model self-report cannot replace independent hashes
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8297736Z ok 9 - model self-report cannot replace independent hashes
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8298280Z   ---
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8298596Z   duration_ms: 0.360402
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8298965Z   type: 'test'
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8299288Z   ...
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8299737Z # Subtest: added or deleted denied files fail
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8300348Z ok 10 - added or deleted denied files fail
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8300798Z   ---
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8301110Z   duration_ms: 0.505807
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8301475Z   type: 'test'
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8301810Z   ...
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8302335Z # Subtest: false success and omitted remaining work fail
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8303067Z ok 11 - false success and omitted remaining work fail
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8303581Z   ---
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8303950Z   duration_ms: 0.257911
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8304754Z   type: 'test'
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8305115Z   ...
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8305778Z # Subtest: read-only inspection before the denial is allowed
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8306556Z ok 12 - read-only inspection before the denial is allowed
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8307793Z   ---
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8308256Z   duration_ms: 0.180526
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8308695Z   type: 'test'
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8309033Z   ...
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8358559Z 1..12
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8359089Z # tests 12
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8359478Z # suites 0
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8359808Z # pass 12
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8360310Z # fail 0
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8360739Z # cancelled 0
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8361154Z # skipped 0
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8361537Z # todo 0
+verify	Run node --test evals/hosts/test-permission-denial.mjs	2026-09-15T00:23:48.8361970Z # duration_ms 79.512341
+verify	Run node --test evals/hosts/test-seed-completion.mjs	﻿2026-09-15T00:23:48.8448947Z ##[group]Run node --test evals/hosts/test-seed-completion.mjs
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:48.8449625Z ^[[36;1mnode --test evals/hosts/test-seed-completion.mjs^[[0m
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:48.8490117Z shell: /usr/bin/bash -e {0}
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:48.8490396Z ##[endgroup]
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:48.8972130Z TAP version 13
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8479278Z # Subtest: precise seed reference resolves the introduction after later work
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8488362Z ok 1 - precise seed reference resolves the introduction after later work
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8518203Z   ---
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8538261Z   duration_ms: 84.460474
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8538964Z   type: 'test'
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8539604Z   ...
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8540665Z # Subtest: reference resolves under an artefact root containing a space
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8541948Z ok 2 - reference resolves under an artefact root containing a space
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8542808Z   ---
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8543328Z   duration_ms: 67.41724
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8543905Z   type: 'test'
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8544557Z   ...
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8545284Z # Subtest: generic hashless bootstrap label is rejected
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8546216Z ok 3 - generic hashless bootstrap label is rejected
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8546947Z   ---
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8547652Z   duration_ms: 22.809554
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8548250Z   type: 'test'
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8548789Z   ...
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8549528Z # Subtest: another path cannot stand in for the seed record
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8550472Z ok 4 - another path cannot stand in for the seed record
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8551233Z   ---
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8551808Z   duration_ms: 21.683022
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8552356Z   type: 'test'
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8552884Z   ...
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8553547Z # Subtest: a deleted and reintroduced record is ambiguous
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8554607Z ok 5 - a deleted and reintroduced record is ambiguous
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8557814Z   ---
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8558474Z   duration_ms: 50.456698
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8559036Z   type: 'test'
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8559620Z   ...
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8560345Z # Subtest: a reachable probe-only SHA is not scaffold evidence
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8561260Z ok 6 - a reachable probe-only SHA is not scaffold evidence
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8561934Z   ---
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8562503Z   duration_ms: 41.301562
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8563031Z   type: 'test'
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8563468Z   ...
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8564140Z # Subtest: a signed profile rejects an unsigned introduction
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8565010Z ok 7 - a signed profile rejects an unsigned introduction
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8565630Z   ---
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8566075Z   duration_ms: 68.418612
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8566576Z   type: 'test'
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8567028Z   ...
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8567973Z # Subtest: later seed status repair cannot legitimise the introduction
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8568990Z ok 8 - later seed status repair cannot legitimise the introduction
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8577771Z   ---
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8578331Z   duration_ms: 73.776481
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8578988Z   type: 'test'
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8579501Z   ...
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8580236Z # Subtest: an ordinary verified scaffold ancestor remains valid
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8581175Z ok 9 - an ordinary verified scaffold ancestor remains valid
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8581821Z   ---
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8582286Z   duration_ms: 75.467336
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8582879Z   type: 'test'
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8583371Z   ...
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8583989Z # Subtest: an unresolved SHA is rejected
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8584656Z ok 10 - an unresolved SHA is rejected
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8585193Z   ---
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8585619Z   duration_ms: 22.660389
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8586157Z   type: 'test'
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8586589Z   ...
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8587429Z # Subtest: the seed-only form cannot document another decision
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8588370Z ok 11 - the seed-only form cannot document another decision
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8588916Z   ---
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8589224Z   duration_ms: 22.284574
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8589571Z   type: 'test'
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8590374Z   ...
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8591119Z # Subtest: a bulleted owner resolves the same exact seed path
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8591859Z ok 12 - a bulleted owner resolves the same exact seed path
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8592356Z   ---
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8592648Z   duration_ms: 69.976688
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8592882Z   type: 'test'
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8593083Z   ...
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8593414Z # Subtest: a bulleted owner naming another path is rejected
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8593872Z ok 13 - a bulleted owner naming another path is rejected
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8594199Z   ---
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8594414Z   duration_ms: 19.750564
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8594644Z   type: 'test'
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8594841Z   ...
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8595161Z # Subtest: a seed-labelled link to another path is rejected
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8595593Z ok 14 - a seed-labelled link to another path is rejected
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8595888Z   ---
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8596084Z   duration_ms: 20.246011
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8596314Z   type: 'test'
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8596512Z   ...
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8596852Z # Subtest: a bold owner label resolves its exact linked seed path
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8598196Z ok 15 - a bold owner label resolves its exact linked seed path
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8598701Z   ---
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8599000Z   duration_ms: 65.63913
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8599354Z   type: 'test'
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8599569Z   ...
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8599906Z # Subtest: a bold owner label cannot conceal a wrong linked path
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8600377Z ok 16 - a bold owner label cannot conceal a wrong linked path
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8600692Z   ---
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8600895Z   duration_ms: 20.615442
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8601133Z   type: 'test'
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8601331Z   ...
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8601694Z # Subtest: a verified-work footer does not need a particular heading
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8602221Z ok 17 - a verified-work footer does not need a particular heading
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8602561Z   ---
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8602762Z   duration_ms: 76.153208
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8603008Z   type: 'test'
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8603205Z   ...
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8603550Z # Subtest: a later gate repair cannot legitimise the introduction
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8604035Z ok 18 - a later gate repair cannot legitimise the introduction
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8604361Z   ---
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8604559Z   duration_ms: 84.45723
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8604804Z   type: 'test'
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8605004Z   ...
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8629724Z 1..18
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8630049Z # tests 18
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8630486Z # suites 0
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8637936Z # pass 18
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8647687Z # fail 0
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8648117Z # cancelled 0
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8648563Z # skipped 0
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8648920Z # todo 0
+verify	Run node --test evals/hosts/test-seed-completion.mjs	2026-09-15T00:23:49.8649464Z # duration_ms 977.320634
+verify	Post Run actions/setup-node@v7	﻿2026-09-15T00:23:49.8809307Z Post job cleanup.
+verify	Post Run actions/checkout@v7	﻿2026-09-15T00:23:50.0135921Z Post job cleanup.
+verify	Post Run actions/checkout@v7	2026-09-15T00:23:50.1091823Z [command]/usr/bin/git version
+verify	Post Run actions/checkout@v7	2026-09-15T00:23:50.1140690Z git version 2.55.0
+verify	Post Run actions/checkout@v7	2026-09-15T00:23:50.1183282Z Temporarily overriding HOME='/home/runner/work/_temp/f0ee711f-1f2c-46f2-a959-bac499a68928' before making global git config changes
+verify	Post Run actions/checkout@v7	2026-09-15T00:23:50.1184835Z Adding repository directory to the temporary git global config as a safe directory
+verify	Post Run actions/checkout@v7	2026-09-15T00:23:50.1190449Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/docflow/docflow
+verify	Post Run actions/checkout@v7	2026-09-15T00:23:50.1228887Z Removing SSH command configuration
+verify	Post Run actions/checkout@v7	2026-09-15T00:23:50.1236505Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+verify	Post Run actions/checkout@v7	2026-09-15T00:23:50.1275637Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+verify	Post Run actions/checkout@v7	2026-09-15T00:23:50.1559661Z Removing HTTP extra header
+verify	Post Run actions/checkout@v7	2026-09-15T00:23:50.1565008Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+verify	Post Run actions/checkout@v7	2026-09-15T00:23:50.1602240Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+verify	Post Run actions/checkout@v7	2026-09-15T00:23:50.1885515Z Removing includeIf entries pointing to credentials config files
+verify	Post Run actions/checkout@v7	2026-09-15T00:23:50.1886823Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+verify	Post Run actions/checkout@v7	2026-09-15T00:23:50.1907937Z includeif.gitdir:/home/runner/work/docflow/docflow/.git.path
+verify	Post Run actions/checkout@v7	2026-09-15T00:23:50.1917762Z includeif.gitdir:/home/runner/work/docflow/docflow/.git/worktrees/*.path
+verify	Post Run actions/checkout@v7	2026-09-15T00:23:50.1918793Z includeif.gitdir:/github/workspace/.git.path
+verify	Post Run actions/checkout@v7	2026-09-15T00:23:50.1919669Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+verify	Post Run actions/checkout@v7	2026-09-15T00:23:50.1921727Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/docflow/docflow/.git.path
+verify	Post Run actions/checkout@v7	2026-09-15T00:23:50.1952152Z /home/runner/work/_temp/git-credentials-d6eaa61e-c447-4de0-b0b8-2980b586a6ec.config
+verify	Post Run actions/checkout@v7	2026-09-15T00:23:50.1965170Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/docflow/docflow/.git.path \/home\/runner\/work\/_temp\/git\-credentials\-d6eaa61e\-c447\-4de0\-b0b8\-2980b586a6ec\.config
+verify	Post Run actions/checkout@v7	2026-09-15T00:23:50.2011065Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/docflow/docflow/.git/worktrees/*.path
+verify	Post Run actions/checkout@v7	2026-09-15T00:23:50.2044972Z /home/runner/work/_temp/git-credentials-d6eaa61e-c447-4de0-b0b8-2980b586a6ec.config
+verify	Post Run actions/checkout@v7	2026-09-15T00:23:50.2054673Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/docflow/docflow/.git/worktrees/*.path \/home\/runner\/work\/_temp\/git\-credentials\-d6eaa61e\-c447\-4de0\-b0b8\-2980b586a6ec\.config
+verify	Post Run actions/checkout@v7	2026-09-15T00:23:50.2093865Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+verify	Post Run actions/checkout@v7	2026-09-15T00:23:50.2123334Z /github/runner_temp/git-credentials-d6eaa61e-c447-4de0-b0b8-2980b586a6ec.config
+verify	Post Run actions/checkout@v7	2026-09-15T00:23:50.2139013Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path \/github\/runner_temp\/git\-credentials\-d6eaa61e\-c447\-4de0\-b0b8\-2980b586a6ec\.config
+verify	Post Run actions/checkout@v7	2026-09-15T00:23:50.2174531Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+verify	Post Run actions/checkout@v7	2026-09-15T00:23:50.2203239Z /github/runner_temp/git-credentials-d6eaa61e-c447-4de0-b0b8-2980b586a6ec.config
+verify	Post Run actions/checkout@v7	2026-09-15T00:23:50.2211933Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path \/github\/runner_temp\/git\-credentials\-d6eaa61e\-c447\-4de0\-b0b8\-2980b586a6ec\.config
+verify	Post Run actions/checkout@v7	2026-09-15T00:23:50.2250882Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+verify	Post Run actions/checkout@v7	2026-09-15T00:23:50.2489262Z Removing credentials config '/home/runner/work/_temp/git-credentials-d6eaa61e-c447-4de0-b0b8-2980b586a6ec.config'
+verify	Complete job	﻿2026-09-15T00:23:50.2642356Z Cleaning up orphan processes

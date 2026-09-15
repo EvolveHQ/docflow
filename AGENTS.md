@@ -18,9 +18,15 @@ below describe how docflow itself is built and maintained.
 - `plugins/docflow/skills/` — **the product**. `bootstrap/` (with
   `templates/`) plus the lifecycle skills (`new-adr`, `new-plan`,
   `ship-item`, `add-convention`, `audit`, `brainstorm`, `agent-wave`,
-  `rollup`). Declarative `agents/openai.yaml` sidecars provide optional
+  `rollup`), plus four workspace operating skills (`workspace-setup`,
+  `workspace-orient`, `workspace-plan`, `workspace-coordinate`).
+  Declarative `agents/openai.yaml` sidecars provide optional
   host interface metadata; SKILL.md remains sufficient on every target.
   This is what gets installed. One source for every target.
+- `plugins/docflow/workspace/` — packaged workspace contract, schema,
+  external validator and asset resolver, portable native-host guides and
+  source-bound workspace/repository fixtures. Detached skill copies also
+  require this complete asset directory; templates remain in bootstrap.
 - `plugins/docflow/.claude-plugin/plugin.json` — Claude Code / Cowork
   plugin manifest; `plugins/docflow/.codex-plugin/plugin.json` — Codex.
 - `.claude-plugin/marketplace.json` + `.agents/plugins/marketplace.json`

@@ -7,6 +7,45 @@ import { spawnSync } from 'node:child_process';
 const here = dirname(fileURLToPath(import.meta.url));
 export const schema = JSON.parse(readFileSync(resolve(here, 'schema.json'), 'utf8'));
 export const kinds = ['ideas', 'decisions', 'work', 'knowledge', 'runs'];
+
+// Historical lookup is deliberately offline. Unsupported Git or unavailable
+// local objects fail closed; inherited repository/config state is not authority.
+export function inspectHistoricalFile(rootInput, ref) {
+  if (!/^(?:[0-9a-f]{40}|[0-9a-f]{64})$/.test(ref.revision || '') ||
+      typeof ref.path !== 'string' || isAbsolute(ref.path) ||
+      /[\\:\u0000]/.test(ref.path) ||
+      ref.path.split('/').some(p => !p || p === '.' || p === '..')) return false;
+  try {
+    const root = realpathSync(rootInput);
+    const env = Object.fromEntries(Object.entries(process.env).filter(([k]) => !/^GIT_/i.test(k)));
+    Object.assign(env, {
+      GIT_NO_LAZY_FETCH: '1', GIT_NO_REPLACE_OBJECTS: '1',
+      GIT_OPTIONAL_LOCKS: '0', GIT_CONFIG_NOSYSTEM: '1',
+      GIT_CONFIG_GLOBAL: process.platform === 'win32' ? 'NUL' : '/dev/null',
+      GIT_CONFIG_SYSTEM: process.platform === 'win32' ? 'NUL' : '/dev/null',
+      GIT_CONFIG_COUNT: '0', GIT_TERMINAL_PROMPT: '0',
+    });
+    const options = { env, encoding: 'utf8', timeout: 5000, windowsHide: true, maxBuffer: 1024 * 1024 };
+    const git = args => spawnSync('git', ['--no-lazy-fetch', '--no-replace-objects',
+      '--no-optional-locks', '--literal-pathspecs', '-c', 'protocol.allow=never',
+      '-C', root, ...args], options);
+    const top = git(['rev-parse', '--show-toplevel']);
+    if (top.status !== 0) return false;
+    const actual = realpathSync(top.stdout.trim());
+    const same = process.platform === 'win32' ? actual.toLowerCase() === root.toLowerCase() : actual === root;
+    if (!same) return false;
+    const type = git(['cat-file', '-t', ref.revision]);
+    if (type.status !== 0 || !['commit', 'tree'].includes(type.stdout.trim())) return false;
+    const tree = git(['ls-tree', '-z', ref.revision, '--', ref.path]);
+    if (tree.status !== 0) return false;
+    const entries = tree.stdout.split('\0');
+    if (entries.length !== 2 || entries[1] !== '') return false;
+    const match = entries[0].match(/^100(?:644|755) blob ([0-9a-f]{40}|[0-9a-f]{64})\t([\s\S]+)$/);
+    if (!match || match[2] !== ref.path) return false;
+    const blob = git(['cat-file', '-t', match[1]]);
+    return blob.status === 0 && blob.stdout.trim() === 'blob';
+  } catch { return false; }
+}
 const transitions = {
   ideas: { backlog: ['selected', 'rejected', 'discarded'], selected: ['backlog', 'rejected', 'discarded'], rejected: ['backlog'], discarded: ['backlog'] },
   decisions: { proposed: ['accepted', 'rejected', 'superseded'], accepted: ['superseded'], rejected: ['superseded'], superseded: [] },
@@ -221,12 +260,7 @@ export function validateWorkspace(rootPath, { at, previous } = {}) {
       const contained = typeof ref.path === 'string' && !isAbsolute(ref.path) && !/[\\:\u0000]/.test(ref.path) && !ref.path.split('/').some(x => !x || x === '.' || x === '..');
       let historical = false;
       if (e.code === 'ENOENT' && contained) {
-        const options = { encoding: 'utf8', timeout: 5000, windowsHide: true, maxBuffer: 1024 * 1024 };
-        const top = spawnSync('git', ['-C', root, 'rev-parse', '--show-toplevel'], options);
-        if (top.status === 0 && resolve(top.stdout.trim()).toLowerCase() === root.toLowerCase()) {
-          const tree = spawnSync('git', ['--literal-pathspecs', '-C', root, 'ls-tree', ref.revision, '--', ref.path], options);
-          historical = tree.status === 0 && /^100(?:644|755) blob [0-9a-f]+\t/m.test(tree.stdout);
-        }
+        historical = inspectHistoricalFile(root, ref);
       }
       if (!historical) fail('native-path', label, e.message);
     }

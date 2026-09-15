@@ -94,8 +94,9 @@ how deep to go:
 At any question you can answer **"defaults from here"** (finish with
 recommended defaults) or **"go deeper"** (escalate to the fuller
 tier). The chosen depth is recorded in `CONVENTIONS.md` and offered as
-the pre-selected recommendation next time — the selector always still
-appears. Express and guided never set up multi-repo federation; that
+the pre-selected recommendation next time when depth is unresolved.
+Applicable supplied choices, including depth, are reused; only material
+missing or conflicting choices need a question. Express and guided never set up multi-repo federation; that
 is a full-depth choice only.
 
 At full depth the skill asks the 10 assessment questions **one at a
@@ -257,7 +258,8 @@ acting — the same pattern bootstrap uses (§3):
   recorded in your `CONVENTIONS.md` if present — otherwise it flips on
   context: *full* when you invoked the skill with little detail,
   *express* when your request already specifies everything. The
-  selector always appears; a recorded depth is never applied silently,
+  selector appears when depth is unresolved and material choices remain;
+  supplied answers are reused, while a recorded depth is never applied silently,
   and at any question you can say "defaults from here" or "go deeper".
 - Questions are asked **one at a time**, each with a **recommended
   option** you can accept, override, or replace.

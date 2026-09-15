@@ -1,0 +1,5 @@
+interface:
+  display_name: "docflow: workspace-plan"
+  short_description: "Turn a shared outcome into inspectable workspace records and native delivery references."
+  default_prompt: "Use workspace-plan for the supplied workspace scope and preserve native authority and source evidence."
+

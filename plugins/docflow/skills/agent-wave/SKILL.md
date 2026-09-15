@@ -50,9 +50,13 @@ below is used at every rung. Without a proved concurrency ceiling, use one.
 
 ## Assessment and declaration
 
-Reuse answers already given. Otherwise ask one question at a time with a
+Reuse applicable answers already given, including depth; defaults never
+replace explicit choices. A fully supplied specification needs no repeated
+selector or confirmation. Ask only for a material missing or conflicting
+choice; a recorded preference alone is not current execution authority.
+Otherwise ask one question at a time with a
 recommended answer and reason, using a structured selector if available.
-Offer express (defaults), guided (budget/supervision) or full depth, with
+When depth is unresolved, offer express (defaults), guided (budget/supervision) or full depth, with
 the recorded depth preselected. Honour defaults-from-here or go-deeper.
 
 1. Requested width: recommend min(eligible queue depth, 3, host ceiling).

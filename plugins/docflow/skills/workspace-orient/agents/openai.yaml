@@ -1,0 +1,5 @@
+interface:
+  display_name: "docflow: workspace-orient"
+  short_description: "Give a source-backed view of what matters and what can happen next."
+  default_prompt: "Use workspace-orient for the supplied workspace scope and preserve native authority and source evidence."
+
