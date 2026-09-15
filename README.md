@@ -351,6 +351,13 @@ See [USAGE.md §Updating the plugin](USAGE.md#8-updating-the-plugin)
 for the author-side flow (version bumps, release tags) and recipient
 options including `/reload-plugins` for live sessions.
 
+Docflow package releases use `v<version>`. Clarity desktop installers use separate
+`clarity-v<version>` releases in the same repository, with their compatible Docflow
+version recorded in the manifest. Select the product before choosing a release;
+the repository-wide latest release is not a package update signal. See
+[Clarity downloads and release preparation](docs/clarity-releases.md) for exact
+product lookup, installer selection, checksums and current verification limits.
+
 ## Full usage and customisation guide
 
 See [USAGE.md](USAGE.md) for the assessment questions, what each
