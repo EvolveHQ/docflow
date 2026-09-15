@@ -1,0 +1,42 @@
+{
+  "source": "f47f4c52313163f1ffe55a97d9c8029602d7c5b4",
+  "kind": "actual native Claude Code actions over synthetic unknown-owner history and two actual Git workspaces sharing one sibling member",
+  "before_observed_at": "2026-09-15T03:18:47.392888+00:00",
+  "after_observed_at": "2026-09-15T03:20:47.921751+00:00",
+  "assertions": {
+    "all_workspace_member_and_product_roots_identical": true,
+    "external_blocked_receipt_only_write": true,
+    "native_check_skipped_with_null_exit": true,
+    "both_canonical_homes_inspected": true,
+    "unreconciled_prior_ownership_retained": true,
+    "no_delegate_or_reassignment": true
+  },
+  "native_commands": [
+    "git rev-parse HEAD && ls -la && find .docflow_workspace -type f | head -50 && cat .docflow_workspace/work/shared-native-readout--79855fb0df41.md; ls -la /workspace; readlink -f /opt/docflow-source/plugins/docflow/skills/workspace-coordinate",
+    "date -u +%Y-%m-%dT%H:%M:%SZ; cd /workspace/cross-a; cat AGENTS.md QUALIFICATION-MANDATE.md README.md .docflow_workspace/workspace.yaml .docflow_workspace/CONVENTIONS.md .docflow_workspace/INDEX.md .docflow_workspace/integrations/sources.yaml; git log --stat --format='%H %an %ad %s' | head -40",
+    "cd /workspace/cross-member && git rev-parse HEAD; git status --short; git log --format='%H %an %ad %s' | head; ls -la; for f in *; do [ -f \"$f\" ] && { echo \"=== $f\"; cat \"$f\"; }; done",
+    "cd /workspace/cross-b && git rev-parse HEAD; git status --short; ls -la; cat AGENTS.md QUALIFICATION-MANDATE.md README.md 2>/dev/null; find .docflow_workspace -type f -path '*work*' -o -type f -name '*.yaml' | xargs -I{} sh -c 'echo \"=== {}\"; cat {}'",
+    "ls /opt/docflow-source/plugins/docflow/skills/bootstrap/templates/ 2>&1; cat /opt/docflow-source/plugins/docflow/skills/bootstrap/templates/workspace-assets.json 2>&1; ls /opt/docflow-source/plugins/docflow/workspace /opt/docflow-source/plugins/docflow/workspace/guides 2>&1; node --version",
+    "cd /opt/docflow-source/plugins/docflow/workspace && cat CONTRACT.md README.md guides/claude-code.md",
+    "cd /opt/docflow-source/plugins/docflow/skills/bootstrap/templates && cat workspace-receipt.json workspace-brief.json",
+    "T=$(date -u +%Y-%m-%dT%H:%M:%SZ); echo \"AT=$T\"; for w in cross-a cross-b; do echo \"=== $w\"; node /opt/docflow-source/plugins/docflow/workspace/validate.mjs /workspace/$w --at $T; echo \"exit=$?\"; done; cd /workspace/cross-member && git status --porcelain && git rev-parse HEAD",
+    "ls -la /workspace/cross-return.json 2>&1; date -u +%Y-%m-%dT%H:%M:%SZ; git -C /workspace/cross-b log --format='%H %s' | head -3; git -C /workspace/cross-a status --porcelain; git -C /workspace/cross-b status --porcelain"
+  ],
+  "native_skill_invocation": [
+    {
+      "skill": "docflow:workspace-coordinate",
+      "args": "docflow-hq/cross-a work 79855fb0-df41-4be2-9742-fdae14a21ad7 at .docflow_workspace/work/shared-native-readout--79855fb0df41.md"
+    }
+  ],
+  "external_receipt": {
+    "file": "claude-cross-return.json",
+    "sha256": "6526d6d8f6d1534ccca583ea7392749a96ddbd6fe852f33b734d8f940ab80afe",
+    "kind": "blocked readiness transport record; no assignment was created, not a canonical receipt-form validation pass"
+  },
+  "limitations": [
+    "Injected prior run is not an actual second live host process; this demonstrates native handling of supplied unknown ownership, not host-enforced global locking.",
+    "Independent roots and source observations establish effects; model aggregate read timestamps are not treated as independently measured per-file observations.",
+    "Before snapshot was started before native host but its CLI completion was collected afterward; its observed_at precedes the native first recorded UTC. No canonical/member/product mutation appeared in the native tool transcript.",
+    "Complete WV05 overlap, WV08 resource and Clarity consumer variants remain unrun."
+  ]
+}

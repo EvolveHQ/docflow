@@ -1,5 +1,5 @@
 {
-  "observed_at": "2026-09-15T02:42:03.060849+00:00",
+  "observed_at": "2026-09-15T03:45:45.887027+00:00",
   "source_revision": "f47f4c52313163f1ffe55a97d9c8029602d7c5b4",
   "plugin_digest_sha256": "1f76befdd23ca9cceccbf2993e8d88448e1ca162f2437d1f10402ed5def7a3f8",
   "native_plan_items": [
@@ -58,14 +58,17 @@
         "receipts": [
           "claude-setup-assertions.json",
           "claude-w4-fresh-assertions.json",
-          "external-orca-reconciliation-v2.json"
+          "external-orca-reconciliation-v2.json",
+          "claude-expired-assertions.json"
         ]
       }
     },
     "Cowork": {
       "thirteen-skill-native-discovery": {
-        "status": "blocked before prompt; folder picker focus failure",
+        "status": "actual dedicated native session advertises nine pre-existing Docflow skills; workspace-setup absent. Current attached candidate bytes verified separately; installed candidate discovery not established",
         "receipts": [
+          "cowork-native-session.json",
+          "cowork-native-before.json",
           "cowork-input-receipts.json"
         ]
       },
@@ -102,8 +105,10 @@
         "receipts": []
       },
       "four-workspace-skills-and-D2-behaviour": {
-        "status": "unrun",
-        "receipts": []
+        "status": "running one native setup using explicitly attached candidate skill files; no completion claim",
+        "receipts": [
+          "cowork-native-session.json"
+        ]
       }
     },
     "Pi": {
@@ -185,8 +190,12 @@
         "receipts": []
       },
       "denied-action-alternate-route": {
-        "status": "unrun",
-        "receipts": []
+        "status": "passed actual readonly bind filesystem denial; no alternate write/delegate; all fixture and installed bytes unchanged",
+        "receipts": [
+          "codex-denial-assertions.json",
+          "codex-denial-before.json",
+          "codex-denial-after.json"
+        ]
       },
       "stopped-and-fresh-recovery": {
         "status": "unrun",
@@ -253,12 +262,17 @@
         "receipts": []
       },
       "upgrade-retention": {
-        "status": "unrun",
-        "receipts": []
+        "status": "passed actual detached-copy 0.9.3 to 0.9.4 upgrade: nine then thirteen native skills, raw source/install hashes match, workspace files and Git histories retained",
+        "receipts": [
+          "opencode-native-upgrade.json",
+          "upgrade-0.9.3-freeze.json"
+        ]
       },
       "removal-retention": {
-        "status": "unrun",
-        "receipts": []
+        "status": "passed native detached-copy removal/rediscovery and same-version restoration; all workspace files and Git histories retained",
+        "receipts": [
+          "opencode-native-retention.json"
+        ]
       },
       "four-workspace-skills-and-D2-behaviour": {
         "status": "partial; supplied setup choices pass",
@@ -298,18 +312,23 @@
     },
     "WV04": {
       "requirement": "Resume reuses valid authority; changed scope/actor and revoked or suspended grants are detected before dependent actions.",
-      "status": "partial: actual scoped external check and Orca reconciliation; original receipt failure and assisted correction retained",
+      "status": "partial: compatible scoped execution and independent expired-grant stop demonstrated; all grant variants and combined Clarity acceptance unrun",
       "native_evidence": [
         "external-native-receipt.json",
         "external-native-receipt-v2.json",
-        "external-orca-reconciliation-v2.json"
+        "external-orca-reconciliation-v2.json",
+        "claude-expired-assertions.json"
       ],
       "clarity": "await integrated source/artifact; no combined acceptance"
     },
     "WV05": {
       "requirement": "Two workspaces resolve the same repository and native claim; duplicate assignment is prevented or stops when ownership is unknown.",
-      "status": "unrun complete scenario",
-      "native_evidence": [],
+      "status": "partial native stop: two actual workspaces share one sibling Git member with injected unknown prior ownership; all roots unchanged, check skipped and no reassignment; live overlap and Clarity variants remain",
+      "native_evidence": [
+        "claude-cross-preparation.json",
+        "claude-cross-assertions.json",
+        "claude-cross-return.json"
+      ],
       "clarity": "await integrated source/artifact; no combined acceptance"
     },
     "WV06": {
@@ -442,7 +461,7 @@
       ]
     },
     "DeepSeek Harness": {
-      "status": "first native isolated web turn failed before tools: missing local provider key; one controller-authorised recovery running with existing non-secret local compatibility marker",
+      "status": "partial native guide: first client-guard failure, 900-second recovery without check, fresh supplied-path 1800-second attempt passed native check but stopped at 1795 seconds before external receipt; controller terminal reconciliation valid, full guide incomplete",
       "installed_guide_sha256": "282bdb9ed21e7826f48b79e2793ce9efc2d0d4ce1ba1b56b1f688195a4cc03ed",
       "version": "0.1.1-rc.2",
       "command": "node C:/Users/eugen/.dsh/profiles/node_modules/@deepseek-ai/dsh/lib/bin.js --profile web --no-open --host 127.0.0.1 --port 0",
@@ -456,7 +475,10 @@
       "boundary": "Dedicated native web UI in headless Chrome; not a desktop app session. No real remote credential. Local provider has no configured remote fallback.",
       "receipts": [
         "dsh-native-failure.json",
-        "dsh-ui-failure.json"
+        "dsh-recovery-outcome.json",
+        "dsh-long-outcome.json",
+        "dsh-long-reconciliation.json",
+        "dsh-long-diagnosis.json"
       ]
     },
     "ZCode": {

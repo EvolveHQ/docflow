@@ -40,8 +40,8 @@ SHA-256 and Git blob IDs are retained. Reproduce export using
 | Codex CLI 0.154.0, Linux, `gpt-6-astra` | Thirteen native skills; setup; full bootstrap/new-adr; read-only mixed-method orientation; native plugin removal retains three fixtures and reinstallation restores thirteen skills plus 329 exact product files. | Original bootstrap checker exits 1 on an integration-wording regex; semantic inspection supports the requested local-main behavior. No checker was weakened. Same-version reinstall is not an upgrade. |
 | OpenCode 1.18.30, Linux, `opencode/big-pickle` | Thirteen native skills; setup; full bootstrap/new-adr; Proposed-decision queue creation; ship-item blocks on Proposed ownership without changing files/Git; unavailable edit tool stops shell-write/delegate alternatives. | Permission config removes edit from the tool surface; this is not an interactive approval denial. Native startup added a config schema and 3,658 dependency files. The model incorrectly called these pre-existing. |
 | Pi 0.85.1, Windows, local `llama-server/qwen3.8-27b-coding`, high | One fresh recovery creates and independently validates the empty workspace after about 1,443 seconds. Native RPC advertises all thirteen Docflow commands. Installed source bytes and supplied choices match. | First 900-second setup timed out, exit 124. Recovery exited 0 before the controller's 1,800-second cap. RPC omits documented path/location fields; path binding comes from separate package/config evidence. |
-| Cowork, Windows desktop | Dedicated new composer and folder picker observed. | No task submitted: focus failed. Own draft cleared, picker cancelled, desktop transferred to controller. Operator manual folder selection remains pending. |
-| DeepSeek Harness 0.1.1-rc.2, native web | Dedicated headless Chrome observes the isolated local Qwen/High profile and Workspace Write mode. First native turn fails before tools with `PI_AI_ERROR: No API key for provider: llama-server`; all fixture bytes remain unchanged. | Controller authorised one recovery using the existing non-secret local compatibility marker after client-guard diagnosis. Recovery is running under a 900-second cap. No desktop-app session or authenticated remote credential is claimed. |
+| Cowork, Windows desktop 1.52386.6.0, Opus 5 Max | Dedicated session cse_01TdFRnf8hhsie51VbtN5gve is running with the exact test folder and current-session permission only. Native UI advertises nine pre-existing Docflow skills. | Installed copy reports 0.9.4 but has only nine skill folders; current 331-file candidate is separately attached and used by explicit file reads. Native candidate registration and setup completion are not established. Supported scoped installation route is being investigated. |
+| DeepSeek Harness 0.1.1-rc.2, native web | Dedicated headless Chrome observes the isolated local Qwen/High profile and Workspace Write mode. First native turn fails before tools with `PI_AI_ERROR: No API key for provider: llama-server`; all fixture bytes remain unchanged. | The 900-second recovery stopped after 908 seconds including teardown, with 13 read/list calls and no check/receipt. Native progress continued until 0.4 seconds before stop. The fresh 1800-second supplied-path attempt passed the native check but stopped after 1795 seconds before returning a receipt. Its empty returns directory was created; pre-existing fixture/member/product file bytes stayed intact. No desktop-app session or remote credential is claimed. |
 
 [Assertion ledger](assertion-ledger.json) retains every required assertion
 for five hosts, eighteen scenarios and six guides. [Cases](cases.json)
@@ -78,6 +78,50 @@ README and index are stale preparation inputs: fresh native participants
 correctly report the discrepancy and use current canonical files. Fresh
 Claude and Codex snapshots independently prove no writes or native claim moves.
 
+## Native package removal and version upgrade
+
+[OpenCode removal](opencode-native-retention.json) uses its native detached-copy
+discovery mode: remove the dedicated installed directories, observe no Docflow
+skills, and restore. [Version upgrade](opencode-native-upgrade.json) first
+installs the separately [pinned historical 0.9.3 bytes](upgrade-0.9.3-freeze.json)
+from `a60cfcdf05188845620d3a28f21e3ccc188fb83d`, observes nine native skills, then
+applies the frozen 0.9.4 package and observes thirteen. All 329 current product
+files match, and workspace files and native Git histories stay identical
+through both steps. These are actual native inventory/data-retention checks
+without model inference, not plugin-manager commands or another host result.
+
+## Further native authority checks
+
+- [Codex denial](codex-denial-assertions.json): a native edit failed against a
+  read-only Docker bind. Subsequent commands only inspected Git state; no
+  alternate write or delegate occurred. Fixture and installed bytes match.
+- [Expired grant](claude-expired-assertions.json): fresh Claude coordination
+  read the actual clock after the grant expired and stopped the dependent
+  check. Current native ownership did not substitute for execution authority.
+- [Shared ownership](claude-cross-assertions.json): two real Git workspaces
+  point to one sibling member. Claude preserved injected unknown prior-owner
+  history, skipped the check with null exit, and wrote only an external
+  [blocked-readiness record](claude-cross-return.json). This is native handling
+  of synthetic conflict input, not a second actual live worker or a canonical
+  receipt-format pass. Complete overlap/resource/consumer variants remain.
+
+The [DeepSeek recovery diagnosis](dsh-bounded-diagnosis.json) preserves actual
+read sizes and progress. Its timeout proves incomplete execution within that
+bound, not unsupported guide behavior or a stalled provider. The later attempt
+used fresh authority and exact navigation paths, so it does not test discovery.
+Its [timing diagnosis](dsh-long-diagnosis.json) records 950.157 seconds before
+the check, 1.570 seconds in the check tool and 843.276 seconds afterward; all
+native tools together occupied 6.008 seconds. Fifteen reads were distinct.
+There was no receipt-file write attempt. The isolated Git environment caused
+one recoverable parse error. The required validator/schema steps were not
+demonstrated. The check wrapper used a fixed temporary stderr file whose prior
+existence is unknown; no zero-external-effects claim is made.
+[Controller reconciliation](dsh-long-reconciliation.json) validates: run stopped,
+check passed, external receipt missing, work active, delivery unknown. This
+controller observation is not an executor return. No further attempt is authorised.
+A [watcher correction](dsh-long-watcher-correction.json) binds the already-created
+fresh native session file without restarting the model or extending the deadline.
+
 ## Findings and retained limits
 
 - Codex setup places its closing status block before later details; Claude
@@ -90,12 +134,14 @@ Claude and Codex snapshots independently prove no writes or native claim moves.
 - Six behavioral cases skipped by the deterministic command remain unrun.
   Historical evidence is not reused for the four new skills or changed choice/
   authority behavior. Upgrade, remaining lifecycle/denial variants, shared
-  resources, cross-workspace ownership and contextual recommendations remain
+  resources, remaining cross-workspace variants and contextual recommendations remain
   explicitly incomplete in the ledger.
 - Cursor, ZCode and Codex App native guide sessions are unrun. CLI or installed
   package observations do not establish a desktop app session. Desktop
-  ownership remains with the controller/operator while manual Cowork setup is
-  pending. Clarity source/artifact pairing and the operator's pilot are pending.
+  ownership transferred back for the dedicated Cowork task. Its native installed
+  nine-skill copy differs from the attached current candidate; a supported scoped
+  install/restore route must be checked before any plugin change. Clarity pairing
+  and the operator's pilot remain pending.
 
 Raw model events stay private because they may include reasoning. Scratch is
 `C:/Users/eugen/AppData/Local/Temp/docflowhq-v1-20260915/qualification-ctx-fc206cf7e4a8`.
@@ -111,11 +157,11 @@ unsigned local test data; task evidence commits are signed.
   recorded with actual failures and limits. Prior local gates returned
   `verify: OK (version 0.9.4, 13 skills, 56 ADRs, 67 shipped plan items)`, exit 0,
   and `10 passed, 0 failed, 6 skipped`, exit 0. CI passed on evidence head
-  `b4ee17630dca69daaf06532d6123f61e2b2c060d`; subsequent evidence needs current-head CI.
+  `a77c01e`; subsequent evidence needs current-head CI.
 - **Overall:** partially verified. Plans 0061/0062 remain in todo. Draft PR 11
   is live and has not shipped; the development candidate is not released V1.
-- **Yet to do:** Finish the bounded DeepSeek recovery and preserve its actual
-  terminal result; complete pending native host/guide/scenario assertions;
+- **Yet to do:** Finish the current supplemental Cowork setup, inspect a supported candidate
+  registration/restore route, and complete pending native host/guide/scenario assertions;
   obtain desktop access and paired Clarity artifact; perform actual combined
   views/handoffs; preserve fixtures, clean up owned runtimes, run final gates
   and current-head CI, obtain review and the operator's real pilot acceptance.

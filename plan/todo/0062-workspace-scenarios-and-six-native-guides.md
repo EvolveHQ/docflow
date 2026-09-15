@@ -15,7 +15,11 @@ records fresh native orientation, no-grant recovery, an external Claude Code
 receipt and actual Orca reconciliation of one delivery while the agreement
 stays accepted and overall work active. The first receipt failure and assisted
 amendment remain explicit. DeepSeek's first native turn failed before tools;
-one controller-authorised recovery is running with a finite cap. Full scenario,
+its 900-second recovery stopped while progressing without a check or receipt.
+The fresh supplied-path 1800-second attempt passed its native check but stopped
+after 1795 seconds before external receipt; controller terminal reconciliation
+validates while work remains active and delivery unknown. No further retry is authorised.
+Native expired-grant and two-workspace unknown-owner stops preserve all roots. Full scenario,
 six-guide, Clarity and operator acceptance remain outstanding.
 
 Integrated W3/D2/D3, separately scoped D5 and paired Clarity C12/C2 sources;

@@ -1,0 +1,1816 @@
+{
+  "prepared_at": "2026-09-15T03:04:43Z",
+  "new_run": {
+    "home": "docflow-hq/dsh-guide",
+    "id": "806dd9c6-7ab9-47d1-b05c-4f8bbd4d5ec4",
+    "path": ".docflow_workspace/runs/dsh-guide-supplied-paths--806dd9c67ab9.md"
+  },
+  "brief": {
+    "work": {
+      "home": "docflow-hq/dsh-guide",
+      "id": "d481c148-6595-45c3-a553-bce71e695407",
+      "path": ".docflow_workspace/work/dsh-guide-readout--d481c1486595.md"
+    },
+    "delivery": "manual-member",
+    "scope_revision": 1,
+    "scope": "Read README.md, OWNER.md and TASK.md; run node check.mjs; return externally.",
+    "exclusions": [
+      "No member or canonical mutation, installation, remote services or delegation."
+    ],
+    "actor": "agent:dsh-w4",
+    "host": "deepseek-harness",
+    "grant": {
+      "work": {
+        "home": "docflow-hq/dsh-guide",
+        "id": "d481c148-6595-45c3-a553-bce71e695407",
+        "path": ".docflow_workspace/work/dsh-guide-readout--d481c1486595.md"
+      },
+      "id": "guide-readout",
+      "revision": 2
+    },
+    "workspace_revision": "0897928a1189d59268c26bc5a77a213e9eb3a92d",
+    "base_revision": "1e3f2e69de22febe5cfc740b7a27697a47f6ce0a",
+    "native_work": {
+      "repository": "docflow-hq/dsh-member",
+      "path": "TASK.md",
+      "revision": "1e3f2e69de22febe5cfc740b7a27697a47f6ce0a"
+    },
+    "claim": {
+      "mode": "owner-confirmed-serial",
+      "owner": "agent:dsh-w4",
+      "state": "held",
+      "source": {
+        "repository": "docflow-hq/dsh-member",
+        "path": "OWNER.md",
+        "revision": "1e3f2e69de22febe5cfc740b7a27697a47f6ce0a",
+        "observed_at": "2026-09-15T03:04:38Z",
+        "outcome": "passed",
+        "summary": "Controller reread new OWNER.md and confirmed current clean native member HEAD before this fresh attempt."
+      },
+      "observed_at": "2026-09-15T03:04:38Z",
+      "expires_at": "2026-09-15T03:49:34Z"
+    },
+    "dependencies": [],
+    "resources": [],
+    "required_checks": [
+      "native-check"
+    ],
+    "stop_at": "external-receipt-returned",
+    "return_path": ".docflow_workspace/runs/dsh-guide-supplied-paths--806dd9c67ab9.md",
+    "selected_assets": []
+  },
+  "expires_at": "2026-09-15T03:49:34Z",
+  "cap_seconds": 1800,
+  "validation": {
+    "exit": 0,
+    "stdout": "{\n  \"schema\": 1,\n  \"evaluated_at\": \"2026-09-15T03:04:43Z\",\n  \"valid\": true,\n  \"diagnostics\": [],\n  \"records\": [\n    {\n      \"schema\": 1,\n      \"id\": \"d481c148-6595-45c3-a553-bce71e695407\",\n      \"home\": \"docflow-hq/dsh-guide\",\n      \"kind\": \"work\",\n      \"title\": \"DSH guide readout\",\n      \"owner\": \"qualification-controller\",\n      \"created_at\": \"2026-09-15T02:24:49Z\",\n      \"links\": [],\n      \"state\": \"active\",\n      \"history\": [\n        {\n          \"state\": \"planned\",\n          \"at\": \"2026-09-15T02:24:49Z\",\n          \"actor\": \"qualification-controller\",\n          \"reason\": \"Bounded native guide smoke prepared before execution.\"\n        },\n        {\n          \"state\": \"active\",\n          \"at\": \"2026-09-15T02:24:49Z\",\n          \"actor\": \"qualification-controller\",\n          \"reason\": \"Bounded native attempt is about to start.\"\n        },\n        {\n          \"state\": \"active\",\n          \"at\": \"2026-09-15T02:56:23Z\",\n          \"actor\": \"qualification-controller\",\n          \"reason\": \"Reconciled stopped native attempt with no delivery evidence; work remains incomplete.\"\n        },\n        {\n          \"state\": \"active\",\n          \"at\": \"2026-09-15T03:04:40Z\",\n          \"actor\": \"qualification-controller\",\n          \"reason\": \"Fresh bounded grant and native claim under explicit coordinator mandate. Prior unsuccessful attempts remain retained.\"\n        }\n      ],\n      \"scope_revision\": 1,\n      \"outcome\": \"Native DSH check returned externally and independently reconciled.\",\n      \"scope\": \"Read source and return one native check result.\",\n      \"exclusions\": [\n        \"No member or canonical mutation, installation, remote services or delegation.\"\n      ],\n      \"priority\": \"normal\",\n      \"criteria\": [\n        {\n          \"id\": \"native-receipt\",\n          \"text\": \"Exact native check result, base revision and source-bound receipt independently verified.\",\n          \"evidence\": []\n        }\n      ],\n      \"blockers\": [],\n      \"dependencies\": [],\n      \"deliveries\": [\n        {\n          \"id\": \"manual-member\",\n          \"repository\": \"docflow-hq/dsh-member\",\n          \"scope_revision\": 1,\n          \"scope\": \"Read README.md, OWNER.md and TASK.md; run node check.mjs; return externally.\",\n          \"required\": true,\n          \"native_work\": {\n            \"repository\": \"docflow-hq/dsh-member\",\n            \"path\": \"TASK.md\",\n            \"revision\": \"1e3f2e69de22febe5cfc740b7a27697a47f6ce0a\"\n          },\n          \"required_completion\": \"native-check-returned\",\n          \"depends_on\": [],\n          \"observation\": {\n            \"state\": \"unknown\",\n            \"complete\": false,\n            \"observed_at\": null,\n            \"source_revision\": null,\n            \"evidence\": []\n          }\n        }\n      ],\n      \"grants\": [\n        {\n          \"id\": \"guide-readout\",\n          \"revisions\": [\n            {\n              \"revision\": 1,\n              \"state\": \"active\",\n              \"delivery\": \"manual-member\",\n              \"scope_revision\": 1,\n              \"actor\": \"agent:dsh-w4\",\n              \"approved_by\": \"qualification-controller\",\n              \"approved_at\": \"2026-09-15T02:24:49Z\",\n              \"mandate\": {\n                \"repository\": \"docflow-hq/dsh-guide\",\n                \"path\": \"QUALIFICATION-MANDATE.md\",\n                \"revision\": \"cb5506212d8fe1fbe661a265b163641b18cefdb1\",\n                \"observed_at\": \"2026-09-15T02:24:49Z\",\n                \"outcome\": \"passed\",\n                \"summary\": \"Controller current delegated native test authority; no signature invented.\"\n              },\n              \"actions\": [\n                \"read\",\n                \"test\",\n                \"report\"\n              ],\n              \"conditions\": [\n                \"Use this disposable fixture and existing local provider only. No canonical/member edits, delegates, installation or remote services.\"\n              ],\n              \"stop_at\": \"external-receipt-returned\",\n              \"valid_from\": \"2026-09-15T02:24:49Z\",\n              \"expires_at\": \"2026-09-15T03:09:49Z\",\n              \"recorded_at\": \"2026-09-15T02:24:49Z\",\n              \"reason\": \"Actual bounded DSH guide test authorised by controller after Pi exited.\"\n            },\n            {\n              \"revision\": 2,\n              \"state\": \"active\",\n              \"delivery\": \"manual-member\",\n              \"scope_revision\": 1,\n              \"actor\": \"agent:dsh-w4\",\n              \"approved_by\": \"qualification-controller\",\n              \"approved_at\": \"2026-09-15T03:04:40Z\",\n              \"mandate\": {\n                \"repository\": \"docflow-hq/dsh-guide\",\n                \"path\": \"QUALIFICATION-MANDATE.md\",\n                \"revision\": \"daa941e074d2d77eb4971b448dcf14d0f7cec0db\",\n                \"observed_at\": \"2026-09-15T03:04:40Z\",\n                \"outcome\": \"passed\",\n                \"summary\": \"Actual qualification controller reread the prospective renewal from coordinator message msg_0c70d5331f4d before recording this new grant revision.\"\n              },\n              \"actions\": [\n                \"read\",\n                \"test\",\n                \"report\"\n              ],\n              \"conditions\": [\n                \"Use this disposable fixture and existing local provider only. No canonical/member edits, delegates, installation or remote services.\"\n              ],\n              \"stop_at\": \"external-receipt-returned\",\n              \"valid_from\": \"2026-09-15T03:04:40Z\",\n              \"expires_at\": \"2026-09-15T03:49:34Z\",\n              \"recorded_at\": \"2026-09-15T03:04:40Z\",\n              \"reason\": \"Fresh grant for one controller-authorised 1800-second native guide attempt; previous expiring grant is not extended or reused.\"\n            }\n          ]\n        }\n      ],\n      \"recommendations\": [],\n      \"next_action\": \"Perform the one supplied-path DSH guide check under fresh grant revision 2, return external receipt, and stop at 1800 seconds if unfinished.\",\n      \"path\": \".docflow_workspace/work/dsh-guide-readout--d481c1486595.md\"\n    },\n    {\n      \"schema\": 1,\n      \"id\": \"6496e812-c397-4d77-90e5-4e2f27cbfc12\",\n      \"home\": \"docflow-hq/dsh-guide\",\n      \"kind\": \"runs\",\n      \"title\": \"DSH guide readout\",\n      \"owner\": \"qualification-controller\",\n      \"created_at\": \"2026-09-15T02:24:49Z\",\n      \"links\": [],\n      \"state\": \"failed\",\n      \"history\": [\n        {\n          \"state\": \"running\",\n          \"at\": \"2026-09-15T02:24:49Z\",\n          \"actor\": \"qualification-controller\",\n          \"reason\": \"Actual native web session is prepared; bounded attempt is about to start.\"\n        },\n        {\n          \"state\": \"failed\",\n          \"at\": \"2026-09-15T02:35:31Z\",\n          \"actor\": \"qualification-controller\",\n          \"reason\": \"Native web turn/end confirms PI_AI_ERROR before any tool. Original failed attempt retained; terminal event milliseconds remain in raw receipt, ended_at uses contract second precision.\"\n        }\n      ],\n      \"started_at\": \"2026-09-15T02:24:49Z\",\n      \"ended_at\": \"2026-09-15T02:27:41Z\",\n      \"brief\": {\n        \"work\": {\n          \"home\": \"docflow-hq/dsh-guide\",\n          \"id\": \"d481c148-6595-45c3-a553-bce71e695407\",\n          \"path\": \".docflow_workspace/work/dsh-guide-readout--d481c1486595.md\"\n        },\n        \"delivery\": \"manual-member\",\n        \"scope_revision\": 1,\n        \"scope\": \"Read README.md, OWNER.md and TASK.md; run node check.mjs; return externally.\",\n        \"exclusions\": [\n          \"No member or canonical mutation, installation, remote services or delegation.\"\n        ],\n        \"actor\": \"agent:dsh-w4\",\n        \"host\": \"deepseek-harness\",\n        \"grant\": {\n          \"work\": {\n            \"home\": \"docflow-hq/dsh-guide\",\n            \"id\": \"d481c148-6595-45c3-a553-bce71e695407\",\n            \"path\": \".docflow_workspace/work/dsh-guide-readout--d481c1486595.md\"\n          },\n          \"id\": \"guide-readout\",\n          \"revision\": 1\n        },\n        \"workspace_revision\": \"b230fd5952459dd6fb8bb437ce7046577236cc16\",\n        \"base_revision\": \"4828bc600d48ec6aeff23bbc102efc9d9e3b7868\",\n        \"native_work\": {\n          \"repository\": \"docflow-hq/dsh-member\",\n          \"path\": \"TASK.md\",\n          \"revision\": \"4828bc600d48ec6aeff23bbc102efc9d9e3b7868\"\n        },\n        \"claim\": {\n          \"mode\": \"owner-confirmed-serial\",\n          \"owner\": \"agent:dsh-w4\",\n          \"state\": \"held\",\n          \"source\": {\n            \"repository\": \"docflow-hq/dsh-member\",\n            \"path\": \"OWNER.md\",\n            \"revision\": \"4828bc600d48ec6aeff23bbc102efc9d9e3b7868\",\n            \"observed_at\": \"2026-09-15T02:24:49Z\",\n            \"outcome\": \"passed\",\n            \"summary\": \"Actual current native owner confirmation and clean HEAD checked by the fixture controller before dispatch.\"\n          },\n          \"observed_at\": \"2026-09-15T02:24:49Z\",\n          \"expires_at\": \"2026-09-15T03:09:49Z\"\n        },\n        \"dependencies\": [],\n        \"resources\": [],\n        \"required_checks\": [\n          \"native-check\"\n        ],\n        \"stop_at\": \"external-receipt-returned\",\n        \"return_path\": \".docflow_workspace/runs/dsh-guide-readout--6496e812c397.md\",\n        \"selected_assets\": []\n      },\n      \"actions\": [],\n      \"receipt\": {\n        \"returned_at\": \"2026-09-15T02:35:31Z\",\n        \"head_revision\": \"4828bc600d48ec6aeff23bbc102efc9d9e3b7868\",\n        \"checks\": [\n          {\n            \"name\": \"native-check\",\n            \"command\": \"node check.mjs\",\n            \"outcome\": \"unknown\",\n            \"exit_code\": null,\n            \"output\": \"Not executed: native adapter PI_AI_ERROR / No API key for provider: llama-server.\",\n            \"evidence\": []\n          }\n        ],\n        \"evidence\": [],\n        \"blockers\": [\n          {\n            \"reason\": \"Native client requires a nonempty API key before using the configured local endpoint.\",\n            \"owner\": \"qualification-controller\",\n            \"next_action\": \"Only controller-authorised local compatibility-marker recovery may proceed; no real credential or remote fallback.\"\n          }\n        ],\n        \"next_action\": \"One bounded report/check recovery under the unchanged grant after confirmed native failed turn.\",\n        \"used_assets\": []\n      },\n      \"reconciliation\": {\n        \"by\": \"orca:term_511cf659-7a81-4072-8143-44a0f23d8f93\",\n        \"at\": \"2026-09-15T02:35:31Z\",\n        \"evidence\": [\n          {\n            \"repository\": \"docflow-hq/dsh-guide\",\n            \"path\": \".docflow_workspace/runs/dsh-guide-readout--6496e812c397.md\",\n            \"revision\": \"b230fd5952459dd6fb8bb437ce7046577236cc16\",\n            \"observed_at\": \"2026-09-15T02:35:31Z\",\n            \"outcome\": \"passed\",\n            \"summary\": \"Controller inspected native DSH session session-b6a3c2b8-84df-476e-8463-82736943089a: turn/end at 1789439261211 ms, PI_AI_ERROR before tools, fixture/member/package hashes unchanged. Original process failure and UI are preserved outside canonical records; this observation establishes terminal return, not check success.\"\n          }\n        ]\n      },\n      \"predecessors\": [],\n      \"successors\": [\n        {\n          \"home\": \"docflow-hq/dsh-guide\",\n          \"id\": \"e8d87955-8799-41b8-9308-f9affe9553f2\",\n          \"path\": \".docflow_workspace/runs/dsh-guide-recovery--e8d879558799.md\"\n        }\n      ],\n      \"path\": \".docflow_workspace/runs/dsh-guide-readout--6496e812c397.md\"\n    },\n    {\n      \"schema\": 1,\n      \"id\": \"e8d87955-8799-41b8-9308-f9affe9553f2\",\n      \"home\": \"docflow-hq/dsh-guide\",\n      \"kind\": \"runs\",\n      \"title\": \"DSH guide recovery\",\n      \"owner\": \"qualification-controller\",\n      \"created_at\": \"2026-09-15T02:35:31Z\",\n      \"links\": [],\n      \"state\": \"stopped\",\n      \"history\": [\n        {\n          \"state\": \"running\",\n          \"at\": \"2026-09-15T02:35:31Z\",\n          \"actor\": \"qualification-controller\",\n          \"reason\": \"One controller-authorised native recovery of the same scope, actor, local model and compatible grant. Previous failed turn positively reconciled.\"\n        },\n        {\n          \"state\": \"stopped\",\n          \"at\": \"2026-09-15T02:56:23Z\",\n          \"actor\": \"qualification-controller\",\n          \"reason\": \"Exact dedicated DSH server tree positively terminated after the 900-second deadline; stop observed after 908.06 seconds including poll/teardown overhead. No check or external receipt returned; no successor authorised.\"\n        }\n      ],\n      \"started_at\": \"2026-09-15T02:35:31Z\",\n      \"ended_at\": \"2026-09-15T02:51:34Z\",\n      \"brief\": {\n        \"work\": {\n          \"home\": \"docflow-hq/dsh-guide\",\n          \"id\": \"d481c148-6595-45c3-a553-bce71e695407\",\n          \"path\": \".docflow_workspace/work/dsh-guide-readout--d481c1486595.md\"\n        },\n        \"delivery\": \"manual-member\",\n        \"scope_revision\": 1,\n        \"scope\": \"Read README.md, OWNER.md and TASK.md; run node check.mjs; return externally.\",\n        \"exclusions\": [\n          \"No member or canonical mutation, installation, remote services or delegation.\"\n        ],\n        \"actor\": \"agent:dsh-w4\",\n        \"host\": \"deepseek-harness\",\n        \"grant\": {\n          \"work\": {\n            \"home\": \"docflow-hq/dsh-guide\",\n            \"id\": \"d481c148-6595-45c3-a553-bce71e695407\",\n            \"path\": \".docflow_workspace/work/dsh-guide-readout--d481c1486595.md\"\n          },\n          \"id\": \"guide-readout\",\n          \"revision\": 1\n        },\n        \"workspace_revision\": \"36165f98262cf116a4f9f140d9d3116ac7204051\",\n        \"base_revision\": \"4828bc600d48ec6aeff23bbc102efc9d9e3b7868\",\n        \"native_work\": {\n          \"repository\": \"docflow-hq/dsh-member\",\n          \"path\": \"TASK.md\",\n          \"revision\": \"4828bc600d48ec6aeff23bbc102efc9d9e3b7868\"\n        },\n        \"claim\": {\n          \"mode\": \"owner-confirmed-serial\",\n          \"owner\": \"agent:dsh-w4\",\n          \"state\": \"held\",\n          \"source\": {\n            \"repository\": \"docflow-hq/dsh-member\",\n            \"path\": \"OWNER.md\",\n            \"revision\": \"4828bc600d48ec6aeff23bbc102efc9d9e3b7868\",\n            \"observed_at\": \"2026-09-15T02:24:49Z\",\n            \"outcome\": \"passed\",\n            \"summary\": \"Actual current native owner confirmation and clean HEAD checked by the fixture controller before dispatch.\"\n          },\n          \"observed_at\": \"2026-09-15T02:24:49Z\",\n          \"expires_at\": \"2026-09-15T03:09:49Z\"\n        },\n        \"dependencies\": [],\n        \"resources\": [],\n        \"required_checks\": [\n          \"native-check\"\n        ],\n        \"stop_at\": \"external-receipt-returned\",\n        \"return_path\": \".docflow_workspace/runs/dsh-guide-recovery--e8d879558799.md\",\n        \"selected_assets\": []\n      },\n      \"actions\": [\n        {\n          \"at\": \"2026-09-15T02:37:50Z\",\n          \"action\": \"read\",\n          \"summary\": \"Native pwsh: {\\\"command\\\": \\\"Get-ChildItem -Recurse -Force | Select-Object -ExpandProperty FullName\\\", \\\"description\\\": \\\"List all files in workspace\\\"}\"\n        },\n        {\n          \"at\": \"2026-09-15T02:37:51Z\",\n          \"action\": \"read\",\n          \"summary\": \"Native read: {\\\"file_path\\\": \\\"AGENTS.md\\\"}\"\n        },\n        {\n          \"at\": \"2026-09-15T02:39:55Z\",\n          \"action\": \"read\",\n          \"summary\": \"Native read: {\\\"file_path\\\": \\\"C:\\\\\\\\Users\\\\\\\\eugen\\\\\\\\AppData\\\\\\\\Local\\\\\\\\Temp\\\\\\\\dsh-spill-lvgKDp\\\\\\\\session-95f662344575\\\\\\\\01228b890aaf-pwsh.txt\\\"}\"\n        },\n        {\n          \"at\": \"2026-09-15T02:42:33Z\",\n          \"action\": \"read\",\n          \"summary\": \"Native read: {\\\"file_path\\\": \\\"C:\\\\\\\\Users\\\\\\\\eugen\\\\\\\\AppData\\\\\\\\Local\\\\\\\\Temp\\\\\\\\dsh-spill-lvgKDp\\\\\\\\session-95f662344575\\\\\\\\01228b890aaf-pwsh.txt\\\", \\\"offset\\\": 276}\"\n        },\n        {\n          \"at\": \"2026-09-15T02:46:29Z\",\n          \"action\": \"read\",\n          \"summary\": \"Native pwsh: {\\\"command\\\": \\\"Get-ChildItem -Force | ForEach-Object { $_.FullName }; Write-Output '---'; Get-ChildItem -Force -Recurse -Depth 2 -Directory | ForEach-Object { $_.FullName }\\\", \\\"description\\\": \\\"List top-level entries and shallow directories\\\"}\"\n        },\n        {\n          \"at\": \"2026-09-15T02:48:01Z\",\n          \"action\": \"read\",\n          \"summary\": \"Native read: {\\\"file_path\\\": \\\"QUALIFICATION-MANDATE.md\\\"}\"\n        },\n        {\n          \"at\": \"2026-09-15T02:48:01Z\",\n          \"action\": \"read\",\n          \"summary\": \"Native read: {\\\"file_path\\\": \\\"BOUNDED-BRIEF.json\\\"}\"\n        },\n        {\n          \"at\": \"2026-09-15T02:48:01Z\",\n          \"action\": \"read\",\n          \"summary\": \"Native pwsh: {\\\"command\\\": \\\"Get-ChildItem -Force -Recurse .docflow_workspace | Where-Object { -not $_.PSIsContainer } | ForEach-Object { $_.FullName }\\\", \\\"description\\\": \\\"List all files under .docflow_workspace\\\"}\"\n        },\n        {\n          \"at\": \"2026-09-15T02:50:21Z\",\n          \"action\": \"read\",\n          \"summary\": \"Native read: {\\\"file_path\\\": \\\".docflow_workspace/CONVENTIONS.md\\\"}\"\n        },\n        {\n          \"at\": \"2026-09-15T02:50:21Z\",\n          \"action\": \"read\",\n          \"summary\": \"Native read: {\\\"file_path\\\": \\\".docflow_workspace/workspace.yaml\\\"}\"\n        },\n        {\n          \"at\": \"2026-09-15T02:50:21Z\",\n          \"action\": \"read\",\n          \"summary\": \"Native read: {\\\"file_path\\\": \\\".docflow_workspace/work/dsh-guide-readout--d481c1486595.md\\\"}\"\n        },\n        {\n          \"at\": \"2026-09-15T02:50:21Z\",\n          \"action\": \"read\",\n          \"summary\": \"Native read: {\\\"file_path\\\": \\\".docflow_workspace/runs/dsh-guide-recovery--e8d879558799.md\\\"}\"\n        },\n        {\n          \"at\": \"2026-09-15T02:50:21Z\",\n          \"action\": \"read\",\n          \"summary\": \"Native read: {\\\"file_path\\\": \\\".docflow_workspace/runs/dsh-guide-readout--6496e812c397.md\\\"}\"\n        }\n      ],\n      \"receipt\": {\n        \"returned_at\": \"2026-09-15T02:56:23Z\",\n        \"head_revision\": \"4828bc600d48ec6aeff23bbc102efc9d9e3b7868\",\n        \"checks\": [\n          {\n            \"name\": \"native-check\",\n            \"command\": \"node check.mjs\",\n            \"outcome\": \"unknown\",\n            \"exit_code\": null,\n            \"output\": \"Not executed before the native DSH recovery was stopped.\",\n            \"evidence\": []\n          }\n        ],\n        \"evidence\": [],\n        \"blockers\": [\n          {\n            \"reason\": \"Native recovery completed thirteen read/list tool calls but reached its deadline before the member check and external receipt. The required guide check remains unrun.\",\n            \"owner\": \"qualification-controller\",\n            \"next_action\": \"Retain incomplete guide qualification; no further recovery or service change in this dispatch.\"\n          }\n        ],\n        \"next_action\": \"Preserve first failure and bounded recovery; report incomplete guide coverage.\",\n        \"used_assets\": []\n      },\n      \"reconciliation\": {\n        \"by\": \"orca:term_511cf659-7a81-4072-8143-44a0f23d8f93\",\n        \"at\": \"2026-09-15T02:56:23Z\",\n        \"evidence\": [\n          {\n            \"repository\": \"docflow-hq/dsh-guide\",\n            \"path\": \".docflow_workspace/runs/dsh-guide-recovery--e8d879558799.md\",\n            \"revision\": \"36165f98262cf116a4f9f140d9d3116ac7204051\",\n            \"observed_at\": \"2026-09-15T02:56:23Z\",\n            \"outcome\": \"passed\",\n            \"summary\": \"Orca qualification coordinator inspected the native tool-call log, immutable compressed session, successful taskkill of exact server PID 91052 and absence of its former child processes/listener. All pre-existing fixture/member/candidate bytes and member Git HEAD/status remain unchanged. This verifies terminal observation and preservation, not the unrun native check.\"\n          }\n        ]\n      },\n      \"predecessors\": [\n        {\n          \"home\": \"docflow-hq/dsh-guide\",\n          \"id\": \"6496e812-c397-4d77-90e5-4e2f27cbfc12\",\n          \"path\": \".docflow_workspace/runs/dsh-guide-readout--6496e812c397.md\"\n        }\n      ],\n      \"successors\": [\n        {\n          \"home\": \"docflow-hq/dsh-guide\",\n          \"id\": \"806dd9c6-7ab9-47d1-b05c-4f8bbd4d5ec4\",\n          \"path\": \".docflow_workspace/runs/dsh-guide-supplied-paths--806dd9c67ab9.md\"\n        }\n      ],\n      \"path\": \".docflow_workspace/runs/dsh-guide-recovery--e8d879558799.md\"\n    },\n    {\n      \"schema\": 1,\n      \"id\": \"806dd9c6-7ab9-47d1-b05c-4f8bbd4d5ec4\",\n      \"home\": \"docflow-hq/dsh-guide\",\n      \"kind\": \"runs\",\n      \"title\": \"DSH guide supplied paths\",\n      \"owner\": \"qualification-controller\",\n      \"created_at\": \"2026-09-15T03:04:43Z\",\n      \"links\": [],\n      \"state\": \"running\",\n      \"history\": [\n        {\n          \"state\": \"running\",\n          \"at\": \"2026-09-15T03:04:43Z\",\n          \"actor\": \"qualification-controller\",\n          \"reason\": \"Fresh native session is about to start with supplied navigation paths, same local model/high and one 1800-second cap.\"\n        }\n      ],\n      \"started_at\": \"2026-09-15T03:04:43Z\",\n      \"ended_at\": null,\n      \"brief\": {\n        \"work\": {\n          \"home\": \"docflow-hq/dsh-guide\",\n          \"id\": \"d481c148-6595-45c3-a553-bce71e695407\",\n          \"path\": \".docflow_workspace/work/dsh-guide-readout--d481c1486595.md\"\n        },\n        \"delivery\": \"manual-member\",\n        \"scope_revision\": 1,\n        \"scope\": \"Read README.md, OWNER.md and TASK.md; run node check.mjs; return externally.\",\n        \"exclusions\": [\n          \"No member or canonical mutation, installation, remote services or delegation.\"\n        ],\n        \"actor\": \"agent:dsh-w4\",\n        \"host\": \"deepseek-harness\",\n        \"grant\": {\n          \"work\": {\n            \"home\": \"docflow-hq/dsh-guide\",\n            \"id\": \"d481c148-6595-45c3-a553-bce71e695407\",\n            \"path\": \".docflow_workspace/work/dsh-guide-readout--d481c1486595.md\"\n          },\n          \"id\": \"guide-readout\",\n          \"revision\": 2\n        },\n        \"workspace_revision\": \"0897928a1189d59268c26bc5a77a213e9eb3a92d\",\n        \"base_revision\": \"1e3f2e69de22febe5cfc740b7a27697a47f6ce0a\",\n        \"native_work\": {\n          \"repository\": \"docflow-hq/dsh-member\",\n          \"path\": \"TASK.md\",\n          \"revision\": \"1e3f2e69de22febe5cfc740b7a27697a47f6ce0a\"\n        },\n        \"claim\": {\n          \"mode\": \"owner-confirmed-serial\",\n          \"owner\": \"agent:dsh-w4\",\n          \"state\": \"held\",\n          \"source\": {\n            \"repository\": \"docflow-hq/dsh-member\",\n            \"path\": \"OWNER.md\",\n            \"revision\": \"1e3f2e69de22febe5cfc740b7a27697a47f6ce0a\",\n            \"observed_at\": \"2026-09-15T03:04:38Z\",\n            \"outcome\": \"passed\",\n            \"summary\": \"Controller reread new OWNER.md and confirmed current clean native member HEAD before this fresh attempt.\"\n          },\n          \"observed_at\": \"2026-09-15T03:04:38Z\",\n          \"expires_at\": \"2026-09-15T03:49:34Z\"\n        },\n        \"dependencies\": [],\n        \"resources\": [],\n        \"required_checks\": [\n          \"native-check\"\n        ],\n        \"stop_at\": \"external-receipt-returned\",\n        \"return_path\": \".docflow_workspace/runs/dsh-guide-supplied-paths--806dd9c67ab9.md\",\n        \"selected_assets\": []\n      },\n      \"actions\": [],\n      \"receipt\": null,\n      \"reconciliation\": null,\n      \"predecessors\": [\n        {\n          \"home\": \"docflow-hq/dsh-guide\",\n          \"id\": \"e8d87955-8799-41b8-9308-f9affe9553f2\",\n          \"path\": \".docflow_workspace/runs/dsh-guide-recovery--e8d879558799.md\"\n        }\n      ],\n      \"successors\": [],\n      \"path\": \".docflow_workspace/runs/dsh-guide-supplied-paths--806dd9c67ab9.md\"\n    }\n  ],\n  \"overview\": [\n    {\n      \"home\": \"docflow-hq/dsh-guide\",\n      \"id\": \"d481c148-6595-45c3-a553-bce71e695407\",\n      \"path\": \".docflow_workspace/work/dsh-guide-readout--d481c1486595.md\",\n      \"state\": \"active\",\n      \"owner\": \"qualification-controller\",\n      \"next_action\": \"Perform the one supplied-path DSH guide check under fresh grant revision 2, return external receipt, and stop at 1800 seconds if unfinished.\",\n      \"deliveries\": [\n        {\n          \"id\": \"manual-member\",\n          \"native_state\": \"unknown\",\n          \"complete\": false,\n          \"observed_at\": null\n        }\n      ]\n    }\n  ]\n}\n",
+    "stderr": ""
+  },
+  "candidate_files": {
+    ".claude-plugin/plugin.json": "190e5280ef1547fd9a8033d7c7c8633f66dda225b2ca427f49be16f1f191c814",
+    ".codex-plugin/plugin.json": "4e875f1e09e3a63bb914f0f89c09edd80e9f7f93218de484735b142c3027a666",
+    "workspace/CONTRACT.md": "6e59fc7d26ecae73e65d3f33f44b47a787b304f99b48129534b39ca395938957",
+    "workspace/README.md": "049f63a9edb57a4d43dec096a9e3cdd4408337a6e08a1a7ecc2e532bfd93cf41",
+    "workspace/resolve-assets.mjs": "c1c9a14f3d60ec1a69a8372768a688ed011af766191759bc71db8ca1eb24a6d8",
+    "workspace/schema.json": "46efc122a08d3ed8e8df813f18355b9738fd6619c456f96112b445f93f761583",
+    "workspace/validate.mjs": "c8db90d4925779be8ad11cb0116c161026feb62c454ec5539b191a98b4f6c6cd",
+    "skills/add-convention/SKILL.md": "9f27f42a0070ff43f1d924ed46e6097183dd1c890841a25e62a25e9cfdc1dde4",
+    "skills/agent-wave/SKILL.md": "4841628e4cd70538a263350bbcea022027d0df30be2b1548bbb40f4bc21caeba",
+    "skills/audit/SKILL.md": "06fee6077c4ff5fff559b891707b281879dbe732f0bf021d21ae048868165bbc",
+    "skills/bootstrap/SKILL.md": "5a4551e47a5bb635098a1891fc3dadce61add75e8b94b210c7e9a5be0e07287f",
+    "skills/brainstorm/SKILL.md": "f6a0a0ed500091aa0d329aee78839e5465eb33ad61499cd473dbf1815e479ed1",
+    "skills/new-adr/SKILL.md": "3b8ac8e05f48e599f07b3e590776841736f82f61d00e994ae0ef3a48f2f9f005",
+    "skills/new-plan/SKILL.md": "8a2690887cf3f5068c0a24184b4f4fee0c84ddd7021880c0b4e21b22231a64e6",
+    "skills/rollup/SKILL.md": "8f3260041ca609501adcf23ab9d17724a9fd9bb31096d08e4fbed68d32c8a6ea",
+    "skills/ship-item/SKILL.md": "b929994d4bf1549db452a0b2e08349a9981e1a13fa5060d9422abde8b128114f",
+    "skills/workspace-coordinate/SKILL.md": "a0628eaf1ae5e2b2a7f5f172511f70a529c82ddd7476f313420dc98306bd2a8a",
+    "skills/workspace-orient/SKILL.md": "7faf4acfe0958ae3e4db091c49b758164188a9f13ccde8ce18328c664d8e1d8b",
+    "skills/workspace-plan/SKILL.md": "f27c93402ec98d82dd502ae8e923b99bd4334c61c1fe373129108453c4d55edb",
+    "skills/workspace-setup/SKILL.md": "48d1cb9ede6cd61d43385354cd036815f0ea1511fcd51fc5112688d9fbc1076d",
+    "skills/add-convention/agents/openai.yaml": "beb3b65a44326746f4fdea2c83850d731f194ca3f45875822d71b7d901497078",
+    "skills/agent-wave/agents/openai.yaml": "a0947c21f73d34be68b2ab03edba337a3fb33a39613f199c25a3703efbab40e9",
+    "skills/audit/agents/openai.yaml": "57ee1f02555ae22915a4f445d97ee4a85fb8f6468256c16ff6ea7a59491067b7",
+    "skills/bootstrap/agents/openai.yaml": "47b714a67f5a8508fd9ebe0602499804b17c284aadf86c4c7e176e379df6b501",
+    "skills/bootstrap/templates/adr-0001-seed.md": "cfcc060d32ae013634bc788aa20fd9b7f69ae3c90399d18f17a72703ea573b1c",
+    "skills/bootstrap/templates/adr-capability.md": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+    "skills/bootstrap/templates/adr-technology.md": "02abe97bf3f956972621490c0c6c4a5aa4210b259c33114cadc84a2ab7fbffc0",
+    "skills/bootstrap/templates/AGENTS.md": "a15813bbae21dc249632dc15aca6593e8b06c3b2876e1281998eda5fe918534a",
+    "skills/bootstrap/templates/CLAUDE.md": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+    "skills/bootstrap/templates/CONVENTIONS.md": "2a15da40de46a45aa9111d261f308987c130efe065deed3a155edfbe41f82b70",
+    "skills/bootstrap/templates/federation-config.md": "27e9a9c0fde4a1edf235c27a69c4aaff1051bc14a17a4e862592c30e9e92421a",
+    "skills/bootstrap/templates/federation-index.md": "7c548fa6c04ef2b0144a183d7b1ab926f559cfa693e0d07d4028eb9ced75add2",
+    "skills/bootstrap/templates/plan-README.md": "d6fb25d7b7ac6da6f4ff3f3e074ce6e8025d0733551a5a171cf7768022a4f6d8",
+    "skills/bootstrap/templates/workspace-AGENTS.md": "e9f1950d721a7022f91b2ca1eea0525fb06e829163e10c1844fb938f87aa1597",
+    "skills/bootstrap/templates/workspace-assets.json": "a4a1cb2041d5d69cda123e708dd45fecaab48e779a387ed3ecd75b2a756ede41",
+    "skills/bootstrap/templates/workspace-brief.json": "44d2c09b6425ba1fb9619ee95538fc32e5207ad1bb2e4d7a0604f09580f5171f",
+    "skills/bootstrap/templates/workspace-CONVENTIONS.md": "2532c54806a34067413a9e246f3ffd9acb757f880b30a9cfd87bc7c4c71939cc",
+    "skills/bootstrap/templates/workspace-decisions.md": "8ea735ec2f512be10636f6e78742a88242d88fbdaa3f702d28ccc4316bbd03c1",
+    "skills/bootstrap/templates/workspace-grant.json": "d71733a63a0197da99a68d16b2405a8fbdcf0c08f573e89f97dceda06dad9a8f",
+    "skills/bootstrap/templates/workspace-ideas.md": "15ea0a8c324aeac3f0eb8c159c3f1eef76bb316a3946cbfff9c5504a68f38a96",
+    "skills/bootstrap/templates/workspace-INDEX.md": "abb9e5ed4bdbd268dcfa8a0310f470c6de7df64623e9146a8981c2a66c23bed3",
+    "skills/bootstrap/templates/workspace-knowledge.md": "d2fa1dd0b64d295dffb9bfec06e19e11d62db072e496010ed50c5f60a1efde77",
+    "skills/bootstrap/templates/workspace-profile-coordination.md": "9c4c37e7139890778bfc538e5b58a4866ea168faf536ec6d4b82cf4604b47b0d",
+    "skills/bootstrap/templates/workspace-profile-documentation.md": "02c8ae5520691e3c53584304693247175e55218d357f519ae062060df0ac1be0",
+    "skills/bootstrap/templates/workspace-profile-react-review.md": "09afeb68ada7e1b885b16ee12edb356219328db895c55089feb87c3e1c591bd4",
+    "skills/bootstrap/templates/workspace-profile-svelte-tauri.md": "c3ed7cb2af855b728ff5e80a1d8910e2d2bbd820f791917c0989059af137e3c3",
+    "skills/bootstrap/templates/workspace-profile.md": "12ebc1eb964c115c272bf815b1e997894bdf686958bbdafb75c1173537d6384f",
+    "skills/bootstrap/templates/workspace-README.md": "37016f33eefd758cca43707450dea4dde29b77b1b0712c8f7d54ffc5995dc4a0",
+    "skills/bootstrap/templates/workspace-receipt.json": "0ec635a204144af5750a3ba96cb6dd86836b6c7297d827452b75fc3d5538a767",
+    "skills/bootstrap/templates/workspace-recommendation.json": "be55c2598c5927ee1673e2cb28be7eb3c1998d5c33b90bad541a349affa4895e",
+    "skills/bootstrap/templates/workspace-registry.yaml": "23eed24585f3cd429177c2b98edc9ada743d0939b99b7d55461dfe2e24188146",
+    "skills/bootstrap/templates/workspace-role-coordinator.md": "a5aa0ea80b79f7c531452873ca6ad574ce806ddd4789da094727c08fb1e9df12",
+    "skills/bootstrap/templates/workspace-role-domain-specialist.md": "c36365d7f85f332e9c0fb0fd65482145243f87763d4addbbbc5db6e2c441ae3b",
+    "skills/bootstrap/templates/workspace-role-executor.md": "7e7b2cf226aa041765e2f7b998b85975bc53ede0b3270c7ea10702782ab0f3ac",
+    "skills/bootstrap/templates/workspace-role-reviewer.md": "a422fe3dbe568521c35792b08fcf2f87badf5d98286fc24aba541d9577b52599",
+    "skills/bootstrap/templates/workspace-role.md": "42ee4e9f8f4185d932926dd12fc6dc2bc6cc2acfe6ffb77f38a0918c258ececa",
+    "skills/bootstrap/templates/workspace-runs.md": "e704db6a305c15b4c07b82c992632303ae7a3947c0886b32a5ef4addc0bbb21b",
+    "skills/bootstrap/templates/workspace-sources.yaml": "869f6100e4e744027be94b931803eb5c8651aee1caf1d36c94b033d0d88242a2",
+    "skills/bootstrap/templates/workspace-starter-sources.yaml": "17064b421791955cbfa50acfad561de52bf0d90bef686baf13d11a4fc223ed96",
+    "skills/bootstrap/templates/workspace-work.md": "3faade570d60c065c25670391eed7170fa9dbd7f1c1f99d29c36febc846b5520",
+    "skills/bootstrap/templates/_agent-LOCKS.md": "d489163b3d809f583ed4f400d5f16d5edead61bbc6f3934e1fee85b6e49f26eb",
+    "skills/bootstrap/templates/_agent-prompts-autonomous.md": "f6bbaa2f881961aa72b96a19ff6b278fb0285547d5009a2efa3a39abb0f609e3",
+    "skills/bootstrap/templates/_agent-ROLES.md": "b7c8478b308a3abe4379746041e412b992c21e7405eb799b570cfe7d15de6628",
+    "skills/brainstorm/agents/openai.yaml": "81410e3c4de176623ad6e46bac282391cfa86df8f092e134ee5761fa33fd456f",
+    "skills/new-adr/agents/openai.yaml": "c31dbe2082afde99cbf40d8a5b9fe4b15368130d88c33f4334cd5ff3d1b4124d",
+    "skills/new-plan/agents/openai.yaml": "50db151c62309e22396f0ba485bb75eaaecdbca7484814ba34ed6d81900e2378",
+    "skills/rollup/agents/openai.yaml": "24ea6030c82b79ccf243ea28dab2481e3433188547f6ca10aee40dec4835b050",
+    "skills/ship-item/agents/openai.yaml": "3343b8c5acd560e4ccb68e8431c4e74c6fa6506f5ed59001172dc84609c9a5a6",
+    "skills/workspace-coordinate/agents/openai.yaml": "f17ebcdf8be6d3f542c0a523144bde41283ca36526c1649c76b6dc36c0808eb1",
+    "skills/workspace-orient/agents/openai.yaml": "b85554ac14ffb3540ed02bc92455907656cb1ae86798677578cdbb10e102e15b",
+    "skills/workspace-plan/agents/openai.yaml": "221fc9d4d61f8d47a0ce82c40158232100cd79ebe6013200b03bcf046eb8c806",
+    "skills/workspace-setup/agents/openai.yaml": "e750c1fd433c816b44affc913c7098adab173b84e2f10ea11927670ef042f30c",
+    "workspace/fixtures/adverse.json": "84cbf0ce22a3605c04de47a720c026e14a0b3db352a716a945573d3d436275d1",
+    "workspace/fixtures/manifest.json": "d3ce8b0d99c1dca14becf66a8497561a12cc83bfa3289fa2045fbbba9548b69f",
+    "workspace/fixtures/materialise.mjs": "f4dfca9cccc1a853e74130b9205ac4e585ecd377ef7bbf060e5f86eddafddc8c",
+    "workspace/fixtures/README.md": "8536688e2ecf516ef0df6795b11ab5c5713e5b6ecc9450c2f7bcc3c61b420f9d",
+    "workspace/guides/claude-code.md": "e0c80985cd9e5a0291368ff8e80018ee06d48812eaeafe5e92a12dca0de143f0",
+    "workspace/guides/codex-app.md": "ca7e6d1f304dcbc8ebce05b560f76700f833cbfa72bc607375d5fd7364839d06",
+    "workspace/guides/cursor.md": "39a5cbb63035a5e3e1cc7b954683124e683d504a96270de4404cdfadc27c5b1c",
+    "workspace/guides/deepseek-harness.md": "282bdb9ed21e7826f48b79e2793ce9efc2d0d4ce1ba1b56b1f688195a4cc03ed",
+    "workspace/guides/orca.md": "377ec4be7427b31eec6b694aa1ed8c21f29a3c71685b3c15f0ac456694a9d78e",
+    "workspace/guides/README.md": "6e4bc65d39cd2ddcf47c6cf0b2589395a92945f4329fba5ec6ced4327f1afcbc",
+    "workspace/guides/recommendations.md": "a2479dcb0664878ea74890672a2141d6e56b7295fc37a2778c3a44b95796b86d",
+    "workspace/guides/retrieval-experimental.md": "dac0b10b3219d4b8bbdf467be77e9a01a3173eca0822a00c9d120f894ba40476",
+    "workspace/guides/zcode.md": "8f14b944441e280746d3ad0be89dc7bfb5c84c87cc2ffc22bc6b4c255de199d1",
+    "workspace/repository-fixtures/manifest.json": "7fdd64513df9dc0d14f5a773638e32f23f282b56407ed46eeb3dee24876d93b5",
+    "workspace/repository-fixtures/README.md": "b1da333151f556a95c8c1059b8d3842a27068259cec5cb78e78832221110fce0",
+    "workspace/fixtures/two-repository/.gitignore": "feb4e1ad73f0bf59d1e7b9224b511da0fd8d1eb28f9633b541cd2f42cd77a686",
+    "workspace/fixtures/two-repository/.npmignore": "362a64c44ff196f3df0a8d10bdadcaf6cfa8e11895ac23a03d33c3c97f7e7a02",
+    "workspace/fixtures/two-repository/AGENTS.md": "e9f1950d721a7022f91b2ca1eea0525fb06e829163e10c1844fb938f87aa1597",
+    "workspace/fixtures/two-repository/README.md": "d03208c340b910fb7ecc0986c1e2f3a2d6fbed909ba2a070706a8d4769b665b1",
+    "workspace/fixtures/two-repository/.docflow_workspace/CONVENTIONS.md": "2532c54806a34067413a9e246f3ffd9acb757f880b30a9cfd87bc7c4c71939cc",
+    "workspace/fixtures/two-repository/.docflow_workspace/INDEX.md": "fb2a70c926359c2c99b085306f0070e42a3d57544841013f212d1bb793eefcb2",
+    "workspace/fixtures/two-repository/.docflow_workspace/workspace.yaml": "517467783798bf28f75c85d8e66ada00befcf9776340a59ceb718280e656d94e",
+    "workspace/fixtures/two-repository/.docflow_workspace/agents/reviewer.md": "42ee4e9f8f4185d932926dd12fc6dc2bc6cc2acfe6ffb77f38a0918c258ececa",
+    "workspace/fixtures/two-repository/.docflow_workspace/decisions/preserve-legacy-response--234567892222.md": "3ec6badc240784084437216b72a0061bee3f9780a6240fcdcf44c6eb886a9a14",
+    "workspace/fixtures/two-repository/.docflow_workspace/ideas/reliable-exports--123456781111.md": "1af2bd95897be7ac9f37b6b74bb092c238bd805797837745f265ab690ef6fb83",
+    "workspace/fixtures/two-repository/.docflow_workspace/integrations/sources.yaml": "869f6100e4e744027be94b931803eb5c8651aee1caf1d36c94b033d0d88242a2",
+    "workspace/fixtures/two-repository/.docflow_workspace/knowledge/legacy-client-observation--456789014444.md": "befe391a20a8e46cf1c44b34b75f8aed086cf40932600b3c550e1cd7e8ae6bc8",
+    "workspace/fixtures/two-repository/.docflow_workspace/profiles/careful-review.md": "12ebc1eb964c115c272bf815b1e997894bdf686958bbdafb75c1173537d6384f",
+    "workspace/fixtures/two-repository/.docflow_workspace/runs/api-interrupted--567890125555.md": "30f708bf0c169138d2f2986805b4210a7c948f5b6af8e914aadc593ad23a73f9",
+    "workspace/fixtures/two-repository/.docflow_workspace/runs/api-reassigned--678901236666.md": "8f8480a7c12318272d1f99f9be02ebee335f9f48e332cb68906cbe550854dd36",
+    "workspace/fixtures/two-repository/.docflow_workspace/runs/mobile-revoked--789012347777.md": "0da45671c1aedf3bf695a6f89ef515f89a2ac4f3fc551a67e941bcd8bb354fc1",
+    "workspace/fixtures/two-repository/.docflow_workspace/work/deliver-compatible-exports--345678903333.md": "6e9e2f45fc5641b1071c7f45ffde1f8cabb42ccbab8ab51e80c3977e91b2ab36",
+    "workspace/fixtures/two-repository/repos/api/AGENTS.md": "fae2a5d6b44845a29a40b0e4b3a018d2a795b64d9fb4cdb43ddb7a46a043395a",
+    "workspace/fixtures/two-repository/repos/api/evidence.txt": "61e998b6ff0ebb3b243671fedc06d04638eed8d6be889fec17aec3e505aca364",
+    "workspace/fixtures/two-repository/repos/api/work.md": "c097937deea518cd41d951a52b74daa77490db79910f4fe0664332df946c4ec0",
+    "workspace/fixtures/two-repository/repos/mobile/evidence.txt": "61e998b6ff0ebb3b243671fedc06d04638eed8d6be889fec17aec3e505aca364",
+    "workspace/fixtures/two-repository/repos/mobile/README.md": "2305873d4227b4578bf049a2b5b7e72843fcaf276f29116e6a1c84754d084d4c",
+    "workspace/fixtures/two-repository/repos/mobile/work.md": "c097937deea518cd41d951a52b74daa77490db79910f4fe0664332df946c4ec0",
+    "workspace/repository-fixtures/cases/completion-integrated/.docflow": "6f57ef45dc3ff1870feffe9e1c170acec3665afe0c7cc88ec89e01a6acd02fae",
+    "workspace/repository-fixtures/cases/completion-integrated/AGENTS.md": "117e7efd258ed0d63635afe0101574777f5ca73f73d6a980e9971ec05a3ff221",
+    "workspace/repository-fixtures/cases/completion-integrated/CLAUDE.md": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+    "workspace/repository-fixtures/cases/completion-integrated/CONVENTIONS.md": "4cdbdae9957d132bd95b227a9e07635d4133b7623535bd2cf82be94bc1cadb2d",
+    "workspace/repository-fixtures/cases/completion-integrated/INDEX.md": "011d94acaed8f0e08e5b4a2d0955b843835c54d4463c734a501a26d536be12ee",
+    "workspace/repository-fixtures/cases/completion-prepared/.docflow": "6f57ef45dc3ff1870feffe9e1c170acec3665afe0c7cc88ec89e01a6acd02fae",
+    "workspace/repository-fixtures/cases/completion-prepared/AGENTS.md": "117e7efd258ed0d63635afe0101574777f5ca73f73d6a980e9971ec05a3ff221",
+    "workspace/repository-fixtures/cases/completion-prepared/CLAUDE.md": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+    "workspace/repository-fixtures/cases/completion-prepared/CONVENTIONS.md": "4cdbdae9957d132bd95b227a9e07635d4133b7623535bd2cf82be94bc1cadb2d",
+    "workspace/repository-fixtures/cases/completion-prepared/INDEX.md": "011d94acaed8f0e08e5b4a2d0955b843835c54d4463c734a501a26d536be12ee",
+    "workspace/repository-fixtures/cases/default-root/AGENTS.md": "17a6e985a53e428d323f05849dac3659f2d4940ff53796ea67b141e354a0d98c",
+    "workspace/repository-fixtures/cases/default-root/CLAUDE.md": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+    "workspace/repository-fixtures/cases/disagreeing-pointer/.docflow": "6f57ef45dc3ff1870feffe9e1c170acec3665afe0c7cc88ec89e01a6acd02fae",
+    "workspace/repository-fixtures/cases/disagreeing-pointer/AGENTS.md": "3b1503f2de63a03a758d0cddd454642c61e7ea3ba6685300c8cce3b83347410c",
+    "workspace/repository-fixtures/cases/disagreeing-pointer/CLAUDE.md": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+    "workspace/repository-fixtures/cases/disagreeing-pointer/CONVENTIONS.md": "b80dad238246373713ad96277123cfec186c6f3e1edd01de094f5cef10d6aac7",
+    "workspace/repository-fixtures/cases/disagreeing-pointer/INDEX.md": "b796453e3e0719130d1780f70f26c602de1dc1ad065b400ca5127f25f91f7b8a",
+    "workspace/repository-fixtures/cases/docs-pointer/.docflow": "e972336f7fd73e741d6b00828f27dbe02b64c97787c67b515b4847a514ae0a61",
+    "workspace/repository-fixtures/cases/docs-pointer/AGENTS.md": "c3d54885b50f868b42f7745a421892cb82b1d2ecf562cff93ff6084897288b4e",
+    "workspace/repository-fixtures/cases/docs-pointer/CLAUDE.md": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+    "workspace/repository-fixtures/cases/duplicate-number/.docflow": "6f57ef45dc3ff1870feffe9e1c170acec3665afe0c7cc88ec89e01a6acd02fae",
+    "workspace/repository-fixtures/cases/duplicate-number/AGENTS.md": "3b1503f2de63a03a758d0cddd454642c61e7ea3ba6685300c8cce3b83347410c",
+    "workspace/repository-fixtures/cases/duplicate-number/CLAUDE.md": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+    "workspace/repository-fixtures/cases/duplicate-number/CONVENTIONS.md": "70e8696b6cb91f88109de9681aa7cdaed9db558a664409cb18d7b785ac88ac27",
+    "workspace/repository-fixtures/cases/duplicate-number/INDEX.md": "b796453e3e0719130d1780f70f26c602de1dc1ad065b400ca5127f25f91f7b8a",
+    "workspace/repository-fixtures/cases/explicit-two-shape/AGENTS.md": "17a6e985a53e428d323f05849dac3659f2d4940ff53796ea67b141e354a0d98c",
+    "workspace/repository-fixtures/cases/explicit-two-shape/CLAUDE.md": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+    "workspace/repository-fixtures/cases/federation-home/.docflow": "6f57ef45dc3ff1870feffe9e1c170acec3665afe0c7cc88ec89e01a6acd02fae",
+    "workspace/repository-fixtures/cases/federation-home/AGENTS.md": "3b1503f2de63a03a758d0cddd454642c61e7ea3ba6685300c8cce3b83347410c",
+    "workspace/repository-fixtures/cases/federation-home/CLAUDE.md": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+    "workspace/repository-fixtures/cases/federation-home/CONVENTIONS.md": "70e8696b6cb91f88109de9681aa7cdaed9db558a664409cb18d7b785ac88ac27",
+    "workspace/repository-fixtures/cases/federation-home/federation-index.md": "9b19422a548786813eae463a736446a8e03d0acad26e186520f4c24a7a884f34",
+    "workspace/repository-fixtures/cases/federation-home/federation.md": "26b4c46a656a7a425141d31ada53f5363b724d6ffbaa138bcb2d7c1bdf0d1481",
+    "workspace/repository-fixtures/cases/federation-home/INDEX.md": "b796453e3e0719130d1780f70f26c602de1dc1ad065b400ca5127f25f91f7b8a",
+    "workspace/repository-fixtures/cases/federation-member/.docflow": "e972336f7fd73e741d6b00828f27dbe02b64c97787c67b515b4847a514ae0a61",
+    "workspace/repository-fixtures/cases/federation-member/AGENTS.md": "c3d54885b50f868b42f7745a421892cb82b1d2ecf562cff93ff6084897288b4e",
+    "workspace/repository-fixtures/cases/federation-member/CLAUDE.md": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+    "workspace/repository-fixtures/cases/invalid-pointer/.docflow": "7d56ced6b207e0632efbc576695a1b8849b895eec24fa86b82ada22f0cb50041",
+    "workspace/repository-fixtures/cases/invalid-pointer/AGENTS.md": "3b1503f2de63a03a758d0cddd454642c61e7ea3ba6685300c8cce3b83347410c",
+    "workspace/repository-fixtures/cases/invalid-pointer/CLAUDE.md": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+    "workspace/repository-fixtures/cases/invalid-pointer/CONVENTIONS.md": "70e8696b6cb91f88109de9681aa7cdaed9db558a664409cb18d7b785ac88ac27",
+    "workspace/repository-fixtures/cases/invalid-pointer/INDEX.md": "b796453e3e0719130d1780f70f26c602de1dc1ad065b400ca5127f25f91f7b8a",
+    "workspace/repository-fixtures/cases/invalid-pointer-syntax/.docflow": "17780751d836ae3d54053a343e7d8a3b37f5815d6c5cf4923155e811e66c67b5",
+    "workspace/repository-fixtures/cases/invalid-pointer-syntax/AGENTS.md": "3b1503f2de63a03a758d0cddd454642c61e7ea3ba6685300c8cce3b83347410c",
+    "workspace/repository-fixtures/cases/invalid-pointer-syntax/CLAUDE.md": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+    "workspace/repository-fixtures/cases/invalid-pointer-syntax/CONVENTIONS.md": "70e8696b6cb91f88109de9681aa7cdaed9db558a664409cb18d7b785ac88ac27",
+    "workspace/repository-fixtures/cases/invalid-pointer-syntax/INDEX.md": "b796453e3e0719130d1780f70f26c602de1dc1ad065b400ca5127f25f91f7b8a",
+    "workspace/repository-fixtures/cases/legacy-no-manifest/AGENTS.md": "3b1503f2de63a03a758d0cddd454642c61e7ea3ba6685300c8cce3b83347410c",
+    "workspace/repository-fixtures/cases/legacy-no-manifest/CLAUDE.md": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+    "workspace/repository-fixtures/cases/legacy-no-manifest/CONVENTIONS.md": "70e8696b6cb91f88109de9681aa7cdaed9db558a664409cb18d7b785ac88ac27",
+    "workspace/repository-fixtures/cases/legacy-no-manifest/INDEX.md": "b796453e3e0719130d1780f70f26c602de1dc1ad065b400ca5127f25f91f7b8a",
+    "workspace/repository-fixtures/cases/legacy-two-range/AGENTS.md": "d18ac880596926c16311424f9aee2bbfef3e94b10878b003b7fe8b0452e23d8b",
+    "workspace/repository-fixtures/cases/legacy-two-range/README.md": "97e95b4ac4a82d191e2cde6502b199fc79bc70373fc3b467a75700f631c962b8",
+    "workspace/repository-fixtures/cases/nested-pointer/.docflow": "2b350d41274bfbca913ee36101c910f2a5694759bcb2e15442275bf40bedff67",
+    "workspace/repository-fixtures/cases/nested-pointer/AGENTS.md": "3b5947c2384829ca561850deb4b2ee23d7e074799e32dc88e2ec52f0fec6ea0c",
+    "workspace/repository-fixtures/cases/nested-pointer/CLAUDE.md": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+    "workspace/repository-fixtures/cases/optional-layers/AGENTS.md": "31a3846d7124caf1061fbff90111f464ae8392ed590dc49fed9e1feb6246488b",
+    "workspace/repository-fixtures/cases/optional-layers/CLAUDE.md": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+    "workspace/repository-fixtures/cases/root-pointer/.docflow": "6f57ef45dc3ff1870feffe9e1c170acec3665afe0c7cc88ec89e01a6acd02fae",
+    "workspace/repository-fixtures/cases/root-pointer/AGENTS.md": "3b1503f2de63a03a758d0cddd454642c61e7ea3ba6685300c8cce3b83347410c",
+    "workspace/repository-fixtures/cases/root-pointer/CLAUDE.md": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+    "workspace/repository-fixtures/cases/root-pointer/CONVENTIONS.md": "70e8696b6cb91f88109de9681aa7cdaed9db558a664409cb18d7b785ac88ac27",
+    "workspace/repository-fixtures/cases/root-pointer/INDEX.md": "b796453e3e0719130d1780f70f26c602de1dc1ad065b400ca5127f25f91f7b8a",
+    "workspace/repository-fixtures/cases/status-blocked/.docflow": "6f57ef45dc3ff1870feffe9e1c170acec3665afe0c7cc88ec89e01a6acd02fae",
+    "workspace/repository-fixtures/cases/status-blocked/AGENTS.md": "117e7efd258ed0d63635afe0101574777f5ca73f73d6a980e9971ec05a3ff221",
+    "workspace/repository-fixtures/cases/status-blocked/CLAUDE.md": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+    "workspace/repository-fixtures/cases/status-blocked/CONVENTIONS.md": "4cdbdae9957d132bd95b227a9e07635d4133b7623535bd2cf82be94bc1cadb2d",
+    "workspace/repository-fixtures/cases/status-blocked/INDEX.md": "b796453e3e0719130d1780f70f26c602de1dc1ad065b400ca5127f25f91f7b8a",
+    "workspace/repository-fixtures/cases/status-claimed/.docflow": "6f57ef45dc3ff1870feffe9e1c170acec3665afe0c7cc88ec89e01a6acd02fae",
+    "workspace/repository-fixtures/cases/status-claimed/AGENTS.md": "117e7efd258ed0d63635afe0101574777f5ca73f73d6a980e9971ec05a3ff221",
+    "workspace/repository-fixtures/cases/status-claimed/CLAUDE.md": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+    "workspace/repository-fixtures/cases/status-claimed/CONVENTIONS.md": "4cdbdae9957d132bd95b227a9e07635d4133b7623535bd2cf82be94bc1cadb2d",
+    "workspace/repository-fixtures/cases/status-claimed/INDEX.md": "b796453e3e0719130d1780f70f26c602de1dc1ad065b400ca5127f25f91f7b8a",
+    "workspace/repository-fixtures/cases/status-resumed/.docflow": "6f57ef45dc3ff1870feffe9e1c170acec3665afe0c7cc88ec89e01a6acd02fae",
+    "workspace/repository-fixtures/cases/status-resumed/AGENTS.md": "117e7efd258ed0d63635afe0101574777f5ca73f73d6a980e9971ec05a3ff221",
+    "workspace/repository-fixtures/cases/status-resumed/CLAUDE.md": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+    "workspace/repository-fixtures/cases/status-resumed/CONVENTIONS.md": "4cdbdae9957d132bd95b227a9e07635d4133b7623535bd2cf82be94bc1cadb2d",
+    "workspace/repository-fixtures/cases/status-resumed/INDEX.md": "b796453e3e0719130d1780f70f26c602de1dc1ad065b400ca5127f25f91f7b8a",
+    "workspace/repository-fixtures/cases/status-stopped/.docflow": "6f57ef45dc3ff1870feffe9e1c170acec3665afe0c7cc88ec89e01a6acd02fae",
+    "workspace/repository-fixtures/cases/status-stopped/AGENTS.md": "117e7efd258ed0d63635afe0101574777f5ca73f73d6a980e9971ec05a3ff221",
+    "workspace/repository-fixtures/cases/status-stopped/CLAUDE.md": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+    "workspace/repository-fixtures/cases/status-stopped/CONVENTIONS.md": "4cdbdae9957d132bd95b227a9e07635d4133b7623535bd2cf82be94bc1cadb2d",
+    "workspace/repository-fixtures/cases/status-stopped/INDEX.md": "b796453e3e0719130d1780f70f26c602de1dc1ad065b400ca5127f25f91f7b8a",
+    "workspace/repository-fixtures/cases/unknown-shape/.docflow": "6f57ef45dc3ff1870feffe9e1c170acec3665afe0c7cc88ec89e01a6acd02fae",
+    "workspace/repository-fixtures/cases/unknown-shape/AGENTS.md": "3b1503f2de63a03a758d0cddd454642c61e7ea3ba6685300c8cce3b83347410c",
+    "workspace/repository-fixtures/cases/unknown-shape/CLAUDE.md": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+    "workspace/repository-fixtures/cases/unknown-shape/CONVENTIONS.md": "70e8696b6cb91f88109de9681aa7cdaed9db558a664409cb18d7b785ac88ac27",
+    "workspace/repository-fixtures/cases/unknown-shape/INDEX.md": "b796453e3e0719130d1780f70f26c602de1dc1ad065b400ca5127f25f91f7b8a",
+    "workspace/repository-fixtures/cases/unknown-status/.docflow": "6f57ef45dc3ff1870feffe9e1c170acec3665afe0c7cc88ec89e01a6acd02fae",
+    "workspace/repository-fixtures/cases/unknown-status/AGENTS.md": "3b1503f2de63a03a758d0cddd454642c61e7ea3ba6685300c8cce3b83347410c",
+    "workspace/repository-fixtures/cases/unknown-status/CLAUDE.md": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+    "workspace/repository-fixtures/cases/unknown-status/CONVENTIONS.md": "70e8696b6cb91f88109de9681aa7cdaed9db558a664409cb18d7b785ac88ac27",
+    "workspace/repository-fixtures/cases/unknown-status/INDEX.md": "b796453e3e0719130d1780f70f26c602de1dc1ad065b400ca5127f25f91f7b8a",
+    "workspace/repository-fixtures/cases/completion-integrated/adr/0000-template.md": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+    "workspace/repository-fixtures/cases/completion-integrated/adr/0001-synthetic-capability.md": "8f7d782ec9f71c2c333ea9b2ed6ffca7c41a84a01e9b847157f3dc7927622fa4",
+    "workspace/repository-fixtures/cases/completion-integrated/plan/README.md": "d6fb25d7b7ac6da6f4ff3f3e074ce6e8025d0733551a5a171cf7768022a4f6d8",
+    "workspace/repository-fixtures/cases/completion-integrated/plan/done/2026-09-15-synthetic-implementation.md": "56efd0d5ecd14d887fb67457bd544efe98a550550633d8b5cd0d7d8b6d1504d0",
+    "workspace/repository-fixtures/cases/completion-prepared/adr/0000-template.md": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+    "workspace/repository-fixtures/cases/completion-prepared/adr/0001-synthetic-capability.md": "8f7d782ec9f71c2c333ea9b2ed6ffca7c41a84a01e9b847157f3dc7927622fa4",
+    "workspace/repository-fixtures/cases/completion-prepared/plan/README.md": "d6fb25d7b7ac6da6f4ff3f3e074ce6e8025d0733551a5a171cf7768022a4f6d8",
+    "workspace/repository-fixtures/cases/completion-prepared/plan/done/2026-09-15-synthetic-implementation.md": "56efd0d5ecd14d887fb67457bd544efe98a550550633d8b5cd0d7d8b6d1504d0",
+    "workspace/repository-fixtures/cases/default-root/.docflow/CONVENTIONS.md": "e14bf4543ff15a6aa76d75482ce4c799f8cace6cd8d9d6313cf43d0a9cebc12f",
+    "workspace/repository-fixtures/cases/default-root/.docflow/INDEX.md": "b796453e3e0719130d1780f70f26c602de1dc1ad065b400ca5127f25f91f7b8a",
+    "workspace/repository-fixtures/cases/default-root/.docflow/adr/0000-template.md": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+    "workspace/repository-fixtures/cases/default-root/.docflow/adr/0001-synthetic-capability.md": "ac312c0624dd23013d70814f895aa344551bbe6c70b889ccfbd3d40c9c4409dc",
+    "workspace/repository-fixtures/cases/disagreeing-pointer/adr/0000-template.md": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+    "workspace/repository-fixtures/cases/disagreeing-pointer/adr/0001-synthetic-capability.md": "ac312c0624dd23013d70814f895aa344551bbe6c70b889ccfbd3d40c9c4409dc",
+    "workspace/repository-fixtures/cases/docs-pointer/docs/CONVENTIONS.md": "bc8a32e4cdb79940a74d92add226baca37e5ebfda9cdf231f2dedf72a5afe71c",
+    "workspace/repository-fixtures/cases/docs-pointer/docs/INDEX.md": "b796453e3e0719130d1780f70f26c602de1dc1ad065b400ca5127f25f91f7b8a",
+    "workspace/repository-fixtures/cases/docs-pointer/docs/adr/0000-template.md": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+    "workspace/repository-fixtures/cases/docs-pointer/docs/adr/0001-synthetic-capability.md": "ac312c0624dd23013d70814f895aa344551bbe6c70b889ccfbd3d40c9c4409dc",
+    "workspace/repository-fixtures/cases/duplicate-number/adr/0000-template.md": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+    "workspace/repository-fixtures/cases/duplicate-number/adr/0001-other.md": "ac312c0624dd23013d70814f895aa344551bbe6c70b889ccfbd3d40c9c4409dc",
+    "workspace/repository-fixtures/cases/duplicate-number/adr/0001-synthetic-capability.md": "ac312c0624dd23013d70814f895aa344551bbe6c70b889ccfbd3d40c9c4409dc",
+    "workspace/repository-fixtures/cases/explicit-two-shape/.docflow/CONVENTIONS.md": "e829bcf06654e53d0bfe8b4932b830dac5ae56ec2cb569ca61626b766f0ade73",
+    "workspace/repository-fixtures/cases/explicit-two-shape/.docflow/INDEX.md": "839e2b8488669f6a318a16136998faa6ce4d5164153773f064c32ceb916ec96f",
+    "workspace/repository-fixtures/cases/explicit-two-shape/.docflow/adr/0000-template-technology.md": "02abe97bf3f956972621490c0c6c4a5aa4210b259c33114cadc84a2ab7fbffc0",
+    "workspace/repository-fixtures/cases/explicit-two-shape/.docflow/adr/0000-template.md": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+    "workspace/repository-fixtures/cases/explicit-two-shape/.docflow/adr/0001-synthetic-capability.md": "c2dbfac6c48850cc17e738be4960c1497b57815768b761a4b746db39e800b5e9",
+    "workspace/repository-fixtures/cases/explicit-two-shape/.docflow/adr/0002-synthetic-technology.md": "8b154ee23f1d60695625a49a87ad714fdf61ea90c4ad258d89c72456e4099a86",
+    "workspace/repository-fixtures/cases/federation-home/adr/0000-template.md": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+    "workspace/repository-fixtures/cases/federation-home/adr/0001-synthetic-capability.md": "ac312c0624dd23013d70814f895aa344551bbe6c70b889ccfbd3d40c9c4409dc",
+    "workspace/repository-fixtures/cases/federation-member/docs/CONVENTIONS.md": "bc8a32e4cdb79940a74d92add226baca37e5ebfda9cdf231f2dedf72a5afe71c",
+    "workspace/repository-fixtures/cases/federation-member/docs/federation.md": "ad87cc51d0592911fc0899d346d7cf00a7afd60741baa992fd37db886801f8b7",
+    "workspace/repository-fixtures/cases/federation-member/docs/INDEX.md": "b796453e3e0719130d1780f70f26c602de1dc1ad065b400ca5127f25f91f7b8a",
+    "workspace/repository-fixtures/cases/federation-member/docs/adr/0000-template.md": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+    "workspace/repository-fixtures/cases/federation-member/docs/adr/0001-synthetic-capability.md": "ac312c0624dd23013d70814f895aa344551bbe6c70b889ccfbd3d40c9c4409dc",
+    "workspace/repository-fixtures/cases/invalid-pointer/adr/0000-template.md": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+    "workspace/repository-fixtures/cases/invalid-pointer/adr/0001-synthetic-capability.md": "ac312c0624dd23013d70814f895aa344551bbe6c70b889ccfbd3d40c9c4409dc",
+    "workspace/repository-fixtures/cases/invalid-pointer-syntax/adr/0000-template.md": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+    "workspace/repository-fixtures/cases/invalid-pointer-syntax/adr/0001-synthetic-capability.md": "ac312c0624dd23013d70814f895aa344551bbe6c70b889ccfbd3d40c9c4409dc",
+    "workspace/repository-fixtures/cases/legacy-no-manifest/adr/0000-template.md": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+    "workspace/repository-fixtures/cases/legacy-no-manifest/adr/0001-synthetic-capability.md": "ac312c0624dd23013d70814f895aa344551bbe6c70b889ccfbd3d40c9c4409dc",
+    "workspace/repository-fixtures/cases/legacy-two-range/docs/AGENTS.md": "d18ac880596926c16311424f9aee2bbfef3e94b10878b003b7fe8b0452e23d8b",
+    "workspace/repository-fixtures/cases/legacy-two-range/docs/CONVENTIONS.md": "ff390da9ac60ea59a432015e7ae9de93a94956cc796a4d7b5c20ea76715fb172",
+    "workspace/repository-fixtures/cases/legacy-two-range/docs/INDEX.md": "004cd79dacc979c0ff6afcf5fab2075c1ac1a817affce5b2905bfaf94bc85c63",
+    "workspace/repository-fixtures/cases/legacy-two-range/docs/README.md": "97e95b4ac4a82d191e2cde6502b199fc79bc70373fc3b467a75700f631c962b8",
+    "workspace/repository-fixtures/cases/legacy-two-range/docs/adr/0000-template.md": "025c654fe43aea32d3133c9072181e4284042b3b1ae012b58b3f4f3e6b89d8c7",
+    "workspace/repository-fixtures/cases/legacy-two-range/docs/adr/0001-record-architecture-decisions.md": "937ed161fb04f714c598c2df93b5c243b8b1432402d65fde1e1a66979fa78bb7",
+    "workspace/repository-fixtures/cases/legacy-two-range/docs/adr/0002-searchable-decision-catalogue.md": "7ff364e8d2540d36bc772c7ed54ec24b6d2fa703ee9129bbc68eb52d391a723c",
+    "workspace/repository-fixtures/cases/legacy-two-range/docs/adr/0003-queue-driven-implementation.md": "9de057c8dcde822182be123c2b46256d2237362d0f1839dc2da267cfbd72e194",
+    "workspace/repository-fixtures/cases/legacy-two-range/docs/adr/0100-template.md": "1fa11e31ea96f846e101ce6091bdc4fdce1d08f933afb669e6a8efc852d98cfa",
+    "workspace/repository-fixtures/cases/legacy-two-range/docs/adr/0101-markdown-files-in-git.md": "fa3f8d69bafa01192ca2aac85623c030d8a6c2301a8f0c41cb9b818e289c6281",
+    "workspace/repository-fixtures/cases/legacy-two-range/docs/adr/0102-static-verify-script.md": "f9e5ba641865431b6a65e26f1cbea7997e75a1c4abd72327b55a92951311aa19",
+    "workspace/repository-fixtures/cases/legacy-two-range/docs/plan/README.md": "179d9c876a43053bd814bd8a1f6c6967d22f8a53ff6a4d9fa4b57b3449227457",
+    "workspace/repository-fixtures/cases/legacy-two-range/docs/domains/platform/README.md": "b96b76e38a6b9d5931f26522bd54eee8fc0b0fb94ad64b48a4ffb6f5f89e5910",
+    "workspace/repository-fixtures/cases/legacy-two-range/docs/plan/done/2026-01-12-adopt-the-method.md": "02df407276d68aad25c39136a87429dc53a22529757c86e067644c523de9ec30",
+    "workspace/repository-fixtures/cases/legacy-two-range/docs/plan/done/2026-01-19-catalogue-and-store.md": "21ddb1186242c6620c6705e81e3e073d13c3ffa56cf95d3452a668239f12743e",
+    "workspace/repository-fixtures/cases/legacy-two-range/docs/plan/todo/0001-verify-script-coverage.md": "7fd4da097a77443647f83055d7e6004260a85ad8f1db71b5fa579bd4564bdfd8",
+    "workspace/repository-fixtures/cases/legacy-two-range/docs/plan/todo/0002-queue-and-completion-event.md": "caa275c09a0dd835f0955289c3d955d41625f049f3d22cd8431dcfa61dfe8b09",
+    "workspace/repository-fixtures/cases/nested-pointer/governance/decisions/current/CONVENTIONS.md": "0d484a60299d6976d833b63c621404088eccb80c138539d852536ba1037a0fa6",
+    "workspace/repository-fixtures/cases/nested-pointer/governance/decisions/current/INDEX.md": "b796453e3e0719130d1780f70f26c602de1dc1ad065b400ca5127f25f91f7b8a",
+    "workspace/repository-fixtures/cases/nested-pointer/governance/decisions/current/adr/0000-template.md": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+    "workspace/repository-fixtures/cases/nested-pointer/governance/decisions/current/adr/0001-synthetic-capability.md": "ac312c0624dd23013d70814f895aa344551bbe6c70b889ccfbd3d40c9c4409dc",
+    "workspace/repository-fixtures/cases/optional-layers/.docflow/CONVENTIONS.md": "7f0c2c6e1d39e7c6e183ed1368c5f9257518fb3d1ff9a2a9edc2eb83a259f7b0",
+    "workspace/repository-fixtures/cases/optional-layers/.docflow/GLOSSARY.md": "f7354c08c22c6bf9e35527c7f2347f9d4ae75bc37ad4abf4e13531f51d11aa1a",
+    "workspace/repository-fixtures/cases/optional-layers/.docflow/INDEX.md": "839e2b8488669f6a318a16136998faa6ce4d5164153773f064c32ceb916ec96f",
+    "workspace/repository-fixtures/cases/optional-layers/.docflow/adr/0000-template-technology.md": "02abe97bf3f956972621490c0c6c4a5aa4210b259c33114cadc84a2ab7fbffc0",
+    "workspace/repository-fixtures/cases/optional-layers/.docflow/adr/0000-template.md": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+    "workspace/repository-fixtures/cases/optional-layers/.docflow/adr/0001-synthetic-capability.md": "c2dbfac6c48850cc17e738be4960c1497b57815768b761a4b746db39e800b5e9",
+    "workspace/repository-fixtures/cases/optional-layers/.docflow/adr/0002-synthetic-technology.md": "8b154ee23f1d60695625a49a87ad714fdf61ea90c4ad258d89c72456e4099a86",
+    "workspace/repository-fixtures/cases/optional-layers/.docflow/plan/README.md": "d6fb25d7b7ac6da6f4ff3f3e074ce6e8025d0733551a5a171cf7768022a4f6d8",
+    "workspace/repository-fixtures/cases/optional-layers/.docflow/domains/platform/README.md": "1656c1f56768019b4b10d450e2a7c274de982c3de3f42eaa759a970bdfadc418",
+    "workspace/repository-fixtures/cases/optional-layers/.docflow/_agent/prompts/autonomous.md": "f6bbaa2f881961aa72b96a19ff6b278fb0285547d5009a2efa3a39abb0f609e3",
+    "workspace/repository-fixtures/cases/root-pointer/adr/0000-template.md": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+    "workspace/repository-fixtures/cases/root-pointer/adr/0001-synthetic-capability.md": "ac312c0624dd23013d70814f895aa344551bbe6c70b889ccfbd3d40c9c4409dc",
+    "workspace/repository-fixtures/cases/status-blocked/adr/0000-template.md": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+    "workspace/repository-fixtures/cases/status-blocked/adr/0001-synthetic-capability.md": "ac312c0624dd23013d70814f895aa344551bbe6c70b889ccfbd3d40c9c4409dc",
+    "workspace/repository-fixtures/cases/status-blocked/plan/README.md": "d6fb25d7b7ac6da6f4ff3f3e074ce6e8025d0733551a5a171cf7768022a4f6d8",
+    "workspace/repository-fixtures/cases/status-blocked/plan/todo/0001-example.md": "274786c0d5bfa938e5b5e8f8653f7a5c63c31e44657f351fd06e55ee3ca16b90",
+    "workspace/repository-fixtures/cases/status-claimed/adr/0000-template.md": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+    "workspace/repository-fixtures/cases/status-claimed/adr/0001-synthetic-capability.md": "ac312c0624dd23013d70814f895aa344551bbe6c70b889ccfbd3d40c9c4409dc",
+    "workspace/repository-fixtures/cases/status-claimed/plan/README.md": "d6fb25d7b7ac6da6f4ff3f3e074ce6e8025d0733551a5a171cf7768022a4f6d8",
+    "workspace/repository-fixtures/cases/status-claimed/plan/todo/0001-example.md": "78417ddb2a0b584114acd5200f1acb7ef7a7edea3cf6538df5be6a9e4dbb4436",
+    "workspace/repository-fixtures/cases/status-resumed/adr/0000-template.md": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+    "workspace/repository-fixtures/cases/status-resumed/adr/0001-synthetic-capability.md": "ac312c0624dd23013d70814f895aa344551bbe6c70b889ccfbd3d40c9c4409dc",
+    "workspace/repository-fixtures/cases/status-resumed/plan/README.md": "d6fb25d7b7ac6da6f4ff3f3e074ce6e8025d0733551a5a171cf7768022a4f6d8",
+    "workspace/repository-fixtures/cases/status-resumed/plan/todo/0001-example.md": "78417ddb2a0b584114acd5200f1acb7ef7a7edea3cf6538df5be6a9e4dbb4436",
+    "workspace/repository-fixtures/cases/status-stopped/adr/0000-template.md": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+    "workspace/repository-fixtures/cases/status-stopped/adr/0001-synthetic-capability.md": "ac312c0624dd23013d70814f895aa344551bbe6c70b889ccfbd3d40c9c4409dc",
+    "workspace/repository-fixtures/cases/status-stopped/plan/README.md": "d6fb25d7b7ac6da6f4ff3f3e074ce6e8025d0733551a5a171cf7768022a4f6d8",
+    "workspace/repository-fixtures/cases/status-stopped/plan/todo/0001-example.md": "581e968cb712b15c36818f52c2f96d71ed03b3c2e1f003cadbd87de1ceee943a",
+    "workspace/repository-fixtures/cases/unknown-shape/adr/0000-template.md": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+    "workspace/repository-fixtures/cases/unknown-shape/adr/0001-synthetic-capability.md": "a4d1902a484df2df2a1af9373a710f28fff0d1a72e40f7fe4b411b5fa3cace65",
+    "workspace/repository-fixtures/cases/unknown-status/adr/0000-template.md": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+    "workspace/repository-fixtures/cases/unknown-status/adr/0001-synthetic-capability.md": "5972127fb75a6e68a932165c713d9a97ec30545e6fa35bac9bcbb1c15c1c0b33",
+    "workspace/repository-fixtures/sources/scripts/produce-repository-fixtures.mjs": "5bcd1cdd2aaa03088ff17b0c06f72a3a93f32bc29070844291e3f8c4c21b6944",
+    "workspace/repository-fixtures/sources/evals/fixtures/legacy-range/AGENTS.md": "d18ac880596926c16311424f9aee2bbfef3e94b10878b003b7fe8b0452e23d8b",
+    "workspace/repository-fixtures/sources/evals/fixtures/legacy-range/CONVENTIONS.md": "3f81d29da3db00b8d17602f58b240d9ce3645f09e10150044150badd671e4fe1",
+    "workspace/repository-fixtures/sources/evals/fixtures/legacy-range/INDEX.md": "004cd79dacc979c0ff6afcf5fab2075c1ac1a817affce5b2905bfaf94bc85c63",
+    "workspace/repository-fixtures/sources/evals/fixtures/legacy-range/README.md": "97e95b4ac4a82d191e2cde6502b199fc79bc70373fc3b467a75700f631c962b8",
+    "workspace/repository-fixtures/sources/evals/fixtures/legacy-range/adr/0000-template.md": "025c654fe43aea32d3133c9072181e4284042b3b1ae012b58b3f4f3e6b89d8c7",
+    "workspace/repository-fixtures/sources/evals/fixtures/legacy-range/adr/0001-record-architecture-decisions.md": "937ed161fb04f714c598c2df93b5c243b8b1432402d65fde1e1a66979fa78bb7",
+    "workspace/repository-fixtures/sources/evals/fixtures/legacy-range/adr/0002-searchable-decision-catalogue.md": "7ff364e8d2540d36bc772c7ed54ec24b6d2fa703ee9129bbc68eb52d391a723c",
+    "workspace/repository-fixtures/sources/evals/fixtures/legacy-range/adr/0003-queue-driven-implementation.md": "9de057c8dcde822182be123c2b46256d2237362d0f1839dc2da267cfbd72e194",
+    "workspace/repository-fixtures/sources/evals/fixtures/legacy-range/adr/0100-template.md": "1fa11e31ea96f846e101ce6091bdc4fdce1d08f933afb669e6a8efc852d98cfa",
+    "workspace/repository-fixtures/sources/evals/fixtures/legacy-range/adr/0101-markdown-files-in-git.md": "fa3f8d69bafa01192ca2aac85623c030d8a6c2301a8f0c41cb9b818e289c6281",
+    "workspace/repository-fixtures/sources/evals/fixtures/legacy-range/adr/0102-static-verify-script.md": "f9e5ba641865431b6a65e26f1cbea7997e75a1c4abd72327b55a92951311aa19",
+    "workspace/repository-fixtures/sources/evals/fixtures/legacy-range/plan/README.md": "179d9c876a43053bd814bd8a1f6c6967d22f8a53ff6a4d9fa4b57b3449227457",
+    "workspace/repository-fixtures/sources/evals/fixtures/legacy-range/domains/platform/README.md": "b96b76e38a6b9d5931f26522bd54eee8fc0b0fb94ad64b48a4ffb6f5f89e5910",
+    "workspace/repository-fixtures/sources/evals/fixtures/legacy-range/plan/done/2026-01-12-adopt-the-method.md": "02df407276d68aad25c39136a87429dc53a22529757c86e067644c523de9ec30",
+    "workspace/repository-fixtures/sources/evals/fixtures/legacy-range/plan/done/2026-01-19-catalogue-and-store.md": "21ddb1186242c6620c6705e81e3e073d13c3ffa56cf95d3452a668239f12743e",
+    "workspace/repository-fixtures/sources/evals/fixtures/legacy-range/plan/todo/0001-verify-script-coverage.md": "7fd4da097a77443647f83055d7e6004260a85ad8f1db71b5fa579bd4564bdfd8",
+    "workspace/repository-fixtures/sources/evals/fixtures/legacy-range/plan/todo/0002-queue-and-completion-event.md": "caa275c09a0dd835f0955289c3d955d41625f049f3d22cd8431dcfa61dfe8b09",
+    "workspace/repository-fixtures/sources/plugins/docflow/skills/add-convention/SKILL.md": "9f27f42a0070ff43f1d924ed46e6097183dd1c890841a25e62a25e9cfdc1dde4",
+    "workspace/repository-fixtures/sources/plugins/docflow/skills/bootstrap/SKILL.md": "5a4551e47a5bb635098a1891fc3dadce61add75e8b94b210c7e9a5be0e07287f",
+    "workspace/repository-fixtures/sources/plugins/docflow/skills/new-adr/SKILL.md": "3b8ac8e05f48e599f07b3e590776841736f82f61d00e994ae0ef3a48f2f9f005",
+    "workspace/repository-fixtures/sources/plugins/docflow/skills/new-plan/SKILL.md": "8a2690887cf3f5068c0a24184b4f4fee0c84ddd7021880c0b4e21b22231a64e6",
+    "workspace/repository-fixtures/sources/plugins/docflow/skills/ship-item/SKILL.md": "b929994d4bf1549db452a0b2e08349a9981e1a13fa5060d9422abde8b128114f",
+    "workspace/repository-fixtures/sources/plugins/docflow/skills/bootstrap/templates/adr-0001-seed.md": "cfcc060d32ae013634bc788aa20fd9b7f69ae3c90399d18f17a72703ea573b1c",
+    "workspace/repository-fixtures/sources/plugins/docflow/skills/bootstrap/templates/adr-capability.md": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+    "workspace/repository-fixtures/sources/plugins/docflow/skills/bootstrap/templates/adr-technology.md": "02abe97bf3f956972621490c0c6c4a5aa4210b259c33114cadc84a2ab7fbffc0",
+    "workspace/repository-fixtures/sources/plugins/docflow/skills/bootstrap/templates/AGENTS.md": "a15813bbae21dc249632dc15aca6593e8b06c3b2876e1281998eda5fe918534a",
+    "workspace/repository-fixtures/sources/plugins/docflow/skills/bootstrap/templates/CLAUDE.md": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+    "workspace/repository-fixtures/sources/plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md": "2a15da40de46a45aa9111d261f308987c130efe065deed3a155edfbe41f82b70",
+    "workspace/repository-fixtures/sources/plugins/docflow/skills/bootstrap/templates/federation-config.md": "27e9a9c0fde4a1edf235c27a69c4aaff1051bc14a17a4e862592c30e9e92421a",
+    "workspace/repository-fixtures/sources/plugins/docflow/skills/bootstrap/templates/federation-index.md": "7c548fa6c04ef2b0144a183d7b1ab926f559cfa693e0d07d4028eb9ced75add2",
+    "workspace/repository-fixtures/sources/plugins/docflow/skills/bootstrap/templates/plan-README.md": "d6fb25d7b7ac6da6f4ff3f3e074ce6e8025d0733551a5a171cf7768022a4f6d8",
+    "workspace/repository-fixtures/sources/plugins/docflow/skills/bootstrap/templates/_agent-LOCKS.md": "d489163b3d809f583ed4f400d5f16d5edead61bbc6f3934e1fee85b6e49f26eb",
+    "workspace/repository-fixtures/sources/plugins/docflow/skills/bootstrap/templates/_agent-prompts-autonomous.md": "f6bbaa2f881961aa72b96a19ff6b278fb0285547d5009a2efa3a39abb0f609e3",
+    "workspace/repository-fixtures/sources/plugins/docflow/skills/bootstrap/templates/_agent-ROLES.md": "b7c8478b308a3abe4379746041e412b992c21e7405eb799b570cfe7d15de6628"
+  },
+  "files": {
+    ".gitignore": {
+      "sha256": "bc6e6542b56f97671c3fa3e0c6130eaa10668407e8fa079a56f44999977b7c6b",
+      "bytes": 39
+    },
+    "AGENTS.md": {
+      "sha256": "e9f1950d721a7022f91b2ca1eea0525fb06e829163e10c1844fb938f87aa1597",
+      "bytes": 231
+    },
+    "BOUNDED-BRIEF.json": {
+      "sha256": "28ce5189e373764518420c740dea6f83f18885256ac0235652b81f8443599f14",
+      "bytes": 1854
+    },
+    "QUALIFICATION-MANDATE.md": {
+      "sha256": "be99c9e153326963a5592cb4dc17dea4ea3374d4a5b4c3b89e8235ae0653048e",
+      "bytes": 1146
+    },
+    "README.md": {
+      "sha256": "82ef158a5af4840c7d46dad1494acaf7757456839d71bfa9b3e53eb050f2bc73",
+      "bytes": 237
+    },
+    ".docflow_workspace/CONVENTIONS.md": {
+      "sha256": "2532c54806a34067413a9e246f3ffd9acb757f880b30a9cfd87bc7c4c71939cc",
+      "bytes": 228
+    },
+    ".docflow_workspace/INDEX.md": {
+      "sha256": "821c05077e628f06d3072f6454fe51ccf7a4bf70ef91571ae8abd3855733dba1",
+      "bytes": 295
+    },
+    ".docflow_workspace/workspace.yaml": {
+      "sha256": "5e1d580dfc3a5e5719503b59e3311b19684c1a0a886581617096ed239d01bbb0",
+      "bytes": 448
+    },
+    ".docflow_workspace/integrations/sources.yaml": {
+      "sha256": "8ed280b0803b4b5b5cb7aa64821a7e57960821e47b347e5b15eda33ad37a8547",
+      "bytes": 26
+    },
+    ".docflow_workspace/runs/dsh-guide-readout--6496e812c397.md": {
+      "sha256": "d045f5b84e2bccf2af519f03c2b86b91a98350835d6521f6bb60b489f1dda1c1",
+      "bytes": 4884
+    },
+    ".docflow_workspace/runs/dsh-guide-recovery--e8d879558799.md": {
+      "sha256": "5e749840e692e7ea995cf88e1368b0bc89d5b993f807d5a7a1ab4d7a3c851b77",
+      "bytes": 8041
+    },
+    ".docflow_workspace/runs/dsh-guide-supplied-paths--806dd9c67ab9.md": {
+      "sha256": "e4b7e159f1db6936aa7f641e4c66db30cc749097dd88bd4d70f2035762dabb7a",
+      "bytes": 2935
+    },
+    ".docflow_workspace/templates/workspace-decisions.md": {
+      "sha256": "8ea735ec2f512be10636f6e78742a88242d88fbdaa3f702d28ccc4316bbd03c1",
+      "bytes": 1012
+    },
+    ".docflow_workspace/templates/workspace-ideas.md": {
+      "sha256": "15ea0a8c324aeac3f0eb8c159c3f1eef76bb316a3946cbfff9c5504a68f38a96",
+      "bytes": 908
+    },
+    ".docflow_workspace/templates/workspace-knowledge.md": {
+      "sha256": "d2fa1dd0b64d295dffb9bfec06e19e11d62db072e496010ed50c5f60a1efde77",
+      "bytes": 983
+    },
+    ".docflow_workspace/templates/workspace-runs.md": {
+      "sha256": "e704db6a305c15b4c07b82c992632303ae7a3947c0886b32a5ef4addc0bbb21b",
+      "bytes": 2716
+    },
+    ".docflow_workspace/templates/workspace-work.md": {
+      "sha256": "3faade570d60c065c25670391eed7170fa9dbd7f1c1f99d29c36febc846b5520",
+      "bytes": 1355
+    },
+    ".docflow_workspace/work/dsh-guide-readout--d481c1486595.md": {
+      "sha256": "fcb2ca59183ccee300c9e403853a970f061c944ccc840b051827c152df0170f2",
+      "bytes": 5387
+    },
+    "docflow-package/.claude-plugin/plugin.json": {
+      "sha256": "190e5280ef1547fd9a8033d7c7c8633f66dda225b2ca427f49be16f1f191c814",
+      "bytes": 627
+    },
+    "docflow-package/.codex-plugin/plugin.json": {
+      "sha256": "4e875f1e09e3a63bb914f0f89c09edd80e9f7f93218de484735b142c3027a666",
+      "bytes": 567
+    },
+    "docflow-package/workspace/CONTRACT.md": {
+      "sha256": "6e59fc7d26ecae73e65d3f33f44b47a787b304f99b48129534b39ca395938957",
+      "bytes": 13117
+    },
+    "docflow-package/workspace/README.md": {
+      "sha256": "049f63a9edb57a4d43dec096a9e3cdd4408337a6e08a1a7ecc2e532bfd93cf41",
+      "bytes": 5737
+    },
+    "docflow-package/workspace/resolve-assets.mjs": {
+      "sha256": "c1c9a14f3d60ec1a69a8372768a688ed011af766191759bc71db8ca1eb24a6d8",
+      "bytes": 1369
+    },
+    "docflow-package/workspace/schema.json": {
+      "sha256": "46efc122a08d3ed8e8df813f18355b9738fd6619c456f96112b445f93f761583",
+      "bytes": 45317
+    },
+    "docflow-package/workspace/validate.mjs": {
+      "sha256": "c8db90d4925779be8ad11cb0116c161026feb62c454ec5539b191a98b4f6c6cd",
+      "bytes": 36538
+    },
+    "docflow-package/skills/add-convention/SKILL.md": {
+      "sha256": "9f27f42a0070ff43f1d924ed46e6097183dd1c890841a25e62a25e9cfdc1dde4",
+      "bytes": 6823
+    },
+    "docflow-package/skills/agent-wave/SKILL.md": {
+      "sha256": "4841628e4cd70538a263350bbcea022027d0df30be2b1548bbb40f4bc21caeba",
+      "bytes": 16840
+    },
+    "docflow-package/skills/audit/SKILL.md": {
+      "sha256": "06fee6077c4ff5fff559b891707b281879dbe732f0bf021d21ae048868165bbc",
+      "bytes": 31435
+    },
+    "docflow-package/skills/bootstrap/SKILL.md": {
+      "sha256": "5a4551e47a5bb635098a1891fc3dadce61add75e8b94b210c7e9a5be0e07287f",
+      "bytes": 49849
+    },
+    "docflow-package/skills/brainstorm/SKILL.md": {
+      "sha256": "f6a0a0ed500091aa0d329aee78839e5465eb33ad61499cd473dbf1815e479ed1",
+      "bytes": 5957
+    },
+    "docflow-package/skills/new-adr/SKILL.md": {
+      "sha256": "3b8ac8e05f48e599f07b3e590776841736f82f61d00e994ae0ef3a48f2f9f005",
+      "bytes": 12044
+    },
+    "docflow-package/skills/new-plan/SKILL.md": {
+      "sha256": "8a2690887cf3f5068c0a24184b4f4fee0c84ddd7021880c0b4e21b22231a64e6",
+      "bytes": 7173
+    },
+    "docflow-package/skills/rollup/SKILL.md": {
+      "sha256": "8f3260041ca609501adcf23ab9d17724a9fd9bb31096d08e4fbed68d32c8a6ea",
+      "bytes": 4820
+    },
+    "docflow-package/skills/ship-item/SKILL.md": {
+      "sha256": "b929994d4bf1549db452a0b2e08349a9981e1a13fa5060d9422abde8b128114f",
+      "bytes": 12651
+    },
+    "docflow-package/skills/workspace-coordinate/SKILL.md": {
+      "sha256": "a0628eaf1ae5e2b2a7f5f172511f70a529c82ddd7476f313420dc98306bd2a8a",
+      "bytes": 9885
+    },
+    "docflow-package/skills/workspace-orient/SKILL.md": {
+      "sha256": "7faf4acfe0958ae3e4db091c49b758164188a9f13ccde8ce18328c664d8e1d8b",
+      "bytes": 7120
+    },
+    "docflow-package/skills/workspace-plan/SKILL.md": {
+      "sha256": "f27c93402ec98d82dd502ae8e923b99bd4334c61c1fe373129108453c4d55edb",
+      "bytes": 7827
+    },
+    "docflow-package/skills/workspace-setup/SKILL.md": {
+      "sha256": "48d1cb9ede6cd61d43385354cd036815f0ea1511fcd51fc5112688d9fbc1076d",
+      "bytes": 7516
+    },
+    "docflow-package/skills/add-convention/agents/openai.yaml": {
+      "sha256": "beb3b65a44326746f4fdea2c83850d731f194ca3f45875822d71b7d901497078",
+      "bytes": 263
+    },
+    "docflow-package/skills/agent-wave/agents/openai.yaml": {
+      "sha256": "a0947c21f73d34be68b2ab03edba337a3fb33a39613f199c25a3703efbab40e9",
+      "bytes": 248
+    },
+    "docflow-package/skills/audit/agents/openai.yaml": {
+      "sha256": "57ee1f02555ae22915a4f445d97ee4a85fb8f6468256c16ff6ea7a59491067b7",
+      "bytes": 261
+    },
+    "docflow-package/skills/bootstrap/agents/openai.yaml": {
+      "sha256": "47b714a67f5a8508fd9ebe0602499804b17c284aadf86c4c7e176e379df6b501",
+      "bytes": 302
+    },
+    "docflow-package/skills/bootstrap/templates/adr-0001-seed.md": {
+      "sha256": "cfcc060d32ae013634bc788aa20fd9b7f69ae3c90399d18f17a72703ea573b1c",
+      "bytes": 5507
+    },
+    "docflow-package/skills/bootstrap/templates/adr-capability.md": {
+      "sha256": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+      "bytes": 1346
+    },
+    "docflow-package/skills/bootstrap/templates/adr-technology.md": {
+      "sha256": "02abe97bf3f956972621490c0c6c4a5aa4210b259c33114cadc84a2ab7fbffc0",
+      "bytes": 1402
+    },
+    "docflow-package/skills/bootstrap/templates/AGENTS.md": {
+      "sha256": "a15813bbae21dc249632dc15aca6593e8b06c3b2876e1281998eda5fe918534a",
+      "bytes": 12454
+    },
+    "docflow-package/skills/bootstrap/templates/CLAUDE.md": {
+      "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+      "bytes": 11
+    },
+    "docflow-package/skills/bootstrap/templates/CONVENTIONS.md": {
+      "sha256": "2a15da40de46a45aa9111d261f308987c130efe065deed3a155edfbe41f82b70",
+      "bytes": 20575
+    },
+    "docflow-package/skills/bootstrap/templates/federation-config.md": {
+      "sha256": "27e9a9c0fde4a1edf235c27a69c4aaff1051bc14a17a4e862592c30e9e92421a",
+      "bytes": 1111
+    },
+    "docflow-package/skills/bootstrap/templates/federation-index.md": {
+      "sha256": "7c548fa6c04ef2b0144a183d7b1ab926f559cfa693e0d07d4028eb9ced75add2",
+      "bytes": 1096
+    },
+    "docflow-package/skills/bootstrap/templates/plan-README.md": {
+      "sha256": "d6fb25d7b7ac6da6f4ff3f3e074ce6e8025d0733551a5a171cf7768022a4f6d8",
+      "bytes": 3447
+    },
+    "docflow-package/skills/bootstrap/templates/workspace-AGENTS.md": {
+      "sha256": "e9f1950d721a7022f91b2ca1eea0525fb06e829163e10c1844fb938f87aa1597",
+      "bytes": 231
+    },
+    "docflow-package/skills/bootstrap/templates/workspace-assets.json": {
+      "sha256": "a4a1cb2041d5d69cda123e708dd45fecaab48e779a387ed3ecd75b2a756ede41",
+      "bytes": 465
+    },
+    "docflow-package/skills/bootstrap/templates/workspace-brief.json": {
+      "sha256": "44d2c09b6425ba1fb9619ee95538fc32e5207ad1bb2e4d7a0604f09580f5171f",
+      "bytes": 1673
+    },
+    "docflow-package/skills/bootstrap/templates/workspace-CONVENTIONS.md": {
+      "sha256": "2532c54806a34067413a9e246f3ffd9acb757f880b30a9cfd87bc7c4c71939cc",
+      "bytes": 228
+    },
+    "docflow-package/skills/bootstrap/templates/workspace-decisions.md": {
+      "sha256": "8ea735ec2f512be10636f6e78742a88242d88fbdaa3f702d28ccc4316bbd03c1",
+      "bytes": 1012
+    },
+    "docflow-package/skills/bootstrap/templates/workspace-grant.json": {
+      "sha256": "d71733a63a0197da99a68d16b2405a8fbdcf0c08f573e89f97dceda06dad9a8f",
+      "bytes": 1064
+    },
+    "docflow-package/skills/bootstrap/templates/workspace-ideas.md": {
+      "sha256": "15ea0a8c324aeac3f0eb8c159c3f1eef76bb316a3946cbfff9c5504a68f38a96",
+      "bytes": 908
+    },
+    "docflow-package/skills/bootstrap/templates/workspace-INDEX.md": {
+      "sha256": "abb9e5ed4bdbd268dcfa8a0310f470c6de7df64623e9146a8981c2a66c23bed3",
+      "bytes": 285
+    },
+    "docflow-package/skills/bootstrap/templates/workspace-knowledge.md": {
+      "sha256": "d2fa1dd0b64d295dffb9bfec06e19e11d62db072e496010ed50c5f60a1efde77",
+      "bytes": 983
+    },
+    "docflow-package/skills/bootstrap/templates/workspace-profile-coordination.md": {
+      "sha256": "9c4c37e7139890778bfc538e5b58a4866ea168faf536ec6d4b82cf4604b47b0d",
+      "bytes": 576
+    },
+    "docflow-package/skills/bootstrap/templates/workspace-profile-documentation.md": {
+      "sha256": "02c8ae5520691e3c53584304693247175e55218d357f519ae062060df0ac1be0",
+      "bytes": 580
+    },
+    "docflow-package/skills/bootstrap/templates/workspace-profile-react-review.md": {
+      "sha256": "09afeb68ada7e1b885b16ee12edb356219328db895c55089feb87c3e1c591bd4",
+      "bytes": 582
+    },
+    "docflow-package/skills/bootstrap/templates/workspace-profile-svelte-tauri.md": {
+      "sha256": "c3ed7cb2af855b728ff5e80a1d8910e2d2bbd820f791917c0989059af137e3c3",
+      "bytes": 618
+    },
+    "docflow-package/skills/bootstrap/templates/workspace-profile.md": {
+      "sha256": "12ebc1eb964c115c272bf815b1e997894bdf686958bbdafb75c1173537d6384f",
+      "bytes": 418
+    },
+    "docflow-package/skills/bootstrap/templates/workspace-README.md": {
+      "sha256": "37016f33eefd758cca43707450dea4dde29b77b1b0712c8f7d54ffc5995dc4a0",
+      "bytes": 365
+    },
+    "docflow-package/skills/bootstrap/templates/workspace-receipt.json": {
+      "sha256": "0ec635a204144af5750a3ba96cb6dd86836b6c7297d827452b75fc3d5538a767",
+      "bytes": 955
+    },
+    "docflow-package/skills/bootstrap/templates/workspace-recommendation.json": {
+      "sha256": "be55c2598c5927ee1673e2cb28be7eb3c1998d5c33b90bad541a349affa4895e",
+      "bytes": 533
+    },
+    "docflow-package/skills/bootstrap/templates/workspace-registry.yaml": {
+      "sha256": "23eed24585f3cd429177c2b98edc9ada743d0939b99b7d55461dfe2e24188146",
+      "bytes": 170
+    },
+    "docflow-package/skills/bootstrap/templates/workspace-role-coordinator.md": {
+      "sha256": "a5aa0ea80b79f7c531452873ca6ad574ce806ddd4789da094727c08fb1e9df12",
+      "bytes": 1372
+    },
+    "docflow-package/skills/bootstrap/templates/workspace-role-domain-specialist.md": {
+      "sha256": "c36365d7f85f332e9c0fb0fd65482145243f87763d4addbbbc5db6e2c441ae3b",
+      "bytes": 1399
+    },
+    "docflow-package/skills/bootstrap/templates/workspace-role-executor.md": {
+      "sha256": "7e7b2cf226aa041765e2f7b998b85975bc53ede0b3270c7ea10702782ab0f3ac",
+      "bytes": 1327
+    },
+    "docflow-package/skills/bootstrap/templates/workspace-role-reviewer.md": {
+      "sha256": "a422fe3dbe568521c35792b08fcf2f87badf5d98286fc24aba541d9577b52599",
+      "bytes": 1313
+    },
+    "docflow-package/skills/bootstrap/templates/workspace-role.md": {
+      "sha256": "42ee4e9f8f4185d932926dd12fc6dc2bc6cc2acfe6ffb77f38a0918c258ececa",
+      "bytes": 577
+    },
+    "docflow-package/skills/bootstrap/templates/workspace-runs.md": {
+      "sha256": "e704db6a305c15b4c07b82c992632303ae7a3947c0886b32a5ef4addc0bbb21b",
+      "bytes": 2716
+    },
+    "docflow-package/skills/bootstrap/templates/workspace-sources.yaml": {
+      "sha256": "869f6100e4e744027be94b931803eb5c8651aee1caf1d36c94b033d0d88242a2",
+      "bytes": 535
+    },
+    "docflow-package/skills/bootstrap/templates/workspace-starter-sources.yaml": {
+      "sha256": "17064b421791955cbfa50acfad561de52bf0d90bef686baf13d11a4fc223ed96",
+      "bytes": 2929
+    },
+    "docflow-package/skills/bootstrap/templates/workspace-work.md": {
+      "sha256": "3faade570d60c065c25670391eed7170fa9dbd7f1c1f99d29c36febc846b5520",
+      "bytes": 1355
+    },
+    "docflow-package/skills/bootstrap/templates/_agent-LOCKS.md": {
+      "sha256": "d489163b3d809f583ed4f400d5f16d5edead61bbc6f3934e1fee85b6e49f26eb",
+      "bytes": 985
+    },
+    "docflow-package/skills/bootstrap/templates/_agent-prompts-autonomous.md": {
+      "sha256": "f6bbaa2f881961aa72b96a19ff6b278fb0285547d5009a2efa3a39abb0f609e3",
+      "bytes": 10057
+    },
+    "docflow-package/skills/bootstrap/templates/_agent-ROLES.md": {
+      "sha256": "b7c8478b308a3abe4379746041e412b992c21e7405eb799b570cfe7d15de6628",
+      "bytes": 871
+    },
+    "docflow-package/skills/brainstorm/agents/openai.yaml": {
+      "sha256": "81410e3c4de176623ad6e46bac282391cfa86df8f092e134ee5761fa33fd456f",
+      "bytes": 273
+    },
+    "docflow-package/skills/new-adr/agents/openai.yaml": {
+      "sha256": "c31dbe2082afde99cbf40d8a5b9fe4b15368130d88c33f4334cd5ff3d1b4124d",
+      "bytes": 224
+    },
+    "docflow-package/skills/new-plan/agents/openai.yaml": {
+      "sha256": "50db151c62309e22396f0ba485bb75eaaecdbca7484814ba34ed6d81900e2378",
+      "bytes": 190
+    },
+    "docflow-package/skills/rollup/agents/openai.yaml": {
+      "sha256": "24ea6030c82b79ccf243ea28dab2481e3433188547f6ca10aee40dec4835b050",
+      "bytes": 257
+    },
+    "docflow-package/skills/ship-item/agents/openai.yaml": {
+      "sha256": "3343b8c5acd560e4ccb68e8431c4e74c6fa6506f5ed59001172dc84609c9a5a6",
+      "bytes": 214
+    },
+    "docflow-package/skills/workspace-coordinate/agents/openai.yaml": {
+      "sha256": "f17ebcdf8be6d3f542c0a523144bde41283ca36526c1649c76b6dc36c0808eb1",
+      "bytes": 296
+    },
+    "docflow-package/skills/workspace-orient/agents/openai.yaml": {
+      "sha256": "b85554ac14ffb3540ed02bc92455907656cb1ae86798677578cdbb10e102e15b",
+      "bytes": 272
+    },
+    "docflow-package/skills/workspace-plan/agents/openai.yaml": {
+      "sha256": "221fc9d4d61f8d47a0ce82c40158232100cd79ebe6013200b03bcf046eb8c806",
+      "bytes": 289
+    },
+    "docflow-package/skills/workspace-setup/agents/openai.yaml": {
+      "sha256": "e750c1fd433c816b44affc913c7098adab173b84e2f10ea11927670ef042f30c",
+      "bytes": 260
+    },
+    "docflow-package/workspace/fixtures/adverse.json": {
+      "sha256": "84cbf0ce22a3605c04de47a720c026e14a0b3db352a716a945573d3d436275d1",
+      "bytes": 13723
+    },
+    "docflow-package/workspace/fixtures/manifest.json": {
+      "sha256": "d3ce8b0d99c1dca14becf66a8497561a12cc83bfa3289fa2045fbbba9548b69f",
+      "bytes": 1114
+    },
+    "docflow-package/workspace/fixtures/materialise.mjs": {
+      "sha256": "f4dfca9cccc1a853e74130b9205ac4e585ecd377ef7bbf060e5f86eddafddc8c",
+      "bytes": 1971
+    },
+    "docflow-package/workspace/fixtures/README.md": {
+      "sha256": "8536688e2ecf516ef0df6795b11ab5c5713e5b6ecc9450c2f7bcc3c61b420f9d",
+      "bytes": 2113
+    },
+    "docflow-package/workspace/guides/claude-code.md": {
+      "sha256": "e0c80985cd9e5a0291368ff8e80018ee06d48812eaeafe5e92a12dca0de143f0",
+      "bytes": 3438
+    },
+    "docflow-package/workspace/guides/codex-app.md": {
+      "sha256": "ca7e6d1f304dcbc8ebce05b560f76700f833cbfa72bc607375d5fd7364839d06",
+      "bytes": 3718
+    },
+    "docflow-package/workspace/guides/cursor.md": {
+      "sha256": "39a5cbb63035a5e3e1cc7b954683124e683d504a96270de4404cdfadc27c5b1c",
+      "bytes": 3545
+    },
+    "docflow-package/workspace/guides/deepseek-harness.md": {
+      "sha256": "282bdb9ed21e7826f48b79e2793ce9efc2d0d4ce1ba1b56b1f688195a4cc03ed",
+      "bytes": 3650
+    },
+    "docflow-package/workspace/guides/orca.md": {
+      "sha256": "377ec4be7427b31eec6b694aa1ed8c21f29a3c71685b3c15f0ac456694a9d78e",
+      "bytes": 3619
+    },
+    "docflow-package/workspace/guides/README.md": {
+      "sha256": "6e4bc65d39cd2ddcf47c6cf0b2589395a92945f4329fba5ec6ced4327f1afcbc",
+      "bytes": 2464
+    },
+    "docflow-package/workspace/guides/recommendations.md": {
+      "sha256": "a2479dcb0664878ea74890672a2141d6e56b7295fc37a2778c3a44b95796b86d",
+      "bytes": 3628
+    },
+    "docflow-package/workspace/guides/retrieval-experimental.md": {
+      "sha256": "dac0b10b3219d4b8bbdf467be77e9a01a3173eca0822a00c9d120f894ba40476",
+      "bytes": 2215
+    },
+    "docflow-package/workspace/guides/zcode.md": {
+      "sha256": "8f14b944441e280746d3ad0be89dc7bfb5c84c87cc2ffc22bc6b4c255de199d1",
+      "bytes": 3629
+    },
+    "docflow-package/workspace/repository-fixtures/manifest.json": {
+      "sha256": "7fdd64513df9dc0d14f5a773638e32f23f282b56407ed46eeb3dee24876d93b5",
+      "bytes": 75935
+    },
+    "docflow-package/workspace/repository-fixtures/README.md": {
+      "sha256": "b1da333151f556a95c8c1059b8d3842a27068259cec5cb78e78832221110fce0",
+      "bytes": 4707
+    },
+    "docflow-package/workspace/fixtures/two-repository/.gitignore": {
+      "sha256": "feb4e1ad73f0bf59d1e7b9224b511da0fd8d1eb28f9633b541cd2f42cd77a686",
+      "bytes": 35
+    },
+    "docflow-package/workspace/fixtures/two-repository/.npmignore": {
+      "sha256": "362a64c44ff196f3df0a8d10bdadcaf6cfa8e11895ac23a03d33c3c97f7e7a02",
+      "bytes": 73
+    },
+    "docflow-package/workspace/fixtures/two-repository/AGENTS.md": {
+      "sha256": "e9f1950d721a7022f91b2ca1eea0525fb06e829163e10c1844fb938f87aa1597",
+      "bytes": 231
+    },
+    "docflow-package/workspace/fixtures/two-repository/README.md": {
+      "sha256": "d03208c340b910fb7ecc0986c1e2f3a2d6fbed909ba2a070706a8d4769b665b1",
+      "bytes": 309
+    },
+    "docflow-package/workspace/fixtures/two-repository/.docflow_workspace/CONVENTIONS.md": {
+      "sha256": "2532c54806a34067413a9e246f3ffd9acb757f880b30a9cfd87bc7c4c71939cc",
+      "bytes": 228
+    },
+    "docflow-package/workspace/fixtures/two-repository/.docflow_workspace/INDEX.md": {
+      "sha256": "fb2a70c926359c2c99b085306f0070e42a3d57544841013f212d1bb793eefcb2",
+      "bytes": 283
+    },
+    "docflow-package/workspace/fixtures/two-repository/.docflow_workspace/workspace.yaml": {
+      "sha256": "517467783798bf28f75c85d8e66ada00befcf9776340a59ceb718280e656d94e",
+      "bytes": 789
+    },
+    "docflow-package/workspace/fixtures/two-repository/.docflow_workspace/agents/reviewer.md": {
+      "sha256": "42ee4e9f8f4185d932926dd12fc6dc2bc6cc2acfe6ffb77f38a0918c258ececa",
+      "bytes": 577
+    },
+    "docflow-package/workspace/fixtures/two-repository/.docflow_workspace/decisions/preserve-legacy-response--234567892222.md": {
+      "sha256": "3ec6badc240784084437216b72a0061bee3f9780a6240fcdcf44c6eb886a9a14",
+      "bytes": 1565
+    },
+    "docflow-package/workspace/fixtures/two-repository/.docflow_workspace/ideas/reliable-exports--123456781111.md": {
+      "sha256": "1af2bd95897be7ac9f37b6b74bb092c238bd805797837745f265ab690ef6fb83",
+      "bytes": 832
+    },
+    "docflow-package/workspace/fixtures/two-repository/.docflow_workspace/integrations/sources.yaml": {
+      "sha256": "869f6100e4e744027be94b931803eb5c8651aee1caf1d36c94b033d0d88242a2",
+      "bytes": 535
+    },
+    "docflow-package/workspace/fixtures/two-repository/.docflow_workspace/knowledge/legacy-client-observation--456789014444.md": {
+      "sha256": "befe391a20a8e46cf1c44b34b75f8aed086cf40932600b3c550e1cd7e8ae6bc8",
+      "bytes": 841
+    },
+    "docflow-package/workspace/fixtures/two-repository/.docflow_workspace/profiles/careful-review.md": {
+      "sha256": "12ebc1eb964c115c272bf815b1e997894bdf686958bbdafb75c1173537d6384f",
+      "bytes": 418
+    },
+    "docflow-package/workspace/fixtures/two-repository/.docflow_workspace/runs/api-interrupted--567890125555.md": {
+      "sha256": "30f708bf0c169138d2f2986805b4210a7c948f5b6af8e914aadc593ad23a73f9",
+      "bytes": 4512
+    },
+    "docflow-package/workspace/fixtures/two-repository/.docflow_workspace/runs/api-reassigned--678901236666.md": {
+      "sha256": "8f8480a7c12318272d1f99f9be02ebee335f9f48e332cb68906cbe550854dd36",
+      "bytes": 4685
+    },
+    "docflow-package/workspace/fixtures/two-repository/.docflow_workspace/runs/mobile-revoked--789012347777.md": {
+      "sha256": "0da45671c1aedf3bf695a6f89ef515f89a2ac4f3fc551a67e941bcd8bb354fc1",
+      "bytes": 4355
+    },
+    "docflow-package/workspace/fixtures/two-repository/.docflow_workspace/work/deliver-compatible-exports--345678903333.md": {
+      "sha256": "6e9e2f45fc5641b1071c7f45ffde1f8cabb42ccbab8ab51e80c3977e91b2ab36",
+      "bytes": 10682
+    },
+    "docflow-package/workspace/fixtures/two-repository/repos/api/AGENTS.md": {
+      "sha256": "fae2a5d6b44845a29a40b0e4b3a018d2a795b64d9fb4cdb43ddb7a46a043395a",
+      "bytes": 98
+    },
+    "docflow-package/workspace/fixtures/two-repository/repos/api/evidence.txt": {
+      "sha256": "61e998b6ff0ebb3b243671fedc06d04638eed8d6be889fec17aec3e505aca364",
+      "bytes": 97
+    },
+    "docflow-package/workspace/fixtures/two-repository/repos/api/work.md": {
+      "sha256": "c097937deea518cd41d951a52b74daa77490db79910f4fe0664332df946c4ec0",
+      "bytes": 67
+    },
+    "docflow-package/workspace/fixtures/two-repository/repos/mobile/evidence.txt": {
+      "sha256": "61e998b6ff0ebb3b243671fedc06d04638eed8d6be889fec17aec3e505aca364",
+      "bytes": 97
+    },
+    "docflow-package/workspace/fixtures/two-repository/repos/mobile/README.md": {
+      "sha256": "2305873d4227b4578bf049a2b5b7e72843fcaf276f29116e6a1c84754d084d4c",
+      "bytes": 80
+    },
+    "docflow-package/workspace/fixtures/two-repository/repos/mobile/work.md": {
+      "sha256": "c097937deea518cd41d951a52b74daa77490db79910f4fe0664332df946c4ec0",
+      "bytes": 67
+    },
+    "docflow-package/workspace/repository-fixtures/cases/completion-integrated/.docflow": {
+      "sha256": "6f57ef45dc3ff1870feffe9e1c170acec3665afe0c7cc88ec89e01a6acd02fae",
+      "bytes": 8
+    },
+    "docflow-package/workspace/repository-fixtures/cases/completion-integrated/AGENTS.md": {
+      "sha256": "117e7efd258ed0d63635afe0101574777f5ca73f73d6a980e9971ec05a3ff221",
+      "bytes": 1102
+    },
+    "docflow-package/workspace/repository-fixtures/cases/completion-integrated/CLAUDE.md": {
+      "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+      "bytes": 11
+    },
+    "docflow-package/workspace/repository-fixtures/cases/completion-integrated/CONVENTIONS.md": {
+      "sha256": "4cdbdae9957d132bd95b227a9e07635d4133b7623535bd2cf82be94bc1cadb2d",
+      "bytes": 9213
+    },
+    "docflow-package/workspace/repository-fixtures/cases/completion-integrated/INDEX.md": {
+      "sha256": "011d94acaed8f0e08e5b4a2d0955b843835c54d4463c734a501a26d536be12ee",
+      "bytes": 163
+    },
+    "docflow-package/workspace/repository-fixtures/cases/completion-prepared/.docflow": {
+      "sha256": "6f57ef45dc3ff1870feffe9e1c170acec3665afe0c7cc88ec89e01a6acd02fae",
+      "bytes": 8
+    },
+    "docflow-package/workspace/repository-fixtures/cases/completion-prepared/AGENTS.md": {
+      "sha256": "117e7efd258ed0d63635afe0101574777f5ca73f73d6a980e9971ec05a3ff221",
+      "bytes": 1102
+    },
+    "docflow-package/workspace/repository-fixtures/cases/completion-prepared/CLAUDE.md": {
+      "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+      "bytes": 11
+    },
+    "docflow-package/workspace/repository-fixtures/cases/completion-prepared/CONVENTIONS.md": {
+      "sha256": "4cdbdae9957d132bd95b227a9e07635d4133b7623535bd2cf82be94bc1cadb2d",
+      "bytes": 9213
+    },
+    "docflow-package/workspace/repository-fixtures/cases/completion-prepared/INDEX.md": {
+      "sha256": "011d94acaed8f0e08e5b4a2d0955b843835c54d4463c734a501a26d536be12ee",
+      "bytes": 163
+    },
+    "docflow-package/workspace/repository-fixtures/cases/default-root/AGENTS.md": {
+      "sha256": "17a6e985a53e428d323f05849dac3659f2d4940ff53796ea67b141e354a0d98c",
+      "bytes": 447
+    },
+    "docflow-package/workspace/repository-fixtures/cases/default-root/CLAUDE.md": {
+      "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+      "bytes": 11
+    },
+    "docflow-package/workspace/repository-fixtures/cases/disagreeing-pointer/.docflow": {
+      "sha256": "6f57ef45dc3ff1870feffe9e1c170acec3665afe0c7cc88ec89e01a6acd02fae",
+      "bytes": 8
+    },
+    "docflow-package/workspace/repository-fixtures/cases/disagreeing-pointer/AGENTS.md": {
+      "sha256": "3b1503f2de63a03a758d0cddd454642c61e7ea3ba6685300c8cce3b83347410c",
+      "bytes": 429
+    },
+    "docflow-package/workspace/repository-fixtures/cases/disagreeing-pointer/CLAUDE.md": {
+      "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+      "bytes": 11
+    },
+    "docflow-package/workspace/repository-fixtures/cases/disagreeing-pointer/CONVENTIONS.md": {
+      "sha256": "b80dad238246373713ad96277123cfec186c6f3e1edd01de094f5cef10d6aac7",
+      "bytes": 5952
+    },
+    "docflow-package/workspace/repository-fixtures/cases/disagreeing-pointer/INDEX.md": {
+      "sha256": "b796453e3e0719130d1780f70f26c602de1dc1ad065b400ca5127f25f91f7b8a",
+      "bytes": 160
+    },
+    "docflow-package/workspace/repository-fixtures/cases/docs-pointer/.docflow": {
+      "sha256": "e972336f7fd73e741d6b00828f27dbe02b64c97787c67b515b4847a514ae0a61",
+      "bytes": 11
+    },
+    "docflow-package/workspace/repository-fixtures/cases/docs-pointer/AGENTS.md": {
+      "sha256": "c3d54885b50f868b42f7745a421892cb82b1d2ecf562cff93ff6084897288b4e",
+      "bytes": 439
+    },
+    "docflow-package/workspace/repository-fixtures/cases/docs-pointer/CLAUDE.md": {
+      "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+      "bytes": 11
+    },
+    "docflow-package/workspace/repository-fixtures/cases/duplicate-number/.docflow": {
+      "sha256": "6f57ef45dc3ff1870feffe9e1c170acec3665afe0c7cc88ec89e01a6acd02fae",
+      "bytes": 8
+    },
+    "docflow-package/workspace/repository-fixtures/cases/duplicate-number/AGENTS.md": {
+      "sha256": "3b1503f2de63a03a758d0cddd454642c61e7ea3ba6685300c8cce3b83347410c",
+      "bytes": 429
+    },
+    "docflow-package/workspace/repository-fixtures/cases/duplicate-number/CLAUDE.md": {
+      "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+      "bytes": 11
+    },
+    "docflow-package/workspace/repository-fixtures/cases/duplicate-number/CONVENTIONS.md": {
+      "sha256": "70e8696b6cb91f88109de9681aa7cdaed9db558a664409cb18d7b785ac88ac27",
+      "bytes": 5948
+    },
+    "docflow-package/workspace/repository-fixtures/cases/duplicate-number/INDEX.md": {
+      "sha256": "b796453e3e0719130d1780f70f26c602de1dc1ad065b400ca5127f25f91f7b8a",
+      "bytes": 160
+    },
+    "docflow-package/workspace/repository-fixtures/cases/explicit-two-shape/AGENTS.md": {
+      "sha256": "17a6e985a53e428d323f05849dac3659f2d4940ff53796ea67b141e354a0d98c",
+      "bytes": 447
+    },
+    "docflow-package/workspace/repository-fixtures/cases/explicit-two-shape/CLAUDE.md": {
+      "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+      "bytes": 11
+    },
+    "docflow-package/workspace/repository-fixtures/cases/federation-home/.docflow": {
+      "sha256": "6f57ef45dc3ff1870feffe9e1c170acec3665afe0c7cc88ec89e01a6acd02fae",
+      "bytes": 8
+    },
+    "docflow-package/workspace/repository-fixtures/cases/federation-home/AGENTS.md": {
+      "sha256": "3b1503f2de63a03a758d0cddd454642c61e7ea3ba6685300c8cce3b83347410c",
+      "bytes": 429
+    },
+    "docflow-package/workspace/repository-fixtures/cases/federation-home/CLAUDE.md": {
+      "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+      "bytes": 11
+    },
+    "docflow-package/workspace/repository-fixtures/cases/federation-home/CONVENTIONS.md": {
+      "sha256": "70e8696b6cb91f88109de9681aa7cdaed9db558a664409cb18d7b785ac88ac27",
+      "bytes": 5948
+    },
+    "docflow-package/workspace/repository-fixtures/cases/federation-home/federation-index.md": {
+      "sha256": "9b19422a548786813eae463a736446a8e03d0acad26e186520f4c24a7a884f34",
+      "bytes": 596
+    },
+    "docflow-package/workspace/repository-fixtures/cases/federation-home/federation.md": {
+      "sha256": "26b4c46a656a7a425141d31ada53f5363b724d6ffbaa138bcb2d7c1bdf0d1481",
+      "bytes": 440
+    },
+    "docflow-package/workspace/repository-fixtures/cases/federation-home/INDEX.md": {
+      "sha256": "b796453e3e0719130d1780f70f26c602de1dc1ad065b400ca5127f25f91f7b8a",
+      "bytes": 160
+    },
+    "docflow-package/workspace/repository-fixtures/cases/federation-member/.docflow": {
+      "sha256": "e972336f7fd73e741d6b00828f27dbe02b64c97787c67b515b4847a514ae0a61",
+      "bytes": 11
+    },
+    "docflow-package/workspace/repository-fixtures/cases/federation-member/AGENTS.md": {
+      "sha256": "c3d54885b50f868b42f7745a421892cb82b1d2ecf562cff93ff6084897288b4e",
+      "bytes": 439
+    },
+    "docflow-package/workspace/repository-fixtures/cases/federation-member/CLAUDE.md": {
+      "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+      "bytes": 11
+    },
+    "docflow-package/workspace/repository-fixtures/cases/invalid-pointer/.docflow": {
+      "sha256": "7d56ced6b207e0632efbc576695a1b8849b895eec24fa86b82ada22f0cb50041",
+      "bytes": 17
+    },
+    "docflow-package/workspace/repository-fixtures/cases/invalid-pointer/AGENTS.md": {
+      "sha256": "3b1503f2de63a03a758d0cddd454642c61e7ea3ba6685300c8cce3b83347410c",
+      "bytes": 429
+    },
+    "docflow-package/workspace/repository-fixtures/cases/invalid-pointer/CLAUDE.md": {
+      "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+      "bytes": 11
+    },
+    "docflow-package/workspace/repository-fixtures/cases/invalid-pointer/CONVENTIONS.md": {
+      "sha256": "70e8696b6cb91f88109de9681aa7cdaed9db558a664409cb18d7b785ac88ac27",
+      "bytes": 5948
+    },
+    "docflow-package/workspace/repository-fixtures/cases/invalid-pointer/INDEX.md": {
+      "sha256": "b796453e3e0719130d1780f70f26c602de1dc1ad065b400ca5127f25f91f7b8a",
+      "bytes": 160
+    },
+    "docflow-package/workspace/repository-fixtures/cases/invalid-pointer-syntax/.docflow": {
+      "sha256": "17780751d836ae3d54053a343e7d8a3b37f5815d6c5cf4923155e811e66c67b5",
+      "bytes": 16
+    },
+    "docflow-package/workspace/repository-fixtures/cases/invalid-pointer-syntax/AGENTS.md": {
+      "sha256": "3b1503f2de63a03a758d0cddd454642c61e7ea3ba6685300c8cce3b83347410c",
+      "bytes": 429
+    },
+    "docflow-package/workspace/repository-fixtures/cases/invalid-pointer-syntax/CLAUDE.md": {
+      "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+      "bytes": 11
+    },
+    "docflow-package/workspace/repository-fixtures/cases/invalid-pointer-syntax/CONVENTIONS.md": {
+      "sha256": "70e8696b6cb91f88109de9681aa7cdaed9db558a664409cb18d7b785ac88ac27",
+      "bytes": 5948
+    },
+    "docflow-package/workspace/repository-fixtures/cases/invalid-pointer-syntax/INDEX.md": {
+      "sha256": "b796453e3e0719130d1780f70f26c602de1dc1ad065b400ca5127f25f91f7b8a",
+      "bytes": 160
+    },
+    "docflow-package/workspace/repository-fixtures/cases/legacy-no-manifest/AGENTS.md": {
+      "sha256": "3b1503f2de63a03a758d0cddd454642c61e7ea3ba6685300c8cce3b83347410c",
+      "bytes": 429
+    },
+    "docflow-package/workspace/repository-fixtures/cases/legacy-no-manifest/CLAUDE.md": {
+      "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+      "bytes": 11
+    },
+    "docflow-package/workspace/repository-fixtures/cases/legacy-no-manifest/CONVENTIONS.md": {
+      "sha256": "70e8696b6cb91f88109de9681aa7cdaed9db558a664409cb18d7b785ac88ac27",
+      "bytes": 5948
+    },
+    "docflow-package/workspace/repository-fixtures/cases/legacy-no-manifest/INDEX.md": {
+      "sha256": "b796453e3e0719130d1780f70f26c602de1dc1ad065b400ca5127f25f91f7b8a",
+      "bytes": 160
+    },
+    "docflow-package/workspace/repository-fixtures/cases/legacy-two-range/AGENTS.md": {
+      "sha256": "d18ac880596926c16311424f9aee2bbfef3e94b10878b003b7fe8b0452e23d8b",
+      "bytes": 1237
+    },
+    "docflow-package/workspace/repository-fixtures/cases/legacy-two-range/README.md": {
+      "sha256": "97e95b4ac4a82d191e2cde6502b199fc79bc70373fc3b467a75700f631c962b8",
+      "bytes": 1722
+    },
+    "docflow-package/workspace/repository-fixtures/cases/nested-pointer/.docflow": {
+      "sha256": "2b350d41274bfbca913ee36101c910f2a5694759bcb2e15442275bf40bedff67",
+      "bytes": 35
+    },
+    "docflow-package/workspace/repository-fixtures/cases/nested-pointer/AGENTS.md": {
+      "sha256": "3b5947c2384829ca561850deb4b2ee23d7e074799e32dc88e2ec52f0fec6ea0c",
+      "bytes": 487
+    },
+    "docflow-package/workspace/repository-fixtures/cases/nested-pointer/CLAUDE.md": {
+      "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+      "bytes": 11
+    },
+    "docflow-package/workspace/repository-fixtures/cases/optional-layers/AGENTS.md": {
+      "sha256": "31a3846d7124caf1061fbff90111f464ae8392ed590dc49fed9e1feb6246488b",
+      "bytes": 1147
+    },
+    "docflow-package/workspace/repository-fixtures/cases/optional-layers/CLAUDE.md": {
+      "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+      "bytes": 11
+    },
+    "docflow-package/workspace/repository-fixtures/cases/root-pointer/.docflow": {
+      "sha256": "6f57ef45dc3ff1870feffe9e1c170acec3665afe0c7cc88ec89e01a6acd02fae",
+      "bytes": 8
+    },
+    "docflow-package/workspace/repository-fixtures/cases/root-pointer/AGENTS.md": {
+      "sha256": "3b1503f2de63a03a758d0cddd454642c61e7ea3ba6685300c8cce3b83347410c",
+      "bytes": 429
+    },
+    "docflow-package/workspace/repository-fixtures/cases/root-pointer/CLAUDE.md": {
+      "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+      "bytes": 11
+    },
+    "docflow-package/workspace/repository-fixtures/cases/root-pointer/CONVENTIONS.md": {
+      "sha256": "70e8696b6cb91f88109de9681aa7cdaed9db558a664409cb18d7b785ac88ac27",
+      "bytes": 5948
+    },
+    "docflow-package/workspace/repository-fixtures/cases/root-pointer/INDEX.md": {
+      "sha256": "b796453e3e0719130d1780f70f26c602de1dc1ad065b400ca5127f25f91f7b8a",
+      "bytes": 160
+    },
+    "docflow-package/workspace/repository-fixtures/cases/status-blocked/.docflow": {
+      "sha256": "6f57ef45dc3ff1870feffe9e1c170acec3665afe0c7cc88ec89e01a6acd02fae",
+      "bytes": 8
+    },
+    "docflow-package/workspace/repository-fixtures/cases/status-blocked/AGENTS.md": {
+      "sha256": "117e7efd258ed0d63635afe0101574777f5ca73f73d6a980e9971ec05a3ff221",
+      "bytes": 1102
+    },
+    "docflow-package/workspace/repository-fixtures/cases/status-blocked/CLAUDE.md": {
+      "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+      "bytes": 11
+    },
+    "docflow-package/workspace/repository-fixtures/cases/status-blocked/CONVENTIONS.md": {
+      "sha256": "4cdbdae9957d132bd95b227a9e07635d4133b7623535bd2cf82be94bc1cadb2d",
+      "bytes": 9213
+    },
+    "docflow-package/workspace/repository-fixtures/cases/status-blocked/INDEX.md": {
+      "sha256": "b796453e3e0719130d1780f70f26c602de1dc1ad065b400ca5127f25f91f7b8a",
+      "bytes": 160
+    },
+    "docflow-package/workspace/repository-fixtures/cases/status-claimed/.docflow": {
+      "sha256": "6f57ef45dc3ff1870feffe9e1c170acec3665afe0c7cc88ec89e01a6acd02fae",
+      "bytes": 8
+    },
+    "docflow-package/workspace/repository-fixtures/cases/status-claimed/AGENTS.md": {
+      "sha256": "117e7efd258ed0d63635afe0101574777f5ca73f73d6a980e9971ec05a3ff221",
+      "bytes": 1102
+    },
+    "docflow-package/workspace/repository-fixtures/cases/status-claimed/CLAUDE.md": {
+      "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+      "bytes": 11
+    },
+    "docflow-package/workspace/repository-fixtures/cases/status-claimed/CONVENTIONS.md": {
+      "sha256": "4cdbdae9957d132bd95b227a9e07635d4133b7623535bd2cf82be94bc1cadb2d",
+      "bytes": 9213
+    },
+    "docflow-package/workspace/repository-fixtures/cases/status-claimed/INDEX.md": {
+      "sha256": "b796453e3e0719130d1780f70f26c602de1dc1ad065b400ca5127f25f91f7b8a",
+      "bytes": 160
+    },
+    "docflow-package/workspace/repository-fixtures/cases/status-resumed/.docflow": {
+      "sha256": "6f57ef45dc3ff1870feffe9e1c170acec3665afe0c7cc88ec89e01a6acd02fae",
+      "bytes": 8
+    },
+    "docflow-package/workspace/repository-fixtures/cases/status-resumed/AGENTS.md": {
+      "sha256": "117e7efd258ed0d63635afe0101574777f5ca73f73d6a980e9971ec05a3ff221",
+      "bytes": 1102
+    },
+    "docflow-package/workspace/repository-fixtures/cases/status-resumed/CLAUDE.md": {
+      "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+      "bytes": 11
+    },
+    "docflow-package/workspace/repository-fixtures/cases/status-resumed/CONVENTIONS.md": {
+      "sha256": "4cdbdae9957d132bd95b227a9e07635d4133b7623535bd2cf82be94bc1cadb2d",
+      "bytes": 9213
+    },
+    "docflow-package/workspace/repository-fixtures/cases/status-resumed/INDEX.md": {
+      "sha256": "b796453e3e0719130d1780f70f26c602de1dc1ad065b400ca5127f25f91f7b8a",
+      "bytes": 160
+    },
+    "docflow-package/workspace/repository-fixtures/cases/status-stopped/.docflow": {
+      "sha256": "6f57ef45dc3ff1870feffe9e1c170acec3665afe0c7cc88ec89e01a6acd02fae",
+      "bytes": 8
+    },
+    "docflow-package/workspace/repository-fixtures/cases/status-stopped/AGENTS.md": {
+      "sha256": "117e7efd258ed0d63635afe0101574777f5ca73f73d6a980e9971ec05a3ff221",
+      "bytes": 1102
+    },
+    "docflow-package/workspace/repository-fixtures/cases/status-stopped/CLAUDE.md": {
+      "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+      "bytes": 11
+    },
+    "docflow-package/workspace/repository-fixtures/cases/status-stopped/CONVENTIONS.md": {
+      "sha256": "4cdbdae9957d132bd95b227a9e07635d4133b7623535bd2cf82be94bc1cadb2d",
+      "bytes": 9213
+    },
+    "docflow-package/workspace/repository-fixtures/cases/status-stopped/INDEX.md": {
+      "sha256": "b796453e3e0719130d1780f70f26c602de1dc1ad065b400ca5127f25f91f7b8a",
+      "bytes": 160
+    },
+    "docflow-package/workspace/repository-fixtures/cases/unknown-shape/.docflow": {
+      "sha256": "6f57ef45dc3ff1870feffe9e1c170acec3665afe0c7cc88ec89e01a6acd02fae",
+      "bytes": 8
+    },
+    "docflow-package/workspace/repository-fixtures/cases/unknown-shape/AGENTS.md": {
+      "sha256": "3b1503f2de63a03a758d0cddd454642c61e7ea3ba6685300c8cce3b83347410c",
+      "bytes": 429
+    },
+    "docflow-package/workspace/repository-fixtures/cases/unknown-shape/CLAUDE.md": {
+      "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+      "bytes": 11
+    },
+    "docflow-package/workspace/repository-fixtures/cases/unknown-shape/CONVENTIONS.md": {
+      "sha256": "70e8696b6cb91f88109de9681aa7cdaed9db558a664409cb18d7b785ac88ac27",
+      "bytes": 5948
+    },
+    "docflow-package/workspace/repository-fixtures/cases/unknown-shape/INDEX.md": {
+      "sha256": "b796453e3e0719130d1780f70f26c602de1dc1ad065b400ca5127f25f91f7b8a",
+      "bytes": 160
+    },
+    "docflow-package/workspace/repository-fixtures/cases/unknown-status/.docflow": {
+      "sha256": "6f57ef45dc3ff1870feffe9e1c170acec3665afe0c7cc88ec89e01a6acd02fae",
+      "bytes": 8
+    },
+    "docflow-package/workspace/repository-fixtures/cases/unknown-status/AGENTS.md": {
+      "sha256": "3b1503f2de63a03a758d0cddd454642c61e7ea3ba6685300c8cce3b83347410c",
+      "bytes": 429
+    },
+    "docflow-package/workspace/repository-fixtures/cases/unknown-status/CLAUDE.md": {
+      "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+      "bytes": 11
+    },
+    "docflow-package/workspace/repository-fixtures/cases/unknown-status/CONVENTIONS.md": {
+      "sha256": "70e8696b6cb91f88109de9681aa7cdaed9db558a664409cb18d7b785ac88ac27",
+      "bytes": 5948
+    },
+    "docflow-package/workspace/repository-fixtures/cases/unknown-status/INDEX.md": {
+      "sha256": "b796453e3e0719130d1780f70f26c602de1dc1ad065b400ca5127f25f91f7b8a",
+      "bytes": 160
+    },
+    "docflow-package/workspace/repository-fixtures/cases/completion-integrated/adr/0000-template.md": {
+      "sha256": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+      "bytes": 1346
+    },
+    "docflow-package/workspace/repository-fixtures/cases/completion-integrated/adr/0001-synthetic-capability.md": {
+      "sha256": "8f7d782ec9f71c2c333ea9b2ed6ffca7c41a84a01e9b847157f3dc7927622fa4",
+      "bytes": 1068
+    },
+    "docflow-package/workspace/repository-fixtures/cases/completion-integrated/plan/README.md": {
+      "sha256": "d6fb25d7b7ac6da6f4ff3f3e074ce6e8025d0733551a5a171cf7768022a4f6d8",
+      "bytes": 3447
+    },
+    "docflow-package/workspace/repository-fixtures/cases/completion-integrated/plan/done/2026-09-15-synthetic-implementation.md": {
+      "sha256": "56efd0d5ecd14d887fb67457bd544efe98a550550633d8b5cd0d7d8b6d1504d0",
+      "bytes": 351
+    },
+    "docflow-package/workspace/repository-fixtures/cases/completion-prepared/adr/0000-template.md": {
+      "sha256": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+      "bytes": 1346
+    },
+    "docflow-package/workspace/repository-fixtures/cases/completion-prepared/adr/0001-synthetic-capability.md": {
+      "sha256": "8f7d782ec9f71c2c333ea9b2ed6ffca7c41a84a01e9b847157f3dc7927622fa4",
+      "bytes": 1068
+    },
+    "docflow-package/workspace/repository-fixtures/cases/completion-prepared/plan/README.md": {
+      "sha256": "d6fb25d7b7ac6da6f4ff3f3e074ce6e8025d0733551a5a171cf7768022a4f6d8",
+      "bytes": 3447
+    },
+    "docflow-package/workspace/repository-fixtures/cases/completion-prepared/plan/done/2026-09-15-synthetic-implementation.md": {
+      "sha256": "56efd0d5ecd14d887fb67457bd544efe98a550550633d8b5cd0d7d8b6d1504d0",
+      "bytes": 351
+    },
+    "docflow-package/workspace/repository-fixtures/cases/default-root/.docflow/CONVENTIONS.md": {
+      "sha256": "e14bf4543ff15a6aa76d75482ce4c799f8cace6cd8d9d6313cf43d0a9cebc12f",
+      "bytes": 5955
+    },
+    "docflow-package/workspace/repository-fixtures/cases/default-root/.docflow/INDEX.md": {
+      "sha256": "b796453e3e0719130d1780f70f26c602de1dc1ad065b400ca5127f25f91f7b8a",
+      "bytes": 160
+    },
+    "docflow-package/workspace/repository-fixtures/cases/default-root/.docflow/adr/0000-template.md": {
+      "sha256": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+      "bytes": 1346
+    },
+    "docflow-package/workspace/repository-fixtures/cases/default-root/.docflow/adr/0001-synthetic-capability.md": {
+      "sha256": "ac312c0624dd23013d70814f895aa344551bbe6c70b889ccfbd3d40c9c4409dc",
+      "bytes": 1065
+    },
+    "docflow-package/workspace/repository-fixtures/cases/disagreeing-pointer/adr/0000-template.md": {
+      "sha256": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+      "bytes": 1346
+    },
+    "docflow-package/workspace/repository-fixtures/cases/disagreeing-pointer/adr/0001-synthetic-capability.md": {
+      "sha256": "ac312c0624dd23013d70814f895aa344551bbe6c70b889ccfbd3d40c9c4409dc",
+      "bytes": 1065
+    },
+    "docflow-package/workspace/repository-fixtures/cases/docs-pointer/docs/CONVENTIONS.md": {
+      "sha256": "bc8a32e4cdb79940a74d92add226baca37e5ebfda9cdf231f2dedf72a5afe71c",
+      "bytes": 5951
+    },
+    "docflow-package/workspace/repository-fixtures/cases/docs-pointer/docs/INDEX.md": {
+      "sha256": "b796453e3e0719130d1780f70f26c602de1dc1ad065b400ca5127f25f91f7b8a",
+      "bytes": 160
+    },
+    "docflow-package/workspace/repository-fixtures/cases/docs-pointer/docs/adr/0000-template.md": {
+      "sha256": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+      "bytes": 1346
+    },
+    "docflow-package/workspace/repository-fixtures/cases/docs-pointer/docs/adr/0001-synthetic-capability.md": {
+      "sha256": "ac312c0624dd23013d70814f895aa344551bbe6c70b889ccfbd3d40c9c4409dc",
+      "bytes": 1065
+    },
+    "docflow-package/workspace/repository-fixtures/cases/duplicate-number/adr/0000-template.md": {
+      "sha256": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+      "bytes": 1346
+    },
+    "docflow-package/workspace/repository-fixtures/cases/duplicate-number/adr/0001-other.md": {
+      "sha256": "ac312c0624dd23013d70814f895aa344551bbe6c70b889ccfbd3d40c9c4409dc",
+      "bytes": 1065
+    },
+    "docflow-package/workspace/repository-fixtures/cases/duplicate-number/adr/0001-synthetic-capability.md": {
+      "sha256": "ac312c0624dd23013d70814f895aa344551bbe6c70b889ccfbd3d40c9c4409dc",
+      "bytes": 1065
+    },
+    "docflow-package/workspace/repository-fixtures/cases/explicit-two-shape/.docflow/CONVENTIONS.md": {
+      "sha256": "e829bcf06654e53d0bfe8b4932b830dac5ae56ec2cb569ca61626b766f0ade73",
+      "bytes": 6970
+    },
+    "docflow-package/workspace/repository-fixtures/cases/explicit-two-shape/.docflow/INDEX.md": {
+      "sha256": "839e2b8488669f6a318a16136998faa6ce4d5164153773f064c32ceb916ec96f",
+      "bytes": 299
+    },
+    "docflow-package/workspace/repository-fixtures/cases/explicit-two-shape/.docflow/adr/0000-template-technology.md": {
+      "sha256": "02abe97bf3f956972621490c0c6c4a5aa4210b259c33114cadc84a2ab7fbffc0",
+      "bytes": 1402
+    },
+    "docflow-package/workspace/repository-fixtures/cases/explicit-two-shape/.docflow/adr/0000-template.md": {
+      "sha256": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+      "bytes": 1346
+    },
+    "docflow-package/workspace/repository-fixtures/cases/explicit-two-shape/.docflow/adr/0001-synthetic-capability.md": {
+      "sha256": "c2dbfac6c48850cc17e738be4960c1497b57815768b761a4b746db39e800b5e9",
+      "bytes": 1083
+    },
+    "docflow-package/workspace/repository-fixtures/cases/explicit-two-shape/.docflow/adr/0002-synthetic-technology.md": {
+      "sha256": "8b154ee23f1d60695625a49a87ad714fdf61ea90c4ad258d89c72456e4099a86",
+      "bytes": 1097
+    },
+    "docflow-package/workspace/repository-fixtures/cases/federation-home/adr/0000-template.md": {
+      "sha256": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+      "bytes": 1346
+    },
+    "docflow-package/workspace/repository-fixtures/cases/federation-home/adr/0001-synthetic-capability.md": {
+      "sha256": "ac312c0624dd23013d70814f895aa344551bbe6c70b889ccfbd3d40c9c4409dc",
+      "bytes": 1065
+    },
+    "docflow-package/workspace/repository-fixtures/cases/federation-member/docs/CONVENTIONS.md": {
+      "sha256": "bc8a32e4cdb79940a74d92add226baca37e5ebfda9cdf231f2dedf72a5afe71c",
+      "bytes": 5951
+    },
+    "docflow-package/workspace/repository-fixtures/cases/federation-member/docs/federation.md": {
+      "sha256": "ad87cc51d0592911fc0899d346d7cf00a7afd60741baa992fd37db886801f8b7",
+      "bytes": 453
+    },
+    "docflow-package/workspace/repository-fixtures/cases/federation-member/docs/INDEX.md": {
+      "sha256": "b796453e3e0719130d1780f70f26c602de1dc1ad065b400ca5127f25f91f7b8a",
+      "bytes": 160
+    },
+    "docflow-package/workspace/repository-fixtures/cases/federation-member/docs/adr/0000-template.md": {
+      "sha256": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+      "bytes": 1346
+    },
+    "docflow-package/workspace/repository-fixtures/cases/federation-member/docs/adr/0001-synthetic-capability.md": {
+      "sha256": "ac312c0624dd23013d70814f895aa344551bbe6c70b889ccfbd3d40c9c4409dc",
+      "bytes": 1065
+    },
+    "docflow-package/workspace/repository-fixtures/cases/invalid-pointer/adr/0000-template.md": {
+      "sha256": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+      "bytes": 1346
+    },
+    "docflow-package/workspace/repository-fixtures/cases/invalid-pointer/adr/0001-synthetic-capability.md": {
+      "sha256": "ac312c0624dd23013d70814f895aa344551bbe6c70b889ccfbd3d40c9c4409dc",
+      "bytes": 1065
+    },
+    "docflow-package/workspace/repository-fixtures/cases/invalid-pointer-syntax/adr/0000-template.md": {
+      "sha256": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+      "bytes": 1346
+    },
+    "docflow-package/workspace/repository-fixtures/cases/invalid-pointer-syntax/adr/0001-synthetic-capability.md": {
+      "sha256": "ac312c0624dd23013d70814f895aa344551bbe6c70b889ccfbd3d40c9c4409dc",
+      "bytes": 1065
+    },
+    "docflow-package/workspace/repository-fixtures/cases/legacy-no-manifest/adr/0000-template.md": {
+      "sha256": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+      "bytes": 1346
+    },
+    "docflow-package/workspace/repository-fixtures/cases/legacy-no-manifest/adr/0001-synthetic-capability.md": {
+      "sha256": "ac312c0624dd23013d70814f895aa344551bbe6c70b889ccfbd3d40c9c4409dc",
+      "bytes": 1065
+    },
+    "docflow-package/workspace/repository-fixtures/cases/legacy-two-range/docs/AGENTS.md": {
+      "sha256": "d18ac880596926c16311424f9aee2bbfef3e94b10878b003b7fe8b0452e23d8b",
+      "bytes": 1237
+    },
+    "docflow-package/workspace/repository-fixtures/cases/legacy-two-range/docs/CONVENTIONS.md": {
+      "sha256": "ff390da9ac60ea59a432015e7ae9de93a94956cc796a4d7b5c20ea76715fb172",
+      "bytes": 1891
+    },
+    "docflow-package/workspace/repository-fixtures/cases/legacy-two-range/docs/INDEX.md": {
+      "sha256": "004cd79dacc979c0ff6afcf5fab2075c1ac1a817affce5b2905bfaf94bc85c63",
+      "bytes": 675
+    },
+    "docflow-package/workspace/repository-fixtures/cases/legacy-two-range/docs/README.md": {
+      "sha256": "97e95b4ac4a82d191e2cde6502b199fc79bc70373fc3b467a75700f631c962b8",
+      "bytes": 1722
+    },
+    "docflow-package/workspace/repository-fixtures/cases/legacy-two-range/docs/adr/0000-template.md": {
+      "sha256": "025c654fe43aea32d3133c9072181e4284042b3b1ae012b58b3f4f3e6b89d8c7",
+      "bytes": 494
+    },
+    "docflow-package/workspace/repository-fixtures/cases/legacy-two-range/docs/adr/0001-record-architecture-decisions.md": {
+      "sha256": "937ed161fb04f714c598c2df93b5c243b8b1432402d65fde1e1a66979fa78bb7",
+      "bytes": 1835
+    },
+    "docflow-package/workspace/repository-fixtures/cases/legacy-two-range/docs/adr/0002-searchable-decision-catalogue.md": {
+      "sha256": "7ff364e8d2540d36bc772c7ed54ec24b6d2fa703ee9129bbc68eb52d391a723c",
+      "bytes": 1342
+    },
+    "docflow-package/workspace/repository-fixtures/cases/legacy-two-range/docs/adr/0003-queue-driven-implementation.md": {
+      "sha256": "9de057c8dcde822182be123c2b46256d2237362d0f1839dc2da267cfbd72e194",
+      "bytes": 1377
+    },
+    "docflow-package/workspace/repository-fixtures/cases/legacy-two-range/docs/adr/0100-template.md": {
+      "sha256": "1fa11e31ea96f846e101ce6091bdc4fdce1d08f933afb669e6a8efc852d98cfa",
+      "bytes": 575
+    },
+    "docflow-package/workspace/repository-fixtures/cases/legacy-two-range/docs/adr/0101-markdown-files-in-git.md": {
+      "sha256": "fa3f8d69bafa01192ca2aac85623c030d8a6c2301a8f0c41cb9b818e289c6281",
+      "bytes": 1670
+    },
+    "docflow-package/workspace/repository-fixtures/cases/legacy-two-range/docs/adr/0102-static-verify-script.md": {
+      "sha256": "f9e5ba641865431b6a65e26f1cbea7997e75a1c4abd72327b55a92951311aa19",
+      "bytes": 1612
+    },
+    "docflow-package/workspace/repository-fixtures/cases/legacy-two-range/docs/plan/README.md": {
+      "sha256": "179d9c876a43053bd814bd8a1f6c6967d22f8a53ff6a4d9fa4b57b3449227457",
+      "bytes": 160
+    },
+    "docflow-package/workspace/repository-fixtures/cases/legacy-two-range/docs/domains/platform/README.md": {
+      "sha256": "b96b76e38a6b9d5931f26522bd54eee8fc0b0fb94ad64b48a4ffb6f5f89e5910",
+      "bytes": 462
+    },
+    "docflow-package/workspace/repository-fixtures/cases/legacy-two-range/docs/plan/done/2026-01-12-adopt-the-method.md": {
+      "sha256": "02df407276d68aad25c39136a87429dc53a22529757c86e067644c523de9ec30",
+      "bytes": 284
+    },
+    "docflow-package/workspace/repository-fixtures/cases/legacy-two-range/docs/plan/done/2026-01-19-catalogue-and-store.md": {
+      "sha256": "21ddb1186242c6620c6705e81e3e073d13c3ffa56cf95d3452a668239f12743e",
+      "bytes": 311
+    },
+    "docflow-package/workspace/repository-fixtures/cases/legacy-two-range/docs/plan/todo/0001-verify-script-coverage.md": {
+      "sha256": "7fd4da097a77443647f83055d7e6004260a85ad8f1db71b5fa579bd4564bdfd8",
+      "bytes": 604
+    },
+    "docflow-package/workspace/repository-fixtures/cases/legacy-two-range/docs/plan/todo/0002-queue-and-completion-event.md": {
+      "sha256": "caa275c09a0dd835f0955289c3d955d41625f049f3d22cd8431dcfa61dfe8b09",
+      "bytes": 540
+    },
+    "docflow-package/workspace/repository-fixtures/cases/nested-pointer/governance/decisions/current/CONVENTIONS.md": {
+      "sha256": "0d484a60299d6976d833b63c621404088eccb80c138539d852536ba1037a0fa6",
+      "bytes": 5975
+    },
+    "docflow-package/workspace/repository-fixtures/cases/nested-pointer/governance/decisions/current/INDEX.md": {
+      "sha256": "b796453e3e0719130d1780f70f26c602de1dc1ad065b400ca5127f25f91f7b8a",
+      "bytes": 160
+    },
+    "docflow-package/workspace/repository-fixtures/cases/nested-pointer/governance/decisions/current/adr/0000-template.md": {
+      "sha256": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+      "bytes": 1346
+    },
+    "docflow-package/workspace/repository-fixtures/cases/nested-pointer/governance/decisions/current/adr/0001-synthetic-capability.md": {
+      "sha256": "ac312c0624dd23013d70814f895aa344551bbe6c70b889ccfbd3d40c9c4409dc",
+      "bytes": 1065
+    },
+    "docflow-package/workspace/repository-fixtures/cases/optional-layers/.docflow/CONVENTIONS.md": {
+      "sha256": "7f0c2c6e1d39e7c6e183ed1368c5f9257518fb3d1ff9a2a9edc2eb83a259f7b0",
+      "bytes": 10235
+    },
+    "docflow-package/workspace/repository-fixtures/cases/optional-layers/.docflow/GLOSSARY.md": {
+      "sha256": "f7354c08c22c6bf9e35527c7f2347f9d4ae75bc37ad4abf4e13531f51d11aa1a",
+      "bytes": 112
+    },
+    "docflow-package/workspace/repository-fixtures/cases/optional-layers/.docflow/INDEX.md": {
+      "sha256": "839e2b8488669f6a318a16136998faa6ce4d5164153773f064c32ceb916ec96f",
+      "bytes": 299
+    },
+    "docflow-package/workspace/repository-fixtures/cases/optional-layers/.docflow/adr/0000-template-technology.md": {
+      "sha256": "02abe97bf3f956972621490c0c6c4a5aa4210b259c33114cadc84a2ab7fbffc0",
+      "bytes": 1402
+    },
+    "docflow-package/workspace/repository-fixtures/cases/optional-layers/.docflow/adr/0000-template.md": {
+      "sha256": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+      "bytes": 1346
+    },
+    "docflow-package/workspace/repository-fixtures/cases/optional-layers/.docflow/adr/0001-synthetic-capability.md": {
+      "sha256": "c2dbfac6c48850cc17e738be4960c1497b57815768b761a4b746db39e800b5e9",
+      "bytes": 1083
+    },
+    "docflow-package/workspace/repository-fixtures/cases/optional-layers/.docflow/adr/0002-synthetic-technology.md": {
+      "sha256": "8b154ee23f1d60695625a49a87ad714fdf61ea90c4ad258d89c72456e4099a86",
+      "bytes": 1097
+    },
+    "docflow-package/workspace/repository-fixtures/cases/optional-layers/.docflow/plan/README.md": {
+      "sha256": "d6fb25d7b7ac6da6f4ff3f3e074ce6e8025d0733551a5a171cf7768022a4f6d8",
+      "bytes": 3447
+    },
+    "docflow-package/workspace/repository-fixtures/cases/optional-layers/.docflow/domains/platform/README.md": {
+      "sha256": "1656c1f56768019b4b10d450e2a7c274de982c3de3f42eaa759a970bdfadc418",
+      "bytes": 91
+    },
+    "docflow-package/workspace/repository-fixtures/cases/optional-layers/.docflow/_agent/prompts/autonomous.md": {
+      "sha256": "f6bbaa2f881961aa72b96a19ff6b278fb0285547d5009a2efa3a39abb0f609e3",
+      "bytes": 10057
+    },
+    "docflow-package/workspace/repository-fixtures/cases/root-pointer/adr/0000-template.md": {
+      "sha256": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+      "bytes": 1346
+    },
+    "docflow-package/workspace/repository-fixtures/cases/root-pointer/adr/0001-synthetic-capability.md": {
+      "sha256": "ac312c0624dd23013d70814f895aa344551bbe6c70b889ccfbd3d40c9c4409dc",
+      "bytes": 1065
+    },
+    "docflow-package/workspace/repository-fixtures/cases/status-blocked/adr/0000-template.md": {
+      "sha256": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+      "bytes": 1346
+    },
+    "docflow-package/workspace/repository-fixtures/cases/status-blocked/adr/0001-synthetic-capability.md": {
+      "sha256": "ac312c0624dd23013d70814f895aa344551bbe6c70b889ccfbd3d40c9c4409dc",
+      "bytes": 1065
+    },
+    "docflow-package/workspace/repository-fixtures/cases/status-blocked/plan/README.md": {
+      "sha256": "d6fb25d7b7ac6da6f4ff3f3e074ce6e8025d0733551a5a171cf7768022a4f6d8",
+      "bytes": 3447
+    },
+    "docflow-package/workspace/repository-fixtures/cases/status-blocked/plan/todo/0001-example.md": {
+      "sha256": "274786c0d5bfa938e5b5e8f8653f7a5c63c31e44657f351fd06e55ee3ca16b90",
+      "bytes": 413
+    },
+    "docflow-package/workspace/repository-fixtures/cases/status-claimed/adr/0000-template.md": {
+      "sha256": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+      "bytes": 1346
+    },
+    "docflow-package/workspace/repository-fixtures/cases/status-claimed/adr/0001-synthetic-capability.md": {
+      "sha256": "ac312c0624dd23013d70814f895aa344551bbe6c70b889ccfbd3d40c9c4409dc",
+      "bytes": 1065
+    },
+    "docflow-package/workspace/repository-fixtures/cases/status-claimed/plan/README.md": {
+      "sha256": "d6fb25d7b7ac6da6f4ff3f3e074ce6e8025d0733551a5a171cf7768022a4f6d8",
+      "bytes": 3447
+    },
+    "docflow-package/workspace/repository-fixtures/cases/status-claimed/plan/todo/0001-example.md": {
+      "sha256": "78417ddb2a0b584114acd5200f1acb7ef7a7edea3cf6538df5be6a9e4dbb4436",
+      "bytes": 310
+    },
+    "docflow-package/workspace/repository-fixtures/cases/status-resumed/adr/0000-template.md": {
+      "sha256": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+      "bytes": 1346
+    },
+    "docflow-package/workspace/repository-fixtures/cases/status-resumed/adr/0001-synthetic-capability.md": {
+      "sha256": "ac312c0624dd23013d70814f895aa344551bbe6c70b889ccfbd3d40c9c4409dc",
+      "bytes": 1065
+    },
+    "docflow-package/workspace/repository-fixtures/cases/status-resumed/plan/README.md": {
+      "sha256": "d6fb25d7b7ac6da6f4ff3f3e074ce6e8025d0733551a5a171cf7768022a4f6d8",
+      "bytes": 3447
+    },
+    "docflow-package/workspace/repository-fixtures/cases/status-resumed/plan/todo/0001-example.md": {
+      "sha256": "78417ddb2a0b584114acd5200f1acb7ef7a7edea3cf6538df5be6a9e4dbb4436",
+      "bytes": 310
+    },
+    "docflow-package/workspace/repository-fixtures/cases/status-stopped/adr/0000-template.md": {
+      "sha256": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+      "bytes": 1346
+    },
+    "docflow-package/workspace/repository-fixtures/cases/status-stopped/adr/0001-synthetic-capability.md": {
+      "sha256": "ac312c0624dd23013d70814f895aa344551bbe6c70b889ccfbd3d40c9c4409dc",
+      "bytes": 1065
+    },
+    "docflow-package/workspace/repository-fixtures/cases/status-stopped/plan/README.md": {
+      "sha256": "d6fb25d7b7ac6da6f4ff3f3e074ce6e8025d0733551a5a171cf7768022a4f6d8",
+      "bytes": 3447
+    },
+    "docflow-package/workspace/repository-fixtures/cases/status-stopped/plan/todo/0001-example.md": {
+      "sha256": "581e968cb712b15c36818f52c2f96d71ed03b3c2e1f003cadbd87de1ceee943a",
+      "bytes": 539
+    },
+    "docflow-package/workspace/repository-fixtures/cases/unknown-shape/adr/0000-template.md": {
+      "sha256": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+      "bytes": 1346
+    },
+    "docflow-package/workspace/repository-fixtures/cases/unknown-shape/adr/0001-synthetic-capability.md": {
+      "sha256": "a4d1902a484df2df2a1af9373a710f28fff0d1a72e40f7fe4b411b5fa3cace65",
+      "bytes": 1084
+    },
+    "docflow-package/workspace/repository-fixtures/cases/unknown-status/adr/0000-template.md": {
+      "sha256": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+      "bytes": 1346
+    },
+    "docflow-package/workspace/repository-fixtures/cases/unknown-status/adr/0001-synthetic-capability.md": {
+      "sha256": "5972127fb75a6e68a932165c713d9a97ec30545e6fa35bac9bcbb1c15c1c0b33",
+      "bytes": 1068
+    },
+    "docflow-package/workspace/repository-fixtures/sources/scripts/produce-repository-fixtures.mjs": {
+      "sha256": "5bcd1cdd2aaa03088ff17b0c06f72a3a93f32bc29070844291e3f8c4c21b6944",
+      "bytes": 17566
+    },
+    "docflow-package/workspace/repository-fixtures/sources/evals/fixtures/legacy-range/AGENTS.md": {
+      "sha256": "d18ac880596926c16311424f9aee2bbfef3e94b10878b003b7fe8b0452e23d8b",
+      "bytes": 1237
+    },
+    "docflow-package/workspace/repository-fixtures/sources/evals/fixtures/legacy-range/CONVENTIONS.md": {
+      "sha256": "3f81d29da3db00b8d17602f58b240d9ce3645f09e10150044150badd671e4fe1",
+      "bytes": 1879
+    },
+    "docflow-package/workspace/repository-fixtures/sources/evals/fixtures/legacy-range/INDEX.md": {
+      "sha256": "004cd79dacc979c0ff6afcf5fab2075c1ac1a817affce5b2905bfaf94bc85c63",
+      "bytes": 675
+    },
+    "docflow-package/workspace/repository-fixtures/sources/evals/fixtures/legacy-range/README.md": {
+      "sha256": "97e95b4ac4a82d191e2cde6502b199fc79bc70373fc3b467a75700f631c962b8",
+      "bytes": 1722
+    },
+    "docflow-package/workspace/repository-fixtures/sources/evals/fixtures/legacy-range/adr/0000-template.md": {
+      "sha256": "025c654fe43aea32d3133c9072181e4284042b3b1ae012b58b3f4f3e6b89d8c7",
+      "bytes": 494
+    },
+    "docflow-package/workspace/repository-fixtures/sources/evals/fixtures/legacy-range/adr/0001-record-architecture-decisions.md": {
+      "sha256": "937ed161fb04f714c598c2df93b5c243b8b1432402d65fde1e1a66979fa78bb7",
+      "bytes": 1835
+    },
+    "docflow-package/workspace/repository-fixtures/sources/evals/fixtures/legacy-range/adr/0002-searchable-decision-catalogue.md": {
+      "sha256": "7ff364e8d2540d36bc772c7ed54ec24b6d2fa703ee9129bbc68eb52d391a723c",
+      "bytes": 1342
+    },
+    "docflow-package/workspace/repository-fixtures/sources/evals/fixtures/legacy-range/adr/0003-queue-driven-implementation.md": {
+      "sha256": "9de057c8dcde822182be123c2b46256d2237362d0f1839dc2da267cfbd72e194",
+      "bytes": 1377
+    },
+    "docflow-package/workspace/repository-fixtures/sources/evals/fixtures/legacy-range/adr/0100-template.md": {
+      "sha256": "1fa11e31ea96f846e101ce6091bdc4fdce1d08f933afb669e6a8efc852d98cfa",
+      "bytes": 575
+    },
+    "docflow-package/workspace/repository-fixtures/sources/evals/fixtures/legacy-range/adr/0101-markdown-files-in-git.md": {
+      "sha256": "fa3f8d69bafa01192ca2aac85623c030d8a6c2301a8f0c41cb9b818e289c6281",
+      "bytes": 1670
+    },
+    "docflow-package/workspace/repository-fixtures/sources/evals/fixtures/legacy-range/adr/0102-static-verify-script.md": {
+      "sha256": "f9e5ba641865431b6a65e26f1cbea7997e75a1c4abd72327b55a92951311aa19",
+      "bytes": 1612
+    },
+    "docflow-package/workspace/repository-fixtures/sources/evals/fixtures/legacy-range/plan/README.md": {
+      "sha256": "179d9c876a43053bd814bd8a1f6c6967d22f8a53ff6a4d9fa4b57b3449227457",
+      "bytes": 160
+    },
+    "docflow-package/workspace/repository-fixtures/sources/evals/fixtures/legacy-range/domains/platform/README.md": {
+      "sha256": "b96b76e38a6b9d5931f26522bd54eee8fc0b0fb94ad64b48a4ffb6f5f89e5910",
+      "bytes": 462
+    },
+    "docflow-package/workspace/repository-fixtures/sources/evals/fixtures/legacy-range/plan/done/2026-01-12-adopt-the-method.md": {
+      "sha256": "02df407276d68aad25c39136a87429dc53a22529757c86e067644c523de9ec30",
+      "bytes": 284
+    },
+    "docflow-package/workspace/repository-fixtures/sources/evals/fixtures/legacy-range/plan/done/2026-01-19-catalogue-and-store.md": {
+      "sha256": "21ddb1186242c6620c6705e81e3e073d13c3ffa56cf95d3452a668239f12743e",
+      "bytes": 311
+    },
+    "docflow-package/workspace/repository-fixtures/sources/evals/fixtures/legacy-range/plan/todo/0001-verify-script-coverage.md": {
+      "sha256": "7fd4da097a77443647f83055d7e6004260a85ad8f1db71b5fa579bd4564bdfd8",
+      "bytes": 604
+    },
+    "docflow-package/workspace/repository-fixtures/sources/evals/fixtures/legacy-range/plan/todo/0002-queue-and-completion-event.md": {
+      "sha256": "caa275c09a0dd835f0955289c3d955d41625f049f3d22cd8431dcfa61dfe8b09",
+      "bytes": 540
+    },
+    "docflow-package/workspace/repository-fixtures/sources/plugins/docflow/skills/add-convention/SKILL.md": {
+      "sha256": "9f27f42a0070ff43f1d924ed46e6097183dd1c890841a25e62a25e9cfdc1dde4",
+      "bytes": 6823
+    },
+    "docflow-package/workspace/repository-fixtures/sources/plugins/docflow/skills/bootstrap/SKILL.md": {
+      "sha256": "5a4551e47a5bb635098a1891fc3dadce61add75e8b94b210c7e9a5be0e07287f",
+      "bytes": 49849
+    },
+    "docflow-package/workspace/repository-fixtures/sources/plugins/docflow/skills/new-adr/SKILL.md": {
+      "sha256": "3b8ac8e05f48e599f07b3e590776841736f82f61d00e994ae0ef3a48f2f9f005",
+      "bytes": 12044
+    },
+    "docflow-package/workspace/repository-fixtures/sources/plugins/docflow/skills/new-plan/SKILL.md": {
+      "sha256": "8a2690887cf3f5068c0a24184b4f4fee0c84ddd7021880c0b4e21b22231a64e6",
+      "bytes": 7173
+    },
+    "docflow-package/workspace/repository-fixtures/sources/plugins/docflow/skills/ship-item/SKILL.md": {
+      "sha256": "b929994d4bf1549db452a0b2e08349a9981e1a13fa5060d9422abde8b128114f",
+      "bytes": 12651
+    },
+    "docflow-package/workspace/repository-fixtures/sources/plugins/docflow/skills/bootstrap/templates/adr-0001-seed.md": {
+      "sha256": "cfcc060d32ae013634bc788aa20fd9b7f69ae3c90399d18f17a72703ea573b1c",
+      "bytes": 5507
+    },
+    "docflow-package/workspace/repository-fixtures/sources/plugins/docflow/skills/bootstrap/templates/adr-capability.md": {
+      "sha256": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+      "bytes": 1346
+    },
+    "docflow-package/workspace/repository-fixtures/sources/plugins/docflow/skills/bootstrap/templates/adr-technology.md": {
+      "sha256": "02abe97bf3f956972621490c0c6c4a5aa4210b259c33114cadc84a2ab7fbffc0",
+      "bytes": 1402
+    },
+    "docflow-package/workspace/repository-fixtures/sources/plugins/docflow/skills/bootstrap/templates/AGENTS.md": {
+      "sha256": "a15813bbae21dc249632dc15aca6593e8b06c3b2876e1281998eda5fe918534a",
+      "bytes": 12454
+    },
+    "docflow-package/workspace/repository-fixtures/sources/plugins/docflow/skills/bootstrap/templates/CLAUDE.md": {
+      "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+      "bytes": 11
+    },
+    "docflow-package/workspace/repository-fixtures/sources/plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md": {
+      "sha256": "2a15da40de46a45aa9111d261f308987c130efe065deed3a155edfbe41f82b70",
+      "bytes": 20575
+    },
+    "docflow-package/workspace/repository-fixtures/sources/plugins/docflow/skills/bootstrap/templates/federation-config.md": {
+      "sha256": "27e9a9c0fde4a1edf235c27a69c4aaff1051bc14a17a4e862592c30e9e92421a",
+      "bytes": 1111
+    },
+    "docflow-package/workspace/repository-fixtures/sources/plugins/docflow/skills/bootstrap/templates/federation-index.md": {
+      "sha256": "7c548fa6c04ef2b0144a183d7b1ab926f559cfa693e0d07d4028eb9ced75add2",
+      "bytes": 1096
+    },
+    "docflow-package/workspace/repository-fixtures/sources/plugins/docflow/skills/bootstrap/templates/plan-README.md": {
+      "sha256": "d6fb25d7b7ac6da6f4ff3f3e074ce6e8025d0733551a5a171cf7768022a4f6d8",
+      "bytes": 3447
+    },
+    "docflow-package/workspace/repository-fixtures/sources/plugins/docflow/skills/bootstrap/templates/_agent-LOCKS.md": {
+      "sha256": "d489163b3d809f583ed4f400d5f16d5edead61bbc6f3934e1fee85b6e49f26eb",
+      "bytes": 985
+    },
+    "docflow-package/workspace/repository-fixtures/sources/plugins/docflow/skills/bootstrap/templates/_agent-prompts-autonomous.md": {
+      "sha256": "f6bbaa2f881961aa72b96a19ff6b278fb0285547d5009a2efa3a39abb0f609e3",
+      "bytes": 10057
+    },
+    "docflow-package/workspace/repository-fixtures/sources/plugins/docflow/skills/bootstrap/templates/_agent-ROLES.md": {
+      "sha256": "b7c8478b308a3abe4379746041e412b992c21e7405eb799b570cfe7d15de6628",
+      "bytes": 871
+    },
+    "repos/manual-member/check.mjs": {
+      "sha256": "1564b94b328b38fc757b2a8b1380ecbd3734205cb91b61419013d38fc2d36143",
+      "bytes": 169
+    },
+    "repos/manual-member/OWNER.md": {
+      "sha256": "9479a38f69cab10f22998d49b6c2048131f4874f8aeb4ea342727fcdf750c3f0",
+      "bytes": 463
+    },
+    "repos/manual-member/README.md": {
+      "sha256": "1a72daa72811508754cda8c92f187cf6c185aec460bd5a5ad2cb54df0f55b8a3",
+      "bytes": 156
+    },
+    "repos/manual-member/TASK.md": {
+      "sha256": "f6aab8749a1efb279c3cda5af386b86a604cfdf7753daecac656694b887bbf4d",
+      "bytes": 109
+    }
+  }
+}

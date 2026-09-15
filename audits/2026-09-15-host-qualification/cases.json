@@ -307,5 +307,62 @@
         "complete": true
       }
     }
+  },
+  "codex-denial": {
+    "private_directory": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\codex-denial",
+    "artifacts": {
+      "process.json": "codex-denial-process.json",
+      "assertions.json": "codex-denial-assertions.json",
+      "transcript.jsonl": {
+        "private_path": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\codex-denial\\transcript.jsonl",
+        "sha256": "4e6ce6ea831a918ed64461c65fc150511e088d62b731b8a5ee72d7e594a11542",
+        "bytes": 41616,
+        "complete": true
+      },
+      "stderr.txt": {
+        "private_path": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\codex-denial\\stderr.txt",
+        "sha256": "cfc6f9e232839013b4e8fe9a4f6059351aa563be977a2630baca47b00b1b25b8",
+        "bytes": 164,
+        "complete": true
+      }
+    }
+  },
+  "claude-expired": {
+    "private_directory": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\claude-expired",
+    "artifacts": {
+      "process.json": "claude-expired-process.json",
+      "assertions.json": "claude-expired-assertions.json",
+      "transcript.jsonl": {
+        "private_path": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\claude-expired\\transcript.jsonl",
+        "sha256": "77efe58425c811eba33e640104c896513d889ab23641f26ae2be6be4504aa8e1",
+        "bytes": 185277,
+        "complete": true
+      },
+      "stderr.txt": {
+        "private_path": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\claude-expired\\stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "complete": true
+      }
+    }
+  },
+  "claude-cross": {
+    "private_directory": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\claude-cross",
+    "artifacts": {
+      "process.json": "claude-cross-process.json",
+      "assertions.json": "claude-cross-assertions.json",
+      "transcript.jsonl": {
+        "private_path": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\claude-cross\\transcript.jsonl",
+        "sha256": "c38fdcede8fd923270d481734242a913c768d6a75258eaf68b7c5144cd4cfcf5",
+        "bytes": 238891,
+        "complete": true
+      },
+      "stderr.txt": {
+        "private_path": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\claude-cross\\stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "complete": true
+      }
+    }
   }
 }

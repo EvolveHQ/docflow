@@ -13,7 +13,9 @@ Owning decisions: adr/0053-portable-workspace-operating-skills.md and adr/0054-r
 Qualification checkpoint: [source-bound audit](../../audits/2026-09-15-host-qualification/README.md)
 and its assertion ledger retain four native inventories/setup cases, bounded
 lifecycle/denial/recovery and Codex removal/reinstall evidence. The first Pi
-timeout and passing single recovery are separate. Cowork and remaining
+timeout and passing single recovery are separate. OpenCode detached-copy removal and actual 0.9.3-to-0.9.4 upgrade also retain
+workspace files and native Git history with current product hashes matching.
+Cowork and remaining
 host assertions are incomplete; versions and pinned product bytes remain
 unchanged. The task PR is live, not shipped.
 

@@ -1,0 +1,105 @@
+{
+  "observed_at": "2026-09-15T02:51:09.156493+00:00",
+  "roots": {
+    "/workspace/denial": {
+      "available": true,
+      "files": {
+        ".docflow": {
+          "sha256": "6f57ef45dc3ff1870feffe9e1c170acec3665afe0c7cc88ec89e01a6acd02fae",
+          "bytes": 8
+        },
+        "AGENTS.md": {
+          "sha256": "fabb89805056e0dc6f4a8d92f920e2d4886ff0ef9a519609b07f6ddfcf1d2a4a",
+          "bytes": 5292
+        },
+        "CLAUDE.md": {
+          "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+          "bytes": 11
+        },
+        "CONVENTIONS.md": {
+          "sha256": "a825f456ba7a763a48f6593286a0c08b0dc0f71ca9ce6f1891ce026e47d20474",
+          "bytes": 8709
+        },
+        "INDEX.md": {
+          "sha256": "0341c0f3a65e271120d487ffbc6318d5d7ed62c0b05df9d2b4bafcf080d9922a",
+          "bytes": 348
+        },
+        "README.md": {
+          "sha256": "d4eeb8f682624d4949e08a78263243e62f4ec9fd2e822ec8318e4f622baf90fa",
+          "bytes": 202
+        },
+        "_agent/prompts/autonomous.md": {
+          "sha256": "0e4b745a38bbc07ed6ff8aabd65613587ad41b6d7dfacb500497982aba3d43c6",
+          "bytes": 4583
+        },
+        "adr/0000-template.md": {
+          "sha256": "f98d0b87c5656838a2dc3ba8db1cafaa43d99a2650a36313d26b2d944ef85ac9",
+          "bytes": 1126
+        },
+        "adr/0001-record-architecture-decisions.md": {
+          "sha256": "962260d88b55fae387c42947d88ee46066c4a9b02ce8bad045b25a98537cbb17",
+          "bytes": 2561
+        },
+        "adr/0002-export-a-plain-text-summary.md": {
+          "sha256": "1476ca1edd39d4e8d0b175cf77099b4867da2a1769f08c26564bea48d9c5663d",
+          "bytes": 1471
+        },
+        "plan/README.md": {
+          "sha256": "46094834e36c04782fd9eeda07c6013902429fb7dc54210fcd031dbd635ae768",
+          "bytes": 2278
+        },
+        "plan/done/.gitkeep": {
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "plan/done/2026-09-15-adopt-adr-method.md": {
+          "sha256": "c4bc1db62220f6d4279586d4ac81585e57a4285293d50942ec190de2f7ff3388",
+          "bytes": 865
+        },
+        "plan/todo/.gitkeep": {
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "tools/verify.mjs": {
+          "sha256": "5de554f5b4d975117d03d8bd9bf27420e486dfcbd883b02e7bc0db20e46904cc",
+          "bytes": 2008
+        }
+      },
+      "git": {
+        "/workspace/denial": {
+          "head": {
+            "exit": 0,
+            "stdout": "29cbaa12ff9d3fd27c40199055c2ec7fcd40b3ae\n",
+            "stderr": ""
+          },
+          "status": {
+            "exit": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "refs": {
+            "exit": 0,
+            "stdout": "29cbaa12ff9d3fd27c40199055c2ec7fcd40b3ae refs/heads/main\n",
+            "stderr": ""
+          },
+          "branch": {
+            "exit": 0,
+            "stdout": "main\n",
+            "stderr": ""
+          }
+        }
+      }
+    }
+  },
+  "container": "docflow-hq-fc206-codex-denial",
+  "command": [
+    "docker",
+    "exec",
+    "docflow-hq-fc206-codex-denial",
+    "python3",
+    "-c",
+    "<REMOTE in snapshot-native.py>",
+    "[\"/workspace/denial\"]"
+  ],
+  "outcome": "read-only observation; compare separately"
+}
