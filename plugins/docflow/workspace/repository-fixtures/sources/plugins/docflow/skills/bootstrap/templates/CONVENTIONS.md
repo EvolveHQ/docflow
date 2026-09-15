@@ -1,0 +1,428 @@
+# Conventions
+
+## Project
+
+Project name: <name>.
+
+Artefact root: `<.docflow/ | docs/ | .>` — `adr/`, `plan/`, `INDEX.md`, `_agent/`, and
+this file live under this root; `AGENTS.md` and `CLAUDE.md` always stay at
+the repository root. Every lifecycle skill resolves paths against this root.
+
+Discovery: a `.docflow/` **directory** at the repository root is itself the
+artefact root; any other root is named by a one-line `.docflow` **file** at
+the repository root (`root: <path>`). Tools resolve the root in that order,
+falling back to probing `docs/` then the repository root for this file.
+The pointer and the record above must agree.
+
+Assessment depth: `<express | guided | full>` — the depth chosen at
+bootstrap. Skill assessments pre-select it as the recommended depth; the
+depth selector appears when depth is unresolved and material choices remain.
+Reuse applicable answers already supplied in the request or session, including
+depth; defaults never replace explicit choices. A recorded preference alone
+steers the recommendation and is never applied silently or treated as an
+execution grant. Change this line to change the recommendation.
+
+<!-- Q1 language: if a language mandate is set, state it here.
+Example: "Language: en-GB throughout. Use forms such as organisation,
+behaviour, prioritise, catalogue, authorisation consistently across all
+files." -->
+
+## ADR Files
+
+ADR filenames use `NNNN-kebab-case-slug.md`, zero-padded to 4 digits,
+with contiguous numbering and no reserved gaps.
+
+The number is an **integer**; the four-digit zero-padding is a display
+convention only — tools sort ADRs **numerically**, not lexically, so the
+catalogue is not capped at `9999` (widen the padding to five digits if you
+ever approach it; none do). Related ADRs may be **grouped** under
+`domains/<slug>/README.md` without changing their numbers — grouping is a
+curated view, not a separate namespace; the contiguous number stays the
+single identity.
+
+Each ADR describes one decision. If a decision splits, supersede the
+original ADR and create new ADRs rather than expanding scope inside a
+single document.
+
+Status lifecycle: `<from Q3>`.
+
+| Status | Meaning |
+|---|---|
+| Proposed | Draft. Decision authored but not yet approved. |
+| Accepted | Decision approved; implementation authorised. Work item lives in `plan/todo/`. |
+| Implemented | Code shipped per Q4 completion event. Work item moved to `plan/done/`. ADR is the authoritative spec the running system matches. |
+| Superseded | Replaced by another ADR. The successor is named in `superseded-by:` metadata. |
+| Deprecated | Was real; the world moved on; no successor. Capability is not being rebuilt. |
+
+Terminal states (Superseded / Deprecated) are reachable from any prior
+state.
+
+The first **persisted** status is `Proposed` — there is no separate `Draft`
+state and no `brainstorming/`/`drafts/` folder. Work-in-progress lives in
+the brainstorm conversation; only an approved decision is written, as a
+numbered `Proposed` ADR.
+
+Cross-references link by relative path to `adr/NNNN-*.md`.
+
+## ADR Shapes
+
+<!-- Single shape (Q2): -->
+This project uses a single ADR shape. ADRs use `adr/0000-template.md`
+and contain these sections in order: Context, Capability statement,
+User stories / scenarios, Acceptance criteria, Out of scope, Open
+questions, References, Revision History, Approvals. No `shape:` field
+is written. The template is not a decision: it is excluded from the
+catalogue and from `INDEX.md`.
+
+<!-- Two shapes (Q2): -->
+<!--
+This project uses two ADR shapes. The shape is **declared**, not
+inferred from the number: each ADR's metadata block carries a `shape:`
+field whose value is `capability` or `technology`. An absent field
+means `capability`. Every ADR takes the next contiguous number
+whatever its shape — there is no boundary between the shapes and
+nothing to widen.
+
+Capability ADRs (`shape: capability`, or the field omitted) describe
+what the system must do. They use `adr/0000-template.md` with
+sections: Context, Capability statement, User stories / scenarios,
+Acceptance criteria, Out of scope, Open questions, References,
+Revision History, Approvals.
+
+Technology ADRs (`shape: technology`) describe how the system is
+built. They use `adr/0000-template-technology.md` with sections:
+Context, Decision, Rationale, Consequences, Acceptance criteria, Out
+of scope, Open questions, References, Revision History, Approvals.
+
+Both templates are numbered `0000`. Neither is a decision: both are
+excluded from the catalogue, from `INDEX.md`, and from every audit
+check that walks the ADRs. No template carries any other number.
+
+`INDEX.md` carries a **Shape** column so the shape is read from the
+table rather than inferred.
+
+Technology ADR Rationale must name alternatives considered and give
+specific reasons they were rejected. Generic rationale such as
+"simpler" or "more idiomatic" is not sufficient.
+-->
+
+<!-- Q10 domain-specific rules go here, each as its own section.
+Examples:
+## Vendor Name Rule
+## Audit-Plane Distinction
+## Regulated Evidence
+## Mandatory user-story personas
+-->
+
+## ADR Privacy
+
+ADRs are internal artefacts. ADR numbers, ADR titles, and the
+existence of the ADR catalogue must never appear in any string the
+product emits to users: UI copy, API response bodies, error messages,
+customer-visible log lines, public documentation, release notes,
+marketing copy, or support communications.
+
+Allowed references:
+- Inline code comments tying a non-obvious choice to its ADR
+  (`// see adr/0042-foo.md`).
+- Commit messages and PR descriptions.
+- Internal documents: `AGENTS.md`, `INDEX.md`, the `plan/` queue,
+  `_agent/` files, internal runbooks.
+
+Rule of thumb: if a non-builder could ever read the string, the ADR
+reference comes out. Refer to the behaviour by its product-level name
+instead.
+
+## Multi-Agent Rules
+
+`_agent/` is the **agent operating contract**: who writes what, the one
+real mutex, and how an unattended run behaves. It holds nothing git
+already records — no duplicate shipped record, no dashboard of what is
+in flight, no snapshot of the current state. Its absence is a valid
+state.
+
+<!-- Keep the ONE block matching the coordination mode (Q5); delete the
+others. -->
+
+<!-- Single writer. Keep this text. -->
+A single writer owns this repo — one human/agent integrates at a time,
+so there is nothing to serialise: no roles list, no lock ledger. What
+happened is git history and `plan/done/`; what is in flight is the
+current branch and any open pull request. The one coordination file is
+`_agent/prompts/autonomous.md`, written only where a verify gate is
+recorded **and** the `plan/todo/` queue it walks exists; without both
+there is no `_agent/` directory at all.
+Regenerate `INDEX.md` after any ADR status change or new ADR.
+
+<!-- Several writers, one shared checkout. Replace with:
+Named actors answer for areas (see `_agent/ROLES.md`); work is assigned
+by claim. There is one working tree and no branch per item here, so a
+queue item is claimed on the item itself — the actor and the date, in
+the item's own status section where it has one — and `_agent/LOCKS.md`
+serialises the files. Claim a file there before editing it; remove the
+row on commit. In one checkout that ledger is the only thing stopping
+two writers editing the same file, so it is the one lock that matters.
+The shipped record is git history and `plan/done/`. Regenerate
+`INDEX.md` after any ADR status change or new ADR.
+-->
+
+<!-- Several writers, separate worktrees / PR branches. Replace with:
+Named actors answer for areas (see `_agent/ROLES.md`); work is assigned
+by claim. Each writer works in its own worktree / PR branch.
+- **The claim is an exclusively created remote branch**, `claim/<item-key>`
+  (the queue filename without extension). Commit Claimed by, ownership and
+  reservations first. Acquire with
+  `git push --porcelain --force-with-lease=refs/heads/claim/<item-key>: origin HEAD:refs/heads/claim/<item-key>`.
+  Require exit zero and the porcelain `*` new-ref result for that ref.
+  An ordinary successful push, up-to-date result or descendant push grants
+  no ownership. Never drop the lease or overwrite an existing claim.
+  Open the draft PR immediately after acquisition and before implementation
+  where PR integration is recorded, with owner, item and reservations in
+  its body. Continue existing live claims only on an explicit operator
+  choice. A merged ref is leftover state, not a live claim; confirm PR merge
+  state where squash/rebase changed ancestry before deciding it is live.
+- **No lock ledger is kept:** worktrees cannot collide on the filesystem,
+  and an advisory ledger nobody can rely on is noise.
+- **Identifier reservation.** Before parallel worktrees are spawned, each
+  is given a disjoint block of ADR numbers / `plan/todo` slots in the
+  wave specification it is spawned with, and states that block — with the
+  artefacts it is the single writer of — in its pull-request description,
+  or its first commit message under direct-to-main. A writer creates new
+  ADRs/plans only from its reserved block, so two worktrees never claim
+  the same next number. `agent-wave` performs the reservation; no
+  committed file records it.
+- **Single writer per artefact.** An ADR body or a given `plan/` item
+  is edited by at most one worktree at a time — the one whose claim
+  branch and pull request name it. Contradictory edits to one ADR across
+  two worktrees must never happen; the audit skill flags duplicate
+  numbers, duplicate plan ownership, and the same ADR edited on two
+  unmerged branches.
+- **What is in flight is derived, never stored:** `git worktree list`,
+  the remote `claim/*` branches, and the open draft pull requests. Git
+  history and `plan/done/` are what shipped.
+- Regenerate `INDEX.md` after any ADR status change or new ADR.
+-->
+
+## Plan Folder
+
+<!-- Q4a = skip: OMIT this whole section, and reword the Accepted /
+Implemented rows of the status table above so they do not reference
+`plan/todo/` / `plan/done/` (e.g. "Decision approved; implementation
+authorised." / "Shipped per the completion event."). -->
+
+Pending and shipped work live in `plan/` at the repository root:
+
+- `plan/todo/NNNN-<slug>.md` — pending work, lower numbers run first.
+  Each file names the owning ADR(s), scope, and exit criteria.
+- `plan/done/<YYYY-MM-DD>-<slug>.md` — shipped work, chronological.
+  Under direct-to-main integration, the completion commit moves the
+  item here and its footer names the verified implementation HEAD recorded
+  before the completion commit. Under pull-request
+  integration, the move happens on the pull-request branch before it is
+  marked ready and the footer names the pull request.
+
+The completion event is: `<from Q4>`.
+
+The bootstrap seed's adoption record is created with the complete scaffold.
+For that seed alone, a direct-integration footer may use this form, with its
+actual repository-relative path and host-appropriate quoting:
+
+```text
+Shipped by bootstrap introduction: `<repository-relative done path>`.
+Resolve: `git log --follow --diff-filter=A --format=%H -- "<repository-relative done path>"`
+```
+
+Resolve it after committing to one reachable introducing commit containing
+the record, Implemented seed and verified scaffold; verify the signature when
+required. A generic bootstrap label or future/self SHA is not evidence.
+Ordinary completion footers name an existing verified implementation SHA.
+
+When a `plan/todo/` item ships, the file moves to `plan/done/`, any
+plan-item Status section is removed, the owning ADR(s)' `status:`
+advances from `Accepted` to `Implemented`, and `INDEX.md` is
+regenerated to match. Under direct-to-main integration these changes
+are committed before the final push. Under pull-request integration
+they are the final branch commit before the pull request is marked
+ready; the merge is the completion event, and no follow-up commit is
+made on the integration branch.
+
+<!-- Concurrency Guardrails — bootstrap INCLUDES this section (uncommented)
+ONLY for several-writer repos (the recorded answer is a shared checkout
+or separate worktrees) OR pull-request integration. A single writer on
+direct-to-main has no numbering race by construction and OMITS it.
+Adapt "integrate" to the integration model (PR merge / ff-push / pull
+before commit in a shared checkout).
+
+## Concurrency Guardrails
+
+ADR and `plan/todo` numbers are contiguous and assigned at authoring
+time, so concurrent branches can pick the same next number. These
+guardrails keep numbering collision-free **without changing the identity
+scheme** — the number stays the stable cross-reference key, immutable
+once merged:
+
+- **G1 — decide before do (recommended).** Prefer to merge an ADR and its
+  plan items to `main` before implementation work begins, so work
+  branches start from a `main` that already carries the numbered ADR.
+- **G2 — check before merge.** Before integrating, sync onto the current
+  `main` (`git fetch` + rebase, or pull in a shared checkout) and run
+  the audit skill. If your ADR number or `plan/todo` slot now clashes
+  with what landed on `main`, renumber locally **before** integrating —
+  a trivial, local change (a new ADR/plan names its own number only in
+  its own file and `INDEX.md`).
+- **G3 — gate backstop.** Integration is single-threaded; it rejects a
+  duplicate number as the last line of defence, and the later author
+  renumbers.
+- **G4 — claim before do.** In separate worktrees, follow the exclusive
+  acquisition protocol in Multi-Agent Rules: first claim commit, explicit
+  empty expected remote ref, exit zero AND porcelain new-ref confirmation.
+  Immediately open the draft PR before implementation for PR integration.
+  Existing refs, ordinary successful pushes and up-to-date results are not
+  acquisition. In shared checkouts, the item and LOCKS ledger carry the
+  claim; single writers have no exclusive claim. Item status still records
+  who is working in every mode. Derive in-flight state from git and both
+  draft and ready PRs; explicitly continued claims retain ownership history.
+  G1–G3 protect identifiers; G4 protects work assignment.
+
+-->
+
+<!-- Federation (multi-repo) — bootstrap INCLUDES this section
+(uncommented) ONLY when this repo is part of a multi-repo product (Q11).
+Standalone repos OMIT it entirely.
+
+## Federation (multi-repo)
+
+This repo belongs to the **<product>** federation. Topology and the
+identity scheme are recorded in `federation.md`; the home repo's
+`federation-index.md` is the authoritative member list.
+
+- **Where product-wide decisions live depends on the topology** (recorded
+  in `federation.md`):
+  - **A — central:** a single central repo holds **all** product-wide
+    ADRs; every other repo references them and never duplicates a
+    product-wide decision locally.
+  - **B — distributed:** **no** repo holds product-wide ADRs; each repo
+    owns its own catalogue and the roll-up is the product-wide view.
+  - **C — home + local:** the home repo holds product-wide ADRs; members
+    keep purely-local ADRs alongside and reference the home for
+    product-wide ones.
+- **Numbering is per-repo contiguous.** Each member repo numbers its own
+  ADRs contiguously from `0001`; numbers are **not** unique across the
+  federation. The cross-federation key is the **identity scheme** recorded
+  in `federation.md` — default repo-prefixed slug `<repo-id>/NNNN-slug`.
+- **Cross-repo references use the logical identity**, resolved through the
+  member index along `repo-id → Pointer (repo root) → adr/NNNN-*.md`: look
+  up the repo-id's `Pointer` in `federation-index.md`, then find
+  `adr/NNNN-*.md` under that repo. They survive a target repo move (edit
+  one index row, not the references). A **member repo holds no index**, so
+  it first reaches `federation-index.md` via its own `federation.md`
+  `Home` pointer, then resolves as above. **Same-repo references stay
+  relative paths** (`adr/NNNN-*.md`).
+- `supersedes:` / `superseded-by:` may point across repos using the
+  logical identity.
+- **Membership is declared, not discovered.** A member repo carries a
+  `federation.md` back-pointer; adding it to the home's
+  `federation-index.md` is a deliberate edit there. The two must agree —
+  audit cross-checks both directions.
+- **Cross-repo work is one plan item per repo.** A decision implemented in
+  several repos gets one `plan/todo` item **per affected repo**, each in
+  the repo whose code it changes and naming the owning ADR by its
+  federation identity. The owning ADR is the single grouping point — its
+  per-repo items are discoverable from it; there is **no umbrella record**.
+  Per-repo "lower numbers first" ordering is unchanged.
+- **Aggregate status is derived in the roll-up.** A cross-repo decision is
+  `Implemented` only when **every** owning per-repo plan item has shipped
+  (each under its own repo's completion event); until then it is partially
+  implemented. The aggregate ("2 of 3 repos") is a **derived column in the
+  roll-up**, computed from per-repo plan-item state — never hand-written
+  into the ADR, so no cross-repo writes.
+- **Shared conventions come from one source.** Shared conventions and
+  templates are authoritative in the index-holding repo; members **copy
+  them at bootstrap** and may keep **local-only** conventions alongside.
+  Updates are **not** force-pushed — drift between a member's copy and the
+  source is **detected by audit**. Referenceable, not enforced; no
+  cross-repo writes.
+-->
+
+## Audit Trail Policy
+
+Every substantive change to an Accepted ADR appends a new row to its
+Revision History table.
+
+Editorial changes — typos, formatting, link fixes — are excluded from
+Revision History but must be flagged "editorial" in the commit message.
+
+The Approvals table is populated when an ADR transitions to Accepted
+and updated on every subsequent substantive revision.
+
+## Git Contract
+
+Commit messages follow Conventional Commits with a mandatory
+`Rationale:` footer for any commit that touches an ADR.
+
+<!-- Per Q6:
+- Signed commits: <yes/no>
+- ADR-revision tags `adr-NNNN-rN`: <yes/no>
+- Co-Authored-By trailer on agent commits: <yes/no>
+-->
+
+<!-- Integration model per Q4b — keep one paragraph. If no verify gate
+was recorded (Q8), drop the gate sentence.
+
+Direct-to-main:
+Changes are fast-forwarded onto `main`; no merge commits. The verify
+gate (`<command from Q8>`) runs locally and must pass before push. A change is "shipped"
+when it is on `main` and pushed.
+
+PR-based:
+Every change ships via a pull request with required CI. The verify
+gate (`<command from Q8>`) runs in CI on the PR. Merge strategy is <squash | merge |
+rebase>. A change is "shipped" when its PR is merged to `main` with
+CI green. Completion changes are committed on the pull-request branch
+before it is marked ready; no follow-up commit is made on the
+integration branch after merge.
+-->
+
+## Reporting
+
+Final skill results and persisted verification, PR, wave and stop reports
+end with a section headed exactly **Status at a glance**, with three labels:
+
+- **This run** — what was attempted, actual outcomes, exact gate output and exit code.
+- **Overall** — implemented, partially verified, verified, blocked, failed or unknown.
+- **Yet to do** — all remaining work, checks, findings, cleanup and required input; None only when the complete task is verifiably finished.
+
+1. Report exact process outcomes, including timeouts and interruptions.
+2. A passing sub-step is not an overall pass; require complete evidence.
+3. Missing returns or incomplete evidence remain unknown or partially verified.
+4. Do not omit remaining work when a budget or session ends.
+
+The reader must be able to distinguish what was achieved from what is
+missing. Routine progress updates remain concise and need no closing block.
+Repository-specific reporting rules extend this numbered list.
+
+Example:
+
+**Status at a glance**
+
+- **This run:** prepared the PR; `verify: OK`, exit 0.
+- **Overall:** partially verified — CI is still pending.
+- **Yet to do:** required CI, authorised merge and branch cleanup.
+
+## Item status
+
+Every new queue item carries this section, initially empty:
+
+```markdown
+## Status
+
+- Claimed by:
+- Blockers:
+- Stopped:
+```
+
+At start, record actor, date and actual branch in Claimed by (no invented
+claim branch for shared checkouts or single writers). The owner maintains
+Blockers. On stop, record date and reason in Stopped with the three Status
+at a glance labels. Commit status with the work. Remove the section in
+the completion move to plan/done; the shipped footer replaces it.

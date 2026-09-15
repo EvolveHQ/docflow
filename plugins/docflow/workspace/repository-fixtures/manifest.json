@@ -1,0 +1,1698 @@
+{
+  "schema": 1,
+  "format": "docflow-repository-producer-fixtures-1",
+  "producer_revision": "c57f91738158ce5db719f80412ff7e77b837bf60",
+  "evidence_scope": "Exact template rendering plus retained legacy producer files; plan bodies follow authoring rules. Synthetic authority, SHA and PR examples are not execution/integration evidence.",
+  "sources": {
+    "evals/fixtures/legacy-range/AGENTS.md": {
+      "sha256": "d18ac880596926c16311424f9aee2bbfef3e94b10878b003b7fe8b0452e23d8b"
+    },
+    "evals/fixtures/legacy-range/CONVENTIONS.md": {
+      "sha256": "3f81d29da3db00b8d17602f58b240d9ce3645f09e10150044150badd671e4fe1"
+    },
+    "evals/fixtures/legacy-range/INDEX.md": {
+      "sha256": "004cd79dacc979c0ff6afcf5fab2075c1ac1a817affce5b2905bfaf94bc85c63"
+    },
+    "evals/fixtures/legacy-range/README.md": {
+      "sha256": "97e95b4ac4a82d191e2cde6502b199fc79bc70373fc3b467a75700f631c962b8"
+    },
+    "evals/fixtures/legacy-range/adr/0000-template.md": {
+      "sha256": "025c654fe43aea32d3133c9072181e4284042b3b1ae012b58b3f4f3e6b89d8c7"
+    },
+    "evals/fixtures/legacy-range/adr/0001-record-architecture-decisions.md": {
+      "sha256": "937ed161fb04f714c598c2df93b5c243b8b1432402d65fde1e1a66979fa78bb7"
+    },
+    "evals/fixtures/legacy-range/adr/0002-searchable-decision-catalogue.md": {
+      "sha256": "7ff364e8d2540d36bc772c7ed54ec24b6d2fa703ee9129bbc68eb52d391a723c"
+    },
+    "evals/fixtures/legacy-range/adr/0003-queue-driven-implementation.md": {
+      "sha256": "9de057c8dcde822182be123c2b46256d2237362d0f1839dc2da267cfbd72e194"
+    },
+    "evals/fixtures/legacy-range/adr/0100-template.md": {
+      "sha256": "1fa11e31ea96f846e101ce6091bdc4fdce1d08f933afb669e6a8efc852d98cfa"
+    },
+    "evals/fixtures/legacy-range/adr/0101-markdown-files-in-git.md": {
+      "sha256": "fa3f8d69bafa01192ca2aac85623c030d8a6c2301a8f0c41cb9b818e289c6281"
+    },
+    "evals/fixtures/legacy-range/adr/0102-static-verify-script.md": {
+      "sha256": "f9e5ba641865431b6a65e26f1cbea7997e75a1c4abd72327b55a92951311aa19"
+    },
+    "evals/fixtures/legacy-range/domains/platform/README.md": {
+      "sha256": "b96b76e38a6b9d5931f26522bd54eee8fc0b0fb94ad64b48a4ffb6f5f89e5910"
+    },
+    "evals/fixtures/legacy-range/plan/README.md": {
+      "sha256": "179d9c876a43053bd814bd8a1f6c6967d22f8a53ff6a4d9fa4b57b3449227457"
+    },
+    "evals/fixtures/legacy-range/plan/done/2026-01-12-adopt-the-method.md": {
+      "sha256": "02df407276d68aad25c39136a87429dc53a22529757c86e067644c523de9ec30"
+    },
+    "evals/fixtures/legacy-range/plan/done/2026-01-19-catalogue-and-store.md": {
+      "sha256": "21ddb1186242c6620c6705e81e3e073d13c3ffa56cf95d3452a668239f12743e"
+    },
+    "evals/fixtures/legacy-range/plan/todo/0001-verify-script-coverage.md": {
+      "sha256": "7fd4da097a77443647f83055d7e6004260a85ad8f1db71b5fa579bd4564bdfd8"
+    },
+    "evals/fixtures/legacy-range/plan/todo/0002-queue-and-completion-event.md": {
+      "sha256": "caa275c09a0dd835f0955289c3d955d41625f049f3d22cd8431dcfa61dfe8b09"
+    },
+    "plugins/docflow/skills/bootstrap/templates/AGENTS.md": {
+      "sha256": "a15813bbae21dc249632dc15aca6593e8b06c3b2876e1281998eda5fe918534a"
+    },
+    "plugins/docflow/skills/bootstrap/templates/CLAUDE.md": {
+      "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49"
+    },
+    "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md": {
+      "sha256": "2a15da40de46a45aa9111d261f308987c130efe065deed3a155edfbe41f82b70"
+    },
+    "plugins/docflow/skills/bootstrap/templates/_agent-LOCKS.md": {
+      "sha256": "d489163b3d809f583ed4f400d5f16d5edead61bbc6f3934e1fee85b6e49f26eb"
+    },
+    "plugins/docflow/skills/bootstrap/templates/_agent-ROLES.md": {
+      "sha256": "b7c8478b308a3abe4379746041e412b992c21e7405eb799b570cfe7d15de6628"
+    },
+    "plugins/docflow/skills/bootstrap/templates/_agent-prompts-autonomous.md": {
+      "sha256": "f6bbaa2f881961aa72b96a19ff6b278fb0285547d5009a2efa3a39abb0f609e3"
+    },
+    "plugins/docflow/skills/bootstrap/templates/adr-0001-seed.md": {
+      "sha256": "cfcc060d32ae013634bc788aa20fd9b7f69ae3c90399d18f17a72703ea573b1c"
+    },
+    "plugins/docflow/skills/bootstrap/templates/adr-capability.md": {
+      "sha256": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5"
+    },
+    "plugins/docflow/skills/bootstrap/templates/adr-technology.md": {
+      "sha256": "02abe97bf3f956972621490c0c6c4a5aa4210b259c33114cadc84a2ab7fbffc0"
+    },
+    "plugins/docflow/skills/bootstrap/templates/federation-config.md": {
+      "sha256": "27e9a9c0fde4a1edf235c27a69c4aaff1051bc14a17a4e862592c30e9e92421a"
+    },
+    "plugins/docflow/skills/bootstrap/templates/federation-index.md": {
+      "sha256": "7c548fa6c04ef2b0144a183d7b1ab926f559cfa693e0d07d4028eb9ced75add2"
+    },
+    "plugins/docflow/skills/bootstrap/templates/plan-README.md": {
+      "sha256": "d6fb25d7b7ac6da6f4ff3f3e074ce6e8025d0733551a5a171cf7768022a4f6d8"
+    },
+    "plugins/docflow/skills/bootstrap/SKILL.md": {
+      "sha256": "5a4551e47a5bb635098a1891fc3dadce61add75e8b94b210c7e9a5be0e07287f"
+    },
+    "plugins/docflow/skills/new-plan/SKILL.md": {
+      "sha256": "8a2690887cf3f5068c0a24184b4f4fee0c84ddd7021880c0b4e21b22231a64e6"
+    },
+    "plugins/docflow/skills/ship-item/SKILL.md": {
+      "sha256": "b929994d4bf1549db452a0b2e08349a9981e1a13fa5060d9422abde8b128114f"
+    },
+    "plugins/docflow/skills/add-convention/SKILL.md": {
+      "sha256": "9f27f42a0070ff43f1d924ed46e6097183dd1c890841a25e62a25e9cfdc1dde4"
+    },
+    "plugins/docflow/skills/new-adr/SKILL.md": {
+      "sha256": "3b8ac8e05f48e599f07b3e590776841736f82f61d00e994ae0ef3a48f2f9f005"
+    },
+    "scripts/produce-repository-fixtures.mjs": {
+      "sha256": "5bcd1cdd2aaa03088ff17b0c06f72a3a93f32bc29070844291e3f8c4c21b6944"
+    }
+  },
+  "cases": [
+    {
+      "id": "default-root",
+      "root": ".docflow",
+      "encoding": "single-shape",
+      "queue": false,
+      "expected_diagnostics": [],
+      "native_integration": "unverified",
+      "evidence_kind": "deterministic template rendering"
+    },
+    {
+      "id": "root-pointer",
+      "root": ".",
+      "encoding": "single-shape",
+      "queue": false,
+      "expected_diagnostics": [],
+      "native_integration": "unverified",
+      "evidence_kind": "deterministic template rendering"
+    },
+    {
+      "id": "docs-pointer",
+      "root": "docs",
+      "encoding": "single-shape",
+      "queue": false,
+      "expected_diagnostics": [],
+      "native_integration": "unverified",
+      "evidence_kind": "deterministic template rendering"
+    },
+    {
+      "id": "nested-pointer",
+      "root": "governance/decisions/current",
+      "encoding": "single-shape",
+      "queue": false,
+      "expected_diagnostics": [],
+      "native_integration": "unverified",
+      "evidence_kind": "deterministic template rendering"
+    },
+    {
+      "id": "legacy-no-manifest",
+      "root": ".",
+      "encoding": "single-shape",
+      "queue": false,
+      "expected_diagnostics": [],
+      "native_integration": "unverified",
+      "evidence_kind": "deterministic template rendering"
+    },
+    {
+      "id": "explicit-two-shape",
+      "root": ".docflow",
+      "encoding": "explicit-two-shape",
+      "queue": false,
+      "expected_diagnostics": [],
+      "native_integration": "unverified",
+      "evidence_kind": "deterministic template rendering"
+    },
+    {
+      "id": "optional-layers",
+      "root": ".docflow",
+      "encoding": "explicit-two-shape",
+      "queue": true,
+      "expected_diagnostics": [],
+      "native_integration": "unverified",
+      "evidence_kind": "deterministic template rendering"
+    },
+    {
+      "id": "status-claimed",
+      "root": ".",
+      "encoding": "single-shape",
+      "queue": true,
+      "expected_diagnostics": [],
+      "native_integration": "unverified",
+      "evidence_kind": "deterministic template rendering",
+      "status": "claimed",
+      "owner": "fixture-executor",
+      "branch": "work/0001-example",
+      "blockers": false,
+      "next_action": "continue the named owned item"
+    },
+    {
+      "id": "status-blocked",
+      "root": ".",
+      "encoding": "single-shape",
+      "queue": true,
+      "expected_diagnostics": [],
+      "native_integration": "unverified",
+      "evidence_kind": "deterministic template rendering",
+      "status": "blocked",
+      "owner": "fixture-executor",
+      "branch": "work/0001-example",
+      "blockers": true,
+      "next_action": "restore dependency and rerun"
+    },
+    {
+      "id": "status-stopped",
+      "root": ".",
+      "encoding": "single-shape",
+      "queue": true,
+      "expected_diagnostics": [],
+      "native_integration": "unverified",
+      "evidence_kind": "deterministic template rendering",
+      "status": "stopped",
+      "owner": "fixture-executor",
+      "branch": "work/0001-example",
+      "blockers": true,
+      "next_action": "restore dependency and rerun"
+    },
+    {
+      "id": "status-resumed",
+      "root": ".",
+      "encoding": "single-shape",
+      "queue": true,
+      "expected_diagnostics": [],
+      "native_integration": "unverified",
+      "evidence_kind": "deterministic template rendering",
+      "status": "resumed",
+      "owner": "fixture-executor",
+      "branch": "work/0001-example",
+      "blockers": false,
+      "next_action": "continue the named owned item"
+    },
+    {
+      "id": "completion-prepared",
+      "root": ".",
+      "encoding": "single-shape",
+      "queue": true,
+      "expected_diagnostics": [],
+      "native_integration": "unverified without accompanying Git history",
+      "evidence_kind": "deterministic template rendering",
+      "checkout_branch": "work/0001-example",
+      "git_scenario": "Create initial main from status-resumed; commit this completion on work/0001-example; integrate via a merge commit only for completion-integrated."
+    },
+    {
+      "id": "completion-integrated",
+      "root": ".",
+      "encoding": "single-shape",
+      "queue": true,
+      "expected_diagnostics": [],
+      "native_integration": "unverified without accompanying Git history",
+      "evidence_kind": "deterministic template rendering",
+      "checkout_branch": "main",
+      "git_scenario": "Create initial main from status-resumed; commit this completion on work/0001-example; integrate via a merge commit only for completion-integrated."
+    },
+    {
+      "id": "legacy-two-range",
+      "root": "docs",
+      "encoding": "legacy-range",
+      "queue": true,
+      "expected_diagnostics": [
+        "migration-available"
+      ],
+      "native_integration": "historical fixture evidence only",
+      "preserved_history": [
+        "evals/fixtures/legacy-range/plan/done/2026-01-12-adopt-the-method.md",
+        "evals/fixtures/legacy-range/plan/done/2026-01-19-catalogue-and-store.md"
+      ]
+    },
+    {
+      "id": "federation-home",
+      "root": ".",
+      "encoding": "single-shape",
+      "queue": false,
+      "expected_diagnostics": [],
+      "native_integration": "unverified",
+      "evidence_kind": "deterministic template rendering",
+      "federation": "home"
+    },
+    {
+      "id": "federation-member",
+      "root": "docs",
+      "encoding": "single-shape",
+      "queue": false,
+      "expected_diagnostics": [],
+      "native_integration": "unverified",
+      "evidence_kind": "deterministic template rendering",
+      "federation": "member"
+    },
+    {
+      "id": "invalid-pointer",
+      "root": ".",
+      "encoding": "single-shape",
+      "queue": false,
+      "expected_diagnostics": [
+        "invalid-pointer"
+      ],
+      "native_integration": "unverified",
+      "evidence_kind": "deterministic template rendering"
+    },
+    {
+      "id": "invalid-pointer-syntax",
+      "root": ".",
+      "encoding": "single-shape",
+      "queue": false,
+      "expected_diagnostics": [
+        "invalid-pointer"
+      ],
+      "native_integration": "unverified",
+      "evidence_kind": "deterministic template rendering"
+    },
+    {
+      "id": "disagreeing-pointer",
+      "root": ".",
+      "encoding": "single-shape",
+      "queue": false,
+      "expected_diagnostics": [
+        "root-disagreement"
+      ],
+      "native_integration": "unverified",
+      "evidence_kind": "deterministic template rendering"
+    },
+    {
+      "id": "duplicate-number",
+      "root": ".",
+      "encoding": "single-shape",
+      "queue": false,
+      "expected_diagnostics": [
+        "duplicate-number"
+      ],
+      "native_integration": "unverified",
+      "evidence_kind": "deterministic template rendering"
+    },
+    {
+      "id": "unknown-status",
+      "root": ".",
+      "encoding": "single-shape",
+      "queue": false,
+      "expected_diagnostics": [
+        "unknown-status"
+      ],
+      "native_integration": "unverified",
+      "evidence_kind": "deterministic template rendering"
+    },
+    {
+      "id": "unknown-shape",
+      "root": ".",
+      "encoding": "single-shape",
+      "queue": false,
+      "expected_diagnostics": [
+        "unknown-shape"
+      ],
+      "native_integration": "unverified",
+      "evidence_kind": "deterministic template rendering"
+    }
+  ],
+  "files": {
+    "cases/default-root/.docflow/CONVENTIONS.md": {
+      "sha256": "e14bf4543ff15a6aa76d75482ce4c799f8cace6cd8d9d6313cf43d0a9cebc12f",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md"
+      ],
+      "rendering": "Select single-writer, PR integration, single shape, queue=false; fill supplied fixture choices."
+    },
+    "cases/default-root/AGENTS.md": {
+      "sha256": "17a6e985a53e428d323f05849dac3659f2d4940ff53796ea67b141e354a0d98c",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/AGENTS.md"
+      ],
+      "rendering": "Select generated entry/read-order sections; resolve root and omit disabled queue/coordination."
+    },
+    "cases/default-root/CLAUDE.md": {
+      "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/CLAUDE.md"
+      ],
+      "rendering": "Exact template copy."
+    },
+    "cases/default-root/.docflow/adr/0000-template.md": {
+      "sha256": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Exact template copy."
+    },
+    "cases/default-root/.docflow/adr/0001-synthetic-capability.md": {
+      "sha256": "ac312c0624dd23013d70814f895aa344551bbe6c70b889ccfbd3d40c9c4409dc",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Fill synthetic author/date/title/body; explicit shape only in two-shape case."
+    },
+    "cases/default-root/.docflow/INDEX.md": {
+      "sha256": "b796453e3e0719130d1780f70f26c602de1dc1ad065b400ca5127f25f91f7b8a",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/SKILL.md",
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Derive INDEX rows from the rendered metadata; bootstrap output rule, not a host-run receipt."
+    },
+    "cases/root-pointer/.docflow": {
+      "sha256": "6f57ef45dc3ff1870feffe9e1c170acec3665afe0c7cc88ec89e01a6acd02fae",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/SKILL.md"
+      ],
+      "rendering": "Exact pointer form; root choice = ."
+    },
+    "cases/root-pointer/CONVENTIONS.md": {
+      "sha256": "70e8696b6cb91f88109de9681aa7cdaed9db558a664409cb18d7b785ac88ac27",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md"
+      ],
+      "rendering": "Select single-writer, PR integration, single shape, queue=false; fill supplied fixture choices."
+    },
+    "cases/root-pointer/AGENTS.md": {
+      "sha256": "3b1503f2de63a03a758d0cddd454642c61e7ea3ba6685300c8cce3b83347410c",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/AGENTS.md"
+      ],
+      "rendering": "Select generated entry/read-order sections; resolve root and omit disabled queue/coordination."
+    },
+    "cases/root-pointer/CLAUDE.md": {
+      "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/CLAUDE.md"
+      ],
+      "rendering": "Exact template copy."
+    },
+    "cases/root-pointer/adr/0000-template.md": {
+      "sha256": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Exact template copy."
+    },
+    "cases/root-pointer/adr/0001-synthetic-capability.md": {
+      "sha256": "ac312c0624dd23013d70814f895aa344551bbe6c70b889ccfbd3d40c9c4409dc",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Fill synthetic author/date/title/body; explicit shape only in two-shape case."
+    },
+    "cases/root-pointer/INDEX.md": {
+      "sha256": "b796453e3e0719130d1780f70f26c602de1dc1ad065b400ca5127f25f91f7b8a",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/SKILL.md",
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Derive INDEX rows from the rendered metadata; bootstrap output rule, not a host-run receipt."
+    },
+    "cases/docs-pointer/.docflow": {
+      "sha256": "e972336f7fd73e741d6b00828f27dbe02b64c97787c67b515b4847a514ae0a61",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/SKILL.md"
+      ],
+      "rendering": "Exact pointer form; root choice = docs"
+    },
+    "cases/docs-pointer/docs/CONVENTIONS.md": {
+      "sha256": "bc8a32e4cdb79940a74d92add226baca37e5ebfda9cdf231f2dedf72a5afe71c",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md"
+      ],
+      "rendering": "Select single-writer, PR integration, single shape, queue=false; fill supplied fixture choices."
+    },
+    "cases/docs-pointer/AGENTS.md": {
+      "sha256": "c3d54885b50f868b42f7745a421892cb82b1d2ecf562cff93ff6084897288b4e",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/AGENTS.md"
+      ],
+      "rendering": "Select generated entry/read-order sections; resolve root and omit disabled queue/coordination."
+    },
+    "cases/docs-pointer/CLAUDE.md": {
+      "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/CLAUDE.md"
+      ],
+      "rendering": "Exact template copy."
+    },
+    "cases/docs-pointer/docs/adr/0000-template.md": {
+      "sha256": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Exact template copy."
+    },
+    "cases/docs-pointer/docs/adr/0001-synthetic-capability.md": {
+      "sha256": "ac312c0624dd23013d70814f895aa344551bbe6c70b889ccfbd3d40c9c4409dc",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Fill synthetic author/date/title/body; explicit shape only in two-shape case."
+    },
+    "cases/docs-pointer/docs/INDEX.md": {
+      "sha256": "b796453e3e0719130d1780f70f26c602de1dc1ad065b400ca5127f25f91f7b8a",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/SKILL.md",
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Derive INDEX rows from the rendered metadata; bootstrap output rule, not a host-run receipt."
+    },
+    "cases/nested-pointer/.docflow": {
+      "sha256": "2b350d41274bfbca913ee36101c910f2a5694759bcb2e15442275bf40bedff67",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/SKILL.md"
+      ],
+      "rendering": "Exact pointer form; root choice = governance/decisions/current"
+    },
+    "cases/nested-pointer/governance/decisions/current/CONVENTIONS.md": {
+      "sha256": "0d484a60299d6976d833b63c621404088eccb80c138539d852536ba1037a0fa6",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md"
+      ],
+      "rendering": "Select single-writer, PR integration, single shape, queue=false; fill supplied fixture choices."
+    },
+    "cases/nested-pointer/AGENTS.md": {
+      "sha256": "3b5947c2384829ca561850deb4b2ee23d7e074799e32dc88e2ec52f0fec6ea0c",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/AGENTS.md"
+      ],
+      "rendering": "Select generated entry/read-order sections; resolve root and omit disabled queue/coordination."
+    },
+    "cases/nested-pointer/CLAUDE.md": {
+      "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/CLAUDE.md"
+      ],
+      "rendering": "Exact template copy."
+    },
+    "cases/nested-pointer/governance/decisions/current/adr/0000-template.md": {
+      "sha256": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Exact template copy."
+    },
+    "cases/nested-pointer/governance/decisions/current/adr/0001-synthetic-capability.md": {
+      "sha256": "ac312c0624dd23013d70814f895aa344551bbe6c70b889ccfbd3d40c9c4409dc",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Fill synthetic author/date/title/body; explicit shape only in two-shape case."
+    },
+    "cases/nested-pointer/governance/decisions/current/INDEX.md": {
+      "sha256": "b796453e3e0719130d1780f70f26c602de1dc1ad065b400ca5127f25f91f7b8a",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/SKILL.md",
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Derive INDEX rows from the rendered metadata; bootstrap output rule, not a host-run receipt."
+    },
+    "cases/legacy-no-manifest/CONVENTIONS.md": {
+      "sha256": "70e8696b6cb91f88109de9681aa7cdaed9db558a664409cb18d7b785ac88ac27",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md"
+      ],
+      "rendering": "Select single-writer, PR integration, single shape, queue=false; fill supplied fixture choices."
+    },
+    "cases/legacy-no-manifest/AGENTS.md": {
+      "sha256": "3b1503f2de63a03a758d0cddd454642c61e7ea3ba6685300c8cce3b83347410c",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/AGENTS.md"
+      ],
+      "rendering": "Select generated entry/read-order sections; resolve root and omit disabled queue/coordination."
+    },
+    "cases/legacy-no-manifest/CLAUDE.md": {
+      "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/CLAUDE.md"
+      ],
+      "rendering": "Exact template copy."
+    },
+    "cases/legacy-no-manifest/adr/0000-template.md": {
+      "sha256": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Exact template copy."
+    },
+    "cases/legacy-no-manifest/adr/0001-synthetic-capability.md": {
+      "sha256": "ac312c0624dd23013d70814f895aa344551bbe6c70b889ccfbd3d40c9c4409dc",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Fill synthetic author/date/title/body; explicit shape only in two-shape case."
+    },
+    "cases/legacy-no-manifest/INDEX.md": {
+      "sha256": "b796453e3e0719130d1780f70f26c602de1dc1ad065b400ca5127f25f91f7b8a",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/SKILL.md",
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Derive INDEX rows from the rendered metadata; bootstrap output rule, not a host-run receipt."
+    },
+    "cases/explicit-two-shape/.docflow/CONVENTIONS.md": {
+      "sha256": "e829bcf06654e53d0bfe8b4932b830dac5ae56ec2cb569ca61626b766f0ade73",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md"
+      ],
+      "rendering": "Select single-writer, PR integration, two shapes, queue=false; fill supplied fixture choices."
+    },
+    "cases/explicit-two-shape/AGENTS.md": {
+      "sha256": "17a6e985a53e428d323f05849dac3659f2d4940ff53796ea67b141e354a0d98c",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/AGENTS.md"
+      ],
+      "rendering": "Select generated entry/read-order sections; resolve root and omit disabled queue/coordination."
+    },
+    "cases/explicit-two-shape/CLAUDE.md": {
+      "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/CLAUDE.md"
+      ],
+      "rendering": "Exact template copy."
+    },
+    "cases/explicit-two-shape/.docflow/adr/0000-template.md": {
+      "sha256": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Exact template copy."
+    },
+    "cases/explicit-two-shape/.docflow/adr/0001-synthetic-capability.md": {
+      "sha256": "c2dbfac6c48850cc17e738be4960c1497b57815768b761a4b746db39e800b5e9",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Fill synthetic author/date/title/body; explicit shape only in two-shape case."
+    },
+    "cases/explicit-two-shape/.docflow/adr/0000-template-technology.md": {
+      "sha256": "02abe97bf3f956972621490c0c6c4a5aa4210b259c33114cadc84a2ab7fbffc0",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/adr-technology.md"
+      ],
+      "rendering": "Exact template copy."
+    },
+    "cases/explicit-two-shape/.docflow/adr/0002-synthetic-technology.md": {
+      "sha256": "8b154ee23f1d60695625a49a87ad714fdf61ea90c4ad258d89c72456e4099a86",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/adr-technology.md"
+      ],
+      "rendering": "Fill synthetic input and explicit technology shape."
+    },
+    "cases/explicit-two-shape/.docflow/INDEX.md": {
+      "sha256": "839e2b8488669f6a318a16136998faa6ce4d5164153773f064c32ceb916ec96f",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/SKILL.md",
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Derive INDEX rows from the rendered metadata; bootstrap output rule, not a host-run receipt."
+    },
+    "cases/optional-layers/.docflow/CONVENTIONS.md": {
+      "sha256": "7f0c2c6e1d39e7c6e183ed1368c5f9257518fb3d1ff9a2a9edc2eb83a259f7b0",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md"
+      ],
+      "rendering": "Select single-writer, PR integration, two shapes, queue=true; fill supplied fixture choices."
+    },
+    "cases/optional-layers/AGENTS.md": {
+      "sha256": "31a3846d7124caf1061fbff90111f464ae8392ed590dc49fed9e1feb6246488b",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/AGENTS.md"
+      ],
+      "rendering": "Select generated entry/read-order sections; resolve root and omit disabled queue/coordination."
+    },
+    "cases/optional-layers/CLAUDE.md": {
+      "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/CLAUDE.md"
+      ],
+      "rendering": "Exact template copy."
+    },
+    "cases/optional-layers/.docflow/adr/0000-template.md": {
+      "sha256": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Exact template copy."
+    },
+    "cases/optional-layers/.docflow/adr/0001-synthetic-capability.md": {
+      "sha256": "c2dbfac6c48850cc17e738be4960c1497b57815768b761a4b746db39e800b5e9",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Fill synthetic author/date/title/body; explicit shape only in two-shape case."
+    },
+    "cases/optional-layers/.docflow/adr/0000-template-technology.md": {
+      "sha256": "02abe97bf3f956972621490c0c6c4a5aa4210b259c33114cadc84a2ab7fbffc0",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/adr-technology.md"
+      ],
+      "rendering": "Exact template copy."
+    },
+    "cases/optional-layers/.docflow/adr/0002-synthetic-technology.md": {
+      "sha256": "8b154ee23f1d60695625a49a87ad714fdf61ea90c4ad258d89c72456e4099a86",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/adr-technology.md"
+      ],
+      "rendering": "Fill synthetic input and explicit technology shape."
+    },
+    "cases/optional-layers/.docflow/INDEX.md": {
+      "sha256": "839e2b8488669f6a318a16136998faa6ce4d5164153773f064c32ceb916ec96f",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/SKILL.md",
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Derive INDEX rows from the rendered metadata; bootstrap output rule, not a host-run receipt."
+    },
+    "cases/optional-layers/.docflow/plan/README.md": {
+      "sha256": "d6fb25d7b7ac6da6f4ff3f3e074ce6e8025d0733551a5a171cf7768022a4f6d8",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/plan-README.md"
+      ],
+      "rendering": "Exact template copy."
+    },
+    "cases/optional-layers/.docflow/_agent/prompts/autonomous.md": {
+      "sha256": "f6bbaa2f881961aa72b96a19ff6b278fb0285547d5009a2efa3a39abb0f609e3",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/_agent-prompts-autonomous.md"
+      ],
+      "rendering": "Exact portable run prompt copy; no run invoked."
+    },
+    "cases/optional-layers/.docflow/GLOSSARY.md": {
+      "sha256": "f7354c08c22c6bf9e35527c7f2347f9d4ae75bc37ad4abf4e13531f51d11aa1a",
+      "origins": [
+        "plugins/docflow/skills/add-convention/SKILL.md"
+      ],
+      "rendering": "Author a synthetic shared term under the documented glossary rule."
+    },
+    "cases/optional-layers/.docflow/domains/platform/README.md": {
+      "sha256": "1656c1f56768019b4b10d450e2a7c274de982c3de3f42eaa759a970bdfadc418",
+      "origins": [
+        "plugins/docflow/skills/new-adr/SKILL.md"
+      ],
+      "rendering": "Author the optional domain grouping over the unchanged flat catalogue."
+    },
+    "cases/status-claimed/.docflow": {
+      "sha256": "6f57ef45dc3ff1870feffe9e1c170acec3665afe0c7cc88ec89e01a6acd02fae",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/SKILL.md"
+      ],
+      "rendering": "Exact pointer form; root choice = ."
+    },
+    "cases/status-claimed/CONVENTIONS.md": {
+      "sha256": "4cdbdae9957d132bd95b227a9e07635d4133b7623535bd2cf82be94bc1cadb2d",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md"
+      ],
+      "rendering": "Select single-writer, PR integration, single shape, queue=true; fill supplied fixture choices."
+    },
+    "cases/status-claimed/AGENTS.md": {
+      "sha256": "117e7efd258ed0d63635afe0101574777f5ca73f73d6a980e9971ec05a3ff221",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/AGENTS.md"
+      ],
+      "rendering": "Select generated entry/read-order sections; resolve root and omit disabled queue/coordination."
+    },
+    "cases/status-claimed/CLAUDE.md": {
+      "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/CLAUDE.md"
+      ],
+      "rendering": "Exact template copy."
+    },
+    "cases/status-claimed/adr/0000-template.md": {
+      "sha256": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Exact template copy."
+    },
+    "cases/status-claimed/adr/0001-synthetic-capability.md": {
+      "sha256": "ac312c0624dd23013d70814f895aa344551bbe6c70b889ccfbd3d40c9c4409dc",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Fill synthetic author/date/title/body; explicit shape only in two-shape case."
+    },
+    "cases/status-claimed/INDEX.md": {
+      "sha256": "b796453e3e0719130d1780f70f26c602de1dc1ad065b400ca5127f25f91f7b8a",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/SKILL.md",
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Derive INDEX rows from the rendered metadata; bootstrap output rule, not a host-run receipt."
+    },
+    "cases/status-claimed/plan/README.md": {
+      "sha256": "d6fb25d7b7ac6da6f4ff3f3e074ce6e8025d0733551a5a171cf7768022a4f6d8",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/plan-README.md"
+      ],
+      "rendering": "Exact template copy."
+    },
+    "cases/status-claimed/plan/todo/0001-example.md": {
+      "sha256": "78417ddb2a0b584114acd5200f1acb7ef7a7edea3cf6538df5be6a9e4dbb4436",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md",
+        "plugins/docflow/skills/new-plan/SKILL.md",
+        "plugins/docflow/skills/ship-item/SKILL.md"
+      ],
+      "rendering": "Exact Status template rendered with supplied synthetic values; minimal plan fields authored from new-plan contract; completion footer follows ship-item. No host execution claimed."
+    },
+    "cases/status-blocked/.docflow": {
+      "sha256": "6f57ef45dc3ff1870feffe9e1c170acec3665afe0c7cc88ec89e01a6acd02fae",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/SKILL.md"
+      ],
+      "rendering": "Exact pointer form; root choice = ."
+    },
+    "cases/status-blocked/CONVENTIONS.md": {
+      "sha256": "4cdbdae9957d132bd95b227a9e07635d4133b7623535bd2cf82be94bc1cadb2d",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md"
+      ],
+      "rendering": "Select single-writer, PR integration, single shape, queue=true; fill supplied fixture choices."
+    },
+    "cases/status-blocked/AGENTS.md": {
+      "sha256": "117e7efd258ed0d63635afe0101574777f5ca73f73d6a980e9971ec05a3ff221",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/AGENTS.md"
+      ],
+      "rendering": "Select generated entry/read-order sections; resolve root and omit disabled queue/coordination."
+    },
+    "cases/status-blocked/CLAUDE.md": {
+      "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/CLAUDE.md"
+      ],
+      "rendering": "Exact template copy."
+    },
+    "cases/status-blocked/adr/0000-template.md": {
+      "sha256": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Exact template copy."
+    },
+    "cases/status-blocked/adr/0001-synthetic-capability.md": {
+      "sha256": "ac312c0624dd23013d70814f895aa344551bbe6c70b889ccfbd3d40c9c4409dc",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Fill synthetic author/date/title/body; explicit shape only in two-shape case."
+    },
+    "cases/status-blocked/INDEX.md": {
+      "sha256": "b796453e3e0719130d1780f70f26c602de1dc1ad065b400ca5127f25f91f7b8a",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/SKILL.md",
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Derive INDEX rows from the rendered metadata; bootstrap output rule, not a host-run receipt."
+    },
+    "cases/status-blocked/plan/README.md": {
+      "sha256": "d6fb25d7b7ac6da6f4ff3f3e074ce6e8025d0733551a5a171cf7768022a4f6d8",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/plan-README.md"
+      ],
+      "rendering": "Exact template copy."
+    },
+    "cases/status-blocked/plan/todo/0001-example.md": {
+      "sha256": "274786c0d5bfa938e5b5e8f8653f7a5c63c31e44657f351fd06e55ee3ca16b90",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md",
+        "plugins/docflow/skills/new-plan/SKILL.md",
+        "plugins/docflow/skills/ship-item/SKILL.md"
+      ],
+      "rendering": "Exact Status template rendered with supplied synthetic values; minimal plan fields authored from new-plan contract; completion footer follows ship-item. No host execution claimed."
+    },
+    "cases/status-stopped/.docflow": {
+      "sha256": "6f57ef45dc3ff1870feffe9e1c170acec3665afe0c7cc88ec89e01a6acd02fae",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/SKILL.md"
+      ],
+      "rendering": "Exact pointer form; root choice = ."
+    },
+    "cases/status-stopped/CONVENTIONS.md": {
+      "sha256": "4cdbdae9957d132bd95b227a9e07635d4133b7623535bd2cf82be94bc1cadb2d",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md"
+      ],
+      "rendering": "Select single-writer, PR integration, single shape, queue=true; fill supplied fixture choices."
+    },
+    "cases/status-stopped/AGENTS.md": {
+      "sha256": "117e7efd258ed0d63635afe0101574777f5ca73f73d6a980e9971ec05a3ff221",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/AGENTS.md"
+      ],
+      "rendering": "Select generated entry/read-order sections; resolve root and omit disabled queue/coordination."
+    },
+    "cases/status-stopped/CLAUDE.md": {
+      "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/CLAUDE.md"
+      ],
+      "rendering": "Exact template copy."
+    },
+    "cases/status-stopped/adr/0000-template.md": {
+      "sha256": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Exact template copy."
+    },
+    "cases/status-stopped/adr/0001-synthetic-capability.md": {
+      "sha256": "ac312c0624dd23013d70814f895aa344551bbe6c70b889ccfbd3d40c9c4409dc",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Fill synthetic author/date/title/body; explicit shape only in two-shape case."
+    },
+    "cases/status-stopped/INDEX.md": {
+      "sha256": "b796453e3e0719130d1780f70f26c602de1dc1ad065b400ca5127f25f91f7b8a",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/SKILL.md",
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Derive INDEX rows from the rendered metadata; bootstrap output rule, not a host-run receipt."
+    },
+    "cases/status-stopped/plan/README.md": {
+      "sha256": "d6fb25d7b7ac6da6f4ff3f3e074ce6e8025d0733551a5a171cf7768022a4f6d8",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/plan-README.md"
+      ],
+      "rendering": "Exact template copy."
+    },
+    "cases/status-stopped/plan/todo/0001-example.md": {
+      "sha256": "581e968cb712b15c36818f52c2f96d71ed03b3c2e1f003cadbd87de1ceee943a",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md",
+        "plugins/docflow/skills/new-plan/SKILL.md",
+        "plugins/docflow/skills/ship-item/SKILL.md"
+      ],
+      "rendering": "Exact Status template rendered with supplied synthetic values; minimal plan fields authored from new-plan contract; completion footer follows ship-item. No host execution claimed."
+    },
+    "cases/status-resumed/.docflow": {
+      "sha256": "6f57ef45dc3ff1870feffe9e1c170acec3665afe0c7cc88ec89e01a6acd02fae",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/SKILL.md"
+      ],
+      "rendering": "Exact pointer form; root choice = ."
+    },
+    "cases/status-resumed/CONVENTIONS.md": {
+      "sha256": "4cdbdae9957d132bd95b227a9e07635d4133b7623535bd2cf82be94bc1cadb2d",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md"
+      ],
+      "rendering": "Select single-writer, PR integration, single shape, queue=true; fill supplied fixture choices."
+    },
+    "cases/status-resumed/AGENTS.md": {
+      "sha256": "117e7efd258ed0d63635afe0101574777f5ca73f73d6a980e9971ec05a3ff221",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/AGENTS.md"
+      ],
+      "rendering": "Select generated entry/read-order sections; resolve root and omit disabled queue/coordination."
+    },
+    "cases/status-resumed/CLAUDE.md": {
+      "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/CLAUDE.md"
+      ],
+      "rendering": "Exact template copy."
+    },
+    "cases/status-resumed/adr/0000-template.md": {
+      "sha256": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Exact template copy."
+    },
+    "cases/status-resumed/adr/0001-synthetic-capability.md": {
+      "sha256": "ac312c0624dd23013d70814f895aa344551bbe6c70b889ccfbd3d40c9c4409dc",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Fill synthetic author/date/title/body; explicit shape only in two-shape case."
+    },
+    "cases/status-resumed/INDEX.md": {
+      "sha256": "b796453e3e0719130d1780f70f26c602de1dc1ad065b400ca5127f25f91f7b8a",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/SKILL.md",
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Derive INDEX rows from the rendered metadata; bootstrap output rule, not a host-run receipt."
+    },
+    "cases/status-resumed/plan/README.md": {
+      "sha256": "d6fb25d7b7ac6da6f4ff3f3e074ce6e8025d0733551a5a171cf7768022a4f6d8",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/plan-README.md"
+      ],
+      "rendering": "Exact template copy."
+    },
+    "cases/status-resumed/plan/todo/0001-example.md": {
+      "sha256": "78417ddb2a0b584114acd5200f1acb7ef7a7edea3cf6538df5be6a9e4dbb4436",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md",
+        "plugins/docflow/skills/new-plan/SKILL.md",
+        "plugins/docflow/skills/ship-item/SKILL.md"
+      ],
+      "rendering": "Exact Status template rendered with supplied synthetic values; minimal plan fields authored from new-plan contract; completion footer follows ship-item. No host execution claimed."
+    },
+    "cases/completion-prepared/.docflow": {
+      "sha256": "6f57ef45dc3ff1870feffe9e1c170acec3665afe0c7cc88ec89e01a6acd02fae",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/SKILL.md"
+      ],
+      "rendering": "Exact pointer form; root choice = ."
+    },
+    "cases/completion-prepared/CONVENTIONS.md": {
+      "sha256": "4cdbdae9957d132bd95b227a9e07635d4133b7623535bd2cf82be94bc1cadb2d",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md"
+      ],
+      "rendering": "Select single-writer, PR integration, single shape, queue=true; fill supplied fixture choices."
+    },
+    "cases/completion-prepared/AGENTS.md": {
+      "sha256": "117e7efd258ed0d63635afe0101574777f5ca73f73d6a980e9971ec05a3ff221",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/AGENTS.md"
+      ],
+      "rendering": "Select generated entry/read-order sections; resolve root and omit disabled queue/coordination."
+    },
+    "cases/completion-prepared/CLAUDE.md": {
+      "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/CLAUDE.md"
+      ],
+      "rendering": "Exact template copy."
+    },
+    "cases/completion-prepared/adr/0000-template.md": {
+      "sha256": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Exact template copy."
+    },
+    "cases/completion-prepared/adr/0001-synthetic-capability.md": {
+      "sha256": "8f7d782ec9f71c2c333ea9b2ed6ffca7c41a84a01e9b847157f3dc7927622fa4",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Fill synthetic author/date/title/body; explicit shape only in two-shape case."
+    },
+    "cases/completion-prepared/INDEX.md": {
+      "sha256": "011d94acaed8f0e08e5b4a2d0955b843835c54d4463c734a501a26d536be12ee",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/SKILL.md",
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Derive INDEX rows from the rendered metadata; bootstrap output rule, not a host-run receipt."
+    },
+    "cases/completion-prepared/plan/README.md": {
+      "sha256": "d6fb25d7b7ac6da6f4ff3f3e074ce6e8025d0733551a5a171cf7768022a4f6d8",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/plan-README.md"
+      ],
+      "rendering": "Exact template copy."
+    },
+    "cases/completion-prepared/plan/done/2026-09-15-synthetic-implementation.md": {
+      "sha256": "56efd0d5ecd14d887fb67457bd544efe98a550550633d8b5cd0d7d8b6d1504d0",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md",
+        "plugins/docflow/skills/new-plan/SKILL.md",
+        "plugins/docflow/skills/ship-item/SKILL.md"
+      ],
+      "rendering": "Exact Status template rendered with supplied synthetic values; minimal plan fields authored from new-plan contract; completion footer follows ship-item. No host execution claimed."
+    },
+    "cases/completion-integrated/.docflow": {
+      "sha256": "6f57ef45dc3ff1870feffe9e1c170acec3665afe0c7cc88ec89e01a6acd02fae",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/SKILL.md"
+      ],
+      "rendering": "Exact pointer form; root choice = ."
+    },
+    "cases/completion-integrated/CONVENTIONS.md": {
+      "sha256": "4cdbdae9957d132bd95b227a9e07635d4133b7623535bd2cf82be94bc1cadb2d",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md"
+      ],
+      "rendering": "Select single-writer, PR integration, single shape, queue=true; fill supplied fixture choices."
+    },
+    "cases/completion-integrated/AGENTS.md": {
+      "sha256": "117e7efd258ed0d63635afe0101574777f5ca73f73d6a980e9971ec05a3ff221",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/AGENTS.md"
+      ],
+      "rendering": "Select generated entry/read-order sections; resolve root and omit disabled queue/coordination."
+    },
+    "cases/completion-integrated/CLAUDE.md": {
+      "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/CLAUDE.md"
+      ],
+      "rendering": "Exact template copy."
+    },
+    "cases/completion-integrated/adr/0000-template.md": {
+      "sha256": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Exact template copy."
+    },
+    "cases/completion-integrated/adr/0001-synthetic-capability.md": {
+      "sha256": "8f7d782ec9f71c2c333ea9b2ed6ffca7c41a84a01e9b847157f3dc7927622fa4",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Fill synthetic author/date/title/body; explicit shape only in two-shape case."
+    },
+    "cases/completion-integrated/INDEX.md": {
+      "sha256": "011d94acaed8f0e08e5b4a2d0955b843835c54d4463c734a501a26d536be12ee",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/SKILL.md",
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Derive INDEX rows from the rendered metadata; bootstrap output rule, not a host-run receipt."
+    },
+    "cases/completion-integrated/plan/README.md": {
+      "sha256": "d6fb25d7b7ac6da6f4ff3f3e074ce6e8025d0733551a5a171cf7768022a4f6d8",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/plan-README.md"
+      ],
+      "rendering": "Exact template copy."
+    },
+    "cases/completion-integrated/plan/done/2026-09-15-synthetic-implementation.md": {
+      "sha256": "56efd0d5ecd14d887fb67457bd544efe98a550550633d8b5cd0d7d8b6d1504d0",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md",
+        "plugins/docflow/skills/new-plan/SKILL.md",
+        "plugins/docflow/skills/ship-item/SKILL.md"
+      ],
+      "rendering": "Exact Status template rendered with supplied synthetic values; minimal plan fields authored from new-plan contract; completion footer follows ship-item. No host execution claimed."
+    },
+    "cases/legacy-two-range/docs/AGENTS.md": {
+      "sha256": "d18ac880596926c16311424f9aee2bbfef3e94b10878b003b7fe8b0452e23d8b",
+      "origins": [
+        "evals/fixtures/legacy-range/AGENTS.md"
+      ],
+      "rendering": "Retained producer legacy fixture bytes; relocate whole artefact home to docs without migration."
+    },
+    "cases/legacy-two-range/AGENTS.md": {
+      "sha256": "d18ac880596926c16311424f9aee2bbfef3e94b10878b003b7fe8b0452e23d8b",
+      "origins": [
+        "evals/fixtures/legacy-range/AGENTS.md"
+      ],
+      "rendering": "Preserve legacy entry point at repository root; historical copy also retained in docs."
+    },
+    "cases/legacy-two-range/docs/CONVENTIONS.md": {
+      "sha256": "ff390da9ac60ea59a432015e7ae9de93a94956cc796a4d7b5c20ea76715fb172",
+      "origins": [
+        "evals/fixtures/legacy-range/CONVENTIONS.md"
+      ],
+      "rendering": "Retained producer legacy fixture bytes; relocate whole artefact home to docs without migration. Only artefact-root declaration changes to docs/."
+    },
+    "cases/legacy-two-range/docs/INDEX.md": {
+      "sha256": "004cd79dacc979c0ff6afcf5fab2075c1ac1a817affce5b2905bfaf94bc85c63",
+      "origins": [
+        "evals/fixtures/legacy-range/INDEX.md"
+      ],
+      "rendering": "Retained producer legacy fixture bytes; relocate whole artefact home to docs without migration."
+    },
+    "cases/legacy-two-range/docs/README.md": {
+      "sha256": "97e95b4ac4a82d191e2cde6502b199fc79bc70373fc3b467a75700f631c962b8",
+      "origins": [
+        "evals/fixtures/legacy-range/README.md"
+      ],
+      "rendering": "Retained producer legacy fixture bytes; relocate whole artefact home to docs without migration."
+    },
+    "cases/legacy-two-range/README.md": {
+      "sha256": "97e95b4ac4a82d191e2cde6502b199fc79bc70373fc3b467a75700f631c962b8",
+      "origins": [
+        "evals/fixtures/legacy-range/README.md"
+      ],
+      "rendering": "Preserve legacy entry point at repository root; historical copy also retained in docs."
+    },
+    "cases/legacy-two-range/docs/adr/0000-template.md": {
+      "sha256": "025c654fe43aea32d3133c9072181e4284042b3b1ae012b58b3f4f3e6b89d8c7",
+      "origins": [
+        "evals/fixtures/legacy-range/adr/0000-template.md"
+      ],
+      "rendering": "Retained producer legacy fixture bytes; relocate whole artefact home to docs without migration."
+    },
+    "cases/legacy-two-range/docs/adr/0001-record-architecture-decisions.md": {
+      "sha256": "937ed161fb04f714c598c2df93b5c243b8b1432402d65fde1e1a66979fa78bb7",
+      "origins": [
+        "evals/fixtures/legacy-range/adr/0001-record-architecture-decisions.md"
+      ],
+      "rendering": "Retained producer legacy fixture bytes; relocate whole artefact home to docs without migration."
+    },
+    "cases/legacy-two-range/docs/adr/0002-searchable-decision-catalogue.md": {
+      "sha256": "7ff364e8d2540d36bc772c7ed54ec24b6d2fa703ee9129bbc68eb52d391a723c",
+      "origins": [
+        "evals/fixtures/legacy-range/adr/0002-searchable-decision-catalogue.md"
+      ],
+      "rendering": "Retained producer legacy fixture bytes; relocate whole artefact home to docs without migration."
+    },
+    "cases/legacy-two-range/docs/adr/0003-queue-driven-implementation.md": {
+      "sha256": "9de057c8dcde822182be123c2b46256d2237362d0f1839dc2da267cfbd72e194",
+      "origins": [
+        "evals/fixtures/legacy-range/adr/0003-queue-driven-implementation.md"
+      ],
+      "rendering": "Retained producer legacy fixture bytes; relocate whole artefact home to docs without migration."
+    },
+    "cases/legacy-two-range/docs/adr/0100-template.md": {
+      "sha256": "1fa11e31ea96f846e101ce6091bdc4fdce1d08f933afb669e6a8efc852d98cfa",
+      "origins": [
+        "evals/fixtures/legacy-range/adr/0100-template.md"
+      ],
+      "rendering": "Retained producer legacy fixture bytes; relocate whole artefact home to docs without migration."
+    },
+    "cases/legacy-two-range/docs/adr/0101-markdown-files-in-git.md": {
+      "sha256": "fa3f8d69bafa01192ca2aac85623c030d8a6c2301a8f0c41cb9b818e289c6281",
+      "origins": [
+        "evals/fixtures/legacy-range/adr/0101-markdown-files-in-git.md"
+      ],
+      "rendering": "Retained producer legacy fixture bytes; relocate whole artefact home to docs without migration."
+    },
+    "cases/legacy-two-range/docs/adr/0102-static-verify-script.md": {
+      "sha256": "f9e5ba641865431b6a65e26f1cbea7997e75a1c4abd72327b55a92951311aa19",
+      "origins": [
+        "evals/fixtures/legacy-range/adr/0102-static-verify-script.md"
+      ],
+      "rendering": "Retained producer legacy fixture bytes; relocate whole artefact home to docs without migration."
+    },
+    "cases/legacy-two-range/docs/domains/platform/README.md": {
+      "sha256": "b96b76e38a6b9d5931f26522bd54eee8fc0b0fb94ad64b48a4ffb6f5f89e5910",
+      "origins": [
+        "evals/fixtures/legacy-range/domains/platform/README.md"
+      ],
+      "rendering": "Retained producer legacy fixture bytes; relocate whole artefact home to docs without migration."
+    },
+    "cases/legacy-two-range/docs/plan/README.md": {
+      "sha256": "179d9c876a43053bd814bd8a1f6c6967d22f8a53ff6a4d9fa4b57b3449227457",
+      "origins": [
+        "evals/fixtures/legacy-range/plan/README.md"
+      ],
+      "rendering": "Retained producer legacy fixture bytes; relocate whole artefact home to docs without migration."
+    },
+    "cases/legacy-two-range/docs/plan/done/2026-01-12-adopt-the-method.md": {
+      "sha256": "02df407276d68aad25c39136a87429dc53a22529757c86e067644c523de9ec30",
+      "origins": [
+        "evals/fixtures/legacy-range/plan/done/2026-01-12-adopt-the-method.md"
+      ],
+      "rendering": "Retained producer legacy fixture bytes; relocate whole artefact home to docs without migration."
+    },
+    "cases/legacy-two-range/docs/plan/done/2026-01-19-catalogue-and-store.md": {
+      "sha256": "21ddb1186242c6620c6705e81e3e073d13c3ffa56cf95d3452a668239f12743e",
+      "origins": [
+        "evals/fixtures/legacy-range/plan/done/2026-01-19-catalogue-and-store.md"
+      ],
+      "rendering": "Retained producer legacy fixture bytes; relocate whole artefact home to docs without migration."
+    },
+    "cases/legacy-two-range/docs/plan/todo/0001-verify-script-coverage.md": {
+      "sha256": "7fd4da097a77443647f83055d7e6004260a85ad8f1db71b5fa579bd4564bdfd8",
+      "origins": [
+        "evals/fixtures/legacy-range/plan/todo/0001-verify-script-coverage.md"
+      ],
+      "rendering": "Retained producer legacy fixture bytes; relocate whole artefact home to docs without migration."
+    },
+    "cases/legacy-two-range/docs/plan/todo/0002-queue-and-completion-event.md": {
+      "sha256": "caa275c09a0dd835f0955289c3d955d41625f049f3d22cd8431dcfa61dfe8b09",
+      "origins": [
+        "evals/fixtures/legacy-range/plan/todo/0002-queue-and-completion-event.md"
+      ],
+      "rendering": "Retained producer legacy fixture bytes; relocate whole artefact home to docs without migration."
+    },
+    "cases/federation-home/.docflow": {
+      "sha256": "6f57ef45dc3ff1870feffe9e1c170acec3665afe0c7cc88ec89e01a6acd02fae",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/SKILL.md"
+      ],
+      "rendering": "Exact pointer form; root choice = ."
+    },
+    "cases/federation-home/CONVENTIONS.md": {
+      "sha256": "70e8696b6cb91f88109de9681aa7cdaed9db558a664409cb18d7b785ac88ac27",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md"
+      ],
+      "rendering": "Select single-writer, PR integration, single shape, queue=false; fill supplied fixture choices."
+    },
+    "cases/federation-home/AGENTS.md": {
+      "sha256": "3b1503f2de63a03a758d0cddd454642c61e7ea3ba6685300c8cce3b83347410c",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/AGENTS.md"
+      ],
+      "rendering": "Select generated entry/read-order sections; resolve root and omit disabled queue/coordination."
+    },
+    "cases/federation-home/CLAUDE.md": {
+      "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/CLAUDE.md"
+      ],
+      "rendering": "Exact template copy."
+    },
+    "cases/federation-home/adr/0000-template.md": {
+      "sha256": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Exact template copy."
+    },
+    "cases/federation-home/adr/0001-synthetic-capability.md": {
+      "sha256": "ac312c0624dd23013d70814f895aa344551bbe6c70b889ccfbd3d40c9c4409dc",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Fill synthetic author/date/title/body; explicit shape only in two-shape case."
+    },
+    "cases/federation-home/INDEX.md": {
+      "sha256": "b796453e3e0719130d1780f70f26c602de1dc1ad065b400ca5127f25f91f7b8a",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/SKILL.md",
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Derive INDEX rows from the rendered metadata; bootstrap output rule, not a host-run receipt."
+    },
+    "cases/federation-home/federation.md": {
+      "sha256": "26b4c46a656a7a425141d31ada53f5363b724d6ffbaa138bcb2d7c1bdf0d1481",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/federation-config.md"
+      ],
+      "rendering": "Fill topology C, stable repo identity and explicit sibling home pointer."
+    },
+    "cases/federation-home/federation-index.md": {
+      "sha256": "9b19422a548786813eae463a736446a8e03d0acad26e186520f4c24a7a884f34",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/federation-index.md"
+      ],
+      "rendering": "Render declared two-member index; identical local numbers remain distinct."
+    },
+    "cases/federation-member/.docflow": {
+      "sha256": "e972336f7fd73e741d6b00828f27dbe02b64c97787c67b515b4847a514ae0a61",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/SKILL.md"
+      ],
+      "rendering": "Exact pointer form; root choice = docs"
+    },
+    "cases/federation-member/docs/CONVENTIONS.md": {
+      "sha256": "bc8a32e4cdb79940a74d92add226baca37e5ebfda9cdf231f2dedf72a5afe71c",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md"
+      ],
+      "rendering": "Select single-writer, PR integration, single shape, queue=false; fill supplied fixture choices."
+    },
+    "cases/federation-member/AGENTS.md": {
+      "sha256": "c3d54885b50f868b42f7745a421892cb82b1d2ecf562cff93ff6084897288b4e",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/AGENTS.md"
+      ],
+      "rendering": "Select generated entry/read-order sections; resolve root and omit disabled queue/coordination."
+    },
+    "cases/federation-member/CLAUDE.md": {
+      "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/CLAUDE.md"
+      ],
+      "rendering": "Exact template copy."
+    },
+    "cases/federation-member/docs/adr/0000-template.md": {
+      "sha256": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Exact template copy."
+    },
+    "cases/federation-member/docs/adr/0001-synthetic-capability.md": {
+      "sha256": "ac312c0624dd23013d70814f895aa344551bbe6c70b889ccfbd3d40c9c4409dc",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Fill synthetic author/date/title/body; explicit shape only in two-shape case."
+    },
+    "cases/federation-member/docs/INDEX.md": {
+      "sha256": "b796453e3e0719130d1780f70f26c602de1dc1ad065b400ca5127f25f91f7b8a",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/SKILL.md",
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Derive INDEX rows from the rendered metadata; bootstrap output rule, not a host-run receipt."
+    },
+    "cases/federation-member/docs/federation.md": {
+      "sha256": "ad87cc51d0592911fc0899d346d7cf00a7afd60741baa992fd37db886801f8b7",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/federation-config.md"
+      ],
+      "rendering": "Fill topology C, stable repo identity and explicit sibling home pointer."
+    },
+    "cases/invalid-pointer/.docflow": {
+      "sha256": "7d56ced6b207e0632efbc576695a1b8849b895eec24fa86b82ada22f0cb50041",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/SKILL.md"
+      ],
+      "rendering": "Exact pointer form; root choice = . Adverse mutation: invalid-pointer"
+    },
+    "cases/invalid-pointer/CONVENTIONS.md": {
+      "sha256": "70e8696b6cb91f88109de9681aa7cdaed9db558a664409cb18d7b785ac88ac27",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md"
+      ],
+      "rendering": "Select single-writer, PR integration, single shape, queue=false; fill supplied fixture choices."
+    },
+    "cases/invalid-pointer/AGENTS.md": {
+      "sha256": "3b1503f2de63a03a758d0cddd454642c61e7ea3ba6685300c8cce3b83347410c",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/AGENTS.md"
+      ],
+      "rendering": "Select generated entry/read-order sections; resolve root and omit disabled queue/coordination."
+    },
+    "cases/invalid-pointer/CLAUDE.md": {
+      "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/CLAUDE.md"
+      ],
+      "rendering": "Exact template copy."
+    },
+    "cases/invalid-pointer/adr/0000-template.md": {
+      "sha256": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Exact template copy."
+    },
+    "cases/invalid-pointer/adr/0001-synthetic-capability.md": {
+      "sha256": "ac312c0624dd23013d70814f895aa344551bbe6c70b889ccfbd3d40c9c4409dc",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Fill synthetic author/date/title/body; explicit shape only in two-shape case."
+    },
+    "cases/invalid-pointer/INDEX.md": {
+      "sha256": "b796453e3e0719130d1780f70f26c602de1dc1ad065b400ca5127f25f91f7b8a",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/SKILL.md",
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Derive INDEX rows from the rendered metadata; bootstrap output rule, not a host-run receipt."
+    },
+    "cases/invalid-pointer-syntax/.docflow": {
+      "sha256": "17780751d836ae3d54053a343e7d8a3b37f5815d6c5cf4923155e811e66c67b5",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/SKILL.md"
+      ],
+      "rendering": "Exact pointer form; root choice = . Adverse mutation: invalid-pointer"
+    },
+    "cases/invalid-pointer-syntax/CONVENTIONS.md": {
+      "sha256": "70e8696b6cb91f88109de9681aa7cdaed9db558a664409cb18d7b785ac88ac27",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md"
+      ],
+      "rendering": "Select single-writer, PR integration, single shape, queue=false; fill supplied fixture choices."
+    },
+    "cases/invalid-pointer-syntax/AGENTS.md": {
+      "sha256": "3b1503f2de63a03a758d0cddd454642c61e7ea3ba6685300c8cce3b83347410c",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/AGENTS.md"
+      ],
+      "rendering": "Select generated entry/read-order sections; resolve root and omit disabled queue/coordination."
+    },
+    "cases/invalid-pointer-syntax/CLAUDE.md": {
+      "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/CLAUDE.md"
+      ],
+      "rendering": "Exact template copy."
+    },
+    "cases/invalid-pointer-syntax/adr/0000-template.md": {
+      "sha256": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Exact template copy."
+    },
+    "cases/invalid-pointer-syntax/adr/0001-synthetic-capability.md": {
+      "sha256": "ac312c0624dd23013d70814f895aa344551bbe6c70b889ccfbd3d40c9c4409dc",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Fill synthetic author/date/title/body; explicit shape only in two-shape case."
+    },
+    "cases/invalid-pointer-syntax/INDEX.md": {
+      "sha256": "b796453e3e0719130d1780f70f26c602de1dc1ad065b400ca5127f25f91f7b8a",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/SKILL.md",
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Derive INDEX rows from the rendered metadata; bootstrap output rule, not a host-run receipt."
+    },
+    "cases/disagreeing-pointer/.docflow": {
+      "sha256": "6f57ef45dc3ff1870feffe9e1c170acec3665afe0c7cc88ec89e01a6acd02fae",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/SKILL.md"
+      ],
+      "rendering": "Exact pointer form; root choice = . Adverse mutation: root-disagreement"
+    },
+    "cases/disagreeing-pointer/CONVENTIONS.md": {
+      "sha256": "b80dad238246373713ad96277123cfec186c6f3e1edd01de094f5cef10d6aac7",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md"
+      ],
+      "rendering": "Select single-writer, PR integration, single shape, queue=false; fill supplied fixture choices."
+    },
+    "cases/disagreeing-pointer/AGENTS.md": {
+      "sha256": "3b1503f2de63a03a758d0cddd454642c61e7ea3ba6685300c8cce3b83347410c",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/AGENTS.md"
+      ],
+      "rendering": "Select generated entry/read-order sections; resolve root and omit disabled queue/coordination."
+    },
+    "cases/disagreeing-pointer/CLAUDE.md": {
+      "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/CLAUDE.md"
+      ],
+      "rendering": "Exact template copy."
+    },
+    "cases/disagreeing-pointer/adr/0000-template.md": {
+      "sha256": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Exact template copy."
+    },
+    "cases/disagreeing-pointer/adr/0001-synthetic-capability.md": {
+      "sha256": "ac312c0624dd23013d70814f895aa344551bbe6c70b889ccfbd3d40c9c4409dc",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Fill synthetic author/date/title/body; explicit shape only in two-shape case."
+    },
+    "cases/disagreeing-pointer/INDEX.md": {
+      "sha256": "b796453e3e0719130d1780f70f26c602de1dc1ad065b400ca5127f25f91f7b8a",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/SKILL.md",
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Derive INDEX rows from the rendered metadata; bootstrap output rule, not a host-run receipt."
+    },
+    "cases/duplicate-number/.docflow": {
+      "sha256": "6f57ef45dc3ff1870feffe9e1c170acec3665afe0c7cc88ec89e01a6acd02fae",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/SKILL.md"
+      ],
+      "rendering": "Exact pointer form; root choice = ."
+    },
+    "cases/duplicate-number/CONVENTIONS.md": {
+      "sha256": "70e8696b6cb91f88109de9681aa7cdaed9db558a664409cb18d7b785ac88ac27",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md"
+      ],
+      "rendering": "Select single-writer, PR integration, single shape, queue=false; fill supplied fixture choices."
+    },
+    "cases/duplicate-number/AGENTS.md": {
+      "sha256": "3b1503f2de63a03a758d0cddd454642c61e7ea3ba6685300c8cce3b83347410c",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/AGENTS.md"
+      ],
+      "rendering": "Select generated entry/read-order sections; resolve root and omit disabled queue/coordination."
+    },
+    "cases/duplicate-number/CLAUDE.md": {
+      "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/CLAUDE.md"
+      ],
+      "rendering": "Exact template copy."
+    },
+    "cases/duplicate-number/adr/0000-template.md": {
+      "sha256": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Exact template copy."
+    },
+    "cases/duplicate-number/adr/0001-synthetic-capability.md": {
+      "sha256": "ac312c0624dd23013d70814f895aa344551bbe6c70b889ccfbd3d40c9c4409dc",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Fill synthetic author/date/title/body; explicit shape only in two-shape case."
+    },
+    "cases/duplicate-number/INDEX.md": {
+      "sha256": "b796453e3e0719130d1780f70f26c602de1dc1ad065b400ca5127f25f91f7b8a",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/SKILL.md",
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Derive INDEX rows from the rendered metadata; bootstrap output rule, not a host-run receipt."
+    },
+    "cases/duplicate-number/adr/0001-other.md": {
+      "sha256": "ac312c0624dd23013d70814f895aa344551bbe6c70b889ccfbd3d40c9c4409dc",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Adverse duplicate of the rendered record."
+    },
+    "cases/unknown-status/.docflow": {
+      "sha256": "6f57ef45dc3ff1870feffe9e1c170acec3665afe0c7cc88ec89e01a6acd02fae",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/SKILL.md"
+      ],
+      "rendering": "Exact pointer form; root choice = ."
+    },
+    "cases/unknown-status/CONVENTIONS.md": {
+      "sha256": "70e8696b6cb91f88109de9681aa7cdaed9db558a664409cb18d7b785ac88ac27",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md"
+      ],
+      "rendering": "Select single-writer, PR integration, single shape, queue=false; fill supplied fixture choices."
+    },
+    "cases/unknown-status/AGENTS.md": {
+      "sha256": "3b1503f2de63a03a758d0cddd454642c61e7ea3ba6685300c8cce3b83347410c",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/AGENTS.md"
+      ],
+      "rendering": "Select generated entry/read-order sections; resolve root and omit disabled queue/coordination."
+    },
+    "cases/unknown-status/CLAUDE.md": {
+      "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/CLAUDE.md"
+      ],
+      "rendering": "Exact template copy."
+    },
+    "cases/unknown-status/adr/0000-template.md": {
+      "sha256": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Exact template copy."
+    },
+    "cases/unknown-status/adr/0001-synthetic-capability.md": {
+      "sha256": "5972127fb75a6e68a932165c713d9a97ec30545e6fa35bac9bcbb1c15c1c0b33",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Fill synthetic author/date/title/body; explicit shape only in two-shape case."
+    },
+    "cases/unknown-status/INDEX.md": {
+      "sha256": "b796453e3e0719130d1780f70f26c602de1dc1ad065b400ca5127f25f91f7b8a",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/SKILL.md",
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Derive INDEX rows from the rendered metadata; bootstrap output rule, not a host-run receipt."
+    },
+    "cases/unknown-shape/.docflow": {
+      "sha256": "6f57ef45dc3ff1870feffe9e1c170acec3665afe0c7cc88ec89e01a6acd02fae",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/SKILL.md"
+      ],
+      "rendering": "Exact pointer form; root choice = ."
+    },
+    "cases/unknown-shape/CONVENTIONS.md": {
+      "sha256": "70e8696b6cb91f88109de9681aa7cdaed9db558a664409cb18d7b785ac88ac27",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md"
+      ],
+      "rendering": "Select single-writer, PR integration, single shape, queue=false; fill supplied fixture choices."
+    },
+    "cases/unknown-shape/AGENTS.md": {
+      "sha256": "3b1503f2de63a03a758d0cddd454642c61e7ea3ba6685300c8cce3b83347410c",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/AGENTS.md"
+      ],
+      "rendering": "Select generated entry/read-order sections; resolve root and omit disabled queue/coordination."
+    },
+    "cases/unknown-shape/CLAUDE.md": {
+      "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/CLAUDE.md"
+      ],
+      "rendering": "Exact template copy."
+    },
+    "cases/unknown-shape/adr/0000-template.md": {
+      "sha256": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Exact template copy."
+    },
+    "cases/unknown-shape/adr/0001-synthetic-capability.md": {
+      "sha256": "a4d1902a484df2df2a1af9373a710f28fff0d1a72e40f7fe4b411b5fa3cace65",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Fill synthetic author/date/title/body; explicit shape only in two-shape case."
+    },
+    "cases/unknown-shape/INDEX.md": {
+      "sha256": "b796453e3e0719130d1780f70f26c602de1dc1ad065b400ca5127f25f91f7b8a",
+      "origins": [
+        "plugins/docflow/skills/bootstrap/SKILL.md",
+        "plugins/docflow/skills/bootstrap/templates/adr-capability.md"
+      ],
+      "rendering": "Derive INDEX rows from the rendered metadata; bootstrap output rule, not a host-run receipt."
+    }
+  },
+  "status_at_a_glance": {
+    "this_run": "Rendered versioned producer inputs and expected observations",
+    "overall": "partially verified",
+    "yet_to_do": "Native host and Clarity compatibility qualification on paired sources"
+  }
+}

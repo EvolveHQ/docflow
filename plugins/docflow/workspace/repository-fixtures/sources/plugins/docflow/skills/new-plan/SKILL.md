@@ -1,0 +1,142 @@
+---
+name: new-plan
+description: Queue a UNIT OF WORK in the plan/todo queue of a documentation-led repo, tracing to an existing ADR — names the owning ADR(s), scope, exit criteria mapped to acceptance criteria, dependencies, and queue position. Use when the user says "add a plan item", "queue this work", "create a todo for ADR X", "new plan", "put this on the backlog", or invokes /new-plan. NOT for recording the decision itself (use /new-adr) and NOT for shipping/completing an item already queued (use /ship-item).
+---
+
+# new-plan
+
+Add one item to the implementation queue.
+
+## Step 0 — Preconditions and context
+
+1. Confirm the repo is bootstrapped and a `plan/` queue exists. If the
+   repo was bootstrapped without a plan folder (Q4a = skip), stop and
+   say so — there is no queue to add to.
+2. Read `CONVENTIONS.md` for the plan-folder convention and the
+   completion event, and `plan/README.md` if present. Resolve `plan/`
+   against the **artefact root** recorded there (default: repository root).
+3. `ls plan/todo/` to learn the queue's priority ordering, and read the
+   titles in `plan/done/` as well: shipped items keep their number only
+   in the title (the filename carries a date). The next number is one
+   above the highest number used in either place — an empty queue does
+   not restart the sequence, and numbers are never reused.
+
+## Step 0.5 — Assessment (run first)
+
+Run the shared assessment protocol before queueing:
+
+- **Reuse supplied answers first.** Treat applicable choices already supplied
+  in the request or this session, including depth, as answered. Summarise
+  them without asking again; defaults never replace explicit choices. If
+  every material choice is supplied, proceed. Ask only about a material
+  missing or conflicting choice. A repository preference alone is not a
+  current answer or execution grant.
+- **Depth selector for unresolved choices.** If depth is not supplied and
+  choices remain, ask how deep this assessment should go:
+  **express** — every choice takes its recommended default; only
+  questions with no derivable default (the free-text essentials) are
+  still asked; **guided** — only the questions marked high-impact
+  below, plus the free-text essentials; **full** — every question
+  below. If the repo's `CONVENTIONS.md` records an `Assessment depth:`,
+  pre-select it as the recommended option when asking; a recorded depth
+  is never applied silently. Otherwise
+  recommend **full** when the request arrived with little or no
+  context and **express** when it is already fully specified. At any
+  question the operator may answer "defaults from here" or "go
+  deeper"; honour the switch immediately.
+
+- Ask the questions below **one at a time**, each with a **recommended
+  option** and a one-line reason; wait for each answer.
+- Use **structured selection** (single- or multiple-choice). If the host
+  exposes a structured single-/multi-select question tool, use it and
+  mark the recommended option; otherwise list options A/B/C in plain text
+  and name the recommended one. Use **free text only** where an
+  enumerable set is impossible (e.g. the scope summary).
+- **The operator decides.** Never proceed past a question without an
+  answer, and never guess scope when invoked with no context.
+
+Questions (skip any the request already answers):
+1. **Owning ADR(s)** — select from the catalogue (single or multiple).
+   *Recommended: the ADR named in the request.* *(High-impact — asked
+   in guided: the trace to a decision is the item's identity.)*
+2. **Dependencies** — none, or select the plan items / ADRs that must
+   land first. *Recommended: none.*
+3. **Priority / position** — next number, or insert ahead of existing
+   items. *Recommended: next number.*
+4. **Scope & exit criteria** — free text, mapped to the owning ADR's
+   numbered acceptance criteria where possible (free-text essential;
+   asked at every depth).
+
+## Step 1 — Identify the owning ADR(s)
+
+- Use the owning ADR(s) already supplied or selected; ask only if missing
+  or conflicting. Validate they exist in
+  `adr/`.
+- Normally a queue item tracks an **Accepted** ADR. If the named ADR is
+  still `Proposed`, warn — you can queue ahead of acceptance, but the
+  work is not yet authorised. If it has no ADR at all, suggest running
+  the **new-adr** skill first; plan items should trace to a decision.
+- **In a federation** (a `federation.md` exists): the owning ADR may live
+  in **another** repo (the home/central). Name it by its **federation
+  identity** (`<repo-id>/NNNN-slug`); the plan item itself lives in **this**
+  repo — the one whose code the work changes. A decision spanning several
+  repos gets **one item per affected repo**, each tracing to the same
+  owning ADR (the grouping point — no umbrella record).
+
+## Step 2 — Pick number and position
+
+- `plan/todo/NNNN-<slug>.md`, zero-padded, `NNNN` being the next number
+  after the highest across `plan/todo/` filenames and `plan/done/`
+  titles. **Lower numbers run first** —
+  ask where this sits in priority and renumber neighbours only if the
+  user wants it inserted ahead of existing items.
+
+## Step 3 — Write the item
+
+The file names, at minimum:
+- Owning ADR(s) by relative path.
+- Scope — what is in, what is explicitly out.
+- Exit criteria — map directly to the ADR's numbered acceptance
+  criteria where possible.
+- Dependencies — other plan items or ADRs that must land first.
+
+
+## Item status
+
+Every new queue item carries this section, initially empty:
+
+```markdown
+## Status
+
+- Claimed by:
+- Blockers:
+- Stopped:
+```
+
+At start, record actor, date and actual branch in Claimed by (no invented
+claim branch for shared checkouts or single writers). The owner maintains
+Blockers. On stop, record date and reason in Stopped with the three Status
+at a glance labels. Commit status with the work. Remove the section in
+the completion move to plan/done; the shipped footer replaces it.
+
+## Step 4 — Commit
+
+Conventional Commit. If the file references an ADR by number in its
+body that is fine (the plan queue is internal — the ADR-privacy rule
+only forbids ADR references in **user-visible product** surfaces).
+
+Name the queued item, ownership and dependencies; queued work is not shipped work.
+
+<!-- docflow:closing-report -->
+## Closing report
+
+End every run, including blocked, failed and stopped runs, with a section
+headed exactly **Status at a glance**, containing these three labels:
+
+- **This run:** only actions actually attempted and their outcomes; quote each verify gate's exact output and exit code, including timeouts or interruptions.
+- **Overall:** implemented, partially verified, verified, blocked, failed or unknown. A passing sub-step is not an overall pass; incomplete or missing evidence never becomes success.
+- **Yet to do:** every remaining action, unresolved finding, verification, cleanup or required input. Write None only when the whole task is verifiably complete; never omit work because a budget ended.
+
+Routine progress messages need no block. Keep final results brief and
+distinguish work prepared on a PR from work confirmed shipped.
+<!-- /docflow:closing-report -->

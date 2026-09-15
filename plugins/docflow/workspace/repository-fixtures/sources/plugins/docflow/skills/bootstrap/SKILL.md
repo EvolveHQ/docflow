@@ -1,0 +1,843 @@
+---
+name: bootstrap
+description: Scaffold or retrofit documentation-led conventions (AGENTS.md, CLAUDE.md, CONVENTIONS.md, ADR catalogue, plan/ queue, _agent/ coordination) into a repo. Use when the user asks to "set up conventions", "bootstrap ADRs", "scaffold the documentation-led layout", or "add AGENTS.md and a plan queue". Works on fresh repos and existing ones — preserves existing content and merges rather than overwrites. Opens with an express / guided / full depth choice, so a quick conservative setup needs almost no questions.
+---
+
+# bootstrap
+
+You are installing (or retrofitting) a documentation-led convention set
+in the current repo. The end state is a repo that can be driven by
+both humans and coding agents off a small set of canonical files. Carry
+over the *mechanism* described here — nothing about any other project.
+
+## Step 1 — Detect the situation
+
+Inspect the repo before asking anything. Reuse explicit answers and sign-off
+already supplied in this session; never replace them with profile defaults
+or ask for them again. Before writing, summarise the resolved artefact root,
+depth, queue, gate and coordination/integration modes against those answers.
+If a host mirrors a selected folder into a sandbox, identify the actual
+target path and how verified outputs reach the selected folder; never call
+an untouched target complete merely because a scratch mirror passed.
+
+- **Fresh repo** (no source, no docs): you are scaffolding from zero.
+- **Existing repo**: you are retrofitting.
+  - Read any current `README.md`, `CONTRIBUTING.md`, `AGENTS.md`,
+    `CLAUDE.md`, `docs/`, `adr/`, `.github/` before proposing changes.
+  - Preserve existing content. Merge, don't overwrite. If existing
+    conventions conflict with the ones below, surface the conflict in
+    your assessment summary.
+  - If ADRs already exist in another format, propose a migration plan
+    (renumber, keep, translate) rather than creating a parallel tree.
+- **Already a docflow repo** (carries `AGENTS.md` + `CONVENTIONS.md` + an
+  ADR catalogue): you are **adding to an existing setup**, not scaffolding.
+  Do **not** re-scaffold the core or re-ask settled questions — read the
+  recorded choices from `CONVENTIONS.md`/`AGENTS.md` (ADR shape, status
+  lifecycle, **artefact root**, multi-agent mode, and which optional layers
+  already exist). Then offer to **enable any opted-out optional layer**
+  still absent — `plan/`, `_agent/`, `GLOSSARY.md`, `domains/`, or the
+  second ADR shape (the technology template) — and write only the chosen
+  ones, by **merge**, under the recorded artefact root, leaving everything else
+  untouched. Ask only the questions the new layers need (e.g. the
+  coordination question when enabling `_agent/` — where a single writer
+  without both a recorded verify gate and a plan queue correctly ends up
+  with no `_agent/` at all, and the layer is simply not needed). This is the entry point for
+  adding a layer you deferred at first bootstrap. A repo still carrying
+  coordination files an earlier scaffold wrote keeps them: leave them in
+  place here and let the audit skill report the layout.
+
+  **Enabling the second ADR shape is a scheme switch, not a file copy.**
+  It is the one deferred layer that changes a choice already recorded, so
+  write all of it in one pass or none of it: replace §ADR Shapes in
+  `CONVENTIONS.md` with the two-shape text, add the technology
+  section-order and shape bullets to `AGENTS.md`, write
+  `adr/0000-template-technology.md`, and regenerate `INDEX.md` with the
+  Shape column. Existing ADRs keep their numbers and stay capability —
+  an absent `shape:` field already means capability, so no ADR is
+  rewritten and nothing is renumbered. Half of the switch strands the
+  repo in the state the Step 4.5 cross-check calls a contradiction: a
+  technology template that a single-shape scheme will never select.
+
+  **A repo already on the legacy range encoding gets the migration
+  offer instead.** Some two-shape repos were scaffolded before the shape
+  became a declared field and encode it in the **number**: §ADR Shapes
+  records a cutoff (capability below it, technology at or above), and
+  `adr/` holds a template numbered other than `0000` (e.g.
+  `adr/0100-template.md`). Either signal alone identifies it. Such a repo
+  is not missing a layer — it has both shapes already — so do not offer
+  the scheme switch above, which would strand it with two rival
+  encodings. Offer the **migration onto the declared field**, on the same
+  terms the audit skill uses:
+
+  - Show the **old-to-new number map first**, as a dry run: capability
+    ADRs keep their numbers; technology ADRs take the numbers following
+    the highest capability ADR, in their original relative order.
+    Alongside it, list the references that follow (`depends-on`,
+    `supersedes` / `superseded-by`, relative `adr/NNNN-*.md` links,
+    `INDEX.md`, domain `README.md` listings, `plan/todo/` owning-ADR
+    lines) and what is left as history (`plan/done/` footers, commit
+    messages, tags).
+  - **Write nothing without an explicit confirmation of that map.**
+    Declining is a valid outcome: the repo keeps the range encoding and
+    keeps passing its own rules.
+  - On confirmation, apply the migration exactly as the **audit** skill's
+    migration step specifies — renumber, stamp `shape:` on every ADR,
+    rewrite every in-catalogue reference, replace the boundary template
+    with `adr/0000-template-technology.md`, rewrite §ADR Shapes to the
+    declared field and drop any seed-ADR exception clause, regenerate
+    `INDEX.md` with the Shape column — and land it as **one commit whose
+    message lists every old-to-new pair**. That procedure is the single
+    source of truth; do not paraphrase a second variant of it here.
+  - Then continue the re-run normally for the layers that really are
+    absent (`plan/`, `_agent/`, `GLOSSARY.md`, `domains/`).
+
+State which situation applies in one line before asking the assessment
+questions.
+
+## Step 2 — Target layout
+
+```
+<repo>/
+  AGENTS.md              # hard rules for coding agents — entry point
+  CLAUDE.md              # one-liner: @AGENTS.md
+  README.md              # human-facing project summary (preserve if exists)
+  CONVENTIONS.md         # authoring rules: ADRs, naming, status, audit, git
+  INDEX.md               # generated table of all ADRs
+  GLOSSARY.md            # shared terms (optional — see Q7)
+  adr/
+    0000-template.md     # capability-ADR template (always)
+    0000-template-technology.md  # technology-ADR template (only if two shapes — see Q2)
+    NNNN-<kebab-slug>.md # one ADR per decision, contiguous numbering
+  domains/<slug>/README.md   # optional (see Q7)
+  plan/
+    README.md
+    todo/NNNN-<slug>.md
+    done/<YYYY-MM-DD>-<slug>.md
+  _agent/                # the agent operating contract (see Q5) — optional
+    ROLES.md             # who writes what (several writers only)
+    LOCKS.md             # the file-claim mutex (shared checkout only)
+    prompts/autonomous.md  # how an unattended run behaves (only with a
+                         #   verify gate — Q8 — AND a plan queue — Q4a)
+  federation.md          # multi-repo only (Q11): this repo's back-pointer
+  federation-index.md    # multi-repo only (Q11): member index — home repo only
+```
+
+**Placement.** The tree above shows the **root** option. `AGENTS.md` and
+`CLAUDE.md` always sit at the repository root; `adr/`, `plan/`, `_agent/`,
+`INDEX.md`, and `CONVENTIONS.md` go under the **artefact root** chosen in
+Q12 (default `.docflow/`, e.g. `.docflow/adr/`, `.docflow/plan/`).
+
+**Discovery.** Tools locate the artefact root without reading
+`CONVENTIONS.md` first: a `.docflow/` **directory** at the repository
+root *is* the root; for any other root, bootstrap writes a `.docflow`
+**file** at the repository root — a one-line pointer, `root: <path>`
+(e.g. `root: docs/`, `root: .`). Neither present means a pre-contract
+repo (tools probe `docs/`, then the repository root, for a
+`CONVENTIONS.md` naming an artefact root) or not a docflow repo.
+
+**`_agent/` is the agent operating contract** — who writes what, the one
+real mutex, and how an unattended run behaves. It holds nothing git
+already records: no duplicate shipped record, no dashboard of what is in
+flight, no snapshot of the current state, no hand-off. Which of the
+three files above exist follows entirely from Q5, Q8 and Q4a, and a repo
+with no `_agent/` directory at all is a valid outcome.
+
+**Core vs optional layers.** Only the **core** is always written:
+`AGENTS.md`, `CLAUDE.md`, `CONVENTIONS.md`, `adr/0000-template.md`, and
+`INDEX.md`. A repo with just these is a valid, lightweight docflow repo — a
+classic ADR catalogue with conventions. Everything else is an **opt-in
+layer**: the `plan/` queue (Q4a), the `_agent/` contract (Q5 + Q8 + Q4a —
+a single writer without both a verify gate and a plan queue gets none of
+it), `GLOSSARY.md` and
+`domains/` (Q7). Omitting any optional layer is a valid state, not an
+error; a lifecycle skill that needs an absent layer refuses cleanly and
+names what is missing.
+
+For a **multi-repo product** (one product spread across several repos —
+see Q11), two extra files appear: `federation.md`, a small back-pointer
+every member repo carries, and `federation-index.md`, the authoritative
+member list that lives only in the home/establishing repo. All federation
+artefacts — `federation.md`, `federation-index.md`, and the derived
+roll-up `ROLLUP.md` — are placed under the **configured artefact root**.
+A standalone repo has none of them.
+
+## Step 3 — Conventions to install
+
+1. **ADRs are the source of truth.** One decision per ADR. Splits become
+   new ADRs that supersede; never expand scope inside an existing one.
+2. **Up to two ADR shapes, declared by field.** A repo that
+   distinguishes the two records the distinction in each ADR's `shape:`
+   metadata field (`capability` or `technology`; an absent field means
+   capability) — never in a number range. Every ADR takes the next
+   contiguous number whatever its shape, and each shape has its own
+   template, both numbered `0000`.
+   - **Capability ADR** (what the system must do). Section order:
+     metadata → Context → Capability statement → User stories / scenarios
+     → Acceptance criteria → Out of scope → Open questions → References →
+     Revision History → Approvals.
+   - **Technology ADR** (how it's built). Section order:
+     metadata → Context → Decision → Rationale → Consequences →
+     Acceptance criteria → Out of scope → Open questions → References →
+     Revision History → Approvals. Rationale must name alternatives
+     considered and give specific rejection reasons (not "simpler" /
+     "more idiomatic").
+3. **Status lifecycle:** `Proposed → Accepted → Implemented →
+   (Superseded | Deprecated)`. Terminal states reachable from any prior
+   state. Status drives plan-folder placement: `Accepted` →
+   `plan/todo/`, `Implemented` → `plan/done/`.
+4. **Filenames:** `adr/NNNN-kebab-slug.md`, zero-padded 4 digits,
+   contiguous, no reserved gaps. Cross-references use relative paths.
+5. **Acceptance criteria are testable and numbered.** Tests map back to
+   them where practical.
+6. **Audit discipline.** Substantive ADR changes append a Revision
+   History row. Editorial changes (typos, formatting, link fixes) are
+   excluded but flagged `editorial` in the commit message. Approvals
+   table populates when an ADR is Accepted and updates on each later
+   substantive revision.
+7. **INDEX.md is regenerated** from ADR metadata after any ADR change.
+   Treat as derived, not hand-edited.
+8. **`plan/` is the work queue.** When work ships, `git mv
+   plan/todo/X plan/done/<date>-X`, any plan-item Status removal, owning
+   ADR status advance, and `INDEX.md` regeneration are grouped in the
+   completion commit. Under direct-to-main integration that commit is
+   pushed to the integration branch and the moved file's footer names
+   the HEAD SHA (and deploy artefact id if applicable). Under
+   pull-request integration those changes are the last commit on the
+   pull-request branch before it is marked ready, the footer names the
+   pull request, and the merge is the completion event.
+9. **Coordination is a contract, not a log.** `_agent/` holds only what
+   git cannot tell you, and each mode (Q5) prescribes exactly its own
+   files — nothing else is written there. In a **shared checkout**, an
+   agent appends a row to `_agent/LOCKS.md`
+   (`<agent-id> | <path> | <ISO-8601 timestamp>`) before editing and
+   removes it on commit; that ledger is the one real mutex, and a queue
+   item is claimed on the item itself. In **separate worktrees** a queue
+   item is claimed by pushing `claim/<item-key>` — the queue file name
+   without its extension — plus a draft pull request from it where
+   integration is pull-request based; the push is what excludes the
+   second writer, and no ledger is kept. Under **a single writer**
+   there is nothing to serialise and nothing to claim. No mode keeps duplicate shipped state,
+   a dashboard of what is in flight, or a snapshot of the current state:
+   git history and `plan/done/` are the record, and the live branches
+   and pull requests are what is in flight.
+10. **Git contract.** Conventional Commits. Mandatory `Rationale:`
+    footer on commits touching an ADR. Signed commits unless the user
+    opts out. No `Co-Authored-By` trailer for agent work unless the user
+    asks for one.
+11. **AGENTS.md is the hard-rules entry point;** **CLAUDE.md** is the
+    one-liner `@AGENTS.md` for compatible agents that read it.
+12. **ADRs are internal artefacts — never user-visible.** ADR numbers,
+    ADR titles, and the existence of the ADR catalogue must NEVER
+    appear in product code paths that reach a user: UI strings, API
+    response bodies, error messages, log lines emitted to customers,
+    public documentation, release notes, marketing copy, or support
+    communications. ADRs are for builders, not users. References ARE
+    allowed in: code comments (`// see adr/0042-foo.md`), commit
+    messages, PR descriptions, internal docs, `AGENTS.md`,
+    `CONVENTIONS.md`, `INDEX.md`, and the `plan/` queue. When in
+    doubt, ask whether a non-builder would ever see this string — if
+    yes, the ADR reference comes out.
+
+## Step 4 — Assessment (depth-tiered; 10 questions at full depth, plus federation (Q11) and placement (Q12))
+
+**Reuse supplied answers first.** Summarise applicable choices already
+supplied in the request or session, including depth and sign-off. Defaults
+never replace explicit choices. If every material choice is supplied, proceed
+after the cross-check. Ask only about a material missing or conflicting choice.
+
+**For unresolved choices when depth is not supplied**, open with one
+single-select question: how deep should this assessment go?
+
+- **express** — no further choices. Every choice takes the fixed
+  express profile below. Only essentials with **no derivable default**
+  are still asked: project name and one-line description — and even
+  those are derived from the repo (README, manifest) when possible and
+  only asked when underivable.
+- **guided** *(recommend this for most repos)* — only the
+  hard-to-reverse choices are asked: plan folder (Q4a), coordination
+  mode (Q5), and integration model (Q4b — skipped if Q4a = skip), plus
+  the underivable essentials. Everything else takes its recommended
+  default.
+- **full** — the complete question set below.
+
+If the repo's `CONVENTIONS.md` already records an `Assessment depth:`
+(a retrofit or re-run), pre-select **that** depth as the recommended
+option instead when asking. A recorded depth steers the recommendation and
+is never applied silently; it is not a current answer or execution grant.
+
+**Mid-flight switching.** At any question the operator may answer
+"**defaults from here**" (remaining choices take their recommended
+defaults, as in express) or "**go deeper**" (escalate express → guided
+→ full for the remaining questions). Honour the switch immediately.
+
+**Express profile.** An express bootstrap scaffolds the conservative
+fixed profile for unanswered choices — preserve explicit choices, summarise
+the result and use applicable supplied sign-off or obtain missing sign-off
+before writing:
+
+- the **core only**: `AGENTS.md`, `CLAUDE.md`, `CONVENTIONS.md`,
+  `adr/0000-template.md`, `INDEX.md`, plus the seed ADR `0001`
+  (Step 5 item 5b). All optional layers **off**: no `plan/`, no
+  `_agent/`, no `GLOSSARY.md`, no `domains/`, no technology template.
+- Default artefact root (`.docflow/`); single ADR shape; full status
+  lifecycle.
+- Git contract: Conventional Commits ON, `Rationale:` footer ON,
+  signed commits ON, ADR-revision tags OFF, `Co-Authored-By` OFF.
+- Integration recorded as **direct-to-main, fast-forward only**; Q5
+  recorded as **single writer**, which with no plan queue and no verify
+  gate (below) means **no `_agent/` directory at all**.
+- **Standalone** — never part of a federation.
+- Doc language: match the existing repo's content, else en-US.
+- No verify gate recorded and no plan queue (so no autonomous prompt on
+  either count); no domain-specific hard rules.
+
+On an existing repo, express preserves and merges exactly as a full
+run does — depth changes how many questions are asked, never how
+destructive the run is.
+
+**Guided defaults.** Beyond its three questions, guided takes: single
+shape, full lifecycle, the recommended git contract, optional
+artefacts deferred, no hard rules, default artefact root, standalone,
+and the express language rule. Q5 is one of the three it asks, and its
+recommended answer is **single writer** — so a guided run that takes
+the recommendation records single writer, and writes an `_agent/`
+directory only when Q8 records a verify gate **and** Q4a kept the plan
+queue. Run the Step 4.5 cross-check on the answers before the sign-off
+summary.
+
+**Federation guard.** Express and guided runs are always
+**standalone**: Q11 is never asked and no federation file is written.
+Establishing or joining a multi-repo product is available at full
+depth only — it is an outward-facing commitment no default may make.
+
+**Record the choice.** Write the chosen depth into the scaffolded
+`CONVENTIONS.md` (`Assessment depth:` line in §Project — see Step 5
+item 1). Later assessments read it and pre-select it as the
+recommendation.
+
+**Ask the questions one at a time, not in a batch.** For each question,
+state a **recommended** option (label it "Recommended") with one short
+sentence on why; the user picks it, picks an alternative, or types a
+custom answer. Wait for the answer before moving to the next question.
+
+If the host CLI exposes a structured single-select question tool, use
+it and mark the recommended option with the literal "(Recommended)"
+suffix in its label. Otherwise ask in plain text, listing options as
+A/B/C and naming the recommended one.
+
+After the answers are in, summarise the resulting plan in 5–10
+lines and ask for sign-off before writing any files. Note in the summary
+that a **seed ADR `0001`** recording the adopted method is created by
+default (the operator may decline it — see Step 5 item 5b).
+
+1. **Project identity.** Name, one-line description, doc language
+   (en-GB / en-US / other), and — if existing repo — what current files
+   (README, CONTRIBUTING, docs/, adr/, etc.) must be preserved or
+   merged. *No recommendation — project-specific.*
+2. **ADR shape.** A single shape, or **two shapes declared by field** —
+   capability and technology, each ADR naming its own in a `shape:`
+   metadata field? **Recommended: single shape** — start simple, add
+   the second shape later if long-lived product requirements clearly
+   outlive their implementations. Ask for no number boundary: shape is
+   metadata, so two-shape repos keep one contiguous sequence and get a
+   second `0000` template rather than a cutoff.
+3. **Status lifecycle.** Full `Proposed → Accepted → Implemented →
+   (Superseded | Deprecated)`, or shorter (drop `Implemented`)?
+   **Recommended: full lifecycle** — the `Implemented` rung is cheap
+   and gives a clear "what's shipped" signal.
+4. **Plan folder + integration model.** Two sub-answers. **Ask Q5
+   before Q4b — the integration recommendation depends on the
+   multi-agent mode chosen in Q5.** When asking sequentially, the
+   order is: Q1 → Q2 → Q3 → Q4a → Q5 → Q4b → Q6 → Q7 → Q8 → Q9 → Q10.
+
+   **Q4a — Plan folder.** Use `plan/todo/` + `plan/done/`, or skip it
+   because work is tracked elsewhere?
+   **Recommended: use it** — the queue is what makes the convention
+   set actionable for agents.
+
+   **Q4b — Integration model.** *Skip if Q4a = skip.* Two options:
+   - **Direct-to-main, fast-forward only.**
+     *Recommended if Q5 = single writer.* Local verify gate
+     runs before push. Completion event: "fast-forwarded to main +
+     remote push succeeded". Autonomous prompt uses
+     `git merge --ff-only`. Trunk-based development; no PRs.
+   - **PR-based, required CI green.**
+     *Recommended if Q5 = shared checkout or separate worktrees.* Verify gate
+     runs in CI on the PR. Completion event: "PR merged to main + CI
+     green". Autonomous prompt opens a draft PR, commits the completion
+     changes as the final branch commit, waits for green, marks ready,
+     and merges. Ask the user for merge strategy
+     (squash / merge / rebase — default: squash for clean history,
+     rebase if per-commit identity matters).
+5. **Coordination — by number of writers.** Pick by how many people/agents
+   *write* to this repo and how they integrate — **writers (integration
+   concurrency), not how many agents you run.** A team of several developers
+   is multi-writer even with one agent each, and wants the worktree/PR
+   shape. Three answers, each prescribing exactly its own `_agent/`
+   files and nothing else:
+   - **(Recommended) Single writer.** One human/agent integrates at a
+     time, so there is nothing to serialise: no roles list, no lock
+     ledger. The only file written is `_agent/prompts/autonomous.md`,
+     and only if the repo is **eligible for the run prompt** — Q8
+     records a real verify gate *and* Q4a keeps the plan queue the
+     prompt walks. Fail either and there is **no `_agent/` directory at
+     all**, the lightest footprint. Right for small projects and the
+     "one human + one agent" case.
+   - **Several writers, one shared checkout.** Named writers in
+     `_agent/ROLES.md`. `_agent/LOCKS.md` ON as a filesystem mutex — in
+     one working tree it is the only thing preventing simultaneous
+     writes to the same file. Plus the run prompt where the repo is
+     eligible for it (gate + plan queue).
+   - **Several writers, separate worktrees / PR branches.** Named
+     writers in `_agent/ROLES.md`, plus the run prompt where the repo is
+     eligible for it (gate + plan queue). **No lock ledger:** the pushed
+     `claim/<item-key>` branch and its draft pull
+     request are the claim, worktrees cannot collide on the filesystem,
+     and an advisory ledger nobody can rely on is noise.
+
+   No answer writes a duplicate shipped-state file, a dashboard, a live
+   snapshot, or a hand-off, and none adds a `.gitattributes` or
+   `.gitignore` entry for coordination files: what happened is git
+   history and `plan/done/`, what is in flight is the live branches and
+   pull requests.
+
+   Note: shared checkout → separate worktrees is not a free upgrade
+   later; it retires the lock ledger the shared-checkout repo relies on
+   and moves the claim onto branches and pull requests. Choose
+   deliberately.
+6. **Git contract.** Confirm or override each — Conventional Commits;
+   mandatory `Rationale:` footer on ADR-touching commits; signed
+   commits; ADR-revision tags `adr-NNNN-rN`; whether agent commits
+   carry a `Co-Authored-By` trailer. **Recommended: Conventional
+   Commits ON, `Rationale:` footer ON, signed commits ON, ADR-revision
+   tags OFF, `Co-Authored-By` trailer OFF.**
+7. **Optional artefacts.** Which now vs. defer:
+   - **`domains/<slug>/README.md` grouping** — per-area indexes over the
+     flat catalogue (navigation by area, *not* numbering). **Enable when
+     the project has distinct areas (e.g. auth, billing, search) or you
+     expect the catalogue to grow past ~20 ADRs**; defer for a small,
+     single-area repo. Cheap to add later.
+   - **`GLOSSARY.md`** — shared term definitions. *Defer; add on
+     terminology drift.*
+   - **technology-ADR template** (`adr/0000-template-technology.md`, the
+     second ADR shape) — *defer unless technology decisions split from
+     product decisions.* Enabling it is the same choice as Q2's second
+     shape; the cross-check in Step 4.5 keeps the two answers in step.
+8. **Verify gate.** What command(s) decide a change is shippable
+   (`npm test`, CI workflow, deploy + smoke, manual)? *No
+   recommendation — project-specific.* The run prompt needs **both** a
+   real gate and the `plan/todo/` queue it walks: if the user has no
+   real gate, or Q4a skipped the plan folder, the skill refuses to
+   write `_agent/prompts/autonomous.md`.
+9. **Existing-content conflicts** (existing repos only). Any
+   conventions already in place (commit format, branch policy, ADR
+   style, status names) the new layout must defer to or merge with?
+   *No recommendation — project-specific.* Skip this question on a
+   fresh repo.
+10. **Domain-specific hard rules to bake in.** Any project-specific
+    constraints to enforce in `AGENTS.md` / `CONVENTIONS.md` from day
+    one — e.g. vendor-naming restriction, regulated-evidence posture
+    (attribution, retention, e-signatures), language mandate,
+    mandatory user-story personas, separated audit streams?
+    **Recommended: none from day one** — add later when a concrete
+    requirement appears; pre-emptive hard rules accumulate as cruft.
+11. **Multi-repo product (optional).** Is this repo part of a product
+    that spans several repos? **Recommended: No** — most repos are
+    standalone; skip the federation setup entirely. If **yes**, two
+    sub-answers:
+
+    **Q11a — Establish or join?** Are you **establishing** a new
+    federation (this is the first repo) or **joining** an existing one?
+
+    **Q11b — Topology (establish only).** Where do product-wide
+    decisions live?
+    - **A — central decisions repo:** a dedicated repo holds all
+      product-wide decisions; code repos reference it, never duplicate.
+    - **B — distributed + federation:** each repo owns its own
+      decisions; a roll-up aggregates them.
+    - **(Recommended) C — home repo + local:** one repo is the home for
+      product-wide decisions; each repo also keeps purely-local ones.
+
+    **Q11c — Identity scheme (establish only).** How are ADRs identified
+    across the federation? **(Recommended) repo-prefixed slug**
+    `<repo-id>/NNNN-slug` — each repo keeps local contiguous numbering
+    with no central coordinator; the slug is the cross-federation key.
+    The scheme is recorded in the federation config and applied by the
+    authoring skills.
+
+    **Establish** sets this repo's role from the chosen topology —
+    **central** (A), **coordinator** (B), or **home** (C) — writes the
+    member index here, and records the topology **and identity scheme**
+    in the federation config. **Join** asks for the home pointer **and the federation's topology +
+    identity scheme** — **you supply them; the skill performs no
+    cross-repo read and no host API call** — then writes **only this
+    repo's** back-pointer config, recording those values (it does not
+    re-choose the topology). Joining never writes into any other
+    repo; adding this repo to the member index is a deliberate edit in
+    the home repo. A standalone repo (Q11 = No) writes none of these
+    files and behaves exactly as a single-repo bootstrap.
+12. **Artefact placement.** Where the non-entry artefacts live — `adr/`,
+    `plan/`, `_agent/`, `INDEX.md`, `CONVENTIONS.md`:
+    - **(Recommended) `.docflow/`** — a hidden root that keeps the repo
+      root clean and groups all docflow artefacts in one place
+      (`.docflow/adr/`, `.docflow/plan/`, …).
+    - **`docs/`** — aligns with the common `doc/adr` / `docs/` convention;
+      records visible alongside other docs.
+    - **Repository root** — flat layout; decisions beside the code (good for
+      monorepos). This is docflow's own layout.
+
+    `AGENTS.md` and `CLAUDE.md` are **always** written to the repository
+    root (coding agents discover them there). The chosen root is recorded in
+    `CONVENTIONS.md`, and every lifecycle skill resolves `adr/`, `plan/`,
+    and `INDEX.md` against it. For an existing repo already laid out
+    differently, offer a documented migration (`git mv` into the chosen root
+    + update `CONVENTIONS.md`) — never force it.
+
+## Step 4.5 — Cross-check before sign-off
+
+After all answers are in, scan for contradictions before writing the
+plan summary. Surface each, take the correction, then proceed. (An
+express run is internally consistent by construction and skips this
+check; guided and full runs, and any run that switched tiers
+mid-flight, get the full scan.)
+
+- **Q5 separate worktrees + Q4b direct-to-main.** Require recorded
+  concurrency guardrails and serial integration through ship-item.
+  This is a supported combination; retain it when already confirmed.
+- **Q5 shared checkout + Q4b PR-based.** Ordinary sequential PR work
+  needs an actual work branch. PR waves require separate worktrees;
+  never generate a claim-branch workflow for a shared checkout.
+- **Q4a plan-folder skipped + Q8 records a real gate.** The autonomous
+  prompt walks `plan/todo/`; with no plan folder it has nothing to
+  drive. Do not write the autonomous prompt — a gate alone does not make
+  the repo eligible for it. Say so, and offer the plan queue if the user
+  wanted an unattended run. Under a **single writer** this leaves no
+  `_agent/` directory at all; under several writers the mode's other
+  files are still written.
+- **Q8 has no real verify gate + Q4b PR-based with required CI.**
+  "Required CI green" needs a CI gate. Confirm what the CI actually
+  runs, or downgrade the completion event.
+- **Q2 single ADR shape + Q7 technology-ADR template requested.**
+  Contradiction — pick one. The technology template only exists in a
+  two-shape repo, because it is the template the `shape: technology`
+  field selects. (On a re-run that enables the second shape on an
+  existing single-shape repo, the two move together — see Step 1.)
+- **Q11 = join but no confirmable home pointer.** Joining needs a
+  home/federation pointer you can confirm. If none exists yet, you are
+  really *establishing* — switch Q11a to establish.
+
+The sign-off includes final/persisted Status at a glance reporting at every
+depth. Offer the opt-out at full depth; if explicitly declined, omit the
+Reporting section, AGENTS pointer and prompt Report step together. Domain
+reporting rules extend the one numbered Reporting list.
+
+For an existing legacy coordination layout, use audit's coordination
+migration procedure: show removals and content destinations, respect prior
+explicit migration approval or obtain it, preserve live owner/blocker
+content on queue items, then regenerate the prompt from recorded answers.
+
+## Step 5 — Output sequence (after sign-off)
+
+Templates live in this skill's `templates/` directory. Read each
+template, fill its placeholders from the assessment answers, then
+write it into the repo.
+
+**Placement (Q12):** write `AGENTS.md` and `CLAUDE.md` to the repository
+root; write everything below under the chosen **artefact root** (default
+`.docflow/`) — e.g. `.docflow/adr/0000-template.md`, `.docflow/plan/`,
+`.docflow/INDEX.md`. Record the chosen root **and the chosen assessment
+depth** in `CONVENTIONS.md` so every lifecycle skill resolves paths
+against the root and later assessments pre-select the recorded depth,
+and adjust the `adr/`/`plan/` cross-paths in the filled `AGENTS.md` (and
+other templates) to the chosen root (e.g. `.docflow/adr/`).
+
+**Discovery pointer.** If the chosen root is anything other than
+`.docflow/`, also write a `.docflow` file at the repository root
+containing the single line `root: <path>` (`root: docs/`, `root: .`) —
+the marker external tools use to find the catalogue. Do **not** write
+it when the root is `.docflow/` (the directory itself is the marker).
+Keep the pointer in sync if a later re-run migrates the root.
+
+1. `CONVENTIONS.md` — from `templates/CONVENTIONS.md`. Spec other files
+   reference. Record the exact Q8 verify command(s), when supplied, in its
+   Git Contract; the phrase "verify gate" alone does not identify a command.
+   Include the **§Concurrency Guardrails** section only if Q5
+   is shared checkout or separate worktrees **or** Q4b is PR-based;
+   omit it for single-writer direct-to-main repos (no numbering race). Include the **§Federation
+   (multi-repo)** section only if Q11 = yes; fill `<product>` and state
+   the chosen identity scheme. Omit it for standalone repos.
+2. `AGENTS.md` — from `templates/AGENTS.md`. Include the concurrency
+   guardrails hard-rule bullet (G2–G4) under the same condition as the
+   CONVENTIONS section above; omit otherwise. **Generate the "Picking
+   up this repo" section** from the answers rather than copying the
+   template list verbatim: keep one line per file this run actually
+   writes, in read order, with every path resolved against the chosen
+   artefact root (Q12) — drop the `plan/` lines if Q4a skipped the
+   queue; when the queue exists, include the newest `plan/done/`
+   entries and a first-parent `git log` command as the shipped record;
+   drop `_agent/ROLES.md` unless Q5 chose several writers; drop
+   `_agent/LOCKS.md` unless Q5 chose a shared checkout; keep the derived
+   in-flight line — worktrees, remote claim branches, draft pull
+   requests — in separate-worktree mode and in any pull-request repo,
+   and drop it elsewhere; and renumber what remains. The section must never name a file this repo does not
+   have; it is the only read order, and no hand-off file is written.
+3. `CLAUDE.md` — from `templates/CLAUDE.md` (single line `@AGENTS.md`).
+4. `adr/0000-template.md` — from `templates/adr-capability.md`.
+5. `adr/0000-template-technology.md` — from
+   `templates/adr-technology.md`, only if Q2 chose two shapes. It ships
+   with `shape: technology` pre-filled. Both templates are numbered
+   `0000`; **no number boundary is chosen and none is recorded**, and no
+   template is written under any other number.
+5b. **Seed ADR (default on; opt-out at sign-off).** Write the seed
+   `adr/0001-record-architecture-decisions.md` from
+   `templates/adr-0001-seed.md`, filled from the assessment answers — it
+   records the **decision to adopt** the documentation-led, ADR-driven
+   method, status **`Implemented`**, and **references `CONVENTIONS.md`** for
+   the rules (it does not duplicate them). Keep it generic — no other
+   project's ADR numbers. **Skip only if the operator opted out.** In a
+   **two-shape** repo (Q2) the seed stays `0001` and carries
+   `shape: technology`. Uncomment that field and **swap the body**:
+   delete Capability statement and User stories / scenarios, and
+   uncomment the Decision / Rationale / Consequences block the seed
+   template already ships. Do **not** recast the capability sections —
+   they have no technology content — and do **not** leave the capability
+   headings in place after stamping the field; audit validates section
+   order from the declared shape, so a field-only uncomment fails the
+   section check. Adopting the method is a decision about how the repo
+   is built. Because the shape is declared in the metadata, the
+   scaffolded conventions need no exception clause for it. If `plan/`
+   exists, also write a matching `plan/done/<date>-adopt-adr-method.md` (the
+   seed's completion event is this bootstrap), so plan-coverage stays
+   satisfied. On a **retrofit/backfill** (Step 6), the seed is `0001`, ahead
+   of the reconstructed decisions.
+
+   **Seed completion evidence.** Keep the complete scaffold atomic; do not
+   split it into an incomplete intermediate tree to make a supplied gate pass.
+   For a direct-integration seed created in that same commit, use this
+   seed-only footer, replacing the path with the actual repository-relative
+   adoption record and quoting it for the host:
+
+   ```text
+   Shipped by bootstrap introduction: `<repo-relative done path>`.
+   Resolve: `git log --follow --diff-filter=A --format=%H -- "<repo-relative done path>"`
+   ```
+
+   After committing, resolve that exact path to one introducing commit.
+   Require it to be reachable and to contain this adoption record, the
+   Implemented seed, its INDEX row and the complete verified scaffold;
+   verify its signature when signing is required. Report the resolved SHA.
+   A generic description such as "the bootstrap commit" is insufficient.
+   If later repairs changed the scaffold, cite the existing verified repair
+   HEAD in a subsequent record commit instead. Never invent a future/self SHA.
+   Ordinary shipped items still name their existing verified implementation
+   tip. Under pull-request integration use the actual pull-request reference;
+   a missing reference or unconfirmed merge remains explicitly unverified.
+6. `plan/README.md` — from `templates/plan-README.md`. Create empty
+   `plan/todo/.gitkeep` and `plan/done/.gitkeep`.
+7. **`_agent/` — write exactly what Q5, Q8 and Q4a prescribe, and
+   nothing else.** The run prompt is written only when the repo is
+   **eligible** for it: Q8 recorded a real verify gate **and** Q4a kept
+   the `plan/todo/` queue the prompt walks. Fail either and no prompt is
+   written. The whole set is:
+
+   | Q5 answer | `_agent/` contents |
+   |---|---|
+   | Single writer | `prompts/autonomous.md` **iff** eligible (gate + plan queue) — otherwise **no `_agent/` directory at all** |
+   | Several writers, shared checkout | `ROLES.md`, `LOCKS.md`, and `prompts/autonomous.md` iff eligible |
+   | Several writers, separate worktrees | `ROLES.md`, and `prompts/autonomous.md` iff eligible |
+
+   Write no duplicate shipped-state file, no dashboard, no live snapshot
+   and no hand-off in any mode, and add no `.gitattributes` union entry
+   or `.gitignore` entry for coordination files. There is no template
+   for any of them: git history, `plan/done/`, and the live branches and
+   pull requests are that record.
+8. `_agent/ROLES.md` — from `templates/_agent-ROLES.md`, **skipped for a
+   single writer**. One section per named writer, naming what each is
+   the single writer of, from the Q5 answer.
+9. `_agent/LOCKS.md` — from `templates/_agent-LOCKS.md`, **shared
+   checkout only.** Not written for a single writer, and not in
+   separate-worktree mode (the pushed `claim/<item-key>` branch and its
+   pull request are the claim there).
+10. `_agent/prompts/autonomous.md` — from its template, only when Q8
+    names a real gate and Q4a retains the queue. Resolve every artefact path
+    including `_agent/` beneath Q12's root. Keep and uncomment exactly one
+    mode block: SEPARATE WORKTREES, SHARED CHECKOUT or SINGLE WRITER. Keep
+    PR START plus PR INTEGRATION only for PR mode; otherwise keep DIRECT
+    INTEGRATION. Drop the unused blocks and all generation comments.
+    Single-writer PRs create ordinary work branches; only separate
+    worktrees acquire claim branches. Shared PR waves require separate
+    worktrees, while ordinary shared PR work remains serialised. Keep the
+    item Status, Stop and final Report instructions in every eligible mode.
+11. `INDEX.md` — header + the seed ADR's row (item 5b); an empty table only
+    if the seed was declined. Link each row's number or title to the actual
+    ADR file using a path relative to INDEX. Check that every link resolves
+    and the row's title, status and date match the file's metadata.
+    In a **two-shape** repo (Q2) the table
+    carries a **Shape** column, filled from each ADR's `shape:` field
+    (blank field → `capability`); a single-shape repo has no such column.
+    Neither `0000-` template appears in the table — templates are not
+    decisions.
+12. **Federation files** — **only if Q11 = yes.** Place both at the
+    configured artefact root (repository root by default).
+    - **Establish:** write `federation-index.md` (the member index, a
+      Markdown table) from `templates/federation-index.md` into this
+      repo, seeded with this repo as the first member; and write
+      `federation.md` from `templates/federation-config.md` with the
+      chosen topology, the chosen identity scheme (default repo-prefixed
+      slug), and this repo's **`Role` set from the topology**:
+      `central` for **A** (this repo holds all product-wide ADRs),
+      `coordinator` for **B** (this repo holds only the member index —
+      product-wide decisions are distributed and the roll-up is the
+      product-wide view), or `home` for **C** (this repo holds
+      product-wide ADRs; members keep local ADRs alongside). Record the
+      identity scheme in both files so it is the same on every read.
+    - **Join:** write **only** `federation.md` from
+      `templates/federation-config.md` with `Role: member`, the
+      confirmed home pointer, and the topology **and identity scheme**
+      for the federation, **supplied by the operator at join** (recorded
+      into this repo's `federation.md`; no cross-repo read). Then apply
+      the **topology's member rule**: for **A**, this
+      repo references the central repo and does **not** hold product-wide
+      ADRs locally (its `adr/` is for local-implementation decisions
+      only); for **B**, this repo owns its own catalogue in full; for
+      **C**, this repo keeps local ADRs and references the home for
+      product-wide ones. Write nothing into any other repo, and do **not**
+      create a member index. Tell the user to add this repo to the
+      **index-holding repo's** `federation-index.md` — the home (C),
+      central (A), or coordinator (B) repo — a deliberate edit there.
+
+Commit each file (or logical group) with a Conventional Commit message;
+no `Co-Authored-By` trailer unless Q6 asked for one.
+
+For an existing repo, prefer Edit over Write where files exist, and
+call out every merge decision in the commit message.
+
+### Verify the generated result
+
+Before claiming bootstrap complete, compare the actual output with the
+confirmed answers: root pointer, assessment depth, ADR shape and metadata,
+seed and INDEX row, plan queue, coordination files and mode-specific branch
+instructions. Confirm the exact supplied gate command appears consistently
+in `CONVENTIONS.md`, `AGENTS.md` and the autonomous prompt when written.
+Run the recorded gate if present and retain its exact output
+and exit code. A wrong root, missing requested queue/seed or failed gate is
+an incomplete scaffold, not a host limitation. Correct it before reporting.
+When the plan layer includes the seed adoption record, also verify its
+completion reference as described above. Do not claim complete when the
+reference is missing, ambiguous, unreachable or points to an earlier incomplete
+scaffold. Preserve the failed observation and report the remaining repair.
+
+## Step 6 — Offer backfill (existing repos; re-runnable for emergent work)
+
+Once the scaffolding commit has landed, **offer to backfill** the ADR
+catalogue, the plan folder, and `CONVENTIONS.md` from the existing
+code and git history. Skip this step entirely on a fresh repo.
+
+**Tier the offer by the assessment depth.** At **full**, make the
+offer as phrased below. At **guided**, ask it as one brief yes/no
+("Backfill decision records from the existing history? I'll propose
+drafts for approval."). At **express**, do not run it now — close
+with a one-line pointer instead: undocumented history can be captured
+later by re-running this skill.
+
+Phrase the offer like this:
+
+> The scaffolding is in. Want me to backfill ADRs, plan/done entries,
+> and CONVENTIONS additions from the existing code and commit history?
+> I'll propose drafts; you approve in batches before anything lands.
+
+If the user accepts, run the backfill in four passes. Each pass
+produces drafts the user reviews before they are committed.
+
+1. **Scan inputs (read-only).**
+   - `git log --oneline --reverse main` (or the default branch) — the
+     decision and shipped-work trail.
+   - Major modules / packages / top-level source directories — the
+     surface of what exists.
+   - Any existing docs (`README`, `docs/`, design notes, RFCs) — prior
+     decision records, even informal ones.
+   - `package.json` / `pyproject.toml` / `go.mod` etc. — declared
+     dependencies often map to technology decisions.
+
+2. **Propose ADRs.** For each distinguishable decision or capability
+   evident from the scan, draft an ADR using the appropriate template.
+   - Capabilities (what the system does) → capability ADR, status
+     `Implemented` (the code already exists), Revision History row
+     citing the commit(s) that introduced the behaviour.
+   - Technology choices (framework, persistence, deployment target) →
+     technology ADR, status `Accepted` or `Implemented` as appropriate,
+     Rationale section reconstructed from commit messages and code
+     comments — flag any speculative rationale clearly so the human
+     can correct it.
+   - Number contiguously from `0001`, irrespective of shape. In a
+     two-shape repo, stamp each draft's `shape:` field to match the
+     template it was drafted from. Show the user the proposed list
+     (number + title + status + one-line scope) before writing files.
+
+3. **Propose plan/done entries.** For each ADR drafted as
+   `Implemented`, generate a corresponding `plan/done/<date>-<slug>.md`
+   file using the commit date of the implementing commit (or the
+   merge commit) as the date prefix. Body: short summary, owning ADR,
+   "Shipped at HEAD `<sha>`" footer. Group these into a single
+   approval prompt — they are mechanical once the ADRs are agreed.
+
+4. **Propose CONVENTIONS additions.** Identify patterns in the existing
+   repo that should be promoted to written conventions: commit-message
+   style, branch naming, test layout, file-naming rules, language /
+   tooling choices that are de-facto standards. Draft additions to
+   `CONVENTIONS.md` (and corresponding bullets in `AGENTS.md` §Hard
+   rules if they should be enforced). Show the diff before applying.
+
+After each pass, commit the approved drafts with a Conventional Commit
+(`docs(adr): backfill ADRs 0001-00NN from code and history`,
+`docs(plan): backfill plan/done from shipped commits`,
+`docs: backfill conventions from de-facto patterns`). Regenerate
+`INDEX.md` after the ADR pass.
+
+**Important guardrails.**
+- The backfill produces *drafts*. Every commit is reviewable; the user
+  is the authority on whether an inferred decision is real.
+- If commit history is sparse or unclear, say so and stop — do not
+  invent rationale to fill gaps.
+- If the user declines the backfill, the scaffolding is still
+  complete; the queue is just empty until the first hand-authored ADR
+  lands.
+
+**Re-running to capture a development that bypassed the process.** This
+backfill is not adoption-only. When a substantial development later lands in
+an already-docflow repo **without** an owning ADR or plan item — a large
+feature built ahead of the process — run the same passes again, **scoped to
+that development**: limit the scan (passes 1–3) to its commits and the area
+it touched, reconstruct just the decision(s) it embodies as `Implemented`
+ADR(s) (Revision History citing the implementing commits and noting they
+were recorded after the fact), write the matching `plan/done` entries, and
+regenerate `INDEX.md`. A large development is never *outside* the
+catalogue — it is an ADR not yet written. The audit skill's coverage check
+surfaces such gaps so they are captured, not silently kept.
+
+Name the scaffold, preserved content, chosen profile/root and any incomplete setup.
+
+## Host permission boundary
+
+An explicit host/tool permission denial stops the affected operation immediately,
+including receipt export and cleanup. Do not retry through another tool, shell,
+staging directory, move, archive, symlink or delegate, or probe writes to the
+denied destination. Report the denied action and destination, actual partial
+effects and missing permission as stopped/blocked. If recording Status or
+committing/exporting would cross that boundary, report in the current response
+and leave persistence pending. Resume only after explicit permission for that
+action. A gate environment failure is distinct and never overrides a denial.
+
+<!-- docflow:closing-report -->
+## Closing report
+
+End every run, including blocked, failed and stopped runs, with a section
+headed exactly **Status at a glance**, containing these three labels:
+
+- **This run:** only actions actually attempted and their outcomes; quote each verify gate's exact output and exit code, including timeouts or interruptions.
+- **Overall:** implemented, partially verified, verified, blocked, failed or unknown. A passing sub-step is not an overall pass; incomplete or missing evidence never becomes success.
+- **Yet to do:** every remaining action, unresolved finding, verification, cleanup or required input. Write None only when the whole task is verifiably complete; never omit work because a budget ended.
+
+Routine progress messages need no block. Keep final results brief and
+distinguish work prepared on a PR from work confirmed shipped.
+<!-- /docflow:closing-report -->
