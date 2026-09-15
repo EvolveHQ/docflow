@@ -38,6 +38,15 @@ const LEGACY_DONE_NUMBERS = ['0101'];
 
 export const cases = [
   {
+    name: 'repository producer: source renders and native compatibility',
+    skill: null,
+    agentDependent: false,
+    assert() {
+      const result = spawnSync(process.execPath, ['--test', join(evalsDir, 'repository-producer.test.mjs')], { encoding: 'utf8', timeout: 120000 });
+      assert.equal(result.status, 0, result.error?.message || result.stdout + result.stderr);
+    },
+  },
+  {
     name: 'workspace history: local objects and environment isolation',
     skill: null,
     agentDependent: false,
