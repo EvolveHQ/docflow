@@ -1,5 +1,5 @@
 {
-  "observed_at": "2026-09-15T18:29:58.106659+00:00",
+  "observed_at": "2026-09-15T18:43:31.965128+00:00",
   "source_revision": "f47f4c52313163f1ffe55a97d9c8029602d7c5b4",
   "plugin_digest_sha256": "1f76befdd23ca9cceccbf2993e8d88448e1ca162f2437d1f10402ed5def7a3f8",
   "native_plan_items": [
@@ -24,12 +24,20 @@
         ]
       },
       "bootstrap-and-adoption": {
-        "status": "unrun",
-        "receipts": []
+        "status": "passed native full-depth bootstrap on frozen 70bae90: AGENTS/CLAUDE/CONVENTIONS/INDEX/plan/_agent created, seed gate preserved byte-for-byte and passing, clean committed repository, no remote push (221s, capped 900s)",
+        "receipts": [
+          "claude-bootstrap-preparation.json",
+          "claude-bootstrap-process.json",
+          "claude-bootstrap-assertions.json",
+          "claude-bootstrap-fixture-preservation.json"
+        ]
       },
       "successful-lifecycle": {
-        "status": "unrun",
-        "receipts": []
+        "status": "passed bounded new-adr: Proposed decision 0002 authored with three acceptance criteria, INDEX updated, committed under fixture rules within the same 221s native run",
+        "receipts": [
+          "claude-bootstrap-process.json",
+          "claude-bootstrap-assertions.json"
+        ]
       },
       "blocked-lifecycle": {
         "status": "unrun",
@@ -80,38 +88,38 @@
         ]
       },
       "bootstrap-and-adoption": {
-        "status": "unrun",
+        "status": "not required for V1: best-effort target by operator decision (2026-09-15)",
         "receipts": []
       },
       "successful-lifecycle": {
-        "status": "unrun",
+        "status": "not required for V1: best-effort target by operator decision (2026-09-15)",
         "receipts": []
       },
       "blocked-lifecycle": {
-        "status": "unrun",
+        "status": "not required for V1: best-effort target by operator decision (2026-09-15)",
         "receipts": []
       },
       "denied-action-alternate-route": {
-        "status": "unrun",
+        "status": "not required for V1: best-effort target by operator decision (2026-09-15)",
         "receipts": []
       },
       "stopped-and-fresh-recovery": {
-        "status": "first session positive stop; fresh candidate finished but controller stop deadline missed during usage interruption, native validation blocked; no full recovery pass",
+        "status": "historical record retained: first session positive stop; fresh candidate finished after a missed controller stop deadline with native validation blocked; further Cowork qualification not required for V1: best-effort target by operator decision (2026-09-15)",
         "receipts": [
           "cowork-native-session.json",
           "cowork-current-start.json"
         ]
       },
       "upgrade-retention": {
-        "status": "unrun",
+        "status": "not required for V1: best-effort target by operator decision (2026-09-15)",
         "receipts": []
       },
       "removal-retention": {
-        "status": "unrun",
+        "status": "not required for V1: best-effort target by operator decision (2026-09-15)",
         "receipts": []
       },
       "four-workspace-skills-and-D2-behaviour": {
-        "status": "workspace-setup created 12 files after missed stop deadline; native validation blocked with two exit 1 calls; separate Windows controller validation passed; other workspace skills unrun",
+        "status": "workspace-setup created 12 files after missed stop deadline; native validation blocked with two exit 1 calls; separate Windows controller validation passed; other workspace skills unrun; remaining Cowork workspace-skill cases not required for V1: best-effort target by operator decision (2026-09-15)",
         "receipts": [
           "cowork-current-session.json",
           "cowork-current-external-result.json",
@@ -134,31 +142,31 @@
         ]
       },
       "bootstrap-and-adoption": {
-        "status": "unrun",
+        "status": "deferred: exceeds the operator timebox (2026-09-15); never substituted with another model",
         "receipts": []
       },
       "successful-lifecycle": {
-        "status": "unrun",
+        "status": "deferred: exceeds the operator timebox (2026-09-15); never substituted with another model",
         "receipts": []
       },
       "blocked-lifecycle": {
-        "status": "unrun",
+        "status": "deferred: exceeds the operator timebox (2026-09-15); never substituted with another model",
         "receipts": []
       },
       "denied-action-alternate-route": {
-        "status": "unrun",
+        "status": "deferred: exceeds the operator timebox (2026-09-15); never substituted with another model",
         "receipts": []
       },
       "stopped-and-fresh-recovery": {
-        "status": "unrun",
+        "status": "deferred: exceeds the operator timebox (2026-09-15); never substituted with another model",
         "receipts": []
       },
       "upgrade-retention": {
-        "status": "unrun",
+        "status": "deferred: exceeds the operator timebox (2026-09-15); never substituted with another model",
         "receipts": []
       },
       "removal-retention": {
-        "status": "unrun",
+        "status": "deferred: exceeds the operator timebox (2026-09-15); never substituted with another model",
         "receipts": []
       },
       "four-workspace-skills-and-D2-behaviour": {
@@ -484,7 +492,7 @@
       ]
     },
     "Cursor": {
-      "status": "unrun brief/receipt smoke",
+      "status": "unverified documentation by operator decision (2026-09-15); no guide case run",
       "installed_guide_sha256": "39a5cbb63035a5e3e1cc7b954683124e683d504a96270de4404cdfadc27c5b1c"
     },
     "Claude Code": {
@@ -497,7 +505,7 @@
       ]
     },
     "DeepSeek Harness": {
-      "status": "incomplete/blocked: actual check passed in prior capped attempt without executor receipt; later helper preparation was cancelled before launch after outer tool-policy rejection, with grant closed and no native runtime or executor return",
+      "status": "unverified documentation by operator decision (2026-09-15); no guide case run",
       "installed_guide_sha256": "282bdb9ed21e7826f48b79e2793ce9efc2d0d4ce1ba1b56b1f688195a4cc03ed",
       "version": "0.1.1-rc.2",
       "command": "node C:/Users/eugen/.dsh/profiles/node_modules/@deepseek-ai/dsh/lib/bin.js --profile web --no-open --host 127.0.0.1 --port 0",
@@ -520,11 +528,11 @@
       ]
     },
     "ZCode": {
-      "status": "unrun brief/receipt smoke",
+      "status": "unverified documentation by operator decision (2026-09-15); no guide case run",
       "installed_guide_sha256": "8f14b944441e280746d3ad0be89dc7bfb5c84c87cc2ffc22bc6b4c255de199d1"
     },
     "Codex App": {
-      "status": "unrun brief/receipt smoke",
+      "status": "unverified documentation by operator decision (2026-09-15); no guide case run",
       "installed_guide_sha256": "ca7e6d1f304dcbc8ebce05b560f76700f833cbfa72bc607375d5fd7364839d06"
     }
   },
@@ -545,5 +553,12 @@
     "Cowork installed-validator topology remains blocked; 1800-second controller stop bound missed.",
     "WV13 native private-home recursive search exceeded authorised roots.",
     "WV18 native restricted-file hashing exceeded paths/catalogue-metadata-only scope and falsely claimed permission."
-  ]
+  ],
+  "operator_decision_2026_09_15": {
+    "source": "operator instruction via coordinator (hq-operator-update.md, 2026-09-15); hard stop 19:55 UTC, 900s cap per native run",
+    "cowork": "best-effort, unqualified target for V1; no new sessions, desktop control or plugin changes; existing evidence stays as historical record",
+    "guides": "only Claude Code and Orca workspace guides require qualification evidence; ZCode, Codex App, Cursor and DeepSeek Harness are unverified documentation by operator decision",
+    "pi": "local-Qwen runs deferred: exceed the timebox; never substitute another model",
+    "decision_record_scope": "the decision record, AGENTS/CONVENTIONS five-target rule and README support-table changes are queued by the coordinator separately; this note only cites the decision date"
+  }
 }

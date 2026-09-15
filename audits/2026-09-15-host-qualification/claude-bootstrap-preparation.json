@@ -1,0 +1,10 @@
+{
+  "prepared_at": "2026-09-15T18:34:27Z",
+  "container": "docflow-hq-fc206-claude-bootstrap",
+  "native_session_id_requested": "b4688bc9-e943-4e04-b3d7-80fcadc35cc5",
+  "source_revision": "70bae90406a0c4d9ae37f40efcc35ec52f4a9306",
+  "gate_sha256": "5de554f5b4d975117d03d8bd9bf27420e486dfcbd883b02e7bc0db20e46904cc",
+  "claude_version": "2.1.269 (Claude Code)",
+  "write_scope": "/workspace/bootstrap only",
+  "credential_scope": "exact .credentials.json streamed to private tmpfs"
+}

@@ -11,6 +11,16 @@ Owning decisions: adr/0051-portable-workspace-memory-contract.md, adr/0052-works
 - **Blockers:** Actual combined Clarity views/handoffs await the controller-supplied integrated source/artifact; desktop and web guide access must be proved in dedicated sessions.
 - **Stopped:**
 
+
+Operator decisions (2026-09-15) recorded in the ledger: Cowork is a best-effort
+unqualified target for V1 with open cases not required; only the Claude Code and
+Orca guides require evidence, with ZCode/Codex App/Cursor/DeepSeek Harness
+labelled unverified documentation; Pi local-Qwen runs are deferred as exceeding
+the 900-second timebox and are never substituted. This dispatch additionally
+recorded a bounded native Claude Code full-depth bootstrap plus Proposed
+decision 0002 (221 seconds, gate unchanged and passing, clean repository, no
+push).
+
 ## Dependencies
 
 Qualification checkpoint: [source-bound audit](../../audits/2026-09-15-host-qualification/README.md)

@@ -241,6 +241,35 @@ archives stay private with retained hashes. The two read-scope failures
 with a false permission claim) remain failures, and the F3 reporting error
 (YAML sidecar miscounted as a fourteenth skill) is retained.
 
+## Native Claude Code bootstrap and Proposed decision
+
+A fresh bounded native run on the combined 70bae90 candidate exercised
+full-depth bootstrap plus new-adr in one session: 221 seconds, host exit 0,
+within the operator's 900-second cap. The [independent
+assertions](claude-bootstrap-assertions.json) prove the seed gate preserved
+byte-for-byte (`5de554f5b4d975117d03d8bd9bf27420e486dfcbd883b02e7bc0db20e46904cc`)
+and passing (`verify: OK (fixture gate)`, exit 0), the thirteen native skills,
+both skill invocations, a clean committed repository with no remote, Proposed
+decision 0002 with exactly three acceptance criteria, an updated INDEX and
+the full bootstrap layout (AGENTS/CLAUDE/CONVENTIONS, plan queue,
+`_agent/prompts/autonomous.md`). The disposable fixture is preserved with its
+[own receipt](claude-bootstrap-fixture-preservation.json) and the container
+was positively stopped and removed.
+
+## Operator decisions, 2026-09-15
+
+By operator instruction (hard stop 19:55 UTC, 900-second cap per native run):
+Cowork is a **best-effort, unqualified target for V1** — no new sessions,
+desktop control or plugin changes, existing evidence stays as historical
+record, and open Cowork cases are labelled *not required for V1*, not passed
+or failed. Only the **Claude Code and Orca** workspace guides require
+qualification evidence; the ZCode, Codex App, Cursor and DeepSeek Harness
+guides are *unverified documentation by operator decision*. Pi local-Qwen
+runs are *deferred: exceeds the timebox* (never substituted with another
+model). The decision record, AGENTS/CONVENTIONS five-target rule and README
+support-table changes are queued by the coordinator separately; this section
+only records the decision's effect on qualification evidence.
+
 ## Status at a glance
 
 - **This run:** Native host inventories/setup results, bounded resource/lifecycle,
@@ -253,11 +282,13 @@ with a false permission claim) remain failures, and the F3 reporting error
   PR 11 merged into the review integration as 52887c7 (verified on
   `origin/kmox83/docflow-v1-integration`); follow-up evidence ships in a new PR;
   the development candidate is not released V1.
-- **Yet to do:** Resolve the retained Cowork runtime and missed-bound findings
-  (a bounded Cowork proposal precedes any separately authorised rerun); the
-  imported WV13/15/18 read-scope failures await writer disposition and any
-  separately authorised remediation; complete remaining pending native
-  host/guide assertions; obtain desktop access and paired Clarity artifact;
-  perform actual combined views/handoffs; preserve fixtures, clean up owned
-  runtimes, run final gates and current-head CI on the new evidence PR, obtain
-  review and the operator's real pilot acceptance.
+- **Yet to do:** Cowork is not required for V1 (best-effort target by operator
+  decision 2026-09-15); ZCode/Codex App/Cursor/DeepSeek Harness guides are
+  unverified documentation by operator decision and Pi local-Qwen runs are
+  deferred beyond the timebox. Claude Code denied-action/upgrade-removal
+  retention, Codex lifecycle/recovery/upgrade retention and OpenCode
+  stopped-fresh recovery remain unrun within this dispatch's timebox; the
+  imported WV13/15/18 read-scope failures await writer disposition; combined
+  Clarity acceptance waits for the controller-supplied integrated
+  source/artifact; the operator pilot acceptance is supplied only by the
+  operator.
