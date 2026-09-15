@@ -1,0 +1,62 @@
+[
+  {
+    "case": "create-b",
+    "type": "tool_error",
+    "id": "toolu_01B32wRLXSJe2RPkXQp4tQc3",
+    "content": "Exit code 2\ntotal 0\ndrwxrwxrwx 1 root root 4096 Sep 15 01:25 .\ndrwxrwxrwx 1 root root 4096 Sep 15 01:25 ..\ndrwxrwxrwx 1 root root 4096 Sep 15 01:25 add-convention\ndrwxrwxrwx 1 root root 4096 Sep 15 01:25 agent-wave\ndrwxrwxrwx 1 root root 4096 Sep 15 01:25 audit\ndrwxrwxrwx 1 root root 4096 Sep 15 01:25 bootstrap\ndrwxrwxrwx 1 root root 4096 Sep 15 01:25 brainstorm\ndrwxrwxrwx 1 root root 4096 Sep 15 01:25 new-adr\ndrwxrwxrwx 1 root root 4096 Sep 15 01:25 new-plan\ndrwxrwxrwx 1 root root 4096 Sep 15 01:25 rollup\ndrwxrwxrwx 1 root root 4096 Sep 15 01:25 ship-item\ndrwxrwxrwx 1 root root 4096 Sep 15 01:25 workspace-coordinate\ndrwxrwxrwx 1 root root 4096 Sep 15 01:25 workspace-orient\ndrwxrwxrwx 1 root root 4096 Sep 15 01:25 workspace-plan\ndrwxrwxrwx 1 root root 4096 Sep 15 01:25 workspace-setup\n--- bootstrap ---\ntotal 52\ndrwxrwxrwx 1 root root  4096 Sep 15 01:25 .\ndrwxrwxrwx 1 root root  4096 Sep 15 01:25 ..\n-rwxrwxrwx 1 root root 49849 Sep 15 01:25 SKILL.md\ndrwxrwxrwx 1 root root  4096 Sep 15 01:25 agents\ndrwxrwxrwx 1 root root  4096 Sep 15 01:25 templates\n--- workspace-setup ---\ntotal 8\ndrwxrwxrwx 1 root root 4096 Sep 15 01:25 .\ndrwxrwxrwx 1 root root 4096 Sep 15 01:25 ..\n-rwxrwxrwx 1 root root 7516 Sep 15 01:25 SKILL.md\ndrwxrwxrwx 1 root root 4096 Sep 15 01:25 agents\n--- templates ---"
+  },
+  {
+    "case": "recommendations",
+    "type": "tool_error",
+    "id": "toolu_01JK5Y9QXhYrCX8u58XDPvvH",
+    "content": "Exit code 2\nrepos/desktop/AGENTS.md\nrepos/desktop/REVIEW.md\nrepos/desktop/guidance/desktop-review.md\nrepos/desktop/package.json\nrepos/desktop/src-tauri/Cargo.toml\nrepos/desktop/src/App.svelte\nrepos/docs/AGENTS.md\nrepos/docs/README.md\nrepos/docs/REVIEW.md\nrepos/react/AGENTS.md\nrepos/react/REVIEW.md\nrepos/react/guidance/react-review.md\nrepos/react/package.json\nrepos/react/src/Search.tsx\n=== missing specialist? ===\ntotal 0\ndrwxr-xr-x  3 node node  60 Sep 15 04:31 .\ndrwxr-xr-x 12 node node 300 Sep 15 04:31 ..\ndrwxr-xr-x  2 node node  60 Sep 15 04:31 catalogue\nls: cannot access '.docflow_workspace/local/missing-tauri-specialist': No such file or directory"
+  },
+  {
+    "case": "recommendations",
+    "type": "tool_error",
+    "id": "toolu_01AusdYY3Rq1afM9FjmUuiYS",
+    "content": "Exit code 1\n=== declined retrieval block preserved byte-identical? ===\n[eval]:3\nconst grab=p=>{const t=fs.readFileSync(p,\"utf8\");const m=t.match(/^---\\n([\\s\\S]*?)\\n---/);return JSON.parse(m[1]);};\n                                                                                                             ^\n\nTypeError: Cannot read properties of null (reading '1')\n    at grab ([eval]:3:110)\n    at [eval]:4:9\n    at runScriptInThisContext (node:internal/vm:209:10)\n    at node:internal/process/execution:446:12\n    at [eval]-wrapper:6:24\n    at runScriptInContext (node:internal/process/execution:444:60)\n    at evalFunction (node:internal/process/execution:279:30)\n    at evalTypeScript (node:internal/process/execution:291:3)\n    at node:internal/main/eval_string:74:3\n\nNode.js v22.23.2"
+  },
+  {
+    "case": "context-unchanged",
+    "type": "tool_error",
+    "id": "toolu_01UwDNad7Mg8UHgfpy7HpXNX",
+    "content": "Exit code 2\n{\n  \"schema\": 1,\n  \"relative_to\": \"resolved bootstrap skill directory\",\n  \"candidates\": [\n    \"../../workspace\",\n    \"../../docflow-workspace\"\n  ],\n  \"required\": [\n    \"CONTRACT.md\",\n    \"schema.json\",\n    \"validate.mjs\",\n    \"fixtures/README.md\"\n  ],\n  \"skill_only_install\": \"Copy the entire packaged workspace directory to docflow-workspace beside the host skills directory, or supply an explicit asset root. Never assume copying skills installs these assets.\"\n}\n=== bootstrap templates ===\ntotal 156\ndrwxrwxrwx 1 root root  4096 Sep 15 01:25 .\ndrwxrwxrwx 1 root root  4096 Sep 15 01:25 ..\n-rwxrwxrwx 1 root root 12454 Sep 15 01:25 AGENTS.md\n-rwxrwxrwx 1 root root    11 Sep 15 01:25 CLAUDE.md\n-rwxrwxrwx 1 root root 20575 Sep 15 01:25 CONVENTIONS.md\n-rwxrwxrwx 1 root root   985 Sep 15 01:25 _agent-LOCKS.md\n-rwxrwxrwx 1 root root   871 Sep 15 01:25 _agent-ROLES.md\n-rwxrwxrwx 1 root root 10057 Sep 15 01:25 _agent-prompts-autonomous.md\n-rwxrwxrwx 1 root root  5507 Sep 15 01:25 adr-0001-seed.md\n-rwxrwxrwx 1 root root  1346 Sep 15 01:25 adr-capability.md\n-rwxrwxrwx 1 root root  1402 Sep 15 01:25 adr-technology.md\n-rwxrwxrwx 1 root root  1111 Sep 15 01:25 federation-config.md\n-rwxrwxrwx 1 root root  1096 Sep 15 01:25 federation-index.md\n-rwxrwxrwx 1 root root  3447 Sep 15 01:25 plan-README.md\n-rwxrwxrwx 1 root root   231 Sep 15 01:25 workspace-AGENTS.md\n-rwxrwxrwx 1 root root   228 Sep 15 01:25 workspace-CONVENTIONS.md\n-rwxrwxrwx 1 root root   285 Sep 15 01:25 workspace-INDEX.md\n-rwxrwxrwx 1 root root   365 Sep 15 01:25 workspace-README.md\n-rwxrwxrwx 1 root root   465 Sep 15 01:25 workspace-assets.json\n-rwxrwxrwx 1 root root  1673 Sep 15 01:25 workspace-brief.json\n-rwxrwxrwx 1 root root  1012 Sep 15 01:25 workspace-decisions.md\n-rwxrwxrwx 1 root root  1064 Sep 15 01:25 workspace-grant.json\n-rwxrwxrwx 1 root root   908 Sep 15 01:25 workspace-ideas.md\n-rwxrwxrwx 1 root root   983 Sep 15 01:25 workspace-knowledge.md\n-rwxrwxrwx 1 root root   576 Sep 15 01:25 workspace-profile-coordination.md\n-rwxrwxrwx 1 root root   580 Sep 15 01:25 workspace-profile-documentation.md\n-rwxrwxrwx 1 root root   582 Sep 15 01:25 workspace-profile-react-review.md\n-rwxrwxrwx 1 root root   618 Sep 15 01:25 workspace-profile-svelte-tauri.md\n-rwxrwxrwx 1 root root   418 Sep 15 01:25 workspace-profile.md\n-rwxrwxrwx 1 root root   955 Sep 15 01:25 workspace-receipt.json\n-rwxrwxrwx 1 root root   533 Sep 15 01:25 workspace-recommendation.json\n-rwxrwxrwx 1 root root   170 Sep 15 01:25 workspace-registry.yaml\n-rwxrwxrwx 1 root root  1372 Sep 15 01:25 workspace-role-coordinator.md\n-rwxrwxrwx 1 root root  1399 Sep 15 01:25 workspace-role-domain-specialist.md\n-rwxrwxrwx 1 root root  1327 Sep 15 01:25 workspace-role-executor.md\n-rwxrwxrwx 1 root root  1313 Sep 15 01:25 workspace-role-reviewer.md\n-rwxrwxrwx 1 root root   577 Sep 15 01:25 workspace-role.md\n-rwxrwxrwx 1 root root  2716 Sep 15 01:25 workspace-runs.md\n-rwxrwxrwx 1 root root   535 Sep 15 01:25 workspace-sources.yaml\n-rwxrwxrwx 1 root root  2929 Sep 15 01:25 workspace-starter-sources.yaml\n-rwxrwxrwx 1 root root  1355 Sep 15 01:25 workspace-work.md\n=== candidate asset roots ===\ntotal 112\ndrwxrwxrwx 1 root root  4096 Sep 15 01:25 .\ndrwxrwxrwx 1 root root  4096 Sep 15 01:25 ..\n-rwxrwxrwx 1 root root 13117 Sep 15 01:25 CONTRACT.md\n-rwxrwxrwx 1 root root  5737 Sep 15 01:25 README.md\ndrwxrwxrwx 1 root root  4096 Sep 15 01:25 fixtures\ndrwxrwxrwx 1 root root  4096 Sep 15 01:25 guides\ndrwxrwxrwx 1 root root  4096 Sep 15 01:25 repository-fixtures\n-rwxrwxrwx 1 root root  1369 Sep 15 01:25 resolve-assets.mjs\n-rwxrwxrwx 1 root root 45317 Sep 15 01:25 schema.json\n-rwxrwxrwx 1 root root 36538 Sep 15 01:25 validate.mjs\nls: cannot access '/opt/docflow-source/plugins/docflow/docflow-workspace': No such file or directory"
+  },
+  {
+    "case": "context-unchanged",
+    "type": "tool_error",
+    "id": "toolu_01KRTu63oTBDw38sCecsiUdb",
+    "content": "Exit code 2\n=== hashes ===\nb5efecd68449975cf617bf7f732588930330219ac8c3a2846d0e9ebdd51e110a  repos/react/guidance/react-review.md\n4111c976b1b68a26eb50e7daa5f4d585e75c413d843ce78ed9e4c70e0e0642db  repos/desktop/guidance/desktop-review.md\n=== missing specialist path ===\nls: cannot access '.docflow_workspace/local/missing-tauri-specialist/SKILL.md': No such file or directory\n=== prev snapshot ===\nls: cannot access '/tmp/prev-ws': No such file or directory"
+  },
+  {
+    "case": "context-unchanged",
+    "type": "tool_error",
+    "id": "toolu_013cSaQJVdGcJYMcE1KHuMh8",
+    "content": "<tool_use_error>String to replace not found in file.\nString:     \"next_action\": \"Owner resolves whether Rust command sources exist for this bridge, then decides whether to grant a scoped file-evidence read-and-report review at revision 8bbe8348cff207dfcbfe50865756d87229bddf16 with the runtime boundary recorded as unknown. No specialist setup is proposed.\"</tool_use_error>"
+  },
+  {
+    "case": "context-stack",
+    "type": "tool_error",
+    "id": "toolu_01DKrriwUnJRCqybjwDDQ1KK",
+    "content": "Exit code 2\ntotal 0\ndrwxrwxrwx 1 root root 4096 Sep 15 01:25 .\ndrwxrwxrwx 1 root root 4096 Sep 15 01:25 ..\ndrwxrwxrwx 1 root root 4096 Sep 15 01:25 add-convention\ndrwxrwxrwx 1 root root 4096 Sep 15 01:25 agent-wave\ndrwxrwxrwx 1 root root 4096 Sep 15 01:25 audit\ndrwxrwxrwx 1 root root 4096 Sep 15 01:25 bootstrap\ndrwxrwxrwx 1 root root 4096 Sep 15 01:25 brainstorm\ndrwxrwxrwx 1 root root 4096 Sep 15 01:25 new-adr\ndrwxrwxrwx 1 root root 4096 Sep 15 01:25 new-plan\ndrwxrwxrwx 1 root root 4096 Sep 15 01:25 rollup\ndrwxrwxrwx 1 root root 4096 Sep 15 01:25 ship-item\ndrwxrwxrwx 1 root root 4096 Sep 15 01:25 workspace-coordinate\ndrwxrwxrwx 1 root root 4096 Sep 15 01:25 workspace-orient\ndrwxrwxrwx 1 root root 4096 Sep 15 01:25 workspace-plan\ndrwxrwxrwx 1 root root 4096 Sep 15 01:25 workspace-setup\n=== bootstrap ===\ntotal 8\ndrwxrwxrwx 1 root root 4096 Sep 15 01:25 .\ndrwxrwxrwx 1 root root 4096 Sep 15 01:25 ..\n-rwxrwxrwx 1 root root 7516 Sep 15 01:25 SKILL.md\ndrwxrwxrwx 1 root root 4096 Sep 15 01:25 agents\n=== templates ==="
+  },
+  {
+    "case": "context-source",
+    "type": "tool_error",
+    "id": "toolu_01FPDWzuyBGLK3MfQNFegBdC",
+    "content": "Exit code 2\n=== /opt/docflow-source/plugins/workspace ===\nls: cannot access '/opt/docflow-source/plugins/workspace': No such file or directory\n=== /opt/docflow-source/plugins/docflow-workspace ===\nls: cannot access '/opt/docflow-source/plugins/docflow-workspace': No such file or directory\n=== guides ===\nls: cannot access '/opt/docflow-source/plugins/workspace/guides': No such file or directory"
+  },
+  {
+    "case": "context-source",
+    "type": "tool_error",
+    "id": "toolu_012H2KTiMJdeEq3FcwKthCcz",
+    "content": "Exit code 2\n=== docs HEAD=d4ef4e5c401ae71d98d48b8d1cbe6b5198a26f0d status=[]\nd4ef4e5 test: initialise disposable synthetic fixture\n=== desktop HEAD=8bbe8348cff207dfcbfe50865756d87229bddf16 status=[]\n8bbe834 test: initialise disposable synthetic fixture\n=== desktop src-tauri ===\ntotal 4\ndrwxr-xr-x 2 node node  60 Sep 15 04:31 .\ndrwxr-xr-x 6 node node 180 Sep 15 04:31 ..\n-rw-r--r-- 1 node node 103 Sep 15 04:31 Cargo.toml\n=== desktop tracked files ===\nAGENTS.md\nREVIEW.md\nguidance/desktop-review.md\npackage.json\nsrc-tauri/Cargo.toml\nsrc/App.svelte\n=== missing specialist path ===\nls: cannot access '/workspace/context-source/.docflow_workspace/local/missing-tauri-specialist': No such file or directory"
+  },
+  {
+    "case": "context-policy",
+    "type": "tool_error",
+    "id": "toolu_01J4PAaVHtKtQPRBGmPwcNHU",
+    "content": "Exit code 2\nOBSERVED_AT=2026-09-15T04:45:18Z\ndocs     d4ef4e5c401ae71d98d48b8d1cbe6b5198a26f0d\nreact    7b15a56b8408785c8829d5324daf9d46e9298427\ndesktop  8bbe8348cff207dfcbfe50865756d87229bddf16\n--- REVIEW.md (all three, permitted) ---\n[docs]\n# docs review\r\nState: planned\r\nOwner: test:scenario-controller\r\nNo live implementation actor or claim; planning only.\r\n[react]\n# react review\r\nState: planned\r\nOwner: test:scenario-controller\r\nNo live implementation actor or claim; planning only.\r\n[desktop]\n# desktop review\r\nState: planned\r\nOwner: test:scenario-controller\r\nNo live implementation actor or claim; planning only.\r\n--- guidance hashes (metadata only, contents not read) ---\nb5efecd68449975cf617bf7f732588930330219ac8c3a2846d0e9ebdd51e110a  repos/react/guidance/react-review.md\n4111c976b1b68a26eb50e7daa5f4d585e75c413d843ce78ed9e4c70e0e0642db  repos/desktop/guidance/desktop-review.md\n--- desktop src-tauri contents ---\nCargo.toml\n--- tauri-specialist declared path present? ---\nls: cannot access '.docflow_workspace/local/missing-tauri-specialist/SKILL.md': No such file or directory"
+  }
+]

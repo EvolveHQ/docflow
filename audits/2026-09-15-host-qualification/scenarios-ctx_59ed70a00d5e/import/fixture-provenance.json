@@ -1,0 +1,17 @@
+{
+  "observed_native_a": {
+    "path": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\scenario-evidence\\ctx-59ed70a00d5e-3821a6ad\\create-a\\after-files\\.docflow_workspace\\ideas\\glossary-not-discoverable-from-welcome--ba03548a43ef.md",
+    "sha256": "5c22ef39e1cd3672f76a563e65285a527ec880f3b38623316d8b494c74036ccf",
+    "id": "ba03548a-43ef-49ef-acd8-ea7fdcaa06eb"
+  },
+  "observed_native_b": {
+    "path": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\scenario-evidence\\ctx-59ed70a00d5e-3821a6ad\\create-b\\after-files\\.docflow_workspace\\ideas\\review-checklist-draft-recipient--6c13dbf9a994.md",
+    "sha256": "8df92bf9a8cc3d760db83c24d213961e3747f12ccff1d29c73a14f7c5e0e8fae",
+    "id": "6c13dbf9-a994-496c-9e63-dee98f7ee9ae"
+  },
+  "injected_unpublished_collision": {
+    "id": "ba03548a-43ef-4abc-8def-09915b579066",
+    "same_prefix_as": "ba03548a-43ef-49ef-acd8-ea7fdcaa06eb"
+  },
+  "injected_link_record": "fabe219e-22e1-4c1a-9d10-b81927d5fd10"
+}

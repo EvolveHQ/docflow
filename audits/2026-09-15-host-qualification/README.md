@@ -230,7 +230,16 @@ f47 bytes remain unchanged. Fresh affected-guidance native acceptance is pending
 
 The [initial read-scope diagnosis](native-read-scope-diagnosis.md) retains the
 independent scenario worker's concrete native failures separately from its
-functional successes. Full receipt import and review are still pending.
+functional successes. The sanitised WV13/WV15/WV18 evidence is now imported:
+the [scenario collection](scenarios-ctx_59ed70a00d5e/report.md) (nine native
+turns, 234 passing assertions, two failed read-boundary assertions) is published
+under `scenarios-ctx_59ed70a00d5e/` with its
+[import receipt](scenarios-ctx_59ed70a00d5e/import-receipt.json); every
+imported file matches the archive manifest. Raw transcripts, fixture trees and
+archives stay private with retained hashes. The two read-scope failures
+(F1 WV13 `grep -rl` beyond authorised roots; F2 WV18 restricted-byte hashing
+with a false permission claim) remain failures, and the F3 reporting error
+(YAML sidecar miscounted as a fourteenth skill) is retained.
 
 ## Status at a glance
 
@@ -245,8 +254,9 @@ functional successes. Full receipt import and review are still pending.
   `origin/kmox83/docflow-v1-integration`); follow-up evidence ships in a new PR;
   the development candidate is not released V1.
 - **Yet to do:** Resolve the retained Cowork runtime and missed-bound findings
-  (a bounded Cowork proposal precedes any separately authorised rerun); import
-  and review the remaining scenario evidence and complete pending native
+  (a bounded Cowork proposal precedes any separately authorised rerun); the
+  imported WV13/15/18 read-scope failures await writer disposition and any
+  separately authorised remediation; complete remaining pending native
   host/guide assertions; obtain desktop access and paired Clarity artifact;
   perform actual combined views/handoffs; preserve fixtures, clean up owned
   runtimes, run final gates and current-head CI on the new evidence PR, obtain

@@ -1,0 +1,21 @@
+{
+  "at": "2026-09-15T04:40:46Z",
+  "container": "docflow-se-59ed-3821-recommendations",
+  "stop_exit": 0,
+  "state_after_stop": {
+    "Status": "exited",
+    "Running": false,
+    "Paused": false,
+    "Restarting": false,
+    "OOMKilled": false,
+    "Dead": false,
+    "Pid": 0,
+    "ExitCode": 143,
+    "Error": "",
+    "StartedAt": "2026-09-15T04:31:34.043657896Z",
+    "FinishedAt": "2026-09-15T04:40:44.762393785Z"
+  },
+  "remove_exit": 0,
+  "auth_tmpfs_destroyed": true,
+  "workspace_export": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\scenario-evidence\\ctx-59ed70a00d5e-3821a6ad\\recommendations\\after-files.tar"
+}

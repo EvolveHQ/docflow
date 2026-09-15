@@ -28,7 +28,16 @@ six-guide, Clarity and operator acceptance remain outstanding.
 Integrated W3/D2/D3, separately scoped D5 and paired Clarity C12/C2 sources;
 coordinator-approved source freeze and native host/operator access.
 
-Latest checkpoint: the first Cowork task was positively stopped without workspace
+Latest checkpoint (continuation dispatch ctx_239ed333d8c6): the sanitised independent
+scenario evidence for WV13/WV15/WV18 is imported under
+[scenarios-ctx_59ed70a00d5e](../../audits/2026-09-15-host-qualification/scenarios-ctx_59ed70a00d5e/report.md):
+nine native turns, 234 passing assertions and two read-boundary failures that
+remain failures (WV13 grep beyond authorised roots; WV18 restricted-byte hashing
+with a false permission claim). Every imported file matches the archive manifest;
+raw transcripts and fixture trees stay private with retained hashes. The fresh
+combined-candidate external return, readiness stop and two-harness
+reconciliation are also recorded (see plans 0065/0066). Earlier checkpoint:
+the first Cowork task was positively stopped without workspace
 or receipt; its 331 attached files remained unchanged. The supported native
 current-plugin export proved the original nine-skill restore archive exactly.
 After controller approval, supported replacement registered thirteen skills and

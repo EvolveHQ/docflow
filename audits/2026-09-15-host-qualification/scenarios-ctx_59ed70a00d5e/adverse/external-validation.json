@@ -1,0 +1,240 @@
+{
+  "at": "2026-09-15T04:42:21Z",
+  "exit": 1,
+  "result": {
+    "schema": 1,
+    "evaluated_at": "2026-09-15T04:42:20Z",
+    "valid": false,
+    "diagnostics": [
+      {
+        "code": "native-alias",
+        "path": ".docflow_workspace/agents/two.md",
+        "message": "ambiguous native alias"
+      },
+      {
+        "code": "duplicate",
+        "path": ".docflow_workspace/ideas/glossary-not-discoverable-from-welcome--ba03548a43ef.md",
+        "message": "duplicate full identity"
+      },
+      {
+        "code": "reference",
+        "path": ".docflow_workspace/ideas/glossary-not-discoverable-from-welcome--ba03548a43ef.md",
+        "message": "unresolved canonical home/full ID/path"
+      },
+      {
+        "code": "reference",
+        "path": ".docflow_workspace/ideas/navigation-research--fabe219e22e1.md.links.0",
+        "message": "unresolved canonical home/full ID/path"
+      },
+      {
+        "code": "reference",
+        "path": ".docflow_workspace/ideas/review-checklist-draft-recipient--6c13dbf9a994.md.links.0",
+        "message": "unresolved canonical home/full ID/path"
+      },
+      {
+        "code": "asset",
+        "path": ".docflow_workspace/work/stale-review--d302a1c5b765.md",
+        "message": "unresolved pinned asset revision"
+      }
+    ],
+    "records": [
+      {
+        "schema": 1,
+        "id": "ba03548a-43ef-49ef-acd8-ea7fdcaa06eb",
+        "home": "scenario/independent-records",
+        "kind": "ideas",
+        "title": "Conflicting copy of published glossary identity",
+        "owner": "test:scenario-controller",
+        "created_at": "2026-09-15T04:30:58Z",
+        "links": [],
+        "state": "backlog",
+        "history": [
+          {
+            "state": "backlog",
+            "at": "2026-09-15T04:30:58Z",
+            "actor": "test:planner-a",
+            "reason": "Capture reported discoverability problem as a low-priority backlog idea; no affected member repository identified yet"
+          }
+        ],
+        "priority": "low",
+        "problem": "Readers cannot locate the glossary from the contributor welcome page.",
+        "affected_repositories": [],
+        "path": ".docflow_workspace/ideas/conflicting-copy--ba03548a43ef.md"
+      },
+      {
+        "schema": 1,
+        "id": "ba03548a-43ef-49ef-acd8-ea7fdcaa06eb",
+        "home": "scenario/independent-records",
+        "kind": "ideas",
+        "title": "Glossary not discoverable from the contributor welcome page",
+        "owner": "test:scenario-controller",
+        "created_at": "2026-09-15T04:30:58Z",
+        "links": [],
+        "state": "backlog",
+        "history": [
+          {
+            "state": "backlog",
+            "at": "2026-09-15T04:30:58Z",
+            "actor": "test:planner-a",
+            "reason": "Capture reported discoverability problem as a low-priority backlog idea; no affected member repository identified yet"
+          }
+        ],
+        "priority": "low",
+        "problem": "Readers cannot locate the glossary from the contributor welcome page.",
+        "affected_repositories": [],
+        "path": ".docflow_workspace/ideas/glossary-not-discoverable-from-welcome--ba03548a43ef.md"
+      },
+      {
+        "schema": 1,
+        "id": "fabe219e-22e1-4c1a-9d10-b81927d5fd10",
+        "home": "scenario/independent-records",
+        "kind": "ideas",
+        "title": "Connect navigation research",
+        "owner": "test:scenario-controller",
+        "created_at": "2026-09-15T04:34:22Z",
+        "links": [
+          {
+            "home": "scenario/independent-records",
+            "id": "ba03548a-43ef-49ef-acd8-ea7fdcaa06eb",
+            "path": ".docflow_workspace/ideas/glossary-not-discoverable-from-welcome--ba03548a43ef.md"
+          }
+        ],
+        "state": "backlog",
+        "history": [
+          {
+            "state": "backlog",
+            "at": "2026-09-15T04:34:22Z",
+            "actor": "test:fixture-author",
+            "reason": "Injected durable-link fixture."
+          }
+        ],
+        "priority": "low",
+        "problem": "Related research must retain its link to the existing glossary idea.",
+        "affected_repositories": [],
+        "path": ".docflow_workspace/ideas/navigation-research--fabe219e22e1.md"
+      },
+      {
+        "schema": 1,
+        "id": "6c13dbf9-a994-496c-9e63-dee98f7ee9ae",
+        "home": "scenario/independent-records",
+        "kind": "ideas",
+        "title": "Review checklist omits draft recipient",
+        "owner": "test:scenario-controller",
+        "created_at": "2026-09-15T04:30:21Z",
+        "links": [
+          {
+            "home": "scenario/independent-records",
+            "id": "ba03548a-43ef-49ef-acd8-ea7fdcaa06eb",
+            "path": ".docflow_workspace/ideas/absent-path--ba03548a43ef.md"
+          }
+        ],
+        "state": "backlog",
+        "history": [
+          {
+            "state": "backlog",
+            "at": "2026-09-15T04:30:21Z",
+            "actor": "test:planner-b",
+            "reason": "Capture idea only, as authorised; no agreement or work item created"
+          }
+        ],
+        "priority": "low",
+        "problem": "The review checklist omits the person who should receive a draft, so a completed draft has no named recipient to hand it to.",
+        "affected_repositories": [],
+        "path": ".docflow_workspace/ideas/review-checklist-draft-recipient--6c13dbf9a994.md"
+      },
+      {
+        "schema": 1,
+        "id": "ba03548a-43ef-4abc-8def-09915b579066",
+        "home": "scenario/independent-records",
+        "kind": "ideas",
+        "title": "Review owners lack a contact route",
+        "owner": "test:scenario-controller",
+        "created_at": "2026-09-15T04:34:22Z",
+        "links": [],
+        "state": "backlog",
+        "history": [
+          {
+            "state": "backlog",
+            "at": "2026-09-15T04:34:22Z",
+            "actor": "test:fixture-author",
+            "reason": "Injected unpublished collision fixture; not independently observed runtime creation."
+          }
+        ],
+        "priority": "low",
+        "problem": "New reviewers have no local contact reference for the review owner.",
+        "affected_repositories": [],
+        "path": ".docflow_workspace/ideas/review-owners-lack-contact-route--ba03548a43ef4abc.md"
+      },
+      {
+        "schema": 1,
+        "id": "d302a1c5-b765-41fa-a172-5d62544ca46d",
+        "home": "scenario/independent-records",
+        "kind": "work",
+        "title": "Injected stale source review",
+        "owner": "test:scenario-controller",
+        "created_at": "2026-09-15T04:39:07Z",
+        "links": [],
+        "state": "planned",
+        "history": [
+          {
+            "state": "planned",
+            "at": "2026-09-15T04:39:07Z",
+            "actor": "test:fixture-author",
+            "reason": "Injected missing pinned revision; no prior native run claimed."
+          }
+        ],
+        "scope_revision": 1,
+        "outcome": "Both native changes integrated and combined validation passed.",
+        "scope": "Coordinate provider and consumer; preserve compatibility.",
+        "exclusions": [
+          "No release or deployment."
+        ],
+        "priority": "high",
+        "criteria": [
+          {
+            "id": "combined",
+            "text": "Combined validation passes on both integrated sources.",
+            "evidence": []
+          }
+        ],
+        "blockers": [],
+        "dependencies": [],
+        "deliveries": [],
+        "grants": [],
+        "recommendations": [
+          {
+            "id": "review-guidance",
+            "action": "reference",
+            "fit": "optional",
+            "reason": "Fixture refers to old source revision v1 but catalogue now contains only v2.",
+            "scope": "Assigned review only",
+            "asset": {
+              "source": "scenario/local",
+              "asset": "review",
+              "revision": "fixture-v1"
+            },
+            "availability": "not_checked",
+            "state": "suggested",
+            "authority": null,
+            "setup_dependency": null,
+            "fallback": "Read native conventions and use ordinary file search.",
+            "success_check": "Identify compatibility findings with exact sources."
+          }
+        ],
+        "next_action": "Define deliveries and record existing scoped authority before dispatch.",
+        "path": ".docflow_workspace/work/stale-review--d302a1c5b765.md"
+      }
+    ],
+    "overview": [
+      {
+        "home": "scenario/independent-records",
+        "id": "d302a1c5-b765-41fa-a172-5d62544ca46d",
+        "path": ".docflow_workspace/work/stale-review--d302a1c5b765.md",
+        "state": "planned",
+        "owner": "test:scenario-controller",
+        "next_action": "Define deliveries and record existing scoped authority before dispatch.",
+        "deliveries": []
+      }
+    ]
+  }
+}

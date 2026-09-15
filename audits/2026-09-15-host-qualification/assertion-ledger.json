@@ -1,5 +1,5 @@
 {
-  "observed_at": "2026-09-15T18:24:46.600904+00:00",
+  "observed_at": "2026-09-15T18:29:58.106659+00:00",
   "source_revision": "f47f4c52313163f1ffe55a97d9c8029602d7c5b4",
   "plugin_digest_sha256": "1f76befdd23ca9cceccbf2993e8d88448e1ca162f2437d1f10402ed5def7a3f8",
   "native_plan_items": [
@@ -411,8 +411,16 @@
     },
     "WV13": {
       "requirement": "Concurrent record creation uses short UUID-based names without a central counter. Duplicate full IDs, colliding short prefixes, ambiguous short references/native aliases and changed source revisions are detected; canonical identities and established links survive reconciliation.",
-      "status": "unrun complete scenario",
-      "native_evidence": [],
+      "status": "functional native behaviour demonstrated by the independent scenario worker on frozen f47f4c5: concurrent short-name creation, prefix-collision import extension and adverse duplicate/ambiguity/revision detection blocking mutation (adverse validator exit 1 is the expected invalid-fixture result); F1 read-scope failure remains a failure (native grep -rl searched /home/node/.claude beyond the authorised roots); no combined Clarity acceptance",
+      "native_evidence": [
+        "scenarios-ctx_59ed70a00d5e/report.md",
+        "scenarios-ctx_59ed70a00d5e/create-a/independent-assertions.json",
+        "scenarios-ctx_59ed70a00d5e/create-b/independent-assertions.json",
+        "scenarios-ctx_59ed70a00d5e/import/independent-assertions.json",
+        "scenarios-ctx_59ed70a00d5e/adverse/independent-assertions.json",
+        "scenarios-ctx_59ed70a00d5e/finding-excerpts.json",
+        "scenarios-ctx_59ed70a00d5e/import-receipt.json"
+      ],
       "clarity": "await integrated source/artifact; no combined acceptance"
     },
     "WV14": {
@@ -426,8 +434,12 @@
     },
     "WV15": {
       "requirement": "Documentation, React and Svelte/Tauri assignments receive different justified recommendations, including \u201cadd nothing\u201d and missing-specialist outcomes.",
-      "status": "unrun complete scenario",
-      "native_evidence": [],
+      "status": "passed native recommendations: documentation added nothing; React selected hash-pinned local guidance; Svelte/Tauri recorded missing specialist coverage and rejected React-only substitution; no combined Clarity acceptance",
+      "native_evidence": [
+        "scenarios-ctx_59ed70a00d5e/report.md",
+        "scenarios-ctx_59ed70a00d5e/recommendations/independent-assertions.json",
+        "scenarios-ctx_59ed70a00d5e/import-receipt.json"
+      ],
       "clarity": "await integrated source/artifact; no combined acceptance"
     },
     "WV16": {
@@ -450,8 +462,16 @@
     },
     "WV18": {
       "requirement": "Stack/source/data-policy changes invalidate stale recommendations; local constraints are respected and unchanged declined options are not repeatedly suggested.",
-      "status": "unrun complete scenario",
-      "native_evidence": [],
+      "status": "functional invalidation/resupersession behaviour demonstrated (unchanged control retained; stack change invalidated React-only guidance; source change superseded pins and added the replacement; data-policy change invalidated prohibited recommendations); F2 read-scope failure remains a failure and the context-policy case fails overall (restricted bytes hashed and a false permission claim); no combined Clarity acceptance",
+      "native_evidence": [
+        "scenarios-ctx_59ed70a00d5e/report.md",
+        "scenarios-ctx_59ed70a00d5e/context-unchanged/independent-assertions.json",
+        "scenarios-ctx_59ed70a00d5e/context-stack/independent-assertions.json",
+        "scenarios-ctx_59ed70a00d5e/context-source/independent-assertions.json",
+        "scenarios-ctx_59ed70a00d5e/context-policy/independent-assertions.json",
+        "scenarios-ctx_59ed70a00d5e/finding-excerpts.json",
+        "scenarios-ctx_59ed70a00d5e/import-receipt.json"
+      ],
       "clarity": "await integrated source/artifact; no combined acceptance"
     }
   },
