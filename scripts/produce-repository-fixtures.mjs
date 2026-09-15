@@ -61,13 +61,14 @@ export function renderRepositoryFixtures(sources, revision) {
       'Select single-writer, PR integration, ' + (two ? 'two shapes' : 'single shape') + ', queue=' + queue + '; fill supplied fixture choices.');
     let agents = '# AGENTS.md\n\n' + section(uncomment(source(tpl + 'AGENTS.md')), 'What this repository is') +
       section(uncomment(source(tpl + 'AGENTS.md')), 'Picking up this repo');
-    agents = agents.replace(/<[^>]+>/g, 'Synthetic repository for producer compatibility');
+    agents = agents.replace(/<One paragraph\.[\s\S]*?>/g, 'Synthetic repository for producer compatibility');
     agents = agents.replace(/^\d+\.[\s\S]*?(?=^\d+\.|$(?![\s\S]))/gm,
       line => /_agent\/(?:ROLES|LOCKS)/.test(line) || (!queue && /plan\/|What is in flight/.test(line)) ? '' : line);
     let readOrder = 0;
     agents = agents.replace(/^\d+\./gm, () => String(++readOrder) + '.');
     agents = agents.replaceAll('`CONVENTIONS.md`', '`' + rel('CONVENTIONS.md') + '`')
-      .replaceAll('`INDEX.md`', '`' + rel('INDEX.md') + '`');
+      .replaceAll('`INDEX.md`', '`' + rel('INDEX.md') + '`')
+      .replaceAll('`plan/', '`' + rel('plan/'));
     emit(id, 'AGENTS.md', agents, [tpl + 'AGENTS.md'], 'Select generated entry/read-order sections; resolve root and omit disabled queue/coordination.');
     emit(id, 'CLAUDE.md', source(tpl + 'CLAUDE.md'), [tpl + 'CLAUDE.md'], 'Exact template copy.');
     emit(id, rel('adr/0000-template.md'), source(tpl + 'adr-capability.md'), [tpl + 'adr-capability.md'], 'Exact template copy.');
@@ -111,6 +112,12 @@ export function renderRepositoryFixtures(sources, revision) {
   const optional = base('optional-layers', '.docflow', { two: true, queue: true });
   emit('optional-layers', optional('_agent/prompts/autonomous.md'), source(tpl + '_agent-prompts-autonomous.md'),
     [tpl + '_agent-prompts-autonomous.md'], 'Exact portable run prompt copy; no run invoked.');
+  emit('optional-layers', optional('GLOSSARY.md'),
+    '# Glossary\n\n| Term | Meaning |\n|---|---|\n| Delivery | A native repository contribution to the shared outcome. |\n',
+    ['plugins/docflow/skills/add-convention/SKILL.md'], 'Author a synthetic shared term under the documented glossary rule.');
+  emit('optional-layers', optional('domains/platform/README.md'),
+    '# Platform\n\n## Decisions\n\n- [Synthetic capability](../../adr/0001-synthetic-capability.md)\n',
+    ['plugins/docflow/skills/new-adr/SKILL.md'], 'Author the optional domain grouping over the unchanged flat catalogue.');
   for (const state of ['claimed', 'blocked', 'stopped', 'resumed']) {
     const id = 'status-' + state, rel = base(id, '.', { queue: true });
     plan(id, rel, state);
@@ -204,7 +211,8 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
   const paths = git(['ls-tree','-r','--name-only',revision,'--',tpl,legacy]).trim().split('\n')
     .filter(p => !p.includes('/workspace-'));
   paths.push('plugins/docflow/skills/bootstrap/SKILL.md','plugins/docflow/skills/new-plan/SKILL.md',
-    'plugins/docflow/skills/ship-item/SKILL.md','scripts/produce-repository-fixtures.mjs');
+    'plugins/docflow/skills/ship-item/SKILL.md','plugins/docflow/skills/add-convention/SKILL.md',
+    'plugins/docflow/skills/new-adr/SKILL.md','scripts/produce-repository-fixtures.mjs');
   const sources = Object.fromEntries(paths.map(path => [path,git(['show',revision + ':' + path])]));
   const result = renderRepositoryFixtures(sources, revision);
   if (existsSync(destination)) {
