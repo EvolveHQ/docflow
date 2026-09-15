@@ -608,6 +608,12 @@ Tags help recipients pin to a specific version via
 `/plugin install docflow@evolvehq@vX.Y.Z` (when supported by their
 Claude Code version).
 
+Clarity desktop releases use `clarity-v<version>` in this same repository and
+record their compatible Docflow version. They do not change the Docflow package
+or its `v<version>` tags. Filter release discovery by product; avoid the generic
+GitHub latest-release alias. See [Clarity releases](docs/clarity-releases.md) for
+product-specific lookup/download commands and separately approved publication.
+
 ## 9. Troubleshooting
 
 - **Skill not appearing in the available-skills list.** Confirm the
