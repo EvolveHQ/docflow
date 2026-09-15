@@ -1,0 +1,255 @@
+{
+  "observed_at": "2026-09-15T02:18:25.599398+00:00",
+  "roots": {
+    "/workspace/orient": {
+      "available": true,
+      "files": {
+        ".docflow_workspace/CONVENTIONS.md": {
+          "sha256": "2532c54806a34067413a9e246f3ffd9acb757f880b30a9cfd87bc7c4c71939cc",
+          "bytes": 228
+        },
+        ".docflow_workspace/INDEX.md": {
+          "sha256": "f5f82d6ce9d472e845fa188d35c05b69b0c034e417b59bd49dc66b8fd57b07fb",
+          "bytes": 2195
+        },
+        ".docflow_workspace/decisions/bounded-cross-method-readout-scope--a491c210dc3e.md": {
+          "sha256": "d790db947baa85d6ed97ca8a29e2485914adc42cc9e2f9a6a9dc30869afaac81",
+          "bytes": 2687
+        },
+        ".docflow_workspace/ideas/bounded-cross-method-readout--df2677cf87d3.md": {
+          "sha256": "f75a3a65c493e26c3728a09dc4c4e1f00ac86fda00341b1a18c41a4a1be2570c",
+          "bytes": 1496
+        },
+        ".docflow_workspace/integrations/sources.yaml": {
+          "sha256": "8ed280b0803b4b5b5cb7aa64821a7e57960821e47b347e5b15eda33ad37a8547",
+          "bytes": 26
+        },
+        ".docflow_workspace/runs/manual-native-readout--9cd6d05d5141.md": {
+          "sha256": "a764781a348e577cf46d602613b3f95bb5e7aef072475b2476d88f0b5789813c",
+          "bytes": 2685
+        },
+        ".docflow_workspace/templates/workspace-decisions.md": {
+          "sha256": "8ea735ec2f512be10636f6e78742a88242d88fbdaa3f702d28ccc4316bbd03c1",
+          "bytes": 1012
+        },
+        ".docflow_workspace/templates/workspace-ideas.md": {
+          "sha256": "15ea0a8c324aeac3f0eb8c159c3f1eef76bb316a3946cbfff9c5504a68f38a96",
+          "bytes": 908
+        },
+        ".docflow_workspace/templates/workspace-knowledge.md": {
+          "sha256": "d2fa1dd0b64d295dffb9bfec06e19e11d62db072e496010ed50c5f60a1efde77",
+          "bytes": 983
+        },
+        ".docflow_workspace/templates/workspace-runs.md": {
+          "sha256": "e704db6a305c15b4c07b82c992632303ae7a3947c0886b32a5ef4addc0bbb21b",
+          "bytes": 2716
+        },
+        ".docflow_workspace/templates/workspace-work.md": {
+          "sha256": "3faade570d60c065c25670391eed7170fa9dbd7f1c1f99d29c36febc846b5520",
+          "bytes": 1355
+        },
+        ".docflow_workspace/work/bounded-cross-method-readout--74182956aa03.md": {
+          "sha256": "7eabeb1107b79a2b4c23a58ca294c6a85baeb473d3d350907ef99d7d830ef56c",
+          "bytes": 7166
+        },
+        ".docflow_workspace/workspace.yaml": {
+          "sha256": "e326f5ef723f37a03027bb2fd36d8513a5d5f2a8dee33dfaedc7dacf242dbfb3",
+          "bytes": 773
+        },
+        ".gitignore": {
+          "sha256": "feb4e1ad73f0bf59d1e7b9224b511da0fd8d1eb28f9633b541cd2f42cd77a686",
+          "bytes": 35
+        },
+        "AGENTS.md": {
+          "sha256": "e9f1950d721a7022f91b2ca1eea0525fb06e829163e10c1844fb938f87aa1597",
+          "bytes": 231
+        },
+        "QUALIFICATION-MANDATE.md": {
+          "sha256": "077e8b7432eeb77b38f438399410a63093126664d813dcd727cd82da51b4b4b8",
+          "bytes": 612
+        },
+        "README.md": {
+          "sha256": "bac862dae77244c0a1350bb48fae8668487bb6d393e1616cdf2b14d115700088",
+          "bytes": 565
+        },
+        "repos/docflow-member/.docflow": {
+          "sha256": "6f57ef45dc3ff1870feffe9e1c170acec3665afe0c7cc88ec89e01a6acd02fae",
+          "bytes": 8
+        },
+        "repos/docflow-member/AGENTS.md": {
+          "sha256": "117e7efd258ed0d63635afe0101574777f5ca73f73d6a980e9971ec05a3ff221",
+          "bytes": 1102
+        },
+        "repos/docflow-member/CLAUDE.md": {
+          "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+          "bytes": 11
+        },
+        "repos/docflow-member/CONVENTIONS.md": {
+          "sha256": "4cdbdae9957d132bd95b227a9e07635d4133b7623535bd2cf82be94bc1cadb2d",
+          "bytes": 9213
+        },
+        "repos/docflow-member/INDEX.md": {
+          "sha256": "b796453e3e0719130d1780f70f26c602de1dc1ad065b400ca5127f25f91f7b8a",
+          "bytes": 160
+        },
+        "repos/docflow-member/OWNER.md": {
+          "sha256": "4c22e97b3180d2c9bf4f0a2602ecab30e962b57fda7396e2c1ea5372fc6644b1",
+          "bytes": 485
+        },
+        "repos/docflow-member/adr/0000-template.md": {
+          "sha256": "d1664044faa7afd9fa50b1a6086087e83acac98a900ce67074444692878db3e5",
+          "bytes": 1346
+        },
+        "repos/docflow-member/adr/0001-synthetic-capability.md": {
+          "sha256": "ac312c0624dd23013d70814f895aa344551bbe6c70b889ccfbd3d40c9c4409dc",
+          "bytes": 1065
+        },
+        "repos/docflow-member/check.mjs": {
+          "sha256": "00689ccc9abde8d28fe09ff423c8f2dca6e066b87ea3a67858b4d2159dedba89",
+          "bytes": 231
+        },
+        "repos/docflow-member/plan/README.md": {
+          "sha256": "d6fb25d7b7ac6da6f4ff3f3e074ce6e8025d0733551a5a171cf7768022a4f6d8",
+          "bytes": 3447
+        },
+        "repos/docflow-member/plan/todo/0001-example.md": {
+          "sha256": "581e968cb712b15c36818f52c2f96d71ed03b3c2e1f003cadbd87de1ceee943a",
+          "bytes": 539
+        },
+        "repos/manual-member/OWNER.md": {
+          "sha256": "4c22e97b3180d2c9bf4f0a2602ecab30e962b57fda7396e2c1ea5372fc6644b1",
+          "bytes": 485
+        },
+        "repos/manual-member/README.md": {
+          "sha256": "86f88615f397b54914aaab0781c651d9ef6b3383e9a787d3fb253ed04958aada",
+          "bytes": 282
+        },
+        "repos/manual-member/check.mjs": {
+          "sha256": "82bc963b73faf037d799e6231ebe3b666a10c69877ef8f94c12a178fd0353768",
+          "bytes": 222
+        },
+        "repos/manual-member/issues/PROBE-1.md": {
+          "sha256": "2aa0efe30ae0796faad22221e6797fa71fd792003478873fd886684a5d1d2883",
+          "bytes": 127
+        },
+        "repos/reference-member/OWNER.md": {
+          "sha256": "4c22e97b3180d2c9bf4f0a2602ecab30e962b57fda7396e2c1ea5372fc6644b1",
+          "bytes": 485
+        },
+        "repos/reference-member/README.md": {
+          "sha256": "86f88615f397b54914aaab0781c651d9ef6b3383e9a787d3fb253ed04958aada",
+          "bytes": 282
+        },
+        "repos/reference-member/check.mjs": {
+          "sha256": "38cab791fcfeda46cc70fbbcd1e3606a1036c233eb9ea26cbd8c5ce3e2168982",
+          "bytes": 220
+        },
+        "repos/reference-member/reference.md": {
+          "sha256": "05fc8cb275f43c76b6f18a38a7df8169b0ec7ed12a61538d5bbc26fca16e816a",
+          "bytes": 130
+        }
+      },
+      "git": {
+        "/workspace/orient": {
+          "head": {
+            "exit": 0,
+            "stdout": "0ccdcdd6b21d724a10af4f1faf9adee2b6d75e8e\n",
+            "stderr": ""
+          },
+          "status": {
+            "exit": 0,
+            "stdout": " M .docflow_workspace/work/bounded-cross-method-readout--74182956aa03.md\n?? .docflow_workspace/runs/\n",
+            "stderr": ""
+          },
+          "refs": {
+            "exit": 0,
+            "stdout": "0ccdcdd6b21d724a10af4f1faf9adee2b6d75e8e refs/heads/main\n",
+            "stderr": ""
+          },
+          "branch": {
+            "exit": 0,
+            "stdout": "main\n",
+            "stderr": ""
+          }
+        },
+        "/workspace/orient/repos/docflow-member": {
+          "head": {
+            "exit": 0,
+            "stdout": "6364b79c74c3b0e4101daebfe556a3525acb0090\n",
+            "stderr": ""
+          },
+          "status": {
+            "exit": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "refs": {
+            "exit": 0,
+            "stdout": "6364b79c74c3b0e4101daebfe556a3525acb0090 refs/heads/main\n",
+            "stderr": ""
+          },
+          "branch": {
+            "exit": 0,
+            "stdout": "main\n",
+            "stderr": ""
+          }
+        },
+        "/workspace/orient/repos/manual-member": {
+          "head": {
+            "exit": 0,
+            "stdout": "226a6f2cec3d85c4c88f9bc5247c06dca068ad9e\n",
+            "stderr": ""
+          },
+          "status": {
+            "exit": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "refs": {
+            "exit": 0,
+            "stdout": "226a6f2cec3d85c4c88f9bc5247c06dca068ad9e refs/heads/main\n",
+            "stderr": ""
+          },
+          "branch": {
+            "exit": 0,
+            "stdout": "main\n",
+            "stderr": ""
+          }
+        },
+        "/workspace/orient/repos/reference-member": {
+          "head": {
+            "exit": 0,
+            "stdout": "64e110e3829a6c42bb41b1b4233805a7bfbe18cc\n",
+            "stderr": ""
+          },
+          "status": {
+            "exit": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "refs": {
+            "exit": 0,
+            "stdout": "64e110e3829a6c42bb41b1b4233805a7bfbe18cc refs/heads/main\n",
+            "stderr": ""
+          },
+          "branch": {
+            "exit": 0,
+            "stdout": "main\n",
+            "stderr": ""
+          }
+        }
+      }
+    }
+  },
+  "container": "docflow-hq-fc206-codex",
+  "command": [
+    "docker",
+    "exec",
+    "docflow-hq-fc206-codex",
+    "python3",
+    "-c",
+    "<REMOTE in snapshot-native.py>",
+    "[\"/workspace/orient\"]"
+  ],
+  "outcome": "read-only observation; compare separately"
+}

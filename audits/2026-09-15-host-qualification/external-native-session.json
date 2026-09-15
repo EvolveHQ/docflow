@@ -1,0 +1,47 @@
+{
+  "session_id": "98502878-f6c3-4e07-9f00-d0af2c3260e4",
+  "model": "claude-opus-5[1m]",
+  "claude_code_version": "2.1.269",
+  "permissionMode": "default",
+  "skills": [
+    "deep-research",
+    "docflow:add-convention",
+    "docflow:agent-wave",
+    "docflow:audit",
+    "docflow:bootstrap",
+    "docflow:brainstorm",
+    "docflow:new-adr",
+    "docflow:new-plan",
+    "docflow:rollup",
+    "docflow:ship-item",
+    "docflow:workspace-coordinate",
+    "docflow:workspace-orient",
+    "docflow:workspace-plan",
+    "docflow:workspace-setup",
+    "design",
+    "design-sync",
+    "dataviz",
+    "update-config",
+    "verify",
+    "debug",
+    "code-review",
+    "simplify",
+    "batch",
+    "fewer-permission-prompts",
+    "doctor",
+    "loop",
+    "schedule",
+    "claude-api",
+    "workflow-authoring",
+    "run",
+    "run-skill-generator"
+  ],
+  "plugins": [
+    {
+      "name": "docflow",
+      "path": "/opt/docflow-source/plugins/docflow",
+      "source": "docflow@inline",
+      "version": "0.9.4"
+    }
+  ]
+}

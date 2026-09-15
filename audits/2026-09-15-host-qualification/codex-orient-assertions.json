@@ -1,0 +1,8 @@
+{
+  "before": "codex-orient-before.json",
+  "after": "codex-orient-after.json",
+  "all_roots_unchanged": true,
+  "added_files": [],
+  "changed_files": [],
+  "head_refs_unchanged": true
+}

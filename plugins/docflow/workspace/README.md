@@ -41,6 +41,26 @@ The deterministic installation test uses copies of the distributed files,
 including detached Codex/OpenCode layouts. It does not establish native host
 discovery or behaviour. No source checkout is required after asset installation.
 
+## Match assets and workspace to an execution context
+
+Before setup or validation, identify the native tool's actual filesystem and
+path syntax. Check that the same execution context can read the selected
+workspace (or its parent before creation) and asset root, and run Node.js 22+.
+A cloud tool, device VM and desktop shell can expose different filesystems;
+a path supplied to one does not establish access from another.
+
+Record native skill discovery separately from the assets used for validation.
+An already accessible, permitted copy of the same pinned package may be an
+explicit asset root: verify its source bytes and record both locations before
+using it. That copy does not establish native plugin discovery. Reuse the
+current mandate only when it covers that read/test route; a stricter brief or
+denied action still stops the operation across tools and routes.
+
+If no authorised context can access both locations, report the exact missing
+path and stop dependent writes. Do not search unrelated roots, install or copy
+assets implicitly, place tools in canonical records, or validate a reconstructed
+workspace and report it as the original. Preserve the actual command and exit.
+
 ## Assemble a new empty workspace
 
 Within the operator-selected new workspace only:
@@ -74,6 +94,58 @@ An existing container needs an explicit adoption decision and preservation
 plan. These assets do not initialise Git, clone members or modify a host.
 The overview is a dated derivative of validated records; regenerate it after
 record changes and present diagnostics beside it when validation fails.
+
+## External returns
+
+First distinguish a readiness check from an assigned attempt. If current
+authority, ownership, dependencies or resources prevent an attempt starting,
+return a readiness report with the actual blocker, source and next required
+evidence. Do not create a running or terminal record solely to fit that report
+into a receipt. Readiness reports are not values for `runs.receipt`.
+
+For an actual assigned attempt, use bootstrap's `workspace-receipt.json` as the
+shape of the canonical payload. Replace every synthetic value with observed
+facts; do not copy example timestamps, hashes, commands or outcomes. The payload
+has `returned_at`, `head_revision`, `checks`, `evidence`, `blockers`, `next_action`
+and `used_assets`. Unknown/skipped checks have a null exit and a truthful string
+output description; an unexecuted check has no successful evidence.
+
+Return a JSON transport envelope with the canonical payload in `receipt` and
+the actual run reference, immutable brief binding, native host/session identity
+and action observations in `context`. This envelope is external transport, not
+a new canonical record type. Its context is not imported into `runs.receipt`;
+the coordinator checks it against the existing run and records permitted context
+in the run's existing fields or inert extensions. An unavailable session ID
+stays unknown with its reason, never an invented identifier.
+
+Before recording evidence, read the actual UTC clock, recheck current authority
+and observe the source. Capture the observation's clock time in that same native
+operation, and capture command output and exit before running another command.
+Capture return time when writing the return. If an earlier observation was not
+timed, reobserve the source under current authority and record that new event,
+or omit unmeasured optional evidence and report the gap as a blocker. A timestamp
+from a different event cannot fill the missing observation.
+
+Every evidence reference names a real file contained in its declared repository,
+at the reported revision. A directory, `.`, an absolute path or a parent traversal
+is not a native evidence file. Repository-wide observations can cite the relevant
+native task/instruction file and describe the actual Git command and result.
+
+With the returned envelope saved at an agreed noncanonical path, this command
+uses the installed validator's existing API without writing canonical files:
+
+```text
+node --input-type=module -e "import {readFileSync} from 'node:fs'; import {resolve} from 'node:path'; import {pathToFileURL} from 'node:url'; const {checkShape}=await import(pathToFileURL(resolve(process.argv[1],'validate.mjs')).href); const value=JSON.parse(readFileSync(process.argv[2],'utf8')); const errors=checkShape(value.receipt,'receipt'); console.log(JSON.stringify({valid:errors.length===0,errors},null,2)); process.exitCode=errors.length?1:0;" "<installed-workspace-assets>" "<external-return.json>"
+```
+
+Retain the complete output and exit. This checks the canonical payload's shape
+only: independently check native file references, exact brief/grant binding,
+actual command results and clock evidence. If authorised context is available,
+the ordinary workspace validator can also read the current records without
+canonical writes; it does not evaluate an unimported return. The coordinator
+preserves the original external return, checks its evidence before canonical
+reconciliation, and validates the resulting records. A missing or invalid
+return never becomes completed work through a model's success statement.
 
 ## Upgrade and removal
 

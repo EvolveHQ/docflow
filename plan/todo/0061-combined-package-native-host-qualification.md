@@ -4,16 +4,48 @@ Owning decisions: adr/0053-portable-workspace-operating-skills.md and adr/0054-r
 
 ## Status
 
-- **Claimed by:**
-- **Blockers:** Await integrated candidate and the controlled native qualification dispatch.
+- **Claimed by:** Codex, sole qualification writer, 2026-09-15, branch `kmox83/docflow-v1-host-qualification`; task `task_856c97a5b36d`, dispatch `ctx_fc206cf7e4a8`.
+- **Blockers:** Combined Clarity acceptance awaits the controller-supplied integrated source/artifact; native access limits remain to be established in current dedicated sessions.
 - **Stopped:**
 
 ## Dependencies
 
+Qualification checkpoint: [source-bound audit](../../audits/2026-09-15-host-qualification/README.md)
+and its assertion ledger retain four native inventories/setup cases, bounded
+lifecycle/denial/recovery and Codex removal/reinstall evidence. The first Pi
+timeout and passing single recovery are separate. OpenCode detached-copy removal and actual 0.9.3-to-0.9.4 upgrade also retain
+workspace files and native Git history with current product hashes matching.
+Cowork and remaining
+host assertions are incomplete; versions and pinned product bytes remain
+unchanged. The task PR is live, not shipped.
+
 W3/D2/D3 and separately scoped D5 integrated candidate, completed source receipts,
 coordinator-approved source freeze and coordinator-selected native test environments.
 
+Latest checkpoint: the first Cowork task was positively stopped without workspace
+or receipt; its 331 attached files remained unchanged. The supported native
+current-plugin export proved the original nine-skill restore archive exactly.
+After controller approval, supported replacement registered thirteen skills and
+the new native export matched all frozen candidate bytes; a fresh bounded setup
+is running, and restoration remains required. The DeepSeek helper preparation
+was rejected by automatic review before launch, then cancelled with its grant
+closed; no new runtime or executor receipt exists. Native WV08 blocked on a
+shared reservation across distinct members with all canonical/native roots
+unchanged. Its readiness report is not a canonical attempt receipt.
+
 ## Scope
+
+Qualification starts from reviewed Docflow source
+`f47f4c52313163f1ffe55a97d9c8029602d7c5b4`, development version 0.9.4.
+Freeze raw Git blob bytes and actual installed package file hashes before
+execution. Scratch is a unique subtree of
+`C:/Users/eugen/AppData/Local/Temp/docflowhq-v1-20260915`.
+The controller owns integration into `kmox83/docflow-v1-integration`.
+Pinned product repairs require a bounded native item and controller freeze
+reset; this claim authorises qualification evidence and runners only.
+Existing desktop ownership is exclusive for bounded dedicated sessions and
+must be relinquished when desktop work pauses or finishes. Preserve Pi's
+existing llama-server/qwen3.8-27b-coding route and native high thinking.
 
 Run actual discovery and bounded workflow probes on Claude Code, Cowork, pi, Codex and OpenCode in their supported package modes. Bind installed file hashes and product versions to each receipt; include plugin and detached-copy assets. Execute fully supplied/current-authority, materially missing/expired/conflicting-authority and fresh-session owner/branch/blocker/next-step controls. Count repeated questions, preserve native permission denials and distinguish ready from shipped. Include unchanged-skill regressions and report every actual/simulated/unrun case.
 

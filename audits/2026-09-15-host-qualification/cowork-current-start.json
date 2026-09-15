@@ -1,0 +1,7 @@
+{
+  "deadline_at": "2026-09-15T05:01:50.8468243+00:00",
+  "stop_begin_by": "2026-09-15T05:01:20.8468243+00:00",
+  "invoked_at": "2026-09-15T04:31:50.8468243+00:00",
+  "scope": "new Cowork current-workspace setup",
+  "kind": "controller UTC bound; native submission still requires UI observation"
+}

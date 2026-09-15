@@ -1,0 +1,512 @@
+{
+  "observed_at": "2026-09-15T04:36:38.114756+00:00",
+  "source_revision": "f47f4c52313163f1ffe55a97d9c8029602d7c5b4",
+  "plugin_digest_sha256": "1f76befdd23ca9cceccbf2993e8d88448e1ca162f2437d1f10402ed5def7a3f8",
+  "native_plan_items": [
+    "0061",
+    "0062"
+  ],
+  "operator_handoff_only": "0063",
+  "parent_plan_sha256": "f5262d6cb6f3502d2b44be975e2813bd4508553096cdce05e999d1c43ac0a04b",
+  "paired_clarity": "pending coordinator integrated candidate/artifact; independent C12 source inspection cannot establish acceptance",
+  "hosts": {
+    "Claude Code": {
+      "thirteen-skill-native-discovery": {
+        "status": "passed native inventory",
+        "receipts": [
+          "native-discovery.json"
+        ]
+      },
+      "complete-installed-asset-bytes": {
+        "status": "passed after initial setup, before later phases",
+        "receipts": [
+          "claude-setup-assertions.json"
+        ]
+      },
+      "bootstrap-and-adoption": {
+        "status": "unrun",
+        "receipts": []
+      },
+      "successful-lifecycle": {
+        "status": "unrun",
+        "receipts": []
+      },
+      "blocked-lifecycle": {
+        "status": "unrun",
+        "receipts": []
+      },
+      "denied-action-alternate-route": {
+        "status": "unrun",
+        "receipts": []
+      },
+      "stopped-and-fresh-recovery": {
+        "status": "passed bounded fresh no-grant stop with independently identical roots",
+        "receipts": [
+          "claude-w4-fresh-assertions.json"
+        ]
+      },
+      "upgrade-retention": {
+        "status": "unrun",
+        "receipts": []
+      },
+      "removal-retention": {
+        "status": "unrun",
+        "receipts": []
+      },
+      "four-workspace-skills-and-D2-behaviour": {
+        "status": "partial: setup, planning, fresh coordination and external return; first receipt invalid, assisted amendment retained",
+        "receipts": [
+          "claude-setup-assertions.json",
+          "claude-w4-fresh-assertions.json",
+          "external-orca-reconciliation-v2.json",
+          "claude-expired-assertions.json"
+        ]
+      }
+    },
+    "Cowork": {
+      "thirteen-skill-native-discovery": {
+        "status": "native Customize plugin registry lists all thirteen; current version exported through supported UI exactly matches frozen 331-file candidate; executor internal plugin identity pending current task",
+        "receipts": [
+          "cowork-candidate-native-export.json",
+          "cowork-native-plugin-export.json"
+        ]
+      },
+      "complete-installed-asset-bytes": {
+        "status": "passed supported native current-plugin export, 331 exact frozen files including complete workspace assets; execution-side resolved asset root pending",
+        "receipts": [
+          "cowork-candidate-native-export.json"
+        ]
+      },
+      "bootstrap-and-adoption": {
+        "status": "unrun",
+        "receipts": []
+      },
+      "successful-lifecycle": {
+        "status": "unrun",
+        "receipts": []
+      },
+      "blocked-lifecycle": {
+        "status": "unrun",
+        "receipts": []
+      },
+      "denied-action-alternate-route": {
+        "status": "unrun",
+        "receipts": []
+      },
+      "stopped-and-fresh-recovery": {
+        "status": "positive native UI stop of first session and separate fresh installed-candidate task; no full recovery/retention pass",
+        "receipts": [
+          "cowork-native-session.json",
+          "cowork-current-start.json"
+        ]
+      },
+      "upgrade-retention": {
+        "status": "unrun",
+        "receipts": []
+      },
+      "removal-retention": {
+        "status": "unrun",
+        "receipts": []
+      },
+      "four-workspace-skills-and-D2-behaviour": {
+        "status": "first attached-file setup positively stopped with no workspace/receipt and unchanged files; fresh installed-candidate native setup currently running under 1800-second bound",
+        "receipts": [
+          "cowork-native-session.json",
+          "cowork-native-after-stop.json",
+          "cowork-current-start.json",
+          "cowork-current-before.json"
+        ]
+      }
+    },
+    "Pi": {
+      "thirteen-skill-native-discovery": {
+        "status": "passed native RPC command names; native API omits documented path/location fields",
+        "receipts": [
+          "pi-native-discovery.json"
+        ]
+      },
+      "complete-installed-asset-bytes": {
+        "status": "passed frozen source-path package hash check after native recovery",
+        "receipts": [
+          "pi-setup-recovery-assertions.json"
+        ]
+      },
+      "bootstrap-and-adoption": {
+        "status": "unrun",
+        "receipts": []
+      },
+      "successful-lifecycle": {
+        "status": "unrun",
+        "receipts": []
+      },
+      "blocked-lifecycle": {
+        "status": "unrun",
+        "receipts": []
+      },
+      "denied-action-alternate-route": {
+        "status": "unrun",
+        "receipts": []
+      },
+      "stopped-and-fresh-recovery": {
+        "status": "unrun",
+        "receipts": []
+      },
+      "upgrade-retention": {
+        "status": "unrun",
+        "receipts": []
+      },
+      "removal-retention": {
+        "status": "unrun",
+        "receipts": []
+      },
+      "four-workspace-skills-and-D2-behaviour": {
+        "status": "partial: initial timeout, one recovery setup passed independently on unchanged local Qwen/high",
+        "receipts": [
+          "pi-setup-output-process.json",
+          "pi-setup-recovery-process.json",
+          "pi-setup-recovery-assertions.json",
+          "pi-recovery-controller-limit.json"
+        ]
+      }
+    },
+    "Codex": {
+      "thirteen-skill-native-discovery": {
+        "status": "passed native inventory",
+        "receipts": [
+          "native-discovery.json"
+        ]
+      },
+      "complete-installed-asset-bytes": {
+        "status": "passed after initial setup, before later phases",
+        "receipts": [
+          "codex-setup-assertions.json"
+        ]
+      },
+      "bootstrap-and-adoption": {
+        "status": "checker failed wording match; manual semantic inspection supports requested local integration",
+        "receipts": [
+          "codex-bootstrap-independent-assertions.json"
+        ]
+      },
+      "successful-lifecycle": {
+        "status": "unrun",
+        "receipts": []
+      },
+      "blocked-lifecycle": {
+        "status": "unrun",
+        "receipts": []
+      },
+      "denied-action-alternate-route": {
+        "status": "passed actual readonly bind filesystem denial; no alternate write/delegate; all fixture and installed bytes unchanged",
+        "receipts": [
+          "codex-denial-assertions.json",
+          "codex-denial-before.json",
+          "codex-denial-after.json"
+        ]
+      },
+      "stopped-and-fresh-recovery": {
+        "status": "unrun",
+        "receipts": []
+      },
+      "upgrade-retention": {
+        "status": "unrun",
+        "receipts": []
+      },
+      "removal-retention": {
+        "status": "passed native remove and same-version reinstall, thirteen native skills and 329 exact product files restored; upgrade unrun",
+        "receipts": [
+          "codex-native-retention.json"
+        ]
+      },
+      "four-workspace-skills-and-D2-behaviour": {
+        "status": "partial: supplied setup and read-only mixed-method orientation; native files/Git unchanged",
+        "receipts": [
+          "codex-setup-assertions.json",
+          "codex-orient-assertions.json"
+        ]
+      }
+    },
+    "OpenCode": {
+      "thirteen-skill-native-discovery": {
+        "status": "passed; thirteen Docflow skills plus one native builtin",
+        "receipts": [
+          "native-discovery.json"
+        ]
+      },
+      "complete-installed-asset-bytes": {
+        "status": "passed after initial setup, before later phases",
+        "receipts": [
+          "opencode-setup-assertions.json"
+        ]
+      },
+      "bootstrap-and-adoption": {
+        "status": "passed bounded full bootstrap/new-adr",
+        "receipts": [
+          "opencode-bootstrap-independent-assertions.json"
+        ]
+      },
+      "successful-lifecycle": {
+        "status": "passed bounded bootstrap/new-adr and Proposed queue creation; broader lifecycle unrun",
+        "receipts": [
+          "opencode-bootstrap-independent-assertions.json",
+          "opencode-blocked-plan-assertions.json"
+        ]
+      },
+      "blocked-lifecycle": {
+        "status": "passed: Proposed ownership stops ship-item and all files/Git remain unchanged",
+        "receipts": [
+          "opencode-blocked-ship-assertions.json"
+        ]
+      },
+      "denied-action-alternate-route": {
+        "status": "passed scoped unavailable edit-tool stop; host added config schema/dependencies, so zero-filesystem-change assertion failed",
+        "receipts": [
+          "opencode-denial-assertions.json"
+        ]
+      },
+      "stopped-and-fresh-recovery": {
+        "status": "unrun",
+        "receipts": []
+      },
+      "upgrade-retention": {
+        "status": "passed actual detached-copy 0.9.3 to 0.9.4 upgrade: nine then thirteen native skills, raw source/install hashes match, workspace files and Git histories retained",
+        "receipts": [
+          "opencode-native-upgrade.json",
+          "upgrade-0.9.3-freeze.json"
+        ]
+      },
+      "removal-retention": {
+        "status": "passed native detached-copy removal/rediscovery and same-version restoration; all workspace files and Git histories retained",
+        "receipts": [
+          "opencode-native-retention.json"
+        ]
+      },
+      "four-workspace-skills-and-D2-behaviour": {
+        "status": "partial; supplied setup choices pass",
+        "receipts": [
+          "opencode-setup-assertions.json"
+        ]
+      }
+    }
+  },
+  "workspace_scenarios": {
+    "WV01": {
+      "requirement": "A new participant identifies priorities, owners, agreements and next actions from a workspace clone and its Clarity overview.",
+      "status": "partial native evidence; full scenario and combined Clarity acceptance unrun",
+      "native_evidence": [
+        "claude-w4-fresh-assertions.json",
+        "codex-orient-assertions.json"
+      ],
+      "clarity": "await integrated source/artifact; no combined acceptance"
+    },
+    "WV02": {
+      "requirement": "Docflow and non-docflow repositories participate without forced migration; their native checks and integration rules remain intact.",
+      "status": "partial native evidence; full scenario and combined Clarity acceptance unrun",
+      "native_evidence": [
+        "claude-w4-fresh-assertions.json",
+        "codex-orient-assertions.json"
+      ],
+      "clarity": "await integrated source/artifact; no combined acceptance"
+    },
+    "WV03": {
+      "requirement": "Selecting an idea cannot start implementation without a compatible execution grant.",
+      "status": "partial native evidence; full scenario and combined Clarity acceptance unrun",
+      "native_evidence": [
+        "claude-w4-fresh-assertions.json",
+        "codex-orient-assertions.json"
+      ],
+      "clarity": "await integrated source/artifact; no combined acceptance"
+    },
+    "WV04": {
+      "requirement": "Resume reuses valid authority; changed scope/actor and revoked or suspended grants are detected before dependent actions.",
+      "status": "partial: compatible scoped execution and independent expired-grant stop demonstrated; all grant variants and combined Clarity acceptance unrun",
+      "native_evidence": [
+        "external-native-receipt.json",
+        "external-native-receipt-v2.json",
+        "external-orca-reconciliation-v2.json",
+        "claude-expired-assertions.json"
+      ],
+      "clarity": "await integrated source/artifact; no combined acceptance"
+    },
+    "WV05": {
+      "requirement": "Two workspaces resolve the same repository and native claim; duplicate assignment is prevented or stops when ownership is unknown.",
+      "status": "partial native stop: two actual workspaces share one sibling Git member with injected unknown prior ownership; all roots unchanged, check skipped and no reassignment; live overlap and Clarity variants remain",
+      "native_evidence": [
+        "claude-cross-preparation.json",
+        "claude-cross-assertions.json",
+        "claude-cross-return.json"
+      ],
+      "clarity": "await integrated source/artifact; no combined acceptance"
+    },
+    "WV06": {
+      "requirement": "Partial delivery remains visible; an accepted workspace decision, one completed PR or one successful run cannot close the whole outcome. Completing all required work leaves its current agreement `accepted`, without rewriting member lifecycles.",
+      "status": "partial: actual scoped external check and Orca reconciliation; original receipt failure and assisted correction retained",
+      "native_evidence": [
+        "external-native-receipt.json",
+        "external-native-receipt-v2.json",
+        "external-orca-reconciliation-v2.json"
+      ],
+      "clarity": "await integrated source/artifact; no combined acceptance"
+    },
+    "WV07": {
+      "requirement": "Stale observations, skipped checks and missing returns remain distinct from success in records and UI.",
+      "status": "partial native evidence; full scenario and combined Clarity acceptance unrun",
+      "native_evidence": [
+        "claude-w4-fresh-assertions.json",
+        "codex-orient-assertions.json"
+      ],
+      "clarity": "await integrated source/artifact; no combined acceptance"
+    },
+    "WV08": {
+      "requirement": "A shared test/deployment resource blocks conflicting operations even when repositories differ.",
+      "status": "bounded native pre-dispatch resource-conflict guard passed across distinct members; original readiness report is not a canonical attempt receipt; complete live/Clarity scenario remains partial",
+      "native_evidence": [
+        "claude-resource-process.json",
+        "claude-resource-assertions.json",
+        "claude-resource-before.json",
+        "claude-resource-after.json",
+        "claude-resource-return.json",
+        "native-receipt-shape-diagnosis.json"
+      ],
+      "clarity": "await integrated source/artifact; no combined acceptance"
+    },
+    "WV09": {
+      "requirement": "A reference-only repository remains byte/HEAD/status unchanged while supplying cited evidence.",
+      "status": "partial native evidence; full scenario and combined Clarity acceptance unrun",
+      "native_evidence": [
+        "claude-w4-fresh-assertions.json",
+        "codex-orient-assertions.json"
+      ],
+      "clarity": "await integrated source/artifact; no combined acceptance"
+    },
+    "WV10": {
+      "requirement": "Useful coordination completes with Git, records and native human/host execution, without a dedicated service.",
+      "status": "partial native evidence; full scenario and combined Clarity acceptance unrun",
+      "native_evidence": [
+        "claude-w4-fresh-assertions.json",
+        "codex-orient-assertions.json"
+      ],
+      "clarity": "await integrated source/artifact; no combined acceptance"
+    },
+    "WV11": {
+      "requirement": "Role/profile recommendations neither launch actors nor install skills nor create grants; missing/conflicting dependencies are explicit.",
+      "status": "full scenario unrun; empty-configuration/supplied-choice baseline only",
+      "native_evidence": [
+        "claude-setup-assertions.json",
+        "pi-setup-recovery-assertions.json"
+      ],
+      "clarity": "await integrated source/artifact; no combined acceptance"
+    },
+    "WV12": {
+      "requirement": "A brief and receipt survive a two-harness handoff, including an executor outside the workspace directory and one unable to write its canonical receipt. Clarity prepares/displays the handoff without writing canonical records; an authorised Docflow coordinator reconciles returned evidence, then Clarity refreshes.",
+      "status": "partial: actual scoped external check and Orca reconciliation; original receipt failure and assisted correction retained",
+      "native_evidence": [
+        "external-native-receipt.json",
+        "external-native-receipt-v2.json",
+        "external-orca-reconciliation-v2.json"
+      ],
+      "clarity": "await integrated source/artifact; no combined acceptance"
+    },
+    "WV13": {
+      "requirement": "Concurrent record creation uses short UUID-based names without a central counter. Duplicate full IDs, colliding short prefixes, ambiguous short references/native aliases and changed source revisions are detected; canonical identities and established links survive reconciliation.",
+      "status": "unrun complete scenario",
+      "native_evidence": [],
+      "clarity": "await integrated source/artifact; no combined acceptance"
+    },
+    "WV14": {
+      "requirement": "Missing/stale search indexes fall back to canonical files; outdated results cannot override current authority. A supported retrieval recipe also passes rebuild/removal checks.",
+      "status": "partial native evidence; full scenario and combined Clarity acceptance unrun",
+      "native_evidence": [
+        "claude-w4-fresh-assertions.json",
+        "codex-orient-assertions.json"
+      ],
+      "clarity": "await integrated source/artifact; no combined acceptance"
+    },
+    "WV15": {
+      "requirement": "Documentation, React and Svelte/Tauri assignments receive different justified recommendations, including \u201cadd nothing\u201d and missing-specialist outcomes.",
+      "status": "unrun complete scenario",
+      "native_evidence": [],
+      "clarity": "await integrated source/artifact; no combined acceptance"
+    },
+    "WV16": {
+      "requirement": "Selecting a suggestion does not enable or authorise it; existing compatible tools can be used under valid authority without repeated approval.",
+      "status": "full scenario unrun; empty-configuration/supplied-choice baseline only",
+      "native_evidence": [
+        "claude-setup-assertions.json",
+        "pi-setup-recovery-assertions.json"
+      ],
+      "clarity": "await integrated source/artifact; no combined acceptance"
+    },
+    "WV17": {
+      "requirement": "Host/participant/workspace handoff rechecks availability, configuration scope and authority; conflicting member setup blocks dependent mutation.",
+      "status": "partial native evidence; full scenario and combined Clarity acceptance unrun",
+      "native_evidence": [
+        "claude-w4-fresh-assertions.json",
+        "codex-orient-assertions.json"
+      ],
+      "clarity": "await integrated source/artifact; no combined acceptance"
+    },
+    "WV18": {
+      "requirement": "Stack/source/data-policy changes invalidate stale recommendations; local constraints are respected and unchanged declined options are not repeatedly suggested.",
+      "status": "unrun complete scenario",
+      "native_evidence": [],
+      "clarity": "await integrated source/artifact; no combined acceptance"
+    }
+  },
+  "guides": {
+    "Orca": {
+      "status": "partial actual dispatched Orca 1.4.201 coordinator continuation and independent canonical reconciliation; complete adverse/Clarity smoke unrun",
+      "installed_guide_sha256": "377ec4be7427b31eec6b694aa1ed8c21f29a3c71685b3c15f0ac456694a9d78e",
+      "receipts": [
+        "external-orca-reconciliation-v2.json"
+      ]
+    },
+    "Cursor": {
+      "status": "unrun brief/receipt smoke",
+      "installed_guide_sha256": "39a5cbb63035a5e3e1cc7b954683124e683d504a96270de4404cdfadc27c5b1c"
+    },
+    "Claude Code": {
+      "status": "partial native brief/check/receipt and report-only continuation; first return invalid, assisted amendment validated; adverse variants/Clarity remain",
+      "installed_guide_sha256": "e0c80985cd9e5a0291368ff8e80018ee06d48812eaeafe5e92a12dca0de143f0",
+      "receipts": [
+        "external-native-receipt.json",
+        "external-native-receipt-v2.json",
+        "external-orca-reconciliation-v2.json"
+      ]
+    },
+    "DeepSeek Harness": {
+      "status": "incomplete/blocked: actual check passed in prior capped attempt without executor receipt; later helper preparation was cancelled before launch after outer tool-policy rejection, with grant closed and no native runtime or executor return",
+      "installed_guide_sha256": "282bdb9ed21e7826f48b79e2793ce9efc2d0d4ce1ba1b56b1f688195a4cc03ed",
+      "version": "0.1.1-rc.2",
+      "command": "node C:/Users/eugen/.dsh/profiles/node_modules/@deepseek-ai/dsh/lib/bin.js --profile web --no-open --host 127.0.0.1 --port 0",
+      "native_url": "http://127.0.0.1:51596/",
+      "observed_ui": [
+        "Add an API key to get started",
+        "API key",
+        "Configure later",
+        "Save and continue"
+      ],
+      "boundary": "Dedicated native web UI in headless Chrome; not a desktop app session. No real remote credential. Local provider has no configured remote fallback.",
+      "receipts": [
+        "dsh-native-failure.json",
+        "dsh-recovery-outcome.json",
+        "dsh-long-outcome.json",
+        "dsh-long-reconciliation.json",
+        "dsh-long-diagnosis.json",
+        "dsh-helper-launch-rejection.json",
+        "dsh-helper-cancellation.json"
+      ]
+    },
+    "ZCode": {
+      "status": "unrun brief/receipt smoke",
+      "installed_guide_sha256": "8f14b944441e280746d3ad0be89dc7bfb5c84c87cc2ffc22bc6b4c255de199d1"
+    },
+    "Codex App": {
+      "status": "unrun brief/receipt smoke",
+      "installed_guide_sha256": "ca7e6d1f304dcbc8ebce05b560f76700f833cbfa72bc607375d5fd7364839d06"
+    }
+  },
+  "two_harness_continuation": "partial demonstrated Claude Code external executor to actual Orca dispatched coordinator; complete guide/Clarity acceptance unrun",
+  "operator_pilot": "unrun; operator alone supplies acceptance",
+  "overall": "partially verified; no release acceptance"
+}

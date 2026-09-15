@@ -1,0 +1,310 @@
+{
+  "source": "f47f4c52313163f1ffe55a97d9c8029602d7c5b4",
+  "observed_at": "2026-09-15T03:42:02Z",
+  "native_session": "21c93ad6-0ef3-499e-8e00-9db31acd29ea",
+  "run_id": "806dd9c6-7ab9-47d1-b05c-4f8bbd4d5ec4",
+  "grant_revision": 2,
+  "terminal": {
+    "submitted_at": "2026-09-15T03:09:15.864016+00:00",
+    "cap_seconds": 1800,
+    "termination_reserve_seconds": 12,
+    "server": {
+      "pid": 134940,
+      "start_ticks": 639250383254838821,
+      "port": 51775
+    },
+    "native_session": "session-21c93ad6-0ef3-499e-8e00-9db31acd29ea",
+    "native_session_file": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\dsh-test-home\\sessions\\--C-Users-eugen-AppData-Local-Temp-docflowhq-v1-20260915-qualification-ctx-fc206cf7e4a8-dsh-fixture--\\session-21c93ad6-0ef3-499e-8e00-9db31acd29ea\\session.jsonl.zstd",
+    "outcome": "bounded attempt stopped at cap if exact owned runtime still present",
+    "stop_exit": 0,
+    "stop_stdout": "SUCCESS: The process with PID 134940 (child process of PID 119048) has been terminated.\n",
+    "stop_stderr": "",
+    "observed_at": "2026-09-15T03:39:10.866917+00:00",
+    "elapsed_seconds": 1795.0029015541077
+  },
+  "cleanup": {
+    "dsh_server_present": false,
+    "listener_present": false,
+    "browser_present": false,
+    "observed_at": "2026-09-15T03:40:19.8314071Z"
+  },
+  "outcome": "native check passed, guide assignment incomplete: cap reached before external receipt",
+  "all_preexisting_fixture_member_and_product_file_bytes_unchanged": true,
+  "actual_created_directory": "returns (native Test-Path false then New-Item true); empty at stop",
+  "external_receipt_returned": false,
+  "member_head": "1e3f2e69de22febe5cfc740b7a27697a47f6ce0a",
+  "member_git_status": "",
+  "native_check": {
+    "tool_started_at_ms": 1789442706021,
+    "tool_result_at_ms": 1789442707591,
+    "actual_native_arguments": {
+      "command": "$ErrorActionPreference = 'Continue'; $stderrFile = Join-Path $env:TEMP 'dsh_check_stderr.txt'; Remove-Item $stderrFile -ErrorAction SilentlyContinue; $stdout = & node check.mjs 2> $stderrFile; $exit = $LASTEXITCODE; $stderr = ''; if (Test-Path $stderrFile) { $stderr = Get-Content $stderrFile -Raw }; Write-Output \"EXIT_CODE=$exit\"; Write-Output \"STDOUT_BEGIN\"; Write-Output $stdout; Write-Output \"STDOUT_END\"; Write-Output \"STDERR_BEGIN\"; Write-Output $stderr; Write-Output \"STDERR_END\"",
+      "description": "Run node check.mjs and capture exit/stdout/stderr",
+      "workdir": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\dsh-fixture\\repos\\manual-member"
+    },
+    "exit_code": 0,
+    "stdout": "qualification-dsh-check: OK\n",
+    "stderr": "",
+    "native_capture_output": "EXIT_CODE=0\r\nSTDOUT_BEGIN\r\nqualification-dsh-check: OK\r\nSTDOUT_END\r\nSTDERR_BEGIN\r\nSTDERR_END\r\n"
+  },
+  "native_tool_calls": [
+    {
+      "native_tool_time_ms": 1789441910770,
+      "at": "2026-09-15T03:11:50Z",
+      "action": "read",
+      "name": "read",
+      "arguments": {
+        "file_path": "C:/Users/eugen/AppData/Local/Temp/docflowhq-v1-20260915/qualification-ctx-fc206cf7e4a8/dsh-fixture/AGENTS.md"
+      }
+    },
+    {
+      "native_tool_time_ms": 1789441910771,
+      "at": "2026-09-15T03:11:50Z",
+      "action": "read",
+      "name": "read",
+      "arguments": {
+        "file_path": "C:/Users/eugen/AppData/Local/Temp/docflowhq-v1-20260915/qualification-ctx-fc206cf7e4a8/dsh-fixture/QUALIFICATION-MANDATE.md"
+      }
+    },
+    {
+      "native_tool_time_ms": 1789441910771,
+      "at": "2026-09-15T03:11:50Z",
+      "action": "read",
+      "name": "read",
+      "arguments": {
+        "file_path": "C:/Users/eugen/AppData/Local/Temp/docflowhq-v1-20260915/qualification-ctx-fc206cf7e4a8/dsh-fixture/BOUNDED-BRIEF.json"
+      }
+    },
+    {
+      "native_tool_time_ms": 1789441969037,
+      "at": "2026-09-15T03:12:49Z",
+      "action": "read",
+      "name": "read",
+      "arguments": {
+        "file_path": "C:/Users/eugen/AppData/Local/Temp/docflowhq-v1-20260915/qualification-ctx-fc206cf7e4a8/dsh-fixture/.docflow_workspace/CONVENTIONS.md"
+      }
+    },
+    {
+      "native_tool_time_ms": 1789441969038,
+      "at": "2026-09-15T03:12:49Z",
+      "action": "read",
+      "name": "read",
+      "arguments": {
+        "file_path": "C:/Users/eugen/AppData/Local/Temp/docflowhq-v1-20260915/qualification-ctx-fc206cf7e4a8/dsh-fixture/.docflow_workspace/workspace.yaml"
+      }
+    },
+    {
+      "native_tool_time_ms": 1789441969038,
+      "at": "2026-09-15T03:12:49Z",
+      "action": "read",
+      "name": "read",
+      "arguments": {
+        "file_path": "C:/Users/eugen/AppData/Local/Temp/docflowhq-v1-20260915/qualification-ctx-fc206cf7e4a8/dsh-fixture/.docflow_workspace/work/dsh-guide-readout--d481c1486595.md"
+      }
+    },
+    {
+      "native_tool_time_ms": 1789441969039,
+      "at": "2026-09-15T03:12:49Z",
+      "action": "read",
+      "name": "read",
+      "arguments": {
+        "file_path": "C:/Users/eugen/AppData/Local/Temp/docflowhq-v1-20260915/qualification-ctx-fc206cf7e4a8/dsh-fixture/.docflow_workspace/runs/dsh-guide-supplied-paths--806dd9c67ab9.md"
+      }
+    },
+    {
+      "native_tool_time_ms": 1789442037549,
+      "at": "2026-09-15T03:13:57Z",
+      "action": "read",
+      "name": "read",
+      "arguments": {
+        "file_path": "C:/Users/eugen/AppData/Local/Temp/docflowhq-v1-20260915/qualification-ctx-fc206cf7e4a8/dsh-fixture/docflow-package/skills/workspace-coordinate/SKILL.md"
+      }
+    },
+    {
+      "native_tool_time_ms": 1789442037549,
+      "at": "2026-09-15T03:13:57Z",
+      "action": "read",
+      "name": "read",
+      "arguments": {
+        "file_path": "C:/Users/eugen/AppData/Local/Temp/docflowhq-v1-20260915/qualification-ctx-fc206cf7e4a8/dsh-fixture/docflow-package/workspace/guides/deepseek-harness.md"
+      }
+    },
+    {
+      "native_tool_time_ms": 1789442037550,
+      "at": "2026-09-15T03:13:57Z",
+      "action": "read",
+      "name": "read",
+      "arguments": {
+        "file_path": "C:/Users/eugen/AppData/Local/Temp/docflowhq-v1-20260915/qualification-ctx-fc206cf7e4a8/dsh-fixture/docflow-package/workspace/CONTRACT.md"
+      }
+    },
+    {
+      "native_tool_time_ms": 1789442037550,
+      "at": "2026-09-15T03:13:57Z",
+      "action": "read",
+      "name": "read",
+      "arguments": {
+        "file_path": "C:/Users/eugen/AppData/Local/Temp/docflowhq-v1-20260915/qualification-ctx-fc206cf7e4a8/dsh-fixture/docflow-package/skills/bootstrap/templates/workspace-receipt.json"
+      }
+    },
+    {
+      "native_tool_time_ms": 1789442156209,
+      "at": "2026-09-15T03:15:56Z",
+      "action": "read",
+      "name": "read",
+      "arguments": {
+        "file_path": "C:/Users/eugen/AppData/Local/Temp/docflowhq-v1-20260915/qualification-ctx-fc206cf7e4a8/dsh-fixture/repos/manual-member/README.md"
+      }
+    },
+    {
+      "native_tool_time_ms": 1789442156210,
+      "at": "2026-09-15T03:15:56Z",
+      "action": "read",
+      "name": "read",
+      "arguments": {
+        "file_path": "C:/Users/eugen/AppData/Local/Temp/docflowhq-v1-20260915/qualification-ctx-fc206cf7e4a8/dsh-fixture/repos/manual-member/OWNER.md"
+      }
+    },
+    {
+      "native_tool_time_ms": 1789442156210,
+      "at": "2026-09-15T03:15:56Z",
+      "action": "read",
+      "name": "read",
+      "arguments": {
+        "file_path": "C:/Users/eugen/AppData/Local/Temp/docflowhq-v1-20260915/qualification-ctx-fc206cf7e4a8/dsh-fixture/repos/manual-member/TASK.md"
+      }
+    },
+    {
+      "native_tool_time_ms": 1789442156210,
+      "at": "2026-09-15T03:15:56Z",
+      "action": "read",
+      "name": "read",
+      "arguments": {
+        "file_path": "C:/Users/eugen/AppData/Local/Temp/docflowhq-v1-20260915/qualification-ctx-fc206cf7e4a8/dsh-fixture/repos/manual-member/check.mjs"
+      }
+    },
+    {
+      "native_tool_time_ms": 1789442389752,
+      "at": "2026-09-15T03:19:49Z",
+      "action": "read",
+      "name": "pwsh",
+      "arguments": {
+        "command": "Get-Date -AsUTC | ForEach-Object { $_.ToString('yyyy-MM-ddTHH:mm:ssZ') }",
+        "description": "Get current UTC time"
+      }
+    },
+    {
+      "native_tool_time_ms": 1789442390191,
+      "at": "2026-09-15T03:19:50Z",
+      "action": "read",
+      "name": "pwsh",
+      "arguments": {
+        "command": "git -C \"C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\dsh-fixture\\repos\\manual-member\" rev-parse HEAD",
+        "description": "Get native Git HEAD of manual-member"
+      }
+    },
+    {
+      "native_tool_time_ms": 1789442442681,
+      "at": "2026-09-15T03:20:42Z",
+      "action": "read",
+      "name": "pwsh",
+      "arguments": {
+        "command": "Get-ChildItem env: | Where-Object { $_.Name -like 'GIT*' } | ForEach-Object { \"$($_.Name) = $($_.Value)\" }",
+        "description": "List GIT environment variables"
+      }
+    },
+    {
+      "native_tool_time_ms": 1789442443203,
+      "at": "2026-09-15T03:20:43Z",
+      "action": "read",
+      "name": "pwsh",
+      "arguments": {
+        "command": "git --version",
+        "description": "Check git version"
+      }
+    },
+    {
+      "native_tool_time_ms": 1789442536464,
+      "at": "2026-09-15T03:22:16Z",
+      "action": "read",
+      "name": "pwsh",
+      "arguments": {
+        "command": "Remove-Item env:GIT_CONFIG_COUNT -ErrorAction SilentlyContinue; Remove-Item env:GIT_CONFIG_VALUE_0 -ErrorAction SilentlyContinue; Remove-Item env:GIT_CONFIG_VALUE_1 -ErrorAction SilentlyContinue; git -C \"C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\dsh-fixture\\repos\\manual-member\" rev-parse HEAD",
+        "description": "Get native Git HEAD after clearing broken config vars"
+      }
+    },
+    {
+      "native_tool_time_ms": 1789442706021,
+      "at": "2026-09-15T03:25:06Z",
+      "action": "test",
+      "name": "pwsh",
+      "arguments": {
+        "command": "$ErrorActionPreference = 'Continue'; $stderrFile = Join-Path $env:TEMP 'dsh_check_stderr.txt'; Remove-Item $stderrFile -ErrorAction SilentlyContinue; $stdout = & node check.mjs 2> $stderrFile; $exit = $LASTEXITCODE; $stderr = ''; if (Test-Path $stderrFile) { $stderr = Get-Content $stderrFile -Raw }; Write-Output \"EXIT_CODE=$exit\"; Write-Output \"STDOUT_BEGIN\"; Write-Output $stdout; Write-Output \"STDOUT_END\"; Write-Output \"STDERR_BEGIN\"; Write-Output $stderr; Write-Output \"STDERR_END\"",
+        "description": "Run node check.mjs and capture exit/stdout/stderr",
+        "workdir": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\dsh-fixture\\repos\\manual-member"
+      }
+    },
+    {
+      "native_tool_time_ms": 1789442741500,
+      "at": "2026-09-15T03:25:41Z",
+      "action": "read",
+      "name": "pwsh",
+      "arguments": {
+        "command": "Get-Date -AsUTC | ForEach-Object { $_.ToString('yyyy-MM-ddTHH:mm:ssZ') }",
+        "description": "Capture current UTC time for receipt"
+      }
+    },
+    {
+      "native_tool_time_ms": 1789442981227,
+      "at": "2026-09-15T03:29:41Z",
+      "action": "read",
+      "name": "pwsh",
+      "arguments": {
+        "command": "Remove-Item env:GIT_CONFIG_COUNT -ErrorAction SilentlyContinue; Remove-Item env:GIT_CONFIG_VALUE_0 -ErrorAction SilentlyContinue; Remove-Item env:GIT_CONFIG_VALUE_1 -ErrorAction SilentlyContinue; $head = git -C \"C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\dsh-fixture\\repos\\manual-member\" rev-parse HEAD; $ts = (Get-Date -AsUTC).ToString('yyyy-MM-ddTHH:mm:ssZ'); Write-Output \"HEAD=$head\"; Write-Output \"OBSERVED_AT=$ts\"",
+        "description": "Clean timestamped capture of native Git HEAD"
+      }
+    },
+    {
+      "native_tool_time_ms": 1789443474476,
+      "at": "2026-09-15T03:37:54Z",
+      "action": "read",
+      "name": "pwsh",
+      "arguments": {
+        "command": "$root = \"C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\dsh-fixture\"; $ret = Join-Path $root 'returns'; Write-Output \"returns_dir_exists=$(Test-Path $ret)\"; if (Test-Path $ret) { Get-ChildItem $ret | ForEach-Object { Write-Output \"entry: $($_.Name) (dir=$($_.PSIsContainer))\" } }; $rj = Join-Path $ret 'receipt.json'; Write-Output \"receipt_json_exists=$(Test-Path $rj)\"",
+        "description": "Check returns directory and existing receipt.json"
+      }
+    },
+    {
+      "native_tool_time_ms": 1789443501188,
+      "at": "2026-09-15T03:38:21Z",
+      "action": "report",
+      "name": "pwsh",
+      "arguments": {
+        "command": "$root = \"C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\dsh-fixture\"; $ret = Join-Path $root 'returns'; New-Item -ItemType Directory -Path $ret -Force | Out-Null; Write-Output \"created=$(Test-Path $ret)\"",
+        "description": "Create returns directory"
+      }
+    }
+  ],
+  "last_native_progress_at": "2026-09-15T03:39:10.465000+00:00",
+  "installed_guide_read": true,
+  "limitations": [
+    "Supplied paths do not demonstrate independent skill discovery.",
+    "No native packaged validator command or schema.json read appears before the check; this required skill step was not demonstrated.",
+    "The check wrapper removed/wrote the fixed $env:TEMP/dsh_check_stderr.txt path. Its prior existence was not captured; no zero-external-filesystem-effect assertion is made.",
+    "Malformed inherited GIT_CONFIG_COUNT/KEY environment caused the first Git command to fail; native command-local repair succeeded. This was a config parse error, not a denied host action.",
+    "Native event progress continued near termination; time cap alone does not prove a stalled provider or unsupported guide.",
+    "No additional model attempt authorised. Controller terminal observation below is not an executor-returned receipt."
+  ],
+  "archives": [
+    {
+      "private_path": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\dsh-long-native-session.jsonl.zstd",
+      "bytes": 884362,
+      "sha256": "2a1dcbf8ff738f111cf0f6aed89edb7f44e541a2cc0f20b6a6eb35beba3efd05"
+    },
+    {
+      "private_path": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\dsh-long-transcript.jsonl",
+      "bytes": 1476614,
+      "sha256": "9fc271df9d921bcf9a288e56187b22cda4374fd211f50579757471c54c5efbbb"
+    }
+  ]
+}

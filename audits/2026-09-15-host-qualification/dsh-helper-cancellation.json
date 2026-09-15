@@ -1,0 +1,380 @@
+{
+  "observed_at": "2026-09-15T04:01:35Z",
+  "stage": "blocked-before-launch; prepared assignment cancelled",
+  "kind": "controller cancellation observation, not executor receipt or process-exit evidence",
+  "native_runtime_started": false,
+  "native_executor_receipt": null,
+  "native_process_exit_code": null,
+  "grant_latest_state": "closed",
+  "run": {
+    "schema": 1,
+    "id": "b663feaf-7c70-426f-9101-bece9cf52485",
+    "home": "docflow-hq/dsh-guide",
+    "kind": "runs",
+    "title": "DSH guide helper assisted",
+    "owner": "qualification-controller",
+    "created_at": "2026-09-15T03:53:03Z",
+    "links": [],
+    "state": "failed",
+    "history": [
+      {
+        "state": "running",
+        "at": "2026-09-15T03:53:03Z",
+        "actor": "qualification-controller",
+        "reason": "Fresh native session is about to start with supplied navigation paths, same local model/high and one 2700-second cap."
+      },
+      {
+        "state": "failed",
+        "at": "2026-09-15T04:01:35Z",
+        "actor": "qualification-controller",
+        "reason": "Prepared assignment cancelled before launch. ended_at is controller cancellation time, not a native process-stop timestamp. Coordinator msg_cf6d3af3efd7 cancels the prepared attempt after automatic approval review rejected the entire setup/launch command before execution. No DSH runtime or executor started, and no process-exit observation is claimed. No new DSH setup/launch without explicit operator direction."
+      }
+    ],
+    "started_at": "2026-09-15T03:53:03Z",
+    "ended_at": "2026-09-15T04:01:35Z",
+    "brief": {
+      "work": {
+        "home": "docflow-hq/dsh-guide",
+        "id": "d481c148-6595-45c3-a553-bce71e695407",
+        "path": ".docflow_workspace/work/dsh-guide-readout--d481c1486595.md"
+      },
+      "delivery": "manual-member",
+      "scope_revision": 1,
+      "scope": "Read README.md, OWNER.md and TASK.md; run node check.mjs; return externally.",
+      "exclusions": [
+        "No member or canonical mutation, installation, remote services or delegation."
+      ],
+      "actor": "agent:dsh-w4",
+      "host": "deepseek-harness",
+      "grant": {
+        "work": {
+          "home": "docflow-hq/dsh-guide",
+          "id": "d481c148-6595-45c3-a553-bce71e695407",
+          "path": ".docflow_workspace/work/dsh-guide-readout--d481c1486595.md"
+        },
+        "id": "guide-readout",
+        "revision": 3
+      },
+      "workspace_revision": "adfca6b3088e60b2a7778632dfd70fd35c62f8cf",
+      "base_revision": "d7ccc1275080cd90a10f3d249d11260433de408f",
+      "native_work": {
+        "repository": "docflow-hq/dsh-member",
+        "path": "TASK.md",
+        "revision": "d7ccc1275080cd90a10f3d249d11260433de408f"
+      },
+      "claim": {
+        "mode": "owner-confirmed-serial",
+        "owner": "agent:dsh-w4",
+        "state": "held",
+        "source": {
+          "repository": "docflow-hq/dsh-member",
+          "path": "OWNER.md",
+          "revision": "d7ccc1275080cd90a10f3d249d11260433de408f",
+          "observed_at": "2026-09-15T03:53:00Z",
+          "outcome": "passed",
+          "summary": "Controller reread new OWNER.md and confirmed current clean native member HEAD before this fresh attempt."
+        },
+        "observed_at": "2026-09-15T03:53:00Z",
+        "expires_at": "2026-09-15T04:57:58Z"
+      },
+      "dependencies": [],
+      "resources": [],
+      "required_checks": [
+        "native-check"
+      ],
+      "stop_at": "external-receipt-returned",
+      "return_path": ".docflow_workspace/runs/dsh-guide-helper-assisted--b663feaf7c70.md",
+      "selected_assets": []
+    },
+    "actions": [],
+    "receipt": {
+      "returned_at": "2026-09-15T04:01:35Z",
+      "head_revision": "c94524ff26970ae7a4238e09bb08079ee51df14a",
+      "checks": [
+        {
+          "name": "native-check",
+          "command": "node check.mjs",
+          "outcome": "skipped",
+          "exit_code": null,
+          "output": "Planned check was not executed: outer qualification-tool approval review rejected setup/launch before any command ran. No executor receipt exists.",
+          "evidence": []
+        }
+      ],
+      "evidence": [],
+      "blockers": [
+        {
+          "reason": "blocked-before-launch: automatic approval review returned only blocked by policy.",
+          "owner": "qualification-controller",
+          "next_action": "No DSH setup/launch without new explicit operator direction."
+        }
+      ],
+      "next_action": "Retain controller cancellation and prior partial guide evidence; do not treat this object as an executor-authored return.",
+      "used_assets": []
+    },
+    "reconciliation": {
+      "by": "orca:term_511cf659-7a81-4072-8143-44a0f23d8f93",
+      "at": "2026-09-15T04:01:35Z",
+      "evidence": [
+        {
+          "repository": "docflow-hq/dsh-guide",
+          "path": "QUALIFICATION-MANDATE.md",
+          "revision": "952c2551b16bbf5e4844155e5d922304f4c45620",
+          "observed_at": "2026-09-15T04:01:35Z",
+          "outcome": "passed",
+          "summary": "Controller inspected the actual CreateProcess Rejected / blocked by policy result and verified helper home/server receipt absent. Received cancellation directive is recorded in this source. This supports no-execution cancellation only, not a native process exit or successful guide."
+        }
+      ]
+    },
+    "predecessors": [
+      {
+        "home": "docflow-hq/dsh-guide",
+        "id": "806dd9c6-7ab9-47d1-b05c-4f8bbd4d5ec4",
+        "path": ".docflow_workspace/runs/dsh-guide-supplied-paths--806dd9c67ab9.md"
+      }
+    ],
+    "successors": [],
+    "extensions": {
+      "qualification_stage": "blocked-before-launch",
+      "native_runtime_started": false,
+      "native_executor_started": false,
+      "native_process_exit_code": null,
+      "executor_return_received": false,
+      "receipt_origin": "controller cancellation observation only"
+    }
+  },
+  "work": {
+    "schema": 1,
+    "id": "d481c148-6595-45c3-a553-bce71e695407",
+    "home": "docflow-hq/dsh-guide",
+    "kind": "work",
+    "title": "DSH guide readout",
+    "owner": "qualification-controller",
+    "created_at": "2026-09-15T02:24:49Z",
+    "links": [],
+    "state": "active",
+    "history": [
+      {
+        "state": "planned",
+        "at": "2026-09-15T02:24:49Z",
+        "actor": "qualification-controller",
+        "reason": "Bounded native guide smoke prepared before execution."
+      },
+      {
+        "state": "active",
+        "at": "2026-09-15T02:24:49Z",
+        "actor": "qualification-controller",
+        "reason": "Bounded native attempt is about to start."
+      },
+      {
+        "state": "active",
+        "at": "2026-09-15T02:56:23Z",
+        "actor": "qualification-controller",
+        "reason": "Reconciled stopped native attempt with no delivery evidence; work remains incomplete."
+      },
+      {
+        "state": "active",
+        "at": "2026-09-15T03:04:40Z",
+        "actor": "qualification-controller",
+        "reason": "Fresh bounded grant and native claim under explicit coordinator mandate. Prior unsuccessful attempts remain retained."
+      },
+      {
+        "state": "active",
+        "at": "2026-09-15T03:42:02Z",
+        "actor": "qualification-controller",
+        "reason": "Reconcile positive stop and actual check evidence separately; external return criterion is unmet."
+      },
+      {
+        "state": "active",
+        "at": "2026-09-15T03:53:01Z",
+        "actor": "qualification-controller",
+        "reason": "Fresh bounded grant and native claim under explicit coordinator mandate. Prior unsuccessful attempts remain retained."
+      },
+      {
+        "state": "active",
+        "at": "2026-09-15T04:01:35Z",
+        "actor": "qualification-controller",
+        "reason": "Close grant and withdraw prospective ownership for an unlaunched helper; parent remains incomplete."
+      }
+    ],
+    "scope_revision": 1,
+    "outcome": "Native DSH check returned externally and independently reconciled.",
+    "scope": "Read source and return one native check result.",
+    "exclusions": [
+      "No member or canonical mutation, installation, remote services or delegation."
+    ],
+    "priority": "normal",
+    "criteria": [
+      {
+        "id": "native-receipt",
+        "text": "Exact native check result, base revision and source-bound receipt independently verified.",
+        "evidence": []
+      }
+    ],
+    "blockers": [
+      {
+        "reason": "Full DSH guide remains incomplete; helper preparation cancelled before execution after tool-policy rejection.",
+        "owner": "qualification-controller",
+        "next_action": "No reusable active execution grant remains; only a new explicit operator direction may reopen DSH work."
+      }
+    ],
+    "dependencies": [],
+    "deliveries": [
+      {
+        "id": "manual-member",
+        "repository": "docflow-hq/dsh-member",
+        "scope_revision": 1,
+        "scope": "Read README.md, OWNER.md and TASK.md; run node check.mjs; return externally.",
+        "required": true,
+        "native_work": {
+          "repository": "docflow-hq/dsh-member",
+          "path": "TASK.md",
+          "revision": "c94524ff26970ae7a4238e09bb08079ee51df14a"
+        },
+        "required_completion": "native-check-returned",
+        "depends_on": [],
+        "observation": {
+          "state": "unknown",
+          "complete": false,
+          "observed_at": null,
+          "source_revision": null,
+          "evidence": []
+        }
+      }
+    ],
+    "grants": [
+      {
+        "id": "guide-readout",
+        "revisions": [
+          {
+            "revision": 1,
+            "state": "active",
+            "delivery": "manual-member",
+            "scope_revision": 1,
+            "actor": "agent:dsh-w4",
+            "approved_by": "qualification-controller",
+            "approved_at": "2026-09-15T02:24:49Z",
+            "mandate": {
+              "repository": "docflow-hq/dsh-guide",
+              "path": "QUALIFICATION-MANDATE.md",
+              "revision": "cb5506212d8fe1fbe661a265b163641b18cefdb1",
+              "observed_at": "2026-09-15T02:24:49Z",
+              "outcome": "passed",
+              "summary": "Controller current delegated native test authority; no signature invented."
+            },
+            "actions": [
+              "read",
+              "test",
+              "report"
+            ],
+            "conditions": [
+              "Use this disposable fixture and existing local provider only. No canonical/member edits, delegates, installation or remote services."
+            ],
+            "stop_at": "external-receipt-returned",
+            "valid_from": "2026-09-15T02:24:49Z",
+            "expires_at": "2026-09-15T03:09:49Z",
+            "recorded_at": "2026-09-15T02:24:49Z",
+            "reason": "Actual bounded DSH guide test authorised by controller after Pi exited."
+          },
+          {
+            "revision": 2,
+            "state": "active",
+            "delivery": "manual-member",
+            "scope_revision": 1,
+            "actor": "agent:dsh-w4",
+            "approved_by": "qualification-controller",
+            "approved_at": "2026-09-15T03:04:40Z",
+            "mandate": {
+              "repository": "docflow-hq/dsh-guide",
+              "path": "QUALIFICATION-MANDATE.md",
+              "revision": "daa941e074d2d77eb4971b448dcf14d0f7cec0db",
+              "observed_at": "2026-09-15T03:04:40Z",
+              "outcome": "passed",
+              "summary": "Actual qualification controller reread the prospective renewal from coordinator message msg_0c70d5331f4d before recording this new grant revision."
+            },
+            "actions": [
+              "read",
+              "test",
+              "report"
+            ],
+            "conditions": [
+              "Use this disposable fixture and existing local provider only. No canonical/member edits, delegates, installation or remote services."
+            ],
+            "stop_at": "external-receipt-returned",
+            "valid_from": "2026-09-15T03:04:40Z",
+            "expires_at": "2026-09-15T03:49:34Z",
+            "recorded_at": "2026-09-15T03:04:40Z",
+            "reason": "Fresh grant for one controller-authorised 1800-second native guide attempt; previous expiring grant is not extended or reused."
+          },
+          {
+            "revision": 3,
+            "state": "active",
+            "delivery": "manual-member",
+            "scope_revision": 1,
+            "actor": "agent:dsh-w4",
+            "approved_by": "qualification-controller",
+            "approved_at": "2026-09-15T03:53:01Z",
+            "mandate": {
+              "repository": "docflow-hq/dsh-guide",
+              "path": "QUALIFICATION-MANDATE.md",
+              "revision": "769fd59784882642bfae8970adc6f38fd1eb2884",
+              "observed_at": "2026-09-15T03:53:01Z",
+              "outcome": "passed",
+              "summary": "Actual qualification controller reread the prospective renewal from coordinator message msg_6f77b7742256 before recording this new grant revision."
+            },
+            "actions": [
+              "read",
+              "test",
+              "report"
+            ],
+            "conditions": [
+              "Use this disposable fixture and existing local provider only. No canonical/member edits, delegates, installation or remote services."
+            ],
+            "stop_at": "external-receipt-returned",
+            "valid_from": "2026-09-15T03:53:01Z",
+            "expires_at": "2026-09-15T04:57:58Z",
+            "recorded_at": "2026-09-15T03:53:01Z",
+            "reason": "Fresh grant for one controller-authorised 2700-second native guide attempt; previous expiring grant is not extended or reused."
+          },
+          {
+            "revision": 4,
+            "state": "closed",
+            "delivery": "manual-member",
+            "scope_revision": 1,
+            "actor": "agent:dsh-w4",
+            "approved_by": "qualification-controller",
+            "approved_at": "2026-09-15T04:01:35Z",
+            "mandate": {
+              "repository": "docflow-hq/dsh-guide",
+              "path": "QUALIFICATION-MANDATE.md",
+              "revision": "952c2551b16bbf5e4844155e5d922304f4c45620",
+              "observed_at": "2026-09-15T04:01:35Z",
+              "outcome": "passed",
+              "summary": "Actual qualification controller records received cancellation instruction and reads it back before closing the existing grant; no new execution authority."
+            },
+            "actions": [
+              "read",
+              "test",
+              "report"
+            ],
+            "conditions": [
+              "Use this disposable fixture and existing local provider only. No canonical/member edits, delegates, installation or remote services."
+            ],
+            "stop_at": "external-receipt-returned",
+            "valid_from": "2026-09-15T04:01:35Z",
+            "expires_at": "2026-09-15T04:57:58Z",
+            "recorded_at": "2026-09-15T04:01:35Z",
+            "reason": "Coordinator msg_cf6d3af3efd7 cancels the prepared attempt after automatic approval review rejected the entire setup/launch command before execution. No DSH runtime or executor started, and no process-exit observation is claimed. No new DSH setup/launch without explicit operator direction."
+          }
+        ]
+      }
+    ],
+    "recommendations": [],
+    "next_action": "Continue independent qualification. DSH full guide is incomplete/blocked; all attempts and failures retained, no active execution authority."
+  },
+  "validation": {
+    "exit": 0,
+    "stdout": "{\n  \"schema\": 1,\n  \"evaluated_at\": \"2026-09-15T04:01:35Z\",\n  \"valid\": true,\n  \"diagnostics\": [],\n  \"records\": [\n    {\n      \"schema\": 1,\n      \"id\": \"d481c148-6595-45c3-a553-bce71e695407\",\n      \"home\": \"docflow-hq/dsh-guide\",\n      \"kind\": \"work\",\n      \"title\": \"DSH guide readout\",\n      \"owner\": \"qualification-controller\",\n      \"created_at\": \"2026-09-15T02:24:49Z\",\n      \"links\": [],\n      \"state\": \"active\",\n      \"history\": [\n        {\n          \"state\": \"planned\",\n          \"at\": \"2026-09-15T02:24:49Z\",\n          \"actor\": \"qualification-controller\",\n          \"reason\": \"Bounded native guide smoke prepared before execution.\"\n        },\n        {\n          \"state\": \"active\",\n          \"at\": \"2026-09-15T02:24:49Z\",\n          \"actor\": \"qualification-controller\",\n          \"reason\": \"Bounded native attempt is about to start.\"\n        },\n        {\n          \"state\": \"active\",\n          \"at\": \"2026-09-15T02:56:23Z\",\n          \"actor\": \"qualification-controller\",\n          \"reason\": \"Reconciled stopped native attempt with no delivery evidence; work remains incomplete.\"\n        },\n        {\n          \"state\": \"active\",\n          \"at\": \"2026-09-15T03:04:40Z\",\n          \"actor\": \"qualification-controller\",\n          \"reason\": \"Fresh bounded grant and native claim under explicit coordinator mandate. Prior unsuccessful attempts remain retained.\"\n        },\n        {\n          \"state\": \"active\",\n          \"at\": \"2026-09-15T03:42:02Z\",\n          \"actor\": \"qualification-controller\",\n          \"reason\": \"Reconcile positive stop and actual check evidence separately; external return criterion is unmet.\"\n        },\n        {\n          \"state\": \"active\",\n          \"at\": \"2026-09-15T03:53:01Z\",\n          \"actor\": \"qualification-controller\",\n          \"reason\": \"Fresh bounded grant and native claim under explicit coordinator mandate. Prior unsuccessful attempts remain retained.\"\n        },\n        {\n          \"state\": \"active\",\n          \"at\": \"2026-09-15T04:01:35Z\",\n          \"actor\": \"qualification-controller\",\n          \"reason\": \"Close grant and withdraw prospective ownership for an unlaunched helper; parent remains incomplete.\"\n        }\n      ],\n      \"scope_revision\": 1,\n      \"outcome\": \"Native DSH check returned externally and independently reconciled.\",\n      \"scope\": \"Read source and return one native check result.\",\n      \"exclusions\": [\n        \"No member or canonical mutation, installation, remote services or delegation.\"\n      ],\n      \"priority\": \"normal\",\n      \"criteria\": [\n        {\n          \"id\": \"native-receipt\",\n          \"text\": \"Exact native check result, base revision and source-bound receipt independently verified.\",\n          \"evidence\": []\n        }\n      ],\n      \"blockers\": [\n        {\n          \"reason\": \"Full DSH guide remains incomplete; helper preparation cancelled before execution after tool-policy rejection.\",\n          \"owner\": \"qualification-controller\",\n          \"next_action\": \"No reusable active execution grant remains; only a new explicit operator direction may reopen DSH work.\"\n        }\n      ],\n      \"dependencies\": [],\n      \"deliveries\": [\n        {\n          \"id\": \"manual-member\",\n          \"repository\": \"docflow-hq/dsh-member\",\n          \"scope_revision\": 1,\n          \"scope\": \"Read README.md, OWNER.md and TASK.md; run node check.mjs; return externally.\",\n          \"required\": true,\n          \"native_work\": {\n            \"repository\": \"docflow-hq/dsh-member\",\n            \"path\": \"TASK.md\",\n            \"revision\": \"c94524ff26970ae7a4238e09bb08079ee51df14a\"\n          },\n          \"required_completion\": \"native-check-returned\",\n          \"depends_on\": [],\n          \"observation\": {\n            \"state\": \"unknown\",\n            \"complete\": false,\n            \"observed_at\": null,\n            \"source_revision\": null,\n            \"evidence\": []\n          }\n        }\n      ],\n      \"grants\": [\n        {\n          \"id\": \"guide-readout\",\n          \"revisions\": [\n            {\n              \"revision\": 1,\n              \"state\": \"active\",\n              \"delivery\": \"manual-member\",\n              \"scope_revision\": 1,\n              \"actor\": \"agent:dsh-w4\",\n              \"approved_by\": \"qualification-controller\",\n              \"approved_at\": \"2026-09-15T02:24:49Z\",\n              \"mandate\": {\n                \"repository\": \"docflow-hq/dsh-guide\",\n                \"path\": \"QUALIFICATION-MANDATE.md\",\n                \"revision\": \"cb5506212d8fe1fbe661a265b163641b18cefdb1\",\n                \"observed_at\": \"2026-09-15T02:24:49Z\",\n                \"outcome\": \"passed\",\n                \"summary\": \"Controller current delegated native test authority; no signature invented.\"\n              },\n              \"actions\": [\n                \"read\",\n                \"test\",\n                \"report\"\n              ],\n              \"conditions\": [\n                \"Use this disposable fixture and existing local provider only. No canonical/member edits, delegates, installation or remote services.\"\n              ],\n              \"stop_at\": \"external-receipt-returned\",\n              \"valid_from\": \"2026-09-15T02:24:49Z\",\n              \"expires_at\": \"2026-09-15T03:09:49Z\",\n              \"recorded_at\": \"2026-09-15T02:24:49Z\",\n              \"reason\": \"Actual bounded DSH guide test authorised by controller after Pi exited.\"\n            },\n            {\n              \"revision\": 2,\n              \"state\": \"active\",\n              \"delivery\": \"manual-member\",\n              \"scope_revision\": 1,\n              \"actor\": \"agent:dsh-w4\",\n              \"approved_by\": \"qualification-controller\",\n              \"approved_at\": \"2026-09-15T03:04:40Z\",\n              \"mandate\": {\n                \"repository\": \"docflow-hq/dsh-guide\",\n                \"path\": \"QUALIFICATION-MANDATE.md\",\n                \"revision\": \"daa941e074d2d77eb4971b448dcf14d0f7cec0db\",\n                \"observed_at\": \"2026-09-15T03:04:40Z\",\n                \"outcome\": \"passed\",\n                \"summary\": \"Actual qualification controller reread the prospective renewal from coordinator message msg_0c70d5331f4d before recording this new grant revision.\"\n              },\n              \"actions\": [\n                \"read\",\n                \"test\",\n                \"report\"\n              ],\n              \"conditions\": [\n                \"Use this disposable fixture and existing local provider only. No canonical/member edits, delegates, installation or remote services.\"\n              ],\n              \"stop_at\": \"external-receipt-returned\",\n              \"valid_from\": \"2026-09-15T03:04:40Z\",\n              \"expires_at\": \"2026-09-15T03:49:34Z\",\n              \"recorded_at\": \"2026-09-15T03:04:40Z\",\n              \"reason\": \"Fresh grant for one controller-authorised 1800-second native guide attempt; previous expiring grant is not extended or reused.\"\n            },\n            {\n              \"revision\": 3,\n              \"state\": \"active\",\n              \"delivery\": \"manual-member\",\n              \"scope_revision\": 1,\n              \"actor\": \"agent:dsh-w4\",\n              \"approved_by\": \"qualification-controller\",\n              \"approved_at\": \"2026-09-15T03:53:01Z\",\n              \"mandate\": {\n                \"repository\": \"docflow-hq/dsh-guide\",\n                \"path\": \"QUALIFICATION-MANDATE.md\",\n                \"revision\": \"769fd59784882642bfae8970adc6f38fd1eb2884\",\n                \"observed_at\": \"2026-09-15T03:53:01Z\",\n                \"outcome\": \"passed\",\n                \"summary\": \"Actual qualification controller reread the prospective renewal from coordinator message msg_6f77b7742256 before recording this new grant revision.\"\n              },\n              \"actions\": [\n                \"read\",\n                \"test\",\n                \"report\"\n              ],\n              \"conditions\": [\n                \"Use this disposable fixture and existing local provider only. No canonical/member edits, delegates, installation or remote services.\"\n              ],\n              \"stop_at\": \"external-receipt-returned\",\n              \"valid_from\": \"2026-09-15T03:53:01Z\",\n              \"expires_at\": \"2026-09-15T04:57:58Z\",\n              \"recorded_at\": \"2026-09-15T03:53:01Z\",\n              \"reason\": \"Fresh grant for one controller-authorised 2700-second native guide attempt; previous expiring grant is not extended or reused.\"\n            },\n            {\n              \"revision\": 4,\n              \"state\": \"closed\",\n              \"delivery\": \"manual-member\",\n              \"scope_revision\": 1,\n              \"actor\": \"agent:dsh-w4\",\n              \"approved_by\": \"qualification-controller\",\n              \"approved_at\": \"2026-09-15T04:01:35Z\",\n              \"mandate\": {\n                \"repository\": \"docflow-hq/dsh-guide\",\n                \"path\": \"QUALIFICATION-MANDATE.md\",\n                \"revision\": \"952c2551b16bbf5e4844155e5d922304f4c45620\",\n                \"observed_at\": \"2026-09-15T04:01:35Z\",\n                \"outcome\": \"passed\",\n                \"summary\": \"Actual qualification controller records received cancellation instruction and reads it back before closing the existing grant; no new execution authority.\"\n              },\n              \"actions\": [\n                \"read\",\n                \"test\",\n                \"report\"\n              ],\n              \"conditions\": [\n                \"Use this disposable fixture and existing local provider only. No canonical/member edits, delegates, installation or remote services.\"\n              ],\n              \"stop_at\": \"external-receipt-returned\",\n              \"valid_from\": \"2026-09-15T04:01:35Z\",\n              \"expires_at\": \"2026-09-15T04:57:58Z\",\n              \"recorded_at\": \"2026-09-15T04:01:35Z\",\n              \"reason\": \"Coordinator msg_cf6d3af3efd7 cancels the prepared attempt after automatic approval review rejected the entire setup/launch command before execution. No DSH runtime or executor started, and no process-exit observation is claimed. No new DSH setup/launch without explicit operator direction.\"\n            }\n          ]\n        }\n      ],\n      \"recommendations\": [],\n      \"next_action\": \"Continue independent qualification. DSH full guide is incomplete/blocked; all attempts and failures retained, no active execution authority.\",\n      \"path\": \".docflow_workspace/work/dsh-guide-readout--d481c1486595.md\"\n    },\n    {\n      \"schema\": 1,\n      \"id\": \"b663feaf-7c70-426f-9101-bece9cf52485\",\n      \"home\": \"docflow-hq/dsh-guide\",\n      \"kind\": \"runs\",\n      \"title\": \"DSH guide helper assisted\",\n      \"owner\": \"qualification-controller\",\n      \"created_at\": \"2026-09-15T03:53:03Z\",\n      \"links\": [],\n      \"state\": \"failed\",\n      \"history\": [\n        {\n          \"state\": \"running\",\n          \"at\": \"2026-09-15T03:53:03Z\",\n          \"actor\": \"qualification-controller\",\n          \"reason\": \"Fresh native session is about to start with supplied navigation paths, same local model/high and one 2700-second cap.\"\n        },\n        {\n          \"state\": \"failed\",\n          \"at\": \"2026-09-15T04:01:35Z\",\n          \"actor\": \"qualification-controller\",\n          \"reason\": \"Prepared assignment cancelled before launch. ended_at is controller cancellation time, not a native process-stop timestamp. Coordinator msg_cf6d3af3efd7 cancels the prepared attempt after automatic approval review rejected the entire setup/launch command before execution. No DSH runtime or executor started, and no process-exit observation is claimed. No new DSH setup/launch without explicit operator direction.\"\n        }\n      ],\n      \"started_at\": \"2026-09-15T03:53:03Z\",\n      \"ended_at\": \"2026-09-15T04:01:35Z\",\n      \"brief\": {\n        \"work\": {\n          \"home\": \"docflow-hq/dsh-guide\",\n          \"id\": \"d481c148-6595-45c3-a553-bce71e695407\",\n          \"path\": \".docflow_workspace/work/dsh-guide-readout--d481c1486595.md\"\n        },\n        \"delivery\": \"manual-member\",\n        \"scope_revision\": 1,\n        \"scope\": \"Read README.md, OWNER.md and TASK.md; run node check.mjs; return externally.\",\n        \"exclusions\": [\n          \"No member or canonical mutation, installation, remote services or delegation.\"\n        ],\n        \"actor\": \"agent:dsh-w4\",\n        \"host\": \"deepseek-harness\",\n        \"grant\": {\n          \"work\": {\n            \"home\": \"docflow-hq/dsh-guide\",\n            \"id\": \"d481c148-6595-45c3-a553-bce71e695407\",\n            \"path\": \".docflow_workspace/work/dsh-guide-readout--d481c1486595.md\"\n          },\n          \"id\": \"guide-readout\",\n          \"revision\": 3\n        },\n        \"workspace_revision\": \"adfca6b3088e60b2a7778632dfd70fd35c62f8cf\",\n        \"base_revision\": \"d7ccc1275080cd90a10f3d249d11260433de408f\",\n        \"native_work\": {\n          \"repository\": \"docflow-hq/dsh-member\",\n          \"path\": \"TASK.md\",\n          \"revision\": \"d7ccc1275080cd90a10f3d249d11260433de408f\"\n        },\n        \"claim\": {\n          \"mode\": \"owner-confirmed-serial\",\n          \"owner\": \"agent:dsh-w4\",\n          \"state\": \"held\",\n          \"source\": {\n            \"repository\": \"docflow-hq/dsh-member\",\n            \"path\": \"OWNER.md\",\n            \"revision\": \"d7ccc1275080cd90a10f3d249d11260433de408f\",\n            \"observed_at\": \"2026-09-15T03:53:00Z\",\n            \"outcome\": \"passed\",\n            \"summary\": \"Controller reread new OWNER.md and confirmed current clean native member HEAD before this fresh attempt.\"\n          },\n          \"observed_at\": \"2026-09-15T03:53:00Z\",\n          \"expires_at\": \"2026-09-15T04:57:58Z\"\n        },\n        \"dependencies\": [],\n        \"resources\": [],\n        \"required_checks\": [\n          \"native-check\"\n        ],\n        \"stop_at\": \"external-receipt-returned\",\n        \"return_path\": \".docflow_workspace/runs/dsh-guide-helper-assisted--b663feaf7c70.md\",\n        \"selected_assets\": []\n      },\n      \"actions\": [],\n      \"receipt\": {\n        \"returned_at\": \"2026-09-15T04:01:35Z\",\n        \"head_revision\": \"c94524ff26970ae7a4238e09bb08079ee51df14a\",\n        \"checks\": [\n          {\n            \"name\": \"native-check\",\n            \"command\": \"node check.mjs\",\n            \"outcome\": \"skipped\",\n            \"exit_code\": null,\n            \"output\": \"Planned check was not executed: outer qualification-tool approval review rejected setup/launch before any command ran. No executor receipt exists.\",\n            \"evidence\": []\n          }\n        ],\n        \"evidence\": [],\n        \"blockers\": [\n          {\n            \"reason\": \"blocked-before-launch: automatic approval review returned only blocked by policy.\",\n            \"owner\": \"qualification-controller\",\n            \"next_action\": \"No DSH setup/launch without new explicit operator direction.\"\n          }\n        ],\n        \"next_action\": \"Retain controller cancellation and prior partial guide evidence; do not treat this object as an executor-authored return.\",\n        \"used_assets\": []\n      },\n      \"reconciliation\": {\n        \"by\": \"orca:term_511cf659-7a81-4072-8143-44a0f23d8f93\",\n        \"at\": \"2026-09-15T04:01:35Z\",\n        \"evidence\": [\n          {\n            \"repository\": \"docflow-hq/dsh-guide\",\n            \"path\": \"QUALIFICATION-MANDATE.md\",\n            \"revision\": \"952c2551b16bbf5e4844155e5d922304f4c45620\",\n            \"observed_at\": \"2026-09-15T04:01:35Z\",\n            \"outcome\": \"passed\",\n            \"summary\": \"Controller inspected the actual CreateProcess Rejected / blocked by policy result and verified helper home/server receipt absent. Received cancellation directive is recorded in this source. This supports no-execution cancellation only, not a native process exit or successful guide.\"\n          }\n        ]\n      },\n      \"predecessors\": [\n        {\n          \"home\": \"docflow-hq/dsh-guide\",\n          \"id\": \"806dd9c6-7ab9-47d1-b05c-4f8bbd4d5ec4\",\n          \"path\": \".docflow_workspace/runs/dsh-guide-supplied-paths--806dd9c67ab9.md\"\n        }\n      ],\n      \"successors\": [],\n      \"extensions\": {\n        \"qualification_stage\": \"blocked-before-launch\",\n        \"native_runtime_started\": false,\n        \"native_executor_started\": false,\n        \"native_process_exit_code\": null,\n        \"executor_return_received\": false,\n        \"receipt_origin\": \"controller cancellation observation only\"\n      },\n      \"path\": \".docflow_workspace/runs/dsh-guide-helper-assisted--b663feaf7c70.md\"\n    },\n    {\n      \"schema\": 1,\n      \"id\": \"6496e812-c397-4d77-90e5-4e2f27cbfc12\",\n      \"home\": \"docflow-hq/dsh-guide\",\n      \"kind\": \"runs\",\n      \"title\": \"DSH guide readout\",\n      \"owner\": \"qualification-controller\",\n      \"created_at\": \"2026-09-15T02:24:49Z\",\n      \"links\": [],\n      \"state\": \"failed\",\n      \"history\": [\n        {\n          \"state\": \"running\",\n          \"at\": \"2026-09-15T02:24:49Z\",\n          \"actor\": \"qualification-controller\",\n          \"reason\": \"Actual native web session is prepared; bounded attempt is about to start.\"\n        },\n        {\n          \"state\": \"failed\",\n          \"at\": \"2026-09-15T02:35:31Z\",\n          \"actor\": \"qualification-controller\",\n          \"reason\": \"Native web turn/end confirms PI_AI_ERROR before any tool. Original failed attempt retained; terminal event milliseconds remain in raw receipt, ended_at uses contract second precision.\"\n        }\n      ],\n      \"started_at\": \"2026-09-15T02:24:49Z\",\n      \"ended_at\": \"2026-09-15T02:27:41Z\",\n      \"brief\": {\n        \"work\": {\n          \"home\": \"docflow-hq/dsh-guide\",\n          \"id\": \"d481c148-6595-45c3-a553-bce71e695407\",\n          \"path\": \".docflow_workspace/work/dsh-guide-readout--d481c1486595.md\"\n        },\n        \"delivery\": \"manual-member\",\n        \"scope_revision\": 1,\n        \"scope\": \"Read README.md, OWNER.md and TASK.md; run node check.mjs; return externally.\",\n        \"exclusions\": [\n          \"No member or canonical mutation, installation, remote services or delegation.\"\n        ],\n        \"actor\": \"agent:dsh-w4\",\n        \"host\": \"deepseek-harness\",\n        \"grant\": {\n          \"work\": {\n            \"home\": \"docflow-hq/dsh-guide\",\n            \"id\": \"d481c148-6595-45c3-a553-bce71e695407\",\n            \"path\": \".docflow_workspace/work/dsh-guide-readout--d481c1486595.md\"\n          },\n          \"id\": \"guide-readout\",\n          \"revision\": 1\n        },\n        \"workspace_revision\": \"b230fd5952459dd6fb8bb437ce7046577236cc16\",\n        \"base_revision\": \"4828bc600d48ec6aeff23bbc102efc9d9e3b7868\",\n        \"native_work\": {\n          \"repository\": \"docflow-hq/dsh-member\",\n          \"path\": \"TASK.md\",\n          \"revision\": \"4828bc600d48ec6aeff23bbc102efc9d9e3b7868\"\n        },\n        \"claim\": {\n          \"mode\": \"owner-confirmed-serial\",\n          \"owner\": \"agent:dsh-w4\",\n          \"state\": \"held\",\n          \"source\": {\n            \"repository\": \"docflow-hq/dsh-member\",\n            \"path\": \"OWNER.md\",\n            \"revision\": \"4828bc600d48ec6aeff23bbc102efc9d9e3b7868\",\n            \"observed_at\": \"2026-09-15T02:24:49Z\",\n            \"outcome\": \"passed\",\n            \"summary\": \"Actual current native owner confirmation and clean HEAD checked by the fixture controller before dispatch.\"\n          },\n          \"observed_at\": \"2026-09-15T02:24:49Z\",\n          \"expires_at\": \"2026-09-15T03:09:49Z\"\n        },\n        \"dependencies\": [],\n        \"resources\": [],\n        \"required_checks\": [\n          \"native-check\"\n        ],\n        \"stop_at\": \"external-receipt-returned\",\n        \"return_path\": \".docflow_workspace/runs/dsh-guide-readout--6496e812c397.md\",\n        \"selected_assets\": []\n      },\n      \"actions\": [],\n      \"receipt\": {\n        \"returned_at\": \"2026-09-15T02:35:31Z\",\n        \"head_revision\": \"4828bc600d48ec6aeff23bbc102efc9d9e3b7868\",\n        \"checks\": [\n          {\n            \"name\": \"native-check\",\n            \"command\": \"node check.mjs\",\n            \"outcome\": \"unknown\",\n            \"exit_code\": null,\n            \"output\": \"Not executed: native adapter PI_AI_ERROR / No API key for provider: llama-server.\",\n            \"evidence\": []\n          }\n        ],\n        \"evidence\": [],\n        \"blockers\": [\n          {\n            \"reason\": \"Native client requires a nonempty API key before using the configured local endpoint.\",\n            \"owner\": \"qualification-controller\",\n            \"next_action\": \"Only controller-authorised local compatibility-marker recovery may proceed; no real credential or remote fallback.\"\n          }\n        ],\n        \"next_action\": \"One bounded report/check recovery under the unchanged grant after confirmed native failed turn.\",\n        \"used_assets\": []\n      },\n      \"reconciliation\": {\n        \"by\": \"orca:term_511cf659-7a81-4072-8143-44a0f23d8f93\",\n        \"at\": \"2026-09-15T02:35:31Z\",\n        \"evidence\": [\n          {\n            \"repository\": \"docflow-hq/dsh-guide\",\n            \"path\": \".docflow_workspace/runs/dsh-guide-readout--6496e812c397.md\",\n            \"revision\": \"b230fd5952459dd6fb8bb437ce7046577236cc16\",\n            \"observed_at\": \"2026-09-15T02:35:31Z\",\n            \"outcome\": \"passed\",\n            \"summary\": \"Controller inspected native DSH session session-b6a3c2b8-84df-476e-8463-82736943089a: turn/end at 1789439261211 ms, PI_AI_ERROR before tools, fixture/member/package hashes unchanged. Original process failure and UI are preserved outside canonical records; this observation establishes terminal return, not check success.\"\n          }\n        ]\n      },\n      \"predecessors\": [],\n      \"successors\": [\n        {\n          \"home\": \"docflow-hq/dsh-guide\",\n          \"id\": \"e8d87955-8799-41b8-9308-f9affe9553f2\",\n          \"path\": \".docflow_workspace/runs/dsh-guide-recovery--e8d879558799.md\"\n        }\n      ],\n      \"path\": \".docflow_workspace/runs/dsh-guide-readout--6496e812c397.md\"\n    },\n    {\n      \"schema\": 1,\n      \"id\": \"e8d87955-8799-41b8-9308-f9affe9553f2\",\n      \"home\": \"docflow-hq/dsh-guide\",\n      \"kind\": \"runs\",\n      \"title\": \"DSH guide recovery\",\n      \"owner\": \"qualification-controller\",\n      \"created_at\": \"2026-09-15T02:35:31Z\",\n      \"links\": [],\n      \"state\": \"stopped\",\n      \"history\": [\n        {\n          \"state\": \"running\",\n          \"at\": \"2026-09-15T02:35:31Z\",\n          \"actor\": \"qualification-controller\",\n          \"reason\": \"One controller-authorised native recovery of the same scope, actor, local model and compatible grant. Previous failed turn positively reconciled.\"\n        },\n        {\n          \"state\": \"stopped\",\n          \"at\": \"2026-09-15T02:56:23Z\",\n          \"actor\": \"qualification-controller\",\n          \"reason\": \"Exact dedicated DSH server tree positively terminated after the 900-second deadline; stop observed after 908.06 seconds including poll/teardown overhead. No check or external receipt returned; no successor authorised.\"\n        }\n      ],\n      \"started_at\": \"2026-09-15T02:35:31Z\",\n      \"ended_at\": \"2026-09-15T02:51:34Z\",\n      \"brief\": {\n        \"work\": {\n          \"home\": \"docflow-hq/dsh-guide\",\n          \"id\": \"d481c148-6595-45c3-a553-bce71e695407\",\n          \"path\": \".docflow_workspace/work/dsh-guide-readout--d481c1486595.md\"\n        },\n        \"delivery\": \"manual-member\",\n        \"scope_revision\": 1,\n        \"scope\": \"Read README.md, OWNER.md and TASK.md; run node check.mjs; return externally.\",\n        \"exclusions\": [\n          \"No member or canonical mutation, installation, remote services or delegation.\"\n        ],\n        \"actor\": \"agent:dsh-w4\",\n        \"host\": \"deepseek-harness\",\n        \"grant\": {\n          \"work\": {\n            \"home\": \"docflow-hq/dsh-guide\",\n            \"id\": \"d481c148-6595-45c3-a553-bce71e695407\",\n            \"path\": \".docflow_workspace/work/dsh-guide-readout--d481c1486595.md\"\n          },\n          \"id\": \"guide-readout\",\n          \"revision\": 1\n        },\n        \"workspace_revision\": \"36165f98262cf116a4f9f140d9d3116ac7204051\",\n        \"base_revision\": \"4828bc600d48ec6aeff23bbc102efc9d9e3b7868\",\n        \"native_work\": {\n          \"repository\": \"docflow-hq/dsh-member\",\n          \"path\": \"TASK.md\",\n          \"revision\": \"4828bc600d48ec6aeff23bbc102efc9d9e3b7868\"\n        },\n        \"claim\": {\n          \"mode\": \"owner-confirmed-serial\",\n          \"owner\": \"agent:dsh-w4\",\n          \"state\": \"held\",\n          \"source\": {\n            \"repository\": \"docflow-hq/dsh-member\",\n            \"path\": \"OWNER.md\",\n            \"revision\": \"4828bc600d48ec6aeff23bbc102efc9d9e3b7868\",\n            \"observed_at\": \"2026-09-15T02:24:49Z\",\n            \"outcome\": \"passed\",\n            \"summary\": \"Actual current native owner confirmation and clean HEAD checked by the fixture controller before dispatch.\"\n          },\n          \"observed_at\": \"2026-09-15T02:24:49Z\",\n          \"expires_at\": \"2026-09-15T03:09:49Z\"\n        },\n        \"dependencies\": [],\n        \"resources\": [],\n        \"required_checks\": [\n          \"native-check\"\n        ],\n        \"stop_at\": \"external-receipt-returned\",\n        \"return_path\": \".docflow_workspace/runs/dsh-guide-recovery--e8d879558799.md\",\n        \"selected_assets\": []\n      },\n      \"actions\": [\n        {\n          \"at\": \"2026-09-15T02:37:50Z\",\n          \"action\": \"read\",\n          \"summary\": \"Native pwsh: {\\\"command\\\": \\\"Get-ChildItem -Recurse -Force | Select-Object -ExpandProperty FullName\\\", \\\"description\\\": \\\"List all files in workspace\\\"}\"\n        },\n        {\n          \"at\": \"2026-09-15T02:37:51Z\",\n          \"action\": \"read\",\n          \"summary\": \"Native read: {\\\"file_path\\\": \\\"AGENTS.md\\\"}\"\n        },\n        {\n          \"at\": \"2026-09-15T02:39:55Z\",\n          \"action\": \"read\",\n          \"summary\": \"Native read: {\\\"file_path\\\": \\\"C:\\\\\\\\Users\\\\\\\\eugen\\\\\\\\AppData\\\\\\\\Local\\\\\\\\Temp\\\\\\\\dsh-spill-lvgKDp\\\\\\\\session-95f662344575\\\\\\\\01228b890aaf-pwsh.txt\\\"}\"\n        },\n        {\n          \"at\": \"2026-09-15T02:42:33Z\",\n          \"action\": \"read\",\n          \"summary\": \"Native read: {\\\"file_path\\\": \\\"C:\\\\\\\\Users\\\\\\\\eugen\\\\\\\\AppData\\\\\\\\Local\\\\\\\\Temp\\\\\\\\dsh-spill-lvgKDp\\\\\\\\session-95f662344575\\\\\\\\01228b890aaf-pwsh.txt\\\", \\\"offset\\\": 276}\"\n        },\n        {\n          \"at\": \"2026-09-15T02:46:29Z\",\n          \"action\": \"read\",\n          \"summary\": \"Native pwsh: {\\\"command\\\": \\\"Get-ChildItem -Force | ForEach-Object { $_.FullName }; Write-Output '---'; Get-ChildItem -Force -Recurse -Depth 2 -Directory | ForEach-Object { $_.FullName }\\\", \\\"description\\\": \\\"List top-level entries and shallow directories\\\"}\"\n        },\n        {\n          \"at\": \"2026-09-15T02:48:01Z\",\n          \"action\": \"read\",\n          \"summary\": \"Native read: {\\\"file_path\\\": \\\"QUALIFICATION-MANDATE.md\\\"}\"\n        },\n        {\n          \"at\": \"2026-09-15T02:48:01Z\",\n          \"action\": \"read\",\n          \"summary\": \"Native read: {\\\"file_path\\\": \\\"BOUNDED-BRIEF.json\\\"}\"\n        },\n        {\n          \"at\": \"2026-09-15T02:48:01Z\",\n          \"action\": \"read\",\n          \"summary\": \"Native pwsh: {\\\"command\\\": \\\"Get-ChildItem -Force -Recurse .docflow_workspace | Where-Object { -not $_.PSIsContainer } | ForEach-Object { $_.FullName }\\\", \\\"description\\\": \\\"List all files under .docflow_workspace\\\"}\"\n        },\n        {\n          \"at\": \"2026-09-15T02:50:21Z\",\n          \"action\": \"read\",\n          \"summary\": \"Native read: {\\\"file_path\\\": \\\".docflow_workspace/CONVENTIONS.md\\\"}\"\n        },\n        {\n          \"at\": \"2026-09-15T02:50:21Z\",\n          \"action\": \"read\",\n          \"summary\": \"Native read: {\\\"file_path\\\": \\\".docflow_workspace/workspace.yaml\\\"}\"\n        },\n        {\n          \"at\": \"2026-09-15T02:50:21Z\",\n          \"action\": \"read\",\n          \"summary\": \"Native read: {\\\"file_path\\\": \\\".docflow_workspace/work/dsh-guide-readout--d481c1486595.md\\\"}\"\n        },\n        {\n          \"at\": \"2026-09-15T02:50:21Z\",\n          \"action\": \"read\",\n          \"summary\": \"Native read: {\\\"file_path\\\": \\\".docflow_workspace/runs/dsh-guide-recovery--e8d879558799.md\\\"}\"\n        },\n        {\n          \"at\": \"2026-09-15T02:50:21Z\",\n          \"action\": \"read\",\n          \"summary\": \"Native read: {\\\"file_path\\\": \\\".docflow_workspace/runs/dsh-guide-readout--6496e812c397.md\\\"}\"\n        }\n      ],\n      \"receipt\": {\n        \"returned_at\": \"2026-09-15T02:56:23Z\",\n        \"head_revision\": \"4828bc600d48ec6aeff23bbc102efc9d9e3b7868\",\n        \"checks\": [\n          {\n            \"name\": \"native-check\",\n            \"command\": \"node check.mjs\",\n            \"outcome\": \"unknown\",\n            \"exit_code\": null,\n            \"output\": \"Not executed before the native DSH recovery was stopped.\",\n            \"evidence\": []\n          }\n        ],\n        \"evidence\": [],\n        \"blockers\": [\n          {\n            \"reason\": \"Native recovery completed thirteen read/list tool calls but reached its deadline before the member check and external receipt. The required guide check remains unrun.\",\n            \"owner\": \"qualification-controller\",\n            \"next_action\": \"Retain incomplete guide qualification; no further recovery or service change in this dispatch.\"\n          }\n        ],\n        \"next_action\": \"Preserve first failure and bounded recovery; report incomplete guide coverage.\",\n        \"used_assets\": []\n      },\n      \"reconciliation\": {\n        \"by\": \"orca:term_511cf659-7a81-4072-8143-44a0f23d8f93\",\n        \"at\": \"2026-09-15T02:56:23Z\",\n        \"evidence\": [\n          {\n            \"repository\": \"docflow-hq/dsh-guide\",\n            \"path\": \".docflow_workspace/runs/dsh-guide-recovery--e8d879558799.md\",\n            \"revision\": \"36165f98262cf116a4f9f140d9d3116ac7204051\",\n            \"observed_at\": \"2026-09-15T02:56:23Z\",\n            \"outcome\": \"passed\",\n            \"summary\": \"Orca qualification coordinator inspected the native tool-call log, immutable compressed session, successful taskkill of exact server PID 91052 and absence of its former child processes/listener. All pre-existing fixture/member/candidate bytes and member Git HEAD/status remain unchanged. This verifies terminal observation and preservation, not the unrun native check.\"\n          }\n        ]\n      },\n      \"predecessors\": [\n        {\n          \"home\": \"docflow-hq/dsh-guide\",\n          \"id\": \"6496e812-c397-4d77-90e5-4e2f27cbfc12\",\n          \"path\": \".docflow_workspace/runs/dsh-guide-readout--6496e812c397.md\"\n        }\n      ],\n      \"successors\": [\n        {\n          \"home\": \"docflow-hq/dsh-guide\",\n          \"id\": \"806dd9c6-7ab9-47d1-b05c-4f8bbd4d5ec4\",\n          \"path\": \".docflow_workspace/runs/dsh-guide-supplied-paths--806dd9c67ab9.md\"\n        }\n      ],\n      \"path\": \".docflow_workspace/runs/dsh-guide-recovery--e8d879558799.md\"\n    },\n    {\n      \"schema\": 1,\n      \"id\": \"806dd9c6-7ab9-47d1-b05c-4f8bbd4d5ec4\",\n      \"home\": \"docflow-hq/dsh-guide\",\n      \"kind\": \"runs\",\n      \"title\": \"DSH guide supplied paths\",\n      \"owner\": \"qualification-controller\",\n      \"created_at\": \"2026-09-15T03:04:43Z\",\n      \"links\": [],\n      \"state\": \"stopped\",\n      \"history\": [\n        {\n          \"state\": \"running\",\n          \"at\": \"2026-09-15T03:04:43Z\",\n          \"actor\": \"qualification-controller\",\n          \"reason\": \"Fresh native session is about to start with supplied navigation paths, same local model/high and one 1800-second cap.\"\n        },\n        {\n          \"state\": \"stopped\",\n          \"at\": \"2026-09-15T03:42:02Z\",\n          \"actor\": \"qualification-controller\",\n          \"reason\": \"Exact native DSH runtime positively stopped within the original 1800-second cap after a successful member check but before an external receipt. No further attempt authorised.\"\n        }\n      ],\n      \"started_at\": \"2026-09-15T03:04:43Z\",\n      \"ended_at\": \"2026-09-15T03:39:10Z\",\n      \"brief\": {\n        \"work\": {\n          \"home\": \"docflow-hq/dsh-guide\",\n          \"id\": \"d481c148-6595-45c3-a553-bce71e695407\",\n          \"path\": \".docflow_workspace/work/dsh-guide-readout--d481c1486595.md\"\n        },\n        \"delivery\": \"manual-member\",\n        \"scope_revision\": 1,\n        \"scope\": \"Read README.md, OWNER.md and TASK.md; run node check.mjs; return externally.\",\n        \"exclusions\": [\n          \"No member or canonical mutation, installation, remote services or delegation.\"\n        ],\n        \"actor\": \"agent:dsh-w4\",\n        \"host\": \"deepseek-harness\",\n        \"grant\": {\n          \"work\": {\n            \"home\": \"docflow-hq/dsh-guide\",\n            \"id\": \"d481c148-6595-45c3-a553-bce71e695407\",\n            \"path\": \".docflow_workspace/work/dsh-guide-readout--d481c1486595.md\"\n          },\n          \"id\": \"guide-readout\",\n          \"revision\": 2\n        },\n        \"workspace_revision\": \"0897928a1189d59268c26bc5a77a213e9eb3a92d\",\n        \"base_revision\": \"1e3f2e69de22febe5cfc740b7a27697a47f6ce0a\",\n        \"native_work\": {\n          \"repository\": \"docflow-hq/dsh-member\",\n          \"path\": \"TASK.md\",\n          \"revision\": \"1e3f2e69de22febe5cfc740b7a27697a47f6ce0a\"\n        },\n        \"claim\": {\n          \"mode\": \"owner-confirmed-serial\",\n          \"owner\": \"agent:dsh-w4\",\n          \"state\": \"held\",\n          \"source\": {\n            \"repository\": \"docflow-hq/dsh-member\",\n            \"path\": \"OWNER.md\",\n            \"revision\": \"1e3f2e69de22febe5cfc740b7a27697a47f6ce0a\",\n            \"observed_at\": \"2026-09-15T03:04:38Z\",\n            \"outcome\": \"passed\",\n            \"summary\": \"Controller reread new OWNER.md and confirmed current clean native member HEAD before this fresh attempt.\"\n          },\n          \"observed_at\": \"2026-09-15T03:04:38Z\",\n          \"expires_at\": \"2026-09-15T03:49:34Z\"\n        },\n        \"dependencies\": [],\n        \"resources\": [],\n        \"required_checks\": [\n          \"native-check\"\n        ],\n        \"stop_at\": \"external-receipt-returned\",\n        \"return_path\": \".docflow_workspace/runs/dsh-guide-supplied-paths--806dd9c67ab9.md\",\n        \"selected_assets\": []\n      },\n      \"actions\": [\n        {\n          \"at\": \"2026-09-15T03:11:50Z\",\n          \"action\": \"read\",\n          \"summary\": \"Native read: {\\\"file_path\\\": \\\"C:/Users/eugen/AppData/Local/Temp/docflowhq-v1-20260915/qualification-ctx-fc206cf7e4a8/dsh-fixture/AGENTS.md\\\"}\"\n        },\n        {\n          \"at\": \"2026-09-15T03:11:50Z\",\n          \"action\": \"read\",\n          \"summary\": \"Native read: {\\\"file_path\\\": \\\"C:/Users/eugen/AppData/Local/Temp/docflowhq-v1-20260915/qualification-ctx-fc206cf7e4a8/dsh-fixture/QUALIFICATION-MANDATE.md\\\"}\"\n        },\n        {\n          \"at\": \"2026-09-15T03:11:50Z\",\n          \"action\": \"read\",\n          \"summary\": \"Native read: {\\\"file_path\\\": \\\"C:/Users/eugen/AppData/Local/Temp/docflowhq-v1-20260915/qualification-ctx-fc206cf7e4a8/dsh-fixture/BOUNDED-BRIEF.json\\\"}\"\n        },\n        {\n          \"at\": \"2026-09-15T03:12:49Z\",\n          \"action\": \"read\",\n          \"summary\": \"Native read: {\\\"file_path\\\": \\\"C:/Users/eugen/AppData/Local/Temp/docflowhq-v1-20260915/qualification-ctx-fc206cf7e4a8/dsh-fixture/.docflow_workspace/CONVENTIONS.md\\\"}\"\n        },\n        {\n          \"at\": \"2026-09-15T03:12:49Z\",\n          \"action\": \"read\",\n          \"summary\": \"Native read: {\\\"file_path\\\": \\\"C:/Users/eugen/AppData/Local/Temp/docflowhq-v1-20260915/qualification-ctx-fc206cf7e4a8/dsh-fixture/.docflow_workspace/workspace.yaml\\\"}\"\n        },\n        {\n          \"at\": \"2026-09-15T03:12:49Z\",\n          \"action\": \"read\",\n          \"summary\": \"Native read: {\\\"file_path\\\": \\\"C:/Users/eugen/AppData/Local/Temp/docflowhq-v1-20260915/qualification-ctx-fc206cf7e4a8/dsh-fixture/.docflow_workspace/work/dsh-guide-readout--d481c1486595.md\\\"}\"\n        },\n        {\n          \"at\": \"2026-09-15T03:12:49Z\",\n          \"action\": \"read\",\n          \"summary\": \"Native read: {\\\"file_path\\\": \\\"C:/Users/eugen/AppData/Local/Temp/docflowhq-v1-20260915/qualification-ctx-fc206cf7e4a8/dsh-fixture/.docflow_workspace/runs/dsh-guide-supplied-paths--806dd9c67ab9.md\\\"}\"\n        },\n        {\n          \"at\": \"2026-09-15T03:13:57Z\",\n          \"action\": \"read\",\n          \"summary\": \"Native read: {\\\"file_path\\\": \\\"C:/Users/eugen/AppData/Local/Temp/docflowhq-v1-20260915/qualification-ctx-fc206cf7e4a8/dsh-fixture/docflow-package/skills/workspace-coordinate/SKILL.md\\\"}\"\n        },\n        {\n          \"at\": \"2026-09-15T03:13:57Z\",\n          \"action\": \"read\",\n          \"summary\": \"Native read: {\\\"file_path\\\": \\\"C:/Users/eugen/AppData/Local/Temp/docflowhq-v1-20260915/qualification-ctx-fc206cf7e4a8/dsh-fixture/docflow-package/workspace/guides/deepseek-harness.md\\\"}\"\n        },\n        {\n          \"at\": \"2026-09-15T03:13:57Z\",\n          \"action\": \"read\",\n          \"summary\": \"Native read: {\\\"file_path\\\": \\\"C:/Users/eugen/AppData/Local/Temp/docflowhq-v1-20260915/qualification-ctx-fc206cf7e4a8/dsh-fixture/docflow-package/workspace/CONTRACT.md\\\"}\"\n        },\n        {\n          \"at\": \"2026-09-15T03:13:57Z\",\n          \"action\": \"read\",\n          \"summary\": \"Native read: {\\\"file_path\\\": \\\"C:/Users/eugen/AppData/Local/Temp/docflowhq-v1-20260915/qualification-ctx-fc206cf7e4a8/dsh-fixture/docflow-package/skills/bootstrap/templates/workspace-receipt.json\\\"}\"\n        },\n        {\n          \"at\": \"2026-09-15T03:15:56Z\",\n          \"action\": \"read\",\n          \"summary\": \"Native read: {\\\"file_path\\\": \\\"C:/Users/eugen/AppData/Local/Temp/docflowhq-v1-20260915/qualification-ctx-fc206cf7e4a8/dsh-fixture/repos/manual-member/README.md\\\"}\"\n        },\n        {\n          \"at\": \"2026-09-15T03:15:56Z\",\n          \"action\": \"read\",\n          \"summary\": \"Native read: {\\\"file_path\\\": \\\"C:/Users/eugen/AppData/Local/Temp/docflowhq-v1-20260915/qualification-ctx-fc206cf7e4a8/dsh-fixture/repos/manual-member/OWNER.md\\\"}\"\n        },\n        {\n          \"at\": \"2026-09-15T03:15:56Z\",\n          \"action\": \"read\",\n          \"summary\": \"Native read: {\\\"file_path\\\": \\\"C:/Users/eugen/AppData/Local/Temp/docflowhq-v1-20260915/qualification-ctx-fc206cf7e4a8/dsh-fixture/repos/manual-member/TASK.md\\\"}\"\n        },\n        {\n          \"at\": \"2026-09-15T03:15:56Z\",\n          \"action\": \"read\",\n          \"summary\": \"Native read: {\\\"file_path\\\": \\\"C:/Users/eugen/AppData/Local/Temp/docflowhq-v1-20260915/qualification-ctx-fc206cf7e4a8/dsh-fixture/repos/manual-member/check.mjs\\\"}\"\n        },\n        {\n          \"at\": \"2026-09-15T03:19:49Z\",\n          \"action\": \"read\",\n          \"summary\": \"Native pwsh: {\\\"command\\\": \\\"Get-Date -AsUTC | ForEach-Object { $_.ToString('yyyy-MM-ddTHH:mm:ssZ') }\\\", \\\"description\\\": \\\"Get current UTC time\\\"}\"\n        },\n        {\n          \"at\": \"2026-09-15T03:19:50Z\",\n          \"action\": \"read\",\n          \"summary\": \"Native pwsh: {\\\"command\\\": \\\"git -C \\\\\\\"C:\\\\\\\\Users\\\\\\\\eugen\\\\\\\\AppData\\\\\\\\Local\\\\\\\\Temp\\\\\\\\docflowhq-v1-20260915\\\\\\\\qualification-ctx-fc206cf7e4a8\\\\\\\\dsh-fixture\\\\\\\\repos\\\\\\\\manual-member\\\\\\\" rev-parse HEAD\\\", \\\"description\\\": \\\"Get native Git HEAD of manual-member\\\"}\"\n        },\n        {\n          \"at\": \"2026-09-15T03:20:42Z\",\n          \"action\": \"read\",\n          \"summary\": \"Native pwsh: {\\\"command\\\": \\\"Get-ChildItem env: | Where-Object { $_.Name -like 'GIT*' } | ForEach-Object { \\\\\\\"$($_.Name) = $($_.Value)\\\\\\\" }\\\", \\\"description\\\": \\\"List GIT environment variables\\\"}\"\n        },\n        {\n          \"at\": \"2026-09-15T03:20:43Z\",\n          \"action\": \"read\",\n          \"summary\": \"Native pwsh: {\\\"command\\\": \\\"git --version\\\", \\\"description\\\": \\\"Check git version\\\"}\"\n        },\n        {\n          \"at\": \"2026-09-15T03:22:16Z\",\n          \"action\": \"read\",\n          \"summary\": \"Native pwsh: {\\\"command\\\": \\\"Remove-Item env:GIT_CONFIG_COUNT -ErrorAction SilentlyContinue; Remove-Item env:GIT_CONFIG_VALUE_0 -ErrorAction SilentlyContinue; Remove-Item env:GIT_CONFIG_VALUE_1 -ErrorAction SilentlyContinue; git -C \\\\\\\"C:\\\\\\\\Users\\\\\\\\eugen\\\\\\\\AppData\\\\\\\\Local\\\\\\\\Temp\\\\\\\\docflowhq-v1-20260915\\\\\\\\qualification-ctx-fc206cf7e4a8\\\\\\\\dsh-fixture\\\\\\\\repos\\\\\\\\manual-member\\\\\\\" rev-parse HEAD\\\", \\\"description\\\": \\\"Get native Git HEAD after clearing broken config vars\\\"}\"\n        },\n        {\n          \"at\": \"2026-09-15T03:25:06Z\",\n          \"action\": \"test\",\n          \"summary\": \"Native pwsh: {\\\"command\\\": \\\"$ErrorActionPreference = 'Continue'; $stderrFile = Join-Path $env:TEMP 'dsh_check_stderr.txt'; Remove-Item $stderrFile -ErrorAction SilentlyContinue; $stdout = & node check.mjs 2> $stderrFile; $exit = $LASTEXITCODE; $stderr = ''; if (Test-Path $stderrFile) { $stderr = Get-Content $stderrFile -Raw }; Write-Output \\\\\\\"EXIT_CODE=$exit\\\\\\\"; Write-Output \\\\\\\"STDOUT_BEGIN\\\\\\\"; Write-Output $stdout; Write-Output \\\\\\\"STDOUT_END\\\\\\\"; Write-Output \\\\\\\"STDERR_BEGIN\\\\\\\"; Write-Output $stderr; Write-Output \\\\\\\"STDERR_END\\\\\\\"\\\", \\\"description\\\": \\\"Run node check.mjs and capture exit/stdout/stderr\\\", \\\"workdir\\\": \\\"C:\\\\\\\\Users\\\\\\\\eugen\\\\\\\\AppData\\\\\\\\Local\\\\\\\\Temp\\\\\\\\docflowhq-v1-20260915\\\\\\\\qualification-ctx-fc206cf7e4a8\\\\\\\\dsh-fixture\\\\\\\\repos\\\\\\\\manual-member\\\"}\"\n        },\n        {\n          \"at\": \"2026-09-15T03:25:41Z\",\n          \"action\": \"read\",\n          \"summary\": \"Native pwsh: {\\\"command\\\": \\\"Get-Date -AsUTC | ForEach-Object { $_.ToString('yyyy-MM-ddTHH:mm:ssZ') }\\\", \\\"description\\\": \\\"Capture current UTC time for receipt\\\"}\"\n        },\n        {\n          \"at\": \"2026-09-15T03:29:41Z\",\n          \"action\": \"read\",\n          \"summary\": \"Native pwsh: {\\\"command\\\": \\\"Remove-Item env:GIT_CONFIG_COUNT -ErrorAction SilentlyContinue; Remove-Item env:GIT_CONFIG_VALUE_0 -ErrorAction SilentlyContinue; Remove-Item env:GIT_CONFIG_VALUE_1 -ErrorAction SilentlyContinue; $head = git -C \\\\\\\"C:\\\\\\\\Users\\\\\\\\eugen\\\\\\\\AppData\\\\\\\\Local\\\\\\\\Temp\\\\\\\\docflowhq-v1-20260915\\\\\\\\qualification-ctx-fc206cf7e4a8\\\\\\\\dsh-fixture\\\\\\\\repos\\\\\\\\manual-member\\\\\\\" rev-parse HEAD; $ts = (Get-Date -AsUTC).ToString('yyyy-MM-ddTHH:mm:ssZ'); Write-Output \\\\\\\"HEAD=$head\\\\\\\"; Write-Output \\\\\\\"OBSERVED_AT=$ts\\\\\\\"\\\", \\\"description\\\": \\\"Clean timestamped capture of native Git HEAD\\\"}\"\n        },\n        {\n          \"at\": \"2026-09-15T03:37:54Z\",\n          \"action\": \"read\",\n          \"summary\": \"Native pwsh: {\\\"command\\\": \\\"$root = \\\\\\\"C:\\\\\\\\Users\\\\\\\\eugen\\\\\\\\AppData\\\\\\\\Local\\\\\\\\Temp\\\\\\\\docflowhq-v1-20260915\\\\\\\\qualification-ctx-fc206cf7e4a8\\\\\\\\dsh-fixture\\\\\\\"; $ret = Join-Path $root 'returns'; Write-Output \\\\\\\"returns_dir_exists=$(Test-Path $ret)\\\\\\\"; if (Test-Path $ret) { Get-ChildItem $ret | ForEach-Object { Write-Output \\\\\\\"entry: $($_.Name) (dir=$($_.PSIsContainer))\\\\\\\" } }; $rj = Join-Path $ret 'receipt.json'; Write-Output \\\\\\\"receipt_json_exists=$(Test-Path $rj)\\\\\\\"\\\", \\\"description\\\": \\\"Check returns directory and existing receipt.json\\\"}\"\n        },\n        {\n          \"at\": \"2026-09-15T03:38:21Z\",\n          \"action\": \"report\",\n          \"summary\": \"Native pwsh: {\\\"command\\\": \\\"$root = \\\\\\\"C:\\\\\\\\Users\\\\\\\\eugen\\\\\\\\AppData\\\\\\\\Local\\\\\\\\Temp\\\\\\\\docflowhq-v1-20260915\\\\\\\\qualification-ctx-fc206cf7e4a8\\\\\\\\dsh-fixture\\\\\\\"; $ret = Join-Path $root 'returns'; New-Item -ItemType Directory -Path $ret -Force | Out-Null; Write-Output \\\\\\\"created=$(Test-Path $ret)\\\\\\\"\\\", \\\"description\\\": \\\"Create returns directory\\\"}\"\n        }\n      ],\n      \"receipt\": {\n        \"returned_at\": \"2026-09-15T03:42:02Z\",\n        \"head_revision\": \"1e3f2e69de22febe5cfc740b7a27697a47f6ce0a\",\n        \"checks\": [\n          {\n            \"name\": \"native-check\",\n            \"command\": \"node check.mjs\",\n            \"outcome\": \"passed\",\n            \"exit_code\": 0,\n            \"output\": \"qualification-dsh-check: OK\\n\",\n            \"evidence\": [\n              {\n                \"repository\": \"docflow-hq/dsh-member\",\n                \"path\": \"TASK.md\",\n                \"revision\": \"1e3f2e69de22febe5cfc740b7a27697a47f6ce0a\",\n                \"observed_at\": \"2026-09-15T03:42:02Z\",\n                \"outcome\": \"passed\",\n                \"summary\": \"Actual Orca coordinator inspected immutable native tool call/result: node check.mjs from the bound member returned exit 0 and expected output without stderr. Independently current member HEAD/status and all preexisting fixture/member/product file hashes match. This is native check evidence, not an executor external receipt or full guide completion.\"\n              }\n            ]\n          }\n        ],\n        \"evidence\": [\n          {\n            \"repository\": \"docflow-hq/dsh-member\",\n            \"path\": \"TASK.md\",\n            \"revision\": \"1e3f2e69de22febe5cfc740b7a27697a47f6ce0a\",\n            \"observed_at\": \"2026-09-15T03:42:02Z\",\n            \"outcome\": \"passed\",\n            \"summary\": \"Actual Orca coordinator inspected immutable native tool call/result: node check.mjs from the bound member returned exit 0 and expected output without stderr. Independently current member HEAD/status and all preexisting fixture/member/product file hashes match. This is native check evidence, not an executor external receipt or full guide completion.\"\n          }\n        ],\n        \"blockers\": [\n          {\n            \"reason\": \"Executor external receipt and full required guide steps not completed before positive cap stop.\",\n            \"owner\": \"qualification-controller\",\n            \"next_action\": \"Preserve incomplete qualification and obtain coordinator direction; no automatic retry.\"\n          }\n        ],\n        \"next_action\": \"Report the passed native check separately from missing external receipt; no delivery completion claimed.\",\n        \"used_assets\": []\n      },\n      \"reconciliation\": {\n        \"by\": \"orca:term_511cf659-7a81-4072-8143-44a0f23d8f93\",\n        \"at\": \"2026-09-15T03:42:02Z\",\n        \"evidence\": [\n          {\n            \"repository\": \"docflow-hq/dsh-member\",\n            \"path\": \"TASK.md\",\n            \"revision\": \"1e3f2e69de22febe5cfc740b7a27697a47f6ce0a\",\n            \"observed_at\": \"2026-09-15T03:42:02Z\",\n            \"outcome\": \"passed\",\n            \"summary\": \"Actual Orca coordinator inspected immutable native tool call/result: node check.mjs from the bound member returned exit 0 and expected output without stderr. Independently current member HEAD/status and all preexisting fixture/member/product file hashes match. This is native check evidence, not an executor external receipt or full guide completion.\"\n          }\n        ]\n      },\n      \"predecessors\": [\n        {\n          \"home\": \"docflow-hq/dsh-guide\",\n          \"id\": \"e8d87955-8799-41b8-9308-f9affe9553f2\",\n          \"path\": \".docflow_workspace/runs/dsh-guide-recovery--e8d879558799.md\"\n        }\n      ],\n      \"successors\": [\n        {\n          \"home\": \"docflow-hq/dsh-guide\",\n          \"id\": \"b663feaf-7c70-426f-9101-bece9cf52485\",\n          \"path\": \".docflow_workspace/runs/dsh-guide-helper-assisted--b663feaf7c70.md\"\n        }\n      ],\n      \"path\": \".docflow_workspace/runs/dsh-guide-supplied-paths--806dd9c67ab9.md\"\n    }\n  ],\n  \"overview\": [\n    {\n      \"home\": \"docflow-hq/dsh-guide\",\n      \"id\": \"d481c148-6595-45c3-a553-bce71e695407\",\n      \"path\": \".docflow_workspace/work/dsh-guide-readout--d481c1486595.md\",\n      \"state\": \"active\",\n      \"owner\": \"qualification-controller\",\n      \"next_action\": \"Continue independent qualification. DSH full guide is incomplete/blocked; all attempts and failures retained, no active execution authority.\",\n      \"deliveries\": [\n        {\n          \"id\": \"manual-member\",\n          \"native_state\": \"unknown\",\n          \"complete\": false,\n          \"observed_at\": null\n        }\n      ]\n    }\n  ]\n}\n",
+    "stderr": ""
+  },
+  "rejection_file": "dsh-helper-launch-rejection.json"
+}

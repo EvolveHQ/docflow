@@ -1,0 +1,6 @@
+{
+  "observed_at": "2026-09-15T02:14:57.8522057+00:00",
+  "pid": 58540,
+  "outcome": "Process exited before the controller limit",
+  "controller_limit_seconds": 1800
+}

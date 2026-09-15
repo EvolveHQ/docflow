@@ -1,0 +1,15 @@
+{
+  "submitted_at": "2026-09-15T03:09:15.864016+00:00",
+  "cap_seconds": 1800,
+  "prior_native_session_files": [
+    "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\dsh-test-home\\sessions\\--C-Users-eugen-AppData-Local-Temp-docflowhq-v1-20260915-qualification-ctx-fc206cf7e4a8-dsh-fixture--\\session-21c93ad6-0ef3-499e-8e00-9db31acd29ea\\session.jsonl.zstd",
+    "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\dsh-test-home\\sessions\\--C-Users-eugen-AppData-Local-Temp-docflowhq-v1-20260915-qualification-ctx-fc206cf7e4a8-dsh-fixture--\\session-b6a3c2b8-84df-476e-8463-82736943089a\\session.jsonl.zstd"
+  ],
+  "fresh_native_composer": true,
+  "guide_mode": "supplied exact paths; not independent discovery",
+  "run_id": "806dd9c6-7ab9-47d1-b05c-4f8bbd4d5ec4",
+  "grant_revision": 2,
+  "native_model_button": "Local Qwen 3.8 27B Coding, reasoning effort High",
+  "native_permissions": "Workspace Write",
+  "url": "http://127.0.0.1:51775"
+}

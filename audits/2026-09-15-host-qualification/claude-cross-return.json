@@ -1,0 +1,114 @@
+{
+  "schema": 1,
+  "kind": "external-receipt",
+  "work": {
+    "home": "docflow-hq/cross-a",
+    "id": "79855fb0-df41-4be2-9742-fdae14a21ad7",
+    "path": ".docflow_workspace/work/shared-native-readout--79855fb0df41.md"
+  },
+  "delivery": "shared",
+  "scope_revision": 1,
+  "grant": {
+    "work": {
+      "home": "docflow-hq/cross-a",
+      "id": "79855fb0-df41-4be2-9742-fdae14a21ad7",
+      "path": ".docflow_workspace/work/shared-native-readout--79855fb0df41.md"
+    },
+    "id": "shared-readout",
+    "revision": 1,
+    "state_observed": "active",
+    "actor_matches": true,
+    "valid_from": "2026-09-15T03:18:23Z",
+    "expires_at": "2026-09-15T04:18:23Z",
+    "condition_unmet": "Current native ownership required; no canonical/member mutations or delegates."
+  },
+  "actor": "agent:claude-cross",
+  "host": "claude-code",
+  "model": "claude-opus-5[1m]",
+  "note": "No brief or run record exists for agent:claude-cross; none was created (canonical writes not authorised). This is a blocked readiness receipt, not an assignment result.",
+  "source_revisions": {
+    "docflow-hq/cross-a": "292b61f62ea53f8cb70fc1f9446659812ebeaba1",
+    "docflow-hq/cross-b": "eac6b3da9ee47bab4f7657fd91fa424803296bce",
+    "docflow-hq/cross-member": "bcf7b6ba33f4ea8bbb7067d9ab745bce498207e8"
+  },
+  "source_head_revision": "bcf7b6ba33f4ea8bbb7067d9ab745bce498207e8",
+  "worktrees_clean": {
+    "docflow-hq/cross-a": true,
+    "docflow-hq/cross-b": true,
+    "docflow-hq/cross-member": true
+  },
+  "returned_at": "2026-09-15T03:19:33Z",
+  "actions": [
+    {
+      "at": "2026-09-15T03:19:09Z",
+      "name": "read",
+      "summary": "Read cross-a AGENTS.md, QUALIFICATION-MANDATE.md, README.md, workspace.yaml, CONVENTIONS.md, INDEX.md, work record; cross-member README.md, OWNER.md, TASK.md, check.mjs (content only); cross-b entry points, work and prior run records."
+    },
+    {
+      "at": "2026-09-15T03:19:24Z",
+      "name": "validate",
+      "command": "node /opt/docflow-source/plugins/docflow/workspace/validate.mjs /workspace/cross-a --at 2026-09-15T03:19:24Z",
+      "exit_code": 1,
+      "output": "valid: false; diagnostics: [{\"code\":\"claim\",\"path\":\".docflow_workspace/runs/prior-unknown-assignment--b4f7e97d5765.md\",\"message\":\"dispatch lacks current shared native ownership/serial confirmation\"}]"
+    },
+    {
+      "at": "2026-09-15T03:19:24Z",
+      "name": "validate",
+      "command": "node /opt/docflow-source/plugins/docflow/workspace/validate.mjs /workspace/cross-b --at 2026-09-15T03:19:24Z",
+      "exit_code": 1,
+      "output": "valid: false; diagnostics: [{\"code\":\"claim\",\"path\":\".docflow_workspace/runs/prior-unknown-assignment--b4f7e97d5765.md\",\"message\":\"dispatch lacks current shared native ownership/serial confirmation\"}]"
+    }
+  ],
+  "checks": [
+    {
+      "name": "native-check",
+      "command": "node check.mjs",
+      "cwd": "/workspace/cross-member",
+      "outcome": "skipped",
+      "exit_code": null,
+      "output": "Not executed. Blocked before the dependent action: native ownership of CHECK-1 is held by agent:prior-owner with unknown state and no release/exit evidence.",
+      "evidence": []
+    }
+  ],
+  "evidence": [
+    {
+      "repository": "docflow-hq/cross-member",
+      "path": "OWNER.md",
+      "revision": "bcf7b6ba33f4ea8bbb7067d9ab745bce498207e8",
+      "observed_at": "2026-09-15T03:19:09Z",
+      "outcome": "unknown",
+      "summary": "Sole native ownership source states agent:prior-owner holds CHECK-1; contact lost, process state unknown, no positive exit, release or reassignment permission (declared synthetic fixture input)."
+    },
+    {
+      "repository": "docflow-hq/cross-b",
+      "path": ".docflow_workspace/runs/prior-unknown-assignment--b4f7e97d5765.md",
+      "revision": "eac6b3da9ee47bab4f7657fd91fa424803296bce",
+      "observed_at": "2026-09-15T03:19:09Z",
+      "outcome": "unknown",
+      "summary": "Linked workspace run on the same native task in state unknown, receipt null, reconciliation null; overlapping attempt on docflow-hq/cross-member (synthetic imported history)."
+    }
+  ],
+  "blockers": [
+    {
+      "reason": "Grant condition unmet: no current native ownership or owner-confirmed-serial evidence for agent:claude-cross; OWNER.md records agent:prior-owner holding CHECK-1 with unknown state, and cross-b run b4f7e97d is unreconciled. Validator exit 1 in both workspaces.",
+      "owner": "agent:prior-owner / qualification-controller",
+      "next_action": "Obtain source-bound native exit/release evidence for agent:prior-owner at OWNER.md (a new cross-member revision), reconcile cross-b run b4f7e97d to a terminal receipt under canonical-write authority, then recheck grant shared-readout rev 1 (expires 2026-09-15T04:18:23Z) or a successor before running node check.mjs."
+    }
+  ],
+  "status_changes": "None. Prior owner status, cross-b run, work states and delivery observations unchanged; parent not marked done.",
+  "next_action": "Coordinator to obtain native ownership release/exit evidence from agent:prior-owner via its native owner, then re-dispatch; parent completion remains independent.",
+  "selected_assets": [
+    "/opt/docflow-source/plugins/docflow/skills/workspace-coordinate/SKILL.md",
+    "/opt/docflow-source/plugins/docflow/workspace/CONTRACT.md",
+    "/opt/docflow-source/plugins/docflow/workspace/guides/claude-code.md",
+    "/opt/docflow-source/plugins/docflow/workspace/validate.mjs"
+  ],
+  "used_assets": [
+    "/opt/docflow-source/plugins/docflow/workspace/validate.mjs (Node v22.23.2)"
+  ],
+  "closing_report": {
+    "this_run": "Read entry points, mandate, work/grant and native instructions in cross-a, cross-b and cross-member. Validated both workspaces at 2026-09-15T03:19:24Z: exit 1, diagnostic 'claim: dispatch lacks current shared native ownership/serial confirmation'. node check.mjs was NOT run (skipped, exit null). Wrote this external receipt only.",
+    "overall": "blocked",
+    "yet_to_do": "Native ownership release/exit evidence for agent:prior-owner on CHECK-1; reconciliation of cross-b run b4f7e97d; recheck of current grant before expiry 2026-09-15T04:18:23Z (or fresh authority); then run node check.mjs and return source-bound evidence; coordinator reconciliation of this receipt into cross-a under canonical-write authority."
+  }
+}

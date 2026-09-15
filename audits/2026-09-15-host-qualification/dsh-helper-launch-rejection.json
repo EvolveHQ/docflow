@@ -1,0 +1,40 @@
+{
+  "observed_at": "2026-09-15T03:58:40.828625+00:00",
+  "stage": "blocked-before-launch",
+  "native_run": {
+    "home": "docflow-hq/dsh-guide",
+    "id": "b663feaf-7c70-426f-9101-bece9cf52485",
+    "path": ".docflow_workspace/runs/dsh-guide-helper-assisted--b663feaf7c70.md"
+  },
+  "grant_revision": 3,
+  "native_model_started": false,
+  "native_runtime_started": false,
+  "executor_receipt": null,
+  "runtime_process_stop": null,
+  "tool": "functions.exec -> tools.exec_command",
+  "shell": "PowerShell 7 -Command",
+  "error_category": "CreateProcess Rejected",
+  "review_reason": "rejected: blocked by policy",
+  "more_specific_review_reason_or_code": null,
+  "denied_action_shape": [
+    "Python heredoc: assert new helper home absent, copy exactly six named isolated profile files, write only a config hash receipt.",
+    "PowerShell child shell: set dedicated DSH_HOME, clear GIT_CONFIG_COUNT/KEY_n/VALUE_n entries, then set GIT_CONFIG_COUNT=0.",
+    "Run git -C <fixture>/repos/manual-member rev-parse HEAD and compare the already prepared native revision.",
+    "Start-Process the installed DSH Node launcher with --profile web --no-open --host 127.0.0.1 --port 0, -WindowStyle Hidden and scratch stdout/stderr paths.",
+    "Record PID/start_ticks only if the process starts."
+  ],
+  "profile_filenames": [
+    "settings.yaml",
+    ".credentials.yaml",
+    "profiles/web/package.json",
+    "profiles/web/cordis.yml",
+    "profiles/web/cordis.patch.yml",
+    "profiles/web/pnpm-workspace.yaml"
+  ],
+  "absent_after_rejection": {
+    "dsh-helper-home": true,
+    "dsh-helper-server.json": true
+  },
+  "controller_instruction": "msg_032708ad0972: do not retry, split, delegate or restructure; pause dependent operations pending boundary assessment.",
+  "classification": "Outer qualification-tool policy rejection before any native DSH launch; not a native DSH permission regression pass or a model execution result."
+}

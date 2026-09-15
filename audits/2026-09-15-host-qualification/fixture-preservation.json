@@ -1,0 +1,63 @@
+{
+  "observed_at": "2026-09-15T03:32:12.509916+00:00",
+  "kind": "private bounded fixture/Git preservation only; no credential homes or raw model reasoning",
+  "archives": [
+    {
+      "host": "claude",
+      "container": "docflow-hq-fc206-claude",
+      "roots": [
+        "setup",
+        "w4",
+        "cross-a",
+        "cross-b",
+        "cross-member"
+      ],
+      "private_path": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\claude-canonical-fixtures.tar",
+      "bytes": 747520,
+      "sha256": "feaa244e0346c0d1056b31e13ec7e2ff03a4ef6120a44aa9d39aa142f713d296",
+      "includes_native_git": true,
+      "exclusions": []
+    },
+    {
+      "host": "codex",
+      "container": "docflow-hq-fc206-codex",
+      "roots": [
+        "setup",
+        "bootstrap",
+        "orient"
+      ],
+      "private_path": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\codex-canonical-fixtures.tar",
+      "bytes": 614400,
+      "sha256": "7fc2b54443f6c9aba82df9a63b9a56aee7e0df16d08680110746bee473bf8646",
+      "includes_native_git": true,
+      "exclusions": []
+    },
+    {
+      "host": "opencode",
+      "container": "docflow-hq-fc206-opencode",
+      "roots": [
+        "setup",
+        "bootstrap",
+        "denial"
+      ],
+      "private_path": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\opencode-canonical-fixtures.tar",
+      "bytes": 58286080,
+      "sha256": "d6c7ff5633a7666ec74536cf4737a74f65541a48ad8561584c9b8596a065fe5d",
+      "includes_native_git": true,
+      "exclusions": []
+    },
+    {
+      "host": "DeepSeek Harness",
+      "roots": [
+        "dsh-fixture"
+      ],
+      "private_path": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\dsh-canonical-fixture.tar",
+      "bytes": 2304000,
+      "sha256": "f8645bb4f01f70816edc0969c66efe0d0c20bd26bfef268909da3e2db5bbb9e4",
+      "includes_native_git": true,
+      "exclusions": [],
+      "observed_at": "2026-09-15T03:45:46.084117+00:00",
+      "stage": "after positive stop and controller reconciliation"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "host": "opencode",
+  "container": "docflow-hq-fc206-opencode",
+  "fixture": "/workspace/bootstrap",
+  "host_exit": 0,
+  "seconds": 97.2,
+  "model_requested": null,
+  "provider_requested": null,
+  "claude_delegation_opt_in": null,
+  "permission_context": "--auto approves permissions not explicitly denied",
+  "behavioural_verdict": "unverified: run independent assertions",
+  "codex_session_storage": null,
+  "thinking_requested": null,
+  "pi_thinking_selection": null
+}

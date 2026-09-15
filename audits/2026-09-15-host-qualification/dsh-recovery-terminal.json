@@ -1,0 +1,10 @@
+{
+  "started_at": "2026-09-15T02:36:26.157783+00:00",
+  "cap_seconds": 900,
+  "session_id": "b6a3c2b8-84df-476e-8463-82736943089a",
+  "outcome": "900-second cap reached; dedicated server tree stopped if exact listener still present",
+  "stop_exit": 0,
+  "stop_stdout": "SUCCESS: The process with PID 91052 (child process of PID 105388) has been terminated.\n",
+  "stop_stderr": "",
+  "observed_at": "2026-09-15T02:51:34.217566+00:00"
+}

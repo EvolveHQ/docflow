@@ -1,0 +1,45 @@
+Use installed workspace-plan for actual canonical planning in /workspace/w4. All choices are supplied. Read QUALIFICATION-MANDATE.md and current native instructions/OWNER.md and work paths. Author one selected idea, one accepted agreement under the recorded delegated test mandate (no human signature), and one planned workspace work item titled Bounded cross-method readout. Owner is qualification-controller; priority high; scope read/test/report only; exclusions no member edits, installation, commit, publication, delegation or Clarity write. Two required deliveries are docflow-member and manual-member; native paths/revisions are below. Reference-member supplies evidence only. Completion criterion is both native checks returned and independently reconciled, preserving agreement accepted; a single delivery cannot close the work.
+Create no run and execute no member check yet. Deliberately leave execution grants empty to test selected/agreed/planned without authority. Record blocker: execution awaits scoped grant and reconciled native claim; imported stopped Docflow owner/branch must be reported, not overwritten. No optional role/profile/tool/source/retrieval: add nothing. Keep changes only in canonical workspace files and derived INDEX; do not commit or change member files. Validate at actual UTC and return exact full record identities/paths, commands, exits and next action. Reuse supplied choices without questions. This task is real canonical planning, not simulated host output.
+{
+  "created_at": "2026-09-15T01:39:21Z",
+  "expires_at": "2026-09-15T07:39:21Z",
+  "workspace": "/workspace/w4",
+  "workspace_revision": "7474eeb7d5c6c74652082480b55c1017bdb61558",
+  "members": [
+    {
+      "id": "docflow-hq/docflow-member",
+      "aliases": [],
+      "path": "repos/docflow-member",
+      "role": "delivery",
+      "instructions": [
+        "AGENTS.md"
+      ],
+      "revision": "6364b79c74c3b0e4101daebfe556a3525acb0090",
+      "native_work": "plan/todo/0001-example.md"
+    },
+    {
+      "id": "docflow-hq/manual-member",
+      "aliases": [],
+      "path": "repos/manual-member",
+      "role": "delivery",
+      "instructions": [
+        "README.md"
+      ],
+      "revision": "226a6f2cec3d85c4c88f9bc5247c06dca068ad9e",
+      "native_work": "issues/PROBE-1.md"
+    },
+    {
+      "id": "docflow-hq/reference-member",
+      "aliases": [],
+      "path": "repos/reference-member",
+      "role": "reference",
+      "instructions": [
+        "README.md"
+      ],
+      "revision": "64e110e3829a6c42bb41b1b4233805a7bfbe18cc",
+      "native_work": "reference.md"
+    }
+  ],
+  "fixture_origin": "Native Claude setup plus pinned source-rendered Docflow stopped member and actual new manual/reference member Git histories; imported stopped-owner labels are synthetic history and must not confer live authority.",
+  "signing": "Disposable fixture commits unsigned by explicit local fixture config; task evidence commits remain signed."
+}

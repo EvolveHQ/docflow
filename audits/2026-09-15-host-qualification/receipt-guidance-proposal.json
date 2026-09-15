@@ -1,0 +1,32 @@
+{
+  "prepared_at": "2026-09-15T04:41:48.766626+00:00",
+  "status": "PROPOSED ONLY; not applied to pinned product",
+  "source": "f47f4c52313163f1ffe55a97d9c8029602d7c5b4",
+  "paths": {
+    "plugins/docflow/skills/workspace-coordinate/SKILL.md": {
+      "before_sha256": "a0628eaf1ae5e2b2a7f5f172511f70a529c82ddd7476f313420dc98306bd2a8a",
+      "proposed_sha256": "ac21c3002dced377cef03ac546aa1d6415cf8af7aa54e2c3f73e54535c0685a7"
+    },
+    "plugins/docflow/workspace/README.md": {
+      "before_sha256": "049f63a9edb57a4d43dec096a9e3cdd4408337a6e08a1a7ecc2e532bfd93cf41",
+      "proposed_sha256": "dcc8adb809667d3d2de4be7f324aae0a4c82094473ed89eec378cd02ed37c95a"
+    },
+    "plugins/docflow/workspace/guides/claude-code.md": {
+      "before_sha256": "e0c80985cd9e5a0291368ff8e80018ee06d48812eaeafe5e92a12dca0de143f0",
+      "proposed_sha256": "c8dca7843c8563ad93024492ca85c7383f2a96cfb61b43eb224096985c695e73"
+    }
+  },
+  "patch_sha256": "6065603d4faaf77516a8d992d8246c2183c5f3dfd63d29a1120ceea6598fa9f2",
+  "scope": "Three prose files; existing canonical schema, validator, templates, version and Clarity consumer bytes unchanged. README describes the existing receipt form and exported shape API.",
+  "required_before_application": "Controller inspects concrete patch, bounded native item recorded, explicit source-freeze reset for these product bytes; current Cowork and evidence worker remain on f47.",
+  "fresh_native_exit_criteria": [
+    "New external readonly executor gets actual current grant/claim and bound run plus revised installed guidance; source package hashed before execution.",
+    "Executor returns a structurally valid receipt with real native file paths and clock-backed check/return observations; original files/workspace remain unchanged.",
+    "Independent reviewer checks native init identity, tools, UTC observations, exact source revision, command output/exit and standalone shape output; no amended stand-in accepted.",
+    "Separate pre-dispatch unavailable-resource or authority case returns readiness report and creates no attempt/receipt in canonical records.",
+    "Preserve all f47 failures and qualify changed guidance explicitly; no inferred regression pass from unchanged schema alone."
+  ],
+  "persisted_patch_format": "zero-context unified diff; inspect/apply with --unidiff-zero",
+  "persisted_patch_sha256": "c189d22681155fd2db1fb7494b56137758e349efb8b157ea3a6bd817dc53b8fb",
+  "original_context_patch_preserved_at": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\receipt-guidance-proposal.patch"
+}

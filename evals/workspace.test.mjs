@@ -194,6 +194,28 @@ test('all five record and supporting templates match distributed schema definiti
   for (const [file, def] of [['registry.yaml', 'registry'], ['sources.yaml', 'sources'], ['grant.json', 'grant'], ['brief.json', 'brief'], ['receipt.json', 'receipt'], ['recommendation.json', 'recommendation']]) assert.deepEqual(checkShape(parseMetadata(readFileSync(join(templates, `workspace-${file}`), 'utf8')), def), []);
 });
 
+test('documented read-only receipt shape command runs as written with positional paths', () => scratch((root, parent) => {
+  const readme = readFileSync(join(assets, 'README.md'), 'utf8');
+  const match = readme.match(/```text\r?\nnode --input-type=module -e "([^"]+)" "<installed-workspace-assets>" "<external-return\.json>"\r?\n```/);
+  assert.ok(match, 'documented shape command not found in workspace README');
+  const receipt = parseMetadata(readFileSync(join(repo, 'plugins/docflow/skills/bootstrap/templates/workspace-receipt.json'), 'utf8'));
+  const run = (name, envelope) => {
+    const file = join(parent, name);
+    writeFileSync(file, JSON.stringify(envelope));
+    const before = readFileSync(file);
+    const command = spawnSync(process.execPath, ['--input-type=module', '-e', match[1], assets, file], { encoding: 'utf8', cwd: parent });
+    assert.deepEqual(readFileSync(file), before);
+    return { status: command.status, stderr: command.stderr, output: command.stdout && JSON.parse(command.stdout) };
+  };
+  const accepted = run('valid-return.json', { receipt, context: {} });
+  assert.equal(accepted.status, 0, accepted.stderr);
+  assert.deepEqual(accepted.output, { valid: true, errors: [] });
+  const refused = run('invalid-return.json', { receipt: { returned_at: 'not-a-time' }, context: {} });
+  assert.equal(refused.status, 1, refused.stderr);
+  assert.equal(refused.output.valid, false);
+  assert.ok(refused.output.errors.includes('receipt.checks: missing field'), JSON.stringify(refused.output.errors));
+}, false));
+
 test('every historical action requires an unexpired native claim', () => scratch(root => {
   edit(root, 'api-reassigned', d => { d.brief.claim.expires_at = '2026-09-15T10:05:01Z'; });
   rejects(root, 'claim');

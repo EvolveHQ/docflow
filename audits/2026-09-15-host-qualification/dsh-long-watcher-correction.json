@@ -1,0 +1,7 @@
+{
+  "observed_at": "2026-09-15T03:24:17.344411+00:00",
+  "finding": "The fresh blank native session file existed before prompt submission and was included in prior files. Original watcher only recognised newly created files, so it would miss an early turn/end.",
+  "native_session": "21c93ad6-0ef3-499e-8e00-9db31acd29ea",
+  "native_turn_start_ms": 1789441755895,
+  "correction": "Bind the existing fresh session by actual native turn/start after submitted_at; replace only the watcher process, retaining original 1800-second deadline and exact DSH server identity. No host/model retry or fixture mutation."
+}

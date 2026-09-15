@@ -1,0 +1,18 @@
+[
+  {
+    "observed_at": "2026-09-15T04:42:26.458230+00:00",
+    "private_archive": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\claude-resource-fixtures.tar",
+    "sha256": "2bf05f460979237faba2eb352d5c10c78a3187874d26232c13a53eaf71edde02",
+    "bytes": 440320,
+    "kind": "Dedicated source/record/native Git fixture preservation, no credential/runtime home",
+    "source": "f47f4c52313163f1ffe55a97d9c8029602d7c5b4"
+  },
+  {
+    "observed_at": "2026-09-15T04:42:26.459233+00:00",
+    "private_archive": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\dsh-post-cancel-fixture.tar",
+    "sha256": "946a7b56bc5f08d63e5c344253c9a3acaa964f0ccab242f4dacbda83a5d1883f",
+    "bytes": 2406400,
+    "kind": "Dedicated source/record/native Git fixture preservation, no credential/runtime home",
+    "source": "f47f4c52313163f1ffe55a97d9c8029602d7c5b4"
+  }
+]
