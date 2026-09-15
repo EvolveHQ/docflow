@@ -1,0 +1,9 @@
+{
+  "prepared_at": "2026-09-15T07:08:01.840814+00:00",
+  "source_revision": "eed722c8398b1e85d14ed57fa6dc53d5f5655bd0",
+  "path": "plugins/docflow/workspace/README.md",
+  "before_sha256": "dcc8adb809667d3d2de4be7f324aae0a4c82094473ed89eec378cd02ed37c95a",
+  "after_sha256": "31b5983319478c90d87b1458b10adcbde3719591e2eaa2db1287199dbd096aec",
+  "patch_sha256": "274b871cb5e7871cc5d2fc321dd49a4254036a24df6ddc21052a36195d43662f",
+  "state": "proposal only; not applied; no new Cowork execution"
+}

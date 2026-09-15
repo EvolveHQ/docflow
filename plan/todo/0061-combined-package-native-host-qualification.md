@@ -4,7 +4,10 @@ Owning decisions: adr/0053-portable-workspace-operating-skills.md and adr/0054-r
 
 ## Status
 
-- **Claimed by:** Codex, sole qualification writer, 2026-09-15, branch `kmox83/docflow-v1-host-qualification`; task `task_856c97a5b36d`, dispatch `ctx_fc206cf7e4a8`.
+- **Claimed by:** Sole qualification writer, 2026-09-15, branch
+  `kmox83/docflow-v1-host-qualification`; task `task_856c97a5b36d`.
+  First dispatch `ctx_fc206cf7e4a8` (Codex) stopped on a usage limit;
+  continuation dispatch `ctx_239ed333d8c6` now holds the claim.
 - **Blockers:** Combined Clarity acceptance awaits the controller-supplied integrated source/artifact; native access limits remain to be established in current dedicated sessions.
 - **Stopped:**
 
@@ -17,7 +20,8 @@ timeout and passing single recovery are separate. OpenCode detached-copy removal
 workspace files and native Git history with current product hashes matching.
 Cowork and remaining
 host assertions are incomplete; versions and pinned product bytes remain
-unchanged. The task PR is live, not shipped.
+unchanged. The PR 11 evidence merged into the review integration as 52887c7;
+remaining completion moves stay on this branch.
 
 W3/D2/D3 and separately scoped D5 integrated candidate, completed source receipts,
 coordinator-approved source freeze and coordinator-selected native test environments.
@@ -26,8 +30,12 @@ Latest checkpoint: the first Cowork task was positively stopped without workspac
 or receipt; its 331 attached files remained unchanged. The supported native
 current-plugin export proved the original nine-skill restore archive exactly.
 After controller approval, supported replacement registered thirteen skills and
-the new native export matched all frozen candidate bytes; a fresh bounded setup
-is running, and restoration remains required. The DeepSeek helper preparation
+the new native export matched all frozen candidate bytes. The fresh session
+created 12 workspace files after its controller stop deadline was missed during
+a usage-limit interruption; native validation failed on the cloud/device path
+boundary. Independent Windows validation passes separately. The original
+32-file nine-skill plugin is restored and export-verified; desktop ownership
+is released, and no new Cowork attempt is authorised. The DeepSeek helper preparation
 was rejected by automatic review before launch, then cancelled with its grant
 closed; no new runtime or executor receipt exists. Native WV08 blocked on a
 shared reservation across distinct members with all canonical/native roots

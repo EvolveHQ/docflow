@@ -169,7 +169,14 @@ snapshot](cowork-native-after-stop.json) establish no completed workspace setup.
 
 The [current installed-candidate task](cowork-current-session.json) is a separate
 native session with verified native thirteen-skill discovery and exact current
-export bytes. Its actual setup and required original restoration are pending.
+export bytes. It created 12 files after the controller stop deadline was missed
+during a usage-limit interruption; both native validator attempts failed at the
+cloud/device filesystem boundary. A separate Windows controller check passes.
+The [original restoration](cowork-restoration-verification.json) is now verified:
+32 exact files, nine skills, enabled state and unrelated inventory preserved,
+with an additional host-generated category label recorded. Desktop is released.
+The [runtime diagnosis](cowork-runtime-diagnosis.md) preserves the native failure
+and the unrun attached-copy route; no new Cowork attempt is authorised.
 
 ## Shared exclusive resource guard
 
@@ -198,9 +205,13 @@ functional successes. Full receipt import and review are still pending.
   `verify: OK (version 0.9.4, 13 skills, 56 ADRs, 67 shipped plan items)`, exit 0,
   and `10 passed, 0 failed, 6 skipped`, exit 0. CI passed on evidence head
   `26a1a7c343a344ef7077d276ecc14a8d1c5964a5`; subsequent evidence needs current-head CI.
-- **Overall:** partially verified. Plans 0061/0062 remain in todo. Draft PR 11
-  is live and has not shipped; the development candidate is not released V1.
-- **Yet to do:** Finish bounded current-package native Cowork setup and verified original restoration, and complete pending native host/guide/scenario assertions;
+- **Overall:** partially verified. Plans 0061/0062/0065/0066 remain in todo.
+  PR 11 merged into the review integration as 52887c7 (verified on
+  `origin/kmox83/docflow-v1-integration`); follow-up evidence ships in a new PR;
+  the development candidate is not released V1.
+- **Yet to do:** Resolve the retained Cowork runtime and missed-bound findings;
+  verify the repaired candidate's fresh external/readiness/two-host receipts,
+  review/import scenario evidence and complete pending native host/guide assertions;
   obtain desktop access and paired Clarity artifact; perform actual combined
   views/handoffs; preserve fixtures, clean up owned runtimes, run final gates
   and current-head CI, obtain review and the operator's real pilot acceptance.

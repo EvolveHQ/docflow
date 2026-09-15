@@ -1,5 +1,5 @@
 {
-  "observed_at": "2026-09-15T04:36:38.114756+00:00",
+  "observed_at": "2026-09-15T07:04:35.487584+00:00",
   "source_revision": "f47f4c52313163f1ffe55a97d9c8029602d7c5b4",
   "plugin_digest_sha256": "1f76befdd23ca9cceccbf2993e8d88448e1ca162f2437d1f10402ed5def7a3f8",
   "native_plan_items": [
@@ -65,14 +65,16 @@
     },
     "Cowork": {
       "thirteen-skill-native-discovery": {
-        "status": "native Customize plugin registry lists all thirteen; current version exported through supported UI exactly matches frozen 331-file candidate; executor internal plugin identity pending current task",
+        "status": "passed native registry and installed skill invocation; executor report binds original plugin ID, actual 13 skills and registered asset root; original archive restored afterward",
         "receipts": [
           "cowork-candidate-native-export.json",
-          "cowork-native-plugin-export.json"
+          "cowork-native-plugin-export.json",
+          "cowork-current-external-result.json",
+          "cowork-restoration-verification.json"
         ]
       },
       "complete-installed-asset-bytes": {
-        "status": "passed supported native current-plugin export, 331 exact frozen files including complete workspace assets; execution-side resolved asset root pending",
+        "status": "passed native candidate 331-file export and executor resolved assets; native validator could not reach device workspace",
         "receipts": [
           "cowork-candidate-native-export.json"
         ]
@@ -94,7 +96,7 @@
         "receipts": []
       },
       "stopped-and-fresh-recovery": {
-        "status": "positive native UI stop of first session and separate fresh installed-candidate task; no full recovery/retention pass",
+        "status": "first session positive stop; fresh candidate finished but controller stop deadline missed during usage interruption, native validation blocked; no full recovery pass",
         "receipts": [
           "cowork-native-session.json",
           "cowork-current-start.json"
@@ -109,12 +111,12 @@
         "receipts": []
       },
       "four-workspace-skills-and-D2-behaviour": {
-        "status": "first attached-file setup positively stopped with no workspace/receipt and unchanged files; fresh installed-candidate native setup currently running under 1800-second bound",
+        "status": "workspace-setup created 12 files after missed stop deadline; native validation blocked with two exit 1 calls; separate Windows controller validation passed; other workspace skills unrun",
         "receipts": [
-          "cowork-native-session.json",
-          "cowork-native-after-stop.json",
-          "cowork-current-start.json",
-          "cowork-current-before.json"
+          "cowork-current-session.json",
+          "cowork-current-external-result.json",
+          "cowork-current-independent-result.json",
+          "cowork-restoration-verification.json"
         ]
       }
     },
@@ -508,5 +510,20 @@
   },
   "two_harness_continuation": "partial demonstrated Claude Code external executor to actual Orca dispatched coordinator; complete guide/Clarity acceptance unrun",
   "operator_pilot": "unrun; operator alone supplies acceptance",
-  "overall": "partially verified; no release acceptance"
+  "overall": "partially verified; no release acceptance",
+  "additional_product_candidate": {
+    "source_revision": "70bae90406a0c4d9ae37f40efcc35ec52f4a9306",
+    "freeze_receipt": "package-runtime-receipt-freeze.json",
+    "native_plan": "0065+0066 combined runtime/receipt guidance candidate",
+    "superseded_guidance_candidate": {
+      "source_revision": "eed722c8398b1e85d14ed57fa6dc53d5f5655bd0",
+      "freeze_receipt": "package-receipt-guidance-freeze.json"
+    },
+    "qualification": "fresh assigned native process finished host exit 0 at 2026-09-15T07:23:08Z (process receipt only; behavioural verdict pending); readiness/return and two-host reconciliation unrun; no acceptance yet"
+  },
+  "native_release_blockers": [
+    "Cowork installed-validator topology remains blocked; 1800-second controller stop bound missed.",
+    "WV13 native private-home recursive search exceeded authorised roots.",
+    "WV18 native restricted-file hashing exceeded paths/catalogue-metadata-only scope and falsely claimed permission."
+  ]
 }
