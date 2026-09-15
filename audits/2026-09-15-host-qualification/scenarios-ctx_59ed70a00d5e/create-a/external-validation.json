@@ -1,0 +1,36 @@
+{
+  "at": "2026-09-15T04:32:14Z",
+  "exit": 0,
+  "result": {
+    "schema": 1,
+    "evaluated_at": "2026-09-15T04:32:14Z",
+    "valid": true,
+    "diagnostics": [],
+    "records": [
+      {
+        "schema": 1,
+        "id": "ba03548a-43ef-49ef-acd8-ea7fdcaa06eb",
+        "home": "scenario/independent-records",
+        "kind": "ideas",
+        "title": "Glossary not discoverable from the contributor welcome page",
+        "owner": "test:scenario-controller",
+        "created_at": "2026-09-15T04:30:58Z",
+        "links": [],
+        "state": "backlog",
+        "history": [
+          {
+            "state": "backlog",
+            "at": "2026-09-15T04:30:58Z",
+            "actor": "test:planner-a",
+            "reason": "Capture reported discoverability problem as a low-priority backlog idea; no affected member repository identified yet"
+          }
+        ],
+        "priority": "low",
+        "problem": "Readers cannot locate the glossary from the contributor welcome page.",
+        "affected_repositories": [],
+        "path": ".docflow_workspace/ideas/glossary-not-discoverable-from-welcome--ba03548a43ef.md"
+      }
+    ],
+    "overview": []
+  }
+}

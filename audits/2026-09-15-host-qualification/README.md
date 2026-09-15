@@ -78,6 +78,41 @@ README and index are stale preparation inputs: fresh native participants
 correctly report the discrepancy and use current canonical files. Fresh
 Claude and Codex snapshots independently prove no writes or native claim moves.
 
+## Fresh combined-candidate external return and readiness (v3)
+
+Under the combined 70bae90 runtime/receipt guidance candidate (frozen by the
+[raw-blob freeze](package-runtime-receipt-freeze.json)), a fresh actual native
+Claude Code executor returned an unamended external receipt and a separate
+native readiness stop produced a readiness report, both on byte-exact disposable
+fixtures prepared under the continuation dispatch.
+
+The [assigned process](fresh-v3-assigned-process.json) ran the installed
+`docflow:workspace-coordinate` skill in the actual executor runtime after the
+[338-file installed-source preflight](fresh-v3-assigned-preparation.json)
+matched the freeze. The executor verified the member Git blobs byte-for-byte,
+ran `node check.mjs` (exit 0, `fresh-receipt-native-check: OK`), and wrote the
+single permitted file once. The original tmpfs artifact was lost when the
+container stopped; its [recovered bytes](fresh-v3-assigned-external-return.json)
+match the captured Write input and the in-container shape check that returned
+valid, exit 0. Independent controller
+[assertions](fresh-v3-assigned-assertions.json) re-verify the shape on the frozen
+assets (valid, exit 0), all 104 canonical hashes, clean Git states, native
+session binding and the envelope contents. The two-harness
+[reconciliation](fresh-v3-assigned-reconciliation.json) (native Claude Code
+returned; the Orca continuation controller session reconciled) imports the
+original receipt into the fixture run record unamended, records the boundary
+stop with its truthful blockers, completes the delivery observation, closes the
+grant and validates the whole fixture with exit 0.
+
+The [readiness process](fresh-v3-readiness-process.json) ran the same installed
+skill with no grant. The native executor stopped before any attempt: its
+[readiness report](fresh-v3-readiness-report.json) records the exact missing
+execution grant and run brief, executes no check and creates no attempt or
+canonical record. Independent [assertions](fresh-v3-readiness-assertions.json)
+prove all 97 fixture files unchanged, the runs directory still empty, a single
+permitted write and native session binding. This is the separate native
+readiness stop plan 0065 requires; it is not imported into `runs.receipt`.
+
 ## Native package removal and version upgrade
 
 [OpenCode removal](opencode-native-retention.json) uses its native detached-copy
@@ -169,7 +204,14 @@ snapshot](cowork-native-after-stop.json) establish no completed workspace setup.
 
 The [current installed-candidate task](cowork-current-session.json) is a separate
 native session with verified native thirteen-skill discovery and exact current
-export bytes. Its actual setup and required original restoration are pending.
+export bytes. It created 12 files after the controller stop deadline was missed
+during a usage-limit interruption; both native validator attempts failed at the
+cloud/device filesystem boundary. A separate Windows controller check passes.
+The [original restoration](cowork-restoration-verification.json) is now verified:
+32 exact files, nine skills, enabled state and unrelated inventory preserved,
+with an additional host-generated category label recorded. Desktop is released.
+The [runtime diagnosis](cowork-runtime-diagnosis.md) preserves the native failure
+and the unrun attached-copy route; no new Cowork attempt is authorised.
 
 ## Shared exclusive resource guard
 
@@ -188,7 +230,45 @@ f47 bytes remain unchanged. Fresh affected-guidance native acceptance is pending
 
 The [initial read-scope diagnosis](native-read-scope-diagnosis.md) retains the
 independent scenario worker's concrete native failures separately from its
-functional successes. Full receipt import and review are still pending.
+functional successes. The sanitised WV13/WV15/WV18 evidence is now imported:
+the [scenario collection](scenarios-ctx_59ed70a00d5e/report.md) (nine native
+turns, 234 passing assertions, two failed read-boundary assertions) is published
+under `scenarios-ctx_59ed70a00d5e/` with its
+[import receipt](scenarios-ctx_59ed70a00d5e/import-receipt.json); every
+imported file matches the archive manifest. Raw transcripts, fixture trees and
+archives stay private with retained hashes. The two read-scope failures
+(F1 WV13 `grep -rl` beyond authorised roots; F2 WV18 restricted-byte hashing
+with a false permission claim) remain failures, and the F3 reporting error
+(YAML sidecar miscounted as a fourteenth skill) is retained.
+
+## Native Claude Code bootstrap and Proposed decision
+
+A fresh bounded native run on the combined 70bae90 candidate exercised
+full-depth bootstrap plus new-adr in one session: 221 seconds, host exit 0,
+within the operator's 900-second cap. The [independent
+assertions](claude-bootstrap-assertions.json) prove the seed gate preserved
+byte-for-byte (`5de554f5b4d975117d03d8bd9bf27420e486dfcbd883b02e7bc0db20e46904cc`)
+and passing (`verify: OK (fixture gate)`, exit 0), the thirteen native skills,
+both skill invocations, a clean committed repository with no remote, Proposed
+decision 0002 with exactly three acceptance criteria, an updated INDEX and
+the full bootstrap layout (AGENTS/CLAUDE/CONVENTIONS, plan queue,
+`_agent/prompts/autonomous.md`). The disposable fixture is preserved with its
+[own receipt](claude-bootstrap-fixture-preservation.json) and the container
+was positively stopped and removed.
+
+## Operator decisions, 2026-09-15
+
+By operator instruction (hard stop 19:55 UTC, 900-second cap per native run):
+Cowork is a **best-effort, unqualified target for V1** — no new sessions,
+desktop control or plugin changes, existing evidence stays as historical
+record, and open Cowork cases are labelled *not required for V1*, not passed
+or failed. Only the **Claude Code and Orca** workspace guides require
+qualification evidence; the ZCode, Codex App, Cursor and DeepSeek Harness
+guides are *unverified documentation by operator decision*. Pi local-Qwen
+runs are *deferred: exceeds the timebox* (never substituted with another
+model). The decision record, AGENTS/CONVENTIONS five-target rule and README
+support-table changes are queued by the coordinator separately; this section
+only records the decision's effect on qualification evidence.
 
 ## Status at a glance
 
@@ -198,9 +278,17 @@ functional successes. Full receipt import and review are still pending.
   `verify: OK (version 0.9.4, 13 skills, 56 ADRs, 67 shipped plan items)`, exit 0,
   and `10 passed, 0 failed, 6 skipped`, exit 0. CI passed on evidence head
   `26a1a7c343a344ef7077d276ecc14a8d1c5964a5`; subsequent evidence needs current-head CI.
-- **Overall:** partially verified. Plans 0061/0062 remain in todo. Draft PR 11
-  is live and has not shipped; the development candidate is not released V1.
-- **Yet to do:** Finish bounded current-package native Cowork setup and verified original restoration, and complete pending native host/guide/scenario assertions;
-  obtain desktop access and paired Clarity artifact; perform actual combined
-  views/handoffs; preserve fixtures, clean up owned runtimes, run final gates
-  and current-head CI, obtain review and the operator's real pilot acceptance.
+- **Overall:** partially verified. Plans 0061/0062/0065/0066 remain in todo.
+  PR 11 merged into the review integration as 52887c7 (verified on
+  `origin/kmox83/docflow-v1-integration`); follow-up evidence ships in a new PR;
+  the development candidate is not released V1.
+- **Yet to do:** Cowork is not required for V1 (best-effort target by operator
+  decision 2026-09-15); ZCode/Codex App/Cursor/DeepSeek Harness guides are
+  unverified documentation by operator decision and Pi local-Qwen runs are
+  deferred beyond the timebox. Claude Code denied-action/upgrade-removal
+  retention, Codex lifecycle/recovery/upgrade retention and OpenCode
+  stopped-fresh recovery remain unrun within this dispatch's timebox; the
+  imported WV13/15/18 read-scope failures await writer disposition; combined
+  Clarity acceptance waits for the controller-supplied integrated
+  source/artifact; the operator pilot acceptance is supplied only by the
+  operator.

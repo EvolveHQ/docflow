@@ -1,0 +1,390 @@
+{
+  "observed_at": "2026-09-15T18:21:18Z",
+  "kind": "actual two-harness reconciliation of the fresh native assigned return (v3)",
+  "return_harness": "native Claude Code in container docflow-hq-fc206-receipt-assigned-v3",
+  "reconciliation_harness": "Orca continuation controller session (pi harness, task_856c97a5b36d dispatch ctx_239ed333d8c6)",
+  "source_revision": "70bae90406a0c4d9ae37f40efcc35ec52f4a9306",
+  "original_return_recovered_sha256": "e1b931813f65d0f71342b911ff6b6dee52b3bc58dd3dfb5fa1b51c4be2edb9c6",
+  "original_return_limit": "tmpfs artifact lost with the stopped container; bytes recovered verbatim from the captured Write tool input",
+  "run": {
+    "schema": 1,
+    "id": "87e9f434-b05f-4f3b-b0a5-4e1e33b7c536",
+    "home": "docflow-hq/receipt-assigned-v3",
+    "kind": "runs",
+    "title": "Fresh native external return",
+    "owner": "qualification-controller",
+    "created_at": "2026-09-15T07:17:56Z",
+    "links": [],
+    "state": "stopped",
+    "history": [
+      {
+        "state": "running",
+        "at": "2026-09-15T07:17:56Z",
+        "actor": "qualification-controller",
+        "reason": "Actual authorised attempt prepared for immediate native dispatch."
+      },
+      {
+        "state": "stopped",
+        "at": "2026-09-15T18:21:18Z",
+        "actor": "qualification-controller",
+        "reason": "Native executor stopped at its prescribed boundary stop_at=external-return-written with an unamended receipt; controller reconciliation verified the original return byte-for-byte against the captured Write input, the frozen-source shape check and independent canonical/member no-mutation evidence."
+      }
+    ],
+    "started_at": "2026-09-15T07:17:56Z",
+    "ended_at": "2026-09-15T07:21:17Z",
+    "brief": {
+      "work": {
+        "home": "docflow-hq/receipt-assigned-v3",
+        "id": "17dee6ee-ee9d-4041-ae28-748c248193a4",
+        "path": ".docflow_workspace/work/fresh-receipt--17dee6eeee9d.md"
+      },
+      "delivery": "readout",
+      "scope_revision": 1,
+      "scope": "Read native instructions and issues/READOUT.md, run node check.mjs, return source-bound evidence.",
+      "exclusions": [
+        "No executor canonical/member edits, commits, installation, remote services or delegation."
+      ],
+      "actor": "agent:receipt-assigned",
+      "host": "claude-code",
+      "grant": {
+        "work": {
+          "home": "docflow-hq/receipt-assigned-v3",
+          "id": "17dee6ee-ee9d-4041-ae28-748c248193a4",
+          "path": ".docflow_workspace/work/fresh-receipt--17dee6eeee9d.md"
+        },
+        "id": "bounded-readout",
+        "revision": 1
+      },
+      "workspace_revision": "fc1e0b42b6f39361c89979f220e77832ff3a4463",
+      "base_revision": "565907773cf17a79af4bed0877f4ae05570b31d3",
+      "native_work": {
+        "repository": "docflow-hq/receipt-assigned-v3/member",
+        "path": "issues/READOUT.md",
+        "revision": "565907773cf17a79af4bed0877f4ae05570b31d3"
+      },
+      "claim": {
+        "mode": "owner-confirmed-serial",
+        "owner": "agent:receipt-assigned",
+        "state": "held",
+        "source": {
+          "repository": "docflow-hq/receipt-assigned-v3/member",
+          "path": "OWNER.md",
+          "revision": "565907773cf17a79af4bed0877f4ae05570b31d3",
+          "observed_at": "2026-09-15T07:17:56Z",
+          "outcome": "passed",
+          "summary": "Controller read current native OWNER.md and clean Git HEAD immediately before preparing this assignment."
+        },
+        "observed_at": "2026-09-15T07:17:56Z",
+        "expires_at": "2026-09-15T08:17:45Z"
+      },
+      "dependencies": [],
+      "resources": [],
+      "required_checks": [
+        "native-check"
+      ],
+      "stop_at": "external-return-written",
+      "return_path": ".docflow_workspace/runs/fresh-return--87e9f434b05f.md",
+      "selected_assets": []
+    },
+    "actions": [
+      {
+        "at": "2026-09-15T07:20:42Z",
+        "action": "test",
+        "summary": "Native node check.mjs in /context/repos/member returned exit 0 with fresh-receipt-native-check: OK at member HEAD 565907773cf17a79af4bed0877f4ae05570b31d3."
+      },
+      {
+        "at": "2026-09-15T07:21:17Z",
+        "action": "report",
+        "summary": "Original external envelope written once to /workspace/returns/result.json and preserved verbatim; the documented read-only shape check returned valid with exit 0 in the same native session."
+      }
+    ],
+    "receipt": {
+      "returned_at": "2026-09-15T07:21:17Z",
+      "head_revision": "565907773cf17a79af4bed0877f4ae05570b31d3",
+      "checks": [
+        {
+          "name": "native-check",
+          "command": "node check.mjs",
+          "outcome": "passed",
+          "exit_code": 0,
+          "output": "fresh-receipt-native-check: OK",
+          "evidence": [
+            {
+              "repository": "docflow-hq/receipt-assigned-v3/member",
+              "path": "check.mjs",
+              "revision": "565907773cf17a79af4bed0877f4ae05570b31d3",
+              "observed_at": "2026-09-15T07:20:42Z",
+              "outcome": "passed",
+              "summary": "Executed 'node check.mjs' with working directory /context/repos/member; process exited 0 and printed exactly 'fresh-receipt-native-check: OK'. Git HEAD was 565907773cf17a79af4bed0877f4ae05570b31d3 with a clean status in the same operation."
+            },
+            {
+              "repository": "docflow-hq/receipt-assigned-v3/member",
+              "path": "issues/READOUT.md",
+              "revision": "565907773cf17a79af4bed0877f4ae05570b31d3",
+              "observed_at": "2026-09-15T07:20:42Z",
+              "outcome": "passed",
+              "summary": "Assigned native work file read by check.mjs during the run; its required '# Native readout' opening line was present, so the check did not throw 'Native work missing'."
+            }
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "repository": "docflow-hq/receipt-assigned-v3/member",
+          "path": "issues/READOUT.md",
+          "revision": "565907773cf17a79af4bed0877f4ae05570b31d3",
+          "observed_at": "2026-09-15T07:21:12Z",
+          "outcome": "passed",
+          "summary": "Assigned native work file read directly. It asks for the current Git revision and the actual node check.mjs result, and assigns no implementation or integration. Committed blob 101b4488a83afb0ecb0999ed3da9b4dbb6876fd9 equals the worktree bytes."
+        },
+        {
+          "repository": "docflow-hq/receipt-assigned-v3/member",
+          "path": "README.md",
+          "revision": "565907773cf17a79af4bed0877f4ae05570b31d3",
+          "observed_at": "2026-09-15T07:21:12Z",
+          "outcome": "passed",
+          "summary": "Native member instructions read before executing. They declare no Docflow catalogue, permit read/test/report only under controller authority and OWNER.md, forbid migration/edit/commit/install/service/delegation, and name 'node check.mjs' as the check command. Committed blob 9b06de276aaf21c229255c3479c3aca180b0abde equals the worktree bytes."
+        },
+        {
+          "repository": "docflow-hq/receipt-assigned-v3/member",
+          "path": "OWNER.md",
+          "revision": "565907773cf17a79af4bed0877f4ae05570b31d3",
+          "observed_at": "2026-09-15T07:21:12Z",
+          "outcome": "passed",
+          "summary": "Native ownership observed independently of the grant. It records sole read/test/report ownership for agent:receipt-assigned until 2026-09-15T08:17:45Z with no prior executor, matching the brief's owner-confirmed-serial claim. Committed blob 1e1e7bdb35ad776e0020899d35de152090c9f8a0 equals the worktree bytes."
+        },
+        {
+          "repository": "docflow-hq/receipt-assigned-v3/member",
+          "path": "check.mjs",
+          "revision": "565907773cf17a79af4bed0877f4ae05570b31d3",
+          "observed_at": "2026-09-15T07:21:12Z",
+          "outcome": "passed",
+          "summary": "Check source read before execution: it reads issues/READOUT.md, throws when the '# Native readout' prefix is absent, and otherwise logs 'fresh-receipt-native-check: OK'. Committed blob 87f4c78b96bdcd586a67aea0f902f4616a9e231e equals the worktree bytes; core.autocrlf is false, so no content conversion applies."
+        }
+      ],
+      "blockers": [
+        {
+          "reason": "Attempt stops at the brief's boundary stop_at=external-return-written. This executor is read-only by mandate and physically: canonical and member writes are forbidden, so the run record, work observations and criteria were not updated and cannot be updated here.",
+          "owner": "qualification-controller",
+          "next_action": "Independently reconcile this preserved external return against run 87e9f434-b05f-4f3b-b0a5-4e1e33b7c536 and work 17dee6ee-ee9d-4041-ae28-748c248193a4 under canonical-write authority."
+        },
+        {
+          "reason": "The native session identity could not be confirmed from inside this session. The launcher states it requested --session-id 58c8efbd-7a6c-4617-844d-aea88b84d650, but confirming it would require reading the host home directory, which is outside the permitted read scope. It is recorded as requested-but-unverified, not as an observed identifier.",
+          "owner": "qualification-controller",
+          "next_action": "Verify the actual native session initialisation separately, as the controller already planned."
+        }
+      ],
+      "next_action": "Controller reconciles this original external return, checks its source-bound evidence at revision 565907773cf17a79af4bed0877f4ae05570b31d3, and records the outcome. Criterion 'reconciled' and parent work completion remain open and are not claimed by this executor.",
+      "used_assets": []
+    },
+    "reconciliation": {
+      "by": "Orca continuation controller session (pi harness, task_856c97a5b36d dispatch ctx_239ed333d8c6); the return was produced by native Claude Code, a different actual harness",
+      "at": "2026-09-15T18:21:18Z",
+      "evidence": [
+        {
+          "repository": "docflow-hq/receipt-assigned-v3/member",
+          "path": "check.mjs",
+          "revision": "565907773cf17a79af4bed0877f4ae05570b31d3",
+          "observed_at": "2026-09-15T18:21:18Z",
+          "outcome": "passed",
+          "summary": "Recovered return envelope sha256 e1b931813f65d0f71342b911ff6b6dee52b3bc58dd3dfb5fa1b51c4be2edb9c6 equals the captured Write tool input byte-for-byte (12954 bytes, matching the in-container ls at 2026-09-15T07:22Z); the documented read-only shape check on frozen source 70bae90406a0c4d9ae37f40efcc35ec52f4a9306 assets returned valid, exit 0. The original tmpfs artifact was lost when container docflow-hq-fc206-receipt-assigned-v3 stopped (exit 255 at 2026-09-15T11:17:07Z); no byte was amended."
+        },
+        {
+          "repository": "docflow-hq/receipt-assigned-v3",
+          "path": ".docflow_workspace/work/fresh-receipt--17dee6eeee9d.md",
+          "revision": "0440990ec5bb3f67461b9f55fddf25cffb362498",
+          "observed_at": "2026-09-15T18:21:18Z",
+          "outcome": "passed",
+          "summary": "Independent controller assertions compared all 104 hashed canonical files before/after: byte-identical; canonical and member Git status clean at the prepared heads; requested native session 58c8efbd-7a6c-4617-844d-aea88b84d650 observed in the transcript init."
+        }
+      ]
+    },
+    "predecessors": [],
+    "successors": []
+  },
+  "work": {
+    "schema": 1,
+    "id": "17dee6ee-ee9d-4041-ae28-748c248193a4",
+    "home": "docflow-hq/receipt-assigned-v3",
+    "kind": "work",
+    "title": "Fresh external receipt qualification",
+    "owner": "qualification-controller",
+    "created_at": "2026-09-15T07:17:54Z",
+    "links": [],
+    "state": "review",
+    "history": [
+      {
+        "state": "planned",
+        "at": "2026-09-15T07:17:54Z",
+        "actor": "qualification-controller",
+        "reason": "Actual controller prepares bounded native receipt qualification."
+      },
+      {
+        "state": "active",
+        "at": "2026-09-15T07:17:56Z",
+        "actor": "qualification-controller",
+        "reason": "One native attempt is about to begin; independent reconciliation remains required."
+      },
+      {
+        "state": "review",
+        "at": "2026-09-15T18:21:18Z",
+        "actor": "qualification-controller",
+        "reason": "Native attempt succeeded and is reconciled; fixture work awaits controller close under its own authority."
+      }
+    ],
+    "scope_revision": 1,
+    "outcome": "Check result returned and independently reconciled; no repository integration.",
+    "scope": "Native read/test/report check and separate controller reconciliation.",
+    "exclusions": [
+      "No executor canonical/member edits, commits, installation, remote services or delegation."
+    ],
+    "priority": "high",
+    "criteria": [
+      {
+        "id": "native-check",
+        "text": "Actual node check.mjs returns exit 0 and an unamended external receipt.",
+        "evidence": [
+          {
+            "repository": "docflow-hq/receipt-assigned-v3/member",
+            "path": "check.mjs",
+            "revision": "565907773cf17a79af4bed0877f4ae05570b31d3",
+            "observed_at": "2026-09-15T18:21:18Z",
+            "outcome": "passed",
+            "summary": "Native check exit 0 with unamended shape-valid external return reconciled by the controller harness."
+          }
+        ]
+      },
+      {
+        "id": "reconciled",
+        "text": "A different actual harness independently reconciles the original external return.",
+        "evidence": [
+          {
+            "repository": "docflow-hq/receipt-assigned-v3",
+            "path": ".docflow_workspace/runs/fresh-return--87e9f434b05f.md",
+            "revision": "0440990ec5bb3f67461b9f55fddf25cffb362498",
+            "observed_at": "2026-09-15T18:21:18Z",
+            "outcome": "passed",
+            "summary": "A different actual harness (Orca continuation controller session) independently reconciled the original external return with byte, record and tool assertions."
+          }
+        ]
+      }
+    ],
+    "blockers": [],
+    "dependencies": [],
+    "deliveries": [
+      {
+        "id": "readout",
+        "repository": "docflow-hq/receipt-assigned-v3/member",
+        "scope_revision": 1,
+        "scope": "Read native instructions and issues/READOUT.md, run node check.mjs, return source-bound evidence.",
+        "required": true,
+        "native_work": {
+          "repository": "docflow-hq/receipt-assigned-v3/member",
+          "path": "issues/READOUT.md",
+          "revision": "565907773cf17a79af4bed0877f4ae05570b31d3"
+        },
+        "required_completion": "Actual check plus independently reconciled original receipt; no native queue transition.",
+        "depends_on": [],
+        "observation": {
+          "state": "Actual check plus independently reconciled original receipt; no native queue transition.",
+          "complete": true,
+          "observed_at": "2026-09-15T18:21:18Z",
+          "source_revision": "565907773cf17a79af4bed0877f4ae05570b31d3",
+          "evidence": [
+            {
+              "repository": "docflow-hq/receipt-assigned-v3/member",
+              "path": "issues/READOUT.md",
+              "revision": "565907773cf17a79af4bed0877f4ae05570b31d3",
+              "observed_at": "2026-09-15T18:21:18Z",
+              "outcome": "passed",
+              "summary": "Assigned readout delivered natively: node check.mjs exit 0 at member HEAD; original return reconciled unamended; no repository integration."
+            }
+          ]
+        }
+      }
+    ],
+    "grants": [
+      {
+        "id": "bounded-readout",
+        "revisions": [
+          {
+            "revision": 1,
+            "state": "active",
+            "delivery": "readout",
+            "scope_revision": 1,
+            "actor": "agent:receipt-assigned",
+            "approved_by": "qualification-controller",
+            "approved_at": "2026-09-15T07:17:54Z",
+            "mandate": {
+              "repository": "docflow-hq/receipt-assigned-v3",
+              "path": "QUALIFICATION-MANDATE.md",
+              "revision": "b38cedcc85fabffeba3efcc3fc68e2fef71f9b9b",
+              "observed_at": "2026-09-15T07:17:54Z",
+              "outcome": "passed",
+              "summary": "Actual controller records the delegated disposable-test mandate after reading its newly written file."
+            },
+            "actions": [
+              "read",
+              "test",
+              "report"
+            ],
+            "conditions": [
+              "Canonical/member read-only; only /workspace/returns/result.json may be written; no delegation or unrelated reads."
+            ],
+            "stop_at": "external-return-written",
+            "valid_from": "2026-09-15T07:17:54Z",
+            "expires_at": "2026-09-15T08:17:45Z",
+            "recorded_at": "2026-09-15T07:17:54Z",
+            "reason": "Current test authority for one immediate bounded native check."
+          },
+          {
+            "revision": 2,
+            "state": "closed",
+            "delivery": "readout",
+            "scope_revision": 1,
+            "actor": "agent:receipt-assigned",
+            "approved_by": "qualification-controller",
+            "approved_at": "2026-09-15T07:17:54Z",
+            "mandate": {
+              "repository": "docflow-hq/receipt-assigned-v3",
+              "path": "QUALIFICATION-MANDATE.md",
+              "revision": "b38cedcc85fabffeba3efcc3fc68e2fef71f9b9b",
+              "observed_at": "2026-09-15T07:17:54Z",
+              "outcome": "passed",
+              "summary": "Actual controller records the delegated disposable-test mandate after reading its newly written file."
+            },
+            "actions": [
+              "read",
+              "test",
+              "report"
+            ],
+            "conditions": [
+              "Canonical/member read-only; only /workspace/returns/result.json may be written; no delegation or unrelated reads."
+            ],
+            "stop_at": "external-return-written",
+            "valid_from": "2026-09-15T07:17:54Z",
+            "expires_at": "2026-09-15T08:17:45Z",
+            "recorded_at": "2026-09-15T18:21:18Z",
+            "reason": "Native attempt is terminal and reconciled; no further execution under this fixture grant."
+          }
+        ]
+      }
+    ],
+    "recommendations": [],
+    "next_action": "Controller closes the completed fixture work; no parent completion claim made by any executor."
+  },
+  "independent_assertions": "assigned native return behavioural pass: skill invocation, member byte verification, node check.mjs exit 0, single permitted file written and shape-checked, no canonical/member mutation; original tmpfs artifact lost with the stopped container, bytes recovered verbatim from the captured Write input",
+  "validation": {
+    "argv": [
+      "node",
+      "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\package-runtime-receipt-source\\plugins\\docflow\\workspace\\validate.mjs",
+      "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\fresh-receipt-assigned-v3\\canonical",
+      "--at",
+      "2026-09-15T18:21:18Z"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"schema\": 1,\n  \"evaluated_at\": \"2026-09-15T18:21:18Z\",\n  \"valid\": true,\n  \"diagnostics\": [],\n  \"records\": [\n    {\n      \"schema\": 1,\n      \"id\": \"17dee6ee-ee9d-4041-ae28-748c248193a4\",\n      \"home\": \"docflow-hq/receipt-assigned-v3\",\n      \"kind\": \"work\",\n      \"title\": \"Fresh external receipt qualification\",\n      \"owner\": \"qualification-controller\",\n      \"created_at\": \"2026-09-15T07:17:54Z\",\n      \"links\": [],\n      \"state\": \"review\",\n      \"history\": [\n        {\n          \"state\": \"planned\",\n          \"at\": \"2026-09-15T07:17:54Z\",\n          \"actor\": \"qualification-controller\",\n          \"reason\": \"Actual controller prepares bounded native receipt qualification.\"\n        },\n        {\n          \"state\": \"active\",\n          \"at\": \"2026-09-15T07:17:56Z\",\n          \"actor\": \"qualification-controller\",\n          \"reason\": \"One native attempt is about to begin; independent reconciliation remains required.\"\n        },\n        {\n          \"state\": \"review\",\n          \"at\": \"2026-09-15T18:21:18Z\",\n          \"actor\": \"qualification-controller\",\n          \"reason\": \"Native attempt succeeded and is reconciled; fixture work awaits controller close under its own authority.\"\n        }\n      ],\n      \"scope_revision\": 1,\n      \"outcome\": \"Check result returned and independently reconciled; no repository integration.\",\n      \"scope\": \"Native read/test/report check and separate controller reconciliation.\",\n      \"exclusions\": [\n        \"No executor canonical/member edits, commits, installation, remote services or delegation.\"\n      ],\n      \"priority\": \"high\",\n      \"criteria\": [\n        {\n          \"id\": \"native-check\",\n          \"text\": \"Actual node check.mjs returns exit 0 and an unamended external receipt.\",\n          \"evidence\": [\n            {\n              \"repository\": \"docflow-hq/receipt-assigned-v3/member\",\n              \"path\": \"check.mjs\",\n              \"revision\": \"565907773cf17a79af4bed0877f4ae05570b31d3\",\n              \"observed_at\": \"2026-09-15T18:21:18Z\",\n              \"outcome\": \"passed\",\n              \"summary\": \"Native check exit 0 with unamended shape-valid external return reconciled by the controller harness.\"\n            }\n          ]\n        },\n        {\n          \"id\": \"reconciled\",\n          \"text\": \"A different actual harness independently reconciles the original external return.\",\n          \"evidence\": [\n            {\n              \"repository\": \"docflow-hq/receipt-assigned-v3\",\n              \"path\": \".docflow_workspace/runs/fresh-return--87e9f434b05f.md\",\n              \"revision\": \"0440990ec5bb3f67461b9f55fddf25cffb362498\",\n              \"observed_at\": \"2026-09-15T18:21:18Z\",\n              \"outcome\": \"passed\",\n              \"summary\": \"A different actual harness (Orca continuation controller session) independently reconciled the original external return with byte, record and tool assertions.\"\n            }\n          ]\n        }\n      ],\n      \"blockers\": [],\n      \"dependencies\": [],\n      \"deliveries\": [\n        {\n          \"id\": \"readout\",\n          \"repository\": \"docflow-hq/receipt-assigned-v3/member\",\n          \"scope_revision\": 1,\n          \"scope\": \"Read native instructions and issues/READOUT.md, run node check.mjs, return source-bound evidence.\",\n          \"required\": true,\n          \"native_work\": {\n            \"repository\": \"docflow-hq/receipt-assigned-v3/member\",\n            \"path\": \"issues/READOUT.md\",\n            \"revision\": \"565907773cf17a79af4bed0877f4ae05570b31d3\"\n          },\n          \"required_completion\": \"Actual check plus independently reconciled original receipt; no native queue transition.\",\n          \"depends_on\": [],\n          \"observation\": {\n            \"state\": \"Actual check plus independently reconciled original receipt; no native queue transition.\",\n            \"complete\": true,\n            \"observed_at\": \"2026-09-15T18:21:18Z\",\n            \"source_revision\": \"565907773cf17a79af4bed0877f4ae05570b31d3\",\n            \"evidence\": [\n              {\n                \"repository\": \"docflow-hq/receipt-assigned-v3/member\",\n                \"path\": \"issues/READOUT.md\",\n                \"revision\": \"565907773cf17a79af4bed0877f4ae05570b31d3\",\n                \"observed_at\": \"2026-09-15T18:21:18Z\",\n                \"outcome\": \"passed\",\n                \"summary\": \"Assigned readout delivered natively: node check.mjs exit 0 at member HEAD; original return reconciled unamended; no repository integration.\"\n              }\n            ]\n          }\n        }\n      ],\n      \"grants\": [\n        {\n          \"id\": \"bounded-readout\",\n          \"revisions\": [\n            {\n              \"revision\": 1,\n              \"state\": \"active\",\n              \"delivery\": \"readout\",\n              \"scope_revision\": 1,\n              \"actor\": \"agent:receipt-assigned\",\n              \"approved_by\": \"qualification-controller\",\n              \"approved_at\": \"2026-09-15T07:17:54Z\",\n              \"mandate\": {\n                \"repository\": \"docflow-hq/receipt-assigned-v3\",\n                \"path\": \"QUALIFICATION-MANDATE.md\",\n                \"revision\": \"b38cedcc85fabffeba3efcc3fc68e2fef71f9b9b\",\n                \"observed_at\": \"2026-09-15T07:17:54Z\",\n                \"outcome\": \"passed\",\n                \"summary\": \"Actual controller records the delegated disposable-test mandate after reading its newly written file.\"\n              },\n              \"actions\": [\n                \"read\",\n                \"test\",\n                \"report\"\n              ],\n              \"conditions\": [\n                \"Canonical/member read-only; only /workspace/returns/result.json may be written; no delegation or unrelated reads.\"\n              ],\n              \"stop_at\": \"external-return-written\",\n              \"valid_from\": \"2026-09-15T07:17:54Z\",\n              \"expires_at\": \"2026-09-15T08:17:45Z\",\n              \"recorded_at\": \"2026-09-15T07:17:54Z\",\n              \"reason\": \"Current test authority for one immediate bounded native check.\"\n            },\n            {\n              \"revision\": 2,\n              \"state\": \"closed\",\n              \"delivery\": \"readout\",\n              \"scope_revision\": 1,\n              \"actor\": \"agent:receipt-assigned\",\n              \"approved_by\": \"qualification-controller\",\n              \"approved_at\": \"2026-09-15T07:17:54Z\",\n              \"mandate\": {\n                \"repository\": \"docflow-hq/receipt-assigned-v3\",\n                \"path\": \"QUALIFICATION-MANDATE.md\",\n                \"revision\": \"b38cedcc85fabffeba3efcc3fc68e2fef71f9b9b\",\n                \"observed_at\": \"2026-09-15T07:17:54Z\",\n                \"outcome\": \"passed\",\n                \"summary\": \"Actual controller records the delegated disposable-test mandate after reading its newly written file.\"\n              },\n              \"actions\": [\n                \"read\",\n                \"test\",\n                \"report\"\n              ],\n              \"conditions\": [\n                \"Canonical/member read-only; only /workspace/returns/result.json may be written; no delegation or unrelated reads.\"\n              ],\n              \"stop_at\": \"external-return-written\",\n              \"valid_from\": \"2026-09-15T07:17:54Z\",\n              \"expires_at\": \"2026-09-15T08:17:45Z\",\n              \"recorded_at\": \"2026-09-15T18:21:18Z\",\n              \"reason\": \"Native attempt is terminal and reconciled; no further execution under this fixture grant.\"\n            }\n          ]\n        }\n      ],\n      \"recommendations\": [],\n      \"next_action\": \"Controller closes the completed fixture work; no parent completion claim made by any executor.\",\n      \"path\": \".docflow_workspace/work/fresh-receipt--17dee6eeee9d.md\"\n    },\n    {\n      \"schema\": 1,\n      \"id\": \"87e9f434-b05f-4f3b-b0a5-4e1e33b7c536\",\n      \"home\": \"docflow-hq/receipt-assigned-v3\",\n      \"kind\": \"runs\",\n      \"title\": \"Fresh native external return\",\n      \"owner\": \"qualification-controller\",\n      \"created_at\": \"2026-09-15T07:17:56Z\",\n      \"links\": [],\n      \"state\": \"stopped\",\n      \"history\": [\n        {\n          \"state\": \"running\",\n          \"at\": \"2026-09-15T07:17:56Z\",\n          \"actor\": \"qualification-controller\",\n          \"reason\": \"Actual authorised attempt prepared for immediate native dispatch.\"\n        },\n        {\n          \"state\": \"stopped\",\n          \"at\": \"2026-09-15T18:21:18Z\",\n          \"actor\": \"qualification-controller\",\n          \"reason\": \"Native executor stopped at its prescribed boundary stop_at=external-return-written with an unamended receipt; controller reconciliation verified the original return byte-for-byte against the captured Write input, the frozen-source shape check and independent canonical/member no-mutation evidence.\"\n        }\n      ],\n      \"started_at\": \"2026-09-15T07:17:56Z\",\n      \"ended_at\": \"2026-09-15T07:21:17Z\",\n      \"brief\": {\n        \"work\": {\n          \"home\": \"docflow-hq/receipt-assigned-v3\",\n          \"id\": \"17dee6ee-ee9d-4041-ae28-748c248193a4\",\n          \"path\": \".docflow_workspace/work/fresh-receipt--17dee6eeee9d.md\"\n        },\n        \"delivery\": \"readout\",\n        \"scope_revision\": 1,\n        \"scope\": \"Read native instructions and issues/READOUT.md, run node check.mjs, return source-bound evidence.\",\n        \"exclusions\": [\n          \"No executor canonical/member edits, commits, installation, remote services or delegation.\"\n        ],\n        \"actor\": \"agent:receipt-assigned\",\n        \"host\": \"claude-code\",\n        \"grant\": {\n          \"work\": {\n            \"home\": \"docflow-hq/receipt-assigned-v3\",\n            \"id\": \"17dee6ee-ee9d-4041-ae28-748c248193a4\",\n            \"path\": \".docflow_workspace/work/fresh-receipt--17dee6eeee9d.md\"\n          },\n          \"id\": \"bounded-readout\",\n          \"revision\": 1\n        },\n        \"workspace_revision\": \"fc1e0b42b6f39361c89979f220e77832ff3a4463\",\n        \"base_revision\": \"565907773cf17a79af4bed0877f4ae05570b31d3\",\n        \"native_work\": {\n          \"repository\": \"docflow-hq/receipt-assigned-v3/member\",\n          \"path\": \"issues/READOUT.md\",\n          \"revision\": \"565907773cf17a79af4bed0877f4ae05570b31d3\"\n        },\n        \"claim\": {\n          \"mode\": \"owner-confirmed-serial\",\n          \"owner\": \"agent:receipt-assigned\",\n          \"state\": \"held\",\n          \"source\": {\n            \"repository\": \"docflow-hq/receipt-assigned-v3/member\",\n            \"path\": \"OWNER.md\",\n            \"revision\": \"565907773cf17a79af4bed0877f4ae05570b31d3\",\n            \"observed_at\": \"2026-09-15T07:17:56Z\",\n            \"outcome\": \"passed\",\n            \"summary\": \"Controller read current native OWNER.md and clean Git HEAD immediately before preparing this assignment.\"\n          },\n          \"observed_at\": \"2026-09-15T07:17:56Z\",\n          \"expires_at\": \"2026-09-15T08:17:45Z\"\n        },\n        \"dependencies\": [],\n        \"resources\": [],\n        \"required_checks\": [\n          \"native-check\"\n        ],\n        \"stop_at\": \"external-return-written\",\n        \"return_path\": \".docflow_workspace/runs/fresh-return--87e9f434b05f.md\",\n        \"selected_assets\": []\n      },\n      \"actions\": [\n        {\n          \"at\": \"2026-09-15T07:20:42Z\",\n          \"action\": \"test\",\n          \"summary\": \"Native node check.mjs in /context/repos/member returned exit 0 with fresh-receipt-native-check: OK at member HEAD 565907773cf17a79af4bed0877f4ae05570b31d3.\"\n        },\n        {\n          \"at\": \"2026-09-15T07:21:17Z\",\n          \"action\": \"report\",\n          \"summary\": \"Original external envelope written once to /workspace/returns/result.json and preserved verbatim; the documented read-only shape check returned valid with exit 0 in the same native session.\"\n        }\n      ],\n      \"receipt\": {\n        \"returned_at\": \"2026-09-15T07:21:17Z\",\n        \"head_revision\": \"565907773cf17a79af4bed0877f4ae05570b31d3\",\n        \"checks\": [\n          {\n            \"name\": \"native-check\",\n            \"command\": \"node check.mjs\",\n            \"outcome\": \"passed\",\n            \"exit_code\": 0,\n            \"output\": \"fresh-receipt-native-check: OK\",\n            \"evidence\": [\n              {\n                \"repository\": \"docflow-hq/receipt-assigned-v3/member\",\n                \"path\": \"check.mjs\",\n                \"revision\": \"565907773cf17a79af4bed0877f4ae05570b31d3\",\n                \"observed_at\": \"2026-09-15T07:20:42Z\",\n                \"outcome\": \"passed\",\n                \"summary\": \"Executed 'node check.mjs' with working directory /context/repos/member; process exited 0 and printed exactly 'fresh-receipt-native-check: OK'. Git HEAD was 565907773cf17a79af4bed0877f4ae05570b31d3 with a clean status in the same operation.\"\n              },\n              {\n                \"repository\": \"docflow-hq/receipt-assigned-v3/member\",\n                \"path\": \"issues/READOUT.md\",\n                \"revision\": \"565907773cf17a79af4bed0877f4ae05570b31d3\",\n                \"observed_at\": \"2026-09-15T07:20:42Z\",\n                \"outcome\": \"passed\",\n                \"summary\": \"Assigned native work file read by check.mjs during the run; its required '# Native readout' opening line was present, so the check did not throw 'Native work missing'.\"\n              }\n            ]\n          }\n        ],\n        \"evidence\": [\n          {\n            \"repository\": \"docflow-hq/receipt-assigned-v3/member\",\n            \"path\": \"issues/READOUT.md\",\n            \"revision\": \"565907773cf17a79af4bed0877f4ae05570b31d3\",\n            \"observed_at\": \"2026-09-15T07:21:12Z\",\n            \"outcome\": \"passed\",\n            \"summary\": \"Assigned native work file read directly. It asks for the current Git revision and the actual node check.mjs result, and assigns no implementation or integration. Committed blob 101b4488a83afb0ecb0999ed3da9b4dbb6876fd9 equals the worktree bytes.\"\n          },\n          {\n            \"repository\": \"docflow-hq/receipt-assigned-v3/member\",\n            \"path\": \"README.md\",\n            \"revision\": \"565907773cf17a79af4bed0877f4ae05570b31d3\",\n            \"observed_at\": \"2026-09-15T07:21:12Z\",\n            \"outcome\": \"passed\",\n            \"summary\": \"Native member instructions read before executing. They declare no Docflow catalogue, permit read/test/report only under controller authority and OWNER.md, forbid migration/edit/commit/install/service/delegation, and name 'node check.mjs' as the check command. Committed blob 9b06de276aaf21c229255c3479c3aca180b0abde equals the worktree bytes.\"\n          },\n          {\n            \"repository\": \"docflow-hq/receipt-assigned-v3/member\",\n            \"path\": \"OWNER.md\",\n            \"revision\": \"565907773cf17a79af4bed0877f4ae05570b31d3\",\n            \"observed_at\": \"2026-09-15T07:21:12Z\",\n            \"outcome\": \"passed\",\n            \"summary\": \"Native ownership observed independently of the grant. It records sole read/test/report ownership for agent:receipt-assigned until 2026-09-15T08:17:45Z with no prior executor, matching the brief's owner-confirmed-serial claim. Committed blob 1e1e7bdb35ad776e0020899d35de152090c9f8a0 equals the worktree bytes.\"\n          },\n          {\n            \"repository\": \"docflow-hq/receipt-assigned-v3/member\",\n            \"path\": \"check.mjs\",\n            \"revision\": \"565907773cf17a79af4bed0877f4ae05570b31d3\",\n            \"observed_at\": \"2026-09-15T07:21:12Z\",\n            \"outcome\": \"passed\",\n            \"summary\": \"Check source read before execution: it reads issues/READOUT.md, throws when the '# Native readout' prefix is absent, and otherwise logs 'fresh-receipt-native-check: OK'. Committed blob 87f4c78b96bdcd586a67aea0f902f4616a9e231e equals the worktree bytes; core.autocrlf is false, so no content conversion applies.\"\n          }\n        ],\n        \"blockers\": [\n          {\n            \"reason\": \"Attempt stops at the brief's boundary stop_at=external-return-written. This executor is read-only by mandate and physically: canonical and member writes are forbidden, so the run record, work observations and criteria were not updated and cannot be updated here.\",\n            \"owner\": \"qualification-controller\",\n            \"next_action\": \"Independently reconcile this preserved external return against run 87e9f434-b05f-4f3b-b0a5-4e1e33b7c536 and work 17dee6ee-ee9d-4041-ae28-748c248193a4 under canonical-write authority.\"\n          },\n          {\n            \"reason\": \"The native session identity could not be confirmed from inside this session. The launcher states it requested --session-id 58c8efbd-7a6c-4617-844d-aea88b84d650, but confirming it would require reading the host home directory, which is outside the permitted read scope. It is recorded as requested-but-unverified, not as an observed identifier.\",\n            \"owner\": \"qualification-controller\",\n            \"next_action\": \"Verify the actual native session initialisation separately, as the controller already planned.\"\n          }\n        ],\n        \"next_action\": \"Controller reconciles this original external return, checks its source-bound evidence at revision 565907773cf17a79af4bed0877f4ae05570b31d3, and records the outcome. Criterion 'reconciled' and parent work completion remain open and are not claimed by this executor.\",\n        \"used_assets\": []\n      },\n      \"reconciliation\": {\n        \"by\": \"Orca continuation controller session (pi harness, task_856c97a5b36d dispatch ctx_239ed333d8c6); the return was produced by native Claude Code, a different actual harness\",\n        \"at\": \"2026-09-15T18:21:18Z\",\n        \"evidence\": [\n          {\n            \"repository\": \"docflow-hq/receipt-assigned-v3/member\",\n            \"path\": \"check.mjs\",\n            \"revision\": \"565907773cf17a79af4bed0877f4ae05570b31d3\",\n            \"observed_at\": \"2026-09-15T18:21:18Z\",\n            \"outcome\": \"passed\",\n            \"summary\": \"Recovered return envelope sha256 e1b931813f65d0f71342b911ff6b6dee52b3bc58dd3dfb5fa1b51c4be2edb9c6 equals the captured Write tool input byte-for-byte (12954 bytes, matching the in-container ls at 2026-09-15T07:22Z); the documented read-only shape check on frozen source 70bae90406a0c4d9ae37f40efcc35ec52f4a9306 assets returned valid, exit 0. The original tmpfs artifact was lost when container docflow-hq-fc206-receipt-assigned-v3 stopped (exit 255 at 2026-09-15T11:17:07Z); no byte was amended.\"\n          },\n          {\n            \"repository\": \"docflow-hq/receipt-assigned-v3\",\n            \"path\": \".docflow_workspace/work/fresh-receipt--17dee6eeee9d.md\",\n            \"revision\": \"0440990ec5bb3f67461b9f55fddf25cffb362498\",\n            \"observed_at\": \"2026-09-15T18:21:18Z\",\n            \"outcome\": \"passed\",\n            \"summary\": \"Independent controller assertions compared all 104 hashed canonical files before/after: byte-identical; canonical and member Git status clean at the prepared heads; requested native session 58c8efbd-7a6c-4617-844d-aea88b84d650 observed in the transcript init.\"\n          }\n        ]\n      },\n      \"predecessors\": [],\n      \"successors\": [],\n      \"path\": \".docflow_workspace/runs/fresh-return--87e9f434b05f.md\"\n    }\n  ],\n  \"overview\": [\n    {\n      \"home\": \"docflow-hq/receipt-assigned-v3\",\n      \"id\": \"17dee6ee-ee9d-4041-ae28-748c248193a4\",\n      \"path\": \".docflow_workspace/work/fresh-receipt--17dee6eeee9d.md\",\n      \"state\": \"review\",\n      \"owner\": \"qualification-controller\",\n      \"next_action\": \"Controller closes the completed fixture work; no parent completion claim made by any executor.\",\n      \"deliveries\": [\n        {\n          \"id\": \"readout\",\n          \"native_state\": \"Actual check plus independently reconciled original receipt; no native queue transition.\",\n          \"complete\": true,\n          \"observed_at\": \"2026-09-15T18:21:18Z\"\n        }\n      ]\n    }\n  ]\n}\n",
+    "stderr": ""
+  },
+  "overall": "assigned native return reconciled: check passed exit 0, original return preserved unamended, canonical/member unchanged, fixture work in review under controller authority"
+}

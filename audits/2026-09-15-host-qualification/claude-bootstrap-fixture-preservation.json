@@ -1,0 +1,8 @@
+{
+  "observed_at": "2026-09-15T18:42:56.211339+00:00",
+  "kind": "preserved disposable bootstrap fixture",
+  "fixture_tar_sha256": "64a5252ed5d6a4e3c2da0fccb19b117b6a7cdfc985e32faf8ead1bd38ea958fe",
+  "fixture_tar_bytes": 163840,
+  "note": "the fixture tree (AGENTS.md, CLAUDE.md, CONVENTIONS.md, INDEX.md, adr/, plan/, _agent/, tools/ with the unchanged gate) is preserved in the private scratch archive; its gate bytes hash 5de554f5b4d975117d03d8bd9bf27420e486dfcbd883b02e7bc0db20e46904cc both in the container and in the preserved copy",
+  "container_disposition": "positively stopped and removed after evidence capture; tmpfs homes lost by design, credentials existed only in private tmpfs"
+}

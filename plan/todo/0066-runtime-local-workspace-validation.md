@@ -5,12 +5,28 @@ adr/0054-reuse-supplied-choices-and-current-authority.md.
 
 ## Status
 
-- **Claimed by:** Codex, sole Docflow writer, 2026-09-15, branch
-  `kmox83/docflow-v1-host-qualification`; task `task_856c97a5b36d`,
-  dispatch `ctx_fc206cf7e4a8`.
-- **Blockers:** Affected native qualification requires the new frozen source;
-  another Cowork session or plugin change is not authorised.
+- **Claimed by:** Sole Docflow writer, 2026-09-15, branch
+  `kmox83/docflow-v1-host-qualification`; task `task_856c97a5b36d`.
+  First dispatch `ctx_fc206cf7e4a8` (Codex) stopped on a usage limit;
+  continuation dispatch `ctx_239ed333d8c6` now holds the claim.
+- **Blockers:** Any Cowork qualification needs a concrete bounded proposal and
+  separate authorisation; the completion move waits on current-head PR checks
+  and controller review.
 - **Stopped:**
+
+## Latest checkpoint (continuation dispatch ctx_239ed333d8c6)
+
+The combined candidate (70bae90 plus the reviewed README clarification) passed
+static gates and carries its own [raw-blob freeze](../../audits/2026-09-15-host-qualification/package-runtime-receipt-freeze.json).
+Both fresh v3 fixtures passed the 338-file installed-source preflight inside
+the actual executor runtime before native launch. The one authorised affected
+native rerun (fresh assigned case) exercised the new guidance natively: the
+executor matched the execution context, verified member Git blobs byte-for-byte
+and validated within the same runtime; readiness and two-host reconciliation
+satisfy the relevant plan0065 checks (see the 0065 checkpoint). Earlier eed
+preparation, line-ending, timing and scope failures keep their original
+bindings and outcomes. The bounded Cowork proposal remains the recorded
+runtime-diagnosis recommendation; no new Cowork attempt is authorised.
 
 ## Authority and finding
 

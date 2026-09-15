@@ -8,9 +8,25 @@ adr/0053-portable-workspace-operating-skills.md.
 - **Claimed by:** Codex, sole Docflow writer, 2026-09-15, branch
   `kmox83/docflow-v1-host-qualification`; task `task_856c97a5b36d`,
   dispatch `ctx_fc206cf7e4a8`.
-- **Blockers:** Fresh affected-guidance native receipts and two-host reconciliation
-  are required before completion; combined Clarity/operator acceptance is separate.
+- **Blockers:** Combined Clarity/operator acceptance is separate; the completion
+  move waits on current-head PR checks and controller integration.
 - **Stopped:**
+
+## Latest checkpoint (continuation dispatch ctx_239ed333d8c6)
+
+Exit criteria 1-4 are demonstrated under the combined 70bae90 candidate with
+its [raw-blob freeze](../../audits/2026-09-15-host-qualification/package-runtime-receipt-freeze.json).
+The fresh assigned native Claude Code run returned an unamended shape-valid
+receipt (`node check.mjs` exit 0) with native session binding; independent
+controller assertions passed shape, 104-file no-mutation, clean-Git and session
+checks; the Orca continuation controller session (a different actual harness)
+reconciled the original return into the fixture run record and validated the
+fixture with exit 0. The separate native readiness stop blocked on the missing
+grant with no attempt, no check and a single permitted readiness report. The
+original tmpfs artifact was lost when the container stopped; its bytes were
+recovered verbatim from the captured Write input and stay marked recovered.
+Receipts live in the audit directory under `fresh-v3-*`. Exit criterion 5
+awaits the new evidence PR's current-head checks and controller review.
 
 ## Authority and source boundary
 

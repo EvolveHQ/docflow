@@ -1,0 +1,15 @@
+{
+  "host": "claude",
+  "container": "docflow-se-59ed-3821-create-b",
+  "fixture": "/workspace/create-b",
+  "host_exit": 0,
+  "seconds": 140.3,
+  "model_requested": "claude-opus-5[1m]",
+  "provider_requested": null,
+  "claude_delegation_opt_in": "none",
+  "permission_context": "manual with explicit fixture tool allowlist",
+  "behavioural_verdict": "unverified: run independent assertions",
+  "codex_session_storage": null,
+  "thinking_requested": null,
+  "pi_thinking_selection": null
+}

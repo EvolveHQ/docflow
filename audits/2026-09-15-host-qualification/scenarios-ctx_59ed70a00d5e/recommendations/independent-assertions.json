@@ -1,0 +1,267 @@
+{
+  "case": "recommendations",
+  "checks": {
+    "native_exit_zero": true,
+    "native_return_success": true,
+    "native_permission_denials_empty": true,
+    "native_13_docflow_skills": true,
+    "native_pinned_model": true,
+    "native_qualified_version": true,
+    "native_no_delegate_calls": true,
+    "frozen_plugin_files_unchanged": true,
+    "member_bytes_unchanged": true,
+    "member_git_unchanged": true,
+    "workspace_head_refs_branch_unchanged": true,
+    "writes_within_canonical_planning_or_ignored_scratch": true,
+    "external_validation_expected": true,
+    "identity_preserved:.docflow_workspace/work/desktop-review--6c272fe908ad.md": true,
+    "history_preserved:.docflow_workspace/work/desktop-review--6c272fe908ad.md": true,
+    "identity_preserved:.docflow_workspace/work/docs-review--87bdf7293b28.md": true,
+    "history_preserved:.docflow_workspace/work/docs-review--87bdf7293b28.md": true,
+    "identity_preserved:.docflow_workspace/work/react-review--0a1fc781c38c.md": true,
+    "history_preserved:.docflow_workspace/work/react-review--0a1fc781c38c.md": true,
+    "no_grants_or_runs_created": true,
+    "three_work_records": true,
+    "unchanged_retrieval_decline_retained": true,
+    "declined_retrieval_not_resuggested": true,
+    "docs_add_nothing": true,
+    "react_guidance_pinned": true,
+    "desktop_no_applicable_react_substitution": true,
+    "desktop_missing_specialist_explicit": true
+  },
+  "changed_paths": [
+    ".docflow_workspace/INDEX.md",
+    ".docflow_workspace/work/desktop-review--6c272fe908ad.md",
+    ".docflow_workspace/work/docs-review--87bdf7293b28.md",
+    ".docflow_workspace/work/react-review--0a1fc781c38c.md"
+  ],
+  "host_exit": 0,
+  "seconds": 401.2,
+  "native_init_permissionMode": "default",
+  "requested_mode": "manual",
+  "requested_effort": "medium",
+  "requested_allowlist": [
+    "Read",
+    "Write",
+    "Edit",
+    "Bash",
+    "Skill",
+    "Glob",
+    "Grep"
+  ],
+  "docflow_skills": [
+    "docflow:add-convention",
+    "docflow:agent-wave",
+    "docflow:audit",
+    "docflow:bootstrap",
+    "docflow:brainstorm",
+    "docflow:new-adr",
+    "docflow:new-plan",
+    "docflow:rollup",
+    "docflow:ship-item",
+    "docflow:workspace-coordinate",
+    "docflow:workspace-orient",
+    "docflow:workspace-plan",
+    "docflow:workspace-setup"
+  ],
+  "plugin": [
+    {
+      "name": "docflow",
+      "path": "/opt/docflow-source/plugins/docflow",
+      "source": "docflow@inline",
+      "version": "0.9.4"
+    }
+  ],
+  "transcript_sha256": "0ebff786aaed9dabbb9ce3bb4e2129c2021c358cc34612d6171c2aa20c1116b3",
+  "work": {
+    ".docflow_workspace/work/desktop-review--6c272fe908ad.md": {
+      "id": "6c272fe9-08ad-41ce-8b58-2312390b44a8",
+      "title": "Review folder bridge boundary",
+      "scope": "Review Svelte folder binding and Rust command boundary in scenario/desktop.",
+      "scope_revision": 1,
+      "history": [
+        {
+          "state": "planned",
+          "at": "2026-09-15T04:31:37Z",
+          "actor": "test:fixture-builder",
+          "reason": "Synthetic planning baseline; no native action or approval claimed."
+        },
+        {
+          "state": "planned",
+          "at": "2026-09-15T04:34:39Z",
+          "actor": "test:recommendation-planner",
+          "reason": "Refined review approach, criteria, delivery, recommendations and blockers from repos/desktop at revision 8bbe8348cff207dfcbfe50865756d87229bddf16. Recorded the catalogued Tauri specialist as unavailable at its declared location and the React checklist as incompatible for this member. Owner, scope and scope revision unchanged; no setup proposed and no execution authority claimed."
+        }
+      ],
+      "recommendations": [
+        {
+          "id": "desktop-notes",
+          "action": "reference",
+          "fit": "required-by-repo",
+          "reason": "repos/desktop/AGENTS.md directs this review to read guidance/desktop-review.md. The file was read at 2026-09-15T04:34:39Z and its SHA-256 content hash matches the catalogued revision 4111c976b1b68a26eb50e7daa5f4d585e75c413d843ce78ed9e4c70e0e0642db. It scopes the review to Svelte binding and Rust command boundaries and explicitly requires stating what cannot be verified, which matches the evidence actually available in this member. It is read-only guidance, so referencing it changes nothing on the workstation.",
+          "scope": "Current Svelte/Tauri folder bridge boundary review only",
+          "asset": {
+            "source": "scenario/local-guidance",
+            "asset": "desktop-notes",
+            "revision": "sha256:4111c976b1b68a26eb50e7daa5f4d585e75c413d843ce78ed9e4c70e0e0642db"
+          },
+          "availability": "present",
+          "state": "selected",
+          "authority": null,
+          "setup_dependency": null,
+          "fallback": "If the notes cannot be read at the pinned revision, review against repos/desktop/AGENTS.md and ordinary reads of src/App.svelte, src-tauri/Cargo.toml and package.json, and record the missing guidance as an explicit gap.",
+          "success_check": "The findings cover the Svelte binding with cited lines and separately list every boundary claim that could not be verified without a runtime procedure."
+        },
+        {
+          "id": "tauri-specialist-unavailable",
+          "action": "use",
+          "fit": "unknown",
+          "reason": "The catalogue lists tauri-specialist at .docflow_workspace/local/missing-tauri-specialist/SKILL.md with compatibility proposed. That path was checked at 2026-09-15T04:34:39Z and does not exist, and repos/desktop/AGENTS.md states the specialist is not installed and no specialist service is configured. Its actual coverage therefore cannot be assessed, and a specialist label alone supplies no domain expertise. guidance/desktop-review.md does say native runtime review needs a qualified domain procedure, so the gap is real and is reported rather than filled. No setup is authorised, so this is deferred, not proposed.",
+          "scope": "Native runtime boundary questions in the current desktop review",
+          "asset": {
+            "source": "scenario/local-guidance",
+            "asset": "tauri-specialist",
+            "revision": "fixture-specialist-v1"
+          },
+          "availability": "unavailable",
+          "state": "deferred",
+          "authority": null,
+          "setup_dependency": null,
+          "fallback": "Limit the review to file evidence from src/App.svelte, src-tauri/Cargo.toml and package.json, and record the native runtime boundary as an explicit unknown for the owner.",
+          "success_check": "The findings name the runtime boundary questions a qualified domain procedure would have answered, and attribute no conclusion to a procedure that was never loaded."
+        },
+        {
+          "id": "react-checklist-incompatible",
+          "action": "reference",
+          "fit": "incompatible",
+          "reason": "The react-review checklist states it applies only to React function components. This member is Svelte 5.38.0 with @tauri-apps/api 2.8.0 and a Rust crate, per package.json and src-tauri/Cargo.toml, and contains no React. The checklist is readable, so it is recorded as declined on compatibility grounds to prevent it being substituted for the missing Svelte/Tauri coverage.",
+          "scope": "Current Svelte/Tauri folder bridge boundary review only",
+          "asset": {
+            "source": "scenario/local-guidance",
+            "asset": "react-review",
+            "revision": "sha256:b5efecd68449975cf617bf7f732588930330219ac8c3a2846d0e9ebdd51e110a"
+          },
+          "availability": "present",
+          "state": "declined",
+          "authority": null,
+          "setup_dependency": null,
+          "fallback": "Use desktop-notes and repos/desktop/AGENTS.md as the guidance for this member.",
+          "success_check": "No desktop finding cites the React checklist."
+        }
+      ],
+      "blockers": [
+        {
+          "reason": "No execution grant exists for this review; the current mandate authorises scoped canonical planning and read-only member access only.",
+          "owner": "test:scenario-controller",
+          "next_action": "Owner issues a scoped read-and-report grant through workspace-coordinate before any review runs."
+        },
+        {
+          "reason": "The Rust side of the folder bridge cannot be reviewed from the member as it stands: repos/desktop/src-tauri contains only Cargo.toml at revision 8bbe8348cff207dfcbfe50865756d87229bddf16, with no Rust source file and no command handler, and repos/desktop/src/App.svelte invokes nothing. Runtime verification is also excluded, since bridge execution and application launch are forbidden during planning.",
+          "owner": "test:scenario-controller",
+          "next_action": "Owner confirms whether Rust command sources exist outside the reviewed revision, or accepts a file-evidence-only review that records the native runtime boundary as an explicit unknown."
+        },
+        {
+          "reason": "The catalogued tauri-specialist asset is unavailable: its declared location .docflow_workspace/local/missing-tauri-specialist/SKILL.md does not exist, repos/desktop/AGENTS.md confirms the specialist is not installed and no specialist service is configured, and no setup is authorised.",
+          "owner": "test:scenario-controller",
+          "next_action": "Owner decides between accepting the reduced file-evidence scope and separately authorising qualified domain coverage; no installation is proposed here."
+        }
+      ],
+      "next_action": "Owner resolves whether Rust command sources exist for this bridge, then decides whether to grant a scoped file-evidence read-and-report review at revision 8bbe8348cff207dfcbfe50865756d87229bddf16 with the runtime boundary recorded as unknown. No specialist setup is proposed."
+    },
+    ".docflow_workspace/work/docs-review--87bdf7293b28.md": {
+      "id": "87bdf729-3b28-47ea-bdfa-c5190e6de1fd",
+      "title": "Review handbook navigation",
+      "scope": "Review contributor handbook navigation in scenario/docs.",
+      "scope_revision": 1,
+      "history": [
+        {
+          "state": "planned",
+          "at": "2026-09-15T04:31:37Z",
+          "actor": "test:fixture-builder",
+          "reason": "Synthetic planning baseline; no native action or approval claimed."
+        },
+        {
+          "state": "planned",
+          "at": "2026-09-15T04:34:39Z",
+          "actor": "test:recommendation-planner",
+          "reason": "Refined review approach, criteria, delivery and blockers from repos/docs at revision d4ef4e5c401ae71d98d48b8d1cbe6b5198a26f0d. Owner, scope and scope revision unchanged; no tool added and no execution authority claimed."
+        }
+      ],
+      "recommendations": [],
+      "blockers": [
+        {
+          "reason": "No execution grant exists for this review; the current mandate authorises scoped canonical planning and read-only member access only.",
+          "owner": "test:scenario-controller",
+          "next_action": "Owner issues a scoped read-and-report grant through workspace-coordinate before any review runs."
+        }
+      ],
+      "next_action": "Owner decides whether to grant a scoped read-and-report review of repos/docs/README.md and repos/docs/AGENTS.md at revision d4ef4e5c401ae71d98d48b8d1cbe6b5198a26f0d using ordinary file reads only. No tool is required and none is proposed."
+    },
+    ".docflow_workspace/work/react-review--0a1fc781c38c.md": {
+      "id": "0a1fc781-c38c-4051-bf9a-0b48a6b95653",
+      "title": "Review search input accessibility",
+      "scope": "Review controlled search input accessibility in scenario/react.",
+      "scope_revision": 1,
+      "history": [
+        {
+          "state": "planned",
+          "at": "2026-09-15T04:31:37Z",
+          "actor": "test:fixture-builder",
+          "reason": "Synthetic planning baseline; no native action or approval claimed."
+        },
+        {
+          "state": "planned",
+          "at": "2026-09-15T04:34:39Z",
+          "actor": "test:recommendation-planner",
+          "reason": "Refined review approach, criteria, delivery and blockers from repos/react at revision e3830821e87533c1effe82bc17fb4c349302c988, and added the member-required review checklist as a referenced asset. The prior declined retrieval choice is retained unchanged. Owner, scope and scope revision unchanged; no execution authority claimed."
+        }
+      ],
+      "recommendations": [
+        {
+          "id": "retrieval-declined",
+          "action": "enable",
+          "fit": "optional",
+          "reason": "Synthetic prior user preference: declined on this same stack, host and local policy because four named files are easy to open directly; revisit only if relevant context changes.",
+          "scope": "Current React review",
+          "asset": {
+            "source": "scenario/local-guidance",
+            "asset": "retrieval",
+            "revision": "fixture-retrieval-v1"
+          },
+          "availability": "not_present",
+          "state": "declined",
+          "authority": null,
+          "setup_dependency": null,
+          "fallback": "Open the named local files.",
+          "success_check": "Review findings can be traced to named files without an index."
+        },
+        {
+          "id": "react-checklist",
+          "action": "reference",
+          "fit": "required-by-repo",
+          "reason": "repos/react/AGENTS.md directs this review to use guidance/react-review.md as the pinned local reviewer checklist. The file was read at 2026-09-15T04:34:39Z and its SHA-256 content hash matches the catalogued revision b5efecd68449975cf617bf7f732588930330219ac8c3a2846d0e9ebdd51e110a. The checklist is scoped to React function components, and repos/react/src/Search.tsx exports the function component Search, so the scope fits. It is read-only guidance, not an installed executable, so referencing it changes nothing on the workstation.",
+          "scope": "Current React search input accessibility review only",
+          "asset": {
+            "source": "scenario/local-guidance",
+            "asset": "react-review",
+            "revision": "sha256:b5efecd68449975cf617bf7f732588930330219ac8c3a2846d0e9ebdd51e110a"
+          },
+          "availability": "present",
+          "state": "selected",
+          "authority": null,
+          "setup_dependency": null,
+          "fallback": "If the checklist cannot be read at the pinned revision, review against repos/react/AGENTS.md and ordinary reads of src/Search.tsx and package.json, and record the missing checklist as an explicit gap rather than substituting another member's guidance.",
+          "success_check": "Every finding cites a repos/react file and line and maps to a named checklist item (hook ordering, controlled-input updates, or labels)."
+        }
+      ],
+      "blockers": [
+        {
+          "reason": "No execution grant exists for this review; the current mandate authorises scoped canonical planning and read-only member access only.",
+          "owner": "test:scenario-controller",
+          "next_action": "Owner issues a scoped read-and-report grant through workspace-coordinate before any review runs."
+        }
+      ],
+      "next_action": "Owner decides whether to grant a scoped read-and-report review of repos/react/src/Search.tsx against the pinned checklist at revision e3830821e87533c1effe82bc17fb4c349302c988. No setup is needed; the declined retrieval option stays declined."
+    }
+  }
+}
