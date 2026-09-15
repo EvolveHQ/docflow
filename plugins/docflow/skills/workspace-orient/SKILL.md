@@ -39,7 +39,11 @@ stays registered with diagnostics. Search only authorised roots. Copied
 context and search indexes are discovery aids: read current authority,
 claims and critical constraints directly.
 
-Before each dependent action, recheck the source mandate and current grant:
+Before each dependent action, recheck the actual operator mandate for actor,
+scope, effects, conditions and stopping point. Initial authorised setup,
+scoped reads and authorised canonical planning use that mandate; they do
+not require or justify inventing a work record or execution grant.
+For grant-bound native execution, additionally recheck the current grant:
 actor, scope revision, delivery, action/effects, conditions, start, expiry,
 revocation/suspension, exact grant revision and stopping point. Reuse an
 existing compatible grant; request only missing or changed authority.
@@ -107,4 +111,3 @@ headed exactly **Status at a glance**, containing these three labels:
 Routine progress messages need no block. Keep final results brief and
 distinguish work prepared on a PR from work confirmed shipped.
 <!-- /docflow:closing-report -->
-

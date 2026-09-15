@@ -14,6 +14,12 @@ Four disjoint workspace skills guide deliberate setup, read-only orientation, pl
 
 Own this package's product files, native records and necessary separate gate commits. The coordinator owns integration into `kmox83/docflow-v1-integration`; no self-merge, main, tag, public publication or version bump. Preserve prior evidence and single-writer ownership.
 
+Review follow-up (2026-09-15, coordinator): clarify operator-authorised initial
+setup, scoped reads and canonical planning versus grant-bound native execution;
+make missing initial entry-point reads conditional and refresh the repository
+map. This preserves the existing capability and authority boundaries. Refresh
+source/package receipts and required CI; native empty-setup/orientation remains D4.
+
 ## Dependencies
 
 Reviewed W1/W2 integration `9f748b806e9ab8eb8985e05d437f5c5f356dd248`; current workspace contract and packaging.

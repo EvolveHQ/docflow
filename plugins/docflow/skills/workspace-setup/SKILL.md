@@ -32,14 +32,21 @@ in bootstrap's `templates/`. If missing, report the exact missing asset
 and stop dependent writes. Never assume a source checkout or install/fetch
 dependencies implicitly. The external validator requires Node.js 22+.
 
-Read the workspace entry point, registry and conventions, then the current
-canonical records and declared native member instructions. Resolve canonical
+For adoption, read the existing workspace entry point, registry, conventions
+and canonical records. For a new home, inspect only files already present;
+missing initial workspace files are expected and will be created from the
+authorised setup choices. Read declared native member instructions when
+members are supplied and member access is authorised. Resolve canonical
 home/full UUID and contained paths, including symlinks; a missing member
 stays registered with diagnostics. Search only authorised roots. Copied
 context and search indexes are discovery aids: read current authority,
 claims and critical constraints directly.
 
-Before each dependent action, recheck the source mandate and current grant:
+Before each dependent action, recheck the actual operator mandate for actor,
+scope, effects, conditions and stopping point. Initial authorised setup,
+scoped reads and authorised canonical planning use that mandate; they do
+not require or justify inventing a work record or execution grant.
+For grant-bound native execution, additionally recheck the current grant:
 actor, scope revision, delivery, action/effects, conditions, start, expiry,
 revocation/suspension, exact grant revision and stopping point. Reuse an
 existing compatible grant; request only missing or changed authority.
@@ -107,4 +114,3 @@ headed exactly **Status at a glance**, containing these three labels:
 Routine progress messages need no block. Keep final results brief and
 distinguish work prepared on a PR from work confirmed shipped.
 <!-- /docflow:closing-report -->
-
