@@ -11,7 +11,7 @@ export const kinds = ['ideas', 'decisions', 'work', 'knowledge', 'runs'];
 // Historical lookup is deliberately offline. Unsupported Git or unavailable
 // local objects fail closed; inherited repository/config state is not authority.
 export function inspectHistoricalFile(rootInput, ref) {
-  if (!/^[0-9a-f]{40}$/.test(ref.revision || '') ||
+  if (!/^(?:[0-9a-f]{40}|[0-9a-f]{64})$/.test(ref.revision || '') ||
       typeof ref.path !== 'string' || isAbsolute(ref.path) ||
       /[\\:\u0000]/.test(ref.path) ||
       ref.path.split('/').some(p => !p || p === '.' || p === '..')) return false;
@@ -40,7 +40,7 @@ export function inspectHistoricalFile(rootInput, ref) {
     if (tree.status !== 0) return false;
     const entries = tree.stdout.split('\0');
     if (entries.length !== 2 || entries[1] !== '') return false;
-    const match = entries[0].match(/^100(?:644|755) blob ([0-9a-f]{40})\t([\s\S]+)$/);
+    const match = entries[0].match(/^100(?:644|755) blob ([0-9a-f]{40}|[0-9a-f]{64})\t([\s\S]+)$/);
     if (!match || match[2] !== ref.path) return false;
     const blob = git(['cat-file', '-t', match[1]]);
     return blob.status === 0 && blob.stdout.trim() === 'blob';
