@@ -8,21 +8,36 @@ PR: https://github.com/EvolveHQ/docflow/pull/9, targeting
 ## Verified sources
 
 - Reviewed base: `9f748b806e9ab8eb8985e05d437f5c5f356dd248`.
-- Verified work HEAD: `62363be5ca62610ab1cfa80df1540e84e2057a16`.
+- Verified work HEAD: `abdfba27284ad73c573af50690029fdcb8ebaed5`.
+- Initial source/control baseline: `62363be5ca62610ab1cfa80df1540e84e2057a16`.
 - W3 product: `193fb01`; D2 product: `4da3699` and `f0c2581`.
+- Review clarification: `abdfba2` distinguishes operator-authorised setup,
+  scoped reads and canonical planning from grant-bound native execution;
+  new setup reads only existing entry-point files. The repository map is current.
 - Historical lookup correction: `016d80d` and `4fcd917`.
 - D3 producing source: `c57f91738158ce5db719f80412ff7e77b837bf60`;
   corpus commit: `9b63e7a`.
-- Required source CI passed on the verified work HEAD:
+- Required source CI passed on the initial source/control baseline:
   https://github.com/EvolveHQ/docflow/actions/runs/34912990477/job/104204406346.
   The final receipt commit must also pass the current-head required check
   before the PR is marked ready; the PR records that final head/check.
 
 Exact outputs, source/packed hashes, signature/gate separation and command
 probes are under [the evidence directory](2026-09-15-workspace-skills/).
-`source-receipt.json` hashes 342 files as exact Git bytes and proves all
+`source-receipt.json` hashes 345 files as exact raw Git bytes and proves all
 nine original trigger blocks unchanged. Six assessment bodies changed;
 audit, rollup and ship-item retain their existing workflows.
+
+Coordinator review caught an incorrect serialization claim in the first
+receipt. Git archive applied local `core.autocrlf=true`: all 342 original
+file hashes described CRLF archive bytes. `source-hash-correction.json`
+preserves every old value, corresponding raw blob hash and exact diagnosis.
+The corrected receipt uses binary `git cat-file --batch` payloads with
+declared byte lengths. Reproduce with
+`node audits/2026-09-15-workspace-skills/verify-source-receipt.mjs`:
+345 raw hashes, nine unchanged triggers, six before/after pairs, 186 corpus
+files and 35 source snapshots pass. Fixture contents and their internal
+hashes were already correct; this repairs receipt labels and source hashes.
 
 ## Outcomes and acceptance mapping
 
@@ -58,8 +73,12 @@ Static text assertions are not native question/response qualification.
 
 ## Exact checks
 
-All commands below ran on verified work HEAD; full outputs and exit codes
-are in `source-gates.json`.
+The initial broad controls below ran on `62363be`; exact outputs and exits
+are in `source-gates.json`. After the narrow review clarification, verify
+and all deterministic eval groups passed again on `abdfba2`, as did the
+binary source-receipt reproducer; `followup-gates.json` preserves their
+complete outputs and exits. `followup-package-receipt.json` binds the
+refreshed actual archive and four successful asset processes to that source.
 
 | Command | Result |
 |---|---|
@@ -71,23 +90,28 @@ are in `source-gates.json`.
 | Source required GitHub verify | SUCCESS at exact `62363be`; Linux CI includes platform-correct history controls |
 
 The 67 shipped plan items are historical repository entries; this task
-shipped none to main. All 16 constituent commits through the work HEAD are
-signed and gate changes are separate from judged files.
+shipped none to main. All 18 constituent commits through the verified work
+HEAD are signed and gate changes are separate from judged files.
 
 ## Producer/consumer handoff
 
 The repository corpus is
 `plugins/docflow/workspace/repository-fixtures/`; its manifest SHA-256 is
-`ea14ecffbf9fda2e019e36edfd7e057da70de3edc2524d2304b75cb1995316ae`.
+`7fdd64513df9dc0d14f5a773638e32f23f282b56407ed46eeb3dee24876d93b5`.
 The corrected validator SHA-256 is
-`8c8bf79e010bb7441c8cdb931e050acc1e43487c14b11a71a26526f15c632f71`.
-The actual npm archive SHA-256 is
-`f1937819960e4fb8e8d7112dff10b2bee19320f6a0dd394ca4d5f5d38429b34b`.
-Packed-file hashes preserve actual package bytes; Git-source hashes use LF.
-The local archive/extraction is retained at the path in `package-receipt.json`.
+`c8db90d4925779be8ad11cb0116c161026feb62c454ec5539b191a98b4f6c6cd`.
+These are raw Git blob hashes, not archive/checkout hashes.
+The refreshed actual npm archive SHA-256 is
+`86330a5d07216ccbddac5ba11576d50de654b1bdaef973562348acb0c545c2f6`.
+Its receipt records all 332 packed-file hashes and 330 source comparisons
+with explicitly normalized line endings; packed hashes preserve actual bytes.
+The archive/extraction is retained at the path in `followup-package-receipt.json`.
+The earlier `package-receipt.json` and archive remain historical evidence.
 
 Coordinator messages `msg_377cb8a821e5` and `msg_827a4be972e8` report the
 W3 milestone and corrected history/D3 pairing to C12 ctx_93e578505af6.
+Those initial archive-serialized source pins are superseded by the raw hashes
+above; coordinator review identified the discrepancy before settlement.
 Clarity files were not edited. Consumer acceptance must pin its own revision
 and distinguish commit/tree history from integrated delivery.
 

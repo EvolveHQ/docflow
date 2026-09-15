@@ -37,7 +37,7 @@ after current-head CI and source-bound evidence.
 
 ## Verification receipt
 
-Verified work HEAD: `62363be5ca62610ab1cfa80df1540e84e2057a16`.
+Verified work HEAD: `abdfba27284ad73c573af50690029fdcb8ebaed5`.
 PR: https://github.com/EvolveHQ/docflow/pull/9, against the review integration
 branch. Exact outputs, hashes, acceptance mapping and qualification limits:
 [`audits/2026-09-15-workspace-skills.md`](../../audits/2026-09-15-workspace-skills.md).
