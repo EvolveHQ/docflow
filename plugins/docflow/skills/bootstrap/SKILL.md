@@ -240,8 +240,13 @@ A standalone repo has none of them.
 
 ## Step 4 — Assessment (depth-tiered; 10 questions at full depth, plus federation (Q11) and placement (Q12))
 
-**Open with the depth selector — one single-select question before
-anything else:** how deep should this assessment go?
+**Reuse supplied answers first.** Summarise applicable choices already
+supplied in the request or session, including depth and sign-off. Defaults
+never replace explicit choices. If every material choice is supplied, proceed
+after the cross-check. Ask only about a material missing or conflicting choice.
+
+**For unresolved choices when depth is not supplied**, open with one
+single-select question: how deep should this assessment go?
 
 - **express** — no further choices. Every choice takes the fixed
   express profile below. Only essentials with **no derivable default**
@@ -257,8 +262,8 @@ anything else:** how deep should this assessment go?
 
 If the repo's `CONVENTIONS.md` already records an `Assessment depth:`
 (a retrofit or re-run), pre-select **that** depth as the recommended
-option instead. The selector always appears — a recorded depth steers
-the recommendation and is never applied silently.
+option instead when asking. A recorded depth steers the recommendation and
+is never applied silently; it is not a current answer or execution grant.
 
 **Mid-flight switching.** At any question the operator may answer
 "**defaults from here**" (remaining choices take their recommended
@@ -266,7 +271,9 @@ defaults, as in express) or "**go deeper**" (escalate express → guided
 → full for the remaining questions). Honour the switch immediately.
 
 **Express profile.** An express bootstrap scaffolds the conservative
-fixed profile — summarise it and get sign-off before writing anything:
+fixed profile for unanswered choices — preserve explicit choices, summarise
+the result and use applicable supplied sign-off or obtain missing sign-off
+before writing:
 
 - the **core only**: `AGENTS.md`, `CLAUDE.md`, `CONVENTIONS.md`,
   `adr/0000-template.md`, `INDEX.md`, plus the seed ADR `0001`

@@ -23,14 +23,21 @@ to the **new-adr** and **new-plan** skills.
 
 Run the shared assessment protocol before decomposing:
 
-- **Depth selector first.** Ask how deep this assessment should go:
+- **Reuse supplied answers first.** Treat applicable choices already supplied
+  in the request or this session, including depth, as answered. Summarise
+  them without asking again; defaults never replace explicit choices. If
+  every material choice is supplied, proceed. Ask only about a material
+  missing or conflicting choice. A repository preference alone is not a
+  current answer or execution grant.
+- **Depth selector for unresolved choices.** If depth is not supplied and
+  choices remain, ask how deep this assessment should go:
   **express** — every choice takes its recommended default; only
   questions with no derivable default (the free-text essentials) are
   still asked; **guided** — only the questions marked high-impact
   below, plus the free-text essentials; **full** — every question
   below. If the repo's `CONVENTIONS.md` records an `Assessment depth:`,
-  pre-select it as the recommended option — the selector always
-  appears; a recorded depth is never applied silently. Otherwise
+  pre-select it as the recommended option when asking; a recorded depth
+  is never applied silently. Otherwise
   recommend **full** when the request arrived with little or no
   context and **express** when it is already fully specified. At any
   question the operator may answer "defaults from here" or "go
