@@ -364,5 +364,24 @@
         "complete": true
       }
     }
+  },
+  "claude-resource": {
+    "private_directory": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\claude-resource",
+    "artifacts": {
+      "process.json": "claude-resource-process.json",
+      "assertions.json": "claude-resource-assertions.json",
+      "transcript.jsonl": {
+        "private_path": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\claude-resource\\transcript.jsonl",
+        "sha256": "7f9ca5fa85ff31923221bdf9560e05ef63b49692aee5f691b2df7c8a0aa5a0e2",
+        "bytes": 214391,
+        "complete": true
+      },
+      "stderr.txt": {
+        "private_path": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\claude-resource\\stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "complete": true
+      }
+    }
   }
 }

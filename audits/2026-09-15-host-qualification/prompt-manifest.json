@@ -164,5 +164,19 @@
     "sha256": "0d5675f840eaa74cdf6dcc540424ce8f356c41bca14c3dca9f700a184bde50a4",
     "bytes": 2542,
     "kind": "Prepared native UI prompt; set-value operation and resulting task text were observed, with actual input stored privately in UI receipts."
+  },
+  "claude-resource-prompt.txt": {
+    "git_blob": "37fd7088a858af613881acdaf3556ae1c861e278",
+    "sha256": "cecc8a684d25409a8c63ee0ae98b2c26cf76a8a529778c9c532deceee3ffaf40",
+    "bytes": 1347,
+    "scratch_file_raw_sha256": "f35ebde4807e6d079c87b371c320d5fb54d1b5fb39cdade2de57683bd8070079",
+    "kind": "Exact prepared UTF-8 text; CLI read_text normalization. Cowork UI submission is observed from native tree, not asserted byte-identical to UI internal payload."
+  },
+  "cowork-current-setup-prompt.txt": {
+    "git_blob": "999486fa097f764b167020da7b3707df7740d3d3",
+    "sha256": "f9bbb1d3488c75a48d5d8ba32af1feae2d655e46322ec9424c8e5af637bc8d10",
+    "bytes": 2166,
+    "scratch_file_raw_sha256": "db5c5d7f15cedb97afef9d15266467eacd142b42e434d436ce170bb8e3d03ca4",
+    "kind": "Exact prepared UTF-8 text; CLI read_text normalization. Cowork UI submission is observed from native tree, not asserted byte-identical to UI internal payload."
   }
 }

@@ -1,6 +1,6 @@
 {
-  "observed_at": "2026-09-15T03:47:39.913767+00:00",
-  "kind": "actual native Windows Cowork desktop session; running, not completion",
+  "observed_at": "2026-09-15T04:20:23.271475+00:00",
+  "kind": "actual native Windows Cowork desktop session; positively stopped through UI without setup completion",
   "desktop_transfer_message": "msg_a5ad5c69c910",
   "native_session_url": "https://claude.ai/cowork/cse_01TdFRnf8hhsie51VbtN5gve",
   "native_title": "Docflow qualification task",
@@ -14,12 +14,20 @@
   "folder_scope": "Allowed current session only; Dont ask again checkbox visibly unchecked; no future-session preference changed",
   "submitted_observed_by": "2026-09-15T03:35:29.3517030Z",
   "folder_allowed_observed_by": "2026-09-15T03:36:43.1310317Z",
-  "native_registry_observation": "Native UI displays Docflow plugin with 9 skills; current model reports workspace-setup absent and pre-existing plugin version 0.9.4 with 32 regular files. Installed hash receipt pending.",
+  "native_registry_observation": "Native registry and current-version plugin export establish the existing 0.9.4 package has nine skills and 32 files; exported bytes exactly match the original restore ZIP.",
   "attached_candidate_observation": "All 331 attached plugin files match frozen raw source before submission; attached files are not native skill registration.",
   "historical_folder_input_failure": "Retained separately in cowork-input-receipts.json; operator attachment resolved by current observation, not by repeating previous rejected input.",
   "native_task_scope": "One supplied-choice empty workspace setup using explicitly attached skill files; no user plugin store migration or install, delegate, remote publication or account changes.",
   "native_plugin_identity": "plugin_011ugP5k9szVCTcXtVDqFFwc",
   "native_marketplace": "My Uploads",
   "native_installation_preference": "available",
-  "native_cloud_path_display": "/root/.claude/plugins/synced/0e224371-..._c75f271d-.../docflow (UI text abbreviated; exact path pending native receipt)"
+  "native_cloud_path_display": "/root/.claude/plugins/synced/0e224371-..._c75f271d-.../docflow (UI text abbreviated; exact path pending native receipt)",
+  "stop_requested_observed_at": "2026-09-15T04:05:22.002991Z",
+  "stop_action_returned_at": "2026-09-15T04:05:34.1161157Z",
+  "stop_confirmed_observed_at": "2026-09-15T04:05:57.1944597Z",
+  "native_process_exit_code": null,
+  "stop_evidence": "Stop response control and Running badge disappeared; message actions appeared. This is positive native UI stop evidence, not an OS/cloud process-exit observation.",
+  "attached_files_after": "All 331 pre-existing files unchanged; no added file; workspace and qualification-receipt.json absent.",
+  "cloud_activity_limit": "Native UI tool labels show mock driver construction, mock receipt trimming and driver chunk preparation. Those simulations/helper actions did not establish native attached-folder workspace setup.",
+  "latest_discovery_receipt": "cowork-native-plugin-export.json"
 }

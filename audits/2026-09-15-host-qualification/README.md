@@ -40,7 +40,7 @@ SHA-256 and Git blob IDs are retained. Reproduce export using
 | Codex CLI 0.154.0, Linux, `gpt-6-astra` | Thirteen native skills; setup; full bootstrap/new-adr; read-only mixed-method orientation; native plugin removal retains three fixtures and reinstallation restores thirteen skills plus 329 exact product files. | Original bootstrap checker exits 1 on an integration-wording regex; semantic inspection supports the requested local-main behavior. No checker was weakened. Same-version reinstall is not an upgrade. |
 | OpenCode 1.18.30, Linux, `opencode/big-pickle` | Thirteen native skills; setup; full bootstrap/new-adr; Proposed-decision queue creation; ship-item blocks on Proposed ownership without changing files/Git; unavailable edit tool stops shell-write/delegate alternatives. | Permission config removes edit from the tool surface; this is not an interactive approval denial. Native startup added a config schema and 3,658 dependency files. The model incorrectly called these pre-existing. |
 | Pi 0.85.1, Windows, local `llama-server/qwen3.8-27b-coding`, high | One fresh recovery creates and independently validates the empty workspace after about 1,443 seconds. Native RPC advertises all thirteen Docflow commands. Installed source bytes and supplied choices match. | First 900-second setup timed out, exit 124. Recovery exited 0 before the controller's 1,800-second cap. RPC omits documented path/location fields; path binding comes from separate package/config evidence. |
-| Cowork, Windows desktop 1.52386.6.0, Opus 5 Max | Dedicated session cse_01TdFRnf8hhsie51VbtN5gve is running with the exact test folder and current-session permission only. Native UI advertises nine pre-existing Docflow skills. | Installed copy reports 0.9.4 but has only nine skill folders; current 331-file candidate is separately attached and used by explicit file reads. Native candidate registration and setup completion are not established. Supported scoped installation route is being investigated. |
+| Cowork, Windows desktop 1.52386.6.0, Opus 5 Max | Dedicated session cse_01TdFRnf8hhsie51VbtN5gve was positively stopped through native UI after the bounded run. No workspace or receipt was created; all 331 attached files stayed unchanged. | The first task used attached candidate files while the registered copy still had nine skills. After controller-approved replacement, the native registry lists thirteen skills and the supported current export matches all 331 frozen candidate files. The fresh actual setup is running; original restoration is pending. Cloud mock driver activity is not native setup evidence. |
 | DeepSeek Harness 0.1.1-rc.2, native web | Dedicated headless Chrome observes the isolated local Qwen/High profile and Workspace Write mode. First native turn fails before tools with `PI_AI_ERROR: No API key for provider: llama-server`; all fixture bytes remain unchanged. | The 900-second recovery stopped after 908 seconds including teardown, with 13 read/list calls and no check/receipt. Native progress continued until 0.4 seconds before stop. The fresh 1800-second supplied-path attempt passed the native check but stopped after 1795 seconds before returning a receipt. Its empty returns directory was created; pre-existing fixture/member/product file bytes stayed intact. No desktop-app session or remote credential is claimed. |
 
 [Assertion ledger](assertion-ledger.json) retains every required assertion
@@ -118,7 +118,13 @@ demonstrated. The check wrapper used a fixed temporary stderr file whose prior
 existence is unknown; no zero-external-effects claim is made.
 [Controller reconciliation](dsh-long-reconciliation.json) validates: run stopped,
 check passed, external receipt missing, work active, delivery unknown. This
-controller observation is not an executor return. No further attempt is authorised.
+controller observation is not an executor return. A later controller-authorised helper preparation was
+[rejected before launch](dsh-helper-launch-rejection.json) by automatic approval
+review, which returned only `blocked by policy`. It was not split or rerouted.
+The [controller cancellation](dsh-helper-cancellation.json) closes the grant
+and withdraws prospective ownership; no runtime, executor receipt or process
+exit is claimed. No new DSH setup/launch is permitted without explicit operator
+direction.
 A [watcher correction](dsh-long-watcher-correction.json) binds the already-created
 fresh native session file without restarting the model or extending the deadline.
 
@@ -140,7 +146,7 @@ fresh native session file without restarting the model or extending the deadline
   package observations do not establish a desktop app session. Desktop
   ownership transferred back for the dedicated Cowork task. Its native installed
   nine-skill copy differs from the attached current candidate; a supported scoped
-  install/restore route must be checked before any plugin change. Clarity pairing
+  replacement registered thirteen skills and exact current bytes. Original restoration remains required. Clarity pairing
   and the operator's pilot remain pending.
 
 Raw model events stay private because they may include reasoning. Scratch is
@@ -150,18 +156,45 @@ configuration and temporary browser state. Only selected source-bound receipts
 and prompts belong in this audit. Fixture Git histories are explicitly
 unsigned local test data; task evidence commits are signed.
 
+## Cowork plugin restore evidence
+
+The [native current-version export](cowork-native-plugin-export.json) is byte-identical
+to the original local restore archive: SHA-256
+`0cafc65f97bb870f53bd2df1086e486e0e1de9a59ee5d637808299c10808b675`,
+32 files and nine skills. The UI supports ZIP upload and retains earlier uploaded
+versions; same-name replacement and restoration effects remain unexecuted.
+The [stopped session](cowork-native-session.json) and [independent attached-folder
+snapshot](cowork-native-after-stop.json) establish no completed workspace setup.
+
+The [current installed-candidate task](cowork-current-session.json) is a separate
+native session with verified native thirteen-skill discovery and exact current
+export bytes. Its actual setup and required original restoration are pending.
+
+## Shared exclusive resource guard
+
+The [native resource case](claude-resource-assertions.json) reuses a current
+A grant and native claim for a distinct Git member, reads the shared reservation
+source and linked B workspace, and stops before the check. All five fixture
+roots and the frozen package remain unchanged. B reservation history is injected
+scenario input. The original external readiness report is not a canonical
+attempt receipt; schema and clock limits remain explicit.
+
+The [receipt usability diagnosis](native-receipt-usability.md) and
+[concrete proposed patch](receipt-guidance-proposal.patch) preserve the actual
+handoff failures and propose a bounded guidance correction. It is not applied
+to frozen product bytes.
+
 ## Status at a glance
 
-- **This run:** Four native host inventories/setup results, bounded lifecycle,
+- **This run:** Native host inventories/setup results, bounded resource/lifecycle,
   denial, fresh recovery, removal/reinstall and external handoff evidence are
   recorded with actual failures and limits. Prior local gates returned
   `verify: OK (version 0.9.4, 13 skills, 56 ADRs, 67 shipped plan items)`, exit 0,
   and `10 passed, 0 failed, 6 skipped`, exit 0. CI passed on evidence head
-  `a77c01e`; subsequent evidence needs current-head CI.
+  `26a1a7c343a344ef7077d276ecc14a8d1c5964a5`; subsequent evidence needs current-head CI.
 - **Overall:** partially verified. Plans 0061/0062 remain in todo. Draft PR 11
   is live and has not shipped; the development candidate is not released V1.
-- **Yet to do:** Finish the current supplemental Cowork setup, inspect a supported candidate
-  registration/restore route, and complete pending native host/guide/scenario assertions;
+- **Yet to do:** Finish bounded current-package native Cowork setup and verified original restoration, and complete pending native host/guide/scenario assertions;
   obtain desktop access and paired Clarity artifact; perform actual combined
   views/handoffs; preserve fixtures, clean up owned runtimes, run final gates
   and current-head CI, obtain review and the operator's real pilot acceptance.

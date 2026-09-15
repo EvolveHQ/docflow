@@ -1,0 +1,241 @@
+{
+  "observed_at": "2026-09-15T04:33:53.735Z",
+  "assets": "C:/Users/eugen/AppData/Local/Temp/docflowhq-v1-20260915/qualification-ctx-fc206cf7e4a8/package-source/plugins/docflow/workspace",
+  "method": "Actual exported checkShape(receipt, receipt) from frozen installed validator; original returns unchanged",
+  "results": [
+    {
+      "path": "audits/2026-09-15-host-qualification/external-native-receipt.json",
+      "selectedValue": "original.receipt",
+      "shapeValid": true,
+      "errors": [],
+      "nativePaths": [
+        {
+          "field": "receipt.checks.0.evidence.0",
+          "path": "check.mjs",
+          "syntacticallyContainedFilePath": true
+        },
+        {
+          "field": "receipt.evidence.0",
+          "path": "issues/PROBE-1.md",
+          "syntacticallyContainedFilePath": true
+        },
+        {
+          "field": "receipt.evidence.1",
+          "path": "README.md",
+          "syntacticallyContainedFilePath": true
+        },
+        {
+          "field": "receipt.evidence.2",
+          "path": "OWNER.md",
+          "syntacticallyContainedFilePath": true
+        },
+        {
+          "field": "receipt.evidence.3",
+          "path": ".",
+          "syntacticallyContainedFilePath": false
+        },
+        {
+          "field": "receipt.evidence.4",
+          "path": ".docflow_workspace/work/bounded-cross-method-readout--74182956aa03.md",
+          "syntacticallyContainedFilePath": true
+        },
+        {
+          "field": "receipt.evidence.5",
+          "path": ".",
+          "syntacticallyContainedFilePath": false
+        }
+      ],
+      "limit": "Path syntax listing only; use canonical-context validation for resolution. Neither shape nor path checks attest model timestamps."
+    },
+    {
+      "path": "audits/2026-09-15-host-qualification/external-native-receipt-v2.json",
+      "selectedValue": "original.receipt",
+      "shapeValid": true,
+      "errors": [],
+      "nativePaths": [
+        {
+          "field": "receipt.checks.0.evidence.0",
+          "path": "check.mjs",
+          "syntacticallyContainedFilePath": true
+        },
+        {
+          "field": "receipt.evidence.0",
+          "path": "issues/PROBE-1.md",
+          "syntacticallyContainedFilePath": true
+        },
+        {
+          "field": "receipt.evidence.1",
+          "path": "README.md",
+          "syntacticallyContainedFilePath": true
+        },
+        {
+          "field": "receipt.evidence.2",
+          "path": "OWNER.md",
+          "syntacticallyContainedFilePath": true
+        },
+        {
+          "field": "receipt.evidence.3",
+          "path": ".git/HEAD",
+          "syntacticallyContainedFilePath": true
+        },
+        {
+          "field": "receipt.evidence.4",
+          "path": "check.mjs",
+          "syntacticallyContainedFilePath": true
+        },
+        {
+          "field": "receipt.evidence.5",
+          "path": ".docflow_workspace/work/bounded-cross-method-readout--74182956aa03.md",
+          "syntacticallyContainedFilePath": true
+        },
+        {
+          "field": "receipt.evidence.6",
+          "path": "OWNER.md",
+          "syntacticallyContainedFilePath": true
+        },
+        {
+          "field": "receipt.evidence.7",
+          "path": "README.md",
+          "syntacticallyContainedFilePath": true
+        },
+        {
+          "field": "receipt.evidence.8",
+          "path": "check.mjs",
+          "syntacticallyContainedFilePath": true
+        },
+        {
+          "field": "receipt.evidence.9",
+          "path": "issues/PROBE-1.md",
+          "syntacticallyContainedFilePath": true
+        }
+      ],
+      "limit": "Path syntax listing only; use canonical-context validation for resolution. Neither shape nor path checks attest model timestamps."
+    },
+    {
+      "path": "audits/2026-09-15-host-qualification/claude-cross-return.json",
+      "selectedValue": "original",
+      "shapeValid": false,
+      "errors": [
+        "receipt.head_revision: missing field",
+        "receipt.schema: unknown field",
+        "receipt.kind: unknown field",
+        "receipt.work: unknown field",
+        "receipt.delivery: unknown field",
+        "receipt.scope_revision: unknown field",
+        "receipt.grant: unknown field",
+        "receipt.actor: unknown field",
+        "receipt.host: unknown field",
+        "receipt.model: unknown field",
+        "receipt.note: unknown field",
+        "receipt.source_revisions: unknown field",
+        "receipt.source_head_revision: unknown field",
+        "receipt.worktrees_clean: unknown field",
+        "receipt.actions: unknown field",
+        "receipt.checks[0].cwd: unknown field",
+        "receipt.status_changes: unknown field",
+        "receipt.selected_assets: unknown field",
+        "receipt.used_assets[0]: expected object",
+        "receipt.closing_report: unknown field"
+      ],
+      "nativePaths": [
+        {
+          "field": "receipt.evidence.0",
+          "path": "OWNER.md",
+          "syntacticallyContainedFilePath": true
+        },
+        {
+          "field": "receipt.evidence.1",
+          "path": ".docflow_workspace/runs/prior-unknown-assignment--b4f7e97d5765.md",
+          "syntacticallyContainedFilePath": true
+        }
+      ],
+      "limit": "Path syntax listing only; use canonical-context validation for resolution. Neither shape nor path checks attest model timestamps."
+    },
+    {
+      "path": "C:/Users/eugen/AppData/Local/Temp/docflowhq-v1-20260915/qualification-ctx-fc206cf7e4a8/claude-resource-return.json",
+      "selectedValue": "original",
+      "shapeValid": false,
+      "errors": [
+        "receipt.head_revision: missing field",
+        "receipt.evidence: missing field",
+        "receipt.schema: unknown field",
+        "receipt.kind: unknown field",
+        "receipt.actor: unknown field",
+        "receipt.host: unknown field",
+        "receipt.outcome: unknown field",
+        "receipt.summary: unknown field",
+        "receipt.work: unknown field",
+        "receipt.grant: unknown field",
+        "receipt.source_revisions: unknown field",
+        "receipt.readiness: unknown field",
+        "receipt.commands: unknown field",
+        "receipt.checks[0].output: expected string",
+        "receipt.checks[0].reason: unknown field",
+        "receipt.actions: unknown field",
+        "receipt.not_performed: unknown field",
+        "receipt.necessary_next_evidence: unknown field",
+        "receipt.work_observation: unknown field",
+        "receipt.selected_assets: unknown field",
+        "receipt.used_assets[0].asset: missing field",
+        "receipt.used_assets[0].action: missing field",
+        "receipt.used_assets[0].result: missing field",
+        "receipt.used_assets[0].path: unknown field",
+        "receipt.used_assets[0].sha256: unknown field",
+        "receipt.used_assets[1].asset: missing field",
+        "receipt.used_assets[1].action: missing field",
+        "receipt.used_assets[1].path: unknown field",
+        "receipt.used_assets[1].sha256: unknown field",
+        "receipt.used_assets[2].asset: missing field",
+        "receipt.used_assets[2].action: missing field",
+        "receipt.used_assets[2].result: missing field",
+        "receipt.used_assets[2].path: unknown field",
+        "receipt.used_assets[2].sha256: unknown field",
+        "receipt.used_assets[3].asset: missing field",
+        "receipt.used_assets[3].action: missing field",
+        "receipt.used_assets[3].result: missing field",
+        "receipt.used_assets[3].path: unknown field",
+        "receipt.used_assets[3].sha256: unknown field",
+        "receipt.used_assets[4].asset: missing field",
+        "receipt.used_assets[4].action: missing field",
+        "receipt.used_assets[4].result: missing field",
+        "receipt.used_assets[4].path: unknown field",
+        "receipt.used_assets[4].sha256: unknown field",
+        "receipt.notes: unknown field",
+        "receipt.closing_report: unknown field"
+      ],
+      "nativePaths": [
+        {
+          "field": "receipt.readiness.0.evidence",
+          "path": "QUALIFICATION-MANDATE.md",
+          "syntacticallyContainedFilePath": true
+        },
+        {
+          "field": "receipt.readiness.1.evidence",
+          "path": ".docflow_workspace/work/resource-gated-readout--16eda8d9a401.md",
+          "syntacticallyContainedFilePath": true
+        },
+        {
+          "field": "receipt.readiness.2.evidence",
+          "path": "OWNER.md",
+          "syntacticallyContainedFilePath": true
+        },
+        {
+          "field": "receipt.readiness.3.evidence",
+          "path": ".docflow_workspace/work/resource-gated-readout--16eda8d9a401.md",
+          "syntacticallyContainedFilePath": true
+        },
+        {
+          "field": "receipt.readiness.4.evidence",
+          "path": "RESOURCE.md",
+          "syntacticallyContainedFilePath": true
+        },
+        {
+          "field": "receipt.readiness.4.corroborating_evidence",
+          "path": ".docflow_workspace/runs/imported-resource-reservation--985c450f1202.md",
+          "syntacticallyContainedFilePath": true
+        }
+      ],
+      "limit": "Path syntax listing only; use canonical-context validation for resolution. Neither shape nor path checks attest model timestamps."
+    }
+  ]
+}

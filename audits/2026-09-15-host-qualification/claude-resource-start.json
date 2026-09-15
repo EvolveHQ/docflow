@@ -1,0 +1,6 @@
+{
+  "started_at": "2026-09-15T04:25:30.8080857+00:00",
+  "host": "claude-code",
+  "kind": "controller observed native process invocation",
+  "container": "docflow-hq-fc206-claude"
+}

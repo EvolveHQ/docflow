@@ -22,6 +22,17 @@ unchanged. The task PR is live, not shipped.
 W3/D2/D3 and separately scoped D5 integrated candidate, completed source receipts,
 coordinator-approved source freeze and coordinator-selected native test environments.
 
+Latest checkpoint: the first Cowork task was positively stopped without workspace
+or receipt; its 331 attached files remained unchanged. The supported native
+current-plugin export proved the original nine-skill restore archive exactly.
+After controller approval, supported replacement registered thirteen skills and
+the new native export matched all frozen candidate bytes; a fresh bounded setup
+is running, and restoration remains required. The DeepSeek helper preparation
+was rejected by automatic review before launch, then cancelled with its grant
+closed; no new runtime or executor receipt exists. Native WV08 blocked on a
+shared reservation across distinct members with all canonical/native roots
+unchanged. Its readiness report is not a canonical attempt receipt.
+
 ## Scope
 
 Qualification starts from reviewed Docflow source
