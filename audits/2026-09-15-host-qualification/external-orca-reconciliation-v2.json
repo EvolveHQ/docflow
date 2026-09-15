@@ -1,0 +1,449 @@
+{
+  "observed_at": "2026-09-15T02:22:09Z",
+  "validation": {
+    "exit": 0,
+    "stdout": "{\n  \"schema\": 1,\n  \"evaluated_at\": \"2026-09-15T02:22:09Z\",\n  \"valid\": true,\n  \"diagnostics\": [],\n  \"records\": [\n    {\n      \"schema\": 1,\n      \"id\": \"df2677cf-87d3-4de1-b9c5-c17fac7047a0\",\n      \"home\": \"docflow-hq/w4\",\n      \"kind\": \"ideas\",\n      \"title\": \"Bounded cross-method readout\",\n      \"owner\": \"qualification-controller\",\n      \"created_at\": \"2026-09-15T01:41:30Z\",\n      \"links\": [],\n      \"state\": \"selected\",\n      \"history\": [\n        {\n          \"state\": \"backlog\",\n          \"at\": \"2026-09-15T01:41:30Z\",\n          \"actor\": \"qualification-controller\",\n          \"reason\": \"Capture a bounded read/test/report readout across a Docflow-method member and a manual-method member, with a reference member as evidence input only.\"\n        },\n        {\n          \"state\": \"selected\",\n          \"at\": \"2026-09-15T01:41:30Z\",\n          \"actor\": \"qualification-controller\",\n          \"reason\": \"Selected with high priority under task_856c97a5b36d / ctx_fc206cf7e4a8 (QUALIFICATION-MANDATE.md at 7474eeb7d5c6c74652082480b55c1017bdb61558). Selection sets priority only and grants no execution authority.\"\n        }\n      ],\n      \"priority\": \"high\",\n      \"problem\": \"The workspace has no reconciled evidence that native checks can be read and returned across different member methods (Docflow plan queue and manual issue files) without mutating any member.\",\n      \"affected_repositories\": [\n        \"docflow-hq/docflow-member\",\n        \"docflow-hq/manual-member\",\n        \"docflow-hq/reference-member\"\n      ],\n      \"path\": \".docflow_workspace/ideas/bounded-cross-method-readout--df2677cf87d3.md\"\n    },\n    {\n      \"schema\": 1,\n      \"id\": \"a491c210-dc3e-4a8c-9421-6c080451043b\",\n      \"home\": \"docflow-hq/w4\",\n      \"kind\": \"decisions\",\n      \"title\": \"Bounded cross-method readout scope\",\n      \"owner\": \"qualification-controller\",\n      \"created_at\": \"2026-09-15T01:41:30Z\",\n      \"links\": [\n        {\n          \"home\": \"docflow-hq/w4\",\n          \"id\": \"df2677cf-87d3-4de1-b9c5-c17fac7047a0\",\n          \"path\": \".docflow_workspace/ideas/bounded-cross-method-readout--df2677cf87d3.md\"\n        }\n      ],\n      \"state\": \"accepted\",\n      \"history\": [\n        {\n          \"state\": \"proposed\",\n          \"at\": \"2026-09-15T01:41:30Z\",\n          \"actor\": \"qualification-controller\",\n          \"reason\": \"Propose a read/test/report-only readout across docflow-member and manual-member, with reference-member as evidence input only.\"\n        },\n        {\n          \"state\": \"accepted\",\n          \"at\": \"2026-09-15T01:41:30Z\",\n          \"actor\": \"qualification-controller\",\n          \"reason\": \"Accepted under the recorded delegated test mandate (task_856c97a5b36d / ctx_fc206cf7e4a8). No human signature or Clarity acceptance is asserted. Acceptance records agreement only and grants no execution authority.\"\n        }\n      ],\n      \"scope\": \"Read, test and report only. Required deliveries: docflow-hq/docflow-member (plan/todo/0001-example.md at 6364b79c74c3b0e4101daebfe556a3525acb0090) and docflow-hq/manual-member (issues/PROBE-1.md at 226a6f2cec3d85c4c88f9bc5247c06dca068ad9e). docflow-hq/reference-member (reference.md at 64e110e3829a6c42bb41b1b4233805a7bfbe18cc) supplies evidence only. Excluded: member edits, installation, commits, publication, delegation and Clarity writes. Native methods, identifiers and lifecycles stay unchanged. Imported stopped native ownership is reported, never overwritten.\",\n      \"affected_repositories\": [\n        \"docflow-hq/docflow-member\",\n        \"docflow-hq/manual-member\",\n        \"docflow-hq/reference-member\"\n      ],\n      \"acceptance\": {\n        \"by\": \"qualification-controller\",\n        \"at\": \"2026-09-15T01:41:30Z\",\n        \"mandate\": {\n          \"repository\": \"docflow-hq/w4\",\n          \"path\": \"QUALIFICATION-MANDATE.md\",\n          \"revision\": \"7474eeb7d5c6c74652082480b55c1017bdb61558\",\n          \"observed_at\": \"2026-09-15T01:40:18Z\",\n          \"outcome\": \"passed\",\n          \"summary\": \"Disposable qualification mandate for task_856c97a5b36d / ctx_fc206cf7e4a8 authorises the sole Docflow test writer to create planning records; canonical planning actor is qualification-controller; valid through 2026-09-15T07:39:21Z; no user signature or Clarity acceptance asserted.\"\n        }\n      },\n      \"adoption\": [],\n      \"predecessors\": [],\n      \"successors\": [],\n      \"path\": \".docflow_workspace/decisions/bounded-cross-method-readout-scope--a491c210dc3e.md\"\n    },\n    {\n      \"schema\": 1,\n      \"id\": \"74182956-aa03-4fee-9db7-ae1405c58751\",\n      \"home\": \"docflow-hq/w4\",\n      \"kind\": \"work\",\n      \"title\": \"Bounded cross-method readout\",\n      \"owner\": \"qualification-controller\",\n      \"created_at\": \"2026-09-15T01:41:30Z\",\n      \"links\": [\n        {\n          \"home\": \"docflow-hq/w4\",\n          \"id\": \"df2677cf-87d3-4de1-b9c5-c17fac7047a0\",\n          \"path\": \".docflow_workspace/ideas/bounded-cross-method-readout--df2677cf87d3.md\"\n        },\n        {\n          \"home\": \"docflow-hq/w4\",\n          \"id\": \"a491c210-dc3e-4a8c-9421-6c080451043b\",\n          \"path\": \".docflow_workspace/decisions/bounded-cross-method-readout-scope--a491c210dc3e.md\"\n        }\n      ],\n      \"state\": \"active\",\n      \"history\": [\n        {\n          \"state\": \"planned\",\n          \"at\": \"2026-09-15T01:41:30Z\",\n          \"actor\": \"qualification-controller\",\n          \"reason\": \"Plan the bounded readout under the accepted agreement. Grants are deliberately left empty to show that selected, agreed and planned carry no execution authority.\"\n        },\n        {\n          \"state\": \"planned\",\n          \"at\": \"2026-09-15T01:58:51Z\",\n          \"actor\": \"qualification-controller\",\n          \"reason\": \"Record manual-member read/test/report grant only; docflow-member owner conflict and overall incompletion remain.\"\n        },\n        {\n          \"state\": \"active\",\n          \"at\": \"2026-09-15T01:58:51Z\",\n          \"actor\": \"qualification-controller\",\n          \"reason\": \"Bounded manual-member attempt is about to start; other delivery remains incomplete.\"\n        },\n        {\n          \"state\": \"active\",\n          \"at\": \"2026-09-15T02:22:09Z\",\n          \"actor\": \"qualification-controller\",\n          \"reason\": \"Manual-member native check independently reconciled only. Other delivery remains unknown and agreement accepted; original receipt failure and assisted amendment remain in evidence.\"\n        }\n      ],\n      \"scope_revision\": 1,\n      \"outcome\": \"Native checks for docflow-member and manual-member have been returned and independently reconciled against their source revisions. The agreement remains accepted.\",\n      \"scope\": \"Read, test and report only. Read each required member's native instructions and work, run its native check under a later scoped grant and native claim, then return and reconcile the evidence. reference-member is evidence input only.\",\n      \"exclusions\": [\n        \"No member edits.\",\n        \"No installation.\",\n        \"No commit.\",\n        \"No publication.\",\n        \"No delegation.\",\n        \"No Clarity write.\"\n      ],\n      \"priority\": \"high\",\n      \"criteria\": [\n        {\n          \"id\": \"docflow-member-check\",\n          \"text\": \"Native check for docflow-hq/docflow-member (node check.mjs at 6364b79c74c3b0e4101daebfe556a3525acb0090) returned with exit code and output.\",\n          \"evidence\": []\n        },\n        {\n          \"id\": \"manual-member-check\",\n          \"text\": \"Native check for docflow-hq/manual-member (node check.mjs at 226a6f2cec3d85c4c88f9bc5247c06dca068ad9e) returned with exit code and output.\",\n          \"evidence\": [\n            {\n              \"repository\": \"docflow-hq/manual-member\",\n              \"path\": \"issues/PROBE-1.md\",\n              \"revision\": \"226a6f2cec3d85c4c88f9bc5247c06dca068ad9e\",\n              \"observed_at\": \"2026-09-15T02:22:09Z\",\n              \"outcome\": \"passed\",\n              \"summary\": \"Orca qualification coordinator re-read current native work and clean Git status at the exact declared HEAD. Independent canonical node check.mjs at 2026-09-15T02:10:22Z exited 0 with stdout qualification-member-check: OK (manual-member) and empty stderr. Original external check is clock-backed at 02:01:55Z; both source and output match. This evidence does not attest the executor unknown read timestamps.\"\n            }\n          ]\n        },\n        {\n          \"id\": \"independent-reconciliation\",\n          \"text\": \"Both returned checks are independently reconciled against their native source revisions, and the agreement stays accepted. A single delivery cannot close this work.\",\n          \"evidence\": []\n        }\n      ],\n      \"blockers\": [\n        {\n          \"reason\": \"docflow-hq/docflow-member plan/todo/0001-example.md at 6364b79c74c3b0e4101daebfe556a3525acb0090 carries an imported stopped claim: Claimed by fixture-executor, branch work/0001-example, Overall: blocked. That branch is absent locally (only main was observed at 2026-09-15T01:41Z). The label is synthetic history and confers no live authority.\",\n          \"owner\": \"qualification-controller\",\n          \"next_action\": \"Report the stopped owner and branch in the brief and receipt. Do not overwrite, release or reassign the native claim, and do not edit the member.\"\n        }\n      ],\n      \"dependencies\": [],\n      \"deliveries\": [\n        {\n          \"id\": \"docflow-member\",\n          \"repository\": \"docflow-hq/docflow-member\",\n          \"scope_revision\": 1,\n          \"scope\": \"Read AGENTS.md and plan/todo/0001-example.md; run node check.mjs; report. No native queue transition.\",\n          \"required\": true,\n          \"native_work\": {\n            \"repository\": \"docflow-hq/docflow-member\",\n            \"path\": \"plan/todo/0001-example.md\",\n            \"revision\": \"6364b79c74c3b0e4101daebfe556a3525acb0090\"\n          },\n          \"required_completion\": \"node check.mjs exits 0 with 'qualification-member-check: OK (docflow-member)' at the exact revision, and the result is returned and reconciled. The native item is not shipped or moved.\",\n          \"depends_on\": [],\n          \"observation\": {\n            \"state\": \"unknown\",\n            \"complete\": false,\n            \"observed_at\": null,\n            \"source_revision\": null,\n            \"evidence\": []\n          }\n        },\n        {\n          \"id\": \"manual-member\",\n          \"repository\": \"docflow-hq/manual-member\",\n          \"scope_revision\": 1,\n          \"scope\": \"Read README.md and issues/PROBE-1.md; run node check.mjs; report the checked revision and native work identifier. Do not migrate its method.\",\n          \"required\": true,\n          \"native_work\": {\n            \"repository\": \"docflow-hq/manual-member\",\n            \"path\": \"issues/PROBE-1.md\",\n            \"revision\": \"226a6f2cec3d85c4c88f9bc5247c06dca068ad9e\"\n          },\n          \"required_completion\": \"node check.mjs exits 0 with 'qualification-member-check: OK (manual-member)' at the exact revision, and the checked revision plus PROBE-1 are returned and reconciled.\",\n          \"depends_on\": [],\n          \"observation\": {\n            \"state\": \"node check.mjs exits 0 with 'qualification-member-check: OK (manual-member)' at the exact revision, and the checked revision plus PROBE-1 are returned and reconciled.\",\n            \"complete\": true,\n            \"observed_at\": \"2026-09-15T02:22:09Z\",\n            \"source_revision\": \"226a6f2cec3d85c4c88f9bc5247c06dca068ad9e\",\n            \"evidence\": [\n              {\n                \"repository\": \"docflow-hq/manual-member\",\n                \"path\": \"issues/PROBE-1.md\",\n                \"revision\": \"226a6f2cec3d85c4c88f9bc5247c06dca068ad9e\",\n                \"observed_at\": \"2026-09-15T02:22:09Z\",\n                \"outcome\": \"passed\",\n                \"summary\": \"Orca qualification coordinator re-read current native work and clean Git status at the exact declared HEAD. Independent canonical node check.mjs at 2026-09-15T02:10:22Z exited 0 with stdout qualification-member-check: OK (manual-member) and empty stderr. Original external check is clock-backed at 02:01:55Z; both source and output match. This evidence does not attest the executor unknown read timestamps.\"\n              }\n            ]\n          }\n        }\n      ],\n      \"grants\": [\n        {\n          \"id\": \"manual-readout\",\n          \"revisions\": [\n            {\n              \"revision\": 1,\n              \"state\": \"active\",\n              \"delivery\": \"manual-member\",\n              \"scope_revision\": 1,\n              \"actor\": \"agent:claude-w4\",\n              \"approved_by\": \"qualification-controller\",\n              \"approved_at\": \"2026-09-15T01:58:51Z\",\n              \"mandate\": {\n                \"repository\": \"docflow-hq/w4\",\n                \"path\": \"QUALIFICATION-MANDATE.md\",\n                \"revision\": \"7474eeb7d5c6c74652082480b55c1017bdb61558\",\n                \"observed_at\": \"2026-09-15T01:58:51Z\",\n                \"outcome\": \"passed\",\n                \"summary\": \"Controller inspected its actual delegated disposable-test mandate; no human signature asserted.\"\n              },\n              \"actions\": [\n                \"read\",\n                \"test\",\n                \"report\"\n              ],\n              \"conditions\": [\n                \"Read/test/report only; immutable canonical snapshot; return externally; preserve all member bytes.\"\n              ],\n              \"stop_at\": \"external-receipt-returned\",\n              \"valid_from\": \"2026-09-15T01:58:51Z\",\n              \"expires_at\": \"2026-09-15T02:58:51Z\",\n              \"recorded_at\": \"2026-09-15T01:58:51Z\",\n              \"reason\": \"Actual test controller records the current bounded manual-member authority before the native check.\"\n            }\n          ]\n        }\n      ],\n      \"recommendations\": [],\n      \"next_action\": \"Keep active: Docflow member native ownership/check and combined reconciliation remain unresolved. Preserve the accepted agreement and original/amended external receipts; no launch, reassignment or release follows automatically.\",\n      \"path\": \".docflow_workspace/work/bounded-cross-method-readout--74182956aa03.md\"\n    },\n    {\n      \"schema\": 1,\n      \"id\": \"9cd6d05d-5141-44b8-ae3b-e6614ac31f2f\",\n      \"home\": \"docflow-hq/w4\",\n      \"kind\": \"runs\",\n      \"title\": \"Manual native readout\",\n      \"owner\": \"qualification-controller\",\n      \"created_at\": \"2026-09-15T01:58:51Z\",\n      \"links\": [],\n      \"state\": \"stopped\",\n      \"history\": [\n        {\n          \"state\": \"running\",\n          \"at\": \"2026-09-15T01:58:51Z\",\n          \"actor\": \"qualification-controller\",\n          \"reason\": \"Prepare the actual bounded native attempt for immediate dispatch.\"\n        },\n        {\n          \"state\": \"unknown\",\n          \"at\": \"2026-09-15T02:11:50Z\",\n          \"actor\": \"qualification-controller\",\n          \"reason\": \"Native process positively exited and returned an invalid external receipt; rejected draft reconciliation preserved in qualification evidence. Canonical completion and release remain unaccepted pending report-only amendment.\"\n        },\n        {\n          \"state\": \"stopped\",\n          \"at\": \"2026-09-15T02:22:09Z\",\n          \"actor\": \"qualification-controller\",\n          \"reason\": \"Positive original process exit was observed at ended_at (02:07:24Z); this is a conservative observed terminal boundary, not an exact process-exit timestamp. Report-only amendment arrived later and is preserved verbatim. No ownership reassignment occurred.\"\n        }\n      ],\n      \"started_at\": \"2026-09-15T01:58:51Z\",\n      \"ended_at\": \"2026-09-15T02:07:24Z\",\n      \"brief\": {\n        \"work\": {\n          \"home\": \"docflow-hq/w4\",\n          \"id\": \"74182956-aa03-4fee-9db7-ae1405c58751\",\n          \"path\": \".docflow_workspace/work/bounded-cross-method-readout--74182956aa03.md\"\n        },\n        \"delivery\": \"manual-member\",\n        \"scope_revision\": 1,\n        \"scope\": \"Read README.md and issues/PROBE-1.md; run node check.mjs; report the checked revision and native work identifier. Do not migrate its method.\",\n        \"exclusions\": [\n          \"No canonical/member edits, commits, installation, remote services or delegation.\"\n        ],\n        \"actor\": \"agent:claude-w4\",\n        \"host\": \"claude-code\",\n        \"grant\": {\n          \"work\": {\n            \"home\": \"docflow-hq/w4\",\n            \"id\": \"74182956-aa03-4fee-9db7-ae1405c58751\",\n            \"path\": \".docflow_workspace/work/bounded-cross-method-readout--74182956aa03.md\"\n          },\n          \"id\": \"manual-readout\",\n          \"revision\": 1\n        },\n        \"workspace_revision\": \"0ccdcdd6b21d724a10af4f1faf9adee2b6d75e8e\",\n        \"base_revision\": \"226a6f2cec3d85c4c88f9bc5247c06dca068ad9e\",\n        \"native_work\": {\n          \"repository\": \"docflow-hq/manual-member\",\n          \"path\": \"issues/PROBE-1.md\",\n          \"revision\": \"226a6f2cec3d85c4c88f9bc5247c06dca068ad9e\"\n        },\n        \"claim\": {\n          \"mode\": \"owner-confirmed-serial\",\n          \"owner\": \"agent:claude-w4\",\n          \"state\": \"held\",\n          \"source\": {\n            \"repository\": \"docflow-hq/manual-member\",\n            \"path\": \"OWNER.md\",\n            \"revision\": \"226a6f2cec3d85c4c88f9bc5247c06dca068ad9e\",\n            \"observed_at\": \"2026-09-15T01:58:51Z\",\n            \"outcome\": \"passed\",\n            \"summary\": \"Controller read the actual owner confirmation and checked clean current native HEAD before dispatch.\"\n          },\n          \"observed_at\": \"2026-09-15T01:58:51Z\",\n          \"expires_at\": \"2026-09-15T02:58:51Z\"\n        },\n        \"dependencies\": [],\n        \"resources\": [],\n        \"required_checks\": [\n          \"native-check\"\n        ],\n        \"stop_at\": \"external-receipt-returned\",\n        \"return_path\": \".docflow_workspace/runs/manual-native-readout--9cd6d05d5141.md\",\n        \"selected_assets\": []\n      },\n      \"actions\": [\n        {\n          \"at\": \"2026-09-15T02:01:55Z\",\n          \"action\": \"test\",\n          \"summary\": \"Native external check under manual-readout revision 1: node check.mjs, exit 0, qualification-member-check: OK (manual-member).\"\n        }\n      ],\n      \"receipt\": {\n        \"returned_at\": \"2026-09-15T02:15:12Z\",\n        \"head_revision\": \"226a6f2cec3d85c4c88f9bc5247c06dca068ad9e\",\n        \"checks\": [\n          {\n            \"name\": \"native-check\",\n            \"command\": \"node check.mjs\",\n            \"outcome\": \"passed\",\n            \"exit_code\": 0,\n            \"output\": \"qualification-member-check: OK (manual-member)\",\n            \"evidence\": [\n              {\n                \"repository\": \"docflow-hq/manual-member\",\n                \"path\": \"check.mjs\",\n                \"revision\": \"226a6f2cec3d85c4c88f9bc5247c06dca068ad9e\",\n                \"observed_at\": \"2026-09-15T02:01:55Z\",\n                \"outcome\": \"passed\",\n                \"summary\": \"Executed 'node check.mjs' with working directory /context/repos/manual-member on Node.js v22.23.2; exit code 0; complete stdout was the single line 'qualification-member-check: OK (manual-member)'; stderr empty. Matches the declared required_completion string.\"\n              }\n            ]\n          }\n        ],\n        \"evidence\": [\n          {\n            \"repository\": \"docflow-hq/manual-member\",\n            \"path\": \"issues/PROBE-1.md\",\n            \"revision\": \"226a6f2cec3d85c4c88f9bc5247c06dca068ad9e\",\n            \"observed_at\": \"2026-09-15T02:01:55Z\",\n            \"outcome\": \"passed\",\n            \"summary\": \"Native work read at the declared revision. Title 'manual-member bounded readout'; states the checked member revision and native work identifier are to be returned and no implementation is assigned. Worktree sha256 2aa0efe30ae0796faad22221e6797fa71fd792003478873fd886684a5d1d2883 equals the blob at 226a6f2c; content unchanged. observed_at is set to the independently clock-backed native check time 2026-09-15T02:01:55Z only because the schema requires a date-time; the exact time of this read in the prior session is unknown (the prior receipt's 02:01:03Z/02:01:30Z values are not clock-backed).\"\n          },\n          {\n            \"repository\": \"docflow-hq/manual-member\",\n            \"path\": \"README.md\",\n            \"revision\": \"226a6f2cec3d85c4c88f9bc5247c06dca068ad9e\",\n            \"observed_at\": \"2026-09-15T02:01:55Z\",\n            \"outcome\": \"passed\",\n            \"summary\": \"Native member instructions read at the declared revision: own issue files, no Docflow catalogue, do not migrate its method, read/test/report only, serial ownership in OWNER.md. Worktree sha256 86f88615f397b54914aaab0781c651d9ef6b3383e9a787d3fb253ed04958aada equals the blob at 226a6f2c. observed_at is set to the independently clock-backed native check time 2026-09-15T02:01:55Z only because the schema requires a date-time; the exact time of this read in the prior session is unknown (the prior receipt's 02:01:03Z/02:01:30Z values are not clock-backed).\"\n          },\n          {\n            \"repository\": \"docflow-hq/manual-member\",\n            \"path\": \"OWNER.md\",\n            \"revision\": \"226a6f2cec3d85c4c88f9bc5247c06dca068ad9e\",\n            \"observed_at\": \"2026-09-15T02:01:55Z\",\n            \"outcome\": \"passed\",\n            \"summary\": \"Serial ownership confirmation read directly at the shared native source: read/test/report assigned to agent:claude-w4 until 2026-09-15T07:39:21Z, no mutation/commit/installation/network/delegation. Worktree sha256 4c22e97b3180d2c9bf4f0a2602ecab30e962b57fda7396e2c1ea5372fc6644b1 equals the blob at 226a6f2c. observed_at is set to the independently clock-backed native check time 2026-09-15T02:01:55Z only because the schema requires a date-time; the exact time of this read in the prior session is unknown (the prior receipt's 02:01:03Z/02:01:30Z values are not clock-backed).\"\n          },\n          {\n            \"repository\": \"docflow-hq/manual-member\",\n            \"path\": \".git/HEAD\",\n            \"revision\": \"226a6f2cec3d85c4c88f9bc5247c06dca068ad9e\",\n            \"observed_at\": \"2026-09-15T02:01:55Z\",\n            \"outcome\": \"passed\",\n            \"summary\": \"Repository HEAD observation, anchored to the file Git resolves for HEAD: in the prior session `git rev-parse HEAD` in /context/repos/manual-member returned 226a6f2cec3d85c4c88f9bc5247c06dca068ad9e, matching the brief base_revision and native_work revision; git log showed the single commit '226a6f2 test: initialise disposable native member'. The raw bytes of .git/HEAD were not recorded and were not re-read in this report-only continuation. observed_at is set to the independently clock-backed native check time 2026-09-15T02:01:55Z only because the schema requires a date-time; the exact time of this read in the prior session is unknown (the prior receipt's 02:01:03Z/02:01:30Z values are not clock-backed).\"\n          },\n          {\n            \"repository\": \"docflow-hq/manual-member\",\n            \"path\": \"check.mjs\",\n            \"revision\": \"226a6f2cec3d85c4c88f9bc5247c06dca068ad9e\",\n            \"observed_at\": \"2026-09-15T02:01:55Z\",\n            \"outcome\": \"passed\",\n            \"summary\": \"Prior session compared the worktree content of check.mjs by sha256 with its blob at 226a6f2cec3d85c4c88f9bc5247c06dca068ad9e and found them equal (the hash value itself was not recorded in the prior receipt). Content comparison only; file mode is reported separately. observed_at is set to the independently clock-backed native check time 2026-09-15T02:01:55Z only because the schema requires a date-time; the exact time of this read in the prior session is unknown (the prior receipt's 02:01:03Z/02:01:30Z values are not clock-backed).\"\n          },\n          {\n            \"repository\": \"docflow-hq/w4\",\n            \"path\": \".docflow_workspace/work/bounded-cross-method-readout--74182956aa03.md\",\n            \"revision\": \"0ccdcdd6b21d724a10af4f1faf9adee2b6d75e8e\",\n            \"observed_at\": \"2026-09-15T02:01:55Z\",\n            \"outcome\": \"passed\",\n            \"summary\": \"Grant manual-readout revision 1 read at source in the snapshot: active, actor agent:claude-w4, delivery manual-member, actions read/test/report, expires 2026-09-15T02:58:51Z, stop_at external-receipt-returned. Snapshot HEAD 0ccdcdd6 matches the brief workspace_revision. observed_at is set to the independently clock-backed native check time 2026-09-15T02:01:55Z only because the schema requires a date-time; the exact time of this read of the workspace snapshot in the prior session is unknown (the prior receipt's 02:01:03Z/02:01:30Z values are not clock-backed).\"\n          },\n          {\n            \"repository\": \"docflow-hq/manual-member\",\n            \"path\": \"OWNER.md\",\n            \"revision\": \"226a6f2cec3d85c4c88f9bc5247c06dca068ad9e\",\n            \"observed_at\": \"2026-09-15T02:01:55Z\",\n            \"outcome\": \"unknown\",\n            \"summary\": \"In the delivered snapshot, git status listed OWNER.md as modified; the whole difference for this file was a mode change 100644 => 100755 with 0 insertions/0 deletions, and its content sha256 matched the blob at 226a6f2c. The drift was present in the mounted snapshot and was not produced by the executor; its origin was not determinable from inside the mount, so this executor's outcome stays unknown. (The controller separately reports canonical Git status clean and the drift confined to the Windows transport snapshot; that is the controller's observation, not this executor's.) observed_at is set to the independently clock-backed native check time 2026-09-15T02:01:55Z only because the schema requires a date-time; the exact time of this read in the prior session is unknown (the prior receipt's 02:01:03Z/02:01:30Z values are not clock-backed).\"\n          },\n          {\n            \"repository\": \"docflow-hq/manual-member\",\n            \"path\": \"README.md\",\n            \"revision\": \"226a6f2cec3d85c4c88f9bc5247c06dca068ad9e\",\n            \"observed_at\": \"2026-09-15T02:01:55Z\",\n            \"outcome\": \"unknown\",\n            \"summary\": \"In the delivered snapshot, git status listed README.md as modified; the whole difference for this file was a mode change 100644 => 100755 with 0 insertions/0 deletions, and its content sha256 matched the blob at 226a6f2c. The drift was present in the mounted snapshot and was not produced by the executor; its origin was not determinable from inside the mount, so this executor's outcome stays unknown. (The controller separately reports canonical Git status clean and the drift confined to the Windows transport snapshot; that is the controller's observation, not this executor's.) observed_at is set to the independently clock-backed native check time 2026-09-15T02:01:55Z only because the schema requires a date-time; the exact time of this read in the prior session is unknown (the prior receipt's 02:01:03Z/02:01:30Z values are not clock-backed).\"\n          },\n          {\n            \"repository\": \"docflow-hq/manual-member\",\n            \"path\": \"check.mjs\",\n            \"revision\": \"226a6f2cec3d85c4c88f9bc5247c06dca068ad9e\",\n            \"observed_at\": \"2026-09-15T02:01:55Z\",\n            \"outcome\": \"unknown\",\n            \"summary\": \"In the delivered snapshot, git status listed check.mjs as modified; the whole difference for this file was a mode change 100644 => 100755 with 0 insertions/0 deletions, and its content sha256 matched the blob at 226a6f2c. The drift was present in the mounted snapshot and was not produced by the executor; its origin was not determinable from inside the mount, so this executor's outcome stays unknown. (The controller separately reports canonical Git status clean and the drift confined to the Windows transport snapshot; that is the controller's observation, not this executor's.) observed_at is set to the independently clock-backed native check time 2026-09-15T02:01:55Z only because the schema requires a date-time; the exact time of this read in the prior session is unknown (the prior receipt's 02:01:03Z/02:01:30Z values are not clock-backed).\"\n          },\n          {\n            \"repository\": \"docflow-hq/manual-member\",\n            \"path\": \"issues/PROBE-1.md\",\n            \"revision\": \"226a6f2cec3d85c4c88f9bc5247c06dca068ad9e\",\n            \"observed_at\": \"2026-09-15T02:01:55Z\",\n            \"outcome\": \"unknown\",\n            \"summary\": \"In the delivered snapshot, git status listed issues/PROBE-1.md as modified; the whole difference for this file was a mode change 100644 => 100755 with 0 insertions/0 deletions, and its content sha256 matched the blob at 226a6f2c. The drift was present in the mounted snapshot and was not produced by the executor; its origin was not determinable from inside the mount, so this executor's outcome stays unknown. (The controller separately reports canonical Git status clean and the drift confined to the Windows transport snapshot; that is the controller's observation, not this executor's.) observed_at is set to the independently clock-backed native check time 2026-09-15T02:01:55Z only because the schema requires a date-time; the exact time of this read in the prior session is unknown (the prior receipt's 02:01:03Z/02:01:30Z values are not clock-backed).\"\n          }\n        ],\n        \"blockers\": [\n          {\n            \"reason\": \"Snapshot cleanliness disagreement: the brief claim source says the controller checked clean native HEAD, but the executor's snapshot showed a 100644 => 100755 mode change on OWNER.md, README.md, check.mjs and issues/PROBE-1.md (content identical). The controller reports an independent check that canonical Git status is clean and the drift is confined to the Windows transport snapshot; this return cannot itself clear the blocker.\",\n            \"owner\": \"qualification-controller\",\n            \"next_action\": \"Record the independent canonical git-status observation (actor, UTC time, revision) in reconciliation and close this blocker there if it is confirmed.\"\n          },\n          {\n            \"reason\": \"Session identity: the prior receipt returned null. The controller has now supplied the prior session identity 98502878-f6c3-4e07-9f00-d0af2c3260e4 from native Claude init; it is carried in the transport envelope because the receipt schema has no field for it. The executor could not read this identifier itself, so it is controller-supplied rather than executor-observed.\",\n            \"owner\": \"qualification-controller\",\n            \"next_action\": \"Bind the init-sourced session identity to run 9cd6d05d-5141-44b8-ae3b-e6614ac31f2f during reconciliation, citing its source.\"\n          },\n          {\n            \"reason\": \"Contract representation gap: evidence.observed_at requires an exact date-time, so observation and action times that were not clock-backed cannot be recorded as unknown inside the receipt. Only the native check time 2026-09-15T02:01:55Z is clock-backed; other evidence uses that time as a declared stand-in, with a note in each summary.\",\n            \"owner\": \"qualification-controller\",\n            \"next_action\": \"Accept the declared stand-in during reconciliation, or ask the contract owner for a bounded correction allowing unknown observation times; do not treat the stand-in as the exact read time.\"\n          },\n          {\n            \"reason\": \"Parent work 74182956-aa03-4fee-9db7-ae1405c58751 cannot be completed by this receipt. The docflow-member delivery (node check.mjs at 6364b79c74c3b0e4101daebfe556a3525acb0090) is outside this grant and was not executed, and its recorded blocker (imported stopped claim by fixture-executor on absent branch work/0001-example) is unresolved. Criteria docflow-member-check and independent-reconciliation have no evidence.\",\n            \"owner\": \"qualification-controller\",\n            \"next_action\": \"Keep the work active. Do not mark it done on this single delivery; the docflow-member check and independent reconciliation of both checks remain outstanding.\"\n          },\n          {\n            \"reason\": \"Canonical writes are unavailable to this executor by design, and run 9cd6d05d-5141-44b8-ae3b-e6614ac31f2f is still recorded as running with receipt null. No canonical record was changed and node validate.mjs was not run on canonical records.\",\n            \"owner\": \"qualification-controller\",\n            \"next_action\": \"Reconcile this amended receipt into .docflow_workspace/runs/manual-native-readout--9cd6d05d5141.md in the canonical home, record the actual ended_at and reconciliation actor/time, then validate with --at set to the reconciliation UTC time.\"\n          }\n        ],\n        \"next_action\": \"Authorised coordinator inspects this amended receipt (which supersedes the evidence-path defects of the prior receipt) and reconciles it verbatim into .docflow_workspace/runs/manual-native-readout--9cd6d05d5141.md, recording reconciliation actor and UTC time, the actual ended_at and the manual-member delivery observation from the checked native-check evidence. Parent work stays active: the docflow-member delivery and the independent-reconciliation criterion remain unmet.\",\n        \"used_assets\": []\n      },\n      \"reconciliation\": {\n        \"by\": \"orca:term_511cf659-7a81-4072-8143-44a0f23d8f93\",\n        \"at\": \"2026-09-15T02:22:09Z\",\n        \"evidence\": [\n          {\n            \"repository\": \"docflow-hq/manual-member\",\n            \"path\": \"issues/PROBE-1.md\",\n            \"revision\": \"226a6f2cec3d85c4c88f9bc5247c06dca068ad9e\",\n            \"observed_at\": \"2026-09-15T02:22:09Z\",\n            \"outcome\": \"passed\",\n            \"summary\": \"Orca qualification coordinator re-read current native work and clean Git status at the exact declared HEAD. Independent canonical node check.mjs at 2026-09-15T02:10:22Z exited 0 with stdout qualification-member-check: OK (manual-member) and empty stderr. Original external check is clock-backed at 02:01:55Z; both source and output match. This evidence does not attest the executor unknown read timestamps.\"\n          },\n          {\n            \"repository\": \"docflow-hq/manual-member\",\n            \"path\": \"check.mjs\",\n            \"revision\": \"226a6f2cec3d85c4c88f9bc5247c06dca068ad9e\",\n            \"observed_at\": \"2026-09-15T02:22:09Z\",\n            \"outcome\": \"passed\",\n            \"summary\": \"Bounded check/source verified independently. Original Claude native session 98502878-f6c3-4e07-9f00-d0af2c3260e4; assisted report amendment native session f0102d72-e7f6-4e03-b99d-ee69bf95aad2; amendment SHA256 00a8df1522e846040d0b801f84376a9d582faf2d57a2335f2000505b552b46d8. Original rejected return retained unchanged. Canonical/member bytes unchanged during external execution. Amended receipt still labels several non-clock-backed observation times as stand-ins: these remain unverified and are not accepted as exact event times.\"\n          }\n        ]\n      },\n      \"predecessors\": [],\n      \"successors\": [],\n      \"path\": \".docflow_workspace/runs/manual-native-readout--9cd6d05d5141.md\"\n    }\n  ],\n  \"overview\": [\n    {\n      \"home\": \"docflow-hq/w4\",\n      \"id\": \"74182956-aa03-4fee-9db7-ae1405c58751\",\n      \"path\": \".docflow_workspace/work/bounded-cross-method-readout--74182956aa03.md\",\n      \"state\": \"active\",\n      \"owner\": \"qualification-controller\",\n      \"next_action\": \"Keep active: Docflow member native ownership/check and combined reconciliation remain unresolved. Preserve the accepted agreement and original/amended external receipts; no launch, reassignment or release follows automatically.\",\n      \"deliveries\": [\n        {\n          \"id\": \"docflow-member\",\n          \"native_state\": \"unknown\",\n          \"complete\": false,\n          \"observed_at\": null\n        },\n        {\n          \"id\": \"manual-member\",\n          \"native_state\": \"node check.mjs exits 0 with 'qualification-member-check: OK (manual-member)' at the exact revision, and the checked revision plus PROBE-1 are returned and reconciled.\",\n          \"complete\": true,\n          \"observed_at\": \"2026-09-15T02:22:09Z\"\n        }\n      ]\n    }\n  ]\n}\n",
+    "stderr": ""
+  },
+  "run": {
+    "schema": 1,
+    "id": "9cd6d05d-5141-44b8-ae3b-e6614ac31f2f",
+    "home": "docflow-hq/w4",
+    "kind": "runs",
+    "title": "Manual native readout",
+    "owner": "qualification-controller",
+    "created_at": "2026-09-15T01:58:51Z",
+    "links": [],
+    "state": "stopped",
+    "history": [
+      {
+        "state": "running",
+        "at": "2026-09-15T01:58:51Z",
+        "actor": "qualification-controller",
+        "reason": "Prepare the actual bounded native attempt for immediate dispatch."
+      },
+      {
+        "state": "unknown",
+        "at": "2026-09-15T02:11:50Z",
+        "actor": "qualification-controller",
+        "reason": "Native process positively exited and returned an invalid external receipt; rejected draft reconciliation preserved in qualification evidence. Canonical completion and release remain unaccepted pending report-only amendment."
+      },
+      {
+        "state": "stopped",
+        "at": "2026-09-15T02:22:09Z",
+        "actor": "qualification-controller",
+        "reason": "Positive original process exit was observed at ended_at (02:07:24Z); this is a conservative observed terminal boundary, not an exact process-exit timestamp. Report-only amendment arrived later and is preserved verbatim. No ownership reassignment occurred."
+      }
+    ],
+    "started_at": "2026-09-15T01:58:51Z",
+    "ended_at": "2026-09-15T02:07:24Z",
+    "brief": {
+      "work": {
+        "home": "docflow-hq/w4",
+        "id": "74182956-aa03-4fee-9db7-ae1405c58751",
+        "path": ".docflow_workspace/work/bounded-cross-method-readout--74182956aa03.md"
+      },
+      "delivery": "manual-member",
+      "scope_revision": 1,
+      "scope": "Read README.md and issues/PROBE-1.md; run node check.mjs; report the checked revision and native work identifier. Do not migrate its method.",
+      "exclusions": [
+        "No canonical/member edits, commits, installation, remote services or delegation."
+      ],
+      "actor": "agent:claude-w4",
+      "host": "claude-code",
+      "grant": {
+        "work": {
+          "home": "docflow-hq/w4",
+          "id": "74182956-aa03-4fee-9db7-ae1405c58751",
+          "path": ".docflow_workspace/work/bounded-cross-method-readout--74182956aa03.md"
+        },
+        "id": "manual-readout",
+        "revision": 1
+      },
+      "workspace_revision": "0ccdcdd6b21d724a10af4f1faf9adee2b6d75e8e",
+      "base_revision": "226a6f2cec3d85c4c88f9bc5247c06dca068ad9e",
+      "native_work": {
+        "repository": "docflow-hq/manual-member",
+        "path": "issues/PROBE-1.md",
+        "revision": "226a6f2cec3d85c4c88f9bc5247c06dca068ad9e"
+      },
+      "claim": {
+        "mode": "owner-confirmed-serial",
+        "owner": "agent:claude-w4",
+        "state": "held",
+        "source": {
+          "repository": "docflow-hq/manual-member",
+          "path": "OWNER.md",
+          "revision": "226a6f2cec3d85c4c88f9bc5247c06dca068ad9e",
+          "observed_at": "2026-09-15T01:58:51Z",
+          "outcome": "passed",
+          "summary": "Controller read the actual owner confirmation and checked clean current native HEAD before dispatch."
+        },
+        "observed_at": "2026-09-15T01:58:51Z",
+        "expires_at": "2026-09-15T02:58:51Z"
+      },
+      "dependencies": [],
+      "resources": [],
+      "required_checks": [
+        "native-check"
+      ],
+      "stop_at": "external-receipt-returned",
+      "return_path": ".docflow_workspace/runs/manual-native-readout--9cd6d05d5141.md",
+      "selected_assets": []
+    },
+    "actions": [
+      {
+        "at": "2026-09-15T02:01:55Z",
+        "action": "test",
+        "summary": "Native external check under manual-readout revision 1: node check.mjs, exit 0, qualification-member-check: OK (manual-member)."
+      }
+    ],
+    "receipt": {
+      "returned_at": "2026-09-15T02:15:12Z",
+      "head_revision": "226a6f2cec3d85c4c88f9bc5247c06dca068ad9e",
+      "checks": [
+        {
+          "name": "native-check",
+          "command": "node check.mjs",
+          "outcome": "passed",
+          "exit_code": 0,
+          "output": "qualification-member-check: OK (manual-member)",
+          "evidence": [
+            {
+              "repository": "docflow-hq/manual-member",
+              "path": "check.mjs",
+              "revision": "226a6f2cec3d85c4c88f9bc5247c06dca068ad9e",
+              "observed_at": "2026-09-15T02:01:55Z",
+              "outcome": "passed",
+              "summary": "Executed 'node check.mjs' with working directory /context/repos/manual-member on Node.js v22.23.2; exit code 0; complete stdout was the single line 'qualification-member-check: OK (manual-member)'; stderr empty. Matches the declared required_completion string."
+            }
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "repository": "docflow-hq/manual-member",
+          "path": "issues/PROBE-1.md",
+          "revision": "226a6f2cec3d85c4c88f9bc5247c06dca068ad9e",
+          "observed_at": "2026-09-15T02:01:55Z",
+          "outcome": "passed",
+          "summary": "Native work read at the declared revision. Title 'manual-member bounded readout'; states the checked member revision and native work identifier are to be returned and no implementation is assigned. Worktree sha256 2aa0efe30ae0796faad22221e6797fa71fd792003478873fd886684a5d1d2883 equals the blob at 226a6f2c; content unchanged. observed_at is set to the independently clock-backed native check time 2026-09-15T02:01:55Z only because the schema requires a date-time; the exact time of this read in the prior session is unknown (the prior receipt's 02:01:03Z/02:01:30Z values are not clock-backed)."
+        },
+        {
+          "repository": "docflow-hq/manual-member",
+          "path": "README.md",
+          "revision": "226a6f2cec3d85c4c88f9bc5247c06dca068ad9e",
+          "observed_at": "2026-09-15T02:01:55Z",
+          "outcome": "passed",
+          "summary": "Native member instructions read at the declared revision: own issue files, no Docflow catalogue, do not migrate its method, read/test/report only, serial ownership in OWNER.md. Worktree sha256 86f88615f397b54914aaab0781c651d9ef6b3383e9a787d3fb253ed04958aada equals the blob at 226a6f2c. observed_at is set to the independently clock-backed native check time 2026-09-15T02:01:55Z only because the schema requires a date-time; the exact time of this read in the prior session is unknown (the prior receipt's 02:01:03Z/02:01:30Z values are not clock-backed)."
+        },
+        {
+          "repository": "docflow-hq/manual-member",
+          "path": "OWNER.md",
+          "revision": "226a6f2cec3d85c4c88f9bc5247c06dca068ad9e",
+          "observed_at": "2026-09-15T02:01:55Z",
+          "outcome": "passed",
+          "summary": "Serial ownership confirmation read directly at the shared native source: read/test/report assigned to agent:claude-w4 until 2026-09-15T07:39:21Z, no mutation/commit/installation/network/delegation. Worktree sha256 4c22e97b3180d2c9bf4f0a2602ecab30e962b57fda7396e2c1ea5372fc6644b1 equals the blob at 226a6f2c. observed_at is set to the independently clock-backed native check time 2026-09-15T02:01:55Z only because the schema requires a date-time; the exact time of this read in the prior session is unknown (the prior receipt's 02:01:03Z/02:01:30Z values are not clock-backed)."
+        },
+        {
+          "repository": "docflow-hq/manual-member",
+          "path": ".git/HEAD",
+          "revision": "226a6f2cec3d85c4c88f9bc5247c06dca068ad9e",
+          "observed_at": "2026-09-15T02:01:55Z",
+          "outcome": "passed",
+          "summary": "Repository HEAD observation, anchored to the file Git resolves for HEAD: in the prior session `git rev-parse HEAD` in /context/repos/manual-member returned 226a6f2cec3d85c4c88f9bc5247c06dca068ad9e, matching the brief base_revision and native_work revision; git log showed the single commit '226a6f2 test: initialise disposable native member'. The raw bytes of .git/HEAD were not recorded and were not re-read in this report-only continuation. observed_at is set to the independently clock-backed native check time 2026-09-15T02:01:55Z only because the schema requires a date-time; the exact time of this read in the prior session is unknown (the prior receipt's 02:01:03Z/02:01:30Z values are not clock-backed)."
+        },
+        {
+          "repository": "docflow-hq/manual-member",
+          "path": "check.mjs",
+          "revision": "226a6f2cec3d85c4c88f9bc5247c06dca068ad9e",
+          "observed_at": "2026-09-15T02:01:55Z",
+          "outcome": "passed",
+          "summary": "Prior session compared the worktree content of check.mjs by sha256 with its blob at 226a6f2cec3d85c4c88f9bc5247c06dca068ad9e and found them equal (the hash value itself was not recorded in the prior receipt). Content comparison only; file mode is reported separately. observed_at is set to the independently clock-backed native check time 2026-09-15T02:01:55Z only because the schema requires a date-time; the exact time of this read in the prior session is unknown (the prior receipt's 02:01:03Z/02:01:30Z values are not clock-backed)."
+        },
+        {
+          "repository": "docflow-hq/w4",
+          "path": ".docflow_workspace/work/bounded-cross-method-readout--74182956aa03.md",
+          "revision": "0ccdcdd6b21d724a10af4f1faf9adee2b6d75e8e",
+          "observed_at": "2026-09-15T02:01:55Z",
+          "outcome": "passed",
+          "summary": "Grant manual-readout revision 1 read at source in the snapshot: active, actor agent:claude-w4, delivery manual-member, actions read/test/report, expires 2026-09-15T02:58:51Z, stop_at external-receipt-returned. Snapshot HEAD 0ccdcdd6 matches the brief workspace_revision. observed_at is set to the independently clock-backed native check time 2026-09-15T02:01:55Z only because the schema requires a date-time; the exact time of this read of the workspace snapshot in the prior session is unknown (the prior receipt's 02:01:03Z/02:01:30Z values are not clock-backed)."
+        },
+        {
+          "repository": "docflow-hq/manual-member",
+          "path": "OWNER.md",
+          "revision": "226a6f2cec3d85c4c88f9bc5247c06dca068ad9e",
+          "observed_at": "2026-09-15T02:01:55Z",
+          "outcome": "unknown",
+          "summary": "In the delivered snapshot, git status listed OWNER.md as modified; the whole difference for this file was a mode change 100644 => 100755 with 0 insertions/0 deletions, and its content sha256 matched the blob at 226a6f2c. The drift was present in the mounted snapshot and was not produced by the executor; its origin was not determinable from inside the mount, so this executor's outcome stays unknown. (The controller separately reports canonical Git status clean and the drift confined to the Windows transport snapshot; that is the controller's observation, not this executor's.) observed_at is set to the independently clock-backed native check time 2026-09-15T02:01:55Z only because the schema requires a date-time; the exact time of this read in the prior session is unknown (the prior receipt's 02:01:03Z/02:01:30Z values are not clock-backed)."
+        },
+        {
+          "repository": "docflow-hq/manual-member",
+          "path": "README.md",
+          "revision": "226a6f2cec3d85c4c88f9bc5247c06dca068ad9e",
+          "observed_at": "2026-09-15T02:01:55Z",
+          "outcome": "unknown",
+          "summary": "In the delivered snapshot, git status listed README.md as modified; the whole difference for this file was a mode change 100644 => 100755 with 0 insertions/0 deletions, and its content sha256 matched the blob at 226a6f2c. The drift was present in the mounted snapshot and was not produced by the executor; its origin was not determinable from inside the mount, so this executor's outcome stays unknown. (The controller separately reports canonical Git status clean and the drift confined to the Windows transport snapshot; that is the controller's observation, not this executor's.) observed_at is set to the independently clock-backed native check time 2026-09-15T02:01:55Z only because the schema requires a date-time; the exact time of this read in the prior session is unknown (the prior receipt's 02:01:03Z/02:01:30Z values are not clock-backed)."
+        },
+        {
+          "repository": "docflow-hq/manual-member",
+          "path": "check.mjs",
+          "revision": "226a6f2cec3d85c4c88f9bc5247c06dca068ad9e",
+          "observed_at": "2026-09-15T02:01:55Z",
+          "outcome": "unknown",
+          "summary": "In the delivered snapshot, git status listed check.mjs as modified; the whole difference for this file was a mode change 100644 => 100755 with 0 insertions/0 deletions, and its content sha256 matched the blob at 226a6f2c. The drift was present in the mounted snapshot and was not produced by the executor; its origin was not determinable from inside the mount, so this executor's outcome stays unknown. (The controller separately reports canonical Git status clean and the drift confined to the Windows transport snapshot; that is the controller's observation, not this executor's.) observed_at is set to the independently clock-backed native check time 2026-09-15T02:01:55Z only because the schema requires a date-time; the exact time of this read in the prior session is unknown (the prior receipt's 02:01:03Z/02:01:30Z values are not clock-backed)."
+        },
+        {
+          "repository": "docflow-hq/manual-member",
+          "path": "issues/PROBE-1.md",
+          "revision": "226a6f2cec3d85c4c88f9bc5247c06dca068ad9e",
+          "observed_at": "2026-09-15T02:01:55Z",
+          "outcome": "unknown",
+          "summary": "In the delivered snapshot, git status listed issues/PROBE-1.md as modified; the whole difference for this file was a mode change 100644 => 100755 with 0 insertions/0 deletions, and its content sha256 matched the blob at 226a6f2c. The drift was present in the mounted snapshot and was not produced by the executor; its origin was not determinable from inside the mount, so this executor's outcome stays unknown. (The controller separately reports canonical Git status clean and the drift confined to the Windows transport snapshot; that is the controller's observation, not this executor's.) observed_at is set to the independently clock-backed native check time 2026-09-15T02:01:55Z only because the schema requires a date-time; the exact time of this read in the prior session is unknown (the prior receipt's 02:01:03Z/02:01:30Z values are not clock-backed)."
+        }
+      ],
+      "blockers": [
+        {
+          "reason": "Snapshot cleanliness disagreement: the brief claim source says the controller checked clean native HEAD, but the executor's snapshot showed a 100644 => 100755 mode change on OWNER.md, README.md, check.mjs and issues/PROBE-1.md (content identical). The controller reports an independent check that canonical Git status is clean and the drift is confined to the Windows transport snapshot; this return cannot itself clear the blocker.",
+          "owner": "qualification-controller",
+          "next_action": "Record the independent canonical git-status observation (actor, UTC time, revision) in reconciliation and close this blocker there if it is confirmed."
+        },
+        {
+          "reason": "Session identity: the prior receipt returned null. The controller has now supplied the prior session identity 98502878-f6c3-4e07-9f00-d0af2c3260e4 from native Claude init; it is carried in the transport envelope because the receipt schema has no field for it. The executor could not read this identifier itself, so it is controller-supplied rather than executor-observed.",
+          "owner": "qualification-controller",
+          "next_action": "Bind the init-sourced session identity to run 9cd6d05d-5141-44b8-ae3b-e6614ac31f2f during reconciliation, citing its source."
+        },
+        {
+          "reason": "Contract representation gap: evidence.observed_at requires an exact date-time, so observation and action times that were not clock-backed cannot be recorded as unknown inside the receipt. Only the native check time 2026-09-15T02:01:55Z is clock-backed; other evidence uses that time as a declared stand-in, with a note in each summary.",
+          "owner": "qualification-controller",
+          "next_action": "Accept the declared stand-in during reconciliation, or ask the contract owner for a bounded correction allowing unknown observation times; do not treat the stand-in as the exact read time."
+        },
+        {
+          "reason": "Parent work 74182956-aa03-4fee-9db7-ae1405c58751 cannot be completed by this receipt. The docflow-member delivery (node check.mjs at 6364b79c74c3b0e4101daebfe556a3525acb0090) is outside this grant and was not executed, and its recorded blocker (imported stopped claim by fixture-executor on absent branch work/0001-example) is unresolved. Criteria docflow-member-check and independent-reconciliation have no evidence.",
+          "owner": "qualification-controller",
+          "next_action": "Keep the work active. Do not mark it done on this single delivery; the docflow-member check and independent reconciliation of both checks remain outstanding."
+        },
+        {
+          "reason": "Canonical writes are unavailable to this executor by design, and run 9cd6d05d-5141-44b8-ae3b-e6614ac31f2f is still recorded as running with receipt null. No canonical record was changed and node validate.mjs was not run on canonical records.",
+          "owner": "qualification-controller",
+          "next_action": "Reconcile this amended receipt into .docflow_workspace/runs/manual-native-readout--9cd6d05d5141.md in the canonical home, record the actual ended_at and reconciliation actor/time, then validate with --at set to the reconciliation UTC time."
+        }
+      ],
+      "next_action": "Authorised coordinator inspects this amended receipt (which supersedes the evidence-path defects of the prior receipt) and reconciles it verbatim into .docflow_workspace/runs/manual-native-readout--9cd6d05d5141.md, recording reconciliation actor and UTC time, the actual ended_at and the manual-member delivery observation from the checked native-check evidence. Parent work stays active: the docflow-member delivery and the independent-reconciliation criterion remain unmet.",
+      "used_assets": []
+    },
+    "reconciliation": {
+      "by": "orca:term_511cf659-7a81-4072-8143-44a0f23d8f93",
+      "at": "2026-09-15T02:22:09Z",
+      "evidence": [
+        {
+          "repository": "docflow-hq/manual-member",
+          "path": "issues/PROBE-1.md",
+          "revision": "226a6f2cec3d85c4c88f9bc5247c06dca068ad9e",
+          "observed_at": "2026-09-15T02:22:09Z",
+          "outcome": "passed",
+          "summary": "Orca qualification coordinator re-read current native work and clean Git status at the exact declared HEAD. Independent canonical node check.mjs at 2026-09-15T02:10:22Z exited 0 with stdout qualification-member-check: OK (manual-member) and empty stderr. Original external check is clock-backed at 02:01:55Z; both source and output match. This evidence does not attest the executor unknown read timestamps."
+        },
+        {
+          "repository": "docflow-hq/manual-member",
+          "path": "check.mjs",
+          "revision": "226a6f2cec3d85c4c88f9bc5247c06dca068ad9e",
+          "observed_at": "2026-09-15T02:22:09Z",
+          "outcome": "passed",
+          "summary": "Bounded check/source verified independently. Original Claude native session 98502878-f6c3-4e07-9f00-d0af2c3260e4; assisted report amendment native session f0102d72-e7f6-4e03-b99d-ee69bf95aad2; amendment SHA256 00a8df1522e846040d0b801f84376a9d582faf2d57a2335f2000505b552b46d8. Original rejected return retained unchanged. Canonical/member bytes unchanged during external execution. Amended receipt still labels several non-clock-backed observation times as stand-ins: these remain unverified and are not accepted as exact event times."
+        }
+      ]
+    },
+    "predecessors": [],
+    "successors": []
+  },
+  "work": {
+    "schema": 1,
+    "id": "74182956-aa03-4fee-9db7-ae1405c58751",
+    "home": "docflow-hq/w4",
+    "kind": "work",
+    "title": "Bounded cross-method readout",
+    "owner": "qualification-controller",
+    "created_at": "2026-09-15T01:41:30Z",
+    "links": [
+      {
+        "home": "docflow-hq/w4",
+        "id": "df2677cf-87d3-4de1-b9c5-c17fac7047a0",
+        "path": ".docflow_workspace/ideas/bounded-cross-method-readout--df2677cf87d3.md"
+      },
+      {
+        "home": "docflow-hq/w4",
+        "id": "a491c210-dc3e-4a8c-9421-6c080451043b",
+        "path": ".docflow_workspace/decisions/bounded-cross-method-readout-scope--a491c210dc3e.md"
+      }
+    ],
+    "state": "active",
+    "history": [
+      {
+        "state": "planned",
+        "at": "2026-09-15T01:41:30Z",
+        "actor": "qualification-controller",
+        "reason": "Plan the bounded readout under the accepted agreement. Grants are deliberately left empty to show that selected, agreed and planned carry no execution authority."
+      },
+      {
+        "state": "planned",
+        "at": "2026-09-15T01:58:51Z",
+        "actor": "qualification-controller",
+        "reason": "Record manual-member read/test/report grant only; docflow-member owner conflict and overall incompletion remain."
+      },
+      {
+        "state": "active",
+        "at": "2026-09-15T01:58:51Z",
+        "actor": "qualification-controller",
+        "reason": "Bounded manual-member attempt is about to start; other delivery remains incomplete."
+      },
+      {
+        "state": "active",
+        "at": "2026-09-15T02:22:09Z",
+        "actor": "qualification-controller",
+        "reason": "Manual-member native check independently reconciled only. Other delivery remains unknown and agreement accepted; original receipt failure and assisted amendment remain in evidence."
+      }
+    ],
+    "scope_revision": 1,
+    "outcome": "Native checks for docflow-member and manual-member have been returned and independently reconciled against their source revisions. The agreement remains accepted.",
+    "scope": "Read, test and report only. Read each required member's native instructions and work, run its native check under a later scoped grant and native claim, then return and reconcile the evidence. reference-member is evidence input only.",
+    "exclusions": [
+      "No member edits.",
+      "No installation.",
+      "No commit.",
+      "No publication.",
+      "No delegation.",
+      "No Clarity write."
+    ],
+    "priority": "high",
+    "criteria": [
+      {
+        "id": "docflow-member-check",
+        "text": "Native check for docflow-hq/docflow-member (node check.mjs at 6364b79c74c3b0e4101daebfe556a3525acb0090) returned with exit code and output.",
+        "evidence": []
+      },
+      {
+        "id": "manual-member-check",
+        "text": "Native check for docflow-hq/manual-member (node check.mjs at 226a6f2cec3d85c4c88f9bc5247c06dca068ad9e) returned with exit code and output.",
+        "evidence": [
+          {
+            "repository": "docflow-hq/manual-member",
+            "path": "issues/PROBE-1.md",
+            "revision": "226a6f2cec3d85c4c88f9bc5247c06dca068ad9e",
+            "observed_at": "2026-09-15T02:22:09Z",
+            "outcome": "passed",
+            "summary": "Orca qualification coordinator re-read current native work and clean Git status at the exact declared HEAD. Independent canonical node check.mjs at 2026-09-15T02:10:22Z exited 0 with stdout qualification-member-check: OK (manual-member) and empty stderr. Original external check is clock-backed at 02:01:55Z; both source and output match. This evidence does not attest the executor unknown read timestamps."
+          }
+        ]
+      },
+      {
+        "id": "independent-reconciliation",
+        "text": "Both returned checks are independently reconciled against their native source revisions, and the agreement stays accepted. A single delivery cannot close this work.",
+        "evidence": []
+      }
+    ],
+    "blockers": [
+      {
+        "reason": "docflow-hq/docflow-member plan/todo/0001-example.md at 6364b79c74c3b0e4101daebfe556a3525acb0090 carries an imported stopped claim: Claimed by fixture-executor, branch work/0001-example, Overall: blocked. That branch is absent locally (only main was observed at 2026-09-15T01:41Z). The label is synthetic history and confers no live authority.",
+        "owner": "qualification-controller",
+        "next_action": "Report the stopped owner and branch in the brief and receipt. Do not overwrite, release or reassign the native claim, and do not edit the member."
+      }
+    ],
+    "dependencies": [],
+    "deliveries": [
+      {
+        "id": "docflow-member",
+        "repository": "docflow-hq/docflow-member",
+        "scope_revision": 1,
+        "scope": "Read AGENTS.md and plan/todo/0001-example.md; run node check.mjs; report. No native queue transition.",
+        "required": true,
+        "native_work": {
+          "repository": "docflow-hq/docflow-member",
+          "path": "plan/todo/0001-example.md",
+          "revision": "6364b79c74c3b0e4101daebfe556a3525acb0090"
+        },
+        "required_completion": "node check.mjs exits 0 with 'qualification-member-check: OK (docflow-member)' at the exact revision, and the result is returned and reconciled. The native item is not shipped or moved.",
+        "depends_on": [],
+        "observation": {
+          "state": "unknown",
+          "complete": false,
+          "observed_at": null,
+          "source_revision": null,
+          "evidence": []
+        }
+      },
+      {
+        "id": "manual-member",
+        "repository": "docflow-hq/manual-member",
+        "scope_revision": 1,
+        "scope": "Read README.md and issues/PROBE-1.md; run node check.mjs; report the checked revision and native work identifier. Do not migrate its method.",
+        "required": true,
+        "native_work": {
+          "repository": "docflow-hq/manual-member",
+          "path": "issues/PROBE-1.md",
+          "revision": "226a6f2cec3d85c4c88f9bc5247c06dca068ad9e"
+        },
+        "required_completion": "node check.mjs exits 0 with 'qualification-member-check: OK (manual-member)' at the exact revision, and the checked revision plus PROBE-1 are returned and reconciled.",
+        "depends_on": [],
+        "observation": {
+          "state": "node check.mjs exits 0 with 'qualification-member-check: OK (manual-member)' at the exact revision, and the checked revision plus PROBE-1 are returned and reconciled.",
+          "complete": true,
+          "observed_at": "2026-09-15T02:22:09Z",
+          "source_revision": "226a6f2cec3d85c4c88f9bc5247c06dca068ad9e",
+          "evidence": [
+            {
+              "repository": "docflow-hq/manual-member",
+              "path": "issues/PROBE-1.md",
+              "revision": "226a6f2cec3d85c4c88f9bc5247c06dca068ad9e",
+              "observed_at": "2026-09-15T02:22:09Z",
+              "outcome": "passed",
+              "summary": "Orca qualification coordinator re-read current native work and clean Git status at the exact declared HEAD. Independent canonical node check.mjs at 2026-09-15T02:10:22Z exited 0 with stdout qualification-member-check: OK (manual-member) and empty stderr. Original external check is clock-backed at 02:01:55Z; both source and output match. This evidence does not attest the executor unknown read timestamps."
+            }
+          ]
+        }
+      }
+    ],
+    "grants": [
+      {
+        "id": "manual-readout",
+        "revisions": [
+          {
+            "revision": 1,
+            "state": "active",
+            "delivery": "manual-member",
+            "scope_revision": 1,
+            "actor": "agent:claude-w4",
+            "approved_by": "qualification-controller",
+            "approved_at": "2026-09-15T01:58:51Z",
+            "mandate": {
+              "repository": "docflow-hq/w4",
+              "path": "QUALIFICATION-MANDATE.md",
+              "revision": "7474eeb7d5c6c74652082480b55c1017bdb61558",
+              "observed_at": "2026-09-15T01:58:51Z",
+              "outcome": "passed",
+              "summary": "Controller inspected its actual delegated disposable-test mandate; no human signature asserted."
+            },
+            "actions": [
+              "read",
+              "test",
+              "report"
+            ],
+            "conditions": [
+              "Read/test/report only; immutable canonical snapshot; return externally; preserve all member bytes."
+            ],
+            "stop_at": "external-receipt-returned",
+            "valid_from": "2026-09-15T01:58:51Z",
+            "expires_at": "2026-09-15T02:58:51Z",
+            "recorded_at": "2026-09-15T01:58:51Z",
+            "reason": "Actual test controller records the current bounded manual-member authority before the native check."
+          }
+        ]
+      }
+    ],
+    "recommendations": [],
+    "next_action": "Keep active: Docflow member native ownership/check and combined reconciliation remain unresolved. Preserve the accepted agreement and original/amended external receipts; no launch, reassignment or release follows automatically."
+  },
+  "agreement_states": [
+    "accepted"
+  ]
+}

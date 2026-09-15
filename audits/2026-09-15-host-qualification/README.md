@@ -34,58 +34,88 @@ SHA-256 and Git blob IDs are retained. Reproduce export using
 
 ## Demonstrated scope
 
-| Native route | Actual outcome | Limit |
+| Native route | Demonstrated result | Material limit |
 |---|---|---|
-| Claude Code 2.1.269, Linux container, `claude-opus-5[1m]` | Native init advertises all 13 skills; new workspace setup passes independent file/validator checks; actual workspace planning creates selected/agreed/planned records without grants or runs. | Manual tool allowlist is requested; native init reports permissionMode `default`. Planning return uses a nonconforming Overall phrase. Guided no-grant adherence is distinct from the fresh recovery probe. |
-| Codex CLI 0.154.0, Linux container | Native `skills/list` advertises all 13 enabled plugin skills; workspace setup passes. Full bootstrap/new-adr produces committed local-main state, valid seed reference and unchanged gate. | Historical bootstrap checker exits 1 on its integration-wording regex: output says “direct into local main, fast-forward only”. Preserve this failure; no check was weakened. Setup's report block precedes later detail rather than closing the report. |
-| OpenCode 1.18.30, Linux container, requested `opencode/big-pickle` | Native debug inventory lists all 13 copied skills; workspace setup and full bootstrap/new-adr independent checks pass. | First debug output captured through a pipe stopped at 65,536 bytes; native file redirection produced the complete inventory. Native `--auto` mode is not a deny-all permission boundary. |
-| Pi 0.85.1, Windows, local `llama-server/qwen3.8-27b-coding`, native high | Actual provider/model are present in native events; 14 tools completed in the first attempt. | First setup reached the 900-second bound, exit 124, with no workspace files; recovery uses the same model/high and a longer bound. No initial success is claimed. |
-| Cowork, existing Windows desktop | A new task composer and folder picker were observed. | Picker keyboard focus targets the underlying composer; no task was submitted. Own draft was cleared and picker cancelled. Desktop transferred to controller; manual folder selection pending. |
-| DeepSeek Harness 0.1.1-rc.2 web profile | Actual local web server and UI observed using a dedicated headless Chrome profile. | Native UI asks for an API key. No key entered, configuration saved or inference attempted; guide receipt blocked. Headless browser work did not take desktop ownership. |
+| Claude Code 2.1.269, Linux, `claude-opus-5[1m]` | Thirteen native skills; empty workspace setup; selected/agreed/planned records; fresh no-grant stop with identical filesystem/Git snapshots; scoped external native check and receipt. | First external receipt failed validation. One assisted report correction is retained separately. Some amended observation times remain declared stand-ins and are not verified event times. Requested manual tool permissions appear as `default` in native init. |
+| Codex CLI 0.154.0, Linux, `gpt-6-astra` | Thirteen native skills; setup; full bootstrap/new-adr; read-only mixed-method orientation; native plugin removal retains three fixtures and reinstallation restores thirteen skills plus 329 exact product files. | Original bootstrap checker exits 1 on an integration-wording regex; semantic inspection supports the requested local-main behavior. No checker was weakened. Same-version reinstall is not an upgrade. |
+| OpenCode 1.18.30, Linux, `opencode/big-pickle` | Thirteen native skills; setup; full bootstrap/new-adr; Proposed-decision queue creation; ship-item blocks on Proposed ownership without changing files/Git; unavailable edit tool stops shell-write/delegate alternatives. | Permission config removes edit from the tool surface; this is not an interactive approval denial. Native startup added a config schema and 3,658 dependency files. The model incorrectly called these pre-existing. |
+| Pi 0.85.1, Windows, local `llama-server/qwen3.8-27b-coding`, high | One fresh recovery creates and independently validates the empty workspace after about 1,443 seconds. Native RPC advertises all thirteen Docflow commands. Installed source bytes and supplied choices match. | First 900-second setup timed out, exit 124. Recovery exited 0 before the controller's 1,800-second cap. RPC omits documented path/location fields; path binding comes from separate package/config evidence. |
+| Cowork, Windows desktop | Dedicated new composer and folder picker observed. | No task submitted: focus failed. Own draft cleared, picker cancelled, desktop transferred to controller. Operator manual folder selection remains pending. |
+| DeepSeek Harness 0.1.1-rc.2, native web | Dedicated headless Chrome observes the isolated local Qwen/High profile and Workspace Write mode. First native turn fails before tools with `PI_AI_ERROR: No API key for provider: llama-server`; all fixture bytes remain unchanged. | Controller authorised one recovery using the existing non-secret local compatibility marker after client-guard diagnosis. Recovery is running under a 900-second cap. No desktop-app session or authenticated remote credential is claimed. |
 
-[Assertion ledger](assertion-ledger.json) retains all five targets,
-eighteen workspace scenarios and six guides. A partial/read-only/guided case
-does not pass a complete scenario. [Cases](cases.json) binds exact process
-outcomes, assertions and private transcript hashes. Native process exit zero
-is not itself a behavioural verdict. Synthetic producer records and imported
-historical owner labels remain labelled synthetic; actual native file/Git
-observations are distinct. Fixture commits use explicitly selected unsigned
-local histories; task evidence commits are signed.
+[Assertion ledger](assertion-ledger.json) retains every required assertion
+for five hosts, eighteen scenarios and six guides. [Cases](cases.json)
+binds actual process exits, independent assertions and private transcript
+hashes. A successful process or narrow case does not pass an entire scenario.
 
-## Recovery and remaining boundaries
+## External handoff and partial delivery
 
-The isolated mixed-method fixture preserves a source-rendered Docflow
-stopped item, a manual issue member and a reference-only member. Planning
-and guided orientation preserve the member methods and report the imported
-owner/branch conflict. The copied setup README retains an old home/member
-description: this is a **fixture preparation mismatch**, not a product
-setup failure. The native participant correctly reported it and left it
-unchanged. Fresh continuation must infer applicability from current records
-without receiving the expected policy answer in its prompt.
+The actual Claude Code executor received an immutable context mount and had
+no canonical write access. It ran `node check.mjs` at the declared manual
+member revision: exit 0, `qualification-member-check: OK (manual-member)`.
+The independent canonical before/after snapshots are identical.
 
-Private scratch:
+The [original return](external-native-receipt.json) uses invalid `.` evidence
+paths and reports unsupported observation times. Its [failed reconciliation
+draft](external-orca-reconciliation.json) preserves all validator diagnostics,
+including controller-draft time, reconciliation-evidence and completion-state
+mistakes. The canonical pending state was restored and validated before the
+one report-only correction. These are distinct executor and harness findings.
+
+The [amended return](external-native-receipt-v2.json) preserves the original
+receipt hash and explicitly identifies unknown read times. Some required time
+fields use declared stand-ins; they are not accepted as independently measured
+events. The actual Orca 1.4.201 dispatched coordinator separately checked the
+native source, clean Git state, command exit/output and native session IDs.
+[Reconciliation](external-orca-reconciliation-v2.json) validates with exit 0:
+manual delivery complete, other delivery unknown, parent work active, agreement
+accepted. This is bounded two-host continuation; full adverse guide and Clarity
+handoff acceptance remain outstanding.
+
+The mixed fixture contains imported synthetic stopped-owner history. That
+history is not a live process result or permission to reassign. Its copied
+README and index are stale preparation inputs: fresh native participants
+correctly report the discrepancy and use current canonical files. Fresh
+Claude and Codex snapshots independently prove no writes or native claim moves.
+
+## Findings and retained limits
+
+- Codex setup places its closing status block before later details; Claude
+  planning and OpenCode queue creation use unsupported Overall phrases.
+  These native instruction-compliance failures remain visible.
+- OpenCode's original debug stdout capture truncated at 65,536 bytes.
+  Native redirection to a file yielded the complete thirteen-skill inventory
+  plus one builtin. Pi's first RPC harness assertion incorrectly required
+  path fields; native names and separate installed-byte evidence are retained.
+- Six behavioral cases skipped by the deterministic command remain unrun.
+  Historical evidence is not reused for the four new skills or changed choice/
+  authority behavior. Upgrade, remaining lifecycle/denial variants, shared
+  resources, cross-workspace ownership and contextual recommendations remain
+  explicitly incomplete in the ledger.
+- Cursor, ZCode and Codex App native guide sessions are unrun. CLI or installed
+  package observations do not establish a desktop app session. Desktop
+  ownership remains with the controller/operator while manual Cowork setup is
+  pending. Clarity source/artifact pairing and the operator's pilot are pending.
+
+Raw model events stay private because they may include reasoning. Scratch is
 `C:/Users/eugen/AppData/Local/Temp/docflowhq-v1-20260915/qualification-ctx-fc206cf7e4a8`.
-Raw model events may include reasoning; they are not published. Do not
-archive the entire scratch root: its isolated Pi provider extension and
-temporary browser profile are not public evidence. Only exact scoped
-credential files were supplied to disposable homes; no credential values
-are in this audit. [Cowork input projections](cowork-input-receipts.json)
-retain the precise focus failure and recovery; the referenced screenshot
-stays private because it includes unrelated sidebar labels.
+Do not archive that entire directory: it includes narrowly scoped provider
+configuration and temporary browser state. Only selected source-bound receipts
+and prompts belong in this audit. Fixture Git histories are explicitly
+unsigned local test data; task evidence commits are signed.
 
 ## Status at a glance
 
-- **This run:** Frozen development package; three native discovery/setup
-  observations and two bootstrap/new-adr runs; workspace planning and guided
-  no-grant behaviour; Pi timeout and desktop/web access blockers retained.
-  Initial gates: `verify: OK (version 0.9.4, 13 skills, 56 ADRs, 67 shipped plan items)`,
-  exit 0; deterministic suite `10 passed, 0 failed, 6 skipped`, exit 0.
-- **Overall:** Partially verified. Required native and combined scenarios
-  remain incomplete; draft PR is not ready or shipped. Six deterministic
-  skips remain unexecuted by that command.
-- **Yet to do:** Complete native lifecycle/denial/recovery/retention coverage;
-  finish Pi recovery and all six guide smokes; eighteen full scenarios and
-  two-host continuation; resolve desktop/provider access and reporting
-  findings; receive paired Clarity artifact and test actual views/handoffs;
-  preserve final receipts, clean up owned runtimes, run final local gates and
-  current-head CI, obtain review and the operator's actual pilot result.
+- **This run:** Four native host inventories/setup results, bounded lifecycle,
+  denial, fresh recovery, removal/reinstall and external handoff evidence are
+  recorded with actual failures and limits. Prior local gates returned
+  `verify: OK (version 0.9.4, 13 skills, 56 ADRs, 67 shipped plan items)`, exit 0,
+  and `10 passed, 0 failed, 6 skipped`, exit 0. CI passed on evidence head
+  `b4ee17630dca69daaf06532d6123f61e2b2c060d`; subsequent evidence needs current-head CI.
+- **Overall:** partially verified. Plans 0061/0062 remain in todo. Draft PR 11
+  is live and has not shipped; the development candidate is not released V1.
+- **Yet to do:** Finish the bounded DeepSeek recovery and preserve its actual
+  terminal result; complete pending native host/guide/scenario assertions;
+  obtain desktop access and paired Clarity artifact; perform actual combined
+  views/handoffs; preserve fixtures, clean up owned runtimes, run final gates
+  and current-head CI, obtain review and the operator's real pilot acceptance.

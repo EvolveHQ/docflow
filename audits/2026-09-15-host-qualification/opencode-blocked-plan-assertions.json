@@ -1,0 +1,11 @@
+{
+  "before": "opencode-blocked-plan-before.json",
+  "after": "opencode-blocked-plan-after.json",
+  "all_roots_unchanged": false,
+  "added_files": [
+    "plan/todo/0001-export-a-plain-text-summary.md"
+  ],
+  "changed_files": [],
+  "head_refs_unchanged": true,
+  "interpretation": "Planning a Proposed decision is explicitly allowed with warning by the frozen new-plan skill. A queue item was correctly created; this is successful planning, not a blocked lifecycle case. The model Overall value queued violates the closing vocabulary."
+}

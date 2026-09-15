@@ -1,0 +1,82 @@
+{
+  "amend-external-prompt.txt": {
+    "sha256": "ca4d74b9e7f899e6aa7887689a0608692931adfaa713427d476fda3d6ac7ecf0",
+    "bytes": 1880,
+    "kind": "actual submitted bounded prompt; absolute paths are dedicated qualification scratch paths"
+  },
+  "claude-setup-prompt.txt": {
+    "sha256": "4a092097a3c1fdb333e7a42cd5b55629da72e2cd6f66265f280af990d988982d",
+    "bytes": 1383,
+    "kind": "actual submitted bounded prompt; absolute paths are dedicated qualification scratch paths"
+  },
+  "codex-bootstrap-prompt.txt": {
+    "sha256": "e24229fd60eaaf9d253d03e48cd61a3ffb03b2856860d542692de760f035779e",
+    "bytes": 1851,
+    "kind": "actual submitted bounded prompt; absolute paths are dedicated qualification scratch paths"
+  },
+  "codex-orient-prompt.txt": {
+    "sha256": "a9673444908b1e1106747d0e33de98a8f7d598d8950a61bd71a0859b40aa586f",
+    "bytes": 798,
+    "kind": "actual submitted bounded prompt; absolute paths are dedicated qualification scratch paths"
+  },
+  "codex-setup-prompt.txt": {
+    "sha256": "dd07c153cf0d6a90219e888114b8bef5a43a03e15fd1c287ec368fafd2c6a288",
+    "bytes": 1380,
+    "kind": "actual submitted bounded prompt; absolute paths are dedicated qualification scratch paths"
+  },
+  "dsh-smoke-prompt.txt": {
+    "sha256": "4867cf57bc065b4fbaa413f10240422c40648eeca2234b321ec1bd48503df488",
+    "bytes": 2031,
+    "kind": "actual submitted bounded prompt; absolute paths are dedicated qualification scratch paths"
+  },
+  "external-claude-prompt.txt": {
+    "sha256": "1bbef53a6100a004e8c7d9419bb32f3b0b3b8d01ee4ae4d1232a1a67f9a6bff4",
+    "bytes": 3951,
+    "kind": "actual submitted bounded prompt; absolute paths are dedicated qualification scratch paths"
+  },
+  "opencode-blocked-plan-prompt.txt": {
+    "sha256": "e9279f18e2d5e1057794fb8d2a69f842f506a325bc68affe4ee8a2acd20da978",
+    "bytes": 590,
+    "kind": "actual submitted bounded prompt; absolute paths are dedicated qualification scratch paths"
+  },
+  "opencode-blocked-ship-prompt.txt": {
+    "sha256": "46524881048aa485d8b477dd41da61ef449e865d36c24cd6105fdf90ce483cbb",
+    "bytes": 624,
+    "kind": "actual submitted bounded prompt; absolute paths are dedicated qualification scratch paths"
+  },
+  "opencode-bootstrap-prompt.txt": {
+    "sha256": "e24229fd60eaaf9d253d03e48cd61a3ffb03b2856860d542692de760f035779e",
+    "bytes": 1851,
+    "kind": "actual submitted bounded prompt; absolute paths are dedicated qualification scratch paths"
+  },
+  "opencode-denial-prompt.txt": {
+    "sha256": "80d6ac3fefecb05f843a148f4583fd13d40a1b0809bc1f24499665b9f5c3de1e",
+    "bytes": 826,
+    "kind": "actual submitted bounded prompt; absolute paths are dedicated qualification scratch paths"
+  },
+  "opencode-setup-prompt.txt": {
+    "sha256": "751701f6460dbacb4128b67a91e0d19ed5c068b889897e58af00a97284936d80",
+    "bytes": 1389,
+    "kind": "actual submitted bounded prompt; absolute paths are dedicated qualification scratch paths"
+  },
+  "pi-setup-prompt.txt": {
+    "sha256": "9644230a07979fd5d2ba64e827bd614d92abe3ceec23a326d5aa96e1ff4dfcc9",
+    "bytes": 1719,
+    "kind": "actual submitted bounded prompt; absolute paths are dedicated qualification scratch paths"
+  },
+  "w4-fresh-prompt.txt": {
+    "sha256": "f420aba34845dd9aa084a80f65c454c011c09331598fde75e80866c90da702de",
+    "bytes": 757,
+    "kind": "actual submitted bounded prompt; absolute paths are dedicated qualification scratch paths"
+  },
+  "w4-no-grant-prompt.txt": {
+    "sha256": "0e2c478dfe28763d1833bea7014fb44887cd6a5ce9ed00ca0fce65f4e15f5dd7",
+    "bytes": 1511,
+    "kind": "actual submitted bounded prompt; absolute paths are dedicated qualification scratch paths"
+  },
+  "w4-plan-prompt.txt": {
+    "sha256": "614897710378a5c366acf19beca9627d9829b28e21bd2fd422856fb1df93d084",
+    "bytes": 2998,
+    "kind": "actual submitted bounded prompt; absolute paths are dedicated qualification scratch paths"
+  }
+}

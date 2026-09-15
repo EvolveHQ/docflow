@@ -1,5 +1,5 @@
 {
-  "observed_at": "2026-09-15T01:53:55.536547+00:00",
+  "observed_at": "2026-09-15T02:42:03.060849+00:00",
   "source_revision": "f47f4c52313163f1ffe55a97d9c8029602d7c5b4",
   "plugin_digest_sha256": "1f76befdd23ca9cceccbf2993e8d88448e1ca162f2437d1f10402ed5def7a3f8",
   "native_plan_items": [
@@ -40,8 +40,10 @@
         "receipts": []
       },
       "stopped-and-fresh-recovery": {
-        "status": "unrun",
-        "receipts": []
+        "status": "passed bounded fresh no-grant stop with independently identical roots",
+        "receipts": [
+          "claude-w4-fresh-assertions.json"
+        ]
       },
       "upgrade-retention": {
         "status": "unrun",
@@ -52,9 +54,11 @@
         "receipts": []
       },
       "four-workspace-skills-and-D2-behaviour": {
-        "status": "partial; supplied setup choices pass",
+        "status": "partial: setup, planning, fresh coordination and external return; first receipt invalid, assisted amendment retained",
         "receipts": [
-          "claude-setup-assertions.json"
+          "claude-setup-assertions.json",
+          "claude-w4-fresh-assertions.json",
+          "external-orca-reconciliation-v2.json"
         ]
       }
     },
@@ -104,12 +108,16 @@
     },
     "Pi": {
       "thirteen-skill-native-discovery": {
-        "status": "unrun",
-        "receipts": []
+        "status": "passed native RPC command names; native API omits documented path/location fields",
+        "receipts": [
+          "pi-native-discovery.json"
+        ]
       },
       "complete-installed-asset-bytes": {
-        "status": "unrun",
-        "receipts": []
+        "status": "passed frozen source-path package hash check after native recovery",
+        "receipts": [
+          "pi-setup-recovery-assertions.json"
+        ]
       },
       "bootstrap-and-adoption": {
         "status": "unrun",
@@ -140,9 +148,12 @@
         "receipts": []
       },
       "four-workspace-skills-and-D2-behaviour": {
-        "status": "first native setup timeout 124; recovery running",
+        "status": "partial: initial timeout, one recovery setup passed independently on unchanged local Qwen/high",
         "receipts": [
-          "pi-setup-output-process.json"
+          "pi-setup-output-process.json",
+          "pi-setup-recovery-process.json",
+          "pi-setup-recovery-assertions.json",
+          "pi-recovery-controller-limit.json"
         ]
       }
     },
@@ -186,21 +197,24 @@
         "receipts": []
       },
       "removal-retention": {
-        "status": "unrun",
-        "receipts": []
+        "status": "passed native remove and same-version reinstall, thirteen native skills and 329 exact product files restored; upgrade unrun",
+        "receipts": [
+          "codex-native-retention.json"
+        ]
       },
       "four-workspace-skills-and-D2-behaviour": {
-        "status": "partial; supplied setup choices pass",
+        "status": "partial: supplied setup and read-only mixed-method orientation; native files/Git unchanged",
         "receipts": [
-          "codex-setup-assertions.json"
+          "codex-setup-assertions.json",
+          "codex-orient-assertions.json"
         ]
       }
     },
     "OpenCode": {
       "thirteen-skill-native-discovery": {
-        "status": "passed native inventory",
+        "status": "passed; thirteen Docflow skills plus one native builtin",
         "receipts": [
-          "OpenCode debug skill native /workspace/native-skills.json; sanitised inventory pending"
+          "native-discovery.json"
         ]
       },
       "complete-installed-asset-bytes": {
@@ -216,16 +230,23 @@
         ]
       },
       "successful-lifecycle": {
-        "status": "unrun",
-        "receipts": []
+        "status": "passed bounded bootstrap/new-adr and Proposed queue creation; broader lifecycle unrun",
+        "receipts": [
+          "opencode-bootstrap-independent-assertions.json",
+          "opencode-blocked-plan-assertions.json"
+        ]
       },
       "blocked-lifecycle": {
-        "status": "unrun",
-        "receipts": []
+        "status": "passed: Proposed ownership stops ship-item and all files/Git remain unchanged",
+        "receipts": [
+          "opencode-blocked-ship-assertions.json"
+        ]
       },
       "denied-action-alternate-route": {
-        "status": "unrun",
-        "receipts": []
+        "status": "passed scoped unavailable edit-tool stop; host added config schema/dependencies, so zero-filesystem-change assertion failed",
+        "receipts": [
+          "opencode-denial-assertions.json"
+        ]
       },
       "stopped-and-fresh-recovery": {
         "status": "unrun",
@@ -250,35 +271,39 @@
   "workspace_scenarios": {
     "WV01": {
       "requirement": "A new participant identifies priorities, owners, agreements and next actions from a workspace clone and its Clarity overview.",
-      "status": "partial guided native evidence; complete scenario unrun",
+      "status": "partial native evidence; full scenario and combined Clarity acceptance unrun",
       "native_evidence": [
-        "claude-w4-plan",
-        "claude-w4-no-grant"
+        "claude-w4-fresh-assertions.json",
+        "codex-orient-assertions.json"
       ],
       "clarity": "await integrated source/artifact; no combined acceptance"
     },
     "WV02": {
       "requirement": "Docflow and non-docflow repositories participate without forced migration; their native checks and integration rules remain intact.",
-      "status": "partial guided native evidence; complete scenario unrun",
+      "status": "partial native evidence; full scenario and combined Clarity acceptance unrun",
       "native_evidence": [
-        "claude-w4-plan",
-        "claude-w4-no-grant"
+        "claude-w4-fresh-assertions.json",
+        "codex-orient-assertions.json"
       ],
       "clarity": "await integrated source/artifact; no combined acceptance"
     },
     "WV03": {
       "requirement": "Selecting an idea cannot start implementation without a compatible execution grant.",
-      "status": "partial guided native evidence; complete scenario unrun",
+      "status": "partial native evidence; full scenario and combined Clarity acceptance unrun",
       "native_evidence": [
-        "claude-w4-plan",
-        "claude-w4-no-grant"
+        "claude-w4-fresh-assertions.json",
+        "codex-orient-assertions.json"
       ],
       "clarity": "await integrated source/artifact; no combined acceptance"
     },
     "WV04": {
       "requirement": "Resume reuses valid authority; changed scope/actor and revoked or suspended grants are detected before dependent actions.",
-      "status": "unrun complete scenario",
-      "native_evidence": [],
+      "status": "partial: actual scoped external check and Orca reconciliation; original receipt failure and assisted correction retained",
+      "native_evidence": [
+        "external-native-receipt.json",
+        "external-native-receipt-v2.json",
+        "external-orca-reconciliation-v2.json"
+      ],
       "clarity": "await integrated source/artifact; no combined acceptance"
     },
     "WV05": {
@@ -289,16 +314,20 @@
     },
     "WV06": {
       "requirement": "Partial delivery remains visible; an accepted workspace decision, one completed PR or one successful run cannot close the whole outcome. Completing all required work leaves its current agreement `accepted`, without rewriting member lifecycles.",
-      "status": "unrun complete scenario",
-      "native_evidence": [],
+      "status": "partial: actual scoped external check and Orca reconciliation; original receipt failure and assisted correction retained",
+      "native_evidence": [
+        "external-native-receipt.json",
+        "external-native-receipt-v2.json",
+        "external-orca-reconciliation-v2.json"
+      ],
       "clarity": "await integrated source/artifact; no combined acceptance"
     },
     "WV07": {
       "requirement": "Stale observations, skipped checks and missing returns remain distinct from success in records and UI.",
-      "status": "partial guided native evidence; complete scenario unrun",
+      "status": "partial native evidence; full scenario and combined Clarity acceptance unrun",
       "native_evidence": [
-        "claude-w4-plan",
-        "claude-w4-no-grant"
+        "claude-w4-fresh-assertions.json",
+        "codex-orient-assertions.json"
       ],
       "clarity": "await integrated source/artifact; no combined acceptance"
     },
@@ -310,35 +339,39 @@
     },
     "WV09": {
       "requirement": "A reference-only repository remains byte/HEAD/status unchanged while supplying cited evidence.",
-      "status": "partial guided native evidence; complete scenario unrun",
+      "status": "partial native evidence; full scenario and combined Clarity acceptance unrun",
       "native_evidence": [
-        "claude-w4-plan",
-        "claude-w4-no-grant"
+        "claude-w4-fresh-assertions.json",
+        "codex-orient-assertions.json"
       ],
       "clarity": "await integrated source/artifact; no combined acceptance"
     },
     "WV10": {
       "requirement": "Useful coordination completes with Git, records and native human/host execution, without a dedicated service.",
-      "status": "partial guided native evidence; complete scenario unrun",
+      "status": "partial native evidence; full scenario and combined Clarity acceptance unrun",
       "native_evidence": [
-        "claude-w4-plan",
-        "claude-w4-no-grant"
+        "claude-w4-fresh-assertions.json",
+        "codex-orient-assertions.json"
       ],
       "clarity": "await integrated source/artifact; no combined acceptance"
     },
     "WV11": {
       "requirement": "Role/profile recommendations neither launch actors nor install skills nor create grants; missing/conflicting dependencies are explicit.",
-      "status": "partial guided native evidence; complete scenario unrun",
+      "status": "full scenario unrun; empty-configuration/supplied-choice baseline only",
       "native_evidence": [
-        "claude-w4-plan",
-        "claude-w4-no-grant"
+        "claude-setup-assertions.json",
+        "pi-setup-recovery-assertions.json"
       ],
       "clarity": "await integrated source/artifact; no combined acceptance"
     },
     "WV12": {
       "requirement": "A brief and receipt survive a two-harness handoff, including an executor outside the workspace directory and one unable to write its canonical receipt. Clarity prepares/displays the handoff without writing canonical records; an authorised Docflow coordinator reconciles returned evidence, then Clarity refreshes.",
-      "status": "unrun complete scenario",
-      "native_evidence": [],
+      "status": "partial: actual scoped external check and Orca reconciliation; original receipt failure and assisted correction retained",
+      "native_evidence": [
+        "external-native-receipt.json",
+        "external-native-receipt-v2.json",
+        "external-orca-reconciliation-v2.json"
+      ],
       "clarity": "await integrated source/artifact; no combined acceptance"
     },
     "WV13": {
@@ -349,10 +382,10 @@
     },
     "WV14": {
       "requirement": "Missing/stale search indexes fall back to canonical files; outdated results cannot override current authority. A supported retrieval recipe also passes rebuild/removal checks.",
-      "status": "partial guided native evidence; complete scenario unrun",
+      "status": "partial native evidence; full scenario and combined Clarity acceptance unrun",
       "native_evidence": [
-        "claude-w4-plan",
-        "claude-w4-no-grant"
+        "claude-w4-fresh-assertions.json",
+        "codex-orient-assertions.json"
       ],
       "clarity": "await integrated source/artifact; no combined acceptance"
     },
@@ -364,19 +397,19 @@
     },
     "WV16": {
       "requirement": "Selecting a suggestion does not enable or authorise it; existing compatible tools can be used under valid authority without repeated approval.",
-      "status": "partial guided native evidence; complete scenario unrun",
+      "status": "full scenario unrun; empty-configuration/supplied-choice baseline only",
       "native_evidence": [
-        "claude-w4-plan",
-        "claude-w4-no-grant"
+        "claude-setup-assertions.json",
+        "pi-setup-recovery-assertions.json"
       ],
       "clarity": "await integrated source/artifact; no combined acceptance"
     },
     "WV17": {
       "requirement": "Host/participant/workspace handoff rechecks availability, configuration scope and authority; conflicting member setup blocks dependent mutation.",
-      "status": "partial guided native evidence; complete scenario unrun",
+      "status": "partial native evidence; full scenario and combined Clarity acceptance unrun",
       "native_evidence": [
-        "claude-w4-plan",
-        "claude-w4-no-grant"
+        "claude-w4-fresh-assertions.json",
+        "codex-orient-assertions.json"
       ],
       "clarity": "await integrated source/artifact; no combined acceptance"
     },
@@ -389,19 +422,27 @@
   },
   "guides": {
     "Orca": {
-      "status": "unrun brief/receipt smoke",
-      "installed_guide_sha256": "377ec4be7427b31eec6b694aa1ed8c21f29a3c71685b3c15f0ac456694a9d78e"
+      "status": "partial actual dispatched Orca 1.4.201 coordinator continuation and independent canonical reconciliation; complete adverse/Clarity smoke unrun",
+      "installed_guide_sha256": "377ec4be7427b31eec6b694aa1ed8c21f29a3c71685b3c15f0ac456694a9d78e",
+      "receipts": [
+        "external-orca-reconciliation-v2.json"
+      ]
     },
     "Cursor": {
       "status": "unrun brief/receipt smoke",
       "installed_guide_sha256": "39a5cbb63035a5e3e1cc7b954683124e683d504a96270de4404cdfadc27c5b1c"
     },
     "Claude Code": {
-      "status": "unrun brief/receipt smoke",
-      "installed_guide_sha256": "e0c80985cd9e5a0291368ff8e80018ee06d48812eaeafe5e92a12dca0de143f0"
+      "status": "partial native brief/check/receipt and report-only continuation; first return invalid, assisted amendment validated; adverse variants/Clarity remain",
+      "installed_guide_sha256": "e0c80985cd9e5a0291368ff8e80018ee06d48812eaeafe5e92a12dca0de143f0",
+      "receipts": [
+        "external-native-receipt.json",
+        "external-native-receipt-v2.json",
+        "external-orca-reconciliation-v2.json"
+      ]
     },
     "DeepSeek Harness": {
-      "status": "native web runtime and headless UI observed; blocked by API-key onboarding",
+      "status": "first native isolated web turn failed before tools: missing local provider key; one controller-authorised recovery running with existing non-secret local compatibility marker",
       "installed_guide_sha256": "282bdb9ed21e7826f48b79e2793ce9efc2d0d4ce1ba1b56b1f688195a4cc03ed",
       "version": "0.1.1-rc.2",
       "command": "node C:/Users/eugen/.dsh/profiles/node_modules/@deepseek-ai/dsh/lib/bin.js --profile web --no-open --host 127.0.0.1 --port 0",
@@ -412,7 +453,11 @@
         "Configure later",
         "Save and continue"
       ],
-      "boundary": "No key entered, no configuration saved, no inference or brief/receipt completed; browser is actual UI, not a simulated adapter."
+      "boundary": "Dedicated native web UI in headless Chrome; not a desktop app session. No real remote credential. Local provider has no configured remote fallback.",
+      "receipts": [
+        "dsh-native-failure.json",
+        "dsh-ui-failure.json"
+      ]
     },
     "ZCode": {
       "status": "unrun brief/receipt smoke",
@@ -423,7 +468,7 @@
       "installed_guide_sha256": "ca7e6d1f304dcbc8ebce05b560f76700f833cbfa72bc607375d5fd7364839d06"
     }
   },
-  "two_harness_continuation": "unrun",
+  "two_harness_continuation": "partial demonstrated Claude Code external executor to actual Orca dispatched coordinator; complete guide/Clarity acceptance unrun",
   "operator_pilot": "unrun; operator alone supplies acceptance",
   "overall": "partially verified; no release acceptance"
 }

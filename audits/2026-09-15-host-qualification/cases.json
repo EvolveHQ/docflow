@@ -100,6 +100,7 @@
     "private_directory": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\claude-w4-fresh",
     "artifacts": {
       "process.json": "claude-w4-fresh-process.json",
+      "assertions.json": "claude-w4-fresh-assertions.json",
       "transcript.jsonl": {
         "private_path": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\claude-w4-fresh\\transcript.jsonl",
         "sha256": "981c86922cb437961423b8ff62fe12182d93585305b29b44dae9926d8a71c4dc",
@@ -175,17 +176,135 @@
   "pi-setup-recovery": {
     "private_directory": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\pi-setup-recovery",
     "artifacts": {
+      "process.json": "pi-setup-recovery-process.json",
+      "assertions.json": "pi-setup-recovery-assertions.json",
+      "independent-validator.json": "pi-setup-recovery-independent-validator.json",
       "transcript.jsonl": {
         "private_path": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\pi-setup-recovery\\transcript.jsonl",
-        "sha256": "910f6d26c61a6c4508dfd930899b7997f985a99192c14b44f9cb3cd2e4fbeb95",
-        "bytes": 324414,
-        "complete": false
+        "sha256": "85f05fc2d152ab11fd80a503333c4f5101578a2b580592ad9106aed5f9be7aa6",
+        "bytes": 3400518,
+        "complete": true
       },
       "stderr.txt": {
         "private_path": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\pi-setup-recovery\\stderr.txt",
         "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
         "bytes": 0,
-        "complete": false
+        "complete": true
+      }
+    },
+    "scope": "One fresh native recovery exited 0 after about 1443 seconds, within the controller 1800-second cap; independent setup and package checks passed."
+  },
+  "claude-external-receipt": {
+    "private_directory": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\claude-external-receipt",
+    "artifacts": {
+      "process.json": "claude-external-receipt-process.json",
+      "transcript.jsonl": {
+        "private_path": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\claude-external-receipt\\transcript.jsonl",
+        "sha256": "f1c7776e6a0ada160eb101299d5aa206d12e87d1e5b96b7381bc66f398b0a84f",
+        "bytes": 243870,
+        "complete": true
+      },
+      "stderr.txt": {
+        "private_path": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\claude-external-receipt\\stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "complete": true
+      }
+    }
+  },
+  "claude-external-amendment": {
+    "private_directory": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\claude-external-amendment",
+    "artifacts": {
+      "process.json": "claude-external-amendment-process.json",
+      "transcript.jsonl": {
+        "private_path": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\claude-external-amendment\\transcript.jsonl",
+        "sha256": "e8bd8cfa0deb8cab5695af6f2f909f47d74d204f6a3633558e830096e12dca36",
+        "bytes": 189441,
+        "complete": true
+      },
+      "stderr.txt": {
+        "private_path": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\claude-external-amendment\\stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "complete": true
+      }
+    },
+    "scope": "One controller-assisted report-only correction; original invalid receipt remains failed. Amended record consistency passes, but declared stand-in timestamps are not accepted as measured observations."
+  },
+  "opencode-denial": {
+    "private_directory": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\opencode-denial",
+    "artifacts": {
+      "process.json": "opencode-denial-process.json",
+      "assertions.json": "opencode-denial-assertions.json",
+      "transcript.jsonl": {
+        "private_path": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\opencode-denial\\transcript.jsonl",
+        "sha256": "30e1f4854eb99f62969069e815b2cdb3b32e44b245f5a441b4da5049388d5f06",
+        "bytes": 144961,
+        "complete": true
+      },
+      "stderr.txt": {
+        "private_path": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\opencode-denial\\stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "complete": true
+      }
+    }
+  },
+  "codex-orient": {
+    "private_directory": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\codex-orient",
+    "artifacts": {
+      "process.json": "codex-orient-process.json",
+      "assertions.json": "codex-orient-assertions.json",
+      "transcript.jsonl": {
+        "private_path": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\codex-orient\\transcript.jsonl",
+        "sha256": "65a08b40dd7f46c112b89647e350cf6a9ba09d7f4c598671d6d76ceab466bad2",
+        "bytes": 168521,
+        "complete": true
+      },
+      "stderr.txt": {
+        "private_path": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\codex-orient\\stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "complete": true
+      }
+    }
+  },
+  "opencode-blocked-plan": {
+    "private_directory": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\opencode-blocked-plan",
+    "artifacts": {
+      "process.json": "opencode-blocked-plan-process.json",
+      "assertions.json": "opencode-blocked-plan-assertions.json",
+      "transcript.jsonl": {
+        "private_path": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\opencode-blocked-plan\\transcript.jsonl",
+        "sha256": "6b634c9051582218b2a7cb2699ae42b7eabec5eebbfcb799c6803bb05260b0db",
+        "bytes": 75277,
+        "complete": true
+      },
+      "stderr.txt": {
+        "private_path": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\opencode-blocked-plan\\stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "complete": true
+      }
+    },
+    "scope": "Misnamed harness case: the skill allows queuing Proposed decisions with a warning. This actual successful queue creation is not counted as a blocked lifecycle case."
+  },
+  "opencode-blocked-ship": {
+    "private_directory": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\opencode-blocked-ship",
+    "artifacts": {
+      "process.json": "opencode-blocked-ship-process.json",
+      "assertions.json": "opencode-blocked-ship-assertions.json",
+      "transcript.jsonl": {
+        "private_path": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\opencode-blocked-ship\\transcript.jsonl",
+        "sha256": "75f87bedb5756df4c7943b7ade25f0fcbbb40ead3690572d7f8a1a942df6b428",
+        "bytes": 103319,
+        "complete": true
+      },
+      "stderr.txt": {
+        "private_path": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\opencode-blocked-ship\\stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "complete": true
       }
     }
   }
