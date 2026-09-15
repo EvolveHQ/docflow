@@ -81,6 +81,18 @@ const skillDirs = readdirSync(skillsDir, { withFileTypes: true })
   .filter((d) => d.isDirectory())
   .map((d) => d.name);
 
+const requiredSkills = ['bootstrap', 'new-adr', 'new-plan', 'ship-item',
+  'add-convention', 'audit', 'brainstorm', 'agent-wave', 'rollup',
+  'workspace-setup', 'workspace-orient', 'workspace-plan', 'workspace-coordinate'];
+for (const name of requiredSkills) {
+  if (!skillDirs.includes(name)) fail('missing required portable skill: ' + name);
+}
+for (const name of skillDirs) {
+  if (name !== 'bootstrap' && existsSync(join(skillsDir, name, 'templates'))) {
+    fail(name + ': only bootstrap carries templates');
+  }
+}
+
 // Agent-specific invocation syntax that must not appear in skill BODIES
 // (descriptions may carry trigger hints; bodies must stay agent-neutral).
 const SKILL_NAMES = skillDirs.join('|');

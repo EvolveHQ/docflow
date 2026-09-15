@@ -38,6 +38,15 @@ const LEGACY_DONE_NUMBERS = ['0101'];
 
 export const cases = [
   {
+    name: 'workspace skills: packaged discovery and declarative contracts',
+    skill: null,
+    agentDependent: false,
+    assert() {
+      const result = spawnSync(process.execPath, ['--test', join(evalsDir, 'workspace-skills.test.mjs')], { encoding: 'utf8', timeout: 120000 });
+      assert.equal(result.status, 0, result.error?.message || result.stdout + result.stderr);
+    },
+  },
+  {
     name: 'workspace: real validator, adverse inputs and portable assets',
     skill: null,
     agentDependent: false,
