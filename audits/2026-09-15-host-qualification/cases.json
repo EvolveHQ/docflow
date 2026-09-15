@@ -1,0 +1,192 @@
+{
+  "claude-setup": {
+    "private_directory": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\claude-setup",
+    "artifacts": {
+      "process.json": "claude-setup-process.json",
+      "assertions.json": "claude-setup-assertions.json",
+      "independent-validator.json": "claude-setup-independent-validator.json",
+      "transcript.jsonl": {
+        "private_path": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\claude-setup\\transcript.jsonl",
+        "sha256": "0c419c7d9fa02786e36d8e4955febf85573bd66366330c90d36f7632d17e3631",
+        "bytes": 270295,
+        "complete": true
+      },
+      "stderr.txt": {
+        "private_path": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\claude-setup\\stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "complete": true
+      }
+    }
+  },
+  "opencode-setup": {
+    "private_directory": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\opencode-setup",
+    "artifacts": {
+      "process.json": "opencode-setup-process.json",
+      "assertions.json": "opencode-setup-assertions.json",
+      "independent-validator.json": "opencode-setup-independent-validator.json",
+      "transcript.jsonl": {
+        "private_path": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\opencode-setup\\transcript.jsonl",
+        "sha256": "9be19b99ea5daf4abd1afbe479985aa544b9610724f2cc6d060cc7692f08734f",
+        "bytes": 385156,
+        "complete": true
+      },
+      "stderr.txt": {
+        "private_path": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\opencode-setup\\stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "complete": true
+      }
+    }
+  },
+  "codex-setup": {
+    "private_directory": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\codex-setup",
+    "artifacts": {
+      "process.json": "codex-setup-process.json",
+      "assertions.json": "codex-setup-assertions.json",
+      "independent-validator.json": "codex-setup-independent-validator.json",
+      "transcript.jsonl": {
+        "private_path": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\codex-setup\\transcript.jsonl",
+        "sha256": "f3460eae0c4e430078b6c004d9d74891cdc086d0e0ddc551dd8d03862d42bfc7",
+        "bytes": 154580,
+        "complete": true
+      },
+      "stderr.txt": {
+        "private_path": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\codex-setup\\stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "complete": true
+      }
+    }
+  },
+  "claude-w4-plan": {
+    "private_directory": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\claude-w4-plan",
+    "artifacts": {
+      "process.json": "claude-w4-plan-process.json",
+      "transcript.jsonl": {
+        "private_path": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\claude-w4-plan\\transcript.jsonl",
+        "sha256": "32f3636b4db89f3af60f6874f263f8d94fad9dbde58438d30e3ca12c9d20cb6c",
+        "bytes": 322652,
+        "complete": true
+      },
+      "stderr.txt": {
+        "private_path": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\claude-w4-plan\\stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "complete": true
+      }
+    }
+  },
+  "claude-w4-no-grant": {
+    "private_directory": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\claude-w4-no-grant",
+    "artifacts": {
+      "process.json": "claude-w4-no-grant-process.json",
+      "transcript.jsonl": {
+        "private_path": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\claude-w4-no-grant\\transcript.jsonl",
+        "sha256": "d4d1a8126c5347aec10f54bafd020ee793f75a01e63d341fce7bd569661af8c0",
+        "bytes": 218761,
+        "complete": true
+      },
+      "stderr.txt": {
+        "private_path": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\claude-w4-no-grant\\stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "complete": true
+      }
+    },
+    "scope": "Guided policy adherence; prompt states expected policy answer. Fresh recovery is a separate case."
+  },
+  "claude-w4-fresh": {
+    "private_directory": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\claude-w4-fresh",
+    "artifacts": {
+      "process.json": "claude-w4-fresh-process.json",
+      "transcript.jsonl": {
+        "private_path": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\claude-w4-fresh\\transcript.jsonl",
+        "sha256": "981c86922cb437961423b8ff62fe12182d93585305b29b44dae9926d8a71c4dc",
+        "bytes": 231755,
+        "complete": true
+      },
+      "stderr.txt": {
+        "private_path": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\claude-w4-fresh\\stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "complete": true
+      }
+    }
+  },
+  "codex-bootstrap": {
+    "private_directory": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\codex-bootstrap",
+    "artifacts": {
+      "process.json": "codex-bootstrap-process.json",
+      "independent-assertions.json": "codex-bootstrap-independent-assertions.json",
+      "transcript.jsonl": {
+        "private_path": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\codex-bootstrap\\transcript.jsonl",
+        "sha256": "8fde00b5ee56e8901c15d97e1c4417dd9d42440f4eb6d3912fcfb263ffb106a6",
+        "bytes": 242915,
+        "complete": true
+      },
+      "stderr.txt": {
+        "private_path": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\codex-bootstrap\\stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "complete": true
+      }
+    },
+    "scope": "Original checker exit 1: requested_integration wording regex. Exact native convention says direct into local main, fast-forward only. No gate weakened."
+  },
+  "opencode-bootstrap": {
+    "private_directory": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\opencode-bootstrap",
+    "artifacts": {
+      "process.json": "opencode-bootstrap-process.json",
+      "independent-assertions.json": "opencode-bootstrap-independent-assertions.json",
+      "transcript.jsonl": {
+        "private_path": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\opencode-bootstrap\\transcript.jsonl",
+        "sha256": "358aad227547365fdf0f88a7929f2be69294ddc1b94d74c6e8e11f3d138d7f2f",
+        "bytes": 297926,
+        "complete": true
+      },
+      "stderr.txt": {
+        "private_path": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\opencode-bootstrap\\stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "complete": true
+      }
+    }
+  },
+  "pi-setup-output": {
+    "private_directory": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\pi-setup-output",
+    "artifacts": {
+      "process.json": "pi-setup-output-process.json",
+      "transcript.jsonl": {
+        "private_path": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\pi-setup-output\\transcript.jsonl",
+        "sha256": "48cf8d68ddc59c86995449dbe9584a1ab8ccda9b047421c284a2d8b6e2fe51c3",
+        "bytes": 2075586,
+        "complete": true
+      },
+      "stderr.txt": {
+        "private_path": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\pi-setup-output\\stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "complete": true
+      }
+    },
+    "scope": "Native Qwen/high process reached 900-second bound, exit 124; no workspace files. Timeout is not a passing setup."
+  },
+  "pi-setup-recovery": {
+    "private_directory": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\pi-setup-recovery",
+    "artifacts": {
+      "transcript.jsonl": {
+        "private_path": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\pi-setup-recovery\\transcript.jsonl",
+        "sha256": "910f6d26c61a6c4508dfd930899b7997f985a99192c14b44f9cb3cd2e4fbeb95",
+        "bytes": 324414,
+        "complete": false
+      },
+      "stderr.txt": {
+        "private_path": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\pi-setup-recovery\\stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "complete": false
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "host": "claude",
+  "container": "docflow-hq-fc206-claude",
+  "fixture": "/workspace/w4",
+  "host_exit": 0,
+  "seconds": 153.1,
+  "model_requested": null,
+  "provider_requested": null,
+  "claude_delegation_opt_in": "none",
+  "permission_context": "manual with explicit fixture tool allowlist",
+  "behavioural_verdict": "unverified: run independent assertions",
+  "codex_session_storage": null,
+  "thinking_requested": null,
+  "pi_thinking_selection": null
+}

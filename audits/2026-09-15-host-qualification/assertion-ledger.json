@@ -1,0 +1,429 @@
+{
+  "observed_at": "2026-09-15T01:53:55.536547+00:00",
+  "source_revision": "f47f4c52313163f1ffe55a97d9c8029602d7c5b4",
+  "plugin_digest_sha256": "1f76befdd23ca9cceccbf2993e8d88448e1ca162f2437d1f10402ed5def7a3f8",
+  "native_plan_items": [
+    "0061",
+    "0062"
+  ],
+  "operator_handoff_only": "0063",
+  "parent_plan_sha256": "f5262d6cb6f3502d2b44be975e2813bd4508553096cdce05e999d1c43ac0a04b",
+  "paired_clarity": "pending coordinator integrated candidate/artifact; independent C12 source inspection cannot establish acceptance",
+  "hosts": {
+    "Claude Code": {
+      "thirteen-skill-native-discovery": {
+        "status": "passed native inventory",
+        "receipts": [
+          "native-discovery.json"
+        ]
+      },
+      "complete-installed-asset-bytes": {
+        "status": "passed after initial setup, before later phases",
+        "receipts": [
+          "claude-setup-assertions.json"
+        ]
+      },
+      "bootstrap-and-adoption": {
+        "status": "unrun",
+        "receipts": []
+      },
+      "successful-lifecycle": {
+        "status": "unrun",
+        "receipts": []
+      },
+      "blocked-lifecycle": {
+        "status": "unrun",
+        "receipts": []
+      },
+      "denied-action-alternate-route": {
+        "status": "unrun",
+        "receipts": []
+      },
+      "stopped-and-fresh-recovery": {
+        "status": "unrun",
+        "receipts": []
+      },
+      "upgrade-retention": {
+        "status": "unrun",
+        "receipts": []
+      },
+      "removal-retention": {
+        "status": "unrun",
+        "receipts": []
+      },
+      "four-workspace-skills-and-D2-behaviour": {
+        "status": "partial; supplied setup choices pass",
+        "receipts": [
+          "claude-setup-assertions.json"
+        ]
+      }
+    },
+    "Cowork": {
+      "thirteen-skill-native-discovery": {
+        "status": "blocked before prompt; folder picker focus failure",
+        "receipts": [
+          "cowork-input-receipts.json"
+        ]
+      },
+      "complete-installed-asset-bytes": {
+        "status": "unrun",
+        "receipts": []
+      },
+      "bootstrap-and-adoption": {
+        "status": "unrun",
+        "receipts": []
+      },
+      "successful-lifecycle": {
+        "status": "unrun",
+        "receipts": []
+      },
+      "blocked-lifecycle": {
+        "status": "unrun",
+        "receipts": []
+      },
+      "denied-action-alternate-route": {
+        "status": "unrun",
+        "receipts": []
+      },
+      "stopped-and-fresh-recovery": {
+        "status": "unrun",
+        "receipts": []
+      },
+      "upgrade-retention": {
+        "status": "unrun",
+        "receipts": []
+      },
+      "removal-retention": {
+        "status": "unrun",
+        "receipts": []
+      },
+      "four-workspace-skills-and-D2-behaviour": {
+        "status": "unrun",
+        "receipts": []
+      }
+    },
+    "Pi": {
+      "thirteen-skill-native-discovery": {
+        "status": "unrun",
+        "receipts": []
+      },
+      "complete-installed-asset-bytes": {
+        "status": "unrun",
+        "receipts": []
+      },
+      "bootstrap-and-adoption": {
+        "status": "unrun",
+        "receipts": []
+      },
+      "successful-lifecycle": {
+        "status": "unrun",
+        "receipts": []
+      },
+      "blocked-lifecycle": {
+        "status": "unrun",
+        "receipts": []
+      },
+      "denied-action-alternate-route": {
+        "status": "unrun",
+        "receipts": []
+      },
+      "stopped-and-fresh-recovery": {
+        "status": "unrun",
+        "receipts": []
+      },
+      "upgrade-retention": {
+        "status": "unrun",
+        "receipts": []
+      },
+      "removal-retention": {
+        "status": "unrun",
+        "receipts": []
+      },
+      "four-workspace-skills-and-D2-behaviour": {
+        "status": "first native setup timeout 124; recovery running",
+        "receipts": [
+          "pi-setup-output-process.json"
+        ]
+      }
+    },
+    "Codex": {
+      "thirteen-skill-native-discovery": {
+        "status": "passed native inventory",
+        "receipts": [
+          "native-discovery.json"
+        ]
+      },
+      "complete-installed-asset-bytes": {
+        "status": "passed after initial setup, before later phases",
+        "receipts": [
+          "codex-setup-assertions.json"
+        ]
+      },
+      "bootstrap-and-adoption": {
+        "status": "checker failed wording match; manual semantic inspection supports requested local integration",
+        "receipts": [
+          "codex-bootstrap-independent-assertions.json"
+        ]
+      },
+      "successful-lifecycle": {
+        "status": "unrun",
+        "receipts": []
+      },
+      "blocked-lifecycle": {
+        "status": "unrun",
+        "receipts": []
+      },
+      "denied-action-alternate-route": {
+        "status": "unrun",
+        "receipts": []
+      },
+      "stopped-and-fresh-recovery": {
+        "status": "unrun",
+        "receipts": []
+      },
+      "upgrade-retention": {
+        "status": "unrun",
+        "receipts": []
+      },
+      "removal-retention": {
+        "status": "unrun",
+        "receipts": []
+      },
+      "four-workspace-skills-and-D2-behaviour": {
+        "status": "partial; supplied setup choices pass",
+        "receipts": [
+          "codex-setup-assertions.json"
+        ]
+      }
+    },
+    "OpenCode": {
+      "thirteen-skill-native-discovery": {
+        "status": "passed native inventory",
+        "receipts": [
+          "OpenCode debug skill native /workspace/native-skills.json; sanitised inventory pending"
+        ]
+      },
+      "complete-installed-asset-bytes": {
+        "status": "passed after initial setup, before later phases",
+        "receipts": [
+          "opencode-setup-assertions.json"
+        ]
+      },
+      "bootstrap-and-adoption": {
+        "status": "passed bounded full bootstrap/new-adr",
+        "receipts": [
+          "opencode-bootstrap-independent-assertions.json"
+        ]
+      },
+      "successful-lifecycle": {
+        "status": "unrun",
+        "receipts": []
+      },
+      "blocked-lifecycle": {
+        "status": "unrun",
+        "receipts": []
+      },
+      "denied-action-alternate-route": {
+        "status": "unrun",
+        "receipts": []
+      },
+      "stopped-and-fresh-recovery": {
+        "status": "unrun",
+        "receipts": []
+      },
+      "upgrade-retention": {
+        "status": "unrun",
+        "receipts": []
+      },
+      "removal-retention": {
+        "status": "unrun",
+        "receipts": []
+      },
+      "four-workspace-skills-and-D2-behaviour": {
+        "status": "partial; supplied setup choices pass",
+        "receipts": [
+          "opencode-setup-assertions.json"
+        ]
+      }
+    }
+  },
+  "workspace_scenarios": {
+    "WV01": {
+      "requirement": "A new participant identifies priorities, owners, agreements and next actions from a workspace clone and its Clarity overview.",
+      "status": "partial guided native evidence; complete scenario unrun",
+      "native_evidence": [
+        "claude-w4-plan",
+        "claude-w4-no-grant"
+      ],
+      "clarity": "await integrated source/artifact; no combined acceptance"
+    },
+    "WV02": {
+      "requirement": "Docflow and non-docflow repositories participate without forced migration; their native checks and integration rules remain intact.",
+      "status": "partial guided native evidence; complete scenario unrun",
+      "native_evidence": [
+        "claude-w4-plan",
+        "claude-w4-no-grant"
+      ],
+      "clarity": "await integrated source/artifact; no combined acceptance"
+    },
+    "WV03": {
+      "requirement": "Selecting an idea cannot start implementation without a compatible execution grant.",
+      "status": "partial guided native evidence; complete scenario unrun",
+      "native_evidence": [
+        "claude-w4-plan",
+        "claude-w4-no-grant"
+      ],
+      "clarity": "await integrated source/artifact; no combined acceptance"
+    },
+    "WV04": {
+      "requirement": "Resume reuses valid authority; changed scope/actor and revoked or suspended grants are detected before dependent actions.",
+      "status": "unrun complete scenario",
+      "native_evidence": [],
+      "clarity": "await integrated source/artifact; no combined acceptance"
+    },
+    "WV05": {
+      "requirement": "Two workspaces resolve the same repository and native claim; duplicate assignment is prevented or stops when ownership is unknown.",
+      "status": "unrun complete scenario",
+      "native_evidence": [],
+      "clarity": "await integrated source/artifact; no combined acceptance"
+    },
+    "WV06": {
+      "requirement": "Partial delivery remains visible; an accepted workspace decision, one completed PR or one successful run cannot close the whole outcome. Completing all required work leaves its current agreement `accepted`, without rewriting member lifecycles.",
+      "status": "unrun complete scenario",
+      "native_evidence": [],
+      "clarity": "await integrated source/artifact; no combined acceptance"
+    },
+    "WV07": {
+      "requirement": "Stale observations, skipped checks and missing returns remain distinct from success in records and UI.",
+      "status": "partial guided native evidence; complete scenario unrun",
+      "native_evidence": [
+        "claude-w4-plan",
+        "claude-w4-no-grant"
+      ],
+      "clarity": "await integrated source/artifact; no combined acceptance"
+    },
+    "WV08": {
+      "requirement": "A shared test/deployment resource blocks conflicting operations even when repositories differ.",
+      "status": "unrun complete scenario",
+      "native_evidence": [],
+      "clarity": "await integrated source/artifact; no combined acceptance"
+    },
+    "WV09": {
+      "requirement": "A reference-only repository remains byte/HEAD/status unchanged while supplying cited evidence.",
+      "status": "partial guided native evidence; complete scenario unrun",
+      "native_evidence": [
+        "claude-w4-plan",
+        "claude-w4-no-grant"
+      ],
+      "clarity": "await integrated source/artifact; no combined acceptance"
+    },
+    "WV10": {
+      "requirement": "Useful coordination completes with Git, records and native human/host execution, without a dedicated service.",
+      "status": "partial guided native evidence; complete scenario unrun",
+      "native_evidence": [
+        "claude-w4-plan",
+        "claude-w4-no-grant"
+      ],
+      "clarity": "await integrated source/artifact; no combined acceptance"
+    },
+    "WV11": {
+      "requirement": "Role/profile recommendations neither launch actors nor install skills nor create grants; missing/conflicting dependencies are explicit.",
+      "status": "partial guided native evidence; complete scenario unrun",
+      "native_evidence": [
+        "claude-w4-plan",
+        "claude-w4-no-grant"
+      ],
+      "clarity": "await integrated source/artifact; no combined acceptance"
+    },
+    "WV12": {
+      "requirement": "A brief and receipt survive a two-harness handoff, including an executor outside the workspace directory and one unable to write its canonical receipt. Clarity prepares/displays the handoff without writing canonical records; an authorised Docflow coordinator reconciles returned evidence, then Clarity refreshes.",
+      "status": "unrun complete scenario",
+      "native_evidence": [],
+      "clarity": "await integrated source/artifact; no combined acceptance"
+    },
+    "WV13": {
+      "requirement": "Concurrent record creation uses short UUID-based names without a central counter. Duplicate full IDs, colliding short prefixes, ambiguous short references/native aliases and changed source revisions are detected; canonical identities and established links survive reconciliation.",
+      "status": "unrun complete scenario",
+      "native_evidence": [],
+      "clarity": "await integrated source/artifact; no combined acceptance"
+    },
+    "WV14": {
+      "requirement": "Missing/stale search indexes fall back to canonical files; outdated results cannot override current authority. A supported retrieval recipe also passes rebuild/removal checks.",
+      "status": "partial guided native evidence; complete scenario unrun",
+      "native_evidence": [
+        "claude-w4-plan",
+        "claude-w4-no-grant"
+      ],
+      "clarity": "await integrated source/artifact; no combined acceptance"
+    },
+    "WV15": {
+      "requirement": "Documentation, React and Svelte/Tauri assignments receive different justified recommendations, including \u201cadd nothing\u201d and missing-specialist outcomes.",
+      "status": "unrun complete scenario",
+      "native_evidence": [],
+      "clarity": "await integrated source/artifact; no combined acceptance"
+    },
+    "WV16": {
+      "requirement": "Selecting a suggestion does not enable or authorise it; existing compatible tools can be used under valid authority without repeated approval.",
+      "status": "partial guided native evidence; complete scenario unrun",
+      "native_evidence": [
+        "claude-w4-plan",
+        "claude-w4-no-grant"
+      ],
+      "clarity": "await integrated source/artifact; no combined acceptance"
+    },
+    "WV17": {
+      "requirement": "Host/participant/workspace handoff rechecks availability, configuration scope and authority; conflicting member setup blocks dependent mutation.",
+      "status": "partial guided native evidence; complete scenario unrun",
+      "native_evidence": [
+        "claude-w4-plan",
+        "claude-w4-no-grant"
+      ],
+      "clarity": "await integrated source/artifact; no combined acceptance"
+    },
+    "WV18": {
+      "requirement": "Stack/source/data-policy changes invalidate stale recommendations; local constraints are respected and unchanged declined options are not repeatedly suggested.",
+      "status": "unrun complete scenario",
+      "native_evidence": [],
+      "clarity": "await integrated source/artifact; no combined acceptance"
+    }
+  },
+  "guides": {
+    "Orca": {
+      "status": "unrun brief/receipt smoke",
+      "installed_guide_sha256": "377ec4be7427b31eec6b694aa1ed8c21f29a3c71685b3c15f0ac456694a9d78e"
+    },
+    "Cursor": {
+      "status": "unrun brief/receipt smoke",
+      "installed_guide_sha256": "39a5cbb63035a5e3e1cc7b954683124e683d504a96270de4404cdfadc27c5b1c"
+    },
+    "Claude Code": {
+      "status": "unrun brief/receipt smoke",
+      "installed_guide_sha256": "e0c80985cd9e5a0291368ff8e80018ee06d48812eaeafe5e92a12dca0de143f0"
+    },
+    "DeepSeek Harness": {
+      "status": "native web runtime and headless UI observed; blocked by API-key onboarding",
+      "installed_guide_sha256": "282bdb9ed21e7826f48b79e2793ce9efc2d0d4ce1ba1b56b1f688195a4cc03ed",
+      "version": "0.1.1-rc.2",
+      "command": "node C:/Users/eugen/.dsh/profiles/node_modules/@deepseek-ai/dsh/lib/bin.js --profile web --no-open --host 127.0.0.1 --port 0",
+      "native_url": "http://127.0.0.1:51596/",
+      "observed_ui": [
+        "Add an API key to get started",
+        "API key",
+        "Configure later",
+        "Save and continue"
+      ],
+      "boundary": "No key entered, no configuration saved, no inference or brief/receipt completed; browser is actual UI, not a simulated adapter."
+    },
+    "ZCode": {
+      "status": "unrun brief/receipt smoke",
+      "installed_guide_sha256": "8f14b944441e280746d3ad0be89dc7bfb5c84c87cc2ffc22bc6b4c255de199d1"
+    },
+    "Codex App": {
+      "status": "unrun brief/receipt smoke",
+      "installed_guide_sha256": "ca7e6d1f304dcbc8ebce05b560f76700f833cbfa72bc607375d5fd7364839d06"
+    }
+  },
+  "two_harness_continuation": "unrun",
+  "operator_pilot": "unrun; operator alone supplies acceptance",
+  "overall": "partially verified; no release acceptance"
+}

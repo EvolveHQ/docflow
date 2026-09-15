@@ -1,0 +1,48 @@
+{
+  "fixture": "C:/Users/eugen/AppData/Local/Temp/docflowhq-v1-20260915/qualification-ctx-fc206cf7e4a8/cowork-session",
+  "source": "f47f4c52313163f1ffe55a97d9c8029602d7c5b4",
+  "app": "claude",
+  "pid": 116908,
+  "main_window_id": 1117310,
+  "modal_title": "Add folders to this session",
+  "modal_accessibility_index": 1,
+  "stale_transient_window_id": 6886218,
+  "stale_transient_observation": "list-windows briefly returned an untitled 178x55 window; get-app-state later returned accessibility_error windowNotFound(6886218). Main window fresh observation included the folder dialog as child window index 1.",
+  "input_receipts": [
+    {
+      "command": "orca computer paste-text --app claude --window-id 1117310 --text <fixture> --json",
+      "projection": {
+        "ok": false,
+        "error": {
+          "code": "window_not_focused",
+          "message": "window_not_focused: keyboard input requires the target window to be focused; retry with --restore-window",
+          "data": {
+            "nextSteps": [
+              "Retry once with `--restore-window`.",
+              "If `--restore-window` was already used, stop retrying restore; bring the app forward manually, check permissions, or prefer `set-value` for editable fields."
+            ]
+          }
+        },
+        "screenshot": null,
+        "controls": null
+      }
+    },
+    {
+      "command": "orca computer paste-text --app claude --window-id 1117310 --restore-window --text <fixture> --json",
+      "projection": {
+        "ok": true,
+        "error": null,
+        "screenshot_path": "C:/Users/eugen/AppData/Local/Temp/orca-computer-use/7ab816ff-caa8-4ff2-9ec7-548670c825ea-screenshot.png",
+        "observed_controls": [
+          "1 window Add folders to this session",
+          "169 pane Folder:",
+          "305 edit Write your prompt to Claude C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\cowork-session, Secondary Actions: SetValue",
+          "306 text C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\cowork-session"
+        ]
+      },
+      "outcome": "Misdirected to underlying new-task composer; folder selection not established. No prompt submitted."
+    }
+  ],
+  "recovery": "Own composer cleared via set-value with empty value; read-back showed empty edit. Clicked current pane Cancel and fresh returned tree had no Add folders window. Historical task untouched. Desktop relinquished to coordinator; no further UI interaction authorised until explicit transfer.",
+  "evidence_limit": "These are the exact retained output projections from the tool calls, not complete raw provider responses; no independent timestamps fabricated. Screenshot can contain unrelated sidebar labels and stays private."
+}
