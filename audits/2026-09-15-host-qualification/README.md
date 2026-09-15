@@ -78,6 +78,41 @@ README and index are stale preparation inputs: fresh native participants
 correctly report the discrepancy and use current canonical files. Fresh
 Claude and Codex snapshots independently prove no writes or native claim moves.
 
+## Fresh combined-candidate external return and readiness (v3)
+
+Under the combined 70bae90 runtime/receipt guidance candidate (frozen by the
+[raw-blob freeze](package-runtime-receipt-freeze.json)), a fresh actual native
+Claude Code executor returned an unamended external receipt and a separate
+native readiness stop produced a readiness report, both on byte-exact disposable
+fixtures prepared under the continuation dispatch.
+
+The [assigned process](fresh-v3-assigned-process.json) ran the installed
+`docflow:workspace-coordinate` skill in the actual executor runtime after the
+[338-file installed-source preflight](fresh-v3-assigned-preparation.json)
+matched the freeze. The executor verified the member Git blobs byte-for-byte,
+ran `node check.mjs` (exit 0, `fresh-receipt-native-check: OK`), and wrote the
+single permitted file once. The original tmpfs artifact was lost when the
+container stopped; its [recovered bytes](fresh-v3-assigned-external-return.json)
+match the captured Write input and the in-container shape check that returned
+valid, exit 0. Independent controller
+[assertions](fresh-v3-assigned-assertions.json) re-verify the shape on the frozen
+assets (valid, exit 0), all 104 canonical hashes, clean Git states, native
+session binding and the envelope contents. The two-harness
+[reconciliation](fresh-v3-assigned-reconciliation.json) (native Claude Code
+returned; the Orca continuation controller session reconciled) imports the
+original receipt into the fixture run record unamended, records the boundary
+stop with its truthful blockers, completes the delivery observation, closes the
+grant and validates the whole fixture with exit 0.
+
+The [readiness process](fresh-v3-readiness-process.json) ran the same installed
+skill with no grant. The native executor stopped before any attempt: its
+[readiness report](fresh-v3-readiness-report.json) records the exact missing
+execution grant and run brief, executes no check and creates no attempt or
+canonical record. Independent [assertions](fresh-v3-readiness-assertions.json)
+prove all 97 fixture files unchanged, the runs directory still empty, a single
+permitted write and native session binding. This is the separate native
+readiness stop plan 0065 requires; it is not imported into `runs.receipt`.
+
 ## Native package removal and version upgrade
 
 [OpenCode removal](opencode-native-retention.json) uses its native detached-copy
@@ -209,9 +244,10 @@ functional successes. Full receipt import and review are still pending.
   PR 11 merged into the review integration as 52887c7 (verified on
   `origin/kmox83/docflow-v1-integration`); follow-up evidence ships in a new PR;
   the development candidate is not released V1.
-- **Yet to do:** Resolve the retained Cowork runtime and missed-bound findings;
-  verify the repaired candidate's fresh external/readiness/two-host receipts,
-  review/import scenario evidence and complete pending native host/guide assertions;
-  obtain desktop access and paired Clarity artifact; perform actual combined
-  views/handoffs; preserve fixtures, clean up owned runtimes, run final gates
-  and current-head CI, obtain review and the operator's real pilot acceptance.
+- **Yet to do:** Resolve the retained Cowork runtime and missed-bound findings
+  (a bounded Cowork proposal precedes any separately authorised rerun); import
+  and review the remaining scenario evidence and complete pending native
+  host/guide assertions; obtain desktop access and paired Clarity artifact;
+  perform actual combined views/handoffs; preserve fixtures, clean up owned
+  runtimes, run final gates and current-head CI on the new evidence PR, obtain
+  review and the operator's real pilot acceptance.

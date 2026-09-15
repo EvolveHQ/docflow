@@ -1,0 +1,238 @@
+{
+  "observed_at": "2026-09-15T18:23:54.257332+00:00",
+  "kind": "recovered original external return (unamended)",
+  "recovery_note": "The native executor wrote /workspace/returns/result.json (12954 bytes) at 2026-09-15T07:21:17Z; the tmpfs artifact was lost when container docflow-hq-fc206-receipt-assigned-v3 stopped (exit 255 at 2026-09-15T11:17:07Z). These bytes were recovered verbatim from the captured Write tool input in transcript.jsonl; the in-container read-only shape check on the actual file returned valid, exit 0, before the loss.",
+  "recovered_sha256": "e1b931813f65d0f71342b911ff6b6dee52b3bc58dd3dfb5fa1b51c4be2edb9c6",
+  "envelope": {
+    "schema": 1,
+    "kind": "external-return",
+    "receipt": {
+      "returned_at": "2026-09-15T07:21:17Z",
+      "head_revision": "565907773cf17a79af4bed0877f4ae05570b31d3",
+      "checks": [
+        {
+          "name": "native-check",
+          "command": "node check.mjs",
+          "outcome": "passed",
+          "exit_code": 0,
+          "output": "fresh-receipt-native-check: OK",
+          "evidence": [
+            {
+              "repository": "docflow-hq/receipt-assigned-v3/member",
+              "path": "check.mjs",
+              "revision": "565907773cf17a79af4bed0877f4ae05570b31d3",
+              "observed_at": "2026-09-15T07:20:42Z",
+              "outcome": "passed",
+              "summary": "Executed 'node check.mjs' with working directory /context/repos/member; process exited 0 and printed exactly 'fresh-receipt-native-check: OK'. Git HEAD was 565907773cf17a79af4bed0877f4ae05570b31d3 with a clean status in the same operation."
+            },
+            {
+              "repository": "docflow-hq/receipt-assigned-v3/member",
+              "path": "issues/READOUT.md",
+              "revision": "565907773cf17a79af4bed0877f4ae05570b31d3",
+              "observed_at": "2026-09-15T07:20:42Z",
+              "outcome": "passed",
+              "summary": "Assigned native work file read by check.mjs during the run; its required '# Native readout' opening line was present, so the check did not throw 'Native work missing'."
+            }
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "repository": "docflow-hq/receipt-assigned-v3/member",
+          "path": "issues/READOUT.md",
+          "revision": "565907773cf17a79af4bed0877f4ae05570b31d3",
+          "observed_at": "2026-09-15T07:21:12Z",
+          "outcome": "passed",
+          "summary": "Assigned native work file read directly. It asks for the current Git revision and the actual node check.mjs result, and assigns no implementation or integration. Committed blob 101b4488a83afb0ecb0999ed3da9b4dbb6876fd9 equals the worktree bytes."
+        },
+        {
+          "repository": "docflow-hq/receipt-assigned-v3/member",
+          "path": "README.md",
+          "revision": "565907773cf17a79af4bed0877f4ae05570b31d3",
+          "observed_at": "2026-09-15T07:21:12Z",
+          "outcome": "passed",
+          "summary": "Native member instructions read before executing. They declare no Docflow catalogue, permit read/test/report only under controller authority and OWNER.md, forbid migration/edit/commit/install/service/delegation, and name 'node check.mjs' as the check command. Committed blob 9b06de276aaf21c229255c3479c3aca180b0abde equals the worktree bytes."
+        },
+        {
+          "repository": "docflow-hq/receipt-assigned-v3/member",
+          "path": "OWNER.md",
+          "revision": "565907773cf17a79af4bed0877f4ae05570b31d3",
+          "observed_at": "2026-09-15T07:21:12Z",
+          "outcome": "passed",
+          "summary": "Native ownership observed independently of the grant. It records sole read/test/report ownership for agent:receipt-assigned until 2026-09-15T08:17:45Z with no prior executor, matching the brief's owner-confirmed-serial claim. Committed blob 1e1e7bdb35ad776e0020899d35de152090c9f8a0 equals the worktree bytes."
+        },
+        {
+          "repository": "docflow-hq/receipt-assigned-v3/member",
+          "path": "check.mjs",
+          "revision": "565907773cf17a79af4bed0877f4ae05570b31d3",
+          "observed_at": "2026-09-15T07:21:12Z",
+          "outcome": "passed",
+          "summary": "Check source read before execution: it reads issues/READOUT.md, throws when the '# Native readout' prefix is absent, and otherwise logs 'fresh-receipt-native-check: OK'. Committed blob 87f4c78b96bdcd586a67aea0f902f4616a9e231e equals the worktree bytes; core.autocrlf is false, so no content conversion applies."
+        }
+      ],
+      "blockers": [
+        {
+          "reason": "Attempt stops at the brief's boundary stop_at=external-return-written. This executor is read-only by mandate and physically: canonical and member writes are forbidden, so the run record, work observations and criteria were not updated and cannot be updated here.",
+          "owner": "qualification-controller",
+          "next_action": "Independently reconcile this preserved external return against run 87e9f434-b05f-4f3b-b0a5-4e1e33b7c536 and work 17dee6ee-ee9d-4041-ae28-748c248193a4 under canonical-write authority."
+        },
+        {
+          "reason": "The native session identity could not be confirmed from inside this session. The launcher states it requested --session-id 58c8efbd-7a6c-4617-844d-aea88b84d650, but confirming it would require reading the host home directory, which is outside the permitted read scope. It is recorded as requested-but-unverified, not as an observed identifier.",
+          "owner": "qualification-controller",
+          "next_action": "Verify the actual native session initialisation separately, as the controller already planned."
+        }
+      ],
+      "next_action": "Controller reconciles this original external return, checks its source-bound evidence at revision 565907773cf17a79af4bed0877f4ae05570b31d3, and records the outcome. Criterion 'reconciled' and parent work completion remain open and are not claimed by this executor.",
+      "used_assets": []
+    },
+    "context": {
+      "run": {
+        "home": "docflow-hq/receipt-assigned-v3",
+        "id": "87e9f434-b05f-4f3b-b0a5-4e1e33b7c536",
+        "path": ".docflow_workspace/runs/fresh-return--87e9f434b05f.md"
+      },
+      "work": {
+        "home": "docflow-hq/receipt-assigned-v3",
+        "id": "17dee6ee-ee9d-4041-ae28-748c248193a4",
+        "path": ".docflow_workspace/work/fresh-receipt--17dee6eeee9d.md"
+      },
+      "brief_binding": {
+        "delivery": "readout",
+        "scope_revision": 1,
+        "grant": {
+          "id": "bounded-readout",
+          "revision": 1,
+          "state_observed": "active",
+          "actor": "agent:receipt-assigned",
+          "actions": [
+            "read",
+            "test",
+            "report"
+          ],
+          "valid_from": "2026-09-15T07:17:54Z",
+          "expires_at": "2026-09-15T08:17:45Z",
+          "stop_at": "external-return-written",
+          "rechecked_at": "2026-09-15T07:21:12Z",
+          "recheck_result": "Current and unexpired at every dependent action; read in canonical work record at workspace HEAD 0440990ec5bb3f67461b9f55fddf25cffb362498."
+        },
+        "workspace_revision": "fc1e0b42b6f39361c89979f220e77832ff3a4463",
+        "base_revision": "565907773cf17a79af4bed0877f4ae05570b31d3",
+        "canonical_snapshot_revision": "0440990ec5bb3f67461b9f55fddf25cffb362498",
+        "return_path": ".docflow_workspace/runs/fresh-return--87e9f434b05f.md",
+        "external_return_written_to": "/workspace/returns/result.json",
+        "binding_result": "Brief binding matched the canonical run and work records byte-for-byte as read at canonical HEAD."
+      },
+      "native_host": {
+        "host": "claude-code",
+        "actor": "agent:receipt-assigned",
+        "requested_native_session_id": "58c8efbd-7a6c-4617-844d-aea88b84d650",
+        "observed_native_session_id": "unknown",
+        "session_id_reason": "Reported by the launcher via the supported --session-id flag; not independently observable inside this session without reading the host home directory, which the read scope forbids. Controller verifies native init separately.",
+        "platform": "Linux 6.6.87.2-microsoft-standard-WSL2",
+        "node_version": "v22.23.2",
+        "member_working_directory": "/context/repos/member"
+      },
+      "revision_verification": {
+        "canonical_head": "0440990ec5bb3f67461b9f55fddf25cffb362498",
+        "canonical_status": "clean",
+        "canonical_history": [
+          "0440990 test: freeze prepared native assignment snapshot",
+          "fc1e0b4 test: record current bounded work and authority",
+          "b38cedc test: prepare isolated native receipt fixture"
+        ],
+        "ancestry_check": "fc1e0b42b6f39361c89979f220e77832ff3a4463 confirmed an ancestor of 0440990ec5bb3f67461b9f55fddf25cffb362498 via git merge-base --is-ancestor, matching the controller's revision_note.",
+        "member_head": "565907773cf17a79af4bed0877f4ae05570b31d3",
+        "member_status": "clean",
+        "member_blob_check": "git ls-tree -r at the brief revision and git hash-object on the worktree agree for all four files; core.autocrlf=false, so the disabled content conversion did not mask a difference. No source mismatch blocked the check.",
+        "observed_at": "2026-09-15T07:21:12Z"
+      },
+      "actions": [
+        {
+          "at": "2026-09-15T07:19:06Z",
+          "action": "observe-clock-and-runtime",
+          "result": "Current UTC and Node.js v22.23.2 observed before dependent actions."
+        },
+        {
+          "at": "2026-09-15T07:19:06Z",
+          "action": "read-canonical-records",
+          "result": "Read AGENTS.md, QUALIFICATION-MANDATE.md, README.md, workspace.yaml, INDEX.md, CONVENTIONS.md, integrations/sources.yaml, the work record and the run record."
+        },
+        {
+          "at": "2026-09-15T07:20:42Z",
+          "action": "verify-source-and-authority",
+          "result": "Canonical and member Git revisions, status and blob bytes verified; grant active and unexpired; native OWNER.md claim confirmed; no dependencies or reserved resources declared."
+        },
+        {
+          "at": "2026-09-15T07:20:42Z",
+          "action": "execute-native-check",
+          "result": "node check.mjs exited 0 with output 'fresh-receipt-native-check: OK'."
+        },
+        {
+          "at": "2026-09-15T07:21:12Z",
+          "action": "reobserve-evidence-sources",
+          "result": "Timed reobservation of the four member files under current authority, because the initial reads were not individually clock-stamped. No timestamp from another event was reused."
+        },
+        {
+          "at": "2026-09-15T07:21:17Z",
+          "action": "write-external-return",
+          "result": "Envelope written to /workspace/returns/result.json, the only permitted write path. Attempt stops here per stop_at."
+        }
+      ],
+      "asset_reads": {
+        "asset_root": "/opt/docflow-source/plugins/docflow/workspace",
+        "resolution": "Resolved from the installed bootstrap skill's templates/workspace-assets.json candidate '../../workspace'; CONTRACT.md, schema.json, validate.mjs and fixtures/ are all present.",
+        "product_source_revision": "70bae90406a0c4d9ae37f40efcc35ec52f4a9306",
+        "product_version": "0.9.4 (development candidate; not released V1)",
+        "note": "No optional assets were selected or used, so the receipt's used_assets is empty. These are read-only source references recorded in external context only.",
+        "files_read_sha256": [
+          {
+            "path": "plugins/docflow/skills/workspace-coordinate/SKILL.md",
+            "sha256": "ac21c3002dced377cef03ac546aa1d6415cf8af7aa54e2c3f73e54535c0685a7",
+            "attestation": "matches INSTALLED-PACKAGE-SOURCE.json"
+          },
+          {
+            "path": "plugins/docflow/workspace/README.md",
+            "sha256": "0df269e06edb88eeb4771d1ebb0e8e8152047a3781f37e035a5a9f23132a795b",
+            "attestation": "matches INSTALLED-PACKAGE-SOURCE.json"
+          },
+          {
+            "path": "plugins/docflow/workspace/guides/claude-code.md",
+            "sha256": "c8dca7843c8563ad93024492ca85c7383f2a96cfb61b43eb224096985c695e73",
+            "attestation": "matches INSTALLED-PACKAGE-SOURCE.json"
+          },
+          {
+            "path": "plugins/docflow/workspace/CONTRACT.md",
+            "sha256": "6e59fc7d26ecae73e65d3f33f44b47a787b304f99b48129534b39ca395938957",
+            "attestation": "matches INSTALLED-PACKAGE-SOURCE.json"
+          },
+          {
+            "path": "plugins/docflow/workspace/schema.json",
+            "sha256": "46efc122a08d3ed8e8df813f18355b9738fd6619c456f96112b445f93f761583",
+            "attestation": "matches INSTALLED-PACKAGE-SOURCE.json"
+          },
+          {
+            "path": "plugins/docflow/workspace/validate.mjs",
+            "sha256": "c8db90d4925779be8ad11cb0116c161026feb62c454ec5539b191a98b4f6c6cd",
+            "attestation": "matches INSTALLED-PACKAGE-SOURCE.json"
+          },
+          {
+            "path": "plugins/docflow/skills/bootstrap/templates/workspace-assets.json",
+            "sha256": "a4a1cb2041d5d69cda123e708dd45fecaab48e779a387ed3ecd75b2a756ede41",
+            "attestation": "matches INSTALLED-PACKAGE-SOURCE.json"
+          }
+        ],
+        "attestation_note": "INSTALLED-PACKAGE-SOURCE.json is a controller-generated attestation, not native testimony. The hashes above were computed locally with sha256sum against the actual read-only asset files and compared with its recorded values; all seven agree."
+      },
+      "boundary": {
+        "stop_at": "external-return-written",
+        "canonical_writes_performed": "none",
+        "member_writes_performed": "none",
+        "files_written": [
+          "/workspace/returns/result.json"
+        ],
+        "parent_completion_claimed": false,
+        "statement": "This is a bounded executor return only. A shape check on this payload is not source, authority or evidence validation, and no parent work completion is asserted."
+      }
+    }
+  }
+}

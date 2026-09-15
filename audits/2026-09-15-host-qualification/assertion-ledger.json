@@ -1,5 +1,5 @@
 {
-  "observed_at": "2026-09-15T07:04:35.487584+00:00",
+  "observed_at": "2026-09-15T18:24:46.600904+00:00",
   "source_revision": "f47f4c52313163f1ffe55a97d9c8029602d7c5b4",
   "plugin_digest_sha256": "1f76befdd23ca9cceccbf2993e8d88448e1ca162f2437d1f10402ed5def7a3f8",
   "native_plan_items": [
@@ -508,7 +508,7 @@
       "installed_guide_sha256": "ca7e6d1f304dcbc8ebce05b560f76700f833cbfa72bc607375d5fd7364839d06"
     }
   },
-  "two_harness_continuation": "partial demonstrated Claude Code external executor to actual Orca dispatched coordinator; complete guide/Clarity acceptance unrun",
+  "two_harness_continuation": "demonstrated: native Claude Code returned the fresh v3 external return and the Orca continuation controller session independently reconciled it with byte/record/tool assertions and validator exit 0; earlier partial Claude Code to Orca coordinator demonstration retained; complete guide/Clarity acceptance unrun",
   "operator_pilot": "unrun; operator alone supplies acceptance",
   "overall": "partially verified; no release acceptance",
   "additional_product_candidate": {
@@ -519,7 +519,7 @@
       "source_revision": "eed722c8398b1e85d14ed57fa6dc53d5f5655bd0",
       "freeze_receipt": "package-receipt-guidance-freeze.json"
     },
-    "qualification": "fresh assigned native process finished host exit 0 at 2026-09-15T07:23:08Z (process receipt only; behavioural verdict pending); readiness/return and two-host reconciliation unrun; no acceptance yet"
+    "qualification": "combined candidate 70bae90 qualified on fresh disposable fixtures: assigned native run host exit 0 with unamended shape-valid external return (node check.mjs exit 0), independent controller assertions passed (shape/bytes/git/session), and two-harness reconciliation validated exit 0; separate native readiness stop blocked correctly with no attempt, no check and no canonical writes; both fixture preflights matched all 338 installed files in the actual executor runtime; no release acceptance, operator pilot or Clarity handoff"
   },
   "native_release_blockers": [
     "Cowork installed-validator topology remains blocked; 1800-second controller stop bound missed.",

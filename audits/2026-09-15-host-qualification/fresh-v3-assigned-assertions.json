@@ -1,0 +1,120 @@
+{
+ "observed_at": "2026-09-15T18:06:31.873613+00:00",
+ "kind": "independent controller assertions for the fresh assigned native return (case assigned, v3)",
+ "native_process": {
+  "invoked_at": "2026-09-15T07:19:00.835648+00:00",
+  "argv": [
+   "docker",
+   "exec",
+   "-i",
+   "-w",
+   "/context",
+   "docflow-hq-fc206-receipt-assigned-v3",
+   "claude",
+   "--plugin-dir",
+   "/opt/docflow-source/plugins/docflow",
+   "-p",
+   "--output-format",
+   "stream-json",
+   "--verbose",
+   "--no-session-persistence",
+   "--permission-mode",
+   "manual",
+   "--allowedTools",
+   "Read,Write,Edit,Bash,Skill,Glob,Grep",
+   "--strict-mcp-config",
+   "--effort",
+   "medium",
+   "--model",
+   "claude-opus-5[1m]",
+   "--session-id",
+   "58c8efbd-7a6c-4617-844d-aea88b84d650"
+  ],
+  "timeout_seconds": 900,
+  "source_revision": "70bae90406a0c4d9ae37f40efcc35ec52f4a9306",
+  "case": "assigned",
+  "native_session_id_requested": "58c8efbd-7a6c-4617-844d-aea88b84d650",
+  "finished_at": "2026-09-15T07:23:08.770839+00:00",
+  "elapsed_seconds": 247.93700000003446,
+  "host_exit": 0,
+  "timed_out": false,
+  "stop": null,
+  "limit": "Actual native process receipt; behavioural verdict requires independent source/record/tool assertions."
+ },
+ "recovered_envelope": {
+  "source": "Write tool input for /workspace/returns/result.json in transcript.jsonl (tmpfs file lost with stopped container; byte size 12954 matches the in-container ls at 2026-09-15T07:22)",
+  "sha256": "e1b931813f65d0f71342b911ff6b6dee52b3bc58dd3dfb5fa1b51c4be2edb9c6"
+ },
+ "shape_check": {
+  "argv": [
+   "node",
+   "--input-type=module",
+   "-e",
+   "<assets>",
+   "<envelope>"
+  ],
+  "assets_root": "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\package-runtime-receipt-source\\plugins\\docflow\\workspace",
+  "exit_code": 0,
+  "stdout": "{\n  \"valid\": true,\n  \"errors\": []\n}",
+  "stderr": ""
+ },
+ "canonical_no_mutation": {
+  "before_files": 104,
+  "compared": 104,
+  "mismatches": [],
+  "missing": [],
+  "note": "read-only bind mount; every hashed file re-verified byte-for-byte after the native run"
+ },
+ "git_states": {
+  "canonical": {
+   "head": "0440990ec5bb3f67461b9f55fddf25cffb362498",
+   "status_porcelain": "",
+   "clean": true
+  },
+  "member": {
+   "head": "565907773cf17a79af4bed0877f4ae05570b31d3",
+   "status_porcelain": "",
+   "clean": true
+  }
+ },
+ "envelope_assertions": [
+  {
+   "check": "envelope kind external-return",
+   "passed": true
+  },
+  {
+   "check": "unamended returned_at within claim window",
+   "passed": true
+  },
+  {
+   "check": "head_revision matches member HEAD",
+   "passed": true
+  },
+  {
+   "check": "one required check native-check passed exit 0",
+   "passed": true
+  },
+  {
+   "check": "native evidence references bound to member revision",
+   "passed": true
+  },
+  {
+   "check": "used_assets empty as supplied",
+   "passed": true
+  },
+  {
+   "check": "context records product source 70bae90",
+   "passed": true
+  }
+ ],
+ "transcript_binding": {
+  "session_id": "58c8efbd-7a6c-4617-844d-aea88b84d650",
+  "requested": "58c8efbd-7a6c-4617-844d-aea88b84d650",
+  "match": true,
+  "cwd": "/context",
+  "model": "claude-opus-5[1m]",
+  "claude_code_version": "2.1.269",
+  "permissionMode": "default"
+ },
+ "verdict": "assigned native return behavioural pass: skill invocation, member byte verification, node check.mjs exit 0, single permitted file written and shape-checked, no canonical/member mutation; original tmpfs artifact lost with the stopped container, bytes recovered verbatim from the captured Write input"
+}
