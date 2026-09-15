@@ -10,7 +10,8 @@ Owning decisions: adr/0053-portable-workspace-operating-skills.md and adr/0054-r
 
 ## Dependencies
 
-W3/D2/D3 integrated candidate, completed source receipts and coordinator-selected native test environments.
+W3/D2/D3 and separately scoped D5 integrated candidate, completed source receipts,
+coordinator-approved source freeze and coordinator-selected native test environments.
 
 ## Scope
 
@@ -21,4 +22,3 @@ Run actual discovery and bounded workflow probes on Claude Code, Cowork, pi, Cod
 1. All five targets have current installed-source discovery and behavioural receipts; D2 positive/negative/recovery cases pass; exact logs and native source hashes reviewed; failed/unavailable cases stay open. This is not authorised in the W3 development dispatch.
 2. Record exact source, host version/platform/mode, commands/output/exits, native versus simulated scope and outstanding cases.
 3. Follow single-writer ownership, signed commits, native acceptance and checked PR integration. No implicit release/version-bump authority.
-

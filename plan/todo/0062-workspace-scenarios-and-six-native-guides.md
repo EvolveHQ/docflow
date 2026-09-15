@@ -10,7 +10,8 @@ Owning decisions: adr/0051-portable-workspace-memory-contract.md, adr/0052-works
 
 ## Dependencies
 
-Integrated W3 and paired Clarity C12/C2 sources; native host/operator access.
+Integrated W3/D2/D3, separately scoped D5 and paired Clarity C12/C2 sources;
+coordinator-approved source freeze and native host/operator access.
 
 ## Scope
 
@@ -21,4 +22,3 @@ Execute WV01–WV18 from parent document 14 revision 0.15, including fresh orien
 1. Eighteen source-bound scenario receipts, all six native guide smokes and a two-host continuation pass with actual Clarity views/handoffs; unsupported/denied/changed-source variants retain honest diagnostics. Experimental retrieval needs its own rebuild/removal evidence before support claims.
 2. Record exact source, host version/platform/mode, commands/output/exits, native versus simulated scope and outstanding cases.
 3. Follow single-writer ownership, signed commits, native acceptance and checked PR integration. No implicit release/version-bump authority.
-
