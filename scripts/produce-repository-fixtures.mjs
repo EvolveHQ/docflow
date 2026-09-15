@@ -62,8 +62,10 @@ export function renderRepositoryFixtures(sources, revision) {
     let agents = '# AGENTS.md\n\n' + section(uncomment(source(tpl + 'AGENTS.md')), 'What this repository is') +
       section(uncomment(source(tpl + 'AGENTS.md')), 'Picking up this repo');
     agents = agents.replace(/<[^>]+>/g, 'Synthetic repository for producer compatibility');
-    agents = agents.replace(/^d+\.[\s\S]*?(?=^\d+\.|$(?![\s\S]))/gm,
-      line => !queue && /plan\/|_agent\//.test(line) ? '' : line);
+    agents = agents.replace(/^\d+\.[\s\S]*?(?=^\d+\.|$(?![\s\S]))/gm,
+      line => /_agent\/(?:ROLES|LOCKS)/.test(line) || (!queue && /plan\/|What is in flight/.test(line)) ? '' : line);
+    let readOrder = 0;
+    agents = agents.replace(/^\d+\./gm, () => String(++readOrder) + '.');
     agents = agents.replaceAll('`CONVENTIONS.md`', '`' + rel('CONVENTIONS.md') + '`')
       .replaceAll('`INDEX.md`', '`' + rel('INDEX.md') + '`');
     emit(id, 'AGENTS.md', agents, [tpl + 'AGENTS.md'], 'Select generated entry/read-order sections; resolve root and omit disabled queue/coordination.');
@@ -75,7 +77,7 @@ export function renderRepositoryFixtures(sources, revision) {
       'Fill synthetic author/date/title/body; explicit shape only in two-shape case.');
     if (two) {
       emit(id, rel('adr/0000-template-technology.md'), source(tpl + 'adr-technology.md'), [tpl + 'adr-technology.md'], 'Exact template copy.');
-      const second = decision('0002', 'technology').replace('status: Accepted', 'shape: technology\nstatus: Accepted');
+      const second = decision('0002', 'technology');
       emit(id, rel('adr/0002-synthetic-technology.md'), second, [tpl + 'adr-technology.md'], 'Fill synthetic input and explicit technology shape.');
     }
     const rows = ['| [0001](adr/0001-synthetic-capability.md) | Synthetic capability decision | Accepted | 2026-09-15 |' + (two ? ' capability |' : '')];
@@ -126,8 +128,11 @@ export function renderRepositoryFixtures(sources, revision) {
       git_scenario: 'Create initial main from status-resumed; commit this completion on work/0001-example; integrate via a merge commit only for completion-integrated.' });
   }
   for (const path of Object.keys(sources).filter(p => p.startsWith(legacy))) {
-    emit('legacy-two-range', 'docs/' + path.slice(legacy.length), source(path), [path],
+    const nativePath = path.slice(legacy.length);
+    emit('legacy-two-range', 'docs/' + nativePath, source(path), [path],
       'Retained producer legacy fixture bytes; relocate whole artefact home to docs without migration.');
+    if (['AGENTS.md', 'README.md'].includes(nativePath)) emit('legacy-two-range', nativePath,
+      source(path), [path], 'Preserve legacy entry point at repository root; historical copy also retained in docs.');
   }
   const lc = files['cases/legacy-two-range/docs/CONVENTIONS.md'];
   lc.content = lc.content.replace('Artefact root: `.` — the repository root.', 'Artefact root: `docs/` — legacy nested artefact home.');
@@ -187,9 +192,10 @@ export function renderRepositoryFixtures(sources, revision) {
 }
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  const [sourceRoot, revision, destination] = process.argv.slice(2);
-  if (!sourceRoot || !/^[0-9a-f]{40}$/.test(revision || '') || !destination || existsSync(destination)) {
-    throw Error('Usage: node scripts/produce-repository-fixtures.mjs <source-repo> <full-committed-revision> <new-destination>');
+  const [sourceRoot, revision, destination, refresh] = process.argv.slice(2);
+  if (!sourceRoot || !/^[0-9a-f]{40}$/.test(revision || '') || !destination ||
+      (existsSync(destination) && refresh !== '--refresh')) {
+    throw Error('Usage: node scripts/produce-repository-fixtures.mjs <source-repo> <full-committed-revision> <destination> [--refresh]');
   }
   const git = args => {
     const r = spawnSync('git', ['--no-lazy-fetch','--no-replace-objects','-C',sourceRoot,...args], { encoding:'utf8',maxBuffer:16*1024*1024 });
@@ -201,6 +207,14 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
     'plugins/docflow/skills/ship-item/SKILL.md','scripts/produce-repository-fixtures.mjs');
   const sources = Object.fromEntries(paths.map(path => [path,git(['show',revision + ':' + path])]));
   const result = renderRepositoryFixtures(sources, revision);
+  if (existsSync(destination)) {
+    const previous = JSON.parse(readFileSync(resolve(destination,'manifest.json'),'utf8'));
+    for (const [path, file] of Object.entries(previous.files)) {
+      if (!result.files[path]) throw Error('Refresh preserves old files; a removal needs separate review: ' + path);
+      const existing = readFileSync(resolve(destination,path),'utf8').replace(/\r\n/g,'\n');
+      if (sha256(existing) !== file.sha256) throw Error('Preserve edited fixture file: ' + path);
+    }
+  }
   for (const [path, file] of Object.entries(result.files)) {
     const target = resolve(destination,path); mkdirSync(dirname(target),{recursive:true}); writeFileSync(target,file.content);
   }
