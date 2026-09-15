@@ -52,3 +52,25 @@ scratch/parent records. All Docflow versions stay at matching 0.9.4.
    pending until separately authorised publication. Native trust and final pilot
    remain separate. Keep this item todo and its decision Accepted until verified
    acceptance and the final checked main completion event.
+
+## Verification receipt
+
+Verified work HEAD: `434aacf33ca142f1c784f4588e3aa7ae7926e584`.
+PR: https://github.com/EvolveHQ/docflow/pull/10, targeting the review integration
+branch. Implementation source, exact process outcomes, public contract parity,
+mock boundaries and remaining live criteria are recorded in
+[`audits/2026-09-15-clarity-release-preparation.md`](../../audits/2026-09-15-clarity-release-preparation.md).
+Required source verify CI passed; the PR carries the final receipt head and its
+current required CI result. No completion move is prepared while live acceptance
+criteria remain unverified.
+
+## Status at a glance
+
+- **This run:** Preparation implemented; `verify: OK`, evals 10 passed / 0 failed /
+  6 skipped, 65 release and 6 ZIP controls passed, workflow lint and required
+  source CI passed, all exit 0. Real Clarity lookup returned the expected
+  no-published-release error, exit 1.
+- **Overall:** Verified preparation; remains Accepted/todo and unshipped to main.
+- **Yet to do:** Final receipt-head CI, coordinator review/integration and retained
+  branch disposition; separate native trust and final operator acceptance,
+  exact-payload release authority, public downloads/hashes and main completion.
