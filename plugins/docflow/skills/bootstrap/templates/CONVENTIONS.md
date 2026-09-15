@@ -16,9 +16,11 @@ The pointer and the record above must agree.
 
 Assessment depth: `<express | guided | full>` — the depth chosen at
 bootstrap. Skill assessments pre-select it as the recommended depth; the
-depth selector always still appears, so the record steers the
-recommendation and is never applied silently. Change this line to change
-the recommendation.
+depth selector appears when depth is unresolved and material choices remain.
+Reuse applicable answers already supplied in the request or session, including
+depth; defaults never replace explicit choices. A recorded preference alone
+steers the recommendation and is never applied silently or treated as an
+execution grant. Change this line to change the recommendation.
 
 <!-- Q1 language: if a language mandate is set, state it here.
 Example: "Language: en-GB throughout. Use forms such as organisation,
