@@ -41,6 +41,26 @@ The deterministic installation test uses copies of the distributed files,
 including detached Codex/OpenCode layouts. It does not establish native host
 discovery or behaviour. No source checkout is required after asset installation.
 
+## Match assets and workspace to an execution context
+
+Before setup or validation, identify the native tool's actual filesystem and
+path syntax. Check that the same execution context can read the selected
+workspace (or its parent before creation) and asset root, and run Node.js 22+.
+A cloud tool, device VM and desktop shell can expose different filesystems;
+a path supplied to one does not establish access from another.
+
+Record native skill discovery separately from the assets used for validation.
+An already accessible, permitted copy of the same pinned package may be an
+explicit asset root: verify its source bytes and record both locations before
+using it. That copy does not establish native plugin discovery. Reuse the
+current mandate only when it covers that read/test route; a stricter brief or
+denied action still stops the operation across tools and routes.
+
+If no authorised context can access both locations, report the exact missing
+path and stop dependent writes. Do not search unrelated roots, install or copy
+assets implicitly, place tools in canonical records, or validate a reconstructed
+workspace and report it as the original. Preserve the actual command and exit.
+
 ## Assemble a new empty workspace
 
 Within the operator-selected new workspace only:
