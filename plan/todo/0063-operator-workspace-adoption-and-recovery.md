@@ -25,33 +25,27 @@ Prepare and run the operator's installation/setup/Clarity-resume journey on the 
 2. Record exact source, host version/platform/mode, commands/output/exits, native versus simulated scope and outstanding cases.
 3. Follow single-writer ownership, signed commits, native acceptance and checked PR integration. No implicit release/version-bump authority.
 
-## Latest checkpoint (2026-09-16)
+## Receipt (2026-09-16)
 
-The largest unblocked portion is prepared: the operator journey and a
-source-bound freeze of the current combined candidate. Preparation source is
-`10fc139b6c2144c363d44cccef942225e529e16d`; the packed `0.9.4` artifact has
-332 files and content digest
-`cf4cdc2bee3354a626f01d0661d0d52e6ce2c1f9abd9735985a2eaa524a3cfef`, with the
-historical `0.9.3` input pinned separately. Exit criterion 2 is partially met
-(prepared commands and boundaries recorded) and exit criterion 1's journey is
-**unrun** — the operator supplies the result. No native or Clarity execution is
-claimed.
+Preparation only. The operator journey is **unrun**; no native, Clarity or
+operator result is claimed. Item stays todo; decisions 0053/0055 stay Accepted.
 
-## Verification receipt
-
-- Preparation document:
-  [`audits/2026-09-16-operator-pilot-preparation.md`](../../audits/2026-09-16-operator-pilot-preparation.md).
-- Machine freeze and result template:
-  [`audits/2026-09-16-operator-pilot/package-freeze.json`](../../audits/2026-09-16-operator-pilot/package-freeze.json).
-- `npm pack` at the preparation source: exit 0, 332 files, digest above.
-- `node scripts/verify.mjs` and `node evals/run.mjs`: see the task PR.
+- Pinned candidate `10fc139b6c2144c363d44cccef942225e529e16d`, version 0.9.4.
+- `npm pack` exit 0: 332 files, content digest
+  `cf4cdc2bee3354a626f01d0661d0d52e6ce2c1f9abd9735985a2eaa524a3cfef`,
+  tarball SHA-256 `c0dac1dbd9bea0442525ca050d05fb9aaad6d4caa07710e2e7d713723fd3676f`.
+- Upgrade input revision one `a60cfcdf05188845620d3a28f21e3ccc188fb83d` (0.9.3),
+  pinned in `audits/2026-09-15-host-qualification/upgrade-0.9.3-freeze.json`.
+- `node scripts/verify.mjs` exit 0; `node evals/run.mjs` exit 0 (10 passed,
+  0 failed, 6 skipped). No audit, log or raw-artifact files committed.
+- Journey steps and result capture: see the task PR body.
 
 ## Status at a glance
 
-- **This run:** prepared the operator journey and froze the combined candidate
-  (`10fc139`, 332 files); no native execution and no operator result.
-- **Overall:** partially advanced — preparation only; item stays todo and
-  decisions 0053/0055 stay Accepted.
-- **Yet to do:** the operator's actual journey result, combined Clarity
-  pairing, final-main completion and the checked integration event.
+- **This run:** pinned the combined candidate and the operator journey steps on
+  a signed commit.
+- **Overall:** partially verified — preparation only. **Unrun:** the full
+  operator journey, Clarity resume and every native host step.
+- **Yet to do:** operator journey result, combined Clarity pairing, final-main
+  completion.
 
