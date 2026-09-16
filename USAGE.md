@@ -3,7 +3,7 @@
 This document explains how the `bootstrap` skill behaves end-to-end,
 what each of the 10 assessment questions (asked in full depth) actually changes in the
 output, and how to customise or extend the templates. The lifecycle
-skills are covered in §5a.
+skills are covered in §5a and the portable-workspace skills in §5c.
 
 ## Install (per platform)
 
@@ -515,6 +515,55 @@ exactly as they would for any renumbering; fix them in the referring repo.
 
 **Declining is fine.** The repo keeps the range scheme and keeps passing;
 the offer comes back on the next audit.
+
+## 5c. Portable workspaces (cross-repository coordination)
+
+A **federation** (§5a) keeps one product's decisions consistent across
+several repositories. A **portable workspace** is the layer above that: an
+adopter-owned Git home — registry, conventions and canonical records —
+that coordinates work across independent member repositories without
+writing into any of them. Members keep their own instructions, methods
+and histories; the workspace holds only what no single member can see.
+
+The workspace is plain files: a `workspace.yaml` registry and a
+`.docflow_workspace/` memory directory holding five kinds of record —
+**ideas, decisions, work, knowledge** and **runs** — plus overviews you
+regenerate after changes. It is not a scheduler, an authentication layer
+or a live ownership service. A deterministic validator checks the supplied
+facts; native hosts still do the work.
+
+| Skill | Use it to |
+|-------|-----------|
+| `/workspace-setup` | Deliberately create or adopt a workspace home and registry. |
+| `/workspace-orient` | Read priorities, owners, current authority, blockers and next actions — including in a fresh session. |
+| `/workspace-plan` | Record a cross-repository outcome, its deliveries and recommendations. |
+| `/workspace-coordinate` | Check current grants and claims, hand off a bounded brief and reconcile the returned receipt. |
+
+**Authority is separate from agreement.** Selecting work and agreeing a
+scope grant no execution rights. A native assignment runs only under a
+current grant, a native claim and an explicit brief; an expired, revoked,
+conflicting or denied authority stops the dependent action rather than
+falling back to another route. A **readiness report** for which no assigned
+attempt started is not a completed receipt, and only a real returned
+receipt with its evidence can support "done".
+
+**Install the complete assets.** The four skills are not self-contained;
+they read the schema, validator, fixtures, roles, profiles and native
+guides in `plugins/docflow/workspace/`. Keep that `workspace/` directory
+beside `skills/` for plugin and npm installs. For a standalone skill
+copy, also copy the whole `workspace/` directory as `docflow-workspace/`
+beside the host's `skills/` directory — this includes shared
+Codex/OpenCode copies. See the
+[workspace asset guide](plugins/docflow/workspace/README.md) and the
+[six native guides](plugins/docflow/workspace/guides/README.md) for
+host-specific guidance; the guides document existing host commands and
+UI, and Docflow supplies no launcher of its own.
+
+**Qualification limits.** Deterministic tests cover the distributed
+files, the validator and representative producers on every packaging
+layout. They do **not** establish native host discovery or behaviour,
+combined views with a Clarity workspace, or real operator adoption.
+Those remain outstanding and are not implied by a green package check.
 
 ## 6. Customising or extending
 

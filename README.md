@@ -303,8 +303,9 @@ for plugin/npm installations. For standalone skill copies, also copy the
 complete `workspace/` directory as `docflow-workspace/` beside the host's
 `skills/` directory; this applies to shared Codex/OpenCode copies too.
 See the [installation and assembly guide](plugins/docflow/workspace/README.md).
-These foundations do not yet add the four workspace operating skills or
-establish native host and Clarity qualification.
+The four [workspace operating skills](#skills) act on those assets; native
+host and Clarity qualification stay separate from the deterministic package
+checks.
 
 ## Quick start
 

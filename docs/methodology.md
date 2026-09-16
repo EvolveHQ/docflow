@@ -324,6 +324,25 @@ The federation rules are one principle applied repeatedly: **no tool writes
 across a repository boundary; consistency is declared at the edges and
 enforced by audit, not by remote control.**
 
+### 5.1 Portable workspaces
+
+Federation keeps a product's decisions consistent across repositories. A
+**portable workspace** adds the coordination layer above it: an
+adopter-owned Git home — a registry, conventions and five kinds of canonical
+record (ideas, decisions, work, knowledge and runs) — that links independent
+members without writing into any of them. Members keep their own
+instructions, methods and histories; the workspace holds only what no single
+member can see, and its overviews are derived views you regenerate rather
+than a second source of truth.
+
+The records are plain files checked by a deterministic validator, not a
+scheduler, an authentication layer or a live ownership service. Selection
+and agreement grant no execution: a native assignment runs only under a
+current grant, a native claim and an explicit brief, and a readiness report
+for which no attempt started is not a completed receipt. Native host
+behaviour, combined Clarity views and real operator adoption remain outside
+what the file-level checks can establish.
+
 ## 6. Domain independence
 
 Because the method fixes *form and lifecycle* but never *content* (§1), the
