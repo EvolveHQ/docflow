@@ -191,6 +191,23 @@ Integration model: PR-based integration into `main`, using standard merge commit
 the required `verify` CI check must pass on the current PR head. Constituent
 commits are signed. Updating a PR does not authorise merging or releasing it.
 
+## Verification Evidence
+
+A product repository does not carry run artefacts. A plan item's committed
+evidence is **at most one concise receipt** containing:
+
+- the **Status at a glance** block (This run / Overall / Yet to do);
+- the exact command(s) run, each with its exit code;
+- content hashes (source revision, package or artifact digests) and links.
+
+Committing raw run transcripts, logs, JSON dumps, archives, screenshots or
+long verification narratives is forbidden; no change adds a new file under an
+audit directory. Raw evidence lives outside the repository and is referenced
+by content hash and location; when it is unavailable, the receipt says so.
+Removing a pre-existing committed audit is a separate bounded item that
+resolves every reference before deletion — never a bulk delete inside an
+unrelated change. See adr/0057-bounded-verification-evidence.md.
+
 ## Reporting
 Final skill results and persisted verification, PR, wave and stop reports
 end with a section headed exactly **Status at a glance**, with three labels:
