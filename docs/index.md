@@ -30,6 +30,29 @@ why they help, and where they fall short.
 | `brainstorm` | Decompose a problem into candidate ADRs + plan items (proposes drafts; writes nothing until approved). |
 | `agent-wave` | Orchestrate a wave of parallel worktree subagents over the queue, with checkpoint or continuous supervision. |
 | `rollup` | For a multi-repo product: aggregate every member repo's ADRs into one derived, product-wide roll-up (run from the home repo). |
+| `workspace-setup` | Create or adopt a portable workspace home and registry. |
+| `workspace-orient` | Read priorities, owners, authority, blockers and next actions. |
+| `workspace-plan` | Record shared outcomes and native deliveries without granting execution. |
+| `workspace-coordinate` | Check current grants and claims, hand off bounded briefs and reconcile receipts. |
+
+## Portable workspaces
+
+The four workspace skills coordinate a product across independent
+repositories from an adopter-owned Git workspace. `workspace-setup`
+creates or adopts the home and registry; `workspace-orient` reads
+priorities, owners, current authority and blockers; `workspace-plan`
+records a shared outcome and its native deliveries; `workspace-coordinate`
+checks current grants and claims, hands off a bounded brief and reconciles
+the returned receipt. Canonical memory stays in the adopter's workspace,
+while member repositories keep their own methods, instructions and histories.
+
+The records are plain files checked by a deterministic validator, not a
+scheduler, an authentication layer or a live ownership service. Selecting
+work and agreeing a scope grant no execution authority, and a readiness
+report for which no attempt started is not a completed receipt. Installing
+the workspace skills also requires the complete workspace assets, including
+for detached skill copies; native-host and Clarity qualification remain
+separate from the package checks.
 
 ## Install
 
