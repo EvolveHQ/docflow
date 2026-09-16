@@ -1,0 +1,10 @@
+{
+  "initial_fixture": "fresh-receipt-assigned/canonical",
+  "validation_exit": 1,
+  "canonical_history": "unexecuted preparation fixture retained, never native attempt evidence",
+  "corrected_fixture": "fresh-receipt-assigned-v2",
+  "kind": "controller fixture preparation failed before any container or native executor",
+  "native_executor_started": false,
+  "diagnostic": "brief return path must be this canonical run record",
+  "observed_at": "2026-09-15T07:02:18.5901573Z"
+}

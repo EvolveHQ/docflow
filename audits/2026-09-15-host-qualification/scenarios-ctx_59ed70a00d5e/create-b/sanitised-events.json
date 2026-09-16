@@ -1,0 +1,375 @@
+[
+  {
+    "type": "system",
+    "subtype": "init",
+    "cwd": "/workspace/create-b",
+    "tools": [
+      "Task",
+      "Bash",
+      "CronCreate",
+      "CronDelete",
+      "CronList",
+      "DesignSync",
+      "Edit",
+      "EnterWorktree",
+      "ExitWorktree",
+      "Glob",
+      "Grep",
+      "ListAgents",
+      "NotebookEdit",
+      "Read",
+      "RemoteTrigger",
+      "ReportFindings",
+      "ScheduleWakeup",
+      "SendMessage",
+      "Skill",
+      "TaskOutput",
+      "TaskStop",
+      "ToolSearch",
+      "WebFetch",
+      "WebSearch",
+      "Workflow",
+      "Write"
+    ],
+    "model": "claude-opus-5[1m]",
+    "permissionMode": "default",
+    "slash_commands": [
+      "deep-research",
+      "docflow:add-convention",
+      "docflow:agent-wave",
+      "docflow:audit",
+      "docflow:bootstrap",
+      "docflow:brainstorm",
+      "docflow:new-adr",
+      "docflow:new-plan",
+      "docflow:rollup",
+      "docflow:ship-item",
+      "docflow:workspace-coordinate",
+      "docflow:workspace-orient",
+      "docflow:workspace-plan",
+      "docflow:workspace-setup",
+      "design",
+      "design-sync",
+      "dataviz",
+      "update-config",
+      "verify",
+      "debug",
+      "code-review",
+      "simplify",
+      "batch",
+      "fewer-permission-prompts",
+      "doctor",
+      "loop",
+      "schedule",
+      "claude-api",
+      "workflow-authoring",
+      "run",
+      "run-skill-generator",
+      "agents",
+      "auto-mode-setup",
+      "autocompact",
+      "clear",
+      "color",
+      "compact",
+      "config",
+      "output-style",
+      "context",
+      "effort",
+      "fast",
+      "heapdump",
+      "init",
+      "mcp",
+      "model",
+      "__remote-workflow",
+      "workflow-launch-exec",
+      "reload-plugins",
+      "reload-skills",
+      "rename",
+      "security-review",
+      "usage",
+      "insights",
+      "recap",
+      "goal",
+      "design-consent",
+      "design-revoke",
+      "list-agents",
+      "team-onboarding"
+    ],
+    "plugins": [
+      {
+        "name": "docflow",
+        "path": "/opt/docflow-source/plugins/docflow",
+        "source": "docflow@inline",
+        "version": "0.9.4"
+      }
+    ],
+    "skills": [
+      "deep-research",
+      "docflow:add-convention",
+      "docflow:agent-wave",
+      "docflow:audit",
+      "docflow:bootstrap",
+      "docflow:brainstorm",
+      "docflow:new-adr",
+      "docflow:new-plan",
+      "docflow:rollup",
+      "docflow:ship-item",
+      "docflow:workspace-coordinate",
+      "docflow:workspace-orient",
+      "docflow:workspace-plan",
+      "docflow:workspace-setup",
+      "design",
+      "design-sync",
+      "dataviz",
+      "update-config",
+      "verify",
+      "debug",
+      "code-review",
+      "simplify",
+      "batch",
+      "fewer-permission-prompts",
+      "doctor",
+      "loop",
+      "schedule",
+      "claude-api",
+      "workflow-authoring",
+      "run",
+      "run-skill-generator"
+    ],
+    "claude_code_version": "2.1.269"
+  },
+  {
+    "type": "tool_use",
+    "id": "toolu_01LhzxZaD4mpZnHzXdT1SUJr",
+    "name": "Skill",
+    "input": {
+      "skill": "docflow:workspace-plan"
+    }
+  },
+  {
+    "type": "tool_use",
+    "id": "toolu_01NsGpE6BH23xJkVbRSnsKkP",
+    "name": "Bash",
+    "input": {
+      "command": "date -u '+%Y-%m-%dT%H:%M:%SZ'",
+      "description": "Get current UTC time"
+    }
+  },
+  {
+    "type": "tool_use",
+    "id": "toolu_012YrkjdvjdMJxATi7Exy1X9",
+    "name": "Bash",
+    "input": {
+      "command": "ls -la /workspace/create-b/ && echo \"--- docflow_workspace ---\" && ls -laR /workspace/create-b/.docflow_workspace/ | head -100",
+      "description": "List workspace root and docflow workspace dir"
+    }
+  },
+  {
+    "type": "tool_use",
+    "id": "toolu_01B32wRLXSJe2RPkXQp4tQc3",
+    "name": "Bash",
+    "input": {
+      "command": "ls -la /opt/docflow-source/plugins/docflow/skills/ && echo \"--- bootstrap ---\" && ls -la /opt/docflow-source/plugins/docflow/skills/bootstrap/ 2>/dev/null; echo \"--- workspace-setup ---\"; ls -la /opt/docflow-source/plugins/docflow/skills/workspace-setup/ 2>/dev/null; echo \"--- templates ---\"; ls -la /opt/docflow-source/plugins/docflow/skills/workspace-setup/templates/ 2>/dev/null",
+      "description": "List docflow skills and bootstrap assets"
+    }
+  },
+  {
+    "type": "tool_error",
+    "id": "toolu_01B32wRLXSJe2RPkXQp4tQc3",
+    "content": "Exit code 2\ntotal 0\ndrwxrwxrwx 1 root root 4096 Sep 15 01:25 .\ndrwxrwxrwx 1 root root 4096 Sep 15 01:25 ..\ndrwxrwxrwx 1 root root 4096 Sep 15 01:25 add-convention\ndrwxrwxrwx 1 root root 4096 Sep 15 01:25 agent-wave\ndrwxrwxrwx 1 root root 4096 Sep 15 01:25 audit\ndrwxrwxrwx 1 root root 4096 Sep 15 01:25 bootstrap\ndrwxrwxrwx 1 root root 4096 Sep 15 01:25 brainstorm\ndrwxrwxrwx 1 root root 4096 Sep 15 01:25 new-adr\ndrwxrwxrwx 1 root root 4096 Sep 15 01:25 new-plan\ndrwxrwxrwx 1 root root 4096 Sep 15 01:25 rollup\ndrwxrwxrwx 1 root root 4096 Sep 15 01:25 ship-item\ndrwxrwxrwx 1 root root 4096 Sep 15 01:25 workspace-coordinate\ndrwxrwxrwx 1 root root 4096 Sep 15 01:25 workspace-orient\ndrwxrwxrwx 1 root root 4096 Sep 15 01:25 workspace-plan\ndrwxrwxrwx 1 root root 4096 Sep 15 01:25 workspace-setup\n--- bootstrap ---\ntotal 52\ndrwxrwxrwx 1 root root  4096 Sep 15 01:25 .\ndrwxrwxrwx 1 root root  4096 Sep 15 01:25 ..\n-rwxrwxrwx 1 root root 49849 Sep 15 01:25 SKILL.md\ndrwxrwxrwx 1 root root  4096 Sep 15 01:25 agents\ndrwxrwxrwx 1 root root  4096 Sep 15 01:25 templates\n--- workspace-setup ---\ntotal 8\ndrwxrwxrwx 1 root root 4096 Sep 15 01:25 .\ndrwxrwxrwx 1 root root 4096 Sep 15 01:25 ..\n-rwxrwxrwx 1 root root 7516 Sep 15 01:25 SKILL.md\ndrwxrwxrwx 1 root root 4096 Sep 15 01:25 agents\n--- templates ---"
+  },
+  {
+    "type": "tool_use",
+    "id": "toolu_01Ab1uguMiWKLnxM4yEex7Gz",
+    "name": "Bash",
+    "input": {
+      "command": "ls -la /opt/docflow-source/plugins/docflow/skills/bootstrap/templates/ ; echo \"=== workspace-assets.json ===\"; cat /opt/docflow-source/plugins/docflow/skills/bootstrap/templates/workspace-assets.json 2>/dev/null; echo \"=== realpath bootstrap ===\"; readlink -f /opt/docflow-source/plugins/docflow/skills/bootstrap",
+      "description": "Read bootstrap templates and asset manifest"
+    }
+  },
+  {
+    "type": "tool_use",
+    "id": "toolu_01THxDX8bjztQFJVN6P45afT",
+    "name": "Bash",
+    "input": {
+      "command": "for f in README.md AGENTS.md CLAUDE.md .gitignore .docflow_workspace/CONVENTIONS.md .docflow_workspace/workspace.yaml .docflow_workspace/INDEX.md .docflow_workspace/integrations/sources.yaml .docflow_workspace/templates/ideas.md; do echo \"===== $f =====\"; cat \"$f\"; done",
+      "description": "Read workspace entry point, conventions, registry, index, templates"
+    }
+  },
+  {
+    "type": "tool_use",
+    "id": "toolu_01VWYy98ALYva5U3cYtMSoqx",
+    "name": "Bash",
+    "input": {
+      "command": "ls -la /opt/docflow-source/plugins/docflow/ ; echo \"=== workspace assets dir ===\"; ls -la /opt/docflow-source/plugins/docflow/workspace/ 2>/dev/null; echo \"=== plugin.json ===\"; cat /opt/docflow-source/plugins/docflow/.claude-plugin/plugin.json 2>/dev/null || find /opt/docflow-source -maxdepth 3 -name 'plugin.json' -o -maxdepth 3 -name 'marketplace.json' | head",
+      "description": "Locate packaged workspace assets and plugin manifest"
+    }
+  },
+  {
+    "type": "tool_use",
+    "id": "toolu_01HSeCPJr1rkjKBHvbgb2fy2",
+    "name": "Bash",
+    "input": {
+      "command": "node --version; echo \"---git---\"; cd /workspace/create-b && git log -1 --format='%H %cI %s' && git status --porcelain && echo \"(clean-if-empty)\"",
+      "description": "Check node version and workspace git revision"
+    }
+  },
+  {
+    "type": "tool_use",
+    "id": "toolu_019muF6iJHHza1tgUiF3xcRQ",
+    "name": "Read",
+    "input": {
+      "file_path": "/opt/docflow-source/plugins/docflow/workspace/CONTRACT.md"
+    }
+  },
+  {
+    "type": "tool_use",
+    "id": "toolu_01PuUWrpnfxrQA6XHGUeeSYC",
+    "name": "Read",
+    "input": {
+      "file_path": "/opt/docflow-source/plugins/docflow/workspace/README.md"
+    }
+  },
+  {
+    "type": "tool_use",
+    "id": "toolu_016PxJWkvrR9hgoYWzw8oGYt",
+    "name": "Bash",
+    "input": {
+      "command": "cd /opt/docflow-source/plugins/docflow/workspace && node -e \"\nconst s=JSON.parse(require('fs').readFileSync('schema.json','utf8'));\nconst defs=s.\\$defs||s.definitions||{};\nconsole.log('TOP KEYS:',Object.keys(s).join(', '));\nconsole.log('DEFS:',Object.keys(defs).join(', '));\nfor(const k of Object.keys(defs)) if(/idea/i.test(k)) console.log('=== '+k+' ===\\n'+JSON.stringify(defs[k],null,1));\n\"",
+      "description": "Extract ideas schema definition"
+    }
+  },
+  {
+    "type": "tool_use",
+    "id": "toolu_01EB1vazyJ6M281xXEZC7Bwz",
+    "name": "Bash",
+    "input": {
+      "command": "ls -la /opt/docflow-source/plugins/docflow/workspace/guides/ && echo \"=== recommendations.md ===\" && cat /opt/docflow-source/plugins/docflow/workspace/guides/recommendations.md",
+      "description": "Read recommendations guide"
+    }
+  },
+  {
+    "type": "tool_use",
+    "id": "toolu_01TQkuhRmgXpuAa82CMFdntM",
+    "name": "Bash",
+    "input": {
+      "command": "cd /opt/docflow-source/plugins/docflow/workspace && node validate.mjs --help 2>&1 | head -40; echo \"EXIT:$?\"",
+      "description": "Check validator usage"
+    }
+  },
+  {
+    "type": "tool_use",
+    "id": "toolu_01M7vJzzMAZcLNehmnBwDJGn",
+    "name": "Bash",
+    "input": {
+      "command": "node -e \"console.log(require('crypto').randomUUID()); console.log(require('crypto').randomUUID());\"; echo \"--- ideas dir ---\"; ls -la /workspace/create-b/.docflow_workspace/ideas/; find /workspace/create-b/.docflow_workspace -name '*.md' -newer /workspace/create-b/.gitignore 2>/dev/null | head",
+      "description": "Mint UUIDs and confirm ideas dir empty"
+    }
+  },
+  {
+    "type": "tool_use",
+    "id": "toolu_01WJMihWtrNjeAHm5BxKsSPv",
+    "name": "Bash",
+    "input": {
+      "command": "node /opt/docflow-source/plugins/docflow/workspace/validate.mjs /workspace/create-b --at 2026-09-15T04:30:21Z; echo \"EXIT:$?\"",
+      "description": "Baseline validation of workspace before edits"
+    }
+  },
+  {
+    "type": "tool_use",
+    "id": "toolu_01Augom3Ba3aWcT5A11HrkPA",
+    "name": "Read",
+    "input": {
+      "file_path": "/opt/docflow-source/plugins/docflow/workspace/guides/claude-code.md"
+    }
+  },
+  {
+    "type": "tool_use",
+    "id": "toolu_01Dwivhh6iUDTYnMBmgiSVGk",
+    "name": "Bash",
+    "input": {
+      "command": "ls -la /opt/docflow-source/plugins/docflow/.claude-plugin/; echo \"=== skills advertised ===\"; for d in /opt/docflow-source/plugins/docflow/skills/*/; do n=$(basename $d); desc=$(head -5 \"$d/SKILL.md\" | grep -m1 '^name:' ); echo \"$n\"; done",
+      "description": "Inspect plugin manifest and advertised skills"
+    }
+  },
+  {
+    "type": "tool_use",
+    "id": "toolu_01R88CBzpU4xnf9zaMrZPKqg",
+    "name": "Bash",
+    "input": {
+      "command": "ls -la /workspace/create-b/.claude/ 2>/dev/null; ls -la /home/node/.claude/skills/ 2>/dev/null; ls -la /home/node/.claude/plugins/ 2>/dev/null | head -20; echo \"--- resolve-assets ---\"; node /opt/docflow-source/plugins/docflow/workspace/resolve-assets.mjs /opt/docflow-source/plugins/docflow/skills/bootstrap; echo \"EXIT:$?\"",
+      "description": "Check for local skill copies and resolve asset root"
+    }
+  },
+  {
+    "type": "tool_use",
+    "id": "toolu_01FH9kosv8Do9HZp4RKeN5H3",
+    "name": "Write",
+    "input": {
+      "file_path": "/workspace/create-b/.docflow_workspace/ideas/review-checklist-draft-recipient--6c13dbf9a994.md",
+      "content": "---\n{\n  \"schema\": 1,\n  \"id\": \"6c13dbf9-a994-496c-9e63-dee98f7ee9ae\",\n  \"home\": \"scenario/independent-records\",\n  \"kind\": \"ideas\",\n  \"title\": \"Review checklist omits draft recipient\",\n  \"owner\": \"test:scenario-controller\",\n  \"created_at\": \"2026-09-15T04:30:21Z\",\n  \"links\": [],\n  \"state\": \"backlog\",\n  \"history\": [\n    {\n      \"state\": \"backlog\",\n      \"at\": \"2026-09-15T04:30:21Z\",\n      \"actor\": \"test:planner-b\",\n      \"reason\": \"Capture idea only, as authorised; no agreement or work item created\"\n    }\n  ],\n  \"priority\": \"low\",\n  \"problem\": \"The review checklist omits the person who should receive a draft, so a completed draft has no named recipient to hand it to.\",\n  \"affected_repositories\": []\n}\n---\n\n# Review checklist omits draft recipient\n\nThe review checklist does not state who should receive a draft. A reviewer\nfinishing a draft therefore has no named recipient recorded in the checklist\nitself.\n\nCaptured as a backlog idea at low priority. No affected member repository is\nidentified yet: the workspace registry currently lists no repositories, so the\nowning checklist has no declared native home to name. Recording a repository\nhere would invent a member that does not exist in this workspace.\n\nIdea capture only. Backlog state sets no priority claim beyond `low`, and this\nrecord creates no agreement, no work item and no authority. Selecting it later\nwould set priority only; any delivery would still need its own separately\nauthorised work record, native home and grant.\n"
+    }
+  },
+  {
+    "type": "tool_use",
+    "id": "toolu_01Rc33xNkE43JZXVuSNS6Yfj",
+    "name": "Bash",
+    "input": {
+      "command": "cd /workspace/create-b\nNOW=$(date -u '+%Y-%m-%dT%H:%M:%SZ')\necho \"EVAL_AT=$NOW\"\necho \"=== validate ===\"\nnode /opt/docflow-source/plugins/docflow/workspace/validate.mjs /workspace/create-b --at \"$NOW\"\necho \"EXIT:$?\"\necho \"=== git ===\"\ngit rev-parse HEAD\ngit status --porcelain",
+      "description": "Validate workspace with new record and capture revision"
+    }
+  },
+  {
+    "type": "tool_use",
+    "id": "toolu_01GFDZpG1JTLqtahHgGiduKi",
+    "name": "Read",
+    "input": {
+      "file_path": "/workspace/create-b/.docflow_workspace/INDEX.md"
+    }
+  },
+  {
+    "type": "tool_use",
+    "id": "toolu_01XxYqy2ModEnSb5pKxjxDs2",
+    "name": "Write",
+    "input": {
+      "file_path": "/workspace/create-b/.docflow_workspace/INDEX.md",
+      "content": "# Workspace overview\n\nObserved at: 2026-09-15T04:31:39Z, workspace source revision\n6b46c000d8606735726116554c184339f4aedf83. The idea record below is present in\nthe working tree and is not yet committed at that revision.\n\nDerived navigation only. Read canonical records and current native evidence\nbefore acting. One idea is recorded; no decisions, work, knowledge or runs\nexist, so the validator's delivery overview is empty. The registry declares no\nmember repositories, and no grant, claim or run authority exists here.\n\n| Record | Kind | State | Owner | Next action |\n|---|---|---|---|---|\n| [Review checklist omits draft recipient](ideas/review-checklist-draft-recipient--6c13dbf9a994.md) | ideas | backlog | test:scenario-controller | None pending; awaiting owner selection. Selection would set priority only and creates no agreement or work item. |\n"
+    }
+  },
+  {
+    "type": "tool_use",
+    "id": "toolu_01SSuqEVfsUx86bS3btepEB4",
+    "name": "Bash",
+    "input": {
+      "command": "cd /workspace/create-b\nNOW=$(date -u '+%Y-%m-%dT%H:%M:%SZ')\necho \"EVAL_AT=$NOW\"\nnode /opt/docflow-source/plugins/docflow/workspace/validate.mjs /workspace/create-b --at \"$NOW\"\necho \"EXIT:$?\"",
+      "description": "Final consistency validation"
+    }
+  },
+  {
+    "type": "tool_use",
+    "id": "toolu_013NmZEFy8Ex6LyCN2GcYnWK",
+    "name": "Bash",
+    "input": {
+      "command": "git status --porcelain && echo \"--- HEAD ---\" && git rev-parse HEAD && echo \"--- diff stat vs HEAD ---\" && git diff --stat HEAD",
+      "description": "Show final working tree state"
+    }
+  },
+  {
+    "type": "tool_use",
+    "id": "toolu_0116d9MaH8Shzhzj1vdo5pZX",
+    "name": "Bash",
+    "input": {
+      "command": "cd /workspace/create-b/.docflow_workspace && ls -la ideas/ && test -f ideas/review-checklist-draft-recipient--6c13dbf9a994.md && echo \"LINK_TARGET_RESOLVES: yes\" || echo \"LINK_TARGET_RESOLVES: no\"",
+      "description": "Verify INDEX link target resolves"
+    }
+  },
+  {
+    "type": "result",
+    "subtype": "success",
+    "is_error": false,
+    "duration_ms": 148927,
+    "num_turns": 27,
+    "result": "Privately: nothing further is needed \u2014 the authorised stopping point (planning result + local consistency check) is reached, both checks passed, and committing was not authorised. No more tool calls.\n\n## Result\n\n**Current UTC:** 2026-09-15T04:32:09Z (final evaluation); run opened 2026-09-15T04:30:21Z.\n\n### Record created\n\nOne idea, capture only \u2014 no agreement, no work item, no grant, no run.\n\n- **Full reference:** `{home: \"scenario/independent-records\", id: \"6c13dbf9-a994-496c-9e63-dee98f7ee9ae\", path: \".docflow_workspace/ideas/review-checklist-draft-recipient--6c13dbf9a994.md\"}`\n- Title \"Review checklist omits draft recipient\"; `kind: ideas`, `state: backlog` (initial state, single history entry), `priority: low`, `owner: test:scenario-controller`, history actor `test:planner-b`.\n- `affected_repositories: []` \u2014 the registry declares no repositories, so naming one would have invented a member. `links: []`.\n- UUIDv4 minted this run; filename suffix is its first 12 hex characters. Collision check: the `ideas/` folder and all five kind folders were empty, so no extension was needed.\n\n### Derived index\n\n`.docflow_workspace/INDEX.md` refreshed with the evaluation time, source revision, and one navigation row. This is the derived view only; the canonical record owns the state.\n\n### Source paths and revisions\n\n- Workspace: `/workspace/create-b`, revision `6b46c000d8606735726116554c184339f4aedf83`. Working tree now: `M .docflow_workspace/INDEX.md`, `?? .docflow_workspace/ideas/` \u2014 **uncommitted**. Committing was not in the authorised scope, so I left it in the working tree.\n- Loaded skill: `/opt/docflow-source/plugins/docflow/skills/workspace-plan/SKILL.md` (path resolved, not a symlink).\n- Asset root: `/opt/docflow-source/plugins/docflow/workspace`, resolved via bootstrap's declarative locator `skills/bootstrap/templates/workspace-assets.json` (candidate `../../workspace`), confirmed by `node resolve-assets.mjs` \u2192 exit 0. Read `CONTRACT.md`, `schema.json` (`$defs.ideas`), `README.md`, `guides/recommendations.md`, `guides/claude-code.md`.\n- Plugin `docflow` v0.9.4; Node v22.23.2 (validator requires 22+).\n\n### Checks actually run\n\n| Command | Exit | Result |\n|---|---|---|\n| `node validate.mjs /workspace/create-b --at 2026-09-15T04:30:21Z` (baseline, pre-write) | 0 | `valid: true`, 0 diagnostics, 0 records |\n| `node validate.mjs /workspace/create-b --at 2026-09-15T04:31:39Z` (post-record) | 0 | `valid: true`, 0 diagnostics, 1 record |\n| `node validate.mjs /workspace/create-b --at 2026-09-15T04:32:09Z` (final, post-INDEX) | 0 | `valid: true`, 0 diagnostics, 1 record |\n| INDEX link target existence | 0 | resolves |\n\n`overview` is `[]` in all runs \u2014 there are no work records, so there is no delivery state to observe. No `--previous` snapshot comparison was possible: no prior validated snapshot exists for this copy.\n\n### Recommendations\n\nEmpty \u2014 add nothing. This was idea capture using ordinary file reads within the read scope; no source, tool or profile was referenced, enabled or used. Empty recommendations are a valid outcome under `guides/recommendations.md`.\n\n### Native advertised Docflow skills (13)\n\n`add-convention`, `agent-wave`, `audit`, `bootstrap`, `brainstorm`, `new-adr`, `new-plan`, `rollup`, `ship-item`, `workspace-coordinate`, `workspace-orient`, `workspace-plan`, `workspace-setup`.\n\n### Scope observed\n\nNo implementation, no member repository edits (none are registered), no grant/run/claim creation, no package installation, no remote operations, no delegation, no commit. Validation confirms record consistency only \u2014 not permission, live ownership, or proof of execution. All fixture histories and source catalogues in the packaged assets are synthetic producer examples; I treated none as runtime proof.\n\n## Status at a glance\n\n- **This run:** Read the workspace entry point, conventions, registry and packaged contract/schema; resolved the asset root through bootstrap's locator; created one backlog idea record at low priority with no affected repository; refreshed the derived INDEX. Three validator runs, all `exit 0` with `\"valid\": true` and `\"diagnostics\": []` \u2014 baseline (0 records), post-record (1 record), final (1 record); `overview` empty in each. Link-target check passed.\n- **Overall:** Verified for what was checked \u2014 the two authorised edits are schema-valid and locally consistent at 2026-09-15T04:32:09Z. Validation establishes record consistency, not authority or native evidence.\n- **Yet to do:** Changes are uncommitted in the working tree (`M INDEX.md`, `?? ideas/`); committing needs separate authorisation. The idea stays `backlog` pending owner selection by test:scenario-controller \u2014 selection would set priority only. No affected member repository can be named until the registry declares one. Any delivery would require a separately authorised work record, native home and grant.",
+    "permission_denials": []
+  }
+]

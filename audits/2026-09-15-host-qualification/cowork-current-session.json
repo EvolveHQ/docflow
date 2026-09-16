@@ -1,6 +1,6 @@
 {
-  "observed_at": "2026-09-15T04:43:20.284668+00:00",
-  "kind": "actual native Cowork desktop current candidate, bounded task running",
+  "observed_at": "2026-09-15T07:04:35.487055+00:00",
+  "kind": "actual native Cowork desktop candidate; terminal result after missed controller stop deadline",
   "native_session_url": "https://claude.ai/cowork/cse_01YTAALx181dVvz53wUbGeiv",
   "app_version": "1.52386.6.0",
   "model_ui": "Opus 5 Max",
@@ -34,7 +34,17 @@
   "current_export_receipt": "cowork-candidate-native-export.json",
   "latest_files": {
     "all_preexisting_331_unchanged": true,
-    "added": []
+    "added": [
+      "current-qualification-receipt.json",
+      "current-workspace/ (12 files)"
+    ]
   },
-  "pending": "Native setup result, exact command/exit receipt, original plugin restoration, unchanged unrelated-plugin verification; no pass inferred from UI task steps."
+  "pending": "Native Cowork validator topology remains blocked; missed 1800-second bound failed. No new Cowork attempt authorised.",
+  "native_completion_time": null,
+  "stop_deadline_met": false,
+  "terminal_observation": "First resumed snapshot followed actual controller clock 2026-09-15T06:49:47Z and showed Claude finished the response; exact completion time unknown.",
+  "native_result": "Created 12 workspace files after the stop deadline; two installed-validator calls failed on inaccessible cloud/device paths.",
+  "independent_controller_result": "21 structural/nonmutation checks pass, including separate actual Windows validator exit 0; this is not native Cowork validation.",
+  "original_restoration": "Exact original 32-file nine-skill archive restored and natively re-exported; enabled and unrelated inventory verified; host category difference retained.",
+  "desktop_ownership": "released to controller after verified restoration"
 }

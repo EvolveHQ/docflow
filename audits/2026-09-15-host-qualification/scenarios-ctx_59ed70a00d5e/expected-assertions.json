@@ -1,0 +1,34 @@
+{
+  "recorded_at": "2026-09-15T04:42:34Z",
+  "requirements_source": "C:\\Users\\eugen\\orca\\workspaces\\docflow\\docflow-v1-host-qualification\\audits\\2026-09-15-host-qualification\\assertion-ledger.json",
+  "requirements_source_sha256": "0e8ba98582011362f0dd75d9d18bbcf90dce596472d49bcd716a60de6163881e",
+  "owning_plan": "0062",
+  "frozen_product_revision": "f47f4c52313163f1ffe55a97d9c8029602d7c5b4",
+  "requirements": {
+    "WV13": "Concurrent record creation uses short UUID-based names without a central counter. Duplicate full IDs, colliding short prefixes, ambiguous short references/native aliases and changed source revisions are detected; canonical identities and established links survive reconciliation.",
+    "WV15": "Documentation, React and Svelte/Tauri assignments receive different justified recommendations, including \u201cadd nothing\u201d and missing-specialist outcomes.",
+    "WV18": "Stack/source/data-policy changes invalidate stale recommendations; local constraints are respected and unchanged declined options are not repeatedly suggested."
+  },
+  "expected": {
+    "WV13": [
+      "Overlapping actual native calls in separate isolated copies create distinct UUIDv4 ideas without a shared counter.",
+      "New suffix starts at 12 hex; injected unpublished collision extends to 16 while preserving established paths and full identities.",
+      "Native adverse orientation identifies duplicate full identities, ambiguous prefix/ref/alias and absent pinned source revision; no dependent writes.",
+      "Full references remain resolvable after import; injected histories explicitly labelled."
+    ],
+    "WV15": [
+      "Docs adds nothing.",
+      "React references actual applicable locally pinned guidance.",
+      "Svelte/Tauri recognises missing specialist coverage and rejects React substitution.",
+      "All member bytes/Git state preserved, no setup or execution authority invented."
+    ],
+    "WV18": [
+      "Unchanged native inputs retain declined choices without new offers.",
+      "Stack-only change removes current applicability of React-only recommendation.",
+      "Source-only change retains the old pin/history and adopts or flags the new current source.",
+      "Policy-only change invalidates prohibited content-reading recommendation and respects actual local read constraints.",
+      "No installs, new external service, delegate, grant or member mutation."
+    ]
+  },
+  "clarity": "Separate; no combined UI acceptance claimed."
+}

@@ -1,0 +1,180 @@
+{
+  "at": "2026-09-15T04:31:38Z",
+  "exit": 0,
+  "result": {
+    "schema": 1,
+    "evaluated_at": "2026-09-15T04:31:38Z",
+    "valid": true,
+    "diagnostics": [],
+    "records": [
+      {
+        "schema": 1,
+        "id": "6c272fe9-08ad-41ce-8b58-2312390b44a8",
+        "home": "scenario/recommendations",
+        "kind": "work",
+        "title": "Review folder bridge boundary",
+        "owner": "test:scenario-controller",
+        "created_at": "2026-09-15T04:31:37Z",
+        "links": [],
+        "state": "planned",
+        "history": [
+          {
+            "state": "planned",
+            "at": "2026-09-15T04:31:37Z",
+            "actor": "test:fixture-builder",
+            "reason": "Synthetic planning baseline; no native action or approval claimed."
+          }
+        ],
+        "scope_revision": 1,
+        "outcome": "Owner-reviewed findings with exact file references and unresolved verification gaps.",
+        "scope": "Review Svelte folder binding and Rust command boundary in scenario/desktop.",
+        "exclusions": [
+          "No release or deployment."
+        ],
+        "priority": "high",
+        "criteria": [
+          {
+            "id": "findings",
+            "text": "Findings identify file evidence and unknowns for the scoped member review.",
+            "evidence": []
+          }
+        ],
+        "blockers": [],
+        "dependencies": [],
+        "deliveries": [],
+        "grants": [],
+        "recommendations": [],
+        "next_action": "Plan the review from current member files and available guidance. No execution authority recorded.",
+        "path": ".docflow_workspace/work/desktop-review--6c272fe908ad.md"
+      },
+      {
+        "schema": 1,
+        "id": "87bdf729-3b28-47ea-bdfa-c5190e6de1fd",
+        "home": "scenario/recommendations",
+        "kind": "work",
+        "title": "Review handbook navigation",
+        "owner": "test:scenario-controller",
+        "created_at": "2026-09-15T04:31:37Z",
+        "links": [],
+        "state": "planned",
+        "history": [
+          {
+            "state": "planned",
+            "at": "2026-09-15T04:31:37Z",
+            "actor": "test:fixture-builder",
+            "reason": "Synthetic planning baseline; no native action or approval claimed."
+          }
+        ],
+        "scope_revision": 1,
+        "outcome": "Owner-reviewed findings with exact file references and unresolved verification gaps.",
+        "scope": "Review contributor handbook navigation in scenario/docs.",
+        "exclusions": [
+          "No release or deployment."
+        ],
+        "priority": "high",
+        "criteria": [
+          {
+            "id": "findings",
+            "text": "Findings identify file evidence and unknowns for the scoped member review.",
+            "evidence": []
+          }
+        ],
+        "blockers": [],
+        "dependencies": [],
+        "deliveries": [],
+        "grants": [],
+        "recommendations": [],
+        "next_action": "Plan the review from current member files and available guidance. No execution authority recorded.",
+        "path": ".docflow_workspace/work/docs-review--87bdf7293b28.md"
+      },
+      {
+        "schema": 1,
+        "id": "0a1fc781-c38c-4051-bf9a-0b48a6b95653",
+        "home": "scenario/recommendations",
+        "kind": "work",
+        "title": "Review search input accessibility",
+        "owner": "test:scenario-controller",
+        "created_at": "2026-09-15T04:31:37Z",
+        "links": [],
+        "state": "planned",
+        "history": [
+          {
+            "state": "planned",
+            "at": "2026-09-15T04:31:37Z",
+            "actor": "test:fixture-builder",
+            "reason": "Synthetic planning baseline; no native action or approval claimed."
+          }
+        ],
+        "scope_revision": 1,
+        "outcome": "Owner-reviewed findings with exact file references and unresolved verification gaps.",
+        "scope": "Review controlled search input accessibility in scenario/react.",
+        "exclusions": [
+          "No release or deployment."
+        ],
+        "priority": "high",
+        "criteria": [
+          {
+            "id": "findings",
+            "text": "Findings identify file evidence and unknowns for the scoped member review.",
+            "evidence": []
+          }
+        ],
+        "blockers": [],
+        "dependencies": [],
+        "deliveries": [],
+        "grants": [],
+        "recommendations": [
+          {
+            "id": "retrieval-declined",
+            "action": "enable",
+            "fit": "optional",
+            "reason": "Synthetic prior user preference: declined on this same stack, host and local policy because four named files are easy to open directly; revisit only if relevant context changes.",
+            "scope": "Current React review",
+            "asset": {
+              "source": "scenario/local-guidance",
+              "asset": "retrieval",
+              "revision": "fixture-retrieval-v1"
+            },
+            "availability": "not_present",
+            "state": "declined",
+            "authority": null,
+            "setup_dependency": null,
+            "fallback": "Open the named local files.",
+            "success_check": "Review findings can be traced to named files without an index."
+          }
+        ],
+        "next_action": "Plan the review from current member files and available guidance. No execution authority recorded.",
+        "path": ".docflow_workspace/work/react-review--0a1fc781c38c.md"
+      }
+    ],
+    "overview": [
+      {
+        "home": "scenario/recommendations",
+        "id": "6c272fe9-08ad-41ce-8b58-2312390b44a8",
+        "path": ".docflow_workspace/work/desktop-review--6c272fe908ad.md",
+        "state": "planned",
+        "owner": "test:scenario-controller",
+        "next_action": "Plan the review from current member files and available guidance. No execution authority recorded.",
+        "deliveries": []
+      },
+      {
+        "home": "scenario/recommendations",
+        "id": "87bdf729-3b28-47ea-bdfa-c5190e6de1fd",
+        "path": ".docflow_workspace/work/docs-review--87bdf7293b28.md",
+        "state": "planned",
+        "owner": "test:scenario-controller",
+        "next_action": "Plan the review from current member files and available guidance. No execution authority recorded.",
+        "deliveries": []
+      },
+      {
+        "home": "scenario/recommendations",
+        "id": "0a1fc781-c38c-4051-bf9a-0b48a6b95653",
+        "path": ".docflow_workspace/work/react-review--0a1fc781c38c.md",
+        "state": "planned",
+        "owner": "test:scenario-controller",
+        "next_action": "Plan the review from current member files and available guidance. No execution authority recorded.",
+        "deliveries": []
+      }
+    ]
+  }
+}

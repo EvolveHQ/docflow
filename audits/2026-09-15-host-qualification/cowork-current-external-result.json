@@ -1,0 +1,638 @@
+{
+  "receipt_kind": "docflow-native-workspace-setup-qualification",
+  "receipt_format": 1,
+  "receipt_note": "External receipt for a bounded Docflow workspace-setup qualification run. It is not a canonical Docflow run record or run receipt: no work item, grant or run exists and none was created. Process evidence is phases[].steps[] as captured by capture_wrapper on the named host. mandate is operator input; host_tool_results_transcribed are executor transcriptions of host tool results; executor_assessment is interpretation of the captured evidence.",
+  "mandate": {
+    "source": "operator prompt for this Cowork task, 2026-09-15",
+    "installed_skill": "docflow:workspace-setup",
+    "setup_choice": "new empty workspace (no adoption)",
+    "destination": "C:/Users/eugen/AppData/Local/Temp/docflowhq-v1-20260915/qualification-ctx-fc206cf7e4a8/cowork-session/current-workspace",
+    "receipt": "C:/Users/eugen/AppData/Local/Temp/docflowhq-v1-20260915/qualification-ctx-fc206cf7e4a8/cowork-session/current-qualification-receipt.json",
+    "canonical_home": "docflow-hq/cowork-current",
+    "purpose": "bounded native workspace qualification",
+    "owner": "qualification-controller",
+    "actor": "cowork-executor",
+    "member_repositories": [],
+    "external_homes": [],
+    "resources": [],
+    "optional_roles": [],
+    "optional_profiles": [],
+    "sources": [],
+    "recommendations": [],
+    "retrieval": "none",
+    "write_scope": [
+      "current-qualification-receipt.json",
+      "current-workspace/"
+    ],
+    "excluded_effects": [
+      "initialise Git",
+      "commit",
+      "publish",
+      "install anything",
+      "create grants",
+      "create runs",
+      "create work items",
+      "delegate",
+      "change plugins or settings",
+      "write outside the receipt and current-workspace",
+      "modify existing files"
+    ],
+    "declared_candidate": {
+      "channel": "frozen development candidate",
+      "version": "0.9.4",
+      "commit": "f47f4c52313163f1ffe55a97d9c8029602d7c5b4",
+      "native_current_export_sha256": "66184a04cda482302b4543b72e9831ef807f3b5ed5f547a11ef47cc6243a6c5a",
+      "source_files": 331
+    },
+    "attached_package_rule": "do not replace native discovery with the attached package (docflow-package in the connected folder)"
+  },
+  "host_tool_results_transcribed": {
+    "Skill": {
+      "invoked": "docflow:workspace-setup",
+      "reported_base_directory": "/root/.claude/plugins/synced/0e224371-2b7f-4fff-8c6d-7c1d6eaffe84_c75f271d-8f1d-426e-a75f-a932780b0602/docflow/skills/workspace-setup"
+    },
+    "ListPlugins_docflow_entry": {
+      "id": "plugin_011ugP5k9szVCTcXtVDqFFwc",
+      "name": "docflow",
+      "enabled": true
+    },
+    "session_skill_registry_docflow_entries": [
+      "docflow:add-convention",
+      "docflow:agent-wave",
+      "docflow:audit",
+      "docflow:bootstrap",
+      "docflow:brainstorm",
+      "docflow:new-adr",
+      "docflow:new-plan",
+      "docflow:rollup",
+      "docflow:ship-item",
+      "docflow:workspace-coordinate",
+      "docflow:workspace-orient",
+      "docflow:workspace-plan",
+      "docflow:workspace-setup"
+    ],
+    "get_device_info": {
+      "deviceName": "kx2",
+      "platform": "win32",
+      "arch": "x64",
+      "appVersion": "1.52386.6",
+      "electronVersion": "44.2.0",
+      "connectedFolders": [
+        "C:\\Users\\eugen\\AppData\\Local\\Temp\\docflowhq-v1-20260915\\qualification-ctx-fc206cf7e4a8\\cowork-session"
+      ],
+      "timestamp": "2026-09-15T04:36:14.506Z"
+    }
+  },
+  "preliminary_unrecorded_probes": {
+    "note": "Read-only probes run before the capture wrapper existed; their outputs are not captured in this receipt. Material checks were re-run inside recorded phases.",
+    "cloud": "Read-only listings, reads and sha256 of the synced docflow plugin directory (skills, templates, workspace assets, validator source); ListPlugins; Skill invocation of docflow:workspace-setup.",
+    "device": [
+      "set -u; echo \"utc=$(date -u +%Y-%m-%dT%H:%M:%SZ)\"; uname -srm; echo \"user=$(id -un) home=$HOME pwd=$(pwd)\"; for c in python3 node git jq sha256sum find stat; do printf '%s=%s\\n' \"$c\" \"$(command -v $c || echo MISSING)\"; done; node --version 2>&1; python3 --version 2>&1; git --version 2>&1; echo \"--- ls -la \\$HOME/mnt\"; ls -la \"$HOME/mnt\" 2>&1; echo \"--- ls -la \\$HOME\"; ls -la \"$HOME\" 2>&1",
+      "set -u; cd \"$HOME/mnt/cowork-session\" || exit 9; echo \"--- find (all entries, type size mtime path)\"; find . -printf '%y %s %TY-%Tm-%TdT%TH:%TM:%TSZ %p\\n' 2>&1 | LC_ALL=C sort -k4 | head -200; echo \"--- entry count: $(find . | wc -l)\"; echo \"--- search VM for docflow assets\"; timeout 60 find / -xdev \\( -path /proc -o -path /sys -o -path \"$HOME/mnt\" \\) -prune -o \\( -name 'validate.mjs' -o -name 'workspace-assets.json' -o -iname '*docflow*' \\) -print 2>/dev/null | head -40; echo \"find_exit=$?\"; ls -la \"$HOME/.config\" \"$HOME/tmp\" 2>&1"
+    ]
+  },
+  "capture_wrapper": {
+    "language": "python3",
+    "sha256": "60408e6eade9542a11f06d2007e0860a128b7af34be025f706fe2c777c9c25e0",
+    "source": "import datetime, hashlib, json, os, subprocess, sys\n\nENV = os.environ\nSRC = ENV[\"REC_SRC\"]\n\n\ndef utc():\n    return datetime.datetime.now(datetime.timezone.utc).strftime(\"%Y-%m-%dT%H:%M:%SZ\")\n\n\ndef digest(data):\n    return hashlib.sha256(data).hexdigest()\n\n\ndef canonical(value):\n    return json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(\",\", \":\")).encode(\"utf-8\")\n\n\ndef show(text):\n    if text and not text.endswith(\"\\n\"):\n        text += \"\\n\"\n    sys.stdout.write(text)\n\n\nWRAPPER = digest(SRC.encode(\"utf-8\"))\nMODE = ENV[\"REC_MODE\"]\nOUT = ENV[\"REC_OUT\"]\n\nembedded = []\nfor key in ENV.get(\"REC_EMBEDS\", \"\").split():\n    value = json.loads(ENV[\"EMBED_\" + key])\n    expected = ENV[\"EMBED_\" + key + \"_SHA256\"]\n    received = digest(canonical(value))\n    ok = received == expected\n    show(\"embed \" + key + \": expected \" + expected + \" received \" + received + (\" verified\" if ok else \" MISMATCH\"))\n    if not ok:\n        for step in value.get(\"steps\", []):\n            show(\"  \" + str(step.get(\"name\")) + \" command=\" + digest(str(step.get(\"command\")).encode(\"utf-8\")) + \" stdout=\" + digest(str(step.get(\"stdout\")).encode(\"utf-8\")) + \" stderr=\" + digest(str(step.get(\"stderr\")).encode(\"utf-8\")))\n        show(\"EMBED VERIFICATION FAILED: no step executed, nothing written\")\n        sys.exit(4)\n    value[\"transfer_verification\"] = {\n        \"method\": \"phase JSON captured in the cloud container, transcribed by the executor into this device command and parsed on the device; sha256 of canonical JSON (sorted keys, compact separators, UTF-8, excluding this field) compared with the cloud-computed value\",\n        \"expected_canonical_sha256\": expected,\n        \"received_canonical_sha256\": received,\n        \"verified\": ok,\n        \"same_capture_wrapper\": value.get(\"capture_wrapper_sha256\") == WRAPPER,\n    }\n    embedded.append(value)\n\nphase = None\nif MODE != \"assess\":\n    phase = {\n        \"phase\": ENV[\"REC_PHASE\"],\n        \"host\": ENV[\"REC_HOST\"],\n        \"route\": ENV[\"REC_ROUTE\"],\n        \"cwd\": ENV[\"REC_CWD\"],\n        \"capture_wrapper_sha256\": WRAPPER,\n        \"started_at\": utc(),\n        \"steps\": [],\n        \"halted_at\": None,\n    }\n    informational = set(ENV.get(\"REC_ALLOW_NONZERO\", \"\").split())\n    for name in ENV.get(\"REC_STEPS\", \"\").split():\n        command = ENV[\"CMD_\" + name]\n        started = utc()\n        proc = subprocess.run([\"bash\", \"-c\", command], cwd=ENV[\"REC_CWD\"], stdin=subprocess.DEVNULL, capture_output=True)\n        step = {\n            \"name\": name,\n            \"command\": command,\n            \"command_sha256\": digest(command.encode(\"utf-8\")),\n            \"started_at\": started,\n            \"ended_at\": utc(),\n            \"exit_code\": proc.returncode,\n            \"nonzero_exit_informational\": name in informational,\n            \"stdout\": proc.stdout.decode(\"utf-8\", \"replace\"),\n            \"stderr\": proc.stderr.decode(\"utf-8\", \"replace\"),\n            \"stdout_sha256\": digest(proc.stdout),\n            \"stderr_sha256\": digest(proc.stderr),\n        }\n        phase[\"steps\"].append(step)\n        show(\"### \" + name + \" [exit \" + str(proc.returncode) + \"]\")\n        show(\"$ \" + command)\n        show(step[\"stdout\"])\n        if step[\"stderr\"]:\n            show(\"[stderr]\")\n            show(step[\"stderr\"])\n        if proc.returncode != 0 and name not in informational:\n            phase[\"halted_at\"] = name\n            show(\"HALTED at \" + name)\n            break\n    phase[\"ended_at\"] = utc()\n\nstatus = 0\nif MODE == \"cloud\":\n    data = canonical(phase)\n    with open(OUT, \"xb\") as handle:\n        handle.write(data)\n    show(\"PHASE_CANONICAL_SHA256=\" + digest(data))\n    show(\"PHASE_JSON_BEGIN\")\n    show(json.dumps(phase, ensure_ascii=False, indent=1))\n    show(\"PHASE_JSON_END\")\nelif MODE == \"create\":\n    receipt = json.loads(ENV[\"REC_TOP\"])\n    receipt[\"capture_wrapper\"] = {\"language\": \"python3\", \"sha256\": WRAPPER, \"source\": SRC}\n    receipt[\"phases\"] = embedded + [phase]\n    receipt[\"updated_at\"] = utc()\n    with open(OUT, \"x\", encoding=\"utf-8\") as handle:\n        handle.write(json.dumps(receipt, ensure_ascii=False, indent=2) + \"\\n\")\n    show(\"RECEIPT_CREATED \" + OUT)\nelse:\n    with open(OUT, \"r+\", encoding=\"utf-8\") as handle:\n        receipt = json.load(handle)\n        if receipt.get(\"capture_wrapper\", {}).get(\"sha256\") != WRAPPER:\n            show(\"CAPTURE WRAPPER MISMATCH: receipt not modified\")\n            sys.exit(5)\n        if phase is not None:\n            comparisons = []\n            for spec in ENV.get(\"REC_COMPARE\", \"\").split():\n                left, right = spec.split(\"=\", 1)\n                right_phase, right_step = right.split(\"/\", 1)\n                a = next((s for s in phase[\"steps\"] if s[\"name\"] == left), None)\n                b = next((s for p in receipt[\"phases\"] if p.get(\"phase\") == right_phase for s in p.get(\"steps\", []) if s[\"name\"] == right_step), None)\n                equal = bool(a is not None and b is not None and a[\"stdout\"] == b[\"stdout\"])\n                comparisons.append({\"left\": phase[\"phase\"] + \"/\" + left, \"right\": right, \"field\": \"stdout\", \"equal\": equal})\n                show(\"compare \" + phase[\"phase\"] + \"/\" + left + \" == \" + right + \": \" + (\"equal\" if equal else \"NOT EQUAL\"))\n                if not equal:\n                    status = 6\n            if comparisons:\n                phase[\"comparisons\"] = comparisons\n            receipt[\"phases\"].extend(embedded + [phase])\n        if ENV.get(\"REC_ASSESSMENT\"):\n            receipt[\"executor_assessment\"] = json.loads(ENV[\"REC_ASSESSMENT\"])\n        receipt[\"updated_at\"] = utc()\n        handle.seek(0)\n        handle.write(json.dumps(receipt, ensure_ascii=False, indent=2) + \"\\n\")\n        handle.truncate()\n    show(\"RECEIPT_UPDATED \" + OUT)\nif phase is not None and phase[\"halted_at\"] is not None:\n    status = 3\nsys.exit(status)"
+  },
+  "phases": [
+    {
+      "phase": "native-discovery",
+      "host": "cloud: Cowork session container",
+      "route": "Bash tool in the Cowork cloud session container where the docflow plugin is natively synced",
+      "cwd": "/home/claude",
+      "capture_wrapper_sha256": "60408e6eade9542a11f06d2007e0860a128b7af34be025f706fe2c777c9c25e0",
+      "started_at": "2026-09-15T04:55:43Z",
+      "steps": [
+        {
+          "name": "a1_host",
+          "command": "date -u +%Y-%m-%dT%H:%M:%SZ; uname -srm; node --version",
+          "command_sha256": "908e666f8e4dd9fb2a3fbc487482c557c475496a1335c072cca6acff3867d970",
+          "started_at": "2026-09-15T04:55:43Z",
+          "ended_at": "2026-09-15T04:55:44Z",
+          "exit_code": 0,
+          "nonzero_exit_informational": false,
+          "stdout": "2026-09-15T04:55:43Z\nLinux 6.18.44-fc-v33 x86_64\nv22.22.2\n",
+          "stderr": "",
+          "stdout_sha256": "f8ec39d4fe63139269f68689d581956d0eb1018dff7185266706c0e5ac9586e1",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "a2_registration",
+          "command": "P=/root/.claude/plugins/synced/0e224371-2b7f-4fff-8c6d-7c1d6eaffe84_c75f271d-8f1d-426e-a75f-a932780b0602/docflow\ncd \"$P\" || exit 1\npwd -P\nls -1 skills\necho \"skill_directories=$(ls -1 skills | wc -l) skill_md_files=$(ls -1 skills/*/SKILL.md | wc -l)\"\ngrep -h '^name:' skills/*/SKILL.md\nrealpath skills/workspace-setup skills/bootstrap\nnode workspace/resolve-assets.mjs skills/bootstrap",
+          "command_sha256": "367ee6e80b7e99e068fa781fc0ea1be069b42beaa07cd9a2b62cea75f84d9bb1",
+          "started_at": "2026-09-15T04:55:44Z",
+          "ended_at": "2026-09-15T04:55:44Z",
+          "exit_code": 0,
+          "nonzero_exit_informational": false,
+          "stdout": "/root/.claude/plugins/synced/0e224371-2b7f-4fff-8c6d-7c1d6eaffe84_c75f271d-8f1d-426e-a75f-a932780b0602/docflow\nadd-convention\nagent-wave\naudit\nbootstrap\nbrainstorm\nnew-adr\nnew-plan\nrollup\nship-item\nworkspace-coordinate\nworkspace-orient\nworkspace-plan\nworkspace-setup\nskill_directories=13 skill_md_files=13\nname: add-convention\nname: agent-wave\nname: audit\nname: bootstrap\nname: brainstorm\nname: new-adr\nname: new-plan\nname: rollup\nname: ship-item\nname: workspace-coordinate\nname: workspace-orient\nname: workspace-plan\nname: workspace-setup\n/root/.claude/plugins/synced/0e224371-2b7f-4fff-8c6d-7c1d6eaffe84_c75f271d-8f1d-426e-a75f-a932780b0602/docflow/skills/workspace-setup\n/root/.claude/plugins/synced/0e224371-2b7f-4fff-8c6d-7c1d6eaffe84_c75f271d-8f1d-426e-a75f-a932780b0602/docflow/skills/bootstrap\n/root/.claude/plugins/synced/0e224371-2b7f-4fff-8c6d-7c1d6eaffe84_c75f271d-8f1d-426e-a75f-a932780b0602/docflow/workspace\n",
+          "stderr": "",
+          "stdout_sha256": "6071b5210c35826b443975cbeb7acf109950cafb564b6d1b247fafcbad59755d",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "a3_identity",
+          "command": "P=/root/.claude/plugins/synced/0e224371-2b7f-4fff-8c6d-7c1d6eaffe84_c75f271d-8f1d-426e-a75f-a932780b0602/docflow\ncd \"$P\" || exit 1\ngrep -H -E '^  \"(name|version)\"' .claude-plugin/plugin.json .codex-plugin/plugin.json\necho \"regular_files=$(find . -type f | wc -l) directories=$(find . -type d | wc -l) symlinks=$(find . -type l | wc -l)\"\necho \"embedded_candidate_commit_occurrences=$(grep -rF f47f4c52313163f1ffe55a97d9c8029602d7c5b4 . | wc -l)\"\necho \"embedded_export_sha256_occurrences=$(grep -rF 66184a04cda482302b4543b72e9831ef807f3b5ed5f547a11ef47cc6243a6c5a . | wc -l)\"",
+          "command_sha256": "261933bac576b4124153a53442850631c89284a9c9780e17880c8151b14da881",
+          "started_at": "2026-09-15T04:55:44Z",
+          "ended_at": "2026-09-15T04:55:44Z",
+          "exit_code": 0,
+          "nonzero_exit_informational": false,
+          "stdout": ".claude-plugin/plugin.json:  \"name\": \"docflow\",\n.claude-plugin/plugin.json:  \"version\": \"0.9.4\",\n.codex-plugin/plugin.json:  \"name\": \"docflow\",\n.codex-plugin/plugin.json:  \"version\": \"0.9.4\",\nregular_files=331 directories=144 symlinks=0\nembedded_candidate_commit_occurrences=0\nembedded_export_sha256_occurrences=0\n",
+          "stderr": "",
+          "stdout_sha256": "11407fc950c2644a94dd5ea7bbe7ace620e3b4f1c48a8fdfc522981acf77f029",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "a4_tree_digests",
+          "command": "P=/root/.claude/plugins/synced/0e224371-2b7f-4fff-8c6d-7c1d6eaffe84_c75f271d-8f1d-426e-a75f-a932780b0602/docflow\ncd \"$P\" || exit 1\nD=66184a04cda482302b4543b72e9831ef807f3b5ed5f547a11ef47cc6243a6c5a\nc1=$(find . -type f -print0 | LC_ALL=C sort -z | xargs -0 sha256sum | sha256sum | cut -d' ' -f1)\nc2=$(find . -type f -printf '%P\\0' | LC_ALL=C sort -z | xargs -0 sha256sum | sha256sum | cut -d' ' -f1)\nc3=$(cd .. && find docflow -type f -print0 | LC_ALL=C sort -z | xargs -0 sha256sum | sha256sum | cut -d' ' -f1)\nc4=$(tar --sort=name --owner=0 --group=0 --numeric-owner --mtime=@0 -cf - . | sha256sum | cut -d' ' -f1)\nprintf 'declared_export_sha256=%s\\nc1_sha256sum_manifest_dot_paths=%s\\nc2_sha256sum_manifest_relative_paths=%s\\nc3_sha256sum_manifest_docflow_prefixed=%s\\nc4_deterministic_tar=%s\\n' \"$D\" \"$c1\" \"$c2\" \"$c3\" \"$c4\"\ncase \"$D\" in \"$c1\"|\"$c2\"|\"$c3\"|\"$c4\") echo \"declared_export_sha256_reproduced=yes\";; *) echo \"declared_export_sha256_reproduced=no\";; esac",
+          "command_sha256": "272b3dc7e619e4ecef7c6b9fafffae626c8c6242ec757ec013d8d2bd9fe9ce33",
+          "started_at": "2026-09-15T04:55:44Z",
+          "ended_at": "2026-09-15T04:55:44Z",
+          "exit_code": 0,
+          "nonzero_exit_informational": false,
+          "stdout": "declared_export_sha256=66184a04cda482302b4543b72e9831ef807f3b5ed5f547a11ef47cc6243a6c5a\nc1_sha256sum_manifest_dot_paths=3dab928cb44413a3ed9e66509c842109efd6d582e2fbf1b802160e7e702265cc\nc2_sha256sum_manifest_relative_paths=fe3977df2f1821390ec66f9bc7de40163841f3e20fb15e180272d0798b92ac02\nc3_sha256sum_manifest_docflow_prefixed=6ad570de30a1ae4747be09b23765cd2e35bb1ec0439cf4f30eca84093cf5d330\nc4_deterministic_tar=64214aa8f40838f46dcc08f6eec3474875d934a7664eaad64d7279c8d56512ef\ndeclared_export_sha256_reproduced=no\n",
+          "stderr": "",
+          "stdout_sha256": "1094b39209e19ed2fecd65f9f72333409a18aa34b6d87dfeb40699a5d8ad6e1e",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "a5_asset_hashes",
+          "command": "P=/root/.claude/plugins/synced/0e224371-2b7f-4fff-8c6d-7c1d6eaffe84_c75f271d-8f1d-426e-a75f-a932780b0602/docflow\ncd \"$P\" && sha256sum workspace/validate.mjs workspace/schema.json workspace/resolve-assets.mjs workspace/CONTRACT.md workspace/README.md workspace/guides/README.md workspace/guides/claude-code.md skills/workspace-setup/SKILL.md skills/bootstrap/templates/workspace-assets.json skills/bootstrap/templates/workspace-README.md skills/bootstrap/templates/workspace-AGENTS.md skills/bootstrap/templates/workspace-registry.yaml skills/bootstrap/templates/workspace-CONVENTIONS.md skills/bootstrap/templates/workspace-INDEX.md skills/bootstrap/templates/workspace-ideas.md skills/bootstrap/templates/workspace-decisions.md skills/bootstrap/templates/workspace-work.md skills/bootstrap/templates/workspace-knowledge.md skills/bootstrap/templates/workspace-runs.md workspace/fixtures/two-repository/.gitignore",
+          "command_sha256": "c142d65a1e84bd23ddf7a68c9e5514b89744fb18c9f7384a7d124ad6fd299235",
+          "started_at": "2026-09-15T04:55:44Z",
+          "ended_at": "2026-09-15T04:55:44Z",
+          "exit_code": 0,
+          "nonzero_exit_informational": false,
+          "stdout": "c8db90d4925779be8ad11cb0116c161026feb62c454ec5539b191a98b4f6c6cd  workspace/validate.mjs\n46efc122a08d3ed8e8df813f18355b9738fd6619c456f96112b445f93f761583  workspace/schema.json\nc1c9a14f3d60ec1a69a8372768a688ed011af766191759bc71db8ca1eb24a6d8  workspace/resolve-assets.mjs\n6e59fc7d26ecae73e65d3f33f44b47a787b304f99b48129534b39ca395938957  workspace/CONTRACT.md\n049f63a9edb57a4d43dec096a9e3cdd4408337a6e08a1a7ecc2e532bfd93cf41  workspace/README.md\n6e4bc65d39cd2ddcf47c6cf0b2589395a92945f4329fba5ec6ced4327f1afcbc  workspace/guides/README.md\ne0c80985cd9e5a0291368ff8e80018ee06d48812eaeafe5e92a12dca0de143f0  workspace/guides/claude-code.md\n48d1cb9ede6cd61d43385354cd036815f0ea1511fcd51fc5112688d9fbc1076d  skills/workspace-setup/SKILL.md\na4a1cb2041d5d69cda123e708dd45fecaab48e779a387ed3ecd75b2a756ede41  skills/bootstrap/templates/workspace-assets.json\n37016f33eefd758cca43707450dea4dde29b77b1b0712c8f7d54ffc5995dc4a0  skills/bootstrap/templates/workspace-README.md\ne9f1950d721a7022f91b2ca1eea0525fb06e829163e10c1844fb938f87aa1597  skills/bootstrap/templates/workspace-AGENTS.md\n23eed24585f3cd429177c2b98edc9ada743d0939b99b7d55461dfe2e24188146  skills/bootstrap/templates/workspace-registry.yaml\n2532c54806a34067413a9e246f3ffd9acb757f880b30a9cfd87bc7c4c71939cc  skills/bootstrap/templates/workspace-CONVENTIONS.md\nabb9e5ed4bdbd268dcfa8a0310f470c6de7df64623e9146a8981c2a66c23bed3  skills/bootstrap/templates/workspace-INDEX.md\n15ea0a8c324aeac3f0eb8c159c3f1eef76bb316a3946cbfff9c5504a68f38a96  skills/bootstrap/templates/workspace-ideas.md\n8ea735ec2f512be10636f6e78742a88242d88fbdaa3f702d28ccc4316bbd03c1  skills/bootstrap/templates/workspace-decisions.md\n3faade570d60c065c25670391eed7170fa9dbd7f1c1f99d29c36febc846b5520  skills/bootstrap/templates/workspace-work.md\nd2fa1dd0b64d295dffb9bfec06e19e11d62db072e496010ed50c5f60a1efde77  skills/bootstrap/templates/workspace-knowledge.md\ne704db6a305c15b4c07b82c992632303ae7a3947c0886b32a5ef4addc0bbb21b  skills/bootstrap/templates/workspace-runs.md\nfeb4e1ad73f0bf59d1e7b9224b511da0fd8d1eb28f9633b541cd2f42cd77a686  workspace/fixtures/two-repository/.gitignore\n",
+          "stderr": "",
+          "stdout_sha256": "f876bf16207cf4e2115415c1ebc8e08425c210a3d43a4a566bb2fa152c7cf086",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "a6_expected_adopted_content",
+          "command": "T=/root/.claude/plugins/synced/0e224371-2b7f-4fff-8c6d-7c1d6eaffe84_c75f271d-8f1d-426e-a75f-a932780b0602/docflow/skills/bootstrap/templates\nR='s/^Purpose: replace with the working group purpose\\.$/Purpose: bounded native workspace qualification./'\nY='s|^  \"home\": \"example/workspace\",$|  \"home\": \"docflow-hq/cowork-current\",|;s|^  \"purpose\": \"Replace with the working group purpose\\.\",$|  \"purpose\": \"bounded native workspace qualification\",|'\necho \"README.md substituted_lines=$(sed \"$R\" \"$T/workspace-README.md\" | grep -c '^Purpose: bounded native workspace qualification\\.$') sha256=$(sed \"$R\" \"$T/workspace-README.md\" | sha256sum | cut -d' ' -f1)\"\necho \".docflow_workspace/workspace.yaml substituted_lines=$(sed \"$Y\" \"$T/workspace-registry.yaml\" | grep -c -e '^  \"home\": \"docflow-hq/cowork-current\",$' -e '^  \"purpose\": \"bounded native workspace qualification\",$') sha256=$(sed \"$Y\" \"$T/workspace-registry.yaml\" | sha256sum | cut -d' ' -f1)\"\necho \".gitignore sha256=$(printf '/repos/\\n/.docflow_workspace/local/\\n' | sha256sum | cut -d' ' -f1)\"\necho \".docflow_workspace/integrations/sources.yaml sha256=$(printf '{\"schema\":1,\"sources\":[]}\\n' | sha256sum | cut -d' ' -f1)\"\necho \"--- README.md content\"\nsed \"$R\" \"$T/workspace-README.md\"\necho \"--- .docflow_workspace/workspace.yaml content\"\nsed \"$Y\" \"$T/workspace-registry.yaml\"",
+          "command_sha256": "3b4ab1cc703f5ed6ef72c8c3fdd8ad7ba9c61fb1cdc424a639669fa717654c68",
+          "started_at": "2026-09-15T04:55:44Z",
+          "ended_at": "2026-09-15T04:55:44Z",
+          "exit_code": 0,
+          "nonzero_exit_informational": false,
+          "stdout": "README.md substituted_lines=1 sha256=ba6dfdcd200e87856a7078b4b819691c7cfb2c5751205426b394fdf303da0523\n.docflow_workspace/workspace.yaml substituted_lines=2 sha256=70b0b4a65da9db2e3645b249849d8c28e07e1a8580dac966e6cbdfc29d13360d\n.gitignore sha256=feb4e1ad73f0bf59d1e7b9224b511da0fd8d1eb28f9633b541cd2f42cd77a686\n.docflow_workspace/integrations/sources.yaml sha256=8ed280b0803b4b5b5cb7aa64821a7e57960821e47b347e5b15eda33ad37a8547\n--- README.md content\n# Workspace\n\nPurpose: bounded native workspace qualification.\n\nRead AGENTS.md, .docflow_workspace/workspace.yaml and .docflow_workspace/INDEX.md. Obtain registered independent checkouts separately under existing authority. Canonical memory belongs to this adopter workspace; Clarity reads and prepares handoffs, and authorised native Docflow sessions edit records.\n--- .docflow_workspace/workspace.yaml content\n{\n  \"schema\": 1,\n  \"home\": \"docflow-hq/cowork-current\",\n  \"purpose\": \"bounded native workspace qualification\",\n  \"repositories\": [],\n  \"external_homes\": [],\n  \"resources\": []\n}\n",
+          "stderr": "",
+          "stdout_sha256": "c7939a12fbc047b015aae4ef21f31433b19556a47e6cf5d8585463bdcff2b650",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "a7_native_guides",
+          "command": "P=/root/.claude/plugins/synced/0e224371-2b7f-4fff-8c6d-7c1d6eaffe84_c75f271d-8f1d-426e-a75f-a932780b0602/docflow\ngrep -E '^\\| \\[' \"$P/workspace/guides/README.md\"\ngrep -n 'Cowork' \"$P/workspace/guides/README.md\"",
+          "command_sha256": "95e21546d8ef7f4764773309b8717e2dfe3479d94a47ead0cb44f1c0d3b50af2",
+          "started_at": "2026-09-15T04:55:44Z",
+          "ended_at": "2026-09-15T04:55:44Z",
+          "exit_code": 0,
+          "nonzero_exit_informational": false,
+          "stdout": "| [Orca](orca.md) | Installed version-matched guides, 1.4.201 | Unrun |\n| [Cursor](cursor.md) | Official editor/Agent docs; local editor CLI broken | Unrun; CLI access blocked |\n| [Claude Code](claude-code.md) | Installed CLI 2.1.271 help/version | Unrun |\n| [DeepSeek Harness](deepseek-harness.md) | Installed 0.1.1-rc.2 launcher help/version | Unrun |\n| [ZCode](zcode.md) | Official UI docs; coordinator desktop preflight | Unrun |\n| [Codex App](codex-app.md) | Installed app-launcher help; official docs | Unrun |\n19:(Claude Code, Cowork, pi, Codex and OpenCode). Static package discovery tests\n",
+          "stderr": "",
+          "stdout_sha256": "d88c3ca0100b30493b7772a65a4d2fb4c698832c7abd1b825e542b264f26ab63",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ],
+      "halted_at": null,
+      "ended_at": "2026-09-15T04:55:44Z",
+      "transfer_verification": {
+        "method": "phase JSON captured in the cloud container, transcribed by the executor into this device command and parsed on the device; sha256 of canonical JSON (sorted keys, compact separators, UTF-8, excluding this field) compared with the cloud-computed value",
+        "expected_canonical_sha256": "3c558576d6c3102db03745c9674a501b3a9ee340c7e0c956d8ceea3f4dd72ad8",
+        "received_canonical_sha256": "3c558576d6c3102db03745c9674a501b3a9ee340c7e0c956d8ceea3f4dd72ad8",
+        "verified": true,
+        "same_capture_wrapper": true
+      }
+    },
+    {
+      "phase": "preflight",
+      "host": "device kx2: Cowork desktop Linux VM",
+      "route": "device_bash tool (Cowork remote-devices bridge) on device kx2; Linux VM with the connected folder mounted at /sessions/rcw-01ytaalx181dvvz53wubgeiv/mnt/cowork-session",
+      "cwd": "/sessions/rcw-01ytaalx181dvvz53wubgeiv/mnt/cowork-session",
+      "capture_wrapper_sha256": "60408e6eade9542a11f06d2007e0860a128b7af34be025f706fe2c777c9c25e0",
+      "started_at": "2026-09-15T04:59:29Z",
+      "steps": [
+        {
+          "name": "b1_host",
+          "command": "date -u +%Y-%m-%dT%H:%M:%SZ; uname -srm; echo \"user=$(id -un) home=$HOME\"; node --version; python3 --version; git --version",
+          "command_sha256": "9097100f27c423251bdefe9adc578cd61e32eed4befabaa6ba4b70d787f44cc5",
+          "started_at": "2026-09-15T04:59:29Z",
+          "ended_at": "2026-09-15T04:59:29Z",
+          "exit_code": 0,
+          "nonzero_exit_informational": false,
+          "stdout": "2026-09-15T04:59:29Z\nLinux 6.8.0-136-generic x86_64\nuser=rcw-01ytaalx181dvvz53wubgeiv home=/sessions/rcw-01ytaalx181dvvz53wubgeiv\nv22.23.2\nPython 3.10.12\ngit version 2.34.1\n",
+          "stderr": "",
+          "stdout_sha256": "120e2c5944775289acf59b5da7ff7a2292bcd7ae4d2096de5504ea568c50b635",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "b2_destination",
+          "command": "pwd -P\nls -1A\ntest ! -e current-workspace && test ! -L current-workspace && echo \"absent: current-workspace\" && test ! -e current-qualification-receipt.json && test ! -L current-qualification-receipt.json && echo \"absent: current-qualification-receipt.json\"",
+          "command_sha256": "09021cdab768ecf9292f3e3e50e6af8269997992c4f9c71ca8d2b9601f2834d5",
+          "started_at": "2026-09-15T04:59:29Z",
+          "ended_at": "2026-09-15T04:59:29Z",
+          "exit_code": 0,
+          "nonzero_exit_informational": false,
+          "stdout": "/sessions/rcw-01ytaalx181dvvz53wubgeiv/mnt/cowork-session\ndocflow-package\nabsent: current-workspace\nabsent: current-qualification-receipt.json\n",
+          "stderr": "",
+          "stdout_sha256": "6916868fa2aec0bc057da5c4add2e00e24509ae7fbb44c6a53c75035649bb163",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "b3_git_ignore_instructions",
+          "command": "for n in .git .gitignore AGENTS.md CLAUDE.md README.md; do if test -e \"$n\"; then echo \"present: $n\"; else echo \"absent: $n\"; fi; done\nGIT_OPTIONAL_LOCKS=0 git rev-parse --show-toplevel",
+          "command_sha256": "be9fcfd814a8c55fb3ac308a8a6a03b9afde7c2ddd00a33ce4e4262da88409f8",
+          "started_at": "2026-09-15T04:59:29Z",
+          "ended_at": "2026-09-15T04:59:29Z",
+          "exit_code": 128,
+          "nonzero_exit_informational": true,
+          "stdout": "absent: .git\nabsent: .gitignore\nabsent: AGENTS.md\nabsent: CLAUDE.md\nabsent: README.md\n",
+          "stderr": "fatal: not a git repository (or any parent up to mount point /sessions/rcw-01ytaalx181dvvz53wubgeiv/mnt)\nStopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).\n",
+          "stdout_sha256": "15e9d1b7116364b653cf1a5a25bbbad04b021077d31c06db7c9f1a60c89bec96",
+          "stderr_sha256": "67c3706976df37796931fd419decde3bd0ca641ce90189b8f55c598e1c9c6997"
+        },
+        {
+          "name": "b4_preservation_baseline",
+          "command": "echo \"files=$(find . -mindepth 1 \\( -path ./current-workspace -o -path ./current-qualification-receipt.json \\) -prune -o -type f -print | wc -l)\"\necho \"directories=$(find . -mindepth 1 \\( -path ./current-workspace -o -path ./current-qualification-receipt.json \\) -prune -o -type d -print | wc -l)\"\necho \"other=$(find . -mindepth 1 \\( -path ./current-workspace -o -path ./current-qualification-receipt.json \\) -prune -o ! -type f ! -type d -print | wc -l)\"\necho \"content_sha256=$(find . -mindepth 1 \\( -path ./current-workspace -o -path ./current-qualification-receipt.json \\) -prune -o -type f -print0 | LC_ALL=C sort -z | xargs -0 sha256sum | sha256sum | cut -d' ' -f1)\"\necho \"metadata_sha256=$(find . -mindepth 1 \\( -path ./current-workspace -o -path ./current-qualification-receipt.json \\) -prune -o -printf '%y %s %T@ %m %p\\n' | LC_ALL=C sort | sha256sum | cut -d' ' -f1)\"",
+          "command_sha256": "213332002d1e77ecba7b0dcf8f361615b0524d61060896b1115ed3bfd53331c8",
+          "started_at": "2026-09-15T04:59:29Z",
+          "ended_at": "2026-09-15T04:59:39Z",
+          "exit_code": 0,
+          "nonzero_exit_informational": false,
+          "stdout": "files=331\ndirectories=144\nother=0\ncontent_sha256=b850ad400cc895be5a89f38742f053e9dfbdbb9800e70195f68ddeebe209cdbe\nmetadata_sha256=ed83f9e36cf4ef834d3299264cbb96575b2ddd5ac1c9123ea97dca8ebb25522d\n",
+          "stderr": "",
+          "stdout_sha256": "80322d604063dbb08c1e66f61a6e492a12041c6bb1e56db482115c78e4f87203",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "b5_installed_assets_on_device",
+          "command": "A=/root/.claude/plugins/synced/0e224371-2b7f-4fff-8c6d-7c1d6eaffe84_c75f271d-8f1d-426e-a75f-a932780b0602/docflow/workspace\nfor f in validate.mjs schema.json resolve-assets.mjs; do if test -f \"$A/$f\"; then echo \"present: $A/$f\"; else echo \"absent or inaccessible on device VM: $A/$f\"; fi; done\necho \"mounted_folders: $(ls -1A \"$HOME/mnt\" | tr '\\n' ' ')\"\ntimeout 120 find / -xdev \\( -path /proc -o -path /sys -o -path \"$HOME/mnt\" \\) -prune -o -type f \\( -name validate.mjs -o -name resolve-assets.mjs -o -name workspace-assets.json \\) -print 2>/dev/null\necho \"root_search_exit=$? (excluded: /proc, /sys, connected-folder mount $HOME/mnt)\"\nfind \"$HOME\" -path \"$HOME/mnt\" -prune -o -type f \\( -name validate.mjs -o -name resolve-assets.mjs -o -name workspace-assets.json \\) -print 2>/dev/null\necho \"home_search_exit=$? (excluded: connected-folder mount $HOME/mnt)\"",
+          "command_sha256": "ba84bb5150ce24c1bef14ad351326a9c610d8c543f7636683270abb66c05f3bb",
+          "started_at": "2026-09-15T04:59:39Z",
+          "ended_at": "2026-09-15T04:59:40Z",
+          "exit_code": 0,
+          "nonzero_exit_informational": false,
+          "stdout": "absent or inaccessible on device VM: /root/.claude/plugins/synced/0e224371-2b7f-4fff-8c6d-7c1d6eaffe84_c75f271d-8f1d-426e-a75f-a932780b0602/docflow/workspace/validate.mjs\nabsent or inaccessible on device VM: /root/.claude/plugins/synced/0e224371-2b7f-4fff-8c6d-7c1d6eaffe84_c75f271d-8f1d-426e-a75f-a932780b0602/docflow/workspace/schema.json\nabsent or inaccessible on device VM: /root/.claude/plugins/synced/0e224371-2b7f-4fff-8c6d-7c1d6eaffe84_c75f271d-8f1d-426e-a75f-a932780b0602/docflow/workspace/resolve-assets.mjs\nmounted_folders: cowork-session \nroot_search_exit=1 (excluded: /proc, /sys, connected-folder mount /sessions/rcw-01ytaalx181dvvz53wubgeiv/mnt)\nhome_search_exit=0 (excluded: connected-folder mount /sessions/rcw-01ytaalx181dvvz53wubgeiv/mnt)\n",
+          "stderr": "",
+          "stdout_sha256": "a2da93f45ed67a77c33807975b2eaebf9841405e058238cfbaf6775165fac1e3",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ],
+      "halted_at": null,
+      "ended_at": "2026-09-15T04:59:40Z"
+    },
+    {
+      "phase": "create-skeleton",
+      "host": "device kx2: Cowork desktop Linux VM",
+      "route": "device_bash tool (Cowork remote-devices bridge) on device kx2; Linux VM with the connected folder mounted at /sessions/rcw-01ytaalx181dvvz53wubgeiv/mnt/cowork-session",
+      "cwd": "/sessions/rcw-01ytaalx181dvvz53wubgeiv/mnt/cowork-session",
+      "capture_wrapper_sha256": "60408e6eade9542a11f06d2007e0860a128b7af34be025f706fe2c777c9c25e0",
+      "started_at": "2026-09-15T05:02:31Z",
+      "steps": [
+        {
+          "name": "c1_recheck_destination",
+          "command": "test ! -e current-workspace && test ! -L current-workspace && echo \"absent: current-workspace; mandated effect: create a new empty workspace here\"",
+          "command_sha256": "f1ee2392235f04fa3a6f013e11990402603c251831f8bf1611ba6245145c109b",
+          "started_at": "2026-09-15T05:02:31Z",
+          "ended_at": "2026-09-15T05:02:31Z",
+          "exit_code": 0,
+          "nonzero_exit_informational": false,
+          "stdout": "absent: current-workspace; mandated effect: create a new empty workspace here\n",
+          "stderr": "",
+          "stdout_sha256": "27013fa7a656ba0475e4879eb4a74f4efcd5b783ee16a2a36fe0bb5089a775fd",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "c2_create_directories",
+          "command": "mkdir current-workspace && mkdir current-workspace/.docflow_workspace && (cd current-workspace/.docflow_workspace && mkdir ideas decisions work knowledge runs agents profiles integrations local templates) && find current-workspace -type d | LC_ALL=C sort",
+          "command_sha256": "cb7d27292f60540d8182e79a12cfb97086148bd0ebf3c4104d6948e257ffedb7",
+          "started_at": "2026-09-15T05:02:31Z",
+          "ended_at": "2026-09-15T05:02:31Z",
+          "exit_code": 0,
+          "nonzero_exit_informational": false,
+          "stdout": "current-workspace\ncurrent-workspace/.docflow_workspace\ncurrent-workspace/.docflow_workspace/agents\ncurrent-workspace/.docflow_workspace/decisions\ncurrent-workspace/.docflow_workspace/ideas\ncurrent-workspace/.docflow_workspace/integrations\ncurrent-workspace/.docflow_workspace/knowledge\ncurrent-workspace/.docflow_workspace/local\ncurrent-workspace/.docflow_workspace/profiles\ncurrent-workspace/.docflow_workspace/runs\ncurrent-workspace/.docflow_workspace/templates\ncurrent-workspace/.docflow_workspace/work\n",
+          "stderr": "",
+          "stdout_sha256": "10ea9a9dc88402479568736be87bc02865ad981a66f1f7741a965c189a937cc7",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "c3_write_verified_files",
+          "command": "set -e\nset -o noclobber\nw() {\n  content=$(cat; printf x); content=${content%x}\n  got=$(printf '%s' \"$content\" | sha256sum | cut -d' ' -f1)\n  if [ \"$got\" != \"$2\" ]; then echo \"MISMATCH $1 expected $2 got $got (not written)\"; return 1; fi\n  printf '%s' \"$content\" > \"$1\"\n  echo \"wrote $1 sha256=$got\"\n}\nw current-workspace/README.md ba6dfdcd200e87856a7078b4b819691c7cfb2c5751205426b394fdf303da0523 <<'EOF'\n# Workspace\n\nPurpose: bounded native workspace qualification.\n\nRead AGENTS.md, .docflow_workspace/workspace.yaml and .docflow_workspace/INDEX.md. Obtain registered independent checkouts separately under existing authority. Canonical memory belongs to this adopter workspace; Clarity reads and prepares handoffs, and authorised native Docflow sessions edit records.\nEOF\nw current-workspace/AGENTS.md e9f1950d721a7022f91b2ca1eea0525fb06e829163e10c1844fb938f87aa1597 <<'EOF'\n# Workspace entry point\n\nRead .docflow_workspace/CONVENTIONS.md and workspace.yaml, then canonical work, grants and native member instructions. Execution stays in the chosen native host. Selection and agreement grant no authority.\nEOF\nw current-workspace/.gitignore feb4e1ad73f0bf59d1e7b9224b511da0fd8d1eb28f9633b541cd2f42cd77a686 <<'EOF'\n/repos/\n/.docflow_workspace/local/\nEOF\nw current-workspace/.docflow_workspace/workspace.yaml 70b0b4a65da9db2e3645b249849d8c28e07e1a8580dac966e6cbdfc29d13360d <<'EOF'\n{\n  \"schema\": 1,\n  \"home\": \"docflow-hq/cowork-current\",\n  \"purpose\": \"bounded native workspace qualification\",\n  \"repositories\": [],\n  \"external_homes\": [],\n  \"resources\": []\n}\nEOF\nw current-workspace/.docflow_workspace/CONVENTIONS.md 2532c54806a34067413a9e246f3ffd9acb757f880b30a9cfd87bc7c4c71939cc <<'EOF'\n# Workspace conventions\n\nUse workspace format 1. Canonical files own state; INDEX is a dated view. Read native rules and shared claims before dispatch. Missing evidence remains unknown. Clarity only reads, copies and hands off.\nEOF\nw current-workspace/.docflow_workspace/INDEX.md abb9e5ed4bdbd268dcfa8a0310f470c6de7df64623e9146a8981c2a66c23bed3 <<'EOF'\n# Workspace overview\n\nObserved at: record the UTC evaluation time and workspace source revision.\n\nDerived navigation only. Read canonical records and current native evidence before acting. No work is recorded yet.\n\n| Record | Kind | State | Owner | Next action |\n|---|---|---|---|---|\nEOF\nw current-workspace/.docflow_workspace/integrations/sources.yaml 8ed280b0803b4b5b5cb7aa64821a7e57960821e47b347e5b15eda33ad37a8547 <<'EOF'\n{\"schema\":1,\"sources\":[]}\nEOF\nw current-workspace/.docflow_workspace/templates/workspace-ideas.md 15ea0a8c324aeac3f0eb8c159c3f1eef76bb316a3946cbfff9c5504a68f38a96 <<'EOF'\n---\n{\n  \"schema\": 1,\n  \"id\": \"12345678-1111-4111-8111-111111111111\",\n  \"home\": \"example/platform\",\n  \"kind\": \"ideas\",\n  \"title\": \"Reliable exports\",\n  \"owner\": \"human:owner\",\n  \"created_at\": \"2026-09-15T08:00:00Z\",\n  \"links\": [],\n  \"state\": \"backlog\",\n  \"history\": [\n    {\n      \"state\": \"backlog\",\n      \"at\": \"2026-09-15T08:00:00Z\",\n      \"actor\": \"human:owner\",\n      \"reason\": \"Capture opportunity\"\n    }\n  ],\n  \"priority\": \"high\",\n  \"problem\": \"Large exports need investigation across API and mobile.\",\n  \"affected_repositories\": [\n    \"example/api\",\n    \"example/mobile\"\n  ]\n}\n---\n\n# Reliable exports\n\nTemplate form: mint a new UUIDv4 and supply the actual canonical home, owner and UTC times. Replace synthetic references with scoped facts. Do not invent authority or evidence; see the separate grant/brief/receipt forms and populated producer fixture. Create a run only for an authorised assignment.\nEOF\nw current-workspace/.docflow_workspace/templates/workspace-decisions.md 8ea735ec2f512be10636f6e78742a88242d88fbdaa3f702d28ccc4316bbd03c1 <<'EOF'\n---\n{\n  \"schema\": 1,\n  \"id\": \"23456789-2222-4222-8222-222222222222\",\n  \"home\": \"example/platform\",\n  \"kind\": \"decisions\",\n  \"title\": \"Preserve the legacy response\",\n  \"owner\": \"human:owner\",\n  \"created_at\": \"2026-09-15T08:00:00Z\",\n  \"links\": [],\n  \"state\": \"proposed\",\n  \"history\": [\n    {\n      \"state\": \"proposed\",\n      \"at\": \"2026-09-15T08:00:00Z\",\n      \"actor\": \"human:owner\",\n      \"reason\": \"Propose compatibility boundary\"\n    }\n  ],\n  \"scope\": \"Preserve legacy exports while introducing opt-in pagination.\",\n  \"affected_repositories\": [\n    \"example/api\",\n    \"example/mobile\"\n  ],\n  \"acceptance\": null,\n  \"adoption\": [],\n  \"predecessors\": [],\n  \"successors\": []\n}\n---\n\n# Preserve the legacy response\n\nTemplate form: mint a new UUIDv4 and supply the actual canonical home, owner and UTC times. Replace synthetic references with scoped facts. Do not invent authority or evidence; see the separate grant/brief/receipt forms and populated producer fixture. Create a run only for an authorised assignment.\nEOF\nw current-workspace/.docflow_workspace/templates/workspace-work.md 3faade570d60c065c25670391eed7170fa9dbd7f1c1f99d29c36febc846b5520 <<'EOF'\n---\n{\n  \"schema\": 1,\n  \"id\": \"34567890-3333-4333-8333-333333333333\",\n  \"home\": \"example/platform\",\n  \"kind\": \"work\",\n  \"title\": \"Deliver compatible exports\",\n  \"owner\": \"human:owner\",\n  \"created_at\": \"2026-09-15T08:00:00Z\",\n  \"links\": [],\n  \"state\": \"planned\",\n  \"history\": [\n    {\n      \"state\": \"planned\",\n      \"at\": \"2026-09-15T08:00:00Z\",\n      \"actor\": \"human:owner\",\n      \"reason\": \"Define shared outcome\"\n    }\n  ],\n  \"scope_revision\": 1,\n  \"outcome\": \"Both native changes integrated and combined validation passed.\",\n  \"scope\": \"Coordinate provider and consumer; preserve compatibility.\",\n  \"exclusions\": [\n    \"No release or deployment.\"\n  ],\n  \"priority\": \"high\",\n  \"criteria\": [\n    {\n      \"id\": \"combined\",\n      \"text\": \"Combined validation passes on both integrated sources.\",\n      \"evidence\": []\n    }\n  ],\n  \"blockers\": [],\n  \"dependencies\": [],\n  \"deliveries\": [],\n  \"grants\": [],\n  \"recommendations\": [],\n  \"next_action\": \"Define deliveries and record existing scoped authority before dispatch.\"\n}\n---\n\n# Deliver compatible exports\n\nTemplate form: mint a new UUIDv4 and supply the actual canonical home, owner and UTC times. Replace synthetic references with scoped facts. Do not invent authority or evidence; see the separate grant/brief/receipt forms and populated producer fixture. Create a run only for an authorised assignment.\nEOF\nw current-workspace/.docflow_workspace/templates/workspace-knowledge.md d2fa1dd0b64d295dffb9bfec06e19e11d62db072e496010ed50c5f60a1efde77 <<'EOF'\n---\n{\n  \"schema\": 1,\n  \"id\": \"45678901-4444-4444-8444-444444444444\",\n  \"home\": \"example/platform\",\n  \"kind\": \"knowledge\",\n  \"title\": \"Legacy client observation\",\n  \"owner\": \"human:owner\",\n  \"created_at\": \"2026-09-15T08:00:00Z\",\n  \"links\": [],\n  \"category\": \"observation\",\n  \"sources\": [\n    {\n      \"repository\": \"example/mobile\",\n      \"path\": \"evidence.txt\",\n      \"revision\": \"1111111111111111111111111111111111111111\",\n      \"observed_at\": \"2026-09-15T08:00:00Z\",\n      \"outcome\": \"passed\",\n      \"summary\": \"Synthetic source-bound observation; not a real host result.\"\n    }\n  ],\n  \"observed_at\": \"2026-09-15T08:00:00Z\",\n  \"review_when\": \"Recheck when the supported mobile source changes.\",\n  \"predecessors\": [],\n  \"successors\": []\n}\n---\n\n# Legacy client observation\n\nTemplate example: mint a new UUIDv4 and canonical home/path before publication. Replace all synthetic actors, mandates, native paths and evidence with the scoped facts. Create only records the situation needs.\nEOF\nw current-workspace/.docflow_workspace/templates/workspace-runs.md e704db6a305c15b4c07b82c992632303ae7a3947c0886b32a5ef4addc0bbb21b <<'EOF'\n---\n{\n  \"schema\": 1,\n  \"id\": \"56789012-5555-4555-8555-555555555555\",\n  \"home\": \"example/platform\",\n  \"kind\": \"runs\",\n  \"title\": \"Api interrupted\",\n  \"owner\": \"human:owner\",\n  \"created_at\": \"2026-09-15T09:00:00Z\",\n  \"links\": [],\n  \"state\": \"running\",\n  \"history\": [\n    {\n      \"state\": \"running\",\n      \"at\": \"2026-09-15T09:00:00Z\",\n      \"actor\": \"human:owner\",\n      \"reason\": \"Dispatch within current synthetic authority\"\n    }\n  ],\n  \"started_at\": \"2026-09-15T09:00:00Z\",\n  \"ended_at\": null,\n  \"brief\": {\n    \"work\": {\n      \"home\": \"example/platform\",\n      \"id\": \"34567890-3333-4333-8333-333333333333\",\n      \"path\": \".docflow_workspace/work/deliver-compatible-exports--345678903333.md\"\n    },\n    \"delivery\": \"provider\",\n    \"scope_revision\": 1,\n    \"scope\": \"Prepare the compatible change under native rules.\",\n    \"exclusions\": [\n      \"No merge, release or deployment by the executor.\"\n    ],\n    \"actor\": \"agent:api-first\",\n    \"host\": \"synthetic-native-host\",\n    \"grant\": {\n      \"work\": {\n        \"home\": \"example/platform\",\n        \"id\": \"34567890-3333-4333-8333-333333333333\",\n        \"path\": \".docflow_workspace/work/deliver-compatible-exports--345678903333.md\"\n      },\n      \"id\": \"api-first\",\n      \"revision\": 1\n    },\n    \"workspace_revision\": \"1111111111111111111111111111111111111111\",\n    \"base_revision\": \"1111111111111111111111111111111111111111\",\n    \"native_work\": {\n      \"repository\": \"example/api\",\n      \"path\": \"work.md\",\n      \"revision\": \"1111111111111111111111111111111111111111\"\n    },\n    \"claim\": {\n      \"mode\": \"native\",\n      \"owner\": \"agent:api-first\",\n      \"state\": \"held\",\n      \"source\": {\n        \"repository\": \"example/api\",\n        \"path\": \"evidence.txt\",\n        \"revision\": \"1111111111111111111111111111111111111111\",\n        \"observed_at\": \"2026-09-15T09:00:00Z\",\n        \"outcome\": \"passed\",\n        \"summary\": \"Synthetic source-bound observation; not a real host result.\"\n      },\n      \"observed_at\": \"2026-09-15T09:00:00Z\",\n      \"expires_at\": \"2026-09-15T20:00:00Z\"\n    },\n    \"dependencies\": [],\n    \"resources\": [],\n    \"required_checks\": [\n      \"native-check\"\n    ],\n    \"stop_at\": \"draft-pr-and-checks-reported\",\n    \"return_path\": \".docflow_workspace/runs/api-interrupted--567890125555.md\",\n    \"selected_assets\": []\n  },\n  \"actions\": [],\n  \"receipt\": null,\n  \"reconciliation\": null,\n  \"predecessors\": [],\n  \"successors\": []\n}\n---\n\n# Api interrupted\n\nTemplate form: mint a new UUIDv4 and supply the actual canonical home, owner and UTC times. Replace synthetic references with scoped facts. Do not invent authority or evidence; see the separate grant/brief/receipt forms and populated producer fixture. Create a run only for an authorised assignment.\nEOF",
+          "command_sha256": "0e3b035902d14e9367b8e82b2da4a538063eb997d35fc69146af6c2dd4932971",
+          "started_at": "2026-09-15T05:02:31Z",
+          "ended_at": "2026-09-15T05:02:31Z",
+          "exit_code": 0,
+          "nonzero_exit_informational": false,
+          "stdout": "wrote current-workspace/README.md sha256=ba6dfdcd200e87856a7078b4b819691c7cfb2c5751205426b394fdf303da0523\nwrote current-workspace/AGENTS.md sha256=e9f1950d721a7022f91b2ca1eea0525fb06e829163e10c1844fb938f87aa1597\nwrote current-workspace/.gitignore sha256=feb4e1ad73f0bf59d1e7b9224b511da0fd8d1eb28f9633b541cd2f42cd77a686\nwrote current-workspace/.docflow_workspace/workspace.yaml sha256=70b0b4a65da9db2e3645b249849d8c28e07e1a8580dac966e6cbdfc29d13360d\nwrote current-workspace/.docflow_workspace/CONVENTIONS.md sha256=2532c54806a34067413a9e246f3ffd9acb757f880b30a9cfd87bc7c4c71939cc\nwrote current-workspace/.docflow_workspace/INDEX.md sha256=abb9e5ed4bdbd268dcfa8a0310f470c6de7df64623e9146a8981c2a66c23bed3\nwrote current-workspace/.docflow_workspace/integrations/sources.yaml sha256=8ed280b0803b4b5b5cb7aa64821a7e57960821e47b347e5b15eda33ad37a8547\nwrote current-workspace/.docflow_workspace/templates/workspace-ideas.md sha256=15ea0a8c324aeac3f0eb8c159c3f1eef76bb316a3946cbfff9c5504a68f38a96\nwrote current-workspace/.docflow_workspace/templates/workspace-decisions.md sha256=8ea735ec2f512be10636f6e78742a88242d88fbdaa3f702d28ccc4316bbd03c1\nwrote current-workspace/.docflow_workspace/templates/workspace-work.md sha256=3faade570d60c065c25670391eed7170fa9dbd7f1c1f99d29c36febc846b5520\nwrote current-workspace/.docflow_workspace/templates/workspace-knowledge.md sha256=d2fa1dd0b64d295dffb9bfec06e19e11d62db072e496010ed50c5f60a1efde77\nwrote current-workspace/.docflow_workspace/templates/workspace-runs.md sha256=e704db6a305c15b4c07b82c992632303ae7a3947c0886b32a5ef4addc0bbb21b\n",
+          "stderr": "",
+          "stdout_sha256": "240dec7cee6e871f3184d42ef5860780129dc1e5fdf119c7bba61d13e7d02971",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "c4_verify_written_bytes",
+          "command": "cd current-workspace && sha256sum -c <<'EOF'\nba6dfdcd200e87856a7078b4b819691c7cfb2c5751205426b394fdf303da0523  README.md\ne9f1950d721a7022f91b2ca1eea0525fb06e829163e10c1844fb938f87aa1597  AGENTS.md\nfeb4e1ad73f0bf59d1e7b9224b511da0fd8d1eb28f9633b541cd2f42cd77a686  .gitignore\n70b0b4a65da9db2e3645b249849d8c28e07e1a8580dac966e6cbdfc29d13360d  .docflow_workspace/workspace.yaml\n2532c54806a34067413a9e246f3ffd9acb757f880b30a9cfd87bc7c4c71939cc  .docflow_workspace/CONVENTIONS.md\nabb9e5ed4bdbd268dcfa8a0310f470c6de7df64623e9146a8981c2a66c23bed3  .docflow_workspace/INDEX.md\n8ed280b0803b4b5b5cb7aa64821a7e57960821e47b347e5b15eda33ad37a8547  .docflow_workspace/integrations/sources.yaml\n15ea0a8c324aeac3f0eb8c159c3f1eef76bb316a3946cbfff9c5504a68f38a96  .docflow_workspace/templates/workspace-ideas.md\n8ea735ec2f512be10636f6e78742a88242d88fbdaa3f702d28ccc4316bbd03c1  .docflow_workspace/templates/workspace-decisions.md\n3faade570d60c065c25670391eed7170fa9dbd7f1c1f99d29c36febc846b5520  .docflow_workspace/templates/workspace-work.md\nd2fa1dd0b64d295dffb9bfec06e19e11d62db072e496010ed50c5f60a1efde77  .docflow_workspace/templates/workspace-knowledge.md\ne704db6a305c15b4c07b82c992632303ae7a3947c0886b32a5ef4addc0bbb21b  .docflow_workspace/templates/workspace-runs.md\nEOF",
+          "command_sha256": "ad4eeeec5f0d9d788482e6df90e29e4f6883f86652cfd971ff4d9efccf1ffd9d",
+          "started_at": "2026-09-15T05:02:31Z",
+          "ended_at": "2026-09-15T05:02:31Z",
+          "exit_code": 0,
+          "nonzero_exit_informational": false,
+          "stdout": "README.md: OK\nAGENTS.md: OK\n.gitignore: OK\n.docflow_workspace/workspace.yaml: OK\n.docflow_workspace/CONVENTIONS.md: OK\n.docflow_workspace/INDEX.md: OK\n.docflow_workspace/integrations/sources.yaml: OK\n.docflow_workspace/templates/workspace-ideas.md: OK\n.docflow_workspace/templates/workspace-decisions.md: OK\n.docflow_workspace/templates/workspace-work.md: OK\n.docflow_workspace/templates/workspace-knowledge.md: OK\n.docflow_workspace/templates/workspace-runs.md: OK\n",
+          "stderr": "",
+          "stdout_sha256": "464ff270a819f6cfee2e06c9d1df6e2a8a01b199ce098c31d5d6ec8eaf043959",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "c5_tree",
+          "command": "find current-workspace -printf '%y %p\\n' | LC_ALL=C sort\necho \"directories=$(find current-workspace -type d | wc -l) regular_files=$(find current-workspace -type f | wc -l) other=$(find current-workspace ! -type d ! -type f | wc -l)\"",
+          "command_sha256": "98d4f54233ab1118ffd7807f656dabf067b4b289d5acf45308d0d85da967fec7",
+          "started_at": "2026-09-15T05:02:31Z",
+          "ended_at": "2026-09-15T05:02:31Z",
+          "exit_code": 0,
+          "nonzero_exit_informational": false,
+          "stdout": "d current-workspace\nd current-workspace/.docflow_workspace\nd current-workspace/.docflow_workspace/agents\nd current-workspace/.docflow_workspace/decisions\nd current-workspace/.docflow_workspace/ideas\nd current-workspace/.docflow_workspace/integrations\nd current-workspace/.docflow_workspace/knowledge\nd current-workspace/.docflow_workspace/local\nd current-workspace/.docflow_workspace/profiles\nd current-workspace/.docflow_workspace/runs\nd current-workspace/.docflow_workspace/templates\nd current-workspace/.docflow_workspace/work\nf current-workspace/.docflow_workspace/CONVENTIONS.md\nf current-workspace/.docflow_workspace/INDEX.md\nf current-workspace/.docflow_workspace/integrations/sources.yaml\nf current-workspace/.docflow_workspace/templates/workspace-decisions.md\nf current-workspace/.docflow_workspace/templates/workspace-ideas.md\nf current-workspace/.docflow_workspace/templates/workspace-knowledge.md\nf current-workspace/.docflow_workspace/templates/workspace-runs.md\nf current-workspace/.docflow_workspace/templates/workspace-work.md\nf current-workspace/.docflow_workspace/workspace.yaml\nf current-workspace/.gitignore\nf current-workspace/AGENTS.md\nf current-workspace/README.md\ndirectories=12 regular_files=12 other=0\n",
+          "stderr": "",
+          "stdout_sha256": "3e8fe4c6e6d36a310f01fb61a1c748d868c39e6ecbc6810a1471cdc7e5457fbc",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ],
+      "halted_at": null,
+      "ended_at": "2026-09-15T05:02:31Z"
+    },
+    {
+      "phase": "validation-attempt-at-registered-asset-root",
+      "host": "cloud: Cowork session container",
+      "route": "Bash tool in the Cowork cloud session container where the docflow plugin is natively synced",
+      "cwd": "/home/claude",
+      "capture_wrapper_sha256": "60408e6eade9542a11f06d2007e0860a128b7af34be025f706fe2c777c9c25e0",
+      "started_at": "2026-09-15T05:03:07Z",
+      "steps": [
+        {
+          "name": "d1_validate_operator_path",
+          "command": "A=/root/.claude/plugins/synced/0e224371-2b7f-4fff-8c6d-7c1d6eaffe84_c75f271d-8f1d-426e-a75f-a932780b0602/docflow/workspace\nAT=$(date -u +%Y-%m-%dT%H:%M:%SZ)\necho \"evaluation_time=$AT\"\nnode \"$A/validate.mjs\" \"C:/Users/eugen/AppData/Local/Temp/docflowhq-v1-20260915/qualification-ctx-fc206cf7e4a8/cowork-session/current-workspace\" --at \"$AT\"",
+          "command_sha256": "4a688a59684c20dcd9752934b03b644ad9e186d4de33d251e86475e89615383e",
+          "started_at": "2026-09-15T05:03:07Z",
+          "ended_at": "2026-09-15T05:03:08Z",
+          "exit_code": 1,
+          "nonzero_exit_informational": true,
+          "stdout": "evaluation_time=2026-09-15T05:03:07Z\n{\n  \"schema\": 1,\n  \"evaluated_at\": \"2026-09-15T05:03:07Z\",\n  \"valid\": false,\n  \"diagnostics\": [\n    {\n      \"code\": \"registry\",\n      \"path\": \"C:/Users/eugen/AppData/Local/Temp/docflowhq-v1-20260915/qualification-ctx-fc206cf7e4a8/cowork-session/current-workspace\",\n      \"message\": \"ENOENT: no such file or directory, lstat '/home/claude/C:'\"\n    }\n  ],\n  \"records\": [],\n  \"overview\": []\n}\n",
+          "stderr": "",
+          "stdout_sha256": "0f4c4fe5c136d73e201d1c49b186348b7643ddd551a6a42823b1ad8bf2dbd37a",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "d2_validate_device_vm_path",
+          "command": "A=/root/.claude/plugins/synced/0e224371-2b7f-4fff-8c6d-7c1d6eaffe84_c75f271d-8f1d-426e-a75f-a932780b0602/docflow/workspace\nAT=$(date -u +%Y-%m-%dT%H:%M:%SZ)\necho \"evaluation_time=$AT\"\nnode \"$A/validate.mjs\" \"/sessions/rcw-01ytaalx181dvvz53wubgeiv/mnt/cowork-session/current-workspace\" --at \"$AT\"",
+          "command_sha256": "256ffe1320032070a0c5687151c1f42fdf04c850d71c427e8e49660c3a0b71b6",
+          "started_at": "2026-09-15T05:03:08Z",
+          "ended_at": "2026-09-15T05:03:08Z",
+          "exit_code": 1,
+          "nonzero_exit_informational": true,
+          "stdout": "evaluation_time=2026-09-15T05:03:08Z\n{\n  \"schema\": 1,\n  \"evaluated_at\": \"2026-09-15T05:03:08Z\",\n  \"valid\": false,\n  \"diagnostics\": [\n    {\n      \"code\": \"registry\",\n      \"path\": \"/sessions/rcw-01ytaalx181dvvz53wubgeiv/mnt/cowork-session/current-workspace\",\n      \"message\": \"ENOENT: no such file or directory, lstat '/sessions'\"\n    }\n  ],\n  \"records\": [],\n  \"overview\": []\n}\n",
+          "stderr": "",
+          "stdout_sha256": "a33dd8c45b31da1696b71ba2b6e9bcfe76781ae654905a1aa5994227f7628276",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ],
+      "halted_at": null,
+      "ended_at": "2026-09-15T05:03:08Z",
+      "transfer_verification": {
+        "method": "phase JSON captured in the cloud container, transcribed by the executor into this device command and parsed on the device; sha256 of canonical JSON (sorted keys, compact separators, UTF-8, excluding this field) compared with the cloud-computed value",
+        "expected_canonical_sha256": "3ceabef3021ee8ab086f06a1a2d8b157c9e2a86f55fa5cfb0b7d9d03ae24acc9",
+        "received_canonical_sha256": "3ceabef3021ee8ab086f06a1a2d8b157c9e2a86f55fa5cfb0b7d9d03ae24acc9",
+        "verified": true,
+        "same_capture_wrapper": true
+      }
+    },
+    {
+      "phase": "post-setup-inspection",
+      "host": "device kx2: Cowork desktop Linux VM",
+      "route": "device_bash tool (Cowork remote-devices bridge) on device kx2; Linux VM with the connected folder mounted at /sessions/rcw-01ytaalx181dvvz53wubgeiv/mnt/cowork-session",
+      "cwd": "/sessions/rcw-01ytaalx181dvvz53wubgeiv/mnt/cowork-session",
+      "capture_wrapper_sha256": "60408e6eade9542a11f06d2007e0860a128b7af34be025f706fe2c777c9c25e0",
+      "started_at": "2026-09-15T05:04:31Z",
+      "steps": [
+        {
+          "name": "e1_verify_written_bytes_again",
+          "command": "cd current-workspace && sha256sum -c <<'EOF'\nba6dfdcd200e87856a7078b4b819691c7cfb2c5751205426b394fdf303da0523  README.md\ne9f1950d721a7022f91b2ca1eea0525fb06e829163e10c1844fb938f87aa1597  AGENTS.md\nfeb4e1ad73f0bf59d1e7b9224b511da0fd8d1eb28f9633b541cd2f42cd77a686  .gitignore\n70b0b4a65da9db2e3645b249849d8c28e07e1a8580dac966e6cbdfc29d13360d  .docflow_workspace/workspace.yaml\n2532c54806a34067413a9e246f3ffd9acb757f880b30a9cfd87bc7c4c71939cc  .docflow_workspace/CONVENTIONS.md\nabb9e5ed4bdbd268dcfa8a0310f470c6de7df64623e9146a8981c2a66c23bed3  .docflow_workspace/INDEX.md\n8ed280b0803b4b5b5cb7aa64821a7e57960821e47b347e5b15eda33ad37a8547  .docflow_workspace/integrations/sources.yaml\n15ea0a8c324aeac3f0eb8c159c3f1eef76bb316a3946cbfff9c5504a68f38a96  .docflow_workspace/templates/workspace-ideas.md\n8ea735ec2f512be10636f6e78742a88242d88fbdaa3f702d28ccc4316bbd03c1  .docflow_workspace/templates/workspace-decisions.md\n3faade570d60c065c25670391eed7170fa9dbd7f1c1f99d29c36febc846b5520  .docflow_workspace/templates/workspace-work.md\nd2fa1dd0b64d295dffb9bfec06e19e11d62db072e496010ed50c5f60a1efde77  .docflow_workspace/templates/workspace-knowledge.md\ne704db6a305c15b4c07b82c992632303ae7a3947c0886b32a5ef4addc0bbb21b  .docflow_workspace/templates/workspace-runs.md\nEOF",
+          "command_sha256": "ad4eeeec5f0d9d788482e6df90e29e4f6883f86652cfd971ff4d9efccf1ffd9d",
+          "started_at": "2026-09-15T05:04:31Z",
+          "ended_at": "2026-09-15T05:04:31Z",
+          "exit_code": 0,
+          "nonzero_exit_informational": false,
+          "stdout": "README.md: OK\nAGENTS.md: OK\n.gitignore: OK\n.docflow_workspace/workspace.yaml: OK\n.docflow_workspace/CONVENTIONS.md: OK\n.docflow_workspace/INDEX.md: OK\n.docflow_workspace/integrations/sources.yaml: OK\n.docflow_workspace/templates/workspace-ideas.md: OK\n.docflow_workspace/templates/workspace-decisions.md: OK\n.docflow_workspace/templates/workspace-work.md: OK\n.docflow_workspace/templates/workspace-knowledge.md: OK\n.docflow_workspace/templates/workspace-runs.md: OK\n",
+          "stderr": "",
+          "stdout_sha256": "464ff270a819f6cfee2e06c9d1df6e2a8a01b199ce098c31d5d6ec8eaf043959",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "e2_tree_again",
+          "command": "find current-workspace -printf '%y %p\\n' | LC_ALL=C sort\necho \"directories=$(find current-workspace -type d | wc -l) regular_files=$(find current-workspace -type f | wc -l) other=$(find current-workspace ! -type d ! -type f | wc -l)\"",
+          "command_sha256": "98d4f54233ab1118ffd7807f656dabf067b4b289d5acf45308d0d85da967fec7",
+          "started_at": "2026-09-15T05:04:31Z",
+          "ended_at": "2026-09-15T05:04:31Z",
+          "exit_code": 0,
+          "nonzero_exit_informational": false,
+          "stdout": "d current-workspace\nd current-workspace/.docflow_workspace\nd current-workspace/.docflow_workspace/agents\nd current-workspace/.docflow_workspace/decisions\nd current-workspace/.docflow_workspace/ideas\nd current-workspace/.docflow_workspace/integrations\nd current-workspace/.docflow_workspace/knowledge\nd current-workspace/.docflow_workspace/local\nd current-workspace/.docflow_workspace/profiles\nd current-workspace/.docflow_workspace/runs\nd current-workspace/.docflow_workspace/templates\nd current-workspace/.docflow_workspace/work\nf current-workspace/.docflow_workspace/CONVENTIONS.md\nf current-workspace/.docflow_workspace/INDEX.md\nf current-workspace/.docflow_workspace/integrations/sources.yaml\nf current-workspace/.docflow_workspace/templates/workspace-decisions.md\nf current-workspace/.docflow_workspace/templates/workspace-ideas.md\nf current-workspace/.docflow_workspace/templates/workspace-knowledge.md\nf current-workspace/.docflow_workspace/templates/workspace-runs.md\nf current-workspace/.docflow_workspace/templates/workspace-work.md\nf current-workspace/.docflow_workspace/workspace.yaml\nf current-workspace/.gitignore\nf current-workspace/AGENTS.md\nf current-workspace/README.md\ndirectories=12 regular_files=12 other=0\n",
+          "stderr": "",
+          "stdout_sha256": "3e8fe4c6e6d36a310f01fb61a1c748d868c39e6ecbc6810a1471cdc7e5457fbc",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "e3_preservation_after",
+          "command": "echo \"files=$(find . -mindepth 1 \\( -path ./current-workspace -o -path ./current-qualification-receipt.json \\) -prune -o -type f -print | wc -l)\"\necho \"directories=$(find . -mindepth 1 \\( -path ./current-workspace -o -path ./current-qualification-receipt.json \\) -prune -o -type d -print | wc -l)\"\necho \"other=$(find . -mindepth 1 \\( -path ./current-workspace -o -path ./current-qualification-receipt.json \\) -prune -o ! -type f ! -type d -print | wc -l)\"\necho \"content_sha256=$(find . -mindepth 1 \\( -path ./current-workspace -o -path ./current-qualification-receipt.json \\) -prune -o -type f -print0 | LC_ALL=C sort -z | xargs -0 sha256sum | sha256sum | cut -d' ' -f1)\"\necho \"metadata_sha256=$(find . -mindepth 1 \\( -path ./current-workspace -o -path ./current-qualification-receipt.json \\) -prune -o -printf '%y %s %T@ %m %p\\n' | LC_ALL=C sort | sha256sum | cut -d' ' -f1)\"",
+          "command_sha256": "213332002d1e77ecba7b0dcf8f361615b0524d61060896b1115ed3bfd53331c8",
+          "started_at": "2026-09-15T05:04:31Z",
+          "ended_at": "2026-09-15T05:04:42Z",
+          "exit_code": 0,
+          "nonzero_exit_informational": false,
+          "stdout": "files=331\ndirectories=144\nother=0\ncontent_sha256=b850ad400cc895be5a89f38742f053e9dfbdbb9800e70195f68ddeebe209cdbe\nmetadata_sha256=ed83f9e36cf4ef834d3299264cbb96575b2ddd5ac1c9123ea97dca8ebb25522d\n",
+          "stderr": "",
+          "stdout_sha256": "80322d604063dbb08c1e66f61a6e492a12041c6bb1e56db482115c78e4f87203",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "e4_no_git_top_level",
+          "command": "for p in .git current-workspace/.git; do if test -e \"$p\"; then echo \"present: $p\"; else echo \"absent: $p\"; fi; done\nls -1A",
+          "command_sha256": "258ee56d4b39c191f01d85e7176c3a9c99730c0cf3efc7f9fe18822f9782ae1b",
+          "started_at": "2026-09-15T05:04:42Z",
+          "ended_at": "2026-09-15T05:04:42Z",
+          "exit_code": 0,
+          "nonzero_exit_informational": false,
+          "stdout": "absent: .git\nabsent: current-workspace/.git\ncurrent-qualification-receipt.json\ncurrent-workspace\ndocflow-package\n",
+          "stderr": "",
+          "stdout_sha256": "8ec70eab00f36f1dbc7c03e1224472ff358ff6a9087f04a4056ea25552825873",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ],
+      "halted_at": null,
+      "ended_at": "2026-09-15T05:04:42Z",
+      "comparisons": [
+        {
+          "left": "post-setup-inspection/e1_verify_written_bytes_again",
+          "right": "create-skeleton/c4_verify_written_bytes",
+          "field": "stdout",
+          "equal": true
+        },
+        {
+          "left": "post-setup-inspection/e2_tree_again",
+          "right": "create-skeleton/c5_tree",
+          "field": "stdout",
+          "equal": true
+        },
+        {
+          "left": "post-setup-inspection/e3_preservation_after",
+          "right": "preflight/b4_preservation_baseline",
+          "field": "stdout",
+          "equal": true
+        }
+      ]
+    }
+  ],
+  "updated_at": "2026-09-15T05:07:26Z",
+  "executor_assessment": {
+    "label": "Executor interpretation of the captured phases in this receipt; it is not itself execution evidence.",
+    "plugin_identity": {
+      "registration": "docflow is natively registered in this Cowork session: ListPlugins entry plugin_011ugP5k9szVCTcXtVDqFFwc (enabled) and 13 docflow:* skills in the session skill registry (transcribed host results), corroborated by native-discovery/a2_registration (13 skill directories, 13 SKILL.md name fields).",
+      "skills": [
+        "add-convention",
+        "agent-wave",
+        "audit",
+        "bootstrap",
+        "brainstorm",
+        "new-adr",
+        "new-plan",
+        "rollup",
+        "ship-item",
+        "workspace-coordinate",
+        "workspace-orient",
+        "workspace-plan",
+        "workspace-setup"
+      ],
+      "plugin_root": "/root/.claude/plugins/synced/0e224371-2b7f-4fff-8c6d-7c1d6eaffe84_c75f271d-8f1d-426e-a75f-a932780b0602/docflow",
+      "registered_asset_root": "/root/.claude/plugins/synced/0e224371-2b7f-4fff-8c6d-7c1d6eaffe84_c75f271d-8f1d-426e-a75f-a932780b0602/docflow/workspace",
+      "asset_root_evidence": "native-discovery/a2_registration: installed resolve-assets.mjs resolved it from the installed bootstrap skill",
+      "version": "0.9.4 in .claude-plugin/plugin.json and .codex-plugin/plugin.json",
+      "regular_files": 331,
+      "directories": 144,
+      "symlinks": 0,
+      "tree_digest_sha256sum_manifest_dot_paths": "3dab928cb44413a3ed9e66509c842109efd6d582e2fbf1b802160e7e702265cc",
+      "installed_validator_sha256": "c8db90d4925779be8ad11cb0116c161026feb62c454ec5539b191a98b4f6c6cd",
+      "installed_schema_sha256": "46efc122a08d3ed8e8df813f18355b9738fd6619c456f96112b445f93f761583",
+      "declared_commit": "f47f4c52313163f1ffe55a97d9c8029602d7c5b4: not verifiable from the installed tree (no Git metadata, zero embedded occurrences)",
+      "declared_export_sha256": "66184a04cda482302b4543b72e9831ef807f3b5ed5f547a11ef47cc6243a6c5a: not reproduced by the four tree constructions in native-discovery/a4_tree_digests; the export construction is unspecified, so it is unverified rather than contradicted",
+      "attached_package": "docflow-package in the connected folder was only listed and included in preservation digests; it was not used for discovery, assets or validation"
+    },
+    "created_paths_base": "C:/Users/eugen/AppData/Local/Temp/docflowhq-v1-20260915/qualification-ctx-fc206cf7e4a8/cowork-session/",
+    "created_paths": [
+      "current-qualification-receipt.json",
+      "current-workspace/",
+      "current-workspace/README.md",
+      "current-workspace/AGENTS.md",
+      "current-workspace/.gitignore",
+      "current-workspace/.docflow_workspace/",
+      "current-workspace/.docflow_workspace/workspace.yaml",
+      "current-workspace/.docflow_workspace/CONVENTIONS.md",
+      "current-workspace/.docflow_workspace/INDEX.md",
+      "current-workspace/.docflow_workspace/ideas/",
+      "current-workspace/.docflow_workspace/decisions/",
+      "current-workspace/.docflow_workspace/work/",
+      "current-workspace/.docflow_workspace/knowledge/",
+      "current-workspace/.docflow_workspace/runs/",
+      "current-workspace/.docflow_workspace/agents/",
+      "current-workspace/.docflow_workspace/profiles/",
+      "current-workspace/.docflow_workspace/integrations/",
+      "current-workspace/.docflow_workspace/integrations/sources.yaml",
+      "current-workspace/.docflow_workspace/local/",
+      "current-workspace/.docflow_workspace/templates/",
+      "current-workspace/.docflow_workspace/templates/workspace-ideas.md",
+      "current-workspace/.docflow_workspace/templates/workspace-decisions.md",
+      "current-workspace/.docflow_workspace/templates/workspace-work.md",
+      "current-workspace/.docflow_workspace/templates/workspace-knowledge.md",
+      "current-workspace/.docflow_workspace/templates/workspace-runs.md"
+    ],
+    "existing_paths_modified_or_removed": [],
+    "preserved": {
+      "scope": "every entry under cowork-session except current-workspace and current-qualification-receipt.json (the existing entry is docflow-package)",
+      "files": 331,
+      "directories": 144,
+      "other": 0,
+      "content_sha256": "b850ad400cc895be5a89f38742f053e9dfbdbb9800e70195f68ddeebe209cdbe",
+      "metadata_sha256": "ed83f9e36cf4ef834d3299264cbb96575b2ddd5ac1c9123ea97dca8ebb25522d",
+      "before": "preflight/b4_preservation_baseline",
+      "after": "post-setup-inspection/e3_preservation_after",
+      "equal": true
+    },
+    "adoption_mapping": {
+      "README.md": "installed workspace-README.md with the supplied purpose",
+      "AGENTS.md": "installed workspace-AGENTS.md verbatim",
+      ".gitignore": "ignores /repos/ and /.docflow_workspace/local/; byte-identical to the installed fixture ignore file",
+      ".docflow_workspace/workspace.yaml": "installed workspace-registry.yaml with home docflow-hq/cowork-current and the supplied purpose; repositories, external_homes and resources empty",
+      ".docflow_workspace/CONVENTIONS.md": "installed template verbatim",
+      ".docflow_workspace/INDEX.md": "installed template verbatim; the observation line was deliberately not derived because the installed validator has not validated this workspace",
+      ".docflow_workspace/integrations/sources.yaml": "{\"schema\":1,\"sources\":[]}",
+      ".docflow_workspace/templates/": "the five installed record forms verbatim, outside the canonical kind folders; they are forms, not records",
+      "empty_directories": [
+        "ideas",
+        "decisions",
+        "work",
+        "knowledge",
+        "runs",
+        "agents",
+        "profiles",
+        "integrations (contains only sources.yaml)",
+        "local (ignored local state)"
+      ],
+      "owner_and_actor": "qualification-controller and cowork-executor are recorded in this receipt only; the registry schema has no owner field and no records were created",
+      "not_created": [
+        "repos/ (no members)",
+        "roles, profiles, source catalogue entries, recommendations or retrieval",
+        "ideas, decisions, work, knowledge or run records",
+        "grants",
+        "Git repository or commits"
+      ]
+    },
+    "byte_verification": "create-skeleton/c3 compared each body with its expected sha256 before writing; create-skeleton/c4 sha256sum -c reported 12 OK with exit 0; post-setup-inspection/e1 and e2 are equal to c4 and c5. This is structural inspection, not Docflow validation.",
+    "validation": {
+      "required_command": "node <assets>/validate.mjs <workspace> --at <current-UTC>",
+      "executed": [
+        {
+          "step": "validation-attempt-at-registered-asset-root/d1_validate_operator_path",
+          "at": "2026-09-15T05:03:07Z",
+          "exit_code": 1,
+          "diagnostic": "registry: ENOENT: no such file or directory, lstat '/home/claude/C:'"
+        },
+        {
+          "step": "validation-attempt-at-registered-asset-root/d2_validate_device_vm_path",
+          "at": "2026-09-15T05:03:08Z",
+          "exit_code": 1,
+          "diagnostic": "registry: ENOENT: no such file or directory, lstat '/sessions'"
+        }
+      ],
+      "process_outcome": "failed: the installed validator could not open the actual workspace from the host where it is installed",
+      "workspace_validity": "unknown: the installed validator has not read the actual workspace",
+      "limit": "In this Cowork topology the installed Docflow assets exist only at the registered asset root inside the cloud session container, while the actual workspace exists only on device kx2 (its Linux VM mounts the connected folder at /sessions/rcw-01ytaalx181dvvz53wubgeiv/mnt/cowork-session). preflight/b5_installed_assets_on_device found no installed Docflow assets on the device VM outside the connected folder. The other routes were not taken: copying validator assets onto the device would write outside the mandated scope and install assets there; the attached docflow-package validator would replace the native assets; staging the workspace into the container carries regular files only, not the required empty folders, and would validate a constructed copy. The validation operation was stopped across routes."
+    },
+    "unresolved_members": [],
+    "host_availability": {
+      "cloud_container": "Linux 6.18.44-fc-v33 x86_64, node v22.22.2; docflow 0.9.4 natively synced; installed validator executable there",
+      "device_kx2": "win32 x64, Claude app 1.52386.6; Cowork Linux VM 6.8.0-136-generic with node v22.23.2, Python 3.10.12 and git 2.34.1; connected folder writable; no installed Docflow assets",
+      "native_guides": "six installed guides (Orca, Cursor, Claude Code, DeepSeek Harness, ZCode, Codex App); none covers Cowork, which the guides README lists only as a package installation target; no guide, role or retrieval configured"
+    },
+    "excluded_effects_observed": "No Git initialisation, commit, publish, installation, grant, run, work item, delegation or plugin/settings change was performed; the only writes were current-workspace and this receipt.",
+    "status_at_a_glance": {
+      "this_run": "Recorded native discovery of docflow 0.9.4 (13 skills, registered asset root, 331 files). Created current-workspace natively on device kx2: 12 directories and 12 files, sha256sum -c 12 OK, exit 0. Ran the installed validator at its registered asset root with --at 2026-09-15T05:03:07Z and --at 2026-09-15T05:03:08Z: exit 1 both, registry ENOENT. Existing files preserved: content and metadata digests equal before and after.",
+      "overall": "blocked: skeleton implemented and byte-verified; installed-validator validation of the actual workspace is blocked in this topology, so workspace validity is unknown",
+      "yet_to_do": [
+        "Operator decision on a mandated route for the installed validator to read the actual workspace (for example a device-local installation of the same pinned revision, or an explicitly authorised transient copy on kx2), then run node <assets>/validate.mjs <workspace> --at <current UTC> and retain complete output and exit.",
+        "After validation passes, derive .docflow_workspace/INDEX.md with the observation time and source revision; no Git revision exists because Git was not initialised.",
+        "Verify the declared commit and export SHA256 using the export's documented construction.",
+        "Any Git initialisation or commit of the workspace requires a separate mandate.",
+        "Next Docflow activity after validation: workspace-orient or workspace-plan; no dispatch."
+      ]
+    },
+    "next_action": "Operator: choose and authorise a route for the installed validator to read the actual workspace, then validate at the current UTC."
+  }
+}

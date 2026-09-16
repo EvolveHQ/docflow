@@ -1,0 +1,38 @@
+{
+  "create-a": {
+    "raw_transcript_sha256": "3ac9622f738e68292439a9b45e55ed7711a1fe985b4833ad42a55cc609c88c92",
+    "credential_markers_present": []
+  },
+  "create-b": {
+    "raw_transcript_sha256": "0dd0ef9dcc3da6dd01e8fbcad36f475c8956b383ceb972cc4dd2034b8ff1ed8d",
+    "credential_markers_present": []
+  },
+  "import": {
+    "raw_transcript_sha256": "3146fa702a0556ee32bf8be5ff2b745bbfa4eda0e82d21f537e52c1becb6ef83",
+    "credential_markers_present": []
+  },
+  "adverse": {
+    "raw_transcript_sha256": "cd44db54d8e66183d7509558fdc4343050df759de2a778b17253e6557b3cc7c6",
+    "credential_markers_present": []
+  },
+  "recommendations": {
+    "raw_transcript_sha256": "0ebff786aaed9dabbb9ce3bb4e2129c2021c358cc34612d6171c2aa20c1116b3",
+    "credential_markers_present": []
+  },
+  "context-unchanged": {
+    "raw_transcript_sha256": "b9d534c353ca5aae54175657553d3f4e5faefc139e701f4b948c68ac7ebb0db2",
+    "credential_markers_present": []
+  },
+  "context-stack": {
+    "raw_transcript_sha256": "de86c78c8ed605ee389cbb0461ae8cd932700075e0798174e5ff2f67bd037098",
+    "credential_markers_present": []
+  },
+  "context-source": {
+    "raw_transcript_sha256": "d2a05c7750416ef4fb0295cd8437be4d509e39f65e77f23debe3bcedf0d5ce77",
+    "credential_markers_present": []
+  },
+  "context-policy": {
+    "raw_transcript_sha256": "6473f4a9b0c4e4185bbdd003e33ea4a95ce678ed27b5016398ffdd2e62674c7c",
+    "credential_markers_present": []
+  }
+}
