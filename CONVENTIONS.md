@@ -194,19 +194,23 @@ commits are signed. Updating a PR does not authorise merging or releasing it.
 ## Verification Evidence
 
 A product repository does not carry run artefacts. A plan item's committed
-evidence is **at most one concise receipt** containing:
+evidence is **at most one concise receipt**, held in the plan item and repeated
+in its pull-request body:
 
 - the **Status at a glance** block (This run / Overall / Yet to do);
 - the exact command(s) run, each with its exit code;
 - content hashes (source revision, package or artifact digests) and links.
 
 Committing raw run transcripts, logs, JSON dumps, archives, screenshots or
-long verification narratives is forbidden; no change adds a new file under an
-audit directory. Raw evidence lives outside the repository and is referenced
-by content hash and location; when it is unavailable, the receipt says so.
-Removing a pre-existing committed audit is a separate bounded item that
-resolves every reference before deletion — never a bulk delete inside an
-unrelated change. See adr/0057-bounded-verification-evidence.md.
+long verification narratives is forbidden. The product repository commits
+**zero audit files**: nothing under `audits/` is added, modified, moved,
+restored or referenced by any change. External or historical evidence lives
+outside the repository in the workspace archive at
+`DocflowHQ/.docflow_workspace/local/archive/member-audits/` and is referenced
+by content hash; when it is unavailable, the receipt says so. The audit
+material committed before this rule is removed by plan 0069, which also clears
+every reference to it — never inside an unrelated change. See
+adr/0057-bounded-verification-evidence.md.
 
 ## Reporting
 Final skill results and persisted verification, PR, wave and stop reports

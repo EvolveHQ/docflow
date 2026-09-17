@@ -1,7 +1,5 @@
 # Workspace foundations verification — W1/W2
 
-> Raw run artifacts referenced in this receipt were relocated out of the repository under adr/0057-bounded-verification-evidence.md; the outcomes, hashes and limits below are retained.
-
 Source: `42ba9322e7b46e603f2a79d3185afbfee5327327`.
 Base: `7766e7272e8ec5b882b6d7380595ff482a09de3e`.
 Task branch: `kmox83/docflow-v1-workspace-foundations`.
@@ -36,7 +34,7 @@ does not extend PR #7's native evidence to the new workspace assets.
 
 ## Exact verification
 
-The machine receipt retains complete
+The [machine receipt](2026-09-15-workspace-foundations.json) retains complete
 stdout/stderr, process exit codes, environment, source SHA and SHA-256 for
 every distributed workspace/template Git blob. The local environment was
 Windows with Node.js v24.13.0; required CI uses Node.js 22 on Ubuntu.

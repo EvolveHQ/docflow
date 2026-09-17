@@ -1,7 +1,5 @@
 # Source-bound native qualification — in progress
 
-> Raw run artifacts referenced in this receipt were relocated out of the repository under adr/0057-bounded-verification-evidence.md; the outcomes, hashes and limits below are retained.
-
 Plans 0061 and 0062 remain in todo. This evidence ledger records required
 assertions and their receipts; it is not another work queue. Task
 `task_856c97a5b36d`, dispatch `ctx_fc206cf7e4a8`, sole writer on
@@ -16,11 +14,11 @@ No main integration, released V1, operator acceptance or release is asserted.
 - Plugin digest: `1f76befdd23ca9cceccbf2993e8d88448e1ca162f2437d1f10402ed5def7a3f8`.
 - Actual npm archive SHA-256:
   `d51ca82a22ace02683a29dc25bffb1534390127540a3f30634d6cc207b00142d`.
-- Source freeze: 338 exported files, including the
+- [Source freeze](source-freeze.json): 338 exported files, including the
   declared package preview; all bytes came from raw Git blobs, not checkout
   or archive line-ending conversion. The initial 337-file export omitted
   that preview and was superseded before packaging; product bytes agree.
-- Npm receipt: all 332 archive files match the export.
+- [Npm receipt](npm-package.json): all 332 archive files match the export.
 - Installed skills/workspace read-back: 329 files match on each completed
   Claude Code, Codex and OpenCode setup. The first independent installed
   read-back occurred **after** setup and before subsequent phases; the
@@ -45,8 +43,8 @@ SHA-256 and Git blob IDs are retained. Reproduce export using
 | Cowork, Windows desktop 1.52386.6.0, Opus 5 Max | Dedicated session cse_01TdFRnf8hhsie51VbtN5gve was positively stopped through native UI after the bounded run. No workspace or receipt was created; all 331 attached files stayed unchanged. | The first task used attached candidate files while the registered copy still had nine skills. After controller-approved replacement, the native registry lists thirteen skills and the supported current export matches all 331 frozen candidate files. The fresh actual setup is running; original restoration is pending. Cloud mock driver activity is not native setup evidence. |
 | DeepSeek Harness 0.1.1-rc.2, native web | Dedicated headless Chrome observes the isolated local Qwen/High profile and Workspace Write mode. First native turn fails before tools with `PI_AI_ERROR: No API key for provider: llama-server`; all fixture bytes remain unchanged. | The 900-second recovery stopped after 908 seconds including teardown, with 13 read/list calls and no check/receipt. Native progress continued until 0.4 seconds before stop. The fresh 1800-second supplied-path attempt passed the native check but stopped after 1795 seconds before returning a receipt. Its empty returns directory was created; pre-existing fixture/member/product file bytes stayed intact. No desktop-app session or remote credential is claimed. |
 
-Assertion ledger retains every required assertion
-for five hosts, eighteen scenarios and six guides. Cases
+[Assertion ledger](assertion-ledger.json) retains every required assertion
+for five hosts, eighteen scenarios and six guides. [Cases](cases.json)
 binds actual process exits, independent assertions and private transcript
 hashes. A successful process or narrow case does not pass an entire scenario.
 
@@ -57,19 +55,19 @@ no canonical write access. It ran `node check.mjs` at the declared manual
 member revision: exit 0, `qualification-member-check: OK (manual-member)`.
 The independent canonical before/after snapshots are identical.
 
-The original return uses invalid `.` evidence
-paths and reports unsupported observation times. Its failed reconciliation
-draft preserves all validator diagnostics,
+The [original return](external-native-receipt.json) uses invalid `.` evidence
+paths and reports unsupported observation times. Its [failed reconciliation
+draft](external-orca-reconciliation.json) preserves all validator diagnostics,
 including controller-draft time, reconciliation-evidence and completion-state
 mistakes. The canonical pending state was restored and validated before the
 one report-only correction. These are distinct executor and harness findings.
 
-The amended return preserves the original
+The [amended return](external-native-receipt-v2.json) preserves the original
 receipt hash and explicitly identifies unknown read times. Some required time
 fields use declared stand-ins; they are not accepted as independently measured
 events. The actual Orca 1.4.201 dispatched coordinator separately checked the
 native source, clean Git state, command exit/output and native session IDs.
-Reconciliation validates with exit 0:
+[Reconciliation](external-orca-reconciliation-v2.json) validates with exit 0:
 manual delivery complete, other delivery unknown, parent work active, agreement
 accepted. This is bounded two-host continuation; full adverse guide and Clarity
 handoff acceptance remain outstanding.
@@ -88,39 +86,39 @@ Claude Code executor returned an unamended external receipt and a separate
 native readiness stop produced a readiness report, both on byte-exact disposable
 fixtures prepared under the continuation dispatch.
 
-The assigned process ran the installed
+The [assigned process](fresh-v3-assigned-process.json) ran the installed
 `docflow:workspace-coordinate` skill in the actual executor runtime after the
-338-file installed-source preflight
+[338-file installed-source preflight](fresh-v3-assigned-preparation.json)
 matched the freeze. The executor verified the member Git blobs byte-for-byte,
 ran `node check.mjs` (exit 0, `fresh-receipt-native-check: OK`), and wrote the
 single permitted file once. The original tmpfs artifact was lost when the
-container stopped; its recovered bytes
+container stopped; its [recovered bytes](fresh-v3-assigned-external-return.json)
 match the captured Write input and the in-container shape check that returned
 valid, exit 0. Independent controller
-assertions re-verify the shape on the frozen
+[assertions](fresh-v3-assigned-assertions.json) re-verify the shape on the frozen
 assets (valid, exit 0), all 104 canonical hashes, clean Git states, native
 session binding and the envelope contents. The two-harness
-reconciliation (native Claude Code
+[reconciliation](fresh-v3-assigned-reconciliation.json) (native Claude Code
 returned; the Orca continuation controller session reconciled) imports the
 original receipt into the fixture run record unamended, records the boundary
 stop with its truthful blockers, completes the delivery observation, closes the
 grant and validates the whole fixture with exit 0.
 
-The readiness process ran the same installed
+The [readiness process](fresh-v3-readiness-process.json) ran the same installed
 skill with no grant. The native executor stopped before any attempt: its
-readiness report records the exact missing
+[readiness report](fresh-v3-readiness-report.json) records the exact missing
 execution grant and run brief, executes no check and creates no attempt or
-canonical record. Independent assertions
+canonical record. Independent [assertions](fresh-v3-readiness-assertions.json)
 prove all 97 fixture files unchanged, the runs directory still empty, a single
 permitted write and native session binding. This is the separate native
 readiness stop plan 0065 requires; it is not imported into `runs.receipt`.
 
 ## Native package removal and version upgrade
 
-OpenCode removal uses its native detached-copy
+[OpenCode removal](opencode-native-retention.json) uses its native detached-copy
 discovery mode: remove the dedicated installed directories, observe no Docflow
-skills, and restore. Version upgrade first
-installs the separately pinned historical 0.9.3 bytes
+skills, and restore. [Version upgrade](opencode-native-upgrade.json) first
+installs the separately [pinned historical 0.9.3 bytes](upgrade-0.9.3-freeze.json)
 from `a60cfcdf05188845620d3a28f21e3ccc188fb83d`, observes nine native skills, then
 applies the frozen 0.9.4 package and observes thirteen. All 329 current product
 files match, and workspace files and native Git histories stay identical
@@ -129,40 +127,40 @@ without model inference, not plugin-manager commands or another host result.
 
 ## Further native authority checks
 
-- Codex denial: a native edit failed against a
+- [Codex denial](codex-denial-assertions.json): a native edit failed against a
   read-only Docker bind. Subsequent commands only inspected Git state; no
   alternate write or delegate occurred. Fixture and installed bytes match.
-- Expired grant: fresh Claude coordination
+- [Expired grant](claude-expired-assertions.json): fresh Claude coordination
   read the actual clock after the grant expired and stopped the dependent
   check. Current native ownership did not substitute for execution authority.
-- Shared ownership: two real Git workspaces
+- [Shared ownership](claude-cross-assertions.json): two real Git workspaces
   point to one sibling member. Claude preserved injected unknown prior-owner
   history, skipped the check with null exit, and wrote only an external
-  blocked-readiness record. This is native handling
+  [blocked-readiness record](claude-cross-return.json). This is native handling
   of synthetic conflict input, not a second actual live worker or a canonical
   receipt-format pass. Complete overlap/resource/consumer variants remain.
 
-The DeepSeek recovery diagnosis preserves actual
+The [DeepSeek recovery diagnosis](dsh-bounded-diagnosis.json) preserves actual
 read sizes and progress. Its timeout proves incomplete execution within that
 bound, not unsupported guide behavior or a stalled provider. The later attempt
 used fresh authority and exact navigation paths, so it does not test discovery.
-Its timing diagnosis records 950.157 seconds before
+Its [timing diagnosis](dsh-long-diagnosis.json) records 950.157 seconds before
 the check, 1.570 seconds in the check tool and 843.276 seconds afterward; all
 native tools together occupied 6.008 seconds. Fifteen reads were distinct.
 There was no receipt-file write attempt. The isolated Git environment caused
 one recoverable parse error. The required validator/schema steps were not
 demonstrated. The check wrapper used a fixed temporary stderr file whose prior
 existence is unknown; no zero-external-effects claim is made.
-Controller reconciliation validates: run stopped,
+[Controller reconciliation](dsh-long-reconciliation.json) validates: run stopped,
 check passed, external receipt missing, work active, delivery unknown. This
 controller observation is not an executor return. A later controller-authorised helper preparation was
-rejected before launch by automatic approval
+[rejected before launch](dsh-helper-launch-rejection.json) by automatic approval
 review, which returned only `blocked by policy`. It was not split or rerouted.
-The controller cancellation closes the grant
+The [controller cancellation](dsh-helper-cancellation.json) closes the grant
 and withdraws prospective ownership; no runtime, executor receipt or process
 exit is claimed. No new DSH setup/launch is permitted without explicit operator
 direction.
-A watcher correction binds the already-created
+A [watcher correction](dsh-long-watcher-correction.json) binds the already-created
 fresh native session file without restarting the model or extending the deadline.
 
 ## Findings and retained limits
@@ -195,21 +193,21 @@ unsigned local test data; task evidence commits are signed.
 
 ## Cowork plugin restore evidence
 
-The native current-version export is byte-identical
+The [native current-version export](cowork-native-plugin-export.json) is byte-identical
 to the original local restore archive: SHA-256
 `0cafc65f97bb870f53bd2df1086e486e0e1de9a59ee5d637808299c10808b675`,
 32 files and nine skills. The UI supports ZIP upload and retains earlier uploaded
 versions; the subsequent current-candidate receipt records same-name replacement,
 while original restoration remains pending.
-The stopped session and independent attached-folder
-snapshot establish no completed workspace setup.
+The [stopped session](cowork-native-session.json) and [independent attached-folder
+snapshot](cowork-native-after-stop.json) establish no completed workspace setup.
 
-The current installed-candidate task is a separate
+The [current installed-candidate task](cowork-current-session.json) is a separate
 native session with verified native thirteen-skill discovery and exact current
 export bytes. It created 12 files after the controller stop deadline was missed
 during a usage-limit interruption; both native validator attempts failed at the
 cloud/device filesystem boundary. A separate Windows controller check passes.
-The original restoration is now verified:
+The [original restoration](cowork-restoration-verification.json) is now verified:
 32 exact files, nine skills, enabled state and unrelated inventory preserved,
 with an additional host-generated category label recorded. Desktop is released.
 The [runtime diagnosis](cowork-runtime-diagnosis.md) preserves the native failure
@@ -217,7 +215,7 @@ and the unrun attached-copy route; no new Cowork attempt is authorised.
 
 ## Shared exclusive resource guard
 
-The native resource case reuses a current
+The [native resource case](claude-resource-assertions.json) reuses a current
 A grant and native claim for a distinct Git member, reads the shared reservation
 source and linked B workspace, and stops before the check. All five fixture
 roots and the frozen package remain unchanged. B reservation history is injected
@@ -225,7 +223,7 @@ scenario input. The original external readiness report is not a canonical
 attempt receipt; schema and clock limits remain explicit.
 
 The [receipt usability diagnosis](native-receipt-usability.md) and
-concrete proposed patch preserve the actual
+[concrete proposed patch](receipt-guidance-proposal.patch) preserve the actual
 handoff failures. The [approved repair](receipt-guidance-repair.md) is committed
 and separately frozen at `eed722c8398b1e85d14ed57fa6dc53d5f5655bd0`; the original
 f47 bytes remain unchanged. Fresh affected-guidance native acceptance is pending.
@@ -236,7 +234,7 @@ functional successes. The sanitised WV13/WV15/WV18 evidence is now imported:
 the [scenario collection](scenarios-ctx_59ed70a00d5e/report.md) (nine native
 turns, 234 passing assertions, two failed read-boundary assertions) is published
 under `scenarios-ctx_59ed70a00d5e/` with its
-import receipt; every
+[import receipt](scenarios-ctx_59ed70a00d5e/import-receipt.json); every
 imported file matches the archive manifest. Raw transcripts, fixture trees and
 archives stay private with retained hashes. The two read-scope failures
 (F1 WV13 `grep -rl` beyond authorised roots; F2 WV18 restricted-byte hashing
@@ -247,15 +245,15 @@ with a false permission claim) remain failures, and the F3 reporting error
 
 A fresh bounded native run on the combined 70bae90 candidate exercised
 full-depth bootstrap plus new-adr in one session: 221 seconds, host exit 0,
-within the operator's 900-second cap. The independent
-assertions prove the seed gate preserved
+within the operator's 900-second cap. The [independent
+assertions](claude-bootstrap-assertions.json) prove the seed gate preserved
 byte-for-byte (`5de554f5b4d975117d03d8bd9bf27420e486dfcbd883b02e7bc0db20e46904cc`)
 and passing (`verify: OK (fixture gate)`, exit 0), the thirteen native skills,
 both skill invocations, a clean committed repository with no remote, Proposed
 decision 0002 with exactly three acceptance criteria, an updated INDEX and
 the full bootstrap layout (AGENTS/CLAUDE/CONVENTIONS, plan queue,
 `_agent/prompts/autonomous.md`). The disposable fixture is preserved with its
-own receipt and the container
+[own receipt](claude-bootstrap-fixture-preservation.json) and the container
 was positively stopped and removed.
 
 ## Operator decisions, 2026-09-15
