@@ -1,10 +1,12 @@
 # Cowork cloud/device asset boundary
 
+> Raw run artifacts referenced in this receipt were relocated out of the repository under adr/0057-bounded-verification-evidence.md; the outcomes, hashes and limits below are retained.
+
 Candidate: `f47f4c52313163f1ffe55a97d9c8029602d7c5b4`, development 0.9.4.
-The original [external result](cowork-current-external-result.json) distinguishes
+The original external result distinguishes
 captured process phases from model-transcribed host metadata and interpretation.
-The [independent assessment](cowork-current-independent-result.json) and
-[restoration](cowork-restoration-verification.json) remain separate evidence.
+The independent assessment and
+restoration remain separate evidence.
 
 ## Actual execution locations
 

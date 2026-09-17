@@ -1,5 +1,7 @@
 # W3, D2 and D3 implementation receipt
 
+> Raw run artifacts referenced in this receipt were relocated out of the repository under adr/0057-bounded-verification-evidence.md; the outcomes, hashes and limits below are retained.
+
 Task: task_b2132a3cb8c3 / ctx_06d7b40b0d52. Single writer: Codex.
 Branch: `kmox83/docflow-v1-workspace-skills`.
 PR: https://github.com/EvolveHQ/docflow/pull/9, targeting
@@ -23,7 +25,7 @@ PR: https://github.com/EvolveHQ/docflow/pull/9, targeting
   before the PR is marked ready; the PR records that final head/check.
 
 Exact outputs, source/packed hashes, signature/gate separation and command
-probes are under [the evidence directory](2026-09-15-workspace-skills/).
+probes are under the evidence directory.
 `source-receipt.json` hashes 345 files as exact raw Git bytes and proves all
 nine original trigger blocks unchanged. Six assessment bodies changed;
 audit, rollup and ship-item retain their existing workflows.

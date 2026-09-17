@@ -34,8 +34,8 @@ operator result is claimed. Item stays todo; decisions 0053/0055 stay Accepted.
 - `npm pack` exit 0: 332 files, content digest
   `cf4cdc2bee3354a626f01d0661d0d52e6ce2c1f9abd9735985a2eaa524a3cfef`,
   tarball SHA-256 `c0dac1dbd9bea0442525ca050d05fb9aaad6d4caa07710e2e7d713723fd3676f`.
-- Upgrade input revision one `a60cfcdf05188845620d3a28f21e3ccc188fb83d` (0.9.3),
-  pinned in `audits/2026-09-15-host-qualification/upgrade-0.9.3-freeze.json`.
+- Upgrade input revision one `a60cfcdf05188845620d3a28f21e3ccc188fb83d` (0.9.3);
+  its raw freeze was relocated out of the repository under ADR 0057.
 - `node scripts/verify.mjs` exit 0; `node evals/run.mjs` exit 0 (10 passed,
   0 failed, 6 skipped). No audit, log or raw-artifact files committed.
 - Journey steps and result capture: see the task PR body.

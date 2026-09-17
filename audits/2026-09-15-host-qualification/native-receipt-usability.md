@@ -1,5 +1,7 @@
 # Native external receipt usability diagnosis
 
+> Raw run artifacts referenced in this receipt were relocated out of the repository under adr/0057-bounded-verification-evidence.md; the outcomes, hashes and limits below are retained.
+
 Source: `f47f4c52313163f1ffe55a97d9c8029602d7c5b4`, development 0.9.4.
 Owning decisions: ADR 0052 and ADR 0053. No pinned product bytes changed when this diagnosis was recorded. The controller later approved bounded native item 0065; its new package is qualified separately.
 
@@ -28,25 +30,25 @@ Run the read-only diagnostic against the frozen installed asset root:
 node evals/hosts/inspect-native-receipts.mjs <frozen-package>/plugins/docflow/workspace <original-return.json>...
 ```
 
-The [actual diagnostic output](native-receipt-shape-diagnosis.json) uses the
+The actual diagnostic output uses the
 product's exported `checkShape` function on each unchanged native return. It
 also lists native path syntax separately. The command exited **1**, as expected
 for retained failing inputs. No native model was rerun and no return was repaired.
 
 | Original return | Installed receipt shape | Additional finding |
 | --- | --- | --- |
-| [External assignment](external-native-receipt.json), nested `receipt` | Pass | Two `.` native paths fail canonical validation; several exact observation times lack clock evidence. |
-| [Assisted amendment](external-native-receipt-v2.json), nested `receipt` | Pass | File paths repaired; declared time stand-ins still do not establish actual observation times. |
-| [Unknown-owner readiness](claude-cross-return.json) | Fail | Missing `head_revision`, extra envelope fields and invalid `used_assets`; no A attempt existed. |
-| [Shared-resource readiness](claude-resource-return.json) | Fail | Missing `head_revision`/`evidence`, extra envelope fields, null check output and invalid `used_assets`; no A attempt existed. |
+| External assignment, nested `receipt` | Pass | Two `.` native paths fail canonical validation; several exact observation times lack clock evidence. |
+| Assisted amendment, nested `receipt` | Pass | File paths repaired; declared time stand-ins still do not establish actual observation times. |
+| Unknown-owner readiness | Fail | Missing `head_revision`, extra envelope fields and invalid `used_assets`; no A attempt existed. |
+| Shared-resource readiness | Fail | Missing `head_revision`/`evidence`, extra envelope fields, null check output and invalid `used_assets`; no A attempt existed. |
 
 The original assignment's canonical rejection and the later independent
-reconciliation are preserved in [original reconciliation](external-orca-reconciliation.json)
-and [reconciliation revision 2](external-orca-reconciliation-v2.json). Passing
+reconciliation are preserved in original reconciliation
+and reconciliation revision 2. Passing
 shape checks cannot establish path resolution, grant/brief binding, truthful
 times or actual execution. The shared-resource native process also created two
 temporary validator-summary files; its claim to have written only its report is
-too broad. The [independent assertions](claude-resource-assertions.json) retain
+too broad. The independent assertions retain
 that limit while establishing unchanged canonical/member/product roots.
 
 ## What the installed product already provides
