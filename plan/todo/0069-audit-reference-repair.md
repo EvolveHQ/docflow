@@ -6,8 +6,8 @@ Owning decision: adr/0057-bounded-verification-evidence.md.
 
 - **Claimed by:** pi, docflow-v1 delivery, 2026-09-17, branch
   `kmox83/docflow-v1-audit-ref-repair`.
-- **Blockers:** None. The committed audit directory that predates the bound is
-  removed by this item's follow-up change, never inside the policy change.
+- **Blockers:** None. Both changes — the policy bound and the committed-audit
+  removal — are complete; only coordinator review and integration remain.
 - **Stopped:**
 
 ## Scope
@@ -57,12 +57,37 @@ by content hash and revision only. No repository `audits/` path is repointed.
   0 failed, 6 skipped).
 - Task PR: see the PR body; `gh pr diff 17 --name-only` lists no `audits/` path.
 
+## Receipt (audit removal, 2026-09-17)
+
+- Deleted the committed audit directory. Every `audits/…` reference now points
+  at the workspace archive; no repository path under `audits/` remains.
+- Rewrote references in three ADRs, three `plan/done` items, eleven `plan/todo`
+  items and one eval receipt. ADR edits are link fixes and are flagged
+  `editorial` in the commit message.
+- `node scripts/verify.mjs` exit 0; `node evals/run.mjs` exit 0 (10 passed,
+  0 failed, 6 skipped); the touched eval receipt still parses as JSON.
+- Content-hash index of the archived evidence now referenced:
+
+| Archived file under `DocflowHQ/.docflow_workspace/local/archive/member-audits/docflow/` | SHA-256 |
+|---|---|
+| `2026-09-13-host-verification.md` | `1bc43e389e39a10e5d221371dfcb0e42e3563471da6eb7778982a16819dedce7` |
+| `2026-09-13-pi-qwen-continuation.md` | `7ae1465b4f3dbe5e91602b5e5e5abccd7bb2093348f4db26f44f767f41f73c65` |
+| `2026-09-14-cowork-continuation.md` | `3460e0db15184b4558f86fe6ab1b7aec6f80eac195deb20dcf4a1611e4b5f2cc` |
+| `2026-09-14-release-verification.md` | `1a218d91f230260258d50740a24828b2ac5627036b219789aa3fbfff4a2203a8` |
+| `2026-09-15-workspace-foundations.md` | `c22c0088c7e780470f5e90122849843034d73741bf640021038ef17b44b016c8` |
+| `2026-09-15-workspace-skills.md` | `0eda658f0facfded5e873cb20192e67ec78febaf8330d7d5466b2edfff98d08b` |
+| `2026-09-15-clarity-release-preparation.md` | `ec27f1bb0f4201261ce77992b4e19768106cdcd43462e0ba5be03c35790ef613` |
+| `2026-09-15-host-qualification/README.md` | `9f6c721eb484ba9898c96b233582e95ac32810f09ebfe448ca99bb1fe76a7bb1` |
+| `2026-09-15-host-qualification/scenarios-ctx_59ed70a00d5e/report.md` | `e69f265fa2993d2521ac94ef5b9cdedf0ff55ec0ba3464d86029b894227fae26` |
+| `2026-09-15-host-qualification/package-runtime-receipt-freeze.json` | `c6bb9600ffc3ac0f18ded8f1c3a25490bbe2ed052532a88e32f6ebe4d85eb7c6` |
+| `2026-09-15-host-qualification/native-receipt-usability.md` | `abcac6c153b32bbb86857ebd23823b71881fc2747d88c1f3c06736b081f77e12` |
+| `2026-09-15-host-qualification/cowork-runtime-diagnosis.md` | `af628b08c06fe95dbbe190374046eca02cd522f6bb9c1137693d834baf9788a1` |
+
 ## Status at a glance
 
-- **This run:** reverted the audit edits, kept only the plan-queue work, and
-  tightened ADR 0057 + `CONVENTIONS.md` to zero committed audit files; gates
-  exit 0.
-- **Overall:** policy change verified; the committed audit directory is still
-  present and is removed by this item's follow-up change.
-- **Yet to do:** the follow-up removal and reference clearing; coordinator
-  review and integration. No merge, tag or release authority.
+- **This run:** completed both 0069 changes — the zero-committed-audit policy
+  (PR #17) and the removal of the committed audit directory with every
+  reference rewritten to the workspace archive; gates exit 0.
+- **Overall:** verified. The product repo now commits no audit file.
+- **Yet to do:** coordinator review and integration of the removal change. No
+  merge, tag or release authority.

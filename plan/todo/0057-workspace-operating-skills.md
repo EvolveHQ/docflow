@@ -40,7 +40,7 @@ Keep the item todo and decision Accepted pending the actual main completion even
 Verified work HEAD: `abdfba27284ad73c573af50690029fdcb8ebaed5`.
 PR: https://github.com/EvolveHQ/docflow/pull/9, against the review integration
 branch. Exact outputs, hashes, acceptance mapping and qualification limits:
-[`audits/2026-09-15-workspace-skills.md`](../../audits/2026-09-15-workspace-skills.md).
+`DocflowHQ/.docflow_workspace/local/archive/member-audits/docflow/2026-09-15-workspace-skills.md` (`DocflowHQ/.docflow_workspace/local/archive/member-audits/docflow/2026-09-15-workspace-skills.md`).
 The PR records the final receipt head and its required CI result.
 
 ## Status at a glance

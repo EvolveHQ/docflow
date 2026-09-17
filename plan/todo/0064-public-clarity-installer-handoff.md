@@ -59,7 +59,7 @@ Verified work HEAD: `434aacf33ca142f1c784f4588e3aa7ae7926e584`.
 PR: https://github.com/EvolveHQ/docflow/pull/10, targeting the review integration
 branch. Implementation source, exact process outcomes, public contract parity,
 mock boundaries and remaining live criteria are recorded in
-[`audits/2026-09-15-clarity-release-preparation.md`](../../audits/2026-09-15-clarity-release-preparation.md).
+`DocflowHQ/.docflow_workspace/local/archive/member-audits/docflow/2026-09-15-clarity-release-preparation.md` (`DocflowHQ/.docflow_workspace/local/archive/member-audits/docflow/2026-09-15-clarity-release-preparation.md`).
 Required source verify CI passed; the PR carries the final receipt head and its
 current required CI result. No completion move is prepared while live acceptance
 criteria remain unverified.

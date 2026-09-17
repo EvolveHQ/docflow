@@ -4290,7 +4290,7 @@
           "README.md",
           "adr/0012-skill-behavioural-evals.md",
           "adr/0015-multi-target-portability.md",
-          "audits/2026-09-14-release-verification.md",
+          "DocflowHQ/.docflow_workspace/local/archive/member-audits/docflow/2026-09-14-release-verification.md",
           "evals/hosts/results/2026-09-14-release-verification.json",
           "plan/todo/0051-agent-wave-per-host-verification.md"
         ],
@@ -4326,7 +4326,7 @@
         "signature": "G",
         "subject": "docs(audit): corroborate native Cowork ordering and signer cleanup",
         "files": [
-          "audits/2026-09-14-release-verification.md",
+          "DocflowHQ/.docflow_workspace/local/archive/member-audits/docflow/2026-09-14-release-verification.md",
           "evals/hosts/results/2026-09-14-release-verification.json"
         ],
         "adr_rationale_present": true,
@@ -4348,7 +4348,7 @@
         "subject": "docs: retain native retry failures and concurrent refresh evidence",
         "files": [
           "README.md",
-          "audits/2026-09-14-release-verification.md",
+          "DocflowHQ/.docflow_workspace/local/archive/member-audits/docflow/2026-09-14-release-verification.md",
           "evals/hosts/results/2026-09-14-release-verification.json",
           "plan/todo/0051-agent-wave-per-host-verification.md"
         ],
@@ -4361,7 +4361,7 @@
         "subject": "docs: record staged OpenCode stop verification and cleanup",
         "files": [
           "README.md",
-          "audits/2026-09-14-release-verification.md",
+          "DocflowHQ/.docflow_workspace/local/archive/member-audits/docflow/2026-09-14-release-verification.md",
           "evals/hosts/results/2026-09-14-release-verification.json",
           "plan/todo/0051-agent-wave-per-host-verification.md"
         ],
@@ -4374,7 +4374,7 @@
         "subject": "docs: record native-high Pi bootstrap and serial continuation",
         "files": [
           "README.md",
-          "audits/2026-09-14-release-verification.md",
+          "DocflowHQ/.docflow_workspace/local/archive/member-audits/docflow/2026-09-14-release-verification.md",
           "evals/README.md",
           "evals/hosts/results/2026-09-14-release-verification.json",
           "plan/todo/0051-agent-wave-per-host-verification.md"

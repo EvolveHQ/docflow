@@ -17,7 +17,7 @@ adr/0054-reuse-supplied-choices-and-current-authority.md.
 ## Latest checkpoint (continuation dispatch ctx_239ed333d8c6)
 
 The combined candidate (70bae90 plus the reviewed README clarification) passed
-static gates and carries its own [raw-blob freeze](../../audits/2026-09-15-host-qualification/package-runtime-receipt-freeze.json).
+static gates and carries its own raw-blob freeze (`DocflowHQ/.docflow_workspace/local/archive/member-audits/docflow/2026-09-15-host-qualification/package-runtime-receipt-freeze.json`).
 Both fresh v3 fixtures passed the 338-file installed-source preflight inside
 the actual executor runtime before native launch. The one authorised affected
 native rerun (fresh assigned case) exercised the new guidance natively: the
@@ -31,7 +31,7 @@ runtime-diagnosis recommendation; no new Cowork attempt is authorised.
 ## Authority and finding
 
 Controller `msg_62c465b67cb8` reviewed the source-bound
-[Cowork runtime diagnosis](../../audits/2026-09-15-host-qualification/cowork-runtime-diagnosis.md)
+Cowork runtime diagnosis (`DocflowHQ/.docflow_workspace/local/archive/member-audits/docflow/2026-09-15-host-qualification/cowork-runtime-diagnosis.md`)
 and approved the one-file README proposal, SHA-256
 `274b871cb5e7871cc5d2fc321dd49a4254036a24df6ddc21052a36195d43662f`,
 with the editorial correction that the context must **run** Node.js 22+.
