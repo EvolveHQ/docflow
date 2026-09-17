@@ -1,4 +1,0 @@
-{
-  "unchanged": "Initial byte-equality assertion overconstrained WV18: model retained all choices and corrected recipe availability from not_present to present after observing the already-present recipe; state remained declined and no option was reoffered. Contract requires retaining declined choices, not freezing availability observations.",
-  "stack": "Initial assertion required old declined state even after changed context. Contract expressly permits reasoned supersession plus replacement; original ID/pin/history survived and replacement remains declined, with no setup suggested."
-}
