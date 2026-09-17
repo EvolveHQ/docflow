@@ -103,14 +103,14 @@ installs the existing Claude Code plugin.
 - adr/0008-dual-target-packaging.md (superseded by this ADR)
 - adr/0009-distribution-marketplace-npm.md (the Claude Code / npm channels)
 - adr/0007-lifecycle-skills.md
-- `audits/2026-09-13-host-verification.md` and `evals/hosts/results/2026-09-13.json`
+- `DocflowHQ/.docflow_workspace/local/archive/member-audits/docflow/2026-09-13-host-verification.md` and `evals/hosts/results/2026-09-13.json`
   (earlier bounded observations, including retained pi/Cowork blockers)
-- `audits/2026-09-13-pi-qwen-continuation.md` and `evals/hosts/results/2026-09-13-pi-qwen.json`
+- `DocflowHQ/.docflow_workspace/local/archive/member-audits/docflow/2026-09-13-pi-qwen-continuation.md` and `evals/hosts/results/2026-09-13-pi-qwen.json`
   (Pi local-provider continuation; full Pi/Cowork acceptance remains outstanding)
-- `audits/2026-09-14-cowork-continuation.md` and `evals/hosts/results/2026-09-14-cowork.json`
+- `DocflowHQ/.docflow_workspace/local/archive/member-audits/docflow/2026-09-14-cowork-continuation.md` and `evals/hosts/results/2026-09-14-cowork.json`
   (native Windows actual-target signing/lifecycle/Workflow wave, repaired seed bootstrap and retained permission/source limitations)
 
-- `audits/2026-09-14-release-verification.md` and `evals/hosts/results/2026-09-14-release-verification.json`
+- `DocflowHQ/.docflow_workspace/local/archive/member-audits/docflow/2026-09-14-release-verification.md` and `evals/hosts/results/2026-09-14-release-verification.json`
   (fresh exact-Git-byte installations and scoped native outcomes; original failures and infrastructure interruption retained)
 
 ## Revision History

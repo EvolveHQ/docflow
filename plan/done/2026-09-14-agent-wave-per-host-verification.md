@@ -107,7 +107,7 @@ timestamp was wrong and is corrected without changing the original; the exact
 parent first-failure receipt remains unavailable. Original lifecycle/wave used
 the `13ea0c2` export, while only the repaired bootstrap ran on `eff3130`.
 See the
-[current audit](../../audits/2026-09-14-cowork-continuation.md) and its receipt.
+current audit (`DocflowHQ/.docflow_workspace/local/archive/member-audits/docflow/2026-09-14-cowork-continuation.md`) and its receipt.
 
 ## Remaining release evidence
 
@@ -132,7 +132,7 @@ These are the earlier 2026-09-11 observations, not the current outcomes.
 
 ## Current evidence — 2026-09-13
 
-See `audits/2026-09-13-host-verification.md` and
+See `DocflowHQ/.docflow_workspace/local/archive/member-audits/docflow/2026-09-13-host-verification.md` and
 `evals/hosts/results/2026-09-13.json` for exact source hashes, commands,
 assertion exits, native calls/child threads, original failures and repairs.
 
@@ -157,7 +157,7 @@ assertion exits, native calls/child threads, original failures and repairs.
   sources for Claude Code, Codex, pi and OpenCode. This is not Cowork runtime
   evidence. Local bare remotes are not hosted GitHub workflows.
 
-The later [Pi continuation](../../audits/2026-09-13-pi-qwen-continuation.md)
+The later Pi continuation (`DocflowHQ/.docflow_workspace/local/archive/member-audits/docflow/2026-09-13-pi-qwen-continuation.md`)
 and `evals/hosts/results/2026-09-13-pi-qwen.json` supersede Pi's cloud blocker.
 The configured local Qwen route with thinking off passed native bootstrap
 repair/new-adr and a fresh rung 3 wave after the claim clarification. Original bootstrap and wave
@@ -189,7 +189,7 @@ regenerated metadata INDEX; local gates passed. Neither this item nor ADRs
 
 ## Current operator run — 14 September 2026
 
-See [the release audit](../../audits/2026-09-14-release-verification.md) and its
+See the release audit (`DocflowHQ/.docflow_workspace/local/archive/member-audits/docflow/2026-09-14-release-verification.md`) and its
 separate sanitised receipt. Product and gate changes are signed separately;
 all fresh installed plugin files are exact Git bytes from bef25d8. The original
 receipts above remain historical. New observations include a complete native-high

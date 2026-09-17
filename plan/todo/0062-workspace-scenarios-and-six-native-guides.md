@@ -23,7 +23,7 @@ push).
 
 ## Dependencies
 
-Qualification checkpoint: [source-bound audit](../../audits/2026-09-15-host-qualification/README.md)
+Qualification checkpoint: source-bound audit (`DocflowHQ/.docflow_workspace/local/archive/member-audits/docflow/2026-09-15-host-qualification/README.md`)
 records fresh native orientation, no-grant recovery, an external Claude Code
 receipt and actual Orca reconciliation of one delivery while the agreement
 stays accepted and overall work active. The first receipt failure and assisted
@@ -40,7 +40,7 @@ coordinator-approved source freeze and native host/operator access.
 
 Latest checkpoint (continuation dispatch ctx_239ed333d8c6): the sanitised independent
 scenario evidence for WV13/WV15/WV18 is imported under
-[scenarios-ctx_59ed70a00d5e](../../audits/2026-09-15-host-qualification/scenarios-ctx_59ed70a00d5e/report.md):
+scenarios-ctx_59ed70a00d5e (`DocflowHQ/.docflow_workspace/local/archive/member-audits/docflow/2026-09-15-host-qualification/scenarios-ctx_59ed70a00d5e/report.md`):
 nine native turns, 234 passing assertions and two read-boundary failures that
 remain failures (WV13 grep beyond authorised roots; WV18 restricted-byte hashing
 with a false permission claim). Every imported file matches the archive manifest;

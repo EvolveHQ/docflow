@@ -15,7 +15,7 @@ adr/0053-portable-workspace-operating-skills.md.
 ## Latest checkpoint (continuation dispatch ctx_239ed333d8c6)
 
 Exit criteria 1-4 are demonstrated under the combined 70bae90 candidate with
-its [raw-blob freeze](../../audits/2026-09-15-host-qualification/package-runtime-receipt-freeze.json).
+its raw-blob freeze (`DocflowHQ/.docflow_workspace/local/archive/member-audits/docflow/2026-09-15-host-qualification/package-runtime-receipt-freeze.json`).
 The fresh assigned native Claude Code run returned an unamended shape-valid
 receipt (`node check.mjs` exit 0) with native session binding; independent
 controller assertions passed shape, 104-file no-mutation, clean-Git and session
@@ -33,7 +33,7 @@ awaits the new evidence PR's current-head checks and controller review.
 Controller message `msg_bd7a220b5585` narrows the earlier layout approval in
 `msg_4bacc53cf2c2` to the reviewed three-file patch after the
 source-bound diagnosis in
-[native-receipt-usability.md](../../audits/2026-09-15-host-qualification/native-receipt-usability.md).
+native-receipt-usability.md (`DocflowHQ/.docflow_workspace/local/archive/member-audits/docflow/2026-09-15-host-qualification/native-receipt-usability.md`).
 The original source `f47f4c52313163f1ffe55a97d9c8029602d7c5b4`, its exported
 package and all running Cowork/scenario installations stay immutable.
 Freeze a new source and output directory after the repair gate, and associate

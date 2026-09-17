@@ -58,7 +58,7 @@ the coordinator owns serial integration. No main push, merge or release.
   deterministic evals 7 passed/0 failed/6 skipped exit 0, 63 targeted tests
   passed exit 0 and 15 mutation controls rejected exit 0. Required verify CI
   passed on that source. Full outputs and acceptance mapping are in
-  audits/2026-09-15-workspace-foundations.md and its JSON receipt.
+  DocflowHQ/.docflow_workspace/local/archive/member-audits/docflow/2026-09-15-workspace-foundations.md and its JSON receipt.
 - **Overall:** verified — integration-ready foundations, not shipped to main.
 - **Yet to do:** Current-head report CI and coordinator inspection/serial
   integration through https://github.com/EvolveHQ/docflow/pull/8; operator
