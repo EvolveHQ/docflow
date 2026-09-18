@@ -57,9 +57,10 @@ ADR change.
 | [0050](adr/0050-repository-changes-integrate-through-checked-pull-requests.md) | Repository changes integrate through checked pull requests | Implemented | 2026-09-11 | 0006, 0011, 0044 |
 | [0051](adr/0051-portable-workspace-memory-contract.md) | Portable workspace memory contract | Accepted | 2026-09-15 | 0015, 0016, 0049 |
 | [0052](adr/0052-workspace-authority-and-attempt-records.md) | Workspace authority and attempt records | Accepted | 2026-09-15 | 0051 |
-| [0053](adr/0053-portable-workspace-operating-skills.md) | Portable workspace operating skills | Accepted | 2026-09-15 | 0015, 0049, 0051, 0052 |
+| [0053](adr/0053-portable-workspace-operating-skills.md) | Portable workspace operating skills | Superseded | 2026-09-15 | 0015, 0049, 0051, 0052 |
 | [0054](adr/0054-reuse-supplied-choices-and-current-authority.md) | Reuse supplied choices and current authority | Accepted | 2026-09-15 | 0013, 0031, 0039, 0042, 0052 |
 | [0055](adr/0055-source-bound-repository-producer-fixtures.md) | Source-bound repository producer fixtures | Accepted | 2026-09-15 | 0033, 0034, 0035, 0039, 0054 |
 | [0056](adr/0056-public-clarity-installer-handoff.md) | Public Clarity installer handoff | Accepted | 2026-09-15 | 0004, 0009, 0015, 0050 |
 | [0057](adr/0057-bounded-verification-evidence.md) | Bounded verification evidence in the product repository | Accepted | 2026-09-16 | 0011, 0012, 0043 |
 | [0058](adr/0058-workspace-contract-r2.md) | Workspace contract revision 2 — external sources, remote members, revision existence, derived documents and imported history | Accepted | 2026-09-18 | 0051, 0052, 0053 |
+| [0059](adr/0059-five-workspace-commands-and-mandate-note.md) | Five workspace commands and a committed operator mandate note | Accepted | 2026-09-18 | 0051, 0052, 0054 |
