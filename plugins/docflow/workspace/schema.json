@@ -2186,6 +2186,98 @@
         "evidence"
       ],
       "additionalProperties": false
+    },
+    "mandate": {
+      "type": "object",
+      "properties": {
+        "schema": {
+          "const": 1
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "home": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "const": "mandate"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "owner": {
+          "type": "string",
+          "minLength": 1
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/recordRef"
+          },
+          "minItems": 0
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "authorised": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        },
+        "accepted": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        },
+        "predecessors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/recordRef"
+          },
+          "minItems": 0
+        },
+        "successors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/recordRef"
+          },
+          "minItems": 0
+        },
+        "extensions": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "schema",
+        "id",
+        "home",
+        "kind",
+        "title",
+        "owner",
+        "created_at",
+        "links",
+        "scope",
+        "authorised",
+        "accepted",
+        "predecessors",
+        "successors"
+      ],
+      "additionalProperties": false
     }
   },
   "description": "Select a root definition; semantic and temporal checks are defined in CONTRACT.md and validate.mjs."

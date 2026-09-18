@@ -95,8 +95,8 @@ Unknown, stale, skipped, missing and failed evidence remain distinct.
    records, with observation time and unresolved diagnostics. For a new empty
    home it lists no fabricated decisions, grants, runs or completion.
    Commit/publish only under the workspace's native Git rules and existing
-   authority. Return the receipt; the next activity is workspace-orient or
-   workspace-plan, not automatic dispatch.
+   authority. Return the receipt; the next activity is workspace-status or
+   workspace-scope, not automatic dispatch.
 
 ## Recovery and unknown outcomes
 

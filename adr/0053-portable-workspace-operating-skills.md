@@ -1,11 +1,11 @@
 ---
 adr: 0053
 title: Portable workspace operating skills
-status: Accepted
+status: Superseded
 date: 2026-09-15
 owner: Codex, dispatched single Docflow writer
 supersedes:
-superseded-by:
+superseded-by: ["0059"]
 depends-on: ["0015","0049","0051","0052"]
 tags: [v1, w3]
 ---

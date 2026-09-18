@@ -1,9 +1,9 @@
 ---
-name: workspace-plan
-description: Create or refine canonical WORKSPACE ideas, agreements and cross-repository work outcomes with deliveries and recommendations. Use for workspace-plan or planning a workspace outcome. NOT for native repository decision/plan authoring, setup, read-only orientation or executing assignments.
+name: workspace-scope
+description: Record a WORKSPACE outcome and its authority: ideas, decisions, work, deliveries, criteria, grants and recommendations, accepting a decision or recording a grant from a committed mandate note. Use for workspace-scope on cross-repository outcomes. NOT for a native repository plan/todo item (use new-plan), dispatching, syncing, setup or a read-only briefing.
 ---
 
-# workspace-plan
+# workspace-scope
 
 Turn a shared outcome into inspectable workspace records and native delivery references.
 
@@ -93,7 +93,7 @@ Unknown, stale, skipped, missing and failed evidence remain distinct.
    point. Absent or conflicting authority stays absent/blocked; no fabricated
    signature. Actor/scope change requires a suspended predecessor or new
    grant; append revisions and retain old ones. Delegation still belongs to
-   workspace-coordinate after current checks.
+   workspace-dispatch after current checks.
 8. Validate at actual UTC time and compare with the prior validated snapshot
    when available. Inspect the diff; refresh the derived INDEX with time,
    source references and diagnostics under existing write authority. Commit

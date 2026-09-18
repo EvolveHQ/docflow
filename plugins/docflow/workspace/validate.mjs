@@ -1,4 +1,4 @@
-import { readFileSync, readdirSync, realpathSync, statSync } from 'node:fs';
+import { readFileSync, readdirSync, realpathSync, statSync, lstatSync } from 'node:fs';
 import { resolve, relative, isAbsolute, dirname, basename, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { isDeepStrictEqual } from 'node:util';
@@ -167,7 +167,7 @@ export function proposeFilename(records, home, id, slug) {
 
 export function validateWorkspace(rootPath, { at, previous } = {}) {
   const diagnostics = [], records = [], homes = new Map(), members = new Map();
-  const paths = new Map(), byId = new Map(), configurations = [];
+  const paths = new Map(), byId = new Map(), configurations = [], mandates = new Set();
   const fail = (code, path, message) => diagnostics.push({ code, path, message });
   if (checkShape({ at }, 'history').some(x => x.startsWith('history.at:'))) fail('time', '--at', 'supply a valid UTC evaluation time');
   if (!at) fail('time', '--at', 'explicit evaluation time required');
@@ -262,6 +262,27 @@ export function validateWorkspace(rootPath, { at, previous } = {}) {
       if (issues.length) issues.forEach(x => fail('schema', root, x));
       else configurations.push({ home: registry.home, def: 'sources', config });
     } catch (e) { fail('configuration', root, e.message); }
+    let mandateDir = null;
+    try { mandateDir = safePath(root, '.docflow_workspace/mandates', 'mandates'); }
+    catch (e) {
+      let present = false;
+      try { lstatSync(resolve(root, '.docflow_workspace/mandates')); present = true; } catch { /* truly absent */ }
+      if (present || e.code !== 'ENOENT') fail('mandate-path', '.docflow_workspace/mandates', e.message);
+    }
+    let mandateEntries = [];
+    if (mandateDir) { try { mandateEntries = readdirSync(mandateDir); } catch (e) { fail('mandate-path', '.docflow_workspace/mandates', e.message); } }
+    for (const f of mandateEntries.sort()) {
+      if (!f.endsWith('.md')) { fail('mandate-file', `.docflow_workspace/mandates/${f}`, 'unexpected mandate file'); continue; }
+      const path = `.docflow_workspace/mandates/${f}`;
+      try {
+        const record = read(root, path, parseRecord), issues = checkShape(record, 'mandate');
+        if (issues.length) { issues.forEach(x => fail('schema', path, x)); continue; }
+        const r = { ...record, path };
+        records.push(r); mandates.add(`${registry.home}#${path}`);
+        if (r.home !== registry.home) fail('home', path, 'mandate home disagrees with canonical root');
+        if (byId.has(key(r))) fail('duplicate', path, 'duplicate full identity'); else byId.set(key(r), r);
+      } catch (e) { fail('mandate', path, e.message); }
+    }
     for (const ext of registry.external_homes) {
       const extRoot = resolve(root, ext.path);
       if (!loading.has(extRoot)) load(extRoot, ext.home, loading);
@@ -304,7 +325,12 @@ export function validateWorkspace(rootPath, { at, previous } = {}) {
   function references(v, home, label) {
     if (!v || typeof v !== 'object') return;
     if (v.home && v.id && v.path) resolveRecord(v, label);
-    if (v.repository && v.path && v.revision) native(v, home, label);
+    if (v.repository && v.path && v.revision) {
+      native(v, home, label);
+      // An operator mandate is workspace-home evidence: it must cite a
+      // validated committed mandate note, never a chat message or stray path.
+      if (v.repository === home && typeof v.path === 'string' && v.path.startsWith('.docflow_workspace/mandates/') && !mandates.has(`${home}#${v.path}`)) fail('mandate-source', label, 'mandate evidence must cite a validated committed mandate note');
+    }
     if (v.observed_at && at && time(v.observed_at) > time(at)) fail('future-evidence', label, 'observation is after evaluation time');
     for (const [k, x] of Object.entries(v)) if (k !== 'extensions') references(x, home, `${label}.${k}`);
   }

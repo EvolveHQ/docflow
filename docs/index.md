@@ -31,19 +31,23 @@ why they help, and where they fall short.
 | `agent-wave` | Orchestrate a wave of parallel worktree subagents over the queue, with checkpoint or continuous supervision. |
 | `rollup` | For a multi-repo product: aggregate every member repo's ADRs into one derived, product-wide roll-up (run from the home repo). |
 | `workspace-setup` | Create or adopt a portable workspace home and registry. |
-| `workspace-orient` | Read priorities, owners, authority, blockers and next actions. |
-| `workspace-plan` | Record shared outcomes and native deliveries without granting execution. |
-| `workspace-coordinate` | Check current grants and claims, hand off bounded briefs and reconcile receipts. |
+| `workspace-status` | Read priorities, owners, authority, blockers and next actions. |
+| `workspace-scope` | Record shared outcomes and native deliveries without granting execution. |
+| `workspace-dispatch` | Check current grants, claims, dependencies and resources, then hand off a bounded brief. |
+| `workspace-sync` | Reconcile returned receipts and member state from checked native evidence; refresh INDEX. |
 
 ## Portable workspaces
 
-The four workspace skills coordinate a product across independent
+The five workspace skills coordinate a product across independent
 repositories from an adopter-owned Git workspace. `workspace-setup`
-creates or adopts the home and registry; `workspace-orient` reads
-priorities, owners, current authority and blockers; `workspace-plan`
-records a shared outcome and its native deliveries; `workspace-coordinate`
-checks current grants and claims, hands off a bounded brief and reconciles
-the returned receipt. Canonical memory stays in the adopter's workspace,
+creates or adopts the home and registry; `workspace-status` reads
+priorities, owners, current authority and blockers; `workspace-scope`
+records a shared outcome and its native deliveries; `workspace-dispatch`
+checks current grants, claims, dependencies and resources and hands off a
+bounded brief; `workspace-sync` reconciles returned receipts and member state
+from checked native evidence and refreshes INDEX. Decisions and grants cite a
+committed operator mandate note as source-bound evidence. Canonical memory
+stays in the adopter's workspace,
 while member repositories keep their own methods, instructions and histories.
 
 The records are plain files checked by a deterministic validator, not a

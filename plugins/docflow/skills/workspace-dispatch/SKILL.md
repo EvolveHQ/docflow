@@ -1,19 +1,20 @@
 ---
-name: workspace-coordinate
-description: Coordinate an already planned WORKSPACE outcome through current grants, native claims, bounded assignment briefs and source-bound receipt reconciliation. Use for workspace-coordinate, resuming an authorised assignment or reconciling its return. NOT for a native repository agent wave, planning new scope, setup or read-only orientation.
+name: workspace-dispatch
+description: Dispatch an already scoped WORKSPACE outcome: check current grants, native claims, dependencies and resources, write a bounded brief and hand it to a native host. Use for workspace-dispatch or handing off an authorised assignment. NOT for reconciling a return, maintenance observation, planning scope, native agent waves, setup or read-only briefing.
 ---
 
-# workspace-coordinate
+# workspace-dispatch
 
-Prepare, hand off and reconcile bounded native assignments under current authority.
+Prepare and hand off a bounded native assignment under current authority.
 
 ## Operating contract
 
 **Inputs:** full work/delivery reference, actor/host, exact grant revision, workspace/member revisions, native instructions/claim, dependencies/resources, checks, stopping point and return path.
-**Effects:** only current-grant actions, plus authorised canonical coordination/reconciliation writes. Native host commands are chosen explicitly from the installed guide; no new scheduler or automatic cross-host launch.
+**Effects:** only current-grant actions and the authorised brief/dispatch record.
+Reconciling a return or writing delivery observations belongs only to workspace-sync. Native host commands are chosen explicitly from the installed guide; no new scheduler or automatic cross-host launch.
 **Native claims / dependencies / resources:** require source-bound native ownership or owner-confirmed-serial evidence, completed dependencies and available reserved resources before assignment and each dependent action.
-**Stopping point:** the brief's boundary, revoked/expired/denied authority, missing ownership/dependency evidence, or a reconciled terminal receipt.
-**Receipt:** exact source revisions, commands, exits/output, actions, evidence, selected/used assets, blockers, actor/host, reconciliation identity/time and next action. Unknown results remain unknown.
+**Stopping point:** the brief's boundary, revoked/expired/denied authority, or missing ownership/dependency evidence. Reconciling a returned receipt belongs to workspace-sync.
+**Receipt:** exact source revisions, commands, exits/output, actions, evidence, selected/used assets, blockers, actor/host, handoff status and next action. Reconciliation identity/time belongs to workspace-sync. Unknown results remain unknown.
 
 ## Resolve inputs and current authority
 
@@ -113,34 +114,10 @@ not establish source resolution, current authority or truth.
    mark stopped or reassign merely because a timeout, expiry or missing
    heartbeat occurred. Ask the native owner for exit/return evidence.
 8. Resume/reassign through a new run identity with reciprocal predecessor
-   links only after the predecessor has a reconciled terminal receipt.
+   links only after the predecessor has a terminal receipt that workspace-sync has independently reconciled.
    Preserve its history. The same actor may reuse a still-compatible grant;
    another actor/scope requires fresh compatible authority. Recheck claims,
    dependencies and resources before the successor starts.
-
-## Reconcile and close the assignment
-
-9. The authorised coordinator inspects the exact returned brief binding,
-   source revision, changed paths, native checks and ownership evidence.
-   A receipt label/hash/location alone proves neither truth nor authority.
-   Preserve the returned receipt verbatim; record reconciliation actor/time
-   and source-bound observations in the run. Mismatched, missing, failed,
-   skipped or stale evidence cannot satisfy completion.
-10. Record exact commands, nullable exits for unknown/skipped checks, full
-    relevant output, outcome, evidence, used assets, blockers and next action.
-    Distinguish a successful assignment from native delivery integration.
-    Update work observations only from checked native completion evidence.
-    Keep partial delivery and unmet combined criteria visible.
-11. Work can become done only when all required native deliveries and every
-    work criterion have matching passed evidence at their declared revisions.
-    A prepared PR or file move alone is not shipped integration. Leave its
-    still-current agreement accepted. Cancelled work records partial-work
-    disposition in next_action.
-12. Validate updated records, preserving immutable briefs and append-only
-    history, and refresh INDEX under canonical-write authority. Return the
-    receipt even when reconciliation cannot finish; list the exact missing
-    evidence and owner. Do not delete member branches/worktrees or release
-    resources without their native rules and positive completion evidence.
 
 ## Unknown outcomes
 

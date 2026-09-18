@@ -18,8 +18,8 @@ below describe how docflow itself is built and maintained.
 - `plugins/docflow/skills/` — **the product**. `bootstrap/` (with
   `templates/`) plus the lifecycle skills (`new-adr`, `new-plan`,
   `ship-item`, `add-convention`, `audit`, `brainstorm`, `agent-wave`,
-  `rollup`), plus four workspace operating skills (`workspace-setup`,
-  `workspace-orient`, `workspace-plan`, `workspace-coordinate`).
+  `rollup`), plus five workspace operating skills (`workspace-setup`,
+  `workspace-status`, `workspace-scope`, `workspace-dispatch`).
   Declarative `agents/openai.yaml` sidecars provide optional
   host interface metadata; SKILL.md remains sufficient on every target.
   This is what gets installed. One source for every target.

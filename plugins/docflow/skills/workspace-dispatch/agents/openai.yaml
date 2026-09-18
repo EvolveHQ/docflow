@@ -1,0 +1,4 @@
+interface:
+  display_name: "docflow: workspace-dispatch"
+  short_description: "Prepare and hand off a bounded native assignment under current authority."
+  default_prompt: "Use workspace-dispatch for the supplied workspace scope and preserve native authority and source evidence."

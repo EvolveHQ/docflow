@@ -1,5 +1,0 @@
-interface:
-  display_name: "docflow: workspace-coordinate"
-  short_description: "Prepare, hand off and reconcile bounded native assignments under current authority."
-  default_prompt: "Use workspace-coordinate for the supplied workspace scope and preserve native authority and source evidence."
-

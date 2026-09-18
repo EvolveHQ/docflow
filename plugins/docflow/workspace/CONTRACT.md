@@ -182,6 +182,20 @@ terminal receipt, not a run label alone, must establish the assignment result.
 Conditional native effects and the truth of reported observations remain
 human/host verification responsibilities.
 
+## Operator mandate notes
+
+An operator mandate is a committed workspace-home record under
+`.docflow_workspace/mandates/<YYYY-MM-DD>-<slug>.md` with front matter
+`schema`, `id`, `home`, `kind: mandate`, `title`, `owner`, `created_at`,
+`links`, `scope`, `authorised`, `accepted`, `predecessors` and `successors`.
+It records who, when, the exact scope and what is authorised or accepted. A
+decision acceptance (`decisions.acceptance.mandate`) or a grant revision cites
+it as source-bound evidence by the workspace `home`, the mandate `path` and the
+full workspace Git `revision`; the cited revision must contain the note. The
+validator loads and shapes the notes, and rejects evidence that cites a
+mandate path which is not a validated committed note. A chat message alone is
+never evidence, and a mandate note grants nothing beyond the scope it states.
+
 ## External inputs, remote members and imported history
 
 A registry member with `role: reference`, a `remote` URL and no `path` or

@@ -2,9 +2,10 @@
 
 Read [CONTRACT.md](CONTRACT.md) for the canonical format and
 [fixtures/README.md](fixtures/README.md) for producer/consumer examples.
-Use workspace-setup to establish an adopter home, workspace-orient to read
-current state, workspace-plan to record outcomes and workspace-coordinate
-to prepare and reconcile authorised native assignments. Read the
+Use workspace-setup to establish an adopter home, workspace-status to read
+current state, workspace-scope to record outcomes, workspace-dispatch to
+prepare and hand off authorised native assignments, and workspace-sync to
+reconcile returns and maintain delivery state. Read the
 [six native guides](guides/README.md); native host/Clarity qualification
 remains separate from deterministic package checks.
 
@@ -156,7 +157,7 @@ ownership; never overwrite adopter templates, canonical records, ignored
 local state or member repositories as part of a plugin update. Existing
 records require no migration or renumbering simply because the package changes.
 
-For detached installations, copy all thirteen skill directories and the full
+For detached installations, copy all fourteen skill directories and the full
 workspace directory from the same package. Preserve bootstrap/templates and
 all declarative sidecars; copy workspace to docflow-workspace beside skills.
 No executable belongs in a skill folder. An unavailable Node.js 22+ or missing
