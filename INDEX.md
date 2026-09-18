@@ -62,3 +62,4 @@ ADR change.
 | [0055](adr/0055-source-bound-repository-producer-fixtures.md) | Source-bound repository producer fixtures | Accepted | 2026-09-15 | 0033, 0034, 0035, 0039, 0054 |
 | [0056](adr/0056-public-clarity-installer-handoff.md) | Public Clarity installer handoff | Accepted | 2026-09-15 | 0004, 0009, 0015, 0050 |
 | [0057](adr/0057-bounded-verification-evidence.md) | Bounded verification evidence in the product repository | Accepted | 2026-09-16 | 0011, 0012, 0043 |
+| [0058](adr/0058-workspace-contract-r2.md) | Workspace contract revision 2 — external sources, remote members, revision existence, derived documents and imported history | Accepted | 2026-09-18 | 0051, 0052, 0053 |
