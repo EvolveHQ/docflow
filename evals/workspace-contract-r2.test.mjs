@@ -200,3 +200,14 @@ test('no skill text routes reconciliation to workspace-dispatch', () => {
   assert.ok(!/\*\*Effects:\*\*[^\n]*reconcil/i.test(dispatch), 'dispatch still claims reconcile effects');
   assert.ok(!/reconciliation identity/.test(dispatch), 'dispatch still claims reconciliation identity');
 });
+
+test('a mandates path that is not a readable directory yields a diagnostic, not a crash', () => scratch(root => {
+  rmSync(join(root, '.docflow_workspace/mandates'), { recursive: true, force: true });
+  writeFileSync(join(root, '.docflow_workspace/mandates'), 'not a directory');
+  rejects(root, 'mandate-path');
+  const command = spawnSync(process.execPath, [join(assets, 'validate.mjs'), root, '--at', at], { encoding: 'utf8' });
+  assert.equal(command.status, 1, command.stderr);
+  const out = JSON.parse(command.stdout);
+  assert.equal(out.valid, false);
+  assert.ok(out.diagnostics.some(d => d.code === 'mandate-path'), JSON.stringify(out.diagnostics));
+}));

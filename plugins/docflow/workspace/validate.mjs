@@ -1,4 +1,4 @@
-import { readFileSync, readdirSync, realpathSync, statSync } from 'node:fs';
+import { readFileSync, readdirSync, realpathSync, statSync, lstatSync } from 'node:fs';
 import { resolve, relative, isAbsolute, dirname, basename, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { isDeepStrictEqual } from 'node:util';
@@ -264,8 +264,14 @@ export function validateWorkspace(rootPath, { at, previous } = {}) {
     } catch (e) { fail('configuration', root, e.message); }
     let mandateDir = null;
     try { mandateDir = safePath(root, '.docflow_workspace/mandates', 'mandates'); }
-    catch (e) { if (e.code !== 'ENOENT') fail('mandate-path', '.docflow_workspace/mandates', e.message); }
-    if (mandateDir) for (const f of readdirSync(mandateDir).sort()) {
+    catch (e) {
+      let present = false;
+      try { lstatSync(resolve(root, '.docflow_workspace/mandates')); present = true; } catch { /* truly absent */ }
+      if (present || e.code !== 'ENOENT') fail('mandate-path', '.docflow_workspace/mandates', e.message);
+    }
+    let mandateEntries = [];
+    if (mandateDir) { try { mandateEntries = readdirSync(mandateDir); } catch (e) { fail('mandate-path', '.docflow_workspace/mandates', e.message); } }
+    for (const f of mandateEntries.sort()) {
       if (!f.endsWith('.md')) { fail('mandate-file', `.docflow_workspace/mandates/${f}`, 'unexpected mandate file'); continue; }
       const path = `.docflow_workspace/mandates/${f}`;
       try {
