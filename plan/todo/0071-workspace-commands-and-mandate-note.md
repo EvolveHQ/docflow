@@ -32,4 +32,17 @@ audit or raw files; one concise receipt.
 
 ## Receipt
 
-Fill at completion: Status at a glance plus commands, exit codes and hashes.
+- Mandate note schema/validator commit: `2058956396ed74486b7c7473a8ea61962b3f29e9`.
+- `node scripts/verify.mjs`: `verify: OK (version 0.9.4, 14 skills, 59 ADRs, 67 shipped plan items)`, exit 0.
+- `node evals/run.mjs`: `11 passed, 0 failed, 6 skipped`, exit 0.
+- Product hashes: `schema.json` `3251a1c822f7ad028e04a8c24d4d222ee527ae608e6b181a72199a1d6632f873`; `validate.mjs` `b24a06300f456b291c2cf937cd2e3dd63d08f98c1c0a9bbdebce1cbfdbe2cfa9`.
+- Rename map: `workspace-orient`→`workspace-status`, `workspace-plan`→`workspace-scope`, `workspace-coordinate`→`workspace-dispatch` + new `workspace-sync`; `workspace-setup` unchanged.
+
+## Status at a glance
+
+- **This run:** implemented the five-command restructure, the dispatch/sync
+  split and the committed mandate note with valid/adverse controls; gates green.
+- **Overall:** verified code, not shipped; Clarity mandate-note parity and the
+  PR #20 re-run on these bytes remain separate.
+- **Yet to do:** coordinator review and integration; Clarity parity; re-run the
+  native qualification on the final package.
