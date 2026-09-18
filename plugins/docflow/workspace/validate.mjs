@@ -46,6 +46,28 @@ export function inspectHistoricalFile(rootInput, ref) {
     return blob.status === 0 && blob.stdout.trim() === 'blob';
   } catch { return false; }
 }
+// A member with a local Git object store is revision-verified; a member
+// without one stays existence-only and never claims revision verification.
+function localGitRoot(rootInput) {
+  try {
+    const root = realpathSync(rootInput);
+    const env = Object.fromEntries(Object.entries(process.env).filter(([k]) => !/^GIT_/i.test(k)));
+    Object.assign(env, {
+      GIT_NO_LAZY_FETCH: '1', GIT_NO_REPLACE_OBJECTS: '1',
+      GIT_OPTIONAL_LOCKS: '0', GIT_CONFIG_NOSYSTEM: '1',
+      GIT_CONFIG_GLOBAL: process.platform === 'win32' ? 'NUL' : '/dev/null',
+      GIT_CONFIG_SYSTEM: process.platform === 'win32' ? 'NUL' : '/dev/null',
+      GIT_CONFIG_COUNT: '0', GIT_TERMINAL_PROMPT: '0',
+    });
+    const top = spawnSync('git', ['--no-lazy-fetch', '--no-replace-objects',
+      '--no-optional-locks', '-C', root, 'rev-parse', '--show-toplevel'],
+      { env, encoding: 'utf8', timeout: 5000, windowsHide: true, maxBuffer: 1024 * 1024 });
+    if (top.status !== 0) return null;
+    const actual = realpathSync(top.stdout.trim());
+    const same = process.platform === 'win32' ? actual.toLowerCase() === root.toLowerCase() : actual === root;
+    return same ? root : null;
+  } catch { return null; }
+}
 const transitions = {
   ideas: { backlog: ['selected', 'rejected', 'discarded'], selected: ['backlog', 'rejected', 'discarded'], rejected: ['backlog'], discarded: ['backlog'] },
   decisions: { proposed: ['accepted', 'rejected', 'superseded'], accepted: ['superseded'], rejected: ['superseded'], superseded: [] },
@@ -183,6 +205,11 @@ export function validateWorkspace(rootPath, { at, previous } = {}) {
         if (aliases.has(alias)) fail('alias', root, 'ambiguous repository identity/alias');
         aliases.add(alias);
       }
+      if (!Object.hasOwn(member, 'path')) {
+        if (!/^[a-z][a-z0-9+.-]*:/i.test(member.remote || '')) { fail('member-remote', member.id, 'remote-only member needs a remote URL with a scheme'); continue; }
+        for (const id of [member.id, ...member.aliases]) members.set(`${registry.home}#${id}`, { ...member, remoteOnly: true });
+        continue;
+      }
       try {
         const memberRoot = realpathSync(resolve(root, member.path));
         if (!statSync(memberRoot).isDirectory()) throw Error('member is not a directory');
@@ -250,8 +277,15 @@ export function validateWorkspace(rootPath, { at, previous } = {}) {
   }
   function native(ref, home, label) {
     const member = members.get(`${home}#${ref.repository}`);
+    if (member?.remoteOnly) return; // identity-only: the member exists only as a remote
     const root = member?.root || (ref.repository === home ? homes.get(home)?.root : undefined);
     if (!root) { fail('native-reference', label, 'unresolved member identity'); return; }
+    if (localGitRoot(root)) {
+      // A local Git object store is authoritative: the exact regular file must
+      // exist at the cited revision. Fail closed when it does not.
+      if (!inspectHistoricalFile(root, ref)) fail('native-revision', label, 'cited revision does not contain the referenced regular file');
+      return;
+    }
     try { const p = safePath(root, ref.path, label); if (!statSync(p).isFile()) throw Error('native reference is not a file'); }
     catch (e) {
       // An immutable brief may name a native todo file that has since moved.
@@ -347,6 +381,13 @@ export function validateWorkspace(rootPath, { at, previous } = {}) {
 
   const attempts = [];
   for (const r of records.filter(r => r.kind === 'runs')) {
+    if (r.import) {
+      if (r.brief) { fail('import-brief', r.path, 'imported evidence cannot also carry a dispatch brief'); continue; }
+      // Imported execution history is read-only and can never satisfy a
+      // grant-bound dispatch, claim, resource or completion check.
+      continue;
+    }
+    if (!r.brief) { fail('authority', r.path, 'run needs a dispatch brief or an imported-evidence form'); continue; }
     const brief = r.brief, work = resolveRecord(brief.work, r.path, 'work');
     if (!work || work.kind !== 'work' || !homes.has(work.home)) { fail('authority', r.path, 'work canonical home is unavailable'); continue; }
     const delivery = work.deliveries.find(d => d.id === brief.delivery);
@@ -420,6 +461,16 @@ export function validateWorkspace(rootPath, { at, previous } = {}) {
   const assets = new Map(), roles = new Map(), aliases = new Set();
   for (const c of configurations.filter(c => c.def === 'sources')) {
     unique(c.config.sources, c.home);
+    const documents = c.config.documents || [];
+    unique(documents, c.path);
+    for (const doc of documents) {
+      // A derived documentation registration is content-addressed and never
+      // vendored into canonical memory.
+      if (!/^[a-z][a-z0-9+.-]*:/i.test(doc.locator)) {
+        const docRoot = homes.get(c.home)?.root;
+        if (docRoot) { try { if (within(docRoot, realpathSync(resolve(docRoot, doc.locator)))) fail('vendored-document', c.path, 'derived document locator resolves inside the workspace'); } catch { /* a non-existent external path is not vendored */ } }
+      }
+    }
     for (const source of c.config.sources) { unique(source.assets, c.home, a => `${a.id}#${a.revision}`); for (const a of source.assets) assets.set(`${c.home}#${source.id}#${a.id}#${a.revision}`, a); }
   }
   function asset(ref, home, label) { if (!assets.has(`${home}#${ref.source}#${ref.asset}#${ref.revision}`)) fail('asset', label, 'unresolved pinned asset revision'); }
