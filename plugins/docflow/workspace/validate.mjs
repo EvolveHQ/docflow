@@ -262,18 +262,21 @@ export function validateWorkspace(rootPath, { at, previous } = {}) {
       if (issues.length) issues.forEach(x => fail('schema', root, x));
       else configurations.push({ home: registry.home, def: 'sources', config });
     } catch (e) { fail('configuration', root, e.message); }
-    try {
-      const dir = safePath(root, '.docflow_workspace/mandates', 'mandates');
-      for (const f of readdirSync(dir).sort()) {
-        const path = `.docflow_workspace/mandates/${f}`;
+    let mandateDir = null;
+    try { mandateDir = safePath(root, '.docflow_workspace/mandates', 'mandates'); }
+    catch (e) { if (e.code !== 'ENOENT') fail('mandate-path', '.docflow_workspace/mandates', e.message); }
+    if (mandateDir) for (const f of readdirSync(mandateDir).sort()) {
+      if (!f.endsWith('.md')) { fail('mandate-file', `.docflow_workspace/mandates/${f}`, 'unexpected mandate file'); continue; }
+      const path = `.docflow_workspace/mandates/${f}`;
+      try {
         const record = read(root, path, parseRecord), issues = checkShape(record, 'mandate');
         if (issues.length) { issues.forEach(x => fail('schema', path, x)); continue; }
         const r = { ...record, path };
-        records.push(r); mandates.add(path);
+        records.push(r); mandates.add(`${registry.home}#${path}`);
         if (r.home !== registry.home) fail('home', path, 'mandate home disagrees with canonical root');
         if (byId.has(key(r))) fail('duplicate', path, 'duplicate full identity'); else byId.set(key(r), r);
-      }
-    } catch (e) { if (e.code !== 'ENOENT') fail('mandate-path', '.docflow_workspace/mandates', e.message); }
+      } catch (e) { fail('mandate', path, e.message); }
+    }
     for (const ext of registry.external_homes) {
       const extRoot = resolve(root, ext.path);
       if (!loading.has(extRoot)) load(extRoot, ext.home, loading);
@@ -320,7 +323,7 @@ export function validateWorkspace(rootPath, { at, previous } = {}) {
       native(v, home, label);
       // An operator mandate is workspace-home evidence: it must cite a
       // validated committed mandate note, never a chat message or stray path.
-      if (v.repository === home && typeof v.path === 'string' && v.path.startsWith('.docflow_workspace/mandates/') && !mandates.has(v.path)) fail('mandate-source', label, 'mandate evidence must cite a validated committed mandate note');
+      if (v.repository === home && typeof v.path === 'string' && v.path.startsWith('.docflow_workspace/mandates/') && !mandates.has(`${home}#${v.path}`)) fail('mandate-source', label, 'mandate evidence must cite a validated committed mandate note');
     }
     if (v.observed_at && at && time(v.observed_at) > time(at)) fail('future-evidence', label, 'observation is after evaluation time');
     for (const [k, x] of Object.entries(v)) if (k !== 'extensions') references(x, home, `${label}.${k}`);

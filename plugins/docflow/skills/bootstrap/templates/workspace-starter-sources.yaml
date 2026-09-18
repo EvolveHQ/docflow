@@ -75,6 +75,24 @@
             "Canonical writes or native actions only under the skill operating contract and current authority."
           ],
           "replacement": null
+        },
+        {
+          "id": "workspace-sync",
+          "asset_kind": "skill",
+          "revision": "operating-procedure-1",
+          "location": "../skills/workspace-sync/SKILL.md",
+          "licence": "MIT",
+          "selection": "candidate",
+          "compatibility": "proposed",
+          "owner": "adopter-selected-owner",
+          "requires": [
+            "Resolve the actual installed skill and record its package Git revision/content hash.",
+            "Read current workspace and member authority."
+          ],
+          "effects": [
+            "Reconcile returns and maintain delivery state from checked native evidence; refresh INDEX; canonical writes only under current authority."
+          ],
+          "replacement": null
         }
       ]
     }

@@ -98,7 +98,8 @@ Unknown, stale, skipped, missing and failed evidence remain distinct.
 A fresh session repeats source reads, not the previous questionnaire.
 Retain valid supplied focus and host choices; flag revisions that changed.
 Do not refresh INDEX or repair malformed records during this read-only skill:
-name the scoped workspace-scope or workspace-dispatch action needed.
+name the scoped workspace-sync action (record repair, delivery observations and
+INDEX refresh) or workspace-scope action (record shaping) needed.
 No run or canonical receipt is invented for read-only orientation.
 
 <!-- docflow:closing-report -->

@@ -20,6 +20,7 @@ const sources = (root, fn) => { const p = join(root, '.docflow_workspace/integra
 const result = (root, options = {}) => validateWorkspace(root, { at, ...options });
 const valid = root => { const r = result(root); assert.equal(r.valid, true, JSON.stringify(r.diagnostics)); return r; };
 const rejects = (root, code, options = {}) => { const r = result(root, options); assert.equal(r.valid, false); assert.ok(r.diagnostics.some(d => d.code === code), JSON.stringify(r.diagnostics)); return r; };
+const reject_strict = (root, code) => rejects(root, code);
 function scratch(fn, copy = true) {
   const parent = mkdtempSync(join(tmpdir(), 'docflow-contract-r2-'));
   const root = join(parent, 'workspace');
@@ -160,4 +161,42 @@ test('adverse: a chat message alone is not a mandate source', () => scratch(root
 test('distributed mandate template matches the schema', () => {
   const t = parseRecord(readFileSync(join(repo, 'plugins/docflow/skills/bootstrap/templates/workspace-mandate.md'), 'utf8'));
   assert.deepEqual(checkShape(t, 'mandate'), []);
+});
+
+// 8. Mandate loader robustness, home+path keying and dispatch routing.
+test('a malformed mandate file does not abort loading valid ones', () => scratch(root => {
+  mkdirSync(join(root, '.docflow_workspace/mandates'), { recursive: true });
+  write(root, mandatePath, mandateRecord());
+  writeFileSync(join(root, '.docflow_workspace/mandates/2026-09-15-bad.md'), 'not-front-matter');
+  edit(root, 'preserve-legacy-response', d => { d.acceptance.mandate = citeMandate; });
+  const r = result(root);
+  assert.ok(r.diagnostics.some(d => d.code === 'mandate'), JSON.stringify(r.diagnostics));
+  assert.ok(!r.diagnostics.some(d => d.code === 'mandate-source'), JSON.stringify(r.diagnostics));
+}));
+test('a missing mandates directory is valid, but a non-file entry is a diagnostic', () => scratch(root => {
+  valid(root);
+  mkdirSync(join(root, '.docflow_workspace/mandates/not-a-note'), { recursive: true });
+  reject_strict(root, 'mandate-file');
+}));
+test('a mandate citation is keyed by home and path, never by path alone', () => scratch((root, parent) => {
+  mkdirSync(join(root, '.docflow_workspace/mandates'), { recursive: true });
+  write(root, mandatePath, mandateRecord());
+  const other = join(parent, 'other-home');
+  cpSync(fixture, other, { recursive: true });
+  const home = 'example/other';
+  for (const kind of ['ideas', 'decisions', 'work', 'knowledge', 'runs']) for (const f of readdirSync(join(other, '.docflow_workspace', kind))) {
+    const p = join(other, '.docflow_workspace', kind, f);
+    writeFileSync(p, readFileSync(p, 'utf8').replaceAll('example/platform', home));
+  }
+  registry(other, d => { d.home = home; d.repositories = []; d.resources = []; });
+  edit(other, 'preserve-legacy-response', d => { d.acceptance.mandate = { ...citeMandate, repository: home }; });
+  registry(root, d => { d.external_homes.push({ home, path: '../other-home' }); });
+  // home B has no mandate note at that path; home A does. The keying must not let A's note satisfy B.
+  rejects(root, 'mandate-source');
+}));
+test('no skill text routes reconciliation to workspace-dispatch', () => {
+  const dispatch = readFileSync(join(repo, 'plugins/docflow/skills/workspace-dispatch/SKILL.md'), 'utf8');
+  assert.ok(!/reconciled terminal receipt/.test(dispatch), 'dispatch still owns a reconciled stopping point');
+  assert.ok(!/\*\*Effects:\*\*[^\n]*reconcil/i.test(dispatch), 'dispatch still claims reconcile effects');
+  assert.ok(!/reconciliation identity/.test(dispatch), 'dispatch still claims reconciliation identity');
 });

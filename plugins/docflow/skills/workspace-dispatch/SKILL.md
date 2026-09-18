@@ -10,10 +10,11 @@ Prepare and hand off a bounded native assignment under current authority.
 ## Operating contract
 
 **Inputs:** full work/delivery reference, actor/host, exact grant revision, workspace/member revisions, native instructions/claim, dependencies/resources, checks, stopping point and return path.
-**Effects:** only current-grant actions, plus authorised canonical coordination/reconciliation writes. Native host commands are chosen explicitly from the installed guide; no new scheduler or automatic cross-host launch.
+**Effects:** only current-grant actions and the authorised brief/dispatch record.
+Reconciling a return or writing delivery observations belongs only to workspace-sync. Native host commands are chosen explicitly from the installed guide; no new scheduler or automatic cross-host launch.
 **Native claims / dependencies / resources:** require source-bound native ownership or owner-confirmed-serial evidence, completed dependencies and available reserved resources before assignment and each dependent action.
-**Stopping point:** the brief's boundary, revoked/expired/denied authority, missing ownership/dependency evidence, or a reconciled terminal receipt.
-**Receipt:** exact source revisions, commands, exits/output, actions, evidence, selected/used assets, blockers, actor/host, reconciliation identity/time and next action. Unknown results remain unknown.
+**Stopping point:** the brief's boundary, revoked/expired/denied authority, or missing ownership/dependency evidence. Reconciling a returned receipt belongs to workspace-sync.
+**Receipt:** exact source revisions, commands, exits/output, actions, evidence, selected/used assets, blockers, actor/host, handoff status and next action. Reconciliation identity/time belongs to workspace-sync. Unknown results remain unknown.
 
 ## Resolve inputs and current authority
 
@@ -113,7 +114,7 @@ not establish source resolution, current authority or truth.
    mark stopped or reassign merely because a timeout, expiry or missing
    heartbeat occurred. Ask the native owner for exit/return evidence.
 8. Resume/reassign through a new run identity with reciprocal predecessor
-   links only after the predecessor has a reconciled terminal receipt.
+   links only after the predecessor has a terminal receipt that workspace-sync has independently reconciled.
    Preserve its history. The same actor may reuse a still-compatible grant;
    another actor/scope requires fresh compatible authority. Recheck claims,
    dependencies and resources before the successor starts.

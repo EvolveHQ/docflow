@@ -3,8 +3,9 @@
 Read [CONTRACT.md](CONTRACT.md) for the canonical format and
 [fixtures/README.md](fixtures/README.md) for producer/consumer examples.
 Use workspace-setup to establish an adopter home, workspace-status to read
-current state, workspace-scope to record outcomes and workspace-dispatch
-to prepare and reconcile authorised native assignments. Read the
+current state, workspace-scope to record outcomes, workspace-dispatch to
+prepare and hand off authorised native assignments, and workspace-sync to
+reconcile returns and maintain delivery state. Read the
 [six native guides](guides/README.md); native host/Clarity qualification
 remains separate from deterministic package checks.
 
