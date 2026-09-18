@@ -48,7 +48,10 @@ actor, scope revision, delivery, action/effects, conditions, start, expiry,
 revocation/suspension, exact grant revision and stopping point. Reuse an
 existing compatible grant; request only missing or changed authority.
 Check native ownership, dependencies and shared resources separately.
-Reference-only members permit only scoped non-mutating actions. A denied
+Reference-only members permit only scoped non-mutating actions; a
+remote-only reference resolves by identity only. An imported/backfilled run
+is read-only history and never satisfies a dispatch, claim or completion
+check. A denied
 tool/action stops that action across alternate tools, routes and delegates.
 Contact loss is not worker exit and never permits reassignment.
 

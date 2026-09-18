@@ -18,7 +18,9 @@ Do not initialise or convert an existing parent container implicitly.
 
 Registry `repositories` is a simple list: immutable shared `id`, retained
 `aliases`, declared `path`, optional `remote`, `role` (delivery/reference),
-and relative `instructions`. Paths may be absolute or relative, including
+and relative `instructions`. A member may instead be a **remote-only
+reference**: `id`, `aliases`, `remote` and `role: reference`, with no `path`
+and no `instructions`. Paths may be absolute or relative, including
 explicit sibling checkouts. Resolve and canonicalise each declared root;
 record/native paths must remain inside their respective declared roots,
 including through symbolic links. The validator reads declared instruction
@@ -26,8 +28,14 @@ and native reference files, never scans arbitrary sibling repositories.
 Missing members produce diagnostics; registry entries are not deleted.
 No remote URL is fetched or recorded command executed. A missing native file
 may be resolved in its declared local Git revision using read-only Git object
-queries, without hooks or network. This preserves immutable briefs after a
-native path move; historical symlink blobs and escaping paths are rejected.
+queries, without hooks or network. Where a member has a local Git object
+store, **every cited native revision must contain the exact regular file at
+that revision**; a revision that does not is a `native-revision` diagnostic
+that fails the workspace, and the check fails closed. A member without a
+local Git object store is existence-only and never claims revision
+verification. Native references to a remote-only reference member are
+identity-only. This preserves immutable briefs after a native path move;
+historical symlink blobs and escaping paths are rejected.
 Historical lookup requires Git with --no-lazy-fetch support (2.45 or later),
 ignores inherited repository/configuration redirects and replacement objects,
 and requires the exact regular-file entry and blob to exist locally.
@@ -79,6 +87,13 @@ the member's exact path/identifier and full Git revision. Evidence adds
 evidence uses the workspace home as `repository`. Evidence is a source-bound
 observation, not a signature or execution grant. Outcomes are passed, failed,
 skipped, unknown and stale; none except passed satisfies completion.
+
+A knowledge source may instead be a **content-addressed external source**:
+`locator`, `sha256` `digest` (with the `sha256:` prefix), `observer`,
+`observed_at`, `outcome` and `summary`. It is validated without any local Git
+root and is never resolved to a workspace path. The locator is an opaque
+external reference (for example a URL or an archive path), so a document that
+lives outside Git and outside the machine is first-class knowledge.
 
 Filenames are `<readable-slug>--<suffix>.md` in the matching kind folder.
 The suffix starts with the first 12 hex characters of the UUID with hyphens
@@ -166,6 +181,32 @@ matching passed evidence. Skipped/failed checks never become success. A
 terminal receipt, not a run label alone, must establish the assignment result.
 Conditional native effects and the truth of reported observations remain
 human/host verification responsibilities.
+
+## External inputs, remote members and imported history
+
+A registry member with `role: reference`, a `remote` URL and no `path` or
+`instructions` is a **remote-only reference**. Its identity resolves; native
+references to it are identity-only (no local file or revision check) and its
+actions stay non-mutating (read/test/report). A remote-only entry with
+`role: delivery`, or without a scheme in its remote, is invalid.
+
+`sources.yaml` may carry a `documents` array registering a **derived
+documentation set** as an external content-addressed input (`id`, `locator`,
+`sha256` `digest`, `observer`, `observed_at`, optional `derived_from` and
+`note`). The document is never vendored into canonical memory: a locator that
+resolves to an existing path inside the workspace fails as
+`vendored-document`.
+
+A run may be an **imported-evidence record**: `brief` is null and an `import`
+object carries `imported_at`, `observer`, `evidence` and an optional `note`.
+Imported history is read-only backfill for an execution that happened under a
+native mandate. It validates without a workspace grant and can never satisfy a
+grant-bound dispatch, an active work-state check or a claim/resource overlap.
+A run with both a brief and an import fails as `import-brief`.
+
+**Backlog grouping is out of the contract.** Grouping work into a
+product-wide roadmap or backlog is a consumer concern; this format records
+ideas, decisions, work, knowledge and runs, and adds no grouping field.
 
 ## Roles, profiles and recommendations
 

@@ -68,7 +68,10 @@ Unknown, stale, skipped, missing and failed evidence remain distinct.
    superseded/rejected history without reviving it. A native member's
    legitimate Implemented state is not a workspace decision state.
 3. For each relevant work record report full identity, priority, owner,
-   blockers, dependencies, next_action and latest runs. For native references
+   blockers, dependencies, next_action and latest runs. Distinguish a
+   grant-bound attempt from an imported/backfilled run: imported history is
+   read-only and carries no workspace grant, so it never proves current
+   authority. For native references
    read exact paths/revisions and current Status, branch and checks where
    authorised. Use the member's own discovery and queue conventions; do not
    create a competing queue or force a migration.
