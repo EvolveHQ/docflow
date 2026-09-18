@@ -81,3 +81,6 @@ remain as recorded in the continuation checkpoint. Item stays todo.
 ### Behavioural matrix update (2026-09-18)
 No external return or readiness stop was executed in these sessions; those
 cases remain unrun.
+
+### r3 update (2026-09-18)
+External readiness stop and transport return produced on all three hosts, archived with exit 0. Two-host reconciliation of the original return remains unrun. Item stays todo.

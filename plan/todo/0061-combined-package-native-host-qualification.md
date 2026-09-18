@@ -151,3 +151,25 @@ Codex CLI stays **unrun**: account usage limit confirmed, resets 2026-09-21 22:2
   identity gap closed; host session incomplete.
 - **Codex CLI:** unrun, account usage limit resets 2026-09-21 22:29.
 
+### r3 full matrix (2026-09-18, final package @ `7087897`)
+
+Claude Code 2.1.274, Codex CLI 0.154.0, OpenCode 1.18.31; disposable config, `/tmp` scratch; exit codes archived in `2026-09-18-host-qualification-r3/`. No case simulated.
+
+| Case | Claude | Codex | OpenCode |
+|---|---|---|---|
+| discovery + byte-bound install | 14/335 `f4c78986…` | 14/335 `f4c78986…` | 14/69 `407557b4…` |
+| credits smoke | — | CODEX_OK | — |
+| authority current/expired/conflicting | exit 0 | exit 0 | exit 0 |
+| authority missing (dispatch refuse) | exit 0 (validator 1) | exit 0 (validator 1) | exit 0 (validator 1) |
+| mandate-note valid/adverse | exit 0 / validator 1 | exit 0 / exit 0 | exit 0 / exit 0 |
+| recovery (read-only) | exit 0, bytes identical | exit 0 | exit 0 |
+| scope + new-plan disjointness | exit 0 | exit 0 | exit 0 |
+| dispatch / sync reconcile / sync prepared | exit 0 | exit 0 | exit 0 |
+| bootstrap/new-plan/ship-item | exit 0 | exit 0 | exit 0 |
+
+**Isolation breach and rerun:** Claude Code write-cases initially inherited the real checkout as cwd (stray `0072`; reset out, no file remains); those cells were invalid and rerun against a guarded `/tmp/hq-qa` scratch (exit 0), with a driver guard that aborts outside `/tmp/hq-qa`.
+
+**Remaining (operator decisions):** Orca guide evidence **required** and blocked (absent); Cowork best-effort and **not required**; pi **deferred**. 0061 stays todo.
+
+### Post-qualification fixes (2026-09-18)
+PR #21's bugbot fixes — dispatch no longer claims reconciliation; status routes repair/INDEX refresh to workspace-sync; the mandate loader is per-file robust, keyed by home+path, and no longer crashes on a non-directory mandates path. These are text/validator-robustness changes; **the r3 matrix did not run on these new bytes.**

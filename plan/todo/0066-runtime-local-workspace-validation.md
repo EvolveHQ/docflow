@@ -77,3 +77,6 @@ todo.
 The Claude Code workspace-setup probe validated inside a disposable runtime
 (`validate.mjs` exit 0), exercising the runtime-local validation path. No
 affected-guidance native rerun or two-host reconciliation ran.
+
+### r3 update (2026-09-18)
+Runtime-local validation ran on all three hosts (validator exit 0); two-host reconciliation Claude Code -> Codex ran on one scratch workspace (Codex workspace-sync exit 0). Affected-guidance rerun remains. Item stays todo.

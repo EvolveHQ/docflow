@@ -95,3 +95,6 @@ Claude Code ran one bounded workspace workflow (workspace-setup + validator
 exit 0), which counts as the Claude Code guide smoke. No WV01–WV18 scenario
 beyond that, no two-host continuation, no Clarity handoff. Orca, Cowork,
 ZCode, Codex App, Cursor and DeepSeek Harness stay unrun.
+
+### r3 update (2026-09-18)
+Claude Code guide smoke ran (workspace-setup, 12-file valid workspace, validator exit 0); headless setup/status/scope/dispatch/sync scenarios ran on all three hosts. Orca guide evidence required and blocked (absent); other four guides unverified documentation; Cowork not required. Item stays todo.
