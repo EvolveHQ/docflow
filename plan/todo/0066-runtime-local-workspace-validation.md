@@ -5,10 +5,11 @@ adr/0054-reuse-supplied-choices-and-current-authority.md.
 
 ## Status
 
-- **Claimed by:** Sole Docflow writer, 2026-09-15, branch
-  `kmox83/docflow-v1-host-qualification`; task `task_856c97a5b36d`.
-  First dispatch `ctx_fc206cf7e4a8` (Codex) stopped on a usage limit;
-  continuation dispatch `ctx_239ed333d8c6` now holds the claim.
+- **Claimed by:** pi, docflow-v1 delivery, 2026-09-18, branch
+  `kmox83/docflow-v1-host-qualification-r2`; reassigned by the operator via the
+  workspace controller; predecessor ctx_239ed333d8c6. Predecessor text:
+  task `task_856c97a5b36d`; first dispatch `ctx_fc206cf7e4a8` (Codex) stopped on
+  a usage limit.
 - **Blockers:** Any Cowork qualification needs a concrete bounded proposal and
   separate authorisation; the completion move waits on current-head PR checks
   and controller review.
@@ -64,3 +65,10 @@ source binding and original outcomes.
    separately authorised Cowork qualification.
 5. Current-head PR checks pass and controller review accepts the evidence;
    integration, release and the real operator pilot remain separate prerequisites.
+
+## Same-session evidence (2026-09-18)
+
+The 2026-09-18 Claude Code workspace-setup probe validated inside a disposable
+runtime (validator exit 0), which partially exercises the runtime preflight.
+No affected-guidance native rerun or two-host reconciliation ran. Item stays
+todo.

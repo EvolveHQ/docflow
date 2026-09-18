@@ -4,10 +4,11 @@ Owning decisions: adr/0053-portable-workspace-operating-skills.md and adr/0054-r
 
 ## Status
 
-- **Claimed by:** Sole qualification writer, 2026-09-15, branch
-  `kmox83/docflow-v1-host-qualification`; task `task_856c97a5b36d`.
-  First dispatch `ctx_fc206cf7e4a8` (Codex) stopped on a usage limit;
-  continuation dispatch `ctx_239ed333d8c6` now holds the claim.
+- **Claimed by:** pi, docflow-v1 delivery, 2026-09-18, branch
+  `kmox83/docflow-v1-host-qualification-r2`; reassigned by the operator via the
+  workspace controller; predecessor ctx_239ed333d8c6. Predecessor text:
+  task `task_856c97a5b36d`; first dispatch `ctx_fc206cf7e4a8` (Codex) stopped on
+  a usage limit.
 - **Blockers:** Combined Clarity acceptance awaits the controller-supplied integrated source/artifact; native access limits remain to be established in current dedicated sessions.
 - **Stopped:**
 
@@ -72,3 +73,26 @@ Run actual discovery and bounded workflow probes on Claude Code, Cowork, pi, Cod
 1. All five targets have current installed-source discovery and behavioural receipts; D2 positive/negative/recovery cases pass; exact logs and native source hashes reviewed; failed/unavailable cases stay open. This is not authorised in the W3 development dispatch.
 2. Record exact source, host version/platform/mode, commands/output/exits, native versus simulated scope and outstanding cases.
 3. Follow single-writer ownership, signed commits, native acceptance and checked PR integration. No implicit release/version-bump authority.
+
+## Native qualification receipt (2026-09-18)
+
+Source: branch `kmox83/docflow-v1-host-qualification-r2`, product bytes
+`4bf0330a3d9120aadecc68adcfb19b41462baddc`, version 0.9.4. Raw evidence:
+`DocflowHQ/.docflow_workspace/local/archive/member-audits/docflow/2026-09-18-host-qualification/`
+(`MANIFEST.sha256`; branch package `6174b654…`). No raw log is committed.
+
+| Host | Version | Mode | Actual | Unrun |
+|---|---|---|---|---|
+| Claude Code | 2.1.274 | isolated `CLAUDE_CONFIG_DIR` plugin install | 13 skills discovered; 332 installed files byte-match branch (digest `262f64f2…`); discovery probe named all 13; workspace-setup probe wrote a valid empty workspace, validator exit 0 | current/missing/expired/conflicting authority, fresh-session recovery, unchanged-skill regression, Clarity handoff |
+| Codex CLI | 0.154.0 | isolated `CODEX_HOME` plugin install | 13 skills discovered; 332 installed files byte-match branch (digest `262f64f2…`) | every workflow/authority/recovery probe |
+| OpenCode | 1.18.31 | isolated `XDG_CONFIG_HOME` detached copy + `docflow-workspace` sibling | 13 skills installed, 66 files byte-match branch (digest `3e2d4fad…`); assets resolve | every workflow/authority/recovery probe |
+| pi | 0.85.1 | branch skills via `--skill` | load path recorded (13 skills) | all pi runs: operator deferred local-Qwen and forbade substitution |
+| Cowork | n/a | Windows desktop | unrun: not present on this Linux host | qualification (best-effort per operator decision) |
+| Orca | n/a | not installed | unrun: host absent | guide evidence |
+
+Commands: `node scripts/verify.mjs` exit 0; `node evals/run.mjs` 11 passed /
+0 failed / 6 skipped, exit 0.
+
+**Status at a glance:** actual Claude Code discovery + workspace-setup and
+per-host installed hashes for Claude/Codex/OpenCode; simulated none; unrun the
+authority/recovery/regression matrix, pi, Cowork and Orca. Item stays todo.

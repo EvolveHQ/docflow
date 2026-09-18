@@ -5,9 +5,10 @@ adr/0053-portable-workspace-operating-skills.md.
 
 ## Status
 
-- **Claimed by:** Codex, sole Docflow writer, 2026-09-15, branch
-  `kmox83/docflow-v1-host-qualification`; task `task_856c97a5b36d`,
-  dispatch `ctx_fc206cf7e4a8`.
+- **Claimed by:** pi, docflow-v1 delivery, 2026-09-18, branch
+  `kmox83/docflow-v1-host-qualification-r2`; reassigned by the operator via the
+  workspace controller; predecessor ctx_239ed333d8c6. Predecessor text:
+  task `task_856c97a5b36d`, dispatch `ctx_fc206cf7e4a8`.
 - **Blockers:** Combined Clarity/operator acceptance is separate; the completion
   move waits on current-head PR checks and controller integration.
 - **Stopped:**
@@ -71,3 +72,8 @@ scope review before expansion.
    explicit scope, preserving source/receipt history and parent completion limits.
 5. Signed evidence commits and current-head PR checks pass. Completion remains
    prepared on the PR branch until controller integration; no release authority.
+
+## Same-session evidence (2026-09-18)
+
+The 2026-09-18 sessions ran no external return or readiness stop; those cases
+remain as recorded in the continuation checkpoint. Item stays todo.
