@@ -44,7 +44,7 @@ every later affected-guidance assertion with those new bytes.
 
 Clarify external transport versus canonical receipt payload and pre-dispatch
 readiness reports. Add the shared procedure to `workspace/README.md` and link it
-from `workspace-coordinate/SKILL.md` and `workspace/guides/claude-code.md`.
+from `workspace-dispatch/SKILL.md` and `workspace/guides/claude-code.md`.
 Document the existing read-only shape API with truthful limits, actual UTC
 capture and contained native evidence file references. Preserve original failed
 returns and never retrofit missing historical measurements.

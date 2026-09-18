@@ -518,7 +518,7 @@ the offer comes back on the next audit.
 
 ## 5c. Portable workspaces (cross-repository coordination)
 
-A **federation** (§5a) keeps one product's decisions consistent across
+An **operator mandate note** committed under `.docflow_workspace/mandates/` records who, when, the exact scope and what is authorised or accepted; decisions and grants cite it as source-bound evidence. A **federation** (§5a) keeps one product's decisions consistent across
 several repositories. A **portable workspace** is the layer above that: an
 adopter-owned Git home — registry, conventions and canonical records —
 that coordinates work across independent member repositories without
@@ -535,9 +535,10 @@ facts; native hosts still do the work.
 | Skill | Use it to |
 |-------|-----------|
 | `/workspace-setup` | Deliberately create or adopt a workspace home and registry. |
-| `/workspace-orient` | Read priorities, owners, current authority, blockers and next actions — including in a fresh session. |
-| `/workspace-plan` | Record a cross-repository outcome, its deliveries and recommendations. |
-| `/workspace-coordinate` | Check current grants and claims, hand off a bounded brief and reconcile the returned receipt. |
+| `/workspace-status` | Read priorities, owners, current authority, blockers and next actions — including in a fresh session. |
+| `/workspace-scope` | Record a cross-repository outcome, its deliveries and recommendations. |
+| `/workspace-dispatch` | Check current grants, claims, dependencies and resources, then hand off a bounded brief. |
+| `/workspace-sync` | Reconcile returned receipts and member state from checked native evidence and refresh INDEX; never completes from a prepared PR or unmerged plan/done file. |
 
 **Authority is separate from agreement.** Selecting work and agreeing a
 scope grant no execution rights. A native assignment runs only under a

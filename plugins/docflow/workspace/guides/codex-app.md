@@ -34,7 +34,7 @@ pinned. This procedure is a test specification, not a record of a passing run.
 1. Confirm the actual host version, platform, mode, project path, discovered
    skill path/hash and accessible member/workspace roots. Resolve assets using
    bootstrap's locator; read CONTRACT and native member instructions explicitly.
-2. Have workspace-coordinate prepare a read/test/report assignment with an
+2. Have workspace-dispatch prepare a read/test/report assignment with an
    actual current grant and source-bound native claim, dependencies/resources,
    exact revisions, required checks, stopping point and return path.
 3. Open the brief in this native session. Identify full work/run identities,

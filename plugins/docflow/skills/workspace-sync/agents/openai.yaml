@@ -1,0 +1,4 @@
+interface:
+  display_name: "docflow: workspace-sync"
+  short_description: "Reconcile native returns and maintain delivery state from checked evidence."
+  default_prompt: "Use workspace-sync to reconcile the supplied workspace return or member state and refresh the derived index."

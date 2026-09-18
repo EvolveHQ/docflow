@@ -23,10 +23,10 @@
           "replacement": null
         },
         {
-          "id": "workspace-orient",
+          "id": "workspace-status",
           "asset_kind": "skill",
           "revision": "operating-procedure-1",
-          "location": "../skills/workspace-orient/SKILL.md",
+          "location": "../skills/workspace-status/SKILL.md",
           "licence": "MIT",
           "selection": "candidate",
           "compatibility": "proposed",
@@ -41,10 +41,10 @@
           "replacement": null
         },
         {
-          "id": "workspace-plan",
+          "id": "workspace-scope",
           "asset_kind": "skill",
           "revision": "operating-procedure-1",
-          "location": "../skills/workspace-plan/SKILL.md",
+          "location": "../skills/workspace-scope/SKILL.md",
           "licence": "MIT",
           "selection": "candidate",
           "compatibility": "proposed",
@@ -59,10 +59,10 @@
           "replacement": null
         },
         {
-          "id": "workspace-coordinate",
+          "id": "workspace-dispatch",
           "asset_kind": "skill",
           "revision": "operating-procedure-1",
-          "location": "../skills/workspace-coordinate/SKILL.md",
+          "location": "../skills/workspace-dispatch/SKILL.md",
           "licence": "MIT",
           "selection": "candidate",
           "compatibility": "proposed",

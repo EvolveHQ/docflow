@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtempSync, cpSync, readFileSync, writeFileSync, rmSync, readdirSync, realpathSync } from 'node:fs';
+import { mkdtempSync, cpSync, readFileSync, writeFileSync, rmSync, readdirSync, realpathSync, mkdirSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { resolve, join, dirname, basename } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -130,4 +130,34 @@ test('distributed templates cover the revision-2 forms', () => {
   assert.deepEqual(checkShape(imported, 'runs'), []);
   assert.equal(imported.brief, null);
   assert.ok(imported.import && imported.import.evidence.length === 1);
+});
+
+// 7. Committed operator mandate note.
+function mandateRecord() {
+  return { schema: 1, id: 'aaaaaaaa-bbbb-4ccc-8ddd-eeeeeeeeeeee', home: 'example/platform', kind: 'mandate',
+    title: 'Operator mandate: probe', owner: 'human:owner', created_at: '2026-09-15T07:00:00Z', links: [],
+    scope: 'Authorise only the named scoped work.', authorised: ['Record the acceptance.'],
+    accepted: ['The scoped probe.'], predecessors: [], successors: [] };
+}
+const mandatePath = '.docflow_workspace/mandates/2026-09-15-probe.md';
+const citeMandate = { repository: 'example/platform', path: mandatePath, revision: '1'.repeat(40), observed_at: '2026-09-15T08:00:00Z', outcome: 'passed', summary: 'Committed operator mandate note.' };
+test('a committed mandate note validates and can source a decision acceptance', () => scratch(root => {
+  mkdirSync(join(root, '.docflow_workspace/mandates'), { recursive: true });
+  write(root, mandatePath, mandateRecord());
+  edit(root, 'preserve-legacy-response', d => { d.acceptance.mandate = citeMandate; });
+  valid(root);
+}));
+test('adverse: evidence citing a non-validated mandate path is rejected', () => scratch(root => {
+  mkdirSync(join(root, '.docflow_workspace/mandates'), { recursive: true });
+  write(root, mandatePath, { ...mandateRecord(), kind: 'ideas' });
+  edit(root, 'preserve-legacy-response', d => { d.acceptance.mandate = citeMandate; });
+  rejects(root, 'mandate-source');
+}));
+test('adverse: a chat message alone is not a mandate source', () => scratch(root => {
+  edit(root, 'preserve-legacy-response', d => { d.acceptance.mandate = { observed_at: '2026-09-15T08:00:00Z', outcome: 'passed', summary: 'Operator said so in chat.' }; });
+  rejects(root, 'schema');
+}));
+test('distributed mandate template matches the schema', () => {
+  const t = parseRecord(readFileSync(join(repo, 'plugins/docflow/skills/bootstrap/templates/workspace-mandate.md'), 'utf8'));
+  assert.deepEqual(checkShape(t, 'mandate'), []);
 });

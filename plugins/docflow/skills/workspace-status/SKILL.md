@@ -1,9 +1,9 @@
 ---
-name: workspace-orient
-description: Read a Docflow WORKSPACE to identify priorities, agreements, owners, delivery progress, blockers and next actions, including fresh-session recovery. Use for workspace-orient or understanding a workspace. NOT for creating records, planning changes or dispatching work.
+name: workspace-status
+description: Read-only briefing and fresh-session recovery for a WORKSPACE: priorities, owners, current authority, delivery progress, blockers and next actions. Use for workspace-status or understanding a workspace. This skill never writes. NOT for creating records, scoping work, dispatching, syncing or native repository work.
 ---
 
-# workspace-orient
+# workspace-status
 
 Give a source-backed view of what matters and what can happen next.
 
@@ -98,7 +98,7 @@ Unknown, stale, skipped, missing and failed evidence remain distinct.
 A fresh session repeats source reads, not the previous questionnaire.
 Retain valid supplied focus and host choices; flag revisions that changed.
 Do not refresh INDEX or repair malformed records during this read-only skill:
-name the scoped workspace-plan or workspace-coordinate action needed.
+name the scoped workspace-scope or workspace-dispatch action needed.
 No run or canonical receipt is invented for read-only orientation.
 
 <!-- docflow:closing-report -->

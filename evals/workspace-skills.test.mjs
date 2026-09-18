@@ -10,8 +10,8 @@ import { resolveAssets } from '../plugins/docflow/workspace/resolve-assets.mjs';
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const product = join(root, 'plugins/docflow');
 const names = ['add-convention', 'agent-wave', 'audit', 'bootstrap', 'brainstorm',
-  'new-adr', 'new-plan', 'rollup', 'ship-item', 'workspace-coordinate',
-  'workspace-orient', 'workspace-plan', 'workspace-setup'].sort();
+  'new-adr', 'new-plan', 'rollup', 'ship-item', 'workspace-dispatch',
+  'workspace-status', 'workspace-scope', 'workspace-setup', 'workspace-sync'].sort();
 const read = p => readFileSync(p, 'utf8').replace(/\r\n/g, '\n');
 const skill = name => read(join(product, 'skills', name, 'SKILL.md'));
 function scratch(fn) {
@@ -103,9 +103,10 @@ test('operating contracts cover authority and outcomes without changing schema v
       assert.ok(text.includes(required), name + ': missing ' + required);
     }
   }
-  assert.match(skill('workspace-orient'), /read and report only/);
-  assert.match(skill('workspace-coordinate'), /return a separate receipt/);
-  assert.match(skill('workspace-coordinate'), /Leave its\n\s+still-current agreement accepted/);
+  assert.match(skill('workspace-status'), /read and report only/);
+  assert.match(skill('workspace-dispatch'), /return a separate receipt/);
+  assert.match(skill('workspace-sync'), /still-current agreement accepted/);
+  assert.match(skill('workspace-sync'), /prepared pull request or an unmerged plan\/done file/);
 });
 
 test('assessment prose reuses supplied answers and still asks material missing choices', () => {

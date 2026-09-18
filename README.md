@@ -32,9 +32,10 @@ agent the same skills are invoked as `/skill:<name>` (e.g.
 | agent-wave | `/agent-wave` | Run a bounded queue wave using available parallel agents or sequential execution, with checkpoint or continuous supervision. |
 | rollup | `/rollup` | For a multi-repo product: aggregate every member repo's ADRs into one derived, product-wide roll-up (run from the home repo). |
 | workspace-setup | `/workspace-setup` | Deliberately create or adopt a portable workspace home and registry. |
-| workspace-orient | `/workspace-orient` | Read priorities, owners, authority, blockers and next actions. |
-| workspace-plan | `/workspace-plan` | Record shared outcomes and native deliveries without granting execution. |
-| workspace-coordinate | `/workspace-coordinate` | Check current grants and claims, hand off bounded briefs and reconcile receipts. |
+| workspace-status | `/workspace-status` | Read priorities, owners, authority, blockers and next actions. |
+| workspace-scope | `/workspace-scope` | Record shared outcomes and native deliveries without granting execution. |
+| workspace-dispatch | `/workspace-dispatch` | Check current grants, claims, dependencies and resources, then hand off a bounded brief. |
+| workspace-sync | `/workspace-sync` | Reconcile returned receipts and maintain delivery state from checked native evidence; refresh INDEX. |
 
 The repository lifecycle skills **read `CONVENTIONS.md` first** and honour the
 choices the bootstrap recorded (ADR shape, status lifecycle, integration
@@ -43,23 +44,24 @@ and point you at `/bootstrap`.
 
 ## Portable workspaces
 
-The four workspace skills keep cross-repository memory in an adopter-owned
+The five workspace skills — setup, status, scope, dispatch and sync — keep
+cross-repository memory in an adopter-owned
 Git workspace. Members retain their native methods, instructions and histories.
 Clarity views, copies and prepares handoffs; authorised Docflow sessions edit
 canonical records and reconcile native evidence. Selection and agreement grant
 no execution authority, and delivery completion leaves the agreement accepted.
 
 Install the complete [workspace assets](plugins/docflow/workspace/README.md)
-with all thirteen skills, including for detached skill copies. The
-[six native guides](plugins/docflow/workspace/guides/README.md), four portable
+with all fourteen skills, including for detached skill copies. The
+[six native guides](plugins/docflow/workspace/guides/README.md), five portable
 starter roles, profile examples and ordinary-file search travel in the same
 package. The new guides have source/help checks; full native qualification
 remains pending on the combined candidate.
 
-Use `/workspace-orient` in standalone Claude Code/Cowork skill mode, the
-plugin-qualified form `/docflow:workspace-orient` when exposed by the host,
-`/skill:workspace-orient` in pi, or `$workspace-orient` in Codex/ZCode.
-OpenCode and other native skill pickers use the discovered `workspace-orient`
+Use `/workspace-status` in standalone Claude Code/Cowork skill mode, the
+plugin-qualified form `/docflow:workspace-status` when exposed by the host,
+`/skill:workspace-status` in pi, or `$workspace-status` in Codex/ZCode.
+OpenCode and other native skill pickers use the discovered `workspace-status`
 name. The same naming applies to the other three workspace skills; verify
 the resolved source in the actual host before acting.
 

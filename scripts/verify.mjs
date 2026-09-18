@@ -83,7 +83,8 @@ const skillDirs = readdirSync(skillsDir, { withFileTypes: true })
 
 const requiredSkills = ['bootstrap', 'new-adr', 'new-plan', 'ship-item',
   'add-convention', 'audit', 'brainstorm', 'agent-wave', 'rollup',
-  'workspace-setup', 'workspace-orient', 'workspace-plan', 'workspace-coordinate'];
+  'workspace-setup', 'workspace-status', 'workspace-scope', 'workspace-dispatch',
+  'workspace-sync'];
 for (const name of requiredSkills) {
   if (!skillDirs.includes(name)) fail('missing required portable skill: ' + name);
 }
