@@ -1,7 +1,7 @@
 {
   "name": "@evolvehq/docflow",
   "version": "0.9.4",
-  "description": "ADR-driven documentation workflow: scaffold an Architecture Decision Record (ADR) catalogue, a plan/ queue, and AGENTS.md conventions into any repo, then author, queue, ship, audit, and roll up ADRs with lifecycle skills — across one repo or a multi-repo product. Works on Claude Code, Claude Cowork, pi, Codex, and OpenCode.",
+  "description": "ADR-driven documentation workflow: a bootstrap skill that scaffolds an Architecture Decision Record (ADR) catalogue, a plan/ queue, AGENTS.md conventions, and _agent/ coordination — plus lifecycle skills to author ADRs, queue and ship work, add conventions, audit consistency, brainstorm decisions, run agent waves, and roll up a multi-repo product's catalogues, and four portable-workspace skills (workspace-setup, workspace-orient, workspace-plan, workspace-coordinate) that set up, read, plan and coordinate cross-repository work. Thirteen skills in total. Scales from one repo to a multi-repo federation. Works on Claude Code, Claude Cowork, pi, Codex, and OpenCode.",
   "keywords": [
     "pi-package",
     "adr",
@@ -33,7 +33,9 @@
     "access": "public"
   },
   "pi": {
-    "skills": ["./plugins/docflow/skills"],
+    "skills": [
+      "./plugins/docflow/skills"
+    ],
     "image": "https://raw.githubusercontent.com/EvolveHQ/docflow/main/docs/preview.png"
   }
 }

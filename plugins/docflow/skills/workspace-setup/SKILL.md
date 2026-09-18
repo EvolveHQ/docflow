@@ -75,11 +75,17 @@ Unknown, stale, skipped, missing and failed evidence remain distinct.
 3. Replace synthetic home/owner/paths with actual choices. Start with empty
    records and `{"schema":1,"sources":[]}`; register only supplied member
    identities, aliases, paths, role and native instructions. No remote fetch
-   or clone follows merely from registry membership.
+   or clone follows merely from registry membership. A member may be
+   remote-only: `role: reference`, a `remote` URL and no path or instructions;
+   its references are identity-only and its actions stay non-mutating.
+   Register a derived documentation set in `sources.yaml` `documents` by
+   external locator and digest; never vendor the document into the workspace.
 4. Copy the five workspace record forms to the adopter's
    `.docflow_workspace/templates/`, outside canonical record folders.
    Offer the four `workspace-role-*.md` starter forms, profile examples and
-   source catalogue from bootstrap. Adopt only chosen entries, pin actual
+   source catalogue from bootstrap. The separate `workspace-run-import.md`
+   form backfills imported execution history read-only; it carries no grant
+   and never satisfies a dispatch check. Adopt only chosen entries, pin actual
    installed revisions and owner, and preserve existing configuration.
    Empty recommendations and no extra role/tool are valid choices.
 5. Read `<assets>/guides/README.md` and the chosen native guide.

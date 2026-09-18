@@ -241,15 +241,20 @@ test('a native path move keeps the immutable brief resolvable at its Git tree re
   const member = join(root, 'repos/api');
   function git(args, input) { const r = spawnSync('git', ['-C', member, ...args], { encoding: 'utf8', input }); assert.equal(r.status, 0, r.stderr); return r.stdout.trim(); }
   git(['init', '--quiet']);
-  const blob = git(['hash-object', '-w', '--stdin'], readFileSync(join(member, 'work.md'), 'utf8'));
-  const tree = git(['mktree'], `100644 blob ${blob}\twork.md\n`);
-  for (const name of ['api-interrupted', 'api-reassigned']) edit(root, name, d => { d.brief.native_work.revision = tree; });
-  edit(root, 'preserve-legacy-response', d => { d.adoption[0].revision = tree; });
+  const entries = readdirSync(member).filter(f => !f.startsWith('.')).sort().map(f => {
+    const blob = git(['hash-object', '-w', '--stdin'], readFileSync(join(member, f), 'utf8'));
+    return `100644 blob ${blob}\t${f}`;
+  });
+  const doneBlob = git(['hash-object', '-w', '--stdin'], readFileSync(join(member, 'work.md'), 'utf8'));
+  entries.push(`100644 blob ${doneBlob}\tdone.md`);
+  const tree = git(['mktree'], entries.join('\n') + '\n');
+  const pin = node => { if (!node || typeof node !== 'object') return; for (const [k, v] of Object.entries(node)) { if (typeof v === 'string' && /^[0-9a-f]{40}$/.test(v)) node[k] = tree; else pin(v); } };
+  for (const name of Object.keys(paths)) edit(root, name, pin);
   writeFileSync(join(member, 'done.md'), readFileSync(join(member, 'work.md'))); rmSync(join(member, 'work.md'));
   edit(root, 'deliver-compatible-exports', d => { d.deliveries[0].native_work.path = 'done.md'; });
   valid(root);
   edit(root, 'api-reassigned', d => { d.brief.native_work.revision = 'f'.repeat(40); });
-  rejects(root, 'native-path');
+  rejects(root, 'native-revision');
 }));
 
 test('packaged plugin, npm, symlink and detached Codex/OpenCode skill copies resolve assets offline', () => scratch((root, parent) => {

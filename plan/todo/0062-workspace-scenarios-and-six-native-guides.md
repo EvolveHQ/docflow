@@ -4,10 +4,11 @@ Owning decisions: adr/0051-portable-workspace-memory-contract.md, adr/0052-works
 
 ## Status
 
-- **Claimed by:** Sole qualification writer, 2026-09-15, branch
-  `kmox83/docflow-v1-host-qualification`; task `task_856c97a5b36d`.
-  First dispatch `ctx_fc206cf7e4a8` (Codex) stopped on a usage limit;
-  continuation dispatch `ctx_239ed333d8c6` now holds the claim.
+- **Claimed by:** pi, docflow-v1 delivery, 2026-09-18, branch
+  `kmox83/docflow-v1-host-qualification-r2`; reassigned by the operator via the
+  workspace controller; predecessor ctx_239ed333d8c6. Predecessor text:
+  task `task_856c97a5b36d`; first dispatch `ctx_fc206cf7e4a8` (Codex) stopped on
+  a usage limit.
 - **Blockers:** Actual combined Clarity views/handoffs await the controller-supplied integrated source/artifact; desktop and web guide access must be proved in dedicated sessions.
 - **Stopped:**
 
@@ -80,3 +81,17 @@ Execute WV01–WV18 from parent document 14 revision 0.15, including fresh orien
 1. Eighteen source-bound scenario receipts, all six native guide smokes and a two-host continuation pass with actual Clarity views/handoffs; unsupported/denied/changed-source variants retain honest diagnostics. Experimental retrieval needs its own rebuild/removal evidence before support claims.
 2. Record exact source, host version/platform/mode, commands/output/exits, native versus simulated scope and outstanding cases.
 3. Follow single-writer ownership, signed commits, native acceptance and checked PR integration. No implicit release/version-bump authority.
+
+## Same-session evidence (2026-09-18)
+
+The 2026-09-18 host sessions in plan 0061 exercised only Claude Code discovery
+and one bounded workspace-setup workflow. No workspace scenario (WV01–WV18) or
+native guide smoke ran. Only the Claude Code guide has partial evidence; Orca
+is unrun (host absent); ZCode/Codex App/Cursor/DeepSeek Harness remain
+unverified documentation; Cowork stays best-effort. Item stays todo.
+
+### Behavioural matrix update (2026-09-18)
+Claude Code ran one bounded workspace workflow (workspace-setup + validator
+exit 0), which counts as the Claude Code guide smoke. No WV01–WV18 scenario
+beyond that, no two-host continuation, no Clarity handoff. Orca, Cowork,
+ZCode, Codex App, Cursor and DeepSeek Harness stay unrun.

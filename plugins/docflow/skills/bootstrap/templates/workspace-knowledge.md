@@ -17,6 +17,14 @@
       "observed_at": "2026-09-15T08:00:00Z",
       "outcome": "passed",
       "summary": "Synthetic source-bound observation; not a real host result."
+    },
+    {
+      "locator": "https://spec.example.invalid/legacy-api",
+      "digest": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+      "observer": "human:owner",
+      "observed_at": "2026-09-15T08:00:00Z",
+      "outcome": "passed",
+      "summary": "Synthetic content-addressed external source; replace locator and digest."
     }
   ],
   "observed_at": "2026-09-15T08:00:00Z",

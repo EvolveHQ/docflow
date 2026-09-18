@@ -21,5 +21,16 @@
         }
       ]
     }
+  ],
+  "documents": [
+    {
+      "id": "example/api-specification",
+      "locator": "https://spec.example.invalid/api.md",
+      "digest": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+      "observer": "human:owner",
+      "observed_at": "2026-09-15T08:00:00Z",
+      "derived_from": [],
+      "note": "Synthetic derived-document registration; never vendored into canonical memory."
+    }
   ]
 }

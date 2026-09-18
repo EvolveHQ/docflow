@@ -74,6 +74,15 @@ export const cases = [
     },
   },
   {
+    name: 'workspace contract r2: external sources, remote members, revisions, documents, imports',
+    skill: null,
+    agentDependent: false,
+    assert() {
+      const result = spawnSync(process.execPath, ['--test', join(evalsDir, 'workspace-contract-r2.test.mjs')], { encoding: 'utf8', timeout: 120000 });
+      assert.equal(result.status, 0, result.error?.message || result.stdout + result.stderr);
+    },
+  },
+  {
     name: 'reports: missing blocks and invalid overall verdicts fail',
     skill: null,
     agentDependent: false,

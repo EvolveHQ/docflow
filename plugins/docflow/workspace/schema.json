@@ -111,52 +111,87 @@
         "repositories": {
           "type": "array",
           "items": {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "string",
-                "minLength": 1
-              },
-              "aliases": {
-                "type": "array",
-                "items": {
-                  "type": "string",
-                  "minLength": 1
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "aliases": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 0
+                  },
+                  "path": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "remote": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "role": {
+                    "type": "string",
+                    "enum": [
+                      "delivery",
+                      "reference"
+                    ]
+                  },
+                  "instructions": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1
+                  }
                 },
-                "minItems": 0
+                "required": [
+                  "id",
+                  "aliases",
+                  "path",
+                  "role",
+                  "instructions"
+                ],
+                "additionalProperties": false
               },
-              "path": {
-                "type": "string",
-                "minLength": 1
-              },
-              "remote": {
-                "type": "string",
-                "minLength": 1
-              },
-              "role": {
-                "type": "string",
-                "enum": [
-                  "delivery",
-                  "reference"
-                ]
-              },
-              "instructions": {
-                "type": "array",
-                "items": {
-                  "type": "string",
-                  "minLength": 1
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "aliases": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 0
+                  },
+                  "remote": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "role": {
+                    "const": "reference"
+                  }
                 },
-                "minItems": 1
+                "required": [
+                  "id",
+                  "aliases",
+                  "remote",
+                  "role"
+                ],
+                "additionalProperties": false
               }
-            },
-            "required": [
-              "id",
-              "aliases",
-              "path",
-              "role",
-              "instructions"
-            ],
-            "additionalProperties": false
+            ]
           },
           "minItems": 0
         },
@@ -538,7 +573,14 @@
         "sources": {
           "type": "array",
           "items": {
-            "$ref": "#/$defs/evidence"
+            "anyOf": [
+              {
+                "$ref": "#/$defs/evidence"
+              },
+              {
+                "$ref": "#/$defs/contentSource"
+              }
+            ]
           },
           "minItems": 1
         },
@@ -1567,7 +1609,14 @@
           ]
         },
         "brief": {
-          "$ref": "#/$defs/brief"
+          "anyOf": [
+            {
+              "$ref": "#/$defs/brief"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "actions": {
           "type": "array",
@@ -1666,6 +1715,9 @@
             "$ref": "#/$defs/recordRef"
           },
           "minItems": 0
+        },
+        "import": {
+          "$ref": "#/$defs/importedRun"
         }
       },
       "required": [
@@ -1951,6 +2003,56 @@
             "additionalProperties": false
           },
           "minItems": 0
+        },
+        "documents": {
+          "type": "array",
+          "minItems": 0,
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "locator": {
+                "type": "string",
+                "minLength": 1
+              },
+              "digest": {
+                "type": "string",
+                "pattern": "^sha256:[0-9a-f]{64}$"
+              },
+              "observer": {
+                "type": "string",
+                "minLength": 1
+              },
+              "observed_at": {
+                "type": "string",
+                "format": "date-time",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
+              },
+              "derived_from": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "minItems": 0
+              },
+              "note": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "id",
+              "locator",
+              "digest",
+              "observer",
+              "observed_at"
+            ],
+            "additionalProperties": false
+          }
         }
       },
       "required": [
@@ -1977,6 +2079,111 @@
       "required": [
         "id",
         "revisions"
+      ],
+      "additionalProperties": false
+    },
+    "contentAddress": {
+      "type": "object",
+      "properties": {
+        "locator": {
+          "type": "string",
+          "minLength": 1
+        },
+        "digest": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "observer": {
+          "type": "string",
+          "minLength": 1
+        },
+        "observed_at": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
+        }
+      },
+      "required": [
+        "locator",
+        "digest",
+        "observer",
+        "observed_at"
+      ],
+      "additionalProperties": false
+    },
+    "contentSource": {
+      "type": "object",
+      "properties": {
+        "locator": {
+          "type": "string",
+          "minLength": 1
+        },
+        "digest": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "observer": {
+          "type": "string",
+          "minLength": 1
+        },
+        "observed_at": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
+        },
+        "outcome": {
+          "type": "string",
+          "enum": [
+            "passed",
+            "failed",
+            "skipped",
+            "unknown",
+            "stale"
+          ]
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "locator",
+        "digest",
+        "observer",
+        "observed_at",
+        "outcome",
+        "summary"
+      ],
+      "additionalProperties": false
+    },
+    "importedRun": {
+      "type": "object",
+      "properties": {
+        "imported_at": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
+        },
+        "observer": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidence"
+          },
+          "minItems": 1
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "imported_at",
+        "observer",
+        "evidence"
       ],
       "additionalProperties": false
     }

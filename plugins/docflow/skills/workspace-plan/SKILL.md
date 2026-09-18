@@ -78,7 +78,10 @@ Unknown, stale, skipped, missing and failed evidence remain distinct.
    rules. Planned work may have no grant and unknown delivery observations.
 5. Check dependency cycles and shared exclusive resources. Record unmet
    dependencies explicitly. A reference-only member is evidence input, not
-   an implementation target. Do not assign over an unknown or live claim.
+   an implementation target; a remote-only reference resolves by identity
+   only. Knowledge may cite a content-addressed external source, and a
+   derived documentation set is registered in `sources.yaml` rather than
+   vendored into the workspace. Do not assign over an unknown or live claim.
 6. Read `<assets>/guides/recommendations.md`. Record contextual reference,
    enable or use recommendations with exact source revision, fit, scope,
    availability, authority or null, setup dependency, fallback and success
