@@ -96,3 +96,23 @@ Commands: `node scripts/verify.mjs` exit 0; `node evals/run.mjs` 11 passed /
 **Status at a glance:** actual Claude Code discovery + workspace-setup and
 per-host installed hashes for Claude/Codex/OpenCode; simulated none; unrun the
 authority/recovery/regression matrix, pi, Cowork and Orca. Item stays todo.
+
+### Behavioural matrix (2026-09-18, actual)
+
+All on isolated hosts, non-interactive, tool permissions scoped to the /tmp
+scratch, no approval prompt answered. Raw evidence in the same archive.
+
+| Case | Host | Result |
+|---|---|---|
+| current compatible authority | Claude Code | reported state, latest grant actor/expiry/revocation and that no new execution is authorised; exit 0, no writes |
+| materially missing authority | Claude Code | blocked; validator `valid:false` exit 1 with 3 `authority` errors; no writes |
+| expired authority | Claude Code | reported the grant must be reconciled/closed before re-dispatch; no writes |
+| conflicting authority | Claude Code | detected actor mismatch; validator exit 1; no writes |
+| fresh-session recovery | Claude Code | recovered owner, delivery/blocker, next step; exit 0 |
+| regression bootstrap | Claude Code | scaffolded core + plan into a scratch repo (`.docflow/` ADR 0001, CONVENTIONS, INDEX, plan); actual |
+| regression new-plan | Claude Code | queued `0001-probe-work.md`; actual |
+| regression ship-item | Claude Code | correctly refused: no verify gate recorded; item stayed todo; actual |
+| orient probe | Codex CLI | unrun: account usage limit (`You've hit your usage limit…`), exit 1 |
+| orient probe | OpenCode | blocked: native `external_directory` permission auto-rejected on the out-of-scope glob; exit 0, no orientation |
+
+No case was simulated.

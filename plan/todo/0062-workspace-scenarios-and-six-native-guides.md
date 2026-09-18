@@ -89,3 +89,9 @@ and one bounded workspace-setup workflow. No workspace scenario (WV01–WV18) or
 native guide smoke ran. Only the Claude Code guide has partial evidence; Orca
 is unrun (host absent); ZCode/Codex App/Cursor/DeepSeek Harness remain
 unverified documentation; Cowork stays best-effort. Item stays todo.
+
+### Behavioural matrix update (2026-09-18)
+Claude Code ran one bounded workspace workflow (workspace-setup + validator
+exit 0), which counts as the Claude Code guide smoke. No WV01–WV18 scenario
+beyond that, no two-host continuation, no Clarity handoff. Orca, Cowork,
+ZCode, Codex App, Cursor and DeepSeek Harness stay unrun.

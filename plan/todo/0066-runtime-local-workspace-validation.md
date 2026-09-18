@@ -72,3 +72,8 @@ The 2026-09-18 Claude Code workspace-setup probe validated inside a disposable
 runtime (validator exit 0), which partially exercises the runtime preflight.
 No affected-guidance native rerun or two-host reconciliation ran. Item stays
 todo.
+
+### Behavioural matrix update (2026-09-18)
+The Claude Code workspace-setup probe validated inside a disposable runtime
+(`validate.mjs` exit 0), exercising the runtime-local validation path. No
+affected-guidance native rerun or two-host reconciliation ran.

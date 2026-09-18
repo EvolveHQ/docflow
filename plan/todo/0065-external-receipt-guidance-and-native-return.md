@@ -77,3 +77,7 @@ scope review before expansion.
 
 The 2026-09-18 sessions ran no external return or readiness stop; those cases
 remain as recorded in the continuation checkpoint. Item stays todo.
+
+### Behavioural matrix update (2026-09-18)
+No external return or readiness stop was executed in these sessions; those
+cases remain unrun.
