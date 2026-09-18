@@ -116,3 +116,21 @@ scratch, no approval prompt answered. Raw evidence in the same archive.
 | orient probe | OpenCode | blocked: native `external_directory` permission auto-rejected on the out-of-scope glob; exit 0, no orientation |
 
 No case was simulated.
+
+### OpenCode rerun (2026-09-18, actual)
+
+Reconfigured the **disposable** XDG config (`permission.edit/bash/external_directory: allow`, `webfetch: deny`) and ran with the working directory at the scratch root; no real config touched and no runtime auto-approval. The earlier `opencode-orient.txt` denial is retained as configuration-gap evidence.
+
+| Case | OpenCode result |
+|---|---|
+| current authority | actual: reported state, grant expiry/revocation, no assignment authorised, next action; exit 0 |
+| missing authority | actual: reported planned/blocked state; exit 0 |
+| expired authority | actual: reported reconcile-before-redispatch; exit 0 |
+| conflicting authority | actual: reported the actor conflict in next steps, but judged records "verified" (weaker than the Claude validator path); exit 0 |
+| fresh-session recovery | actual: reported owner, delivery, blocker, next step; exit 0 |
+| regression bootstrap | failed: git commit aborted (`Author identity unknown`) and no scaffold files materialised; model output unreliable — environment gap, not qualification |
+| regression new-plan | blocked: no plan queue present (consequence of the failed bootstrap) |
+| regression ship-item | blocked: no verify gate recorded (correct refusal) |
+
+Codex CLI stays **unrun**: account usage limit confirmed, resets 2026-09-21 22:29 (operator-owned). No case is simulated.
+
