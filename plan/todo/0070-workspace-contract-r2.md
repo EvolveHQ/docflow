@@ -6,14 +6,9 @@ Owning decisions: adr/0058-workspace-contract-r2.md (new); adr/0051-portable-wor
 
 - **Claimed by:** pi, docflow-v1 delivery, 2026-09-18, branch
   `kmox83/docflow-v1-workspace-contract-r2`.
-- **Blockers:** Signed commits are blocked. The operator's GPG passphrase is not
-  cached in gpg-agent and pinentry cannot reach a display in this pane, so
-  `git commit -S` times out. All product code, tests and docs are complete and
-  both gates are green; committing and pushing await the operator running
-  `gpg-cache` once interactively (or caching the passphrase), after which the
-  work commits and the single draft PR opens. Clarity reader parity and native
-  qualification are separate.
-- **Stopped:** 2026-09-18, awaiting GPG passphrase caching.
+- **Blockers:** None for the offline contract work. Clarity reader parity and
+  native qualification are separate.
+- **Stopped:**
 
 ## Scope
 
@@ -42,7 +37,18 @@ no new runtime, no vendored document, no audit file.
 
 ## Receipt
 
-Work is complete and uncommitted on `kmox83/docflow-v1-workspace-contract-r2`
-as of this note; gates are green (`verify` exit 0, evals 11 passed / 0 failed /
-6 skipped exit 0). The commit SHA, push and PR are blocked on GPG signing.
-Fill the final command/exit/hash receipt when the commits land.
+- Contract code SHA (Clarity handoff): `137d19a181ed5b5b5d0c5ed3ad5af89c7b489358`.
+- `node scripts/verify.mjs`: `verify: OK (version 0.9.4, 13 skills, 58 ADRs, 67 shipped plan items)`, exit 0.
+- `node evals/run.mjs`: `11 passed, 0 failed, 6 skipped`, exit 0.
+- Product hashes: `schema.json` `fd4c87c2f315e0846a6fa5ffa44852230f8fb74017ea9cb7467e01168bb63398`; `validate.mjs` `a4fb706d7c7ad0561dc0cdc475522bda147a211cf34a295aa132507f442739fb`.
+- Valid/adverse controls: 13 new cases in `evals/workspace-contract-r2.test.mjs` plus the repaired Git-backed case. Versions stay 0.9.4.
+
+## Status at a glance
+
+- **This run:** implemented all six findings as product code, added the
+  control suite, documented the contract and corrected the product
+  descriptions; both gates green.
+- **Overall:** verified code, not shipped; Clarity parity and native
+  qualification remain separate.
+- **Yet to do:** coordinator review and integration; Clarity reader parity;
+  native qualification.
