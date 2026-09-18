@@ -134,3 +134,20 @@ Reconfigured the **disposable** XDG config (`permission.edit/bash/external_direc
 
 Codex CLI stays **unrun**: account usage limit confirmed, resets 2026-09-21 22:29 (operator-owned). No case is simulated.
 
+### Guard and success paths (2026-09-18, actual)
+
+- **ship-item refusal guard (positive evidence):** Claude Code and OpenCode both
+  correctly refused to complete an item when no verify gate was recorded,
+  leaving it in todo. Retained.
+- **ship-item success path:** Claude Code, with the scratch repo's gate
+  `node tools/verify.mjs` recorded, ran the gate twice (`probe verify: OK`,
+  exit 0) and made the local completion move — `todo/0001-probe-work.md` →
+  `done/2026-09-18-probe-work.md` — without pushing or opening a PR. Actual.
+- **OpenCode bootstrap rerun:** local git identity fixed
+  (`Synthetic Fixture <fixture@example.invalid>` in the scratch repo only); the
+  rerun wrote `.docflow/adr/0000-template.md`, `CONVENTIONS.md` and the plan
+  folders but **hit the time bound before finishing** (exit 124), so
+  `new-plan` and the OpenCode `ship-item` success path stayed blocked. Git
+  identity gap closed; host session incomplete.
+- **Codex CLI:** unrun, account usage limit resets 2026-09-21 22:29.
+
