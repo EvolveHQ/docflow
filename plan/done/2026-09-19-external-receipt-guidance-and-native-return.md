@@ -94,6 +94,11 @@ frozen in the r4 output directory, and the original `f47` evidence stays bound
 to its own package. No owning decision advances to Implemented: adr/0053 is
 superseded and adr/0052 still has other owning queue items.
 
-Prepared completion is added on the PR branch once the qualification commits
-are in place; the completion footer names the verified work HEAD and the draft
-PR into `kmox83/docflow-v1-integration`.
+## Shipped footer (prepared for checked merge)
+
+Shipped at HEAD `af974896016885fd4978dff310ef0212c7021f18` from the single-writer
+PR branch `kmox83/docflow-v1-qualification-r4`, draft into
+`kmox83/docflow-v1-integration`. Owning decisions are unchanged: adr/0053 is
+superseded and adr/0052 keeps other owning queue items, so no Accepted decision
+advances to Implemented on this item alone. This is a prepared completion, ready
+but not shipped until the PR is merged with required checks green.
