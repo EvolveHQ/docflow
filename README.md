@@ -3,8 +3,8 @@
 ![docflow — ADR-driven documentation workflow](docs/preview.png)
 
 A plugin for **ADR-driven, documentation-led projects**, working on
-**Claude Code, Claude Cowork, pi, Codex, and OpenCode** from the same
-skill files (see [Install](#install)).
+**Claude Code, pi, Codex, OpenCode, Grok, Cursor, omp and Copilot** from the
+same skill files (see [Install](#install)).
 It installs a `bootstrap` skill that scaffolds (or retrofits) an
 **Architecture Decision Record (ADR)** catalogue, a plan queue, and
 `AGENTS.md` conventions into any repository, plus a set of **lifecycle
@@ -16,9 +16,10 @@ where they fall short — see the
 
 ## Skills
 
-Slash commands below are the **Claude Code** form. On the **pi** coding
-agent the same skills are invoked as `/skill:<name>` (e.g.
-`/skill:bootstrap`, `/skill:new-adr`). See [Install](#install).
+Slash commands below are the **Claude Code** form. On the **pi** and **omp**
+coding agents the same skills are invoked as `/skill:<name>` (e.g.
+`/skill:bootstrap`, `/skill:new-adr`); Codex uses `$<name>`; other hosts use
+their own slash menu. See [Install](#install).
 
 | Skill | Slash command | Purpose |
 |-------|---------------|---------|
@@ -53,16 +54,16 @@ no execution authority, and delivery completion leaves the agreement accepted.
 
 Install the complete [workspace assets](plugins/docflow/workspace/README.md)
 with all fourteen skills, including for detached skill copies. The
-[six native guides](plugins/docflow/workspace/guides/README.md), five portable
+[seven native guides](plugins/docflow/workspace/guides/README.md), four portable
 starter roles, profile examples and ordinary-file search travel in the same
 package. The new guides have source/help checks; full native qualification
 remains pending on the combined candidate.
 
-Use `/workspace-status` in standalone Claude Code/Cowork skill mode, the
+Use `/workspace-status` in standalone Claude Code skill mode, the
 plugin-qualified form `/docflow:workspace-status` when exposed by the host,
-`/skill:workspace-status` in pi, or `$workspace-status` in Codex/ZCode.
+`/skill:workspace-status` in pi or omp, or `$workspace-status` in Codex.
 OpenCode and other native skill pickers use the discovered `workspace-status`
-name. The same naming applies to the other three workspace skills; verify
+name. The same naming applies to the other four workspace skills; verify
 the resolved source in the actual host before acting.
 
 ## What `/bootstrap` installs
@@ -190,7 +191,7 @@ produced it.
 ## Install
 
 docflow ships from **one skill source** (`plugins/docflow/skills/`) to
-five coding agents — only the packaging differs. Two surfaces: the scaffolded **output**
+eight coding agents — only the packaging differs. Two surfaces: the scaffolded **output**
 (`AGENTS.md`, the ADR catalogue, `plan/`, `_agent/`) is plain Markdown
 read natively by any agent that loads `AGENTS.md`; the **skills** are
 `SKILL.md` files the host discovers.
@@ -198,13 +199,17 @@ read natively by any agent that loads `AGENTS.md`; the **skills** are
 | Agent | Output | Skills | Install | Invoke |
 |-------|:------:|:------:|---------|--------|
 | Claude Code | native | ✅ | marketplace (below) | `/bootstrap` |
-| Claude Cowork | native | ✅ | desktop plugin upload | `/bootstrap` |
 | pi | native | ✅ | `pi install npm:@evolvehq/docflow` | `/skill:bootstrap` |
 | Codex | native | ✅ | `codex plugin marketplace add EvolveHQ/docflow` | `$bootstrap` / `/skills` |
 | OpenCode | native | ✅ | auto-discovered, or symlink into `~/.config/opencode/skills` | auto, by description |
+| Grok | native | ✅ | `grok plugin marketplace add EvolveHQ/docflow` | `/bootstrap` |
+| Cursor | native | ✅ | `cursor-agent --plugin-dir <repo>/plugins/docflow` | `/bootstrap` |
+| omp (oh-my-pi) | native | ✅ | `omp plugin install npm:@evolvehq/docflow` | `/skill:bootstrap` |
+| GitHub Copilot CLI | native | ✅ | `copilot plugin marketplace add EvolveHQ/docflow` | `/bootstrap` |
 
-Handy: OpenCode also reads `~/.claude/skills/` and `~/.agents/skills/`, so
-a shared skills directory can serve it alongside another agent.
+Handy: OpenCode and omp also read `~/.claude/skills/` and
+`~/.agents/skills/`, so a shared skills directory can serve several agents
+at once.
 
 ### Claude Code — from this marketplace
 
@@ -216,14 +221,56 @@ a shared skills directory can serve it alongside another agent.
 Invoke with `/bootstrap`, `/new-adr`, `/ship-item`, … (auto-triggers on
 matching requests too).
 
-### Claude Cowork
+### Grok (xAI)
 
-Cowork accepts the same plugin bundle through **Customise → Plugins → Add →
-Upload plugin**. ZIP the contents of `plugins/docflow/`, including its hidden
-`.claude-plugin` directory, and upload it. Use a configured marketplace when
-available. The desktop interface and execution permissions differ from the
-Claude Code CLI; a loaded plugin does not guarantee Git access to an attached
-folder. Verify file changes and Git history in the actual target folder.
+docflow ships a Grok plugin (`.grok-plugin/`) with its own marketplace:
+
+```
+grok plugin marketplace add EvolveHQ/docflow
+grok plugin install docflow --trust
+```
+
+Grok reads the scaffolded `AGENTS.md` natively and invokes the skills
+from the slash menu (`/bootstrap`, `/new-adr`, …). `grok plugin validate
+plugins/docflow` checks the manifest.
+
+### Cursor
+
+Cursor loads a local plugin directory directly — no account marketplace
+step is required:
+
+```
+cursor-agent --plugin-dir <path-to-this-repo>/plugins/docflow
+```
+
+The skills then appear as slash commands. `.cursor-plugin/` carries the Cursor
+plugin and marketplace manifests for repository-based installs.
+
+### omp (oh-my-pi)
+
+omp is a pi fork and reads the same `pi.skills` manifest:
+
+```
+omp plugin install npm:@evolvehq/docflow
+```
+
+Invoke with `/skill:bootstrap`, `/skill:new-adr`, … A `.omp-plugin/`
+marketplace source is also shipped for repository-based installs.
+
+### GitHub Copilot CLI
+
+docflow ships the same Claude-compatible plugin, so Copilot installs it
+from the repository marketplace or loads it directly:
+
+```
+copilot plugin marketplace add EvolveHQ/docflow
+copilot plugin install docflow@evolvehq
+# or, local:
+copilot --plugin-dir <path-to-this-repo>/plugins/docflow plugin list
+```
+
+The skills appear in `copilot skill list`. Copilot reads the scaffolded
+`AGENTS.md` natively.
 
 ### pi coding agent
 
@@ -371,12 +418,18 @@ to extend or override the templates.
 
 ```
 docflow/
-  .claude-plugin/marketplace.json   # Claude Code / Cowork marketplace (-> ./plugins/docflow)
+  .claude-plugin/marketplace.json   # Claude Code / Copilot marketplace (-> ./plugins/docflow)
   .agents/plugins/marketplace.json  # Codex marketplace (-> ./plugins/docflow)
-  package.json                      # pi manifest (pi.skills -> ./plugins/docflow/skills) + npm
+  .grok-plugin/marketplace.json     # Grok marketplace (-> ./plugins/docflow)
+  .cursor-plugin/marketplace.json   # Cursor marketplace (-> ./plugins/docflow)
+  .omp-plugin/marketplace.json      # omp marketplace (-> ./plugins/docflow)
+  package.json                      # pi/omp manifest (pi.skills -> ./plugins/docflow/skills) + npm
   plugins/docflow/                  # the plugin — one source, every target
-    .claude-plugin/plugin.json      #   Claude Code / Cowork plugin manifest
+    .claude-plugin/plugin.json      #   Claude Code / Copilot plugin manifest
     .codex-plugin/plugin.json       #   Codex plugin manifest (skills -> ./skills)
+    .grok-plugin/plugin.json        #   Grok plugin manifest
+    .cursor-plugin/plugin.json      #   Cursor plugin manifest
+    .omp-plugin/plugin.json         #   omp plugin manifest
     skills/                         #   the one skill source
       bootstrap/
         SKILL.md                    #   bootstrap: assessment + output sequence + backfill
@@ -414,9 +467,10 @@ welcome.
 
 ## Runtime verification
 
-The same files install on all five targets; behaviour also depends on the
+The same files install on all eight targets; behaviour also depends on the
 selected model and the host's permissions. Independent vendor-host tests on
-2026-09-13–14 checked frozen source snapshots and the actual target Git state:
+2026-09-13–14 checked frozen source snapshots of the five original targets
+(Claude Code, pi, Codex, OpenCode, Cowork) and the actual target Git state:
 
 | Host / model | Observed result | Limit |
 |---|---|---|
@@ -424,7 +478,12 @@ selected model and the host's permissions. Independent vendor-host tests on
 | Codex 0.154.0 / GPT-6 Astra | Bootstrap/new-adr and native rung 2 passed; signed concurrent work survived the whole-wave gate failure. | Native dispatch needed session storage on the disposable home; ephemeral dispatch failed. Workers used explicitly assigned Git worktrees, without host-enforced isolation. |
 | OpenCode 1.18.30 / Big Pickle | Fresh bootstrap/new-adr and native Task rung 2 pass target checks, preserving signed concurrent claims after the gate-environment failure. Full native worker records establish acquisition ordering. | A later attempt wrongly integrates another item after the failure and remains rejected. The fresh retry passes state, initial-claim and final-report checks; a separate native follow-up adds missing labels to the persisted stop entry. Workers use explicitly assigned Git worktrees; this is staged verification, not an uninterrupted pass. |
 | pi 0.84.4 / local Qwen coding route | Fresh native-high bootstrap/new-adr, normal completion and a bootstrap-derived blocked wave pass. Initial published metadata, acquisition-before-write, signed recovery, held-claim exclusion, persisted reports and fresh-clone gates are independently checked. | Earlier missing metadata, interruptions and local-backend 503 failures remain recorded. The final bootstrap and blocked wave ran serially on the same local route. Signed transport is local; unauthenticated CLI probes do not establish hosted PR capability or external PR state. |
-| Cowork Windows Desktop 1.52386.6 / Opus 5 Max | Fresh actual-target signed bootstrap/new-adr and native Workflow rung 1 pass state checks, preserving signed concurrent blocked work. A focused explicit export-denial test stops with no subsequent tools and unchanged destination bytes. | Existing Skip approvals mode is unchanged. A separate lifecycle attempt repeats probes after a Git-lock denial; supported target-scoped permission recovery is recorded separately. The historical export bypass remains a failure. Local bare pushes do not prove hosted PR capability. |
+
+Grok, Cursor, omp and Copilot were added to the V1 target set after those runs.
+They carry package-level proof — manifest validation, marketplace listing and
+plugin-directory loading (see the plan receipt) — while the behavioural runs
+above remain the historical five-target record. Full native qualification on
+the eight-target package remains pending.
 
 The six core model-driven cases have independent target assertions through
 the vendor-host runner, including express bootstrap, signed item completion
@@ -435,10 +494,8 @@ selection; the server identifies its response model as `qwen3.8-27b`. Earlier
 cloud-provider failures remain historical and do not require a cloud login
 for this route. The runner now preserves the native thinking setting; earlier
 off results do not establish the operator's full high-thinking configuration.
-The current source-pinned assessment covers the five-host release requirement.
 Each continuation records exact installed bytes and independent assertions; earlier failures and
-infrastructure interruptions remain separate. Cowork's focused denial pass
-does not establish a general permission boundary. The isolated existing-repository
+infrastructure interruptions remain separate. The isolated existing-repository
 pilot preserves real history through checked completion and a recoverable stop;
 it is controlled verification, not independent human adoption.
 

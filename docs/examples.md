@@ -11,8 +11,10 @@ small sample project — **linkfold**, a URL shortener — so the decisions feel
 concrete.
 
 > Slash commands are shown in **Claude Code** form (`/bootstrap`). On the
-> **pi** coding agent the same skills are `/skill:bootstrap`, `/skill:new-adr`,
-> … All skills also auto-trigger from natural-language requests.
+> **pi** and **omp** coding agents the same skills are `/skill:bootstrap`,
+> `/skill:new-adr`, …; Codex uses `$bootstrap`; the other hosts use their own
+> slash menu. All skills also auto-trigger from natural-language requests
+> where the host supports it.
 
 ---
 
@@ -23,6 +25,7 @@ concrete.
 3. [Skill-by-skill examples](#3-skill-by-skill-examples)
 4. [Multi-repo products: topologies A, B, C](#4-multi-repo-products-topologies-a-b-c)
 5. [Grouping a large catalogue by domain](#5-grouping-a-large-catalogue-by-domain)
+6. [Portable workspace flows](#6-portable-workspace-flows)
 
 ---
 
@@ -441,6 +444,31 @@ In practice:
 *Not to be confused with per-domain numbering (`auth/0001` — rejected; the
 number stays flat) or the federation (separate repos). This is one repo, one
 catalogue, viewed by area.*
+
+---
+
+## 6. Portable workspace flows
+
+When a product spans several repositories, the five workspace commands add a
+shared memory beside them. Each has a worked step-by-step flow on the
+[Portable workspaces]({{ '/workspace/' | relative_url }}) page, covering a
+greenfield product, a retrofit of existing repositories, migrating a single
+docflow repository, and mixed, remote-only and federation cases.
+
+The commands run in order:
+
+1. `workspace-setup` — create or adopt the workspace home and registry.
+2. `workspace-status` — read priorities, owners, current authority and
+   blockers (read-only).
+3. `workspace-scope` — record ideas, decisions, work with deliveries and
+   criteria, and grants from a committed mandate note.
+4. `workspace-dispatch` — check the grant, native claim, dependencies and
+   resources, then hand off a bounded brief.
+5. `workspace-sync` — reconcile returned receipts and member state from
+   checked native evidence, then refresh `INDEX.md`.
+
+Selection and agreement grant no execution authority. A prepared pull request
+or an unmerged plan item never marks a delivery complete.
 
 ---
 
