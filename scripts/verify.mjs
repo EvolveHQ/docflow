@@ -42,18 +42,29 @@ function frontmatter(text) {
 }
 
 // ── A. Manifests + version sync (folds in the original verify gate) ──
-// Three manifests carry the version — Claude Code, npm/pi, and Codex —
-// and must all match (CONVENTIONS.md §Version-Sync Invariant).
+// Every native target manifest carries the version — npm/pi, Claude Code,
+// Codex, Grok, Cursor and omp — and must all match
+// (CONVENTIONS.md §Version-Sync Invariant). Copilot loads the Claude Code
+// plugin and shares its manifest; OpenCode auto-discovers and carries none.
 const pkg = readJSON('package.json');
 const plugin = readJSON('plugins/docflow/.claude-plugin/plugin.json');
 const marketplace = readJSON('.claude-plugin/marketplace.json');
 const codexPlugin = readJSON('plugins/docflow/.codex-plugin/plugin.json');
 const codexMarket = readJSON('.agents/plugins/marketplace.json');
+const grokPlugin = readJSON('plugins/docflow/.grok-plugin/plugin.json');
+const grokMarket = readJSON('.grok-plugin/marketplace.json');
+const cursorPlugin = readJSON('plugins/docflow/.cursor-plugin/plugin.json');
+const cursorMarket = readJSON('.cursor-plugin/marketplace.json');
+const ompPlugin = readJSON('plugins/docflow/.omp-plugin/plugin.json');
+const ompMarket = readJSON('.omp-plugin/marketplace.json');
 
 const versioned = [
   ['package.json', pkg],
   ['plugins/docflow/.claude-plugin/plugin.json', plugin],
   ['plugins/docflow/.codex-plugin/plugin.json', codexPlugin],
+  ['plugins/docflow/.grok-plugin/plugin.json', grokPlugin],
+  ['plugins/docflow/.cursor-plugin/plugin.json', cursorPlugin],
+  ['plugins/docflow/.omp-plugin/plugin.json', ompPlugin],
 ].filter(([, m]) => m);
 const versions = [...new Set(versioned.map(([, m]) => m.version))];
 if (versions.length > 1) {
@@ -66,12 +77,31 @@ if (versions.length > 1) {
 for (const [mfile, mkt, pluginName] of [
   ['.claude-plugin/marketplace.json', marketplace, plugin?.name],
   ['.agents/plugins/marketplace.json', codexMarket, codexPlugin?.name],
+  ['.grok-plugin/marketplace.json', grokMarket, grokPlugin?.name],
+  ['.cursor-plugin/marketplace.json', cursorMarket, cursorPlugin?.name],
+  ['.omp-plugin/marketplace.json', ompMarket, ompPlugin?.name],
 ]) {
   if (mkt && pluginName) {
     const names = (mkt.plugins ?? []).map((p) => p.name);
     if (!names.includes(pluginName)) {
       fail(`${mfile} lists ${JSON.stringify(names)} but plugin name is "${pluginName}"`);
     }
+  }
+}
+// Target parity: every named package target must ship a manifest and a
+// marketplace source. OpenCode and Copilot resolve through the Claude Code
+// packaging (auto-discovery / Claude-compatible plugin), so they add no file.
+for (const [target, files] of [
+  ['Claude Code', ['plugins/docflow/.claude-plugin/plugin.json', '.claude-plugin/marketplace.json']],
+  ['pi', ['package.json']],
+  ['Codex', ['plugins/docflow/.codex-plugin/plugin.json', '.agents/plugins/marketplace.json']],
+  ['Grok', ['plugins/docflow/.grok-plugin/plugin.json', '.grok-plugin/marketplace.json']],
+  ['Cursor', ['plugins/docflow/.cursor-plugin/plugin.json', '.cursor-plugin/marketplace.json']],
+  ['omp', ['plugins/docflow/.omp-plugin/plugin.json', '.omp-plugin/marketplace.json']],
+  ['Copilot', ['plugins/docflow/.claude-plugin/plugin.json', '.claude-plugin/marketplace.json']],
+]) {
+  for (const f of files) {
+    if (!existsSync(join(root, f))) fail(`target ${target}: missing packaging file ${f}`);
   }
 }
 

@@ -13,7 +13,8 @@ Two tiers of testing back this plugin:
 
 The opt-in `behavioural.workflow.mjs` uses native worktree subagents. The
 independent vendor-host Docker runner under [hosts/](hosts/README.md) uses
-actual installed CLIs or the Cowork desktop and externally checks target
+actual installed CLIs (or a native editor/desktop session) and externally
+checks target
 files and Git state. Record the actual model and permission context; a
 model's success claim or CLI exit zero is insufficient.
 
@@ -29,11 +30,13 @@ of a model's verdict. The current continuation is recorded in
 release audit; earlier receipts remain historical evidence. The six skipped
 model cases are mapped to independently checked native-host runs, plus the
 Workflow wrapper's additional wave case. These receipts are separate from the
-deterministic command's skips. Native Cowork actual-target Git and lifecycle
-checks now have evidence. Pi's existing local Qwen route passes fresh native-high
+deterministic command's skips. Pi's existing local Qwen route passes fresh
+native-high
 bootstrap/new-decision, normal completion and blocked-wave checks, including
 initial publication, completed-event ordering and fresh-clone gates. The
-source-pinned release assessment now covers all five hosts. Staged reporting
+source-pinned release assessment covers the five original targets; Grok,
+Cursor, omp and Copilot carry package-level manifest/load proof in the V1
+target-set receipt. Staged reporting
 corrections, original failed runs and permission/transport limits remain explicit
 in the release audit; green verification does not authorise merge or release.
 

@@ -1,6 +1,6 @@
 ---
 name: workspace-status
-description: Read-only briefing and fresh-session recovery for a WORKSPACE: priorities, owners, current authority, delivery progress, blockers and next actions. Use for workspace-status or understanding a workspace. This skill never writes. NOT for creating records, scoping work, dispatching, syncing or native repository work.
+description: "Read-only briefing and fresh-session recovery for a WORKSPACE: priorities, owners, current authority, delivery progress, blockers and next actions. Use for workspace-status or understanding a workspace. This skill never writes. NOT for creating records, scoping work, dispatching, syncing or native repository work."
 ---
 
 # workspace-status

@@ -1,6 +1,6 @@
 ---
 name: workspace-scope
-description: Record a WORKSPACE outcome and its authority: ideas, decisions, work, deliveries, criteria, grants and recommendations, accepting a decision or recording a grant from a committed mandate note. Use for workspace-scope on cross-repository outcomes. NOT for a native repository plan/todo item (use new-plan), dispatching, syncing, setup or a read-only briefing.
+description: "Record a WORKSPACE outcome and its authority: ideas, decisions, work, deliveries, criteria, grants and recommendations, accepting a decision or recording a grant from a committed mandate note. Use for workspace-scope on cross-repository outcomes. NOT for a native repository plan/todo item (use new-plan), dispatching, syncing, setup or a read-only briefing."
 ---
 
 # workspace-scope
