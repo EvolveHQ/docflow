@@ -259,7 +259,7 @@ test('a native path move keeps the immutable brief resolvable at its Git tree re
 
 test('packaged plugin, npm, symlink and detached Codex/OpenCode skill copies resolve assets offline', () => scratch((root, parent) => {
   const bootstrap = join(repo, 'plugins/docflow/skills/bootstrap');
-  for (const host of ['claude-code', 'cowork', 'pi-npm', 'codex-plugin', 'opencode-plugin']) {
+  for (const host of ['claude-code', 'copilot', 'pi-npm', 'codex-plugin', 'opencode-plugin', 'grok-plugin', 'cursor-plugin', 'omp-plugin']) {
     const plugin = join(parent, host); mkdirSync(join(plugin, 'skills'), { recursive: true });
     cpSync(bootstrap, join(plugin, 'skills/bootstrap'), { recursive: true }); cpSync(assets, join(plugin, 'workspace'), { recursive: true });
     assert.equal(resolveAssets(join(plugin, 'skills/bootstrap')), realpathSync(join(plugin, 'workspace')));

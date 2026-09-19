@@ -32,7 +32,7 @@ function assertDiscovery(skills) {
   }
 }
 
-for (const mode of ['claude-code-plugin', 'cowork-plugin', 'pi-package', 'codex-plugin', 'opencode-copy', 'codex-copy']) {
+for (const mode of ['claude-code-plugin', 'copilot-plugin', 'pi-package', 'codex-plugin', 'opencode-copy', 'codex-copy', 'grok-plugin', 'cursor-plugin', 'omp-plugin']) {
   test('packaged directory discovery and assets: ' + mode, () => scratch(temp => {
     let skills, assets;
     if (mode.endsWith('-copy')) {
@@ -43,6 +43,15 @@ for (const mode of ['claude-code-plugin', 'cowork-plugin', 'pi-package', 'codex-
       const install = join(temp, mode === 'pi-package' ? 'package/plugins/docflow' : 'plugin');
       cpSync(product, install, { recursive: true });
       skills = join(install, 'skills'); assets = join(install, 'workspace');
+      const manifestDir = {
+        'codex-plugin': '.codex-plugin', 'grok-plugin': '.grok-plugin',
+        'cursor-plugin': '.cursor-plugin', 'omp-plugin': '.omp-plugin',
+      }[mode];
+      if (manifestDir) {
+        const manifest = JSON.parse(read(join(install, `${manifestDir}/plugin.json`)));
+        assert.equal(manifest.name, 'docflow');
+        assert.equal(manifest.version, '0.9.4');
+      }
       if (mode === 'codex-plugin') {
         const manifest = JSON.parse(read(join(install, '.codex-plugin/plugin.json')));
         assert.equal(resolve(install, manifest.skills), skills);
@@ -56,8 +65,9 @@ for (const mode of ['claude-code-plugin', 'cowork-plugin', 'pi-package', 'codex-
     assertDiscovery(skills);
     assert.equal(resolveAssets(join(skills, 'bootstrap')), realpathSync(assets));
     for (const file of ['CONTRACT.md', 'schema.json', 'validate.mjs', 'guides/README.md',
-      'guides/orca.md', 'guides/cursor.md', 'guides/claude-code.md',
-      'guides/deepseek-harness.md', 'guides/zcode.md', 'guides/codex-app.md']) {
+      'guides/claude-code.md', 'guides/codex-app.md', 'guides/cursor.md',
+      'guides/deepseek-harness.md', 'guides/herdr.md', 'guides/vscode-agent-mode.md',
+      'guides/orca.md']) {
       assert.ok(read(join(assets, file)).length > 0);
     }
     assert.ok(read(join(skills, 'bootstrap/templates/workspace-work.md')).includes('"state": "planned"'));

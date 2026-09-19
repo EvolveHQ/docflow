@@ -7,8 +7,8 @@ This file provides guidance to coding agents working in this repository.
 docflow is a multi-target plugin that scaffolds (and retrofits)
 ADR-driven, documentation-led conventions into other repositories, plus
 a set of lifecycle skills to author, queue, ship, and audit ADRs. It
-ships the **same** `plugins/docflow/skills/` directory to five coding
-agents — Claude Code, Claude Cowork, pi, Codex, and OpenCode — from one
+ships the **same** `plugins/docflow/skills/` directory to eight coding
+agents — Claude Code, pi, Codex, OpenCode, Grok, Cursor, omp and Copilot — from one
 source (see ADR 0015). This repo now also **dogfoods its own
 conventions**: the ADR catalogue, plan queue, and `_agent/` coordination
 below describe how docflow itself is built and maintained.
@@ -27,7 +27,7 @@ below describe how docflow itself is built and maintained.
   external validator and asset resolver, portable native-host guides and
   source-bound workspace/repository fixtures. Detached skill copies also
   require this complete asset directory; templates remain in bootstrap.
-- `plugins/docflow/.claude-plugin/plugin.json` — Claude Code / Cowork
+- `plugins/docflow/.claude-plugin/plugin.json` — Claude Code / Copilot
   plugin manifest; `plugins/docflow/.codex-plugin/plugin.json` — Codex.
 - `.claude-plugin/marketplace.json` + `.agents/plugins/marketplace.json`
   — the marketplaces (root), each pointing at `./plugins/docflow`.
@@ -75,14 +75,17 @@ These come from `CONVENTIONS.md` and override default behaviour:
 ## Domain-specific hard rules
 
 - **Multi-target parity.** Any change to a skill, template, or the
-  skill set must keep ALL five targets working: Claude Code / Cowork
+  skill set must keep ALL eight targets working: Claude Code / Copilot
   (`.claude-plugin/`), pi (`package.json`), Codex (`.codex-plugin/` +
-  `.agents/`), and OpenCode (skill auto-discovery, no manifest). Skill
+  `.agents/`), Grok (`.grok-plugin/`), Cursor (`.cursor-plugin/`), omp
+  (`.omp-plugin/`), and OpenCode (skill auto-discovery, no manifest). Skill
   prose stays agent-neutral; put agent-specific invocation forms
   (`/name` vs `/skill:name` vs `$name`) in `README.md`, not in skill
   bodies.
 - **Version-sync invariant.** The `version` in `package.json`,
-  `.claude-plugin/plugin.json`, and `.codex-plugin/plugin.json` must
+  `.claude-plugin/plugin.json`, `.codex-plugin/plugin.json`,
+  `.grok-plugin/plugin.json`, `.cursor-plugin/plugin.json`, and
+  `.omp-plugin/plugin.json` must
   always match. Bump them together in the same commit. The git tag
   `vX.Y.Z` and the published npm version track the same number.
   `scripts/verify.mjs` enforces this.
