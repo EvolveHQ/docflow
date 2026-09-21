@@ -12,7 +12,7 @@
 // adapter that cannot run a case declares why in `blocked`; the runner records
 // that as `blocked` rather than silently skipping.
 
-import { readdirSync, statSync, mkdirSync, copyFileSync, chmodSync, existsSync, cpSync } from 'node:fs';
+import { readdirSync, statSync, mkdirSync, copyFileSync, chmodSync, existsSync, cpSync, readFileSync, writeFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { homedir } from 'node:os';
 
@@ -44,6 +44,22 @@ const CREDENTIALS = {
     if (!existsSync(src)) return;
     mkdirSync(dst, { recursive: true });
     for (const f of ['config.yml', 'agent.db', 'models.db']) copyIf(join(src, f), join(dst, f));
+    // omp resolves its provider from models.yml; without it every model turn
+    // fails with "Configure auth for an allowed provider". The file's apiKey
+    // is a shell command that reads pi's auth.json by absolute path, so point
+    // that at the disposable copy and stream the credential there too.
+    if (existsSync(join(src, 'models.yml'))) {
+      const realAuth = join(homedir(), '.pi/agent/auth.json');
+      const scratchAuth = join(ctx.home, '.pi/agent/auth.json');
+      const text = readFileSync(join(src, 'models.yml'), 'utf8')
+        .split(realAuth).join(scratchAuth);
+      writeFileSync(join(dst, 'models.yml'), text);
+      if (existsSync(realAuth)) {
+        mkdirSync(dirname(scratchAuth), { recursive: true });
+        copyFileSync(realAuth, scratchAuth);
+        chmodSync(scratchAuth, 0o600);
+      }
+    }
     if (existsSync(join(src, 'extensions'))) cpSync(join(src, 'extensions'), join(dst, 'extensions'), { recursive: true });
   },
 };

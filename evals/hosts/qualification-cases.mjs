@@ -321,8 +321,8 @@ export const cases = [
       const dir = await makeFixture(ctx, 'new-plan', join(evalsDir, 'fixtures/legacy-range'));
       const before = readdirSync(join(dir, 'plan/todo'));
       const r = await hostTurn(ctx, { cwd: dir, readOnly: false, prompt:
-        'Use the docflow new-plan skill to queue one unit of work titled \'Example plan item\', tracing to an existing decision ' +
-        'and with testable exit criteria. Commit it, then stop.' });
+        'Use the docflow new-plan skill at express depth to queue one unit of work titled \'Example plan item\', tracing to the ' +
+        'existing decision adr/0003-queue-driven-implementation.md, with testable exit criteria. Commit it, then stop.' });
       return judge(() => {
         const after = readdirSync(join(dir, 'plan/todo'));
         const added = after.filter((f) => !before.includes(f));
