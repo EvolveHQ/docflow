@@ -19,7 +19,7 @@ import { mkdirSync, mkdtempSync, readFileSync, writeFileSync, cpSync } from 'nod
 import { tmpdir } from 'node:os';
 import { dirname, isAbsolute, join, relative, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { adapters } from './host-adapters.mjs';
+import { adapters, provisionCredentials } from './host-adapters.mjs';
 import { cases, hostInterfaceCases, productCases, skillCases } from './qualification-cases.mjs';
 import { renderReceipt, summarise } from './qualification-receipt.mjs';
 
@@ -176,6 +176,7 @@ async function main() {
     const hostStage = stageFor(host);
     copyRepo(hostStage);
     const ctx = buildCtx({ host, adapter, scratch: scratchRoot, home, source, node: process.execPath, stage: hostStage, modelHosts: args.modelHosts, caseTimeout: args.caseTimeoutMs });
+    provisionCredentials(host, ctx);
     if (adapter.install) {
       try { ctx.installResult = await adapter.install(ctx); }
       catch (e) { ctx.installResult = { exit: 1, stderr: e.message, stdout: '' }; }

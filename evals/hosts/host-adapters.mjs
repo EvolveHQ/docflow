@@ -12,9 +12,45 @@
 // adapter that cannot run a case declares why in `blocked`; the runner records
 // that as `blocked` rather than silently skipping.
 
-import { readdirSync, statSync, mkdirSync, copyFileSync, chmodSync, existsSync } from 'node:fs';
-import { join } from 'node:path';
+import { readdirSync, statSync, mkdirSync, copyFileSync, chmodSync, existsSync, cpSync } from 'node:fs';
+import { join, dirname } from 'node:path';
 import { homedir } from 'node:os';
+
+function copyIf(src, dst, mode) {
+  if (!existsSync(src)) return false;
+  mkdirSync(dirname(dst), { recursive: true });
+  copyFileSync(src, dst);
+  if (mode) chmodSync(dst, mode);
+  return true;
+}
+
+// Stream the operator's authorised credential into the disposable home. This
+// never modifies the operator's files. Cursor and Copilot keep credentials in
+// an OS keyring with no disposable-file form, so they are not provisioned.
+const CREDENTIALS = {
+  claude: (ctx) => copyIf(join(homedir(), '.claude/.credentials.json'), join(ctx.home, '.claude/.credentials.json'), 0o600),
+  codex: (ctx) => {
+    copyIf(join(homedir(), '.codex/auth.json'), join(ctx.home, '.codex/auth.json'), 0o600);
+    copyIf(join(homedir(), '.codex/config.toml'), join(ctx.home, '.codex/config.toml'));
+  },
+  opencode: (ctx) => {
+    copyIf(join(homedir(), '.config/opencode/opencode.json'), join(ctx.home, '.config/opencode/opencode.json'));
+    copyIf(join(homedir(), '.local/share/opencode/auth.json'), join(ctx.home, '.local/share/opencode/auth.json'), 0o600);
+  },
+  grok: (ctx) => { for (const f of ['auth.json', 'agent_id', 'config.toml']) copyIf(join(homedir(), '.grok', f), join(ctx.home, '.grok', f)); },
+  omp: (ctx) => {
+    const src = join(homedir(), '.omp/agent');
+    const dst = join(ctx.home, '.omp/agent');
+    if (!existsSync(src)) return;
+    mkdirSync(dst, { recursive: true });
+    for (const f of ['config.yml', 'agent.db', 'models.db']) copyIf(join(src, f), join(dst, f));
+    if (existsSync(join(src, 'extensions'))) cpSync(join(src, 'extensions'), join(dst, 'extensions'), { recursive: true });
+  },
+};
+
+export function provisionCredentials(adapterId, ctx) {
+  if (CREDENTIALS[adapterId]) CREDENTIALS[adapterId](ctx);
+}
 
 const SKILL_FILE = 'SKILL.md';
 
@@ -251,6 +287,19 @@ export const adapters = [
     },
     launch(ctx, { prompt }) {
       return { argv: [ctx.binary, '-p', prompt, '--allow-all-tools', '--allow-all-paths'] };
+    },
+    blocked: {
+      'bootstrap-full': 'copilot credential is held in the OS keyring with no disposable-file form; authenticate a disposable host or provide a token',
+      'bootstrap-express': 'copilot credential is held in the OS keyring with no disposable-file form',
+      'new-adr': 'copilot credential is held in the OS keyring with no disposable-file form',
+      'new-plan': 'copilot credential is held in the OS keyring with no disposable-file form',
+      'ship-item': 'copilot credential is held in the OS keyring with no disposable-file form',
+      'dispatch-brief': 'copilot credential is held in the OS keyring with no disposable-file form',
+      'dispatch-refusal': 'copilot credential is held in the OS keyring with no disposable-file form',
+      'sync-reconcile': 'copilot credential is held in the OS keyring with no disposable-file form',
+      'sync-prepared-not-complete': 'copilot credential is held in the OS keyring with no disposable-file form',
+      'audit-coordination': 'copilot credential is held in the OS keyring with no disposable-file form',
+      'audit-range': 'copilot credential is held in the OS keyring with no disposable-file form',
     },
     async discover(ctx) {
       const r = await ctx.run([ctx.binary, '--plugin-dir', ctx.plugin, 'skill', 'list']);

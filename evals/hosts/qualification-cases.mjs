@@ -106,11 +106,13 @@ async function hostTurn(ctx, { cwd, prompt, readOnly }) {
 }
 
 function judge(fn, hostResult) {
+  const tail = (hostResult.stderr || hostResult.stdout || '').replace(/\s+/g, ' ').trim().slice(-180);
+  const suffix = hostResult.exit !== 0 && tail ? ` | host: ${tail}` : '';
   try {
     fn();
     return { status: 'pass', evidence: `host exit ${hostResult.exit}` };
   } catch (e) {
-    return { status: 'fail', cause: `host exit ${hostResult.exit}: ${e.message}` };
+    return { status: 'fail', cause: `host exit ${hostResult.exit}: ${e.message}${suffix}` };
   }
 }
 
