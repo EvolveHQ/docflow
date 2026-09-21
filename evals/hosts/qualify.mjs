@@ -1,0 +1,208 @@
+#!/usr/bin/env node
+// Automated host qualification runner (ADR 0062).
+//
+// A qualification round is a run of this harness. It drives each installed
+// host through its native facility for every case the adapter supports, then
+// judges the result with an external observable check. It writes
+// machine-readable results and emits the plan-item receipt from those results
+// — nobody writes the receipt by hand.
+//
+// Usage:
+//   node evals/hosts/qualify.mjs [--hosts claude,pi,...] [--cases discovery,...]
+//        [--scratch DIR] [--out FILE] [--summary-only]
+//
+// The static `verify` gate stays fast and hostless; this runs as an opt-in
+// tier (`node evals/run.mjs --qualify`).
+
+import { spawnSync } from 'node:child_process';
+import { mkdirSync, mkdtempSync, readFileSync, writeFileSync, cpSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { dirname, isAbsolute, join, relative, resolve, sep } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { adapters } from './host-adapters.mjs';
+import { cases, hostInterfaceCases, productCases, skillCases } from './qualification-cases.mjs';
+
+const here = dirname(fileURLToPath(import.meta.url));
+const repo = resolve(here, '..', '..');
+const DEFAULT_TIMEOUT_MS = 900_000;
+
+function parseArgs(argv) {
+  const out = { hosts: null, cases: null, scratch: null, out: null, summaryOnly: false };
+  for (let i = 0; i < argv.length; i += 1) {
+    const a = argv[i];
+    if (a === '--hosts') out.hosts = argv[++i].split(',').map((s) => s.trim()).filter(Boolean);
+    else if (a === '--cases') out.cases = argv[++i].split(',').map((s) => s.trim()).filter(Boolean);
+    else if (a === '--scratch') out.scratch = argv[++i];
+    else if (a === '--out') out.out = argv[++i];
+    else if (a === '--summary-only') out.summaryOnly = true;
+    else if (a === '--help') { console.log(readFileSync(import.meta.url.replace('file://', ''), 'utf8').split('\n').slice(0, 20).join('\n')); process.exit(0); }
+    else throw Error(`unknown argument: ${a}`);
+  }
+  return out;
+}
+
+function git(args) {
+  return spawnSync('git', ['-C', repo, ...args], { encoding: 'utf8' });
+}
+
+function assertUnder(root, target, what) {
+  const r = resolve(root);
+  const t = resolve(target);
+  if (t !== r && !t.startsWith(r + sep)) throw Error(`isolation: ${what} ${t} escapes scratch root ${r}`);
+  return t;
+}
+
+function makeRun(home, scratch) {
+  const baseEnv = { ...process.env };
+  // Never inherit a host's real state.
+  for (const k of Object.keys(baseEnv)) {
+    if (/^(CLAUDE|CODEX|GROK|OMP|COPILOT|CURSOR|OPENCODE|PI)_/.test(k) && !/^PATH$/.test(k)) delete baseEnv[k];
+  }
+  const run = (argv, opts = {}) => {
+    const cwd = opts.cwd ? assertUnder(scratch, opts.cwd, 'cwd') : scratch;
+    const env = { ...baseEnv, ...(opts.env || {}), HOME: home };
+    const r = spawnSync(argv[0], argv.slice(1), {
+      cwd, env, encoding: 'utf8', timeout: opts.timeoutMs || DEFAULT_TIMEOUT_MS,
+      maxBuffer: 64 * 1024 * 1024, windowsHide: true,
+    });
+    return {
+      exit: r.error ? (r.error.code === 'ETIMEDOUT' ? 124 : 1) : r.status,
+      stdout: r.stdout || '', stderr: r.stderr || '', timedOut: r.error?.code === 'ETIMEDOUT',
+    };
+  };
+  const runSync = (argv, opts = {}) => run(argv, opts);
+  return { run, runSync, baseEnv };
+}
+
+function buildCtx({ host, adapter, scratch, home, source, node, stage }) {
+  const { run, runSync } = makeRun(home, scratch);
+  const env = adapter?.env ? adapter.env(home) : {};
+  const mergeEnv = (extra) => ({ ...env, ...extra });
+  return {
+    host, adapter, case: null, scratch, home, source, repo, node,
+    stage: stage || repo,
+    plugin: join(stage || repo, 'plugins/docflow'),
+    binary: adapter?.binary,
+    installedRoot: null,
+    installResult: null,
+    get run() { return (argv, opts = {}) => run(argv, { ...opts, env: mergeEnv(opts.env) }); },
+    get runSync() { return (argv, opts = {}) => runSync(argv, { ...opts, env: mergeEnv(opts.env) }); },
+  };
+}
+
+async function runOne({ ctx, testCase }) {
+  const started = Date.now();
+  const result = {
+    host: ctx.host || 'product', case: testCase.id, kind: testCase.kind,
+    status: 'fail', cause: null, exit_code: null, duration_ms: 0, hashes: null, source_revision: null,
+  };
+  try {
+    if (!testCase.run) {
+      // Skill case with no launcher wired: record unrun honestly.
+      result.status = 'unrun';
+      result.cause = 'no non-interactive skill launcher configured for this adapter in this round';
+      return result;
+    }
+    ctx.case = testCase;
+    const out = await testCase.run(ctx);
+    result.status = out.status;
+    result.cause = out.cause || null;
+    result.evidence = out.evidence || null;
+    result.hashes = out.hashes || null;
+  } catch (e) {
+    result.status = 'fail';
+    result.cause = e.message;
+  } finally {
+    result.duration_ms = Date.now() - started;
+    const rev = git(['rev-parse', 'HEAD']);
+    result.source_revision = rev.status === 0 ? rev.stdout.trim() : null;
+  }
+  return result;
+}
+
+async function main() {
+  const args = parseArgs(process.argv.slice(2));
+  const source = join(repo, 'plugins/docflow');
+  const scratchRoot = resolve(args.scratch || mkdtempSync(join(tmpdir(), 'docflow-qualify-')));
+  mkdirSync(scratchRoot, { recursive: true });
+  const hosts = args.hosts || adapters.map((a) => a.id);
+  const selected = args.cases ? new Set(args.cases) : null;
+  const wanted = (c) => (args.cases ? selected.has(c.id) : true);
+  const results = [];
+
+  // Stage one read-only copy of the branch for every native install. The
+  // operator's working tree is never touched. Each host gets its own stage:
+  // a host's install must not mutate another host's staged source.
+  const stage = join(scratchRoot, 'stage');
+  const stageFor = (host) => join(scratchRoot, `stage-${host}`);
+  const copyRepo = (dest) => cpSync(repo, dest, {
+    recursive: true,
+    filter: (src) => !/[\\/]\.git([\\/]|$)/.test(src) && !/[\\/]node_modules([\\/]|$)/.test(src),
+  });
+  copyRepo(stage);
+
+  // Product cases run once against the branch assets.
+  for (const testCase of productCases().filter(wanted)) {
+    const home = join(scratchRoot, '_product-home');
+    mkdirSync(home, { recursive: true });
+    const ctx = buildCtx({ host: null, adapter: null, scratch: scratchRoot, home, source, node: process.execPath, stage });
+    results.push(await runOne({ ctx, testCase }));
+  }
+
+  for (const host of hosts) {
+    const adapter = adapters.find((a) => a.id === host);
+    if (!adapter) throw Error(`unknown host: ${host}`);
+    const home = join(scratchRoot, `host-${host}`);
+    mkdirSync(home, { recursive: true });
+    const hostStage = stageFor(host);
+    copyRepo(hostStage);
+    const ctx = buildCtx({ host, adapter, scratch: scratchRoot, home, source, node: process.execPath, stage: hostStage });
+    if (adapter.install) {
+      try { ctx.installResult = await adapter.install(ctx); }
+      catch (e) { ctx.installResult = { exit: 1, stderr: e.message, stdout: '' }; }
+    } else {
+      ctx.installResult = { exit: 0, stdout: '', stderr: '' };
+    }
+    for (const testCase of hostInterfaceCases().filter(wanted)) {
+      if (adapter.blocked?.[testCase.id]) {
+        results.push({ host, case: testCase.id, kind: testCase.kind, status: 'blocked', cause: adapter.blocked[testCase.id], exit_code: null, duration_ms: 0, hashes: null, source_revision: git(['rev-parse', 'HEAD']).stdout.trim() });
+        continue;
+      }
+      results.push(await runOne({ ctx, testCase }));
+    }
+    for (const testCase of skillCases().filter(wanted)) {
+      if (adapter.blocked?.[testCase.id]) {
+        results.push({ host, case: testCase.id, kind: testCase.kind, status: 'blocked', cause: adapter.blocked[testCase.id], exit_code: null, duration_ms: 0, hashes: null, source_revision: git(['rev-parse', 'HEAD']).stdout.trim() });
+        continue;
+      }
+      results.push(await runOne({ ctx, testCase }));
+    }
+  }
+
+  const revision = git(['rev-parse', 'HEAD']).stdout.trim();
+  const payload = { schema: 1, harness: 'docflow-qualify', generated_at: new Date().toISOString(), source_revision: revision, source, scratch: scratchRoot, results };
+
+  const date = new Date().toISOString().slice(0, 10);
+  const outPath = args.out || join(here, 'results', `qualify-${date}.json`);
+  mkdirSync(dirname(outPath), { recursive: true });
+  writeFileSync(outPath, JSON.stringify(payload, null, 2) + '\n');
+
+  const { renderReceipt, summarise } = await import('./qualification-receipt.mjs');
+  const receiptPath = outPath.replace(/\.json$/, '.md');
+  writeFileSync(receiptPath, renderReceipt(payload));
+
+  const s = summarise(payload);
+  console.log(`docflow host qualification — source ${revision.slice(0, 12)}`);
+  for (const host of ['product', ...hosts]) {
+    const rows = results.filter((r) => (r.host || 'product') === host);
+    if (!rows.length) continue;
+    const by = (st) => rows.filter((r) => r.status === st).length;
+    console.log(`  ${host.padEnd(9)} pass=${by('pass')} fail=${by('fail')} blocked=${by('blocked')} unrun=${by('unrun')}`);
+  }
+  console.log(`\nresults: ${outPath}`);
+  console.log(`receipt: ${receiptPath}`);
+  console.log(`totals: ${s.pass} pass, ${s.fail} fail, ${s.blocked} blocked, ${s.unrun} unrun`);
+  process.exit(s.fail ? 1 : 0);
+}
+
+main().catch((e) => { console.error(e.stack || e.message); process.exit(1); });

@@ -1,5 +1,25 @@
 # Independent vendor-host checks
 
+## Executable qualification runner (ADR 0062)
+
+`qualify.mjs` drives the installed hosts non-interactively through the case
+catalogue in `qualification-cases.mjs`, using the per-host adapters in
+`host-adapters.mjs`. It is the opt-in tier; the static `verify` gate stays
+fast and hostless.
+
+```text
+node evals/run.mjs --qualify [--hosts claude,pi,...] [--cases discovery,...] [--out FILE]
+node evals/hosts/qualify.mjs --hosts pi --cases discovery,install-byte-match
+```
+
+Every install operates on a staged copy of the branch under the scratch root;
+the operator's working tree and real configuration are never written. Each
+case is bounded at 900 s. A run writes `results/qualify-<date>.json` and emits
+`results/qualify-<date>.md` from those results; the receipt is generated, never
+hand-written. Case statuses are `pass`, `fail`, `blocked` (adapter cannot run
+it, with the reason) and `unrun` (no launcher yet); blocked and unrun are not
+passes.
+
 These tests use actual vendor CLIs in separate Linux Docker containers, or
 native editor/desktop sessions with disposable attached target folders. Record
 the desktop platform and runtime separately from historical container runs.
