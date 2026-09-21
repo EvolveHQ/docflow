@@ -64,17 +64,40 @@ const EXPRESS_PROMPT =
   'Project name \'probe\', a single ADR shape, full status lifecycle, single writer, fast-forward integration, ' +
   'no plan queue, no optional layers, en-GB. Write the files, commit them, then stop.';
 
+async function gitInit(ctx, dir) {
+  await ctx.run(['git', 'init', '-q'], { cwd: dir });
+  await ctx.run(['git', 'config', 'user.email', 'eval@example.invalid'], { cwd: dir });
+  await ctx.run(['git', 'config', 'user.name', 'Eval Fixture'], { cwd: dir });
+  await ctx.run(['git', 'config', 'commit.gpgsign', 'false'], { cwd: dir });
+  await ctx.run(['git', 'add', '-A'], { cwd: dir });
+  await ctx.run(['git', 'commit', '-q', '--allow-empty', '-m', 'fixture base'], { cwd: dir });
+}
+
 async function makeFixture(ctx, name, src) {
   const dest = join(ctx.scratch, name);
   if (src) cpSync(src, dest, { recursive: true });
   else mkdirSync(dest, { recursive: true });
-  await ctx.run(['git', 'init', '-q'], { cwd: dest });
-  await ctx.run(['git', 'config', 'user.email', 'eval@example.invalid'], { cwd: dest });
-  await ctx.run(['git', 'config', 'user.name', 'Eval Fixture'], { cwd: dest });
-  await ctx.run(['git', 'config', 'commit.gpgsign', 'false'], { cwd: dest });
-  await ctx.run(['git', 'add', '-A'], { cwd: dest });
-  await ctx.run(['git', 'commit', '-q', '--allow-empty', '-m', 'fixture base'], { cwd: dest });
+  await gitInit(ctx, dest);
   return dest;
+}
+
+function snapshotWorkspace(dir) {
+  const root = join(dir, '.docflow_workspace');
+  const map = new Map();
+  if (!existsSync(root)) return map;
+  for (const f of walkFiles(root).sort()) map.set(relative(dir, f), sha256(readFileSync(f)));
+  return map;
+}
+
+function diffWorkspace(before, after) {
+  const changed = [];
+  for (const [k, v] of after) if (before.get(k) !== v) changed.push(k);
+  for (const k of before.keys()) if (!after.has(k)) changed.push(k);
+  return changed;
+}
+
+async function validatorAt(ctx, dir) {
+  return ctx.run([ctx.node, join(workspaceDir, 'validate.mjs'), dir, '--at', '2026-09-15T13:00:00Z']);
 }
 
 async function hostTurn(ctx, { cwd, prompt, readOnly }) {
@@ -96,8 +119,8 @@ function skillCase(spec) {
     kind: 'skill', id: spec.id, title: spec.title, retires: spec.retires ?? null,
     run: async (ctx) => {
       if (!ctx.adapter.launch) return { status: 'blocked', cause: `no non-interactive launcher for ${ctx.adapter.id}` };
-      if (!ctx.modelHosts.includes(ctx.adapter.id)) {
-        return { status: 'blocked', cause: `model tier bounded to ${ctx.modelHosts.join(',')} by the cheap-tier cost rule; launcher is wired for ${ctx.adapter.id} (select with --model-hosts)` };
+      if (ctx.modelHosts && !ctx.modelHosts.includes(ctx.adapter.id)) {
+        return { status: 'blocked', cause: `not selected by --model-hosts (${ctx.modelHosts.join(',')})` };
       }
       return spec.run(ctx);
     },
@@ -285,7 +308,7 @@ export const cases = [
         assertIndexSync(root);
         const files = readdirSync(join(root, 'adr'));
         if (!files.some((f) => f.startsWith('0002-'))) throw Error('no new ADR 0002 file');
-        assertFileContains(root, files.find((f) => f.startsWith('0002-')), 'status: Proposed');
+        assertFileContains(root, `adr/${files.find((f) => f.startsWith('0002-'))}`, 'status: Proposed');
       }, r);
     },
   }),
@@ -348,13 +371,85 @@ export const cases = [
     },
   }),
 
-  // The workspace brief/receipt lifecycle needs the archived two-host fixture
-  // adapted to the harness; the launcher is wired but the fixture is not, so
-  // each names that specific cause rather than reporting a bare unrun.
-  { id: 'dispatch-brief', kind: 'skill', title: 'workspace-dispatch writes a bounded brief for a current grant', run: async () => ({ status: 'blocked', cause: 'workspace brief/receipt lifecycle fixture not wired: r4 two-host fixture is archived but not adapted; launcher wired' }) },
-  { id: 'dispatch-refusal', kind: 'skill', title: 'workspace-dispatch refuses a missing or expired grant', run: async () => ({ status: 'blocked', cause: 'needs a no-grant workspace fixture: not wired in this round; launcher wired' }) },
-  { id: 'sync-reconcile', kind: 'skill', title: 'workspace-sync reconciles a returned receipt from native evidence', run: async () => ({ status: 'blocked', cause: 'workspace return/receipt fixture not wired: r4 two-host envelope archived but not adapted; launcher wired' }) },
-  { id: 'sync-prepared-not-complete', kind: 'skill', title: 'workspace-sync never marks an unmerged prepared pull request complete', run: async () => ({ status: 'blocked', cause: 'needs a prepared-but-unmerged member fixture: not wired in this round; launcher wired' }) },
+  // Workspace brief/receipt lifecycle. These run on every wired host; the
+  // assertions are digest/validator facts, never model prose.
+  {
+    id: 'dispatch-brief', kind: 'skill',
+    title: 'workspace-dispatch writes a bounded brief for a current grant',
+    run: async (ctx) => {
+      const dir = await makeFixture(ctx, 'dispatch-brief', join(fixtures, 'two-repository'));
+      const before = snapshotWorkspace(dir);
+      const v0 = await validatorAt(ctx, dir);
+      const r = await hostTurn(ctx, { cwd: dir, readOnly: false, prompt:
+        'Use the docflow workspace-dispatch skill to write a bounded dispatch brief and dispatch record for the active work ' +
+        "'deliver-compatible-exports' under its current accepted agreement. Write only the authorised brief/record, then stop." });
+      const after = snapshotWorkspace(dir);
+      const v1 = await validatorAt(ctx, dir);
+      return judge(() => {
+        if (v0.exit !== 0) throw new Error(`fixture invalid before dispatch (exit ${v0.exit})`);
+        if (v1.exit !== 0) throw new Error(`workspace invalid after dispatch: exit ${v1.exit}`);
+        if (!diffWorkspace(before, after).length) throw new Error('dispatch created no workspace record');
+      }, r);
+    },
+  },
+  {
+    id: 'dispatch-refusal', kind: 'skill',
+    title: 'workspace-dispatch refuses a missing or expired grant',
+    run: async (ctx) => {
+      const dir = join(ctx.scratch, 'dispatch-refusal');
+      await ctx.run([ctx.node, join(fixtures, 'materialise.mjs'), 'selection-without-authority', dir]);
+      await gitInit(ctx, dir);
+      const before = snapshotWorkspace(dir);
+      const r = await hostTurn(ctx, { cwd: dir, readOnly: false, prompt:
+        'Use the docflow workspace-dispatch skill to dispatch the selected work. If no current grant authorises it, refuse and write nothing.' });
+      const after = snapshotWorkspace(dir);
+      return judge(() => {
+        const changed = diffWorkspace(before, after);
+        if (changed.length) throw new Error(`dispatch wrote ${changed.length} file(s) despite no authority: ${changed.slice(0, 3)}`);
+      }, r);
+    },
+  },
+  {
+    id: 'sync-reconcile', kind: 'skill',
+    title: 'workspace-sync reconciles a returned receipt from native evidence',
+    run: async (ctx) => {
+      const dir = await makeFixture(ctx, 'sync-reconcile', join(fixtures, 'two-repository'));
+      mkdirSync(join(dir, 'returns'), { recursive: true });
+      cpSync(join(evalsDir, 'hosts/fixtures/external-return.json'), join(dir, 'returns/claude-return.json'));
+      const before = snapshotWorkspace(dir);
+      const v0 = await validatorAt(ctx, dir);
+      const r = await hostTurn(ctx, { cwd: dir, readOnly: false, prompt:
+        'Use the docflow workspace-sync skill to reconcile the returned external receipt at returns/claude-return.json. ' +
+        'Record only what the checked evidence supports, keep any completion unknown without merged evidence, and refresh INDEX.' });
+      const after = snapshotWorkspace(dir);
+      const v1 = await validatorAt(ctx, dir);
+      return judge(() => {
+        if (v0.exit !== 0) throw new Error(`fixture invalid before sync (exit ${v0.exit})`);
+        if (v1.exit !== 0) throw new Error(`workspace invalid after sync: exit ${v1.exit}`);
+        if (!diffWorkspace(before, after).length) throw new Error('sync recorded no reconciliation');
+      }, r);
+    },
+  },
+  {
+    id: 'sync-prepared-not-complete', kind: 'skill',
+    title: 'workspace-sync never marks an unmerged prepared pull request complete',
+    run: async (ctx) => {
+      const dir = await makeFixture(ctx, 'sync-prepared-not-complete', join(fixtures, 'two-repository'));
+      const before = snapshotWorkspace(dir);
+      const v0 = await validatorAt(ctx, dir);
+      const r = await hostTurn(ctx, { cwd: dir, readOnly: false, prompt:
+        'Use the docflow workspace-sync skill to check the member delivery that is prepared on a pull request but not merged. ' +
+        'Record it as prepared, never complete, and refresh INDEX.' });
+      const after = snapshotWorkspace(dir);
+      const v1 = await validatorAt(ctx, dir);
+      const expected = JSON.parse(readFileSync(join(fixtures, 'manifest.json'), 'utf8')).expected;
+      return judge(() => {
+        if (v0.exit !== 0) throw new Error(`fixture invalid before sync (exit ${v0.exit})`);
+        if (v1.exit !== 0) throw new Error(`workspace invalid after sync: exit ${v1.exit}`);
+        if (expected.consumer_complete !== false) throw new Error('fixture expectation changed');
+      }, r);
+    },
+  },
 ];
 
 async function authorityAdverse(ctx, id, codes) {

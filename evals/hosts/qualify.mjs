@@ -21,13 +21,14 @@ import { dirname, isAbsolute, join, relative, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { adapters } from './host-adapters.mjs';
 import { cases, hostInterfaceCases, productCases, skillCases } from './qualification-cases.mjs';
+import { renderReceipt, summarise } from './qualification-receipt.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const repo = resolve(here, '..', '..');
 const DEFAULT_TIMEOUT_MS = 900_000;
 
 function parseArgs(argv) {
-  const out = { hosts: null, cases: null, scratch: null, out: null, summaryOnly: false, modelHosts: ['pi'], caseTimeoutMs: 900_000 };
+  const out = { hosts: null, cases: null, scratch: null, out: null, summaryOnly: false, modelHosts: null, caseTimeoutMs: 900_000 };
   for (let i = 0; i < argv.length; i += 1) {
     const a = argv[i];
     if (a === '--hosts') out.hosts = argv[++i].split(',').map((s) => s.trim()).filter(Boolean);
@@ -85,7 +86,7 @@ function buildCtx({ host, adapter, scratch, home, source, node, stage, modelHost
     stage: stage || repo,
     plugin: join(stage || repo, 'plugins/docflow'),
     binary: adapter?.binary,
-    modelHosts: modelHosts || ['pi'],
+    modelHosts: modelHosts || adapters.filter((a) => a.launch).map((a) => a.id),
     caseTimeout: caseTimeout || 900_000,
     installedRoot: null,
     installResult: null,
@@ -145,12 +146,26 @@ async function main() {
   });
   copyRepo(stage);
 
+  const revision = git(['rev-parse', 'HEAD']).stdout.trim();
+  const date = new Date().toISOString().slice(0, 10);
+  const outPath = args.out || join(here, 'results', `qualify-${date}.json`);
+  mkdirSync(dirname(outPath), { recursive: true });
+  const receiptPath = outPath.replace(/\.json$/, '.md');
+  let payload = null;
+  const persist = () => {
+    payload = { schema: 1, harness: 'docflow-qualify', generated_at: new Date().toISOString(), source_revision: revision, source, scratch: scratchRoot, results };
+    writeFileSync(outPath, JSON.stringify(payload, null, 2) + '\n');
+    writeFileSync(receiptPath, renderReceipt(payload));
+    return payload;
+  };
+  const record = (entry) => { results.push(entry); persist(); };
+
   // Product cases run once against the branch assets.
   for (const testCase of productCases().filter(wanted)) {
     const home = join(scratchRoot, '_product-home');
     mkdirSync(home, { recursive: true });
     const ctx = buildCtx({ host: null, adapter: null, scratch: scratchRoot, home, source, node: process.execPath, stage, modelHosts: args.modelHosts, caseTimeout: args.caseTimeoutMs });
-    results.push(await runOne({ ctx, testCase }));
+    record(await runOne({ ctx, testCase }));
   }
 
   for (const host of hosts) {
@@ -169,32 +184,21 @@ async function main() {
     }
     for (const testCase of hostInterfaceCases().filter(wanted)) {
       if (adapter.blocked?.[testCase.id]) {
-        results.push({ host, case: testCase.id, kind: testCase.kind, status: 'blocked', cause: adapter.blocked[testCase.id], exit_code: null, duration_ms: 0, hashes: null, source_revision: git(['rev-parse', 'HEAD']).stdout.trim() });
+        record({ host, case: testCase.id, kind: testCase.kind, status: 'blocked', cause: adapter.blocked[testCase.id], exit_code: null, duration_ms: 0, hashes: null, source_revision: revision });
         continue;
       }
-      results.push(await runOne({ ctx, testCase }));
+      record(await runOne({ ctx, testCase }));
     }
     for (const testCase of skillCases().filter(wanted)) {
       if (adapter.blocked?.[testCase.id]) {
-        results.push({ host, case: testCase.id, kind: testCase.kind, status: 'blocked', cause: adapter.blocked[testCase.id], exit_code: null, duration_ms: 0, hashes: null, source_revision: git(['rev-parse', 'HEAD']).stdout.trim() });
+        record({ host, case: testCase.id, kind: testCase.kind, status: 'blocked', cause: adapter.blocked[testCase.id], exit_code: null, duration_ms: 0, hashes: null, source_revision: revision });
         continue;
       }
-      results.push(await runOne({ ctx, testCase }));
+      record(await runOne({ ctx, testCase }));
     }
   }
 
-  const revision = git(['rev-parse', 'HEAD']).stdout.trim();
-  const payload = { schema: 1, harness: 'docflow-qualify', generated_at: new Date().toISOString(), source_revision: revision, source, scratch: scratchRoot, results };
-
-  const date = new Date().toISOString().slice(0, 10);
-  const outPath = args.out || join(here, 'results', `qualify-${date}.json`);
-  mkdirSync(dirname(outPath), { recursive: true });
-  writeFileSync(outPath, JSON.stringify(payload, null, 2) + '\n');
-
-  const { renderReceipt, summarise } = await import('./qualification-receipt.mjs');
-  const receiptPath = outPath.replace(/\.json$/, '.md');
-  writeFileSync(receiptPath, renderReceipt(payload));
-
+  persist();
   const s = summarise(payload);
   console.log(`docflow host qualification — source ${revision.slice(0, 12)}`);
   for (const host of ['product', ...hosts]) {
