@@ -33,7 +33,7 @@
       "mode": "brief"
     },
     {
-      "host": "zcode",
+      "host": "herdr",
       "alias": "docflow-reviewer",
       "mode": "brief"
     },

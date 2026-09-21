@@ -1,11 +1,11 @@
 ---
 adr: 0015
 title: Multi-target portability — one skill source, many coding agents
-status: Implemented
+status: Superseded
 date: 2026-06-03
 owner: Eugenio Minardi
 supersedes: ["0008"]
-superseded-by:
+superseded-by: ["0060"]
 depends-on: ["0001", "0007", "0009"]
 tags: [packaging, portability, distribution]
 ---
@@ -127,6 +127,7 @@ installs the existing Claude Code plugin.
 | 2026-09-14 | r8 | Codex, operator-authorised | Observe native Windows Desktop 1.52386.6 / Opus 5 Max on the actual attached target: signed bootstrap/new-adr and opted-in Workflow rung 1 preserve concurrent signed local claims/work after the gate failure. Initial unlink denial recovers through supported target-scoped permission in existing Skip approvals mode; native gh is absent. Verify all 32 loaded export files and nine sidecars for original 13ea0c2 and repaired eff3130; the latter receives only a targeted fresh bootstrap pass after the seed-reference defect. Preserve the post-wave export denial violation, corrected native timestamp and CRLF/Git source boundary. Pi full-contract evidence and release review remain incomplete; AC5 and Accepted status are unchanged. |
 | 2026-09-14 | r9 | Codex, operator-authorised | Continue all five targets on the unchanged 32-file bef25d8 plugin snapshot, including nine sidecars, with no line-ending normalisation. Native-high Pi normal execution now passes initial branch metadata, Status-only publication, acquisition ordering, completion and fresh-clone gates. Fresh CLI bootstrap/lifecycle/migration and native delegation cases, Cowork actual-target lifecycle plus focused export-denial stop, and retained failed attempts are recorded in the current audit. Docker Desktop loss interrupts a separate Pi bootstrap; local Qwen/high remains selected. Keep AC5 and Accepted status pending remaining complete-contract observations; support scope is unchanged. |
 | 2026-09-14 | r10 | Codex, operator-authorised | Verify AC5 on all five named hosts from the unchanged 32-file bef25d8 snapshot. Fresh local Qwen/high Pi bootstrap/new-decision and normal/blocked waves pass independently; Claude Code native Workflow/isolated Agent, Codex/OpenCode native workers and Cowork actual-target Workflow evidence retain their permission and transport limits. OpenCode uses a distinct native reporting correction; original failures remain. Prepare Implemented and 0051 completion on PR #7, effective only on its authorised checked merge; support scope unchanged. |
+| 2026-09-19 | r11 | Eugenio Minardi | Superseded as far as the target set goes by adr/0060-v1-package-target-set.md: the operator mandate of 2026-09-19 retires Cowork and sets the eight-target V1 package set. The portability model and per-host packaging in this ADR carry forward unchanged. |
 
 ## Approvals
 

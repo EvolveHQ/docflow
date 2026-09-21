@@ -6,14 +6,15 @@ Use workspace-setup to establish an adopter home, workspace-status to read
 current state, workspace-scope to record outcomes, workspace-dispatch to
 prepare and hand off authorised native assignments, and workspace-sync to
 reconcile returns and maintain delivery state. Read the
-[six native guides](guides/README.md); native host/Clarity qualification
+[seven native guides](guides/README.md); native host/Clarity qualification
 remains separate from deterministic package checks.
 
 ## Install the complete assets
 
 Plugin bundles contain `skills/` and the sibling `workspace/` directory.
 The npm package includes both under `plugins/docflow/`. Copy the complete
-plugin directory for marketplace/local-plugin use and Cowork ZIP uploads.
+plugin directory for marketplace/local-plugin use. Keep the plugin directory
+intact for marketplace uploads and local plugin directories.
 Keep the two directories together when unpacking an npm package.
 
 For a standalone skill **copy**, also copy `workspace/` from that same

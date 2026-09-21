@@ -329,11 +329,26 @@ enforced by audit, not by remote control.**
 Federation keeps a product's decisions consistent across repositories. A
 **portable workspace** adds the coordination layer above it: an
 adopter-owned Git home — a registry, conventions and five kinds of canonical
-record (ideas, decisions, work, knowledge and runs) — that links independent
-members without writing into any of them. Members keep their own
+record (ideas, decisions, work, knowledge and runs), plus committed operator
+mandate notes — that links independent members without writing into any of
+them. Members keep their own
 instructions, methods and histories; the workspace holds only what no single
 member can see, and its overviews are derived views you regenerate rather
 than a second source of truth.
+
+Five commands operate the workspace: **workspace-setup** creates or adopts
+the home; **workspace-status** gives a read-only briefing and fresh-session
+recovery; **workspace-scope** records ideas, decisions, work, deliveries,
+criteria, grants and recommendations from a committed mandate note;
+**workspace-dispatch** checks the grant, native claim, dependencies and
+resources and hands off a bounded brief; **workspace-sync** reconciles
+returned receipts and member state from checked native evidence, including
+imported historical runs. Members are registered as delivery members
+(docflow or non-docflow) or as remote-only references whose use stays
+non-mutating. Seven versioned native host guides accompany the commands.
+
+See [Portable workspaces]({{ '/workspace/' | relative_url }}) for the item
+kinds, lifecycle graphs, member topology and step-by-step use cases.
 
 The records are plain files checked by a deterministic validator, not a
 scheduler, an authentication layer or a live ownership service. Selection

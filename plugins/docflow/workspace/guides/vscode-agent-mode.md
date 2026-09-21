@@ -1,26 +1,35 @@
-# ZCode workspace guide
+# VS Code agent mode workspace guide
 
-Guide revision 1; official documentation checked 2026-09-15.
-Coordinator preflight observed Windows desktop 3.11.2.6792; installation
-presence is separate from usable UI/authentication and native skill discovery.
+Guide revision 1; official VS Code and GitHub Copilot documentation checked
+2026-09-19. VS Code agent mode runs the Copilot coding agent inside the editor.
+It reads the member repository's own instructions and exposes reusable prompt
+files, custom instructions and agent skills; Docflow still owns the portable
+brief and receipt and grants no execution authority by itself.
 
-Open the selected workspace in the existing ZCode Agent and supply the brief
-as explicit file context. ZCode reads workspace `AGENTS.md`; read the
-member's instructions explicitly rather than assuming ancestor files merge.
-[Agent instructions](https://zcode.z.ai/en/docs/agents).
+Open the workspace home (or the member repository) in VS Code and confirm the
+integrated agent surface is available. Instructions are read in layers, so
+read the member's instructions and the workspace records explicitly rather
+than assuming ancestor files merge:
 
-Use **Settings → Skills** to inspect discovered sources and enable status.
-The documented user location is `~/.zcode/skills/<name>/SKILL.md`;
-import can use a symlink or a copy. Copies also need the complete Docflow
-assets beside skills as `docflow-workspace/`. A selected skill appears
-through the skill picker; README carries invocation forms.
-[Skills](https://zcode.z.ai/en/docs/skill).
+- `AGENTS.md` at the repository root;
+- `.github/copilot-instructions.md` for Copilot-wide guidance;
+- `.github/instructions/**/*.instructions.md` for path-scoped rules;
+- `.github/prompts/**/*.prompt.md` for reusable prompt files.
 
-There is no guessed ZCode shell launcher here. Use the documented native UI
-commands and record the actual model/mode and session. Optional machine-local
-memory cannot be the sole shared record or evidence source. Remote sessions
-need their own source/availability checks; local installation is not remote
-availability.
+[Custom instructions](https://code.visualstudio.com/docs/copilot/customization/custom-instructions)
+and [prompt files](https://code.visualstudio.com/docs/copilot/customization/prompt-files).
+
+Skills are discovered from the same locations the Copilot CLI uses:
+`.github/skills/`, `.agents/skills/` or `.claude/skills/` in the project, and
+`~/.copilot/skills/` or `~/.agents/skills/` for the user. A standalone copy
+also needs the complete Docflow assets beside the skills as
+`docflow-workspace/`. A selected skill appears through the agent's skill
+picker; the README carries the invocation forms.
+
+For workspace work, open the portable brief as explicit context (attach the
+brief file or paste it into the chat) and name the member repository and goal.
+Do not ask the agent to search outside the authorised roots; ordinary file
+tools may enumerate more than the read scope permits.
 
 ## Bounded brief and receipt smoke
 
@@ -59,4 +68,3 @@ native discovery, permissions or returned evidence remains blocked/unknown.
 - **Overall:** partially verified — command/documentation checks only; native smoke unrun.
 - **Yet to do:** Execute this guide on the integrated candidate; record exact
   host/platform/source and brief/receipt evidence, including adverse outcomes.
-

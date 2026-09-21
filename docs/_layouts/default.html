@@ -55,11 +55,20 @@
       <span class="footer-links">
         <a href="{{ '/' | relative_url }}">Home</a>
         <a href="{{ '/methodology/' | relative_url }}">Methodology</a>
+        <a href="{{ '/workspace/' | relative_url }}">Workspace</a>
         <a href="{{ '/examples/' | relative_url }}">Examples</a>
         <a href="{{ '/privacy/' | relative_url }}">Privacy</a>
         <a href="https://github.com/EvolveHQ/docflow">GitHub</a>
       </span>
     </div>
   </footer>
+  {% if page.mermaid %}
+  <!-- Mermaid is loaded only on pages that opt in with `mermaid: true` in
+       frontmatter; pinned so GitHub Pages renders a stable version. -->
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
+  </script>
+  {% endif %}
 </body>
 </html>

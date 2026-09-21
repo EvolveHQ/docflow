@@ -8,7 +8,7 @@ skills are covered in §5a and the portable-workspace skills in §5c.
 ## Install (per platform)
 
 docflow runs from **one skill source** (`plugins/docflow/skills/`) on
-five coding agents. The
+eight coding agents. The
 scaffolded **output** (`AGENTS.md`, the ADR catalogue, `plan/`, `_agent/`)
 is plain Markdown read natively by any agent that loads `AGENTS.md`; the
 **skills** are `SKILL.md` files the host discovers.
@@ -16,20 +16,25 @@ is plain Markdown read natively by any agent that loads `AGENTS.md`; the
 | Agent | Install | Invoke |
 |-------|---------|--------|
 | **Claude Code** | `/plugin marketplace add EvolveHQ/docflow` then `/plugin install docflow@evolvehq` | `/bootstrap` |
-| **Claude Cowork** | the same plugin bundle, uploaded through Customise → Plugins → Add | `/bootstrap` |
 | **pi** | `pi install npm:@evolvehq/docflow` (or `pi install git:github.com/EvolveHQ/docflow`) | `/skill:bootstrap` |
 | **Codex** | `codex plugin marketplace add EvolveHQ/docflow` then `codex plugin add docflow@evolvehq` (native plugin) | `$bootstrap` / `/skills` |
 | **OpenCode** | auto-discovers `.claude`/`.agents`/`.opencode` skills (so a Claude Code / Codex install is picked up), or symlink into `~/.config/opencode/skills` | auto, by description |
+| **Grok** | `grok plugin marketplace add EvolveHQ/docflow` then `grok plugin install docflow --trust` (native plugin) | `/bootstrap` |
+| **Cursor** | `cursor-agent --plugin-dir <repo>/plugins/docflow` (native `.cursor-plugin/` for repository installs) | `/bootstrap` |
+| **omp (oh-my-pi)** | `omp plugin install npm:@evolvehq/docflow` (reads the pi manifest) | `/skill:bootstrap` |
+| **GitHub Copilot CLI** | `copilot plugin marketplace add EvolveHQ/docflow` then `copilot plugin install docflow@evolvehq`, or `copilot --plugin-dir <repo>/plugins/docflow` | `/bootstrap` |
 
 Notes:
 
-- **Codex** ships a native plugin (`.codex-plugin/`), so it's a one-command
-  install like Claude Code. **OpenCode** has no marketplace command for
+- **Codex** and **Grok** ship native plugins (`.codex-plugin/`,
+  `.grok-plugin/`), so they are one-command installs like Claude Code.
+  **Cursor**, **omp** and **Copilot CLI** load a local plugin directory or
+  the npm/pi manifest. **OpenCode** has no marketplace command for
   `SKILL.md` skills (its plugin system is npm JS plugins), so it relies on
   skills-directory auto-discovery or a symlink.
-- A **shared skills directory** can serve two agents: `~/.agents/skills/`
-  is read by Codex and OpenCode; `~/.claude/skills/` by Claude Code and
-  OpenCode.
+- A **shared skills directory** can serve several agents: `~/.agents/skills/`
+  is read by Codex, OpenCode and omp; `~/.claude/skills/` by Claude Code,
+  OpenCode and omp.
 - The scaffolded output needs no porting on any of them — it is read
   natively wherever `AGENTS.md` is the instruction file.
 
@@ -43,10 +48,10 @@ in any repo. Invocation differs per agent:
 
 | Agent | Slash / mention | Auto-trigger from description |
 |-------|-----------------|-------------------------------|
-| Claude Code / Cowork | `/bootstrap`, `/new-adr`, … | yes |
-| pi | `/skill:bootstrap`, `/skill:new-adr`, … | no — invoke explicitly |
+| Claude Code | `/bootstrap`, `/new-adr`, … | yes |
+| pi / omp | `/skill:bootstrap`, `/skill:new-adr`, … | no — invoke explicitly |
 | Codex | `$bootstrap` / `/skills` | yes |
-| OpenCode | (loaded by name) | yes, by description |
+| OpenCode / Grok / Cursor / Copilot | (loaded by name / slash menu) | yes, by description |
 
 On agents that **auto-trigger**, natural-language matching the skill's
 description also works, e.g.:
@@ -548,7 +553,7 @@ falling back to another route. A **readiness report** for which no assigned
 attempt started is not a completed receipt, and only a real returned
 receipt with its evidence can support "done".
 
-**Install the complete assets.** The four skills are not self-contained;
+**Install the complete assets.** The five skills are not self-contained;
 they read the schema, validator, fixtures, roles, profiles and native
 guides in `plugins/docflow/workspace/`. Keep that `workspace/` directory
 beside `skills/` for plugin and npm installs. For a standalone skill
@@ -556,7 +561,7 @@ copy, also copy the whole `workspace/` directory as `docflow-workspace/`
 beside the host's `skills/` directory — this includes shared
 Codex/OpenCode copies. See the
 [workspace asset guide](plugins/docflow/workspace/README.md) and the
-[six native guides](plugins/docflow/workspace/guides/README.md) for
+[seven native guides](plugins/docflow/workspace/guides/README.md) for
 host-specific guidance; the guides document existing host commands and
 UI, and Docflow supplies no launcher of its own.
 
@@ -633,11 +638,12 @@ To remove the plugin entirely:
 
 **Other agents:**
 
-- **Cowork** — update through the desktop Plugins interface; the CLI flow (`/plugin marketplace update` →
-  install).
 - **pi** — re-run `pi install npm:@evolvehq/docflow` (or the `git:` form).
 - **Codex** — `codex plugin marketplace upgrade`, then re-add with
   `codex plugin add docflow@evolvehq`.
+- **Grok** — `grok plugin marketplace update`, then `grok plugin update docflow`.
+- **Cursor / omp / Copilot CLI** — reload the plugin directory or re-run the
+  install command; Grok and Codex-style marketplaces update in place.
 - **OpenCode** — if installed via a clone/symlink, `git pull` the clone;
   skills reload on the next session.
 
@@ -645,9 +651,11 @@ To remove the plugin entirely:
 
 1. Edit a skill body (`plugins/docflow/skills/<name>/SKILL.md`), the bootstrap templates
    (`plugins/docflow/skills/bootstrap/templates/*.md`), or supporting docs.
-2. Bump the `version` field in `.claude-plugin/plugin.json` following
-   semver — patch for fixes, minor for new questions / templates,
-   major for breaking changes to the skill flow.
+2. Bump the `version` field in every plugin manifest together
+   (`package.json`, `.claude-plugin/`, `.codex-plugin/`, `.grok-plugin/`,
+   `.cursor-plugin/`, `.omp-plugin/`) following semver — patch for fixes,
+   minor for new questions / templates, major for breaking changes to the
+   skill flow. `node scripts/verify.mjs` fails if they diverge.
 3. Update this `USAGE.md` and `README.md` if behaviour changed.
 4. Commit with a Conventional Commit message
    (`feat(skill): ...`, `fix(template): ...`, `docs: ...`).

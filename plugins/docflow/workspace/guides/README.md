@@ -4,21 +4,23 @@ These are prompt-led guides to existing host commands and UI. Choose the
 operator's native host; Docflow supplies portable records, never a scheduler
 or automatic launch service. Native repository rules and permissions win.
 Guide revision 1 was checked against installed help or primary documentation
-on 2026-09-15; later versions require rechecking.
+on 2026-09-15; later versions require rechecking. The Herdr and VS Code agent
+mode guides were added for V1 and their entry points checked 2026-09-19.
 
 | Guide | Entry-point evidence | Native brief/receipt smoke |
 |---|---|---|
-| [Orca](orca.md) | Installed version-matched guides, 1.4.201 | Unrun |
-| [Cursor](cursor.md) | Official editor/Agent docs; local editor CLI broken | Unrun; CLI access blocked |
-| [Claude Code](claude-code.md) | Installed CLI 2.1.271 help/version | Unrun |
-| [DeepSeek Harness](deepseek-harness.md) | Installed 0.1.1-rc.2 launcher help/version | Unrun |
-| [ZCode](zcode.md) | Official UI docs; coordinator desktop preflight | Unrun |
+| [Claude Code](claude-code.md) | Installed CLI help/version | Unrun |
 | [Codex App](codex-app.md) | Installed app-launcher help; official docs | Unrun |
+| [Cursor](cursor.md) | Official editor/Agent docs; local editor CLI broken | Unrun; CLI access blocked |
+| [DeepSeek Harness](deepseek-harness.md) | Installed launcher help/version | Unrun |
+| [Herdr](herdr.md) | Installed `herdr` CLI reference, checked 2026-09-19 | Unrun |
+| [VS Code agent mode](vscode-agent-mode.md) | Official VS Code / Copilot docs, checked 2026-09-19 | Unrun |
+| [Orca](orca.md) | Installed version-matched guides | Unrun |
 
-These six guides are distinct from the five package installation targets
-(Claude Code, Cowork, pi, Codex and OpenCode). Static package discovery tests
-do not qualify any native host. All required native smokes remain required;
-unavailability is not a reduced support promise.
+These seven guides are distinct from the eight package installation targets
+(Claude Code, pi, Codex, OpenCode, Grok, Cursor, omp and Copilot). Static
+package discovery tests do not qualify any native host. All required native
+smokes remain required; unavailability is not a reduced support promise.
 
 ## Ordinary-file baseline
 
@@ -38,8 +40,7 @@ local-only pilot. Add nothing when ordinary files suffice.
 
 ## Status at a glance
 
-- **This run:** Provides six source-checked entry guides and ordinary-file fallback.
+- **This run:** Provides seven source-checked entry guides and ordinary-file fallback.
 - **Overall:** partially verified — native host behaviour is unqualified.
-- **Yet to do:** Six smokes, two-host continuation, eighteen workspace scenarios,
-  five-target discovery and combined Clarity/operator qualification.
-
+- **Yet to do:** Seven smokes, two-host continuation, eighteen workspace scenarios,
+  eight-target discovery and combined Clarity/operator qualification.

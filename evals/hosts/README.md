@@ -1,7 +1,7 @@
 # Independent vendor-host checks
 
 These tests use actual vendor CLIs in separate Linux Docker containers, or
-native Cowork desktop sessions with disposable attached target folders. Record
+native editor/desktop sessions with disposable attached target folders. Record
 the desktop platform and runtime separately from historical container runs.
 The model runs the installed skill; an external process checks the actual
 target files and Git state. CLI exit zero is not a test pass.
@@ -18,7 +18,8 @@ The normal deterministic suite does not silently run paid model calls.
    the snapshot per path as well as comparing the digest. Freeze this snapshot
    for the whole run; never update an installation underneath a running test.
 2. Build the selected `Dockerfile` target (`claude`, `codex`, `pi`, `opencode`,
-   `cowork`). Record the actual CLI/desktop version, model and image ID; package
+   `grok`, `cursor`, `omp`, `copilot`). Record the actual CLI/desktop version,
+   model and image ID; package
    pins reproduce the tested versions, while distribution dependencies can vary.
 3. Start one container per host, with `/home/node` on tmpfs (uid/gid 1000,
    mode 0700), an owned `/workspace`, and the snapshot mounted read-only at
@@ -30,7 +31,9 @@ The normal deterministic suite does not silently run paid model calls.
 5. Install through the native facility: Claude `--plugin-dir` points to
    `/opt/docflow-source/plugins/docflow`; Codex adds the local marketplace and
    installs `docflow@evolvehq`; pi installs `/opt/docflow-source`; OpenCode links
-   the nine skills into its created `~/.config/opencode/skills` directory.
+   the fourteen skills into its created `~/.config/opencode/skills` directory;
+   Grok adds the local marketplace and installs `docflow --trust`; Cursor and
+   Copilot use `--plugin-dir`; omp installs the npm package.
 
 Example image build: `docker build --target claude -t docflow-host-claude evals/hosts`.
 Authentication/provider availability is separate from skill behaviour. Record
@@ -172,51 +175,6 @@ OpenCode native wave passed state checks but failed its final report; a separate
 read-only reporting phase tested the clarified report instructions. It is not
 another delegation run or an uninterrupted initial pass.
 
-## Cowork desktop
-
-Cowork requires interactive desktop login and native plugin installation.
-Use the same plugin ZIP (contents of `plugins/docflow/`, including hidden
-manifest directories) through Customise → Plugins → Add → Upload plugin.
-Attach the disposable fixture folder, then supply the same bootstrap inputs.
-If using a local VNC viewer, bind the published port to 127.0.0.1 only.
-
-Record the actual execution environment. The historical Linux desktop used cloud
-execution and a local-folder connector, not a local VM shell. File writes can
-succeed while `.git` writes are denied. Verify the selected target separately
-from any cloud mirror. A downloaded Git bundle can be independently verified
-and compared in another scratch clone; it does not prove target Git integration.
-Do not commit desktop screenshots or transcripts containing unrelated chats.
-
-The separate `results/2026-09-14-cowork.json` records native Windows Desktop
-1.52386.6 / Opus 5 Max through a Linux VM/FUSE view of the actual Windows target.
-Independent Windows checks cover signed bootstrap/new-adr and an opted-in
-Workflow rung-1 wave: 47 state assertions plus four exact recovery/output
-assertions, with original child tool events establishing claim-before-write
-and concurrent work before the gate failure. Main and the held claim survive;
-the blocked and already-running peer remain recoverable. Native `gh` is absent;
-signed transport is to the actual target's isolated local bare remote.
-
-Initial unlink denial recovered through the supported target-scoped deletion
-grant; existing Skip approvals mode was unchanged. A later receipt export
-crossed the file API's explicit `.git` denial through another tool before the
-controller's stop completed. Preserve this separate adverse observation, the
-host-autosaved output discrepancy and the corrected native manifest timestamp.
-Do not use protected metadata paths for remote-file exports or treat a second
-tool as permission to bypass a denial.
-
-Expanded native command output verifies all 32 installed files and nine
-sidecars for both the original `13ea0c2` export and corrected `eff3130` export.
-The original bootstrap passed its 23 existing assertions plus six wrapper
-checks; a new focused check rejected its generic seed footer. The repaired
-bootstrap passed 25 independent checks on a fresh native child target.
-`check-seed-completion.mjs <fixture> --signed` resolves the exact seed reference
-and verifies its reachable signed scaffold; `check-bootstrap.py` now includes
-that assertion (24 checks for its signed full bootstrap/new-adr scenario).
-`node --test evals/hosts/test-seed-completion.mjs` covers 14 meaningful positive
-and negative fixtures. These deterministic regressions are not native runs.
-Original results remain unchanged; the new source received a targeted bootstrap
-rerun, not another five-host matrix. Each receipt states the CRLF/Git-blob boundary.
-
 ## Current claim and denial assertions
 
 The separate `results/2026-09-14-release-verification.json` and release audit
@@ -270,8 +228,7 @@ Installed files matched the frozen Windows export byte-for-byte; final Git blobs
 match only after CRLF-to-LF normalisation. Both digests and comparisons are recorded.
 Passing a subset does not establish a green release suite. Signed local pushes and
 native delegation have bounded evidence; hosted GitHub permissions remain
-unverified. Native Cowork target Git evidence is recorded separately in the
-2026-09-14 continuation. These statements describe the earlier snapshots;
+unverified. These statements describe the earlier five-target snapshots;
 `results/2026-09-11.json` is also historical.
 
 The final `results/2026-09-14-release-verification.json` assessment covers all
@@ -282,7 +239,7 @@ fresh-clone checks. The complete native runs settle naturally. OpenCode's
 later wave uses a separately verified native Status-only reporting correction;
 that staged result and all failed attempts remain explicit. The exact mapped
 full-bootstrap assertion also passes on preserved native Claude Code/Codex
-outputs without changing their bytes. No hosted PR or ordinary-manual Cowork
+outputs without changing their bytes. No hosted PR or ordinary-manual desktop
 permission capability is inferred. Owned runtimes are stopped; public keys and
 recoverable histories remain. PR completion and release retain their separate
 authorisation requirements.

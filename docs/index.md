@@ -11,11 +11,13 @@ conventions, and the agent operating contract — the small set of canonical
 files a repo can be driven from by humans and coding agents alike. A set of
 **lifecycle skills** then author, queue, ship, and audit ADRs.
 
-It runs on **five coding agents** — Claude Code, Claude Cowork, pi, Codex,
-and OpenCode — from the same skill files, and scales from a single
+It runs on **eight coding agents** — Claude Code, pi, Codex, OpenCode, Grok,
+Cursor, omp and Copilot — from the same skill files, and scales from a single
 repository to a **multi-repo product**. See the
 [methodology]({{ '/methodology/' | relative_url }}) for the formal definition of the conventions,
-why they help, and where they fall short.
+why they help, and where they fall short, and
+[Portable workspaces]({{ '/workspace/' | relative_url }}) for the
+cross-repository model.
 
 ## Skills
 
@@ -79,14 +81,15 @@ pi install npm:@evolvehq/docflow
 (or, from source, `pi install git:github.com/EvolveHQ/docflow`.)
 Invoke as `/skill:bootstrap`, `/skill:new-adr`, …
 
-### Also: Claude Cowork, Codex, OpenCode
+### Also: Codex, OpenCode, Grok, Cursor, omp, Copilot
 
-docflow runs from the same skill files on **Claude Cowork** (the Claude
-Code plugin), **Codex** (`codex plugin marketplace add EvolveHQ/docflow`;
-invoke `$bootstrap`), and **OpenCode** (reads `.claude`/`.agents`/
-`.opencode` skills — auto-discovered; OpenCode-compatible forks like
-Xiaomi's *mimocode* inherit this via the same path). See the
-[full install matrix](https://github.com/EvolveHQ/docflow#install).
+docflow runs from the same skill files on **Codex** (`codex plugin marketplace add EvolveHQ/docflow`; invoke `$bootstrap`), **OpenCode**
+(reads `.claude`/`.agents`/`.opencode` skills — auto-discovered), **Grok**
+(`grok plugin marketplace add EvolveHQ/docflow` → `grok plugin install docflow --trust`), **Cursor** (`cursor-agent --plugin-dir <repo>/plugins/docflow`), **omp**
+(`omp plugin install npm:@evolvehq/docflow`; invoke `/skill:bootstrap`), and
+**GitHub Copilot CLI** (`copilot plugin marketplace add EvolveHQ/docflow`).
+OpenCode-compatible forks like Xiaomi's *mimocode* inherit this via the same
+path. See the [full install matrix](https://github.com/EvolveHQ/docflow#install).
 
 ## Why
 
@@ -99,6 +102,7 @@ handover. It works on fresh repos (scaffolds from zero) and existing ones
 ## Links
 
 - [Methodology — the formal definition]({{ '/methodology/' | relative_url }})
+- [Portable workspaces]({{ '/workspace/' | relative_url }})
 - [Source on GitHub](https://github.com/EvolveHQ/docflow)
 - [README](https://github.com/EvolveHQ/docflow/blob/main/README.md)
 - [Full usage & customisation guide (USAGE.md)](https://github.com/EvolveHQ/docflow/blob/main/USAGE.md)

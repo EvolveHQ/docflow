@@ -1,6 +1,6 @@
 ---
 name: workspace-dispatch
-description: Dispatch an already scoped WORKSPACE outcome: check current grants, native claims, dependencies and resources, write a bounded brief and hand it to a native host. Use for workspace-dispatch or handing off an authorised assignment. NOT for reconciling a return, maintenance observation, planning scope, native agent waves, setup or read-only briefing.
+description: "Dispatch an already scoped WORKSPACE outcome: check current grants, native claims, dependencies and resources, write a bounded brief and hand it to a native host. Use for workspace-dispatch or handing off an authorised assignment. NOT for reconciling a return, maintenance observation, planning scope, native agent waves, setup or read-only briefing."
 ---
 
 # workspace-dispatch

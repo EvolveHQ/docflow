@@ -46,14 +46,15 @@ questions, References, Revision History, Approvals.
 
 ## Multi-Target Parity
 
-docflow ships for five coding agents — Claude Code, Claude Cowork, pi,
-Codex, and OpenCode — from the **same** skill files under
+docflow ships for eight coding agents — Claude Code, pi, Codex, OpenCode,
+Grok, Cursor, omp and Copilot — from the **same** skill files under
 `plugins/docflow/skills/`. Only the manifests differ:
 `.claude-plugin/plugin.json` + `.claude-plugin/marketplace.json` for
-Claude Code / Cowork, `package.json` (`pi.skills`) for pi, and
+Claude Code / Copilot, `package.json` (`pi.skills`) for pi and omp,
 `.codex-plugin/plugin.json` + `.agents/plugins/marketplace.json` for
-Codex. OpenCode auto-discovers the same skill files and needs no
-manifest of its own.
+Codex, `.grok-plugin/` for Grok, and `.cursor-plugin/` for Cursor.
+OpenCode auto-discovers the same skill files and needs no manifest of its
+own.
 
 Any change to a skill, template, or the skill set must keep **every**
 target working. Skill prose stays agent-neutral; agent-specific
@@ -63,18 +64,23 @@ one agent is a defect until the other agents are handled too.
 
 ## Version-Sync Invariant
 
-The package version is declared in three manifests and they must always
+The package version is declared in six manifests and they must always
 agree:
 
-- `package.json` → `version` (npm / pi)
-- `.claude-plugin/plugin.json` → `version` (Claude Code / Cowork)
+- `package.json` → `version` (npm / pi / omp)
+- `.claude-plugin/plugin.json` → `version` (Claude Code / Copilot)
 - `.codex-plugin/plugin.json` → `version` (Codex)
+- `.grok-plugin/plugin.json` → `version` (Grok)
+- `.cursor-plugin/plugin.json` → `version` (Cursor)
+- `.omp-plugin/plugin.json` → `version` (omp)
 
 Bump them together in the same commit. The verify gate
 (`node scripts/verify.mjs`) fails if any diverge. The git tag `vX.Y.Z`
 and the published npm version must match this same number. Each
 marketplace manifest (`.claude-plugin/marketplace.json`,
-`.agents/plugins/marketplace.json`) must list the plugin by name.
+`.agents/plugins/marketplace.json`, `.grok-plugin/marketplace.json`,
+`.cursor-plugin/marketplace.json`, `.omp-plugin/marketplace.json`) must list
+the plugin by name.
 
 ## Gate Integrity
 
