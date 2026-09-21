@@ -74,7 +74,7 @@ async function gitInit(ctx, dir) {
 }
 
 async function makeFixture(ctx, name, src) {
-  const dest = join(ctx.scratch, name);
+  const dest = join(ctx.scratch, `${ctx.host}-${name}`);
   if (src) cpSync(src, dest, { recursive: true });
   else mkdirSync(dest, { recursive: true });
   await gitInit(ctx, dest);
@@ -336,7 +336,7 @@ export const cases = [
     id: 'ship-item', retires: 'ship-item: todo→done and owning ADR → Implemented',
     title: 'ship-item moves todo to done and advances the owning decision',
     run: async (ctx) => {
-      const base = join(ctx.scratch, 'ship-item');
+      const base = join(ctx.scratch, `${ctx.host}-ship-item`);
       const prep = await ctx.run([ctx.python, join(evalsDir, 'hosts/prepare-ship.py'), base], { env: { DOCFLOW_PLUGIN_ROOT: ctx.plugin } });
       if (prep.exit !== 0) return { status: 'fail', cause: `prepare-ship exit ${prep.exit}: ${(prep.stderr || prep.stdout).slice(0, 180)}` };
       const dir = join(base, 'repo');
@@ -404,7 +404,7 @@ export const cases = [
     id: 'dispatch-refusal', kind: 'skill',
     title: 'workspace-dispatch refuses a missing or expired grant',
     run: async (ctx) => {
-      const dir = join(ctx.scratch, 'dispatch-refusal');
+      const dir = join(ctx.scratch, `${ctx.host}-dispatch-refusal`);
       await ctx.run([ctx.node, join(fixtures, 'materialise.mjs'), 'selection-without-authority', dir]);
       await gitInit(ctx, dir);
       const before = snapshotWorkspace(dir);
