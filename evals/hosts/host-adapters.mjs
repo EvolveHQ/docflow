@@ -181,7 +181,10 @@ export const adapters = [
     },
     async discover(ctx) {
       const r = await ctx.run([ctx.binary, 'plugin', 'list']);
-      const loaded = /docflow@evolvehq/.test(r.stdout) && /installed/.test(r.stdout) && !/not installed/.test(r.stdout);
+      // `plugin list` prints every marketplace; test only the docflow row, so a
+      // sibling plugin's "not installed" never marks docflow unloaded.
+      const row = r.stdout.split('\n').find((l) => /docflow@evolvehq/.test(l)) || '';
+      const loaded = /installed/.test(row) && !/not installed/.test(row);
       const skills = loaded ? scanSkills(join(ctx.plugin, 'skills')) : [];
       return { exit: r.exit, loaded, skills, evidence: 'codex plugin list' };
     },
