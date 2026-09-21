@@ -208,8 +208,10 @@ export const adapters = [
       ctx.installedRoot = join(ctx.plugin, 'skills');
       return { exit: 0, stdout: 'linked 14 skills', stderr: '' };
     },
-    launch(ctx, { prompt }) {
-      return { argv: [ctx.binary, 'run', prompt] };
+    launch(ctx, { prompt, cwd }) {
+      // --dir pins the project directory explicitly; opencode otherwise trusts
+      // process.env.PWD (see qualify.mjs PWD pinning for the same hazard).
+      return { argv: [ctx.binary, 'run', '--dir', cwd, prompt] };
     },
     async discover(ctx) {
       const linked = scanSkills(join(ctx.home, '.config/opencode/skills'));

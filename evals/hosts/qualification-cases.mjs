@@ -101,7 +101,7 @@ async function validatorAt(ctx, dir) {
 }
 
 async function hostTurn(ctx, { cwd, prompt, readOnly }) {
-  const spec = ctx.adapter.launch(ctx, { prompt, readOnly });
+  const spec = ctx.adapter.launch(ctx, { prompt, readOnly, cwd });
   return ctx.run(spec.argv, { cwd, input: spec.input, timeoutMs: ctx.caseTimeout });
 }
 

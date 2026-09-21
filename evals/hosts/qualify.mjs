@@ -89,7 +89,11 @@ function makeRun(home, scratch) {
   }
   const run = (argv, opts = {}) => {
     const cwd = opts.cwd ? assertUnder(scratch, opts.cwd, 'cwd') : scratch;
-    const env = { ...baseEnv, ...(opts.env || {}), HOME: home };
+    // Node's spawnSync does not rewrite PWD, so a child would otherwise see the
+    // harness's own working directory. Hosts (opencode, for one) resolve their
+    // project from PWD and would escape the scratch root. Pin it to the real
+    // child cwd.
+    const env = { ...baseEnv, ...(opts.env || {}), HOME: home, PWD: cwd, OLDPWD: cwd };
     const r = spawnSync(argv[0], argv.slice(1), {
       cwd, env, encoding: 'utf8', timeout: opts.timeoutMs || DEFAULT_TIMEOUT_MS,
       input: opts.input, maxBuffer: 64 * 1024 * 1024, windowsHide: true,
