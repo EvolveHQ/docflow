@@ -3,16 +3,6 @@
 Owning decisions: adr/0052-workspace-authority-and-attempt-records.md and
 adr/0053-portable-workspace-operating-skills.md.
 
-## Status
-
-- **Claimed by:** pi, docflow-v1 delivery, 2026-09-18, branch
-  `kmox83/docflow-v1-host-qualification-r2`; reassigned by the operator via the
-  workspace controller; predecessor ctx_239ed333d8c6. Predecessor text:
-  task `task_856c97a5b36d`, dispatch `ctx_fc206cf7e4a8`.
-- **Blockers:** Combined Clarity/operator acceptance is separate; the completion
-  move waits on current-head PR checks and controller integration.
-- **Stopped:**
-
 ## Latest checkpoint (continuation dispatch ctx_239ed333d8c6)
 
 Exit criteria 1-4 are demonstrated under the combined 70bae90 candidate with
@@ -84,3 +74,31 @@ cases remain unrun.
 
 ### r3 update (2026-09-18)
 External readiness stop and transport return produced on all three hosts, archived with exit 0. Two-host reconciliation of the original return remains unrun. Item stays todo.
+
+### r4 receipt (2026-09-19)
+Two-host return and reconciliation demonstrated against integration head
+`366a8c6`. Claude Code 2.1.274 executed a bounded read/test/report assignment in
+an isolated two-host fixture and returned the original external envelope
+(`DocflowHQ/.docflow_workspace/local/archive/member-audits/docflow/2026-09-19-qualification-r4/twohost-original-external-return.json`,
+sha256 `e39df1d7a3875d6b765a806bc805aac0b83050db9bf75a446de9b2c74642633d`), with
+exact command/exit/output, measured check and return times, source-bound
+evidence and a real native session id. The documented read-only shape check
+returned exit 0; a deliberately invalid payload returned exit 1. Codex CLI
+0.154.0 reconciled that original return through `workspace-sync`
+(`twohost-reconciled-run.md`): the run became `succeeded` with the exact receipt
+and a reconciliation entry, the delivery stayed `unknown` and the parent work
+stayed `active`; validator exit 0. A separate native readiness stop ran on all
+three hosts against the expired fixture with no attempt or canonical receipt
+(fixtures byte-identical). The new source SHA and per-file package hashes are
+frozen in the r4 output directory, and the original `f47` evidence stays bound
+to its own package. No owning decision advances to Implemented: adr/0053 is
+superseded and adr/0052 still has other owning queue items.
+
+## Shipped footer (prepared for checked merge)
+
+Shipped at HEAD `af974896016885fd4978dff310ef0212c7021f18` from the single-writer
+PR branch `kmox83/docflow-v1-qualification-r4`, draft into
+`kmox83/docflow-v1-integration`. Owning decisions are unchanged: adr/0053 is
+superseded and adr/0052 keeps other owning queue items, so no Accepted decision
+advances to Implemented on this item alone. This is a prepared completion, ready
+but not shipped until the PR is merged with required checks green.

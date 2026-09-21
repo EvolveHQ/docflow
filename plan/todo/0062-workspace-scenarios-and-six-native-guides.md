@@ -98,3 +98,24 @@ ZCode, Codex App, Cursor and DeepSeek Harness stay unrun.
 
 ### r3 update (2026-09-18)
 Claude Code guide smoke ran (workspace-setup, 12-file valid workspace, validator exit 0); headless setup/status/scope/dispatch/sync scenarios ran on all three hosts. Orca guide evidence required and blocked (absent); other four guides unverified documentation; Cowork not required. Item stays todo.
+
+### r4 update (2026-09-19)
+Scenarios re-run against integration head `366a8c6` on Claude Code 2.1.274,
+Codex CLI 0.154.0 and OpenCode 1.18.31, under disposable config homes and
+`/tmp/hq-qa` scratch with a guard that aborts any case outside it. Actual on
+these bytes: WV01–WV04, WV06, WV07, WV09, WV10, WV12, WV16, WV17. Deterministic
+validator controls: WV05 (`claim-overlap`), WV08 (`resource-overlap`), WV11
+(unresolved recommendation authority), WV13 (`short-collision`), WV09
+(`reference-only`). Partial: WV15/WV18 (imported native evidence on frozen
+`f47`; not re-run on these bytes). Blocked: WV14 (no retrieval index ships; the
+experimental retrieval needs its own rebuild/removal evidence). Every fixture
+stayed byte-identical after the read-only cases.
+
+Claude Code guide smoke ran (bounded brief → native check → documented read-only
+shape check, exit 0, native session bound). Codex App guide blocked (desktop app
+absent); Orca guide evidence still required and blocked (host absent); Cursor,
+DeepSeek Harness and ZCode remain unverified documentation; combined Clarity
+view/handoff unrun. Raw evidence: `DocflowHQ/.docflow_workspace/local/archive/member-audits/docflow/2026-09-19-qualification-r4`
+(report + MANIFEST, 55 verified entries). Item stays todo: remaining cases are
+the Orca guide, live WV05 two-workspace overlap, WV14, the WV15/WV18 native
+re-run, and combined Clarity/operator acceptance.

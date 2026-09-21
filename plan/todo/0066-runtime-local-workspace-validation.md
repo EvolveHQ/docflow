@@ -80,3 +80,18 @@ affected-guidance native rerun or two-host reconciliation ran.
 
 ### r3 update (2026-09-18)
 Runtime-local validation ran on all three hosts (validator exit 0); two-host reconciliation Claude Code -> Codex ran on one scratch workspace (Codex workspace-sync exit 0). Affected-guidance rerun remains. Item stays todo.
+
+### r4 update (2026-09-19)
+Affected-guidance rerun after the five-command change: `workspace-status`,
+`workspace-scope`, `workspace-dispatch` and `workspace-sync` were re-run
+natively on the r4 bytes across Claude Code 2.1.274, Codex CLI 0.154.0 and
+OpenCode 1.18.31 (base/expired/conflicting/missing status, scope, dispatch-none,
+sync-demo, mandate-ok/adverse, expired readiness). All host exits were 0 and the
+validator returned the expected valid (0) and adverse (1) results. The
+affected native executor ran the member check and the documented read-only shape
+check inside its actual runtime (exit 0), and a genuine two-host return and
+`workspace-sync` reconciliation (plan 0065) satisfied criterion 4. Raw evidence:
+`DocflowHQ/.docflow_workspace/local/archive/member-audits/docflow/2026-09-19-qualification-r4`.
+Item stays todo: criterion 5 awaits current-head PR checks and controller
+review/acceptance of the evidence, and a separately authorised Cowork
+qualification still needs a concrete bounded proposal.
