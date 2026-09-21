@@ -83,6 +83,7 @@ function buildCtx({ host, adapter, scratch, home, source, node, stage, modelHost
   const mergeEnv = (extra) => ({ ...env, ...extra });
   return {
     host, adapter, case: null, scratch, home, source, repo, node,
+    python: process.env.PYTHON || 'python3',
     stage: stage || repo,
     plugin: join(stage || repo, 'plugins/docflow'),
     binary: adapter?.binary,

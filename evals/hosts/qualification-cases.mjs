@@ -328,7 +328,7 @@ export const cases = [
         const added = after.filter((f) => !before.includes(f));
         if (!added.length) throw Error('no new plan/todo item created');
         assertFileContains(dir, `plan/todo/${added[0]}`, '## Status');
-        assertFileContains(dir, `plan/todo/${added[0]}`, 'Owning decisions');
+        assertFileContains(dir, `plan/todo/${added[0]}`, 'Owning ADR');
       }, r);
     },
   }),
@@ -336,11 +336,17 @@ export const cases = [
     id: 'ship-item', retires: 'ship-item: todo→done and owning ADR → Implemented',
     title: 'ship-item moves todo to done and advances the owning decision',
     run: async (ctx) => {
-      const dir = await makeFixture(ctx, 'ship-item', join(evalsDir, 'fixtures/legacy-range'));
+      const base = join(ctx.scratch, 'ship-item');
+      const prep = await ctx.run([ctx.python, join(evalsDir, 'hosts/prepare-ship.py'), base], { env: { DOCFLOW_PLUGIN_ROOT: ctx.plugin } });
+      if (prep.exit !== 0) return { status: 'fail', cause: `prepare-ship exit ${prep.exit}: ${(prep.stderr || prep.stdout).slice(0, 180)}` };
+      const dir = join(base, 'repo');
       const r = await hostTurn(ctx, { cwd: dir, readOnly: false, prompt:
-        'Use the docflow ship-item skill to complete plan item 0001-verify-script-coverage: advance its owning decision, ' +
-        'move the item to plan/done with a completion footer, regenerate INDEX, and commit. Stop after that.' });
-      return judge(() => assertPlanShipped(dir, 'verify-script-coverage'), r);
+        'Use the docflow ship-item skill to integrate the verified claim claim/0007-alpha through the recorded integration model, ' +
+        'advancing the owning decision and moving the item to plan/done. Stop after that.' });
+      const check = await ctx.run([ctx.node, join(evalsDir, 'hosts/check-release.mjs'), 'ship-item', dir, ctx.plugin]);
+      return judge(() => {
+        if (check.exit !== 0) throw new Error(`check-release ship-item exit ${check.exit}: ${(check.stdout || check.stderr).slice(0, 160)}`);
+      }, r);
     },
   }),
   skillCase({

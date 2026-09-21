@@ -1,10 +1,10 @@
 {
   "schema": 1,
   "harness": "docflow-qualify",
-  "generated_at": "2026-09-21T13:50:36.874Z",
-  "source_revision": "f9ff98eb3edc6e9c8158b7b3619e2ccfe2488aac",
+  "generated_at": "2026-09-21T14:21:20.999Z",
+  "source_revision": "4d81df8508b1d359282fe4b8f5f867281f3e3e49",
   "source": "/home/kmox/Work/EvolveHQ/Projects/DocflowHQ/repos/docflow/plugins/docflow",
-  "scratch": "/tmp/docflow-qualify-jmrdT1",
+  "scratch": "/tmp/docflow-qualify-HWwgeN",
   "results": [
     {
       "host": "product",
@@ -13,9 +13,9 @@
       "status": "pass",
       "cause": null,
       "exit_code": null,
-      "duration_ms": 98,
+      "duration_ms": 109,
       "hashes": null,
-      "source_revision": "f9ff98eb3edc6e9c8158b7b3619e2ccfe2488aac",
+      "source_revision": "4d81df8508b1d359282fe4b8f5f867281f3e3e49",
       "evidence": "valid fixture exit 0"
     },
     {
@@ -25,9 +25,9 @@
       "status": "pass",
       "cause": null,
       "exit_code": null,
-      "duration_ms": 110,
+      "duration_ms": 135,
       "hashes": null,
-      "source_revision": "f9ff98eb3edc6e9c8158b7b3619e2ccfe2488aac",
+      "source_revision": "4d81df8508b1d359282fe4b8f5f867281f3e3e49",
       "evidence": "selection-without-authority: rejected with authority"
     },
     {
@@ -37,9 +37,9 @@
       "status": "pass",
       "cause": null,
       "exit_code": null,
-      "duration_ms": 123,
+      "duration_ms": 137,
       "hashes": null,
-      "source_revision": "f9ff98eb3edc6e9c8158b7b3619e2ccfe2488aac",
+      "source_revision": "4d81df8508b1d359282fe4b8f5f867281f3e3e49",
       "evidence": "expired-authority: rejected with authority"
     },
     {
@@ -49,9 +49,9 @@
       "status": "pass",
       "cause": null,
       "exit_code": null,
-      "duration_ms": 117,
+      "duration_ms": 130,
       "hashes": null,
-      "source_revision": "f9ff98eb3edc6e9c8158b7b3619e2ccfe2488aac",
+      "source_revision": "4d81df8508b1d359282fe4b8f5f867281f3e3e49",
       "evidence": "ambiguous-member-alias: rejected with alias"
     },
     {
@@ -61,9 +61,9 @@
       "status": "pass",
       "cause": null,
       "exit_code": null,
-      "duration_ms": 140,
+      "duration_ms": 155,
       "hashes": null,
-      "source_revision": "f9ff98eb3edc6e9c8158b7b3619e2ccfe2488aac",
+      "source_revision": "4d81df8508b1d359282fe4b8f5f867281f3e3e49",
       "evidence": "workspace-contract-r2.test.mjs: \"committed mandate note validates\""
     },
     {
@@ -73,9 +73,9 @@
       "status": "pass",
       "cause": null,
       "exit_code": null,
-      "duration_ms": 149,
+      "duration_ms": 169,
       "hashes": null,
-      "source_revision": "f9ff98eb3edc6e9c8158b7b3619e2ccfe2488aac",
+      "source_revision": "4d81df8508b1d359282fe4b8f5f867281f3e3e49",
       "evidence": "workspace-contract-r2.test.mjs: \"non-validated mandate path is rejected\""
     },
     {
@@ -85,9 +85,9 @@
       "status": "pass",
       "cause": null,
       "exit_code": null,
-      "duration_ms": 92,
+      "duration_ms": 101,
       "hashes": null,
-      "source_revision": "f9ff98eb3edc6e9c8158b7b3619e2ccfe2488aac",
+      "source_revision": "4d81df8508b1d359282fe4b8f5f867281f3e3e49",
       "evidence": "read-only: 23 files byte-identical"
     },
     {
@@ -97,9 +97,9 @@
       "status": "pass",
       "cause": null,
       "exit_code": null,
-      "duration_ms": 88,
+      "duration_ms": 97,
       "hashes": null,
-      "source_revision": "f9ff98eb3edc6e9c8158b7b3619e2ccfe2488aac",
+      "source_revision": "4d81df8508b1d359282fe4b8f5f867281f3e3e49",
       "evidence": "scope and new-plan routes are disjoint"
     },
     {
@@ -109,11 +109,11 @@
       "status": "pass",
       "cause": null,
       "exit_code": null,
-      "duration_ms": 150,
+      "duration_ms": 181,
       "hashes": {
         "skillset": "4467808830e4d15fcf6e7051a9b00582894a75ae73a10b687e2a5aab4ebc45f9"
       },
-      "source_revision": "f9ff98eb3edc6e9c8158b7b3619e2ccfe2488aac",
+      "source_revision": "4d81df8508b1d359282fe4b8f5f867281f3e3e49",
       "evidence": "claude plugin list --json: 14/14 skills"
     },
     {
@@ -123,57 +123,57 @@
       "status": "pass",
       "cause": null,
       "exit_code": null,
-      "duration_ms": 808,
+      "duration_ms": 848,
       "hashes": {},
-      "source_revision": "f9ff98eb3edc6e9c8158b7b3619e2ccfe2488aac",
+      "source_revision": "4d81df8508b1d359282fe4b8f5f867281f3e3e49",
       "evidence": "339 installed file(s) all byte-identical to branch; 14/14 SKILL.md matched"
     },
     {
       "host": "claude",
       "case": "bootstrap-full",
       "kind": "skill",
-      "status": "fail",
-      "cause": "host exit 1: expected paths missing: AGENTS.md, CLAUDE.md, CONVENTIONS.md, INDEX.md, adr/0000-template.md, plan/todo, plan/done, _agent/prompts/autonomous.md",
+      "status": "pass",
+      "cause": null,
       "exit_code": null,
-      "duration_ms": 827,
+      "duration_ms": 130360,
       "hashes": null,
-      "source_revision": "f9ff98eb3edc6e9c8158b7b3619e2ccfe2488aac",
-      "evidence": null
+      "source_revision": "4d81df8508b1d359282fe4b8f5f867281f3e3e49",
+      "evidence": "host exit 0"
     },
     {
       "host": "claude",
       "case": "bootstrap-express",
       "kind": "skill",
-      "status": "fail",
-      "cause": "host exit 1: expected paths missing: AGENTS.md, CLAUDE.md, .docflow/CONVENTIONS.md, .docflow/INDEX.md, .docflow/adr/0000-template.md, .docflow/adr/0001-record-architecture-decisions.md",
+      "status": "pass",
+      "cause": null,
       "exit_code": null,
-      "duration_ms": 727,
+      "duration_ms": 197355,
       "hashes": null,
-      "source_revision": "f9ff98eb3edc6e9c8158b7b3619e2ccfe2488aac",
-      "evidence": null
+      "source_revision": "4d81df8508b1d359282fe4b8f5f867281f3e3e49",
+      "evidence": "host exit 0"
     },
     {
       "host": "claude",
       "case": "new-adr",
       "kind": "skill",
-      "status": "fail",
-      "cause": "host exit 1: no new ADR 0002 file",
+      "status": "pass",
+      "cause": null,
       "exit_code": null,
-      "duration_ms": 726,
+      "duration_ms": 176774,
       "hashes": null,
-      "source_revision": "f9ff98eb3edc6e9c8158b7b3619e2ccfe2488aac",
-      "evidence": null
+      "source_revision": "4d81df8508b1d359282fe4b8f5f867281f3e3e49",
+      "evidence": "host exit 0"
     },
     {
       "host": "claude",
       "case": "new-plan",
       "kind": "skill",
       "status": "fail",
-      "cause": "host exit 1: no new plan/todo item created",
+      "cause": "host exit 0: plan/todo/0003-example-plan-item.md does not contain \"Owning decisions\"",
       "exit_code": null,
-      "duration_ms": 675,
+      "duration_ms": 40899,
       "hashes": null,
-      "source_revision": "f9ff98eb3edc6e9c8158b7b3619e2ccfe2488aac",
+      "source_revision": "4d81df8508b1d359282fe4b8f5f867281f3e3e49",
       "evidence": null
     },
     {
@@ -181,110 +181,24 @@
       "case": "ship-item",
       "kind": "skill",
       "status": "fail",
-      "cause": "host exit 1: plan item \"verify-script-coverage\" still in plan/todo",
+      "cause": "host exit 0: plan item \"verify-script-coverage\" still in plan/todo",
       "exit_code": null,
-      "duration_ms": 742,
+      "duration_ms": 30972,
       "hashes": null,
-      "source_revision": "f9ff98eb3edc6e9c8158b7b3619e2ccfe2488aac",
+      "source_revision": "4d81df8508b1d359282fe4b8f5f867281f3e3e49",
       "evidence": null
     },
     {
       "host": "claude",
       "case": "audit-coordination",
       "kind": "skill",
-      "status": "fail",
-      "cause": "host exit 1: paths expected absent but present: .docflow/_agent/WORKLOG.md, .docflow/_agent/IN_FLIGHT.md, .docflow/_agent/CURRENT_FOCUS.md, .docflow/_agent/HANDOFF.md, .docflow/_agent/LOCKS.md",
-      "exit_code": null,
-      "duration_ms": 756,
-      "hashes": null,
-      "source_revision": "f9ff98eb3edc6e9c8158b7b3619e2ccfe2488aac",
-      "evidence": null
-    },
-    {
-      "host": "claude",
-      "case": "audit-range",
-      "kind": "skill",
-      "status": "fail",
-      "cause": "host exit 1: boundary template not retired: 0100-template.md",
-      "exit_code": null,
-      "duration_ms": 672,
-      "hashes": null,
-      "source_revision": "f9ff98eb3edc6e9c8158b7b3619e2ccfe2488aac",
-      "evidence": null
-    },
-    {
-      "host": "claude",
-      "case": "dispatch-brief",
-      "kind": "skill",
-      "status": "fail",
-      "cause": "host exit 1: dispatch created no workspace record",
-      "exit_code": null,
-      "duration_ms": 877,
-      "hashes": null,
-      "source_revision": "f9ff98eb3edc6e9c8158b7b3619e2ccfe2488aac",
-      "evidence": null
-    },
-    {
-      "host": "claude",
-      "case": "dispatch-refusal",
-      "kind": "skill",
       "status": "pass",
       "cause": null,
       "exit_code": null,
-      "duration_ms": 811,
+      "duration_ms": 78443,
       "hashes": null,
-      "source_revision": "f9ff98eb3edc6e9c8158b7b3619e2ccfe2488aac",
-      "evidence": "host exit 1"
-    },
-    {
-      "host": "claude",
-      "case": "sync-reconcile",
-      "kind": "skill",
-      "status": "fail",
-      "cause": "host exit 1: sync recorded no reconciliation",
-      "exit_code": null,
-      "duration_ms": 857,
-      "hashes": null,
-      "source_revision": "f9ff98eb3edc6e9c8158b7b3619e2ccfe2488aac",
-      "evidence": null
-    },
-    {
-      "host": "claude",
-      "case": "sync-prepared-not-complete",
-      "kind": "skill",
-      "status": "pass",
-      "cause": null,
-      "exit_code": null,
-      "duration_ms": 1007,
-      "hashes": null,
-      "source_revision": "f9ff98eb3edc6e9c8158b7b3619e2ccfe2488aac",
-      "evidence": "host exit 1"
-    },
-    {
-      "host": "pi",
-      "case": "discovery",
-      "kind": "host-interface",
-      "status": "pass",
-      "cause": null,
-      "exit_code": null,
-      "duration_ms": 353,
-      "hashes": {
-        "skillset": "4467808830e4d15fcf6e7051a9b00582894a75ae73a10b687e2a5aab4ebc45f9"
-      },
-      "source_revision": "f9ff98eb3edc6e9c8158b7b3619e2ccfe2488aac",
-      "evidence": "pi list: 14/14 skills"
-    },
-    {
-      "host": "pi",
-      "case": "install-byte-match",
-      "kind": "host-interface",
-      "status": "pass",
-      "cause": null,
-      "exit_code": null,
-      "duration_ms": 817,
-      "hashes": {},
-      "source_revision": "f9ff98eb3edc6e9c8158b7b3619e2ccfe2488aac",
-      "evidence": "339 installed file(s) all byte-identical to branch; 14/14 SKILL.md matched"
+      "source_revision": "4d81df8508b1d359282fe4b8f5f867281f3e3e49",
+      "evidence": "host exit 0"
     }
   ]
 }
