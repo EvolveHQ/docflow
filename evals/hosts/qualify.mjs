@@ -15,10 +15,11 @@
 // tier (`node evals/run.mjs --qualify`).
 
 import { spawnSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
 import { mkdirSync, mkdtempSync, readFileSync, writeFileSync, cpSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { dirname, isAbsolute, join, relative, resolve, sep } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import { adapters, provisionCredentials } from './host-adapters.mjs';
 import { cases, hostInterfaceCases, productCases, skillCases } from './qualification-cases.mjs';
 import { renderReceipt, summarise } from './qualification-receipt.mjs';
@@ -46,6 +47,31 @@ function parseArgs(argv) {
 
 function git(args) {
   return spawnSync('git', ['-C', repo, ...args], { encoding: 'utf8' });
+}
+
+// Fingerprint of the operator's real checkout. A host must never be able to
+// write here — the whole run is staged from a copy under the scratch root.
+// HEAD catches a commit, status catches edits and new/deleted files, and the
+// reflog catches a commit that was later reset away. Compared before and after
+// every case; a mismatch aborts the run and fails the offending cell.
+export function checkoutFingerprint(root = repo) {
+  const capture = (args) => {
+    const r = spawnSync('git', ['-C', root, ...args], { encoding: 'utf8', maxBuffer: 16 * 1024 * 1024 });
+    return r.status === 0 ? r.stdout : `ERR:${r.status}:${r.stderr}`;
+  };
+  // The harness's own generated results live under evals/hosts/results/ in the
+  // real checkout; exclude exactly those paths so writing the receipt never
+  // trips the guard. Everything else must be untouched.
+  const status = capture(['status', '--porcelain=v1', '--untracked-files=all'])
+    .split('\n')
+    .filter((line) => line && !/^.. evals\/hosts\/results\//.test(line))
+    .join('\n');
+  return createHash('sha256').update([
+    capture(['rev-parse', 'HEAD']),
+    status,
+    capture(['reflog', '--format=%H %gs', '-n', '5']),
+    capture(['stash', 'list']),
+  ].join('\u0000')).digest('hex');
 }
 
 function assertUnder(root, target, what) {
@@ -159,7 +185,20 @@ async function main() {
     writeFileSync(receiptPath, renderReceipt(payload));
     return payload;
   };
-  const record = (entry) => { results.push(entry); persist(); };
+  const guardBaseline = checkoutFingerprint();
+  const record = (entry) => {
+    const now = checkoutFingerprint();
+    if (now !== guardBaseline) {
+      entry.status = 'fail';
+      entry.cause = `ISOLATION BREACH: the real checkout at ${repo} changed during ` +
+        `${entry.host || 'product'}:${entry.case} (guard ${guardBaseline.slice(0, 12)} -> ${now.slice(0, 12)}); run aborted`;
+      results.push(entry);
+      persist();
+      throw new Error(entry.cause);
+    }
+    results.push(entry);
+    persist();
+  };
 
   // Product cases run once against the branch assets.
   for (const testCase of productCases().filter(wanted)) {
@@ -215,4 +254,6 @@ async function main() {
   process.exit(s.fail ? 1 : 0);
 }
 
-main().catch((e) => { console.error(e.stack || e.message); process.exit(1); });
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  main().catch((e) => { console.error(e.stack || e.message); process.exit(1); });
+}
