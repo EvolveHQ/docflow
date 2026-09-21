@@ -1,7 +1,12 @@
 // Eval case definitions (ADR 0012). Each case names a skill, optional
 // scripted inputs, and a deterministic `assert(repo)` over the resulting
-// state. Cases marked agentDependent require the (not-yet-configured)
-// runner and will report SKIPPED until runAgent() is implemented.
+// state. This suite is deterministic and hostless.
+//
+// The six agent-dependent cases that used to report SKIPPED here are retired
+// to the opt-in native-host qualification harness (ADR 0062):
+// evals/hosts/qualify.mjs now owns bootstrap full/express, new-plan,
+// ship-item and the two audit migrations as `skill` cases, and the authority
+// matrix, mandate, recovery and scope assertions as `product` cases.
 
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
@@ -125,30 +130,6 @@ export const cases = [
     },
   },
   {
-    name: 'audit: migrate legacy coordination while preserving live ownership',
-    skill: 'audit',
-    inputs: { fixture: 'evals/fixtures/legacy-coordination', confirm: 'cleanup and migration approved; preserve the live claim' },
-    assert(repo) {
-      assertAbsent(repo, ['.docflow/_agent/WORKLOG.md', '.docflow/_agent/IN_FLIGHT.md',
-        '.docflow/_agent/CURRENT_FOCUS.md', '.docflow/_agent/HANDOFF.md', '.docflow/_agent/LOCKS.md']);
-      assertTree(repo, ['.docflow/_agent/ROLES.md', '.docflow/_agent/prompts/autonomous.md']);
-      assertFileContains(repo, '.docflow/plan/todo/0001-example.md', '## Status');
-      assertFileContains(repo, '.docflow/plan/todo/0001-example.md', 'executor-live');
-      assertFileContains(repo, '.docflow/plan/todo/0001-example.md', 'Awaiting fixture data');
-      assertFileContains(repo, 'AGENTS.md', 'Picking up this repo');
-      assertFileContains(repo, 'AGENTS.md', '.docflow/');
-      assertFileContains(repo, 'OPERATIONS.md', 'operator sign-off');
-      assertFileContains(repo, '.docflow/_agent/prompts/autonomous.md', 'node tools/verify.mjs');
-      for (const [path, stale] of [['.gitattributes', 'merge=union'], ['.gitignore', 'CURRENT_FOCUS.md']]) {
-        let text = '';
-        try { text = readFileSync(join(repo, path), 'utf8'); }
-        catch (e) { if (e.code !== 'ENOENT') throw e; }
-        if (text.includes(stale)) throw Error(`Legacy coordination rule remains in ${path}`);
-      }
-      assertCommandSucceeds(repo, 'node tools/verify.mjs');
-    },
-  },
-  {
     // Runs NOW. This repo is a valid bootstrapped fixture, so the
     // deterministic assertion layer is exercised end-to-end without an
     // agent — proving the helpers work before a runner is wired.
@@ -193,105 +174,6 @@ export const cases = [
         'adr/0002-searchable-decision-catalogue.md');
       assertFileContains(repo, 'plan/todo/0001-verify-script-coverage.md',
         'adr/0102-static-verify-script.md');
-    },
-  },
-  {
-    // Detection, the offer, the migration, and the post-migration audit.
-    // The subagent works on a COPY of the fixture (see the behavioural
-    // workflow); `repo` is that copy's path at assert time.
-    name: 'audit: legacy range detected, migration offered and applied',
-    skill: 'audit',
-    inputs: { fixture: 'evals/fixtures/legacy-range', confirm: 'yes' },
-    assert(repo) {
-      // AC4/AC5/AC6/AC7: renumbered in order, field on every ADR, boundary
-      // template retired, conventions rewritten, INDEX with Shape column.
-      assertMigratedToDeclaredShape(repo, { map: LEGACY_MAP });
-      // AC5: every in-catalogue reference followed the renumbering...
-      assertReferencesRewritten(repo, { map: LEGACY_MAP });
-      // ...and plan/done footers did not.
-      assertHistoryPreserved(repo, { numbers: LEGACY_DONE_NUMBERS });
-      // The seed keeps its number and declares the shape it always had.
-      assertFileContains(repo, 'adr/0001-record-architecture-decisions.md',
-        'shape: technology');
-      assertPlanShipped(repo, 'adopt-the-method');
-    },
-  },
-  {
-    // Full depth, single writer, a plan queue AND a real verify gate: the
-    // coordination directory holds the run prompt and nothing else — no
-    // roles list (there is one writer), no lock ledger, and none of the
-    // derived files the former scaffold wrote.
-    //
-    // The gate is the fixture script the case copies to tools/verify.mjs
-    // BEFORE bootstrap runs. A scaffolded repo has no scripts/verify.mjs
-    // of its own, so a gate naming this checkout's would record a command
-    // the scratch repo cannot execute — and an autonomous prompt built on
-    // an unrunnable gate is exactly what the prompt must never be.
-    name: 'bootstrap: fresh repo gets the full scaffold',
-    skill: 'bootstrap',
-    inputs: {
-      /* the 10 assessment answers, scripted */
-      gate: 'node tools/verify.mjs',
-      gateFixture: gateFixture,
-    },
-    assert(repo) {
-      assertTree(repo, [
-        'AGENTS.md', 'CLAUDE.md', 'CONVENTIONS.md', 'INDEX.md',
-        'adr/0000-template.md', 'plan/todo', 'plan/done',
-        'tools/verify.mjs', '_agent/prompts/autonomous.md',
-      ]);
-      assertAbsent(repo, [
-        '_agent/ROLES.md', '_agent/LOCKS.md', '_agent/WORKLOG.md',
-        '_agent/CURRENT_FOCUS.md', '_agent/IN_FLIGHT.md',
-        '_agent/HANDOFF.md',
-      ]);
-      // The read order lives in AGENTS.md, not a hand-off file.
-      assertFileContains(repo, 'AGENTS.md', 'Picking up this repo');
-      // The prompt records the scripted gate, and that gate runs here.
-      assertFileContains(repo, '_agent/prompts/autonomous.md', 'node tools/verify.mjs');
-      assertCommandSucceeds(repo, 'node tools/verify.mjs');
-    },
-  },
-  {
-    name: 'bootstrap: express depth scaffolds the fixed minimal profile',
-    skill: 'bootstrap',
-    inputs: { depth: 'express', name: 'scratch-express', description: 'eval fixture' },
-    assert(repo) {
-      // Entry points at the root; artefacts under the default root.
-      assertTree(repo, [
-        'AGENTS.md', 'CLAUDE.md',
-        '.docflow/CONVENTIONS.md', '.docflow/INDEX.md',
-        '.docflow/adr/0000-template.md',
-        '.docflow/adr/0001-record-architecture-decisions.md',
-      ]);
-      // Optional layers stay off in the express profile.
-      assertAbsent(repo, [
-        '.docflow/plan', 'plan', '_agent', '.docflow/GLOSSARY.md',
-        'GLOSSARY.md', '.docflow/domains', 'domains',
-        '.docflow/federation.md', 'federation.md',
-      ]);
-      const conventions = readFileSync(join(repo, '.docflow/CONVENTIONS.md'), 'utf8');
-      assert.match(conventions.replace(/[`*]/g, ''), /^Assessment depth:\s*express\b/m,
-        'expected the express assessment depth');
-      assertFileContains(repo, '.docflow/CONVENTIONS.md', 'fast-forward');
-    },
-  },
-  {
-    name: 'new-adr: next contiguous number, INDEX regenerated',
-    skill: 'new-adr',
-    inputs: { title: 'Example decision' },
-    assert(repo) {
-      assertContiguousAdrs(repo);
-      assertIndexSync(repo);
-    },
-  },
-  {
-    name: 'ship-item: todo→done and owning ADR → Implemented',
-    skill: 'ship-item',
-    inputs: { item: '0001-example' },
-    assert(repo) {
-      assertPlanShipped(repo, 'example');
-      assertAdrStatus(repo, 1, 'Implemented');
     },
   },
 ];
