@@ -106,8 +106,8 @@ async function hostTurn(ctx, { cwd, prompt, readOnly }) {
 }
 
 function judge(fn, hostResult) {
-  const tail = (hostResult.stderr || hostResult.stdout || '').replace(/\s+/g, ' ').trim().slice(-180);
-  const suffix = hostResult.exit !== 0 && tail ? ` | host: ${tail}` : '';
+  const tail = (hostResult.stderr || hostResult.stdout || '').replace(/\s+/g, ' ').trim().slice(-220);
+  const suffix = tail ? ` | host: ${tail}` : '';
   try {
     fn();
     return { status: 'pass', evidence: `host exit ${hostResult.exit}` };
@@ -389,8 +389,9 @@ export const cases = [
       const before = snapshotWorkspace(dir);
       const v0 = await validatorAt(ctx, dir);
       const r = await hostTurn(ctx, { cwd: dir, readOnly: false, prompt:
-        'Use the docflow workspace-dispatch skill to write a bounded dispatch brief and dispatch record for the active work ' +
-        "'deliver-compatible-exports' under its current accepted agreement. Write only the authorised brief/record, then stop." });
+        'Use the docflow workspace-dispatch skill to write a bounded dispatch brief and dispatch record for the provider ' +
+        "delivery of the active work 'deliver-compatible-exports', under its current accepted grant and native claim. " +
+        'Treat the current time as 2026-09-15T13:00:00Z. Write only the authorised brief/record, then stop.' });
       const after = snapshotWorkspace(dir);
       const v1 = await validatorAt(ctx, dir);
       return judge(() => {
