@@ -1,10 +1,10 @@
 {
   "schema": 1,
   "harness": "docflow-qualify",
-  "generated_at": "2026-09-21T12:28:50.564Z",
-  "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb",
+  "generated_at": "2026-09-21T12:32:04.573Z",
+  "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae",
   "source": "/home/kmox/Work/EvolveHQ/Projects/DocflowHQ/repos/docflow/plugins/docflow",
-  "scratch": "/tmp/docflow-qualify-ntL5kr",
+  "scratch": "/tmp/docflow-qualify-DpN6tI",
   "results": [
     {
       "host": "product",
@@ -13,9 +13,9 @@
       "status": "pass",
       "cause": null,
       "exit_code": null,
-      "duration_ms": 93,
+      "duration_ms": 94,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb",
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae",
       "evidence": "valid fixture exit 0"
     },
     {
@@ -25,9 +25,9 @@
       "status": "pass",
       "cause": null,
       "exit_code": null,
-      "duration_ms": 115,
+      "duration_ms": 111,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb",
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae",
       "evidence": "selection-without-authority: rejected with authority"
     },
     {
@@ -37,9 +37,9 @@
       "status": "pass",
       "cause": null,
       "exit_code": null,
-      "duration_ms": 125,
+      "duration_ms": 126,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb",
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae",
       "evidence": "expired-authority: rejected with authority"
     },
     {
@@ -49,9 +49,9 @@
       "status": "pass",
       "cause": null,
       "exit_code": null,
-      "duration_ms": 118,
+      "duration_ms": 117,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb",
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae",
       "evidence": "ambiguous-member-alias: rejected with alias"
     },
     {
@@ -63,7 +63,7 @@
       "exit_code": null,
       "duration_ms": 142,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb",
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae",
       "evidence": "workspace-contract-r2.test.mjs: \"committed mandate note validates\""
     },
     {
@@ -75,7 +75,7 @@
       "exit_code": null,
       "duration_ms": 151,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb",
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae",
       "evidence": "workspace-contract-r2.test.mjs: \"non-validated mandate path is rejected\""
     },
     {
@@ -85,9 +85,9 @@
       "status": "pass",
       "cause": null,
       "exit_code": null,
-      "duration_ms": 91,
+      "duration_ms": 89,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb",
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae",
       "evidence": "read-only: 23 files byte-identical"
     },
     {
@@ -97,9 +97,9 @@
       "status": "pass",
       "cause": null,
       "exit_code": null,
-      "duration_ms": 87,
+      "duration_ms": 85,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb",
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae",
       "evidence": "scope and new-plan routes are disjoint"
     },
     {
@@ -109,11 +109,11 @@
       "status": "pass",
       "cause": null,
       "exit_code": null,
-      "duration_ms": 132,
+      "duration_ms": 137,
       "hashes": {
         "skillset": "4467808830e4d15fcf6e7051a9b00582894a75ae73a10b687e2a5aab4ebc45f9"
       },
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb",
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae",
       "evidence": "claude plugin list --json: 14/14 skills"
     },
     {
@@ -125,7 +125,7 @@
       "exit_code": null,
       "duration_ms": 784,
       "hashes": {},
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb",
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae",
       "evidence": "339 installed file(s) all byte-identical to branch; 14/14 SKILL.md matched"
     },
     {
@@ -137,7 +137,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "claude",
@@ -148,7 +148,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "claude",
@@ -157,9 +157,9 @@
       "status": "unrun",
       "cause": "no non-interactive skill launcher configured for this adapter in this round",
       "exit_code": null,
-      "duration_ms": 1,
+      "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "claude",
@@ -170,7 +170,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "claude",
@@ -181,7 +181,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "claude",
@@ -192,7 +192,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "claude",
@@ -203,7 +203,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "claude",
@@ -214,7 +214,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "claude",
@@ -225,7 +225,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "claude",
@@ -236,7 +236,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "claude",
@@ -247,7 +247,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "pi",
@@ -256,11 +256,11 @@
       "status": "pass",
       "cause": null,
       "exit_code": null,
-      "duration_ms": 289,
+      "duration_ms": 283,
       "hashes": {
         "skillset": "4467808830e4d15fcf6e7051a9b00582894a75ae73a10b687e2a5aab4ebc45f9"
       },
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb",
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae",
       "evidence": "pi list: 14/14 skills"
     },
     {
@@ -270,9 +270,9 @@
       "status": "pass",
       "cause": null,
       "exit_code": null,
-      "duration_ms": 784,
+      "duration_ms": 775,
       "hashes": {},
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb",
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae",
       "evidence": "339 installed file(s) all byte-identical to branch; 14/14 SKILL.md matched"
     },
     {
@@ -284,7 +284,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "pi",
@@ -293,9 +293,9 @@
       "status": "unrun",
       "cause": "no non-interactive skill launcher configured for this adapter in this round",
       "exit_code": null,
-      "duration_ms": 0,
+      "duration_ms": 1,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "pi",
@@ -306,7 +306,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "pi",
@@ -317,7 +317,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "pi",
@@ -328,7 +328,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "pi",
@@ -339,7 +339,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "pi",
@@ -350,7 +350,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "pi",
@@ -361,7 +361,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "pi",
@@ -372,7 +372,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "pi",
@@ -383,7 +383,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "pi",
@@ -394,7 +394,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "codex",
@@ -403,11 +403,11 @@
       "status": "pass",
       "cause": null,
       "exit_code": null,
-      "duration_ms": 10,
+      "duration_ms": 11,
       "hashes": {
         "skillset": "4467808830e4d15fcf6e7051a9b00582894a75ae73a10b687e2a5aab4ebc45f9"
       },
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb",
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae",
       "evidence": "codex plugin list: 14/14 skills"
     },
     {
@@ -417,9 +417,9 @@
       "status": "pass",
       "cause": null,
       "exit_code": null,
-      "duration_ms": 789,
+      "duration_ms": 794,
       "hashes": {},
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb",
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae",
       "evidence": "339 installed file(s) all byte-identical to branch; 14/14 SKILL.md matched"
     },
     {
@@ -431,7 +431,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "codex",
@@ -442,7 +442,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "codex",
@@ -453,7 +453,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "codex",
@@ -464,7 +464,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "codex",
@@ -475,7 +475,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "codex",
@@ -486,7 +486,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "codex",
@@ -497,7 +497,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "codex",
@@ -508,7 +508,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "codex",
@@ -519,7 +519,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "codex",
@@ -530,7 +530,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "codex",
@@ -541,7 +541,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "opencode",
@@ -554,7 +554,7 @@
       "hashes": {
         "skillset": "4467808830e4d15fcf6e7051a9b00582894a75ae73a10b687e2a5aab4ebc45f9"
       },
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb",
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae",
       "evidence": "~/.config/opencode/skills: 14/14 skills"
     },
     {
@@ -564,9 +564,9 @@
       "status": "pass",
       "cause": null,
       "exit_code": null,
-      "duration_ms": 783,
+      "duration_ms": 801,
       "hashes": {},
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb",
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae",
       "evidence": "69 installed file(s) all byte-identical to branch; 14/14 SKILL.md matched"
     },
     {
@@ -578,7 +578,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "opencode",
@@ -589,7 +589,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "opencode",
@@ -600,7 +600,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "opencode",
@@ -611,7 +611,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "opencode",
@@ -622,7 +622,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "opencode",
@@ -633,7 +633,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "opencode",
@@ -644,7 +644,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "opencode",
@@ -655,7 +655,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "opencode",
@@ -666,7 +666,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "opencode",
@@ -677,7 +677,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "opencode",
@@ -688,7 +688,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "grok",
@@ -701,7 +701,7 @@
       "hashes": {
         "skillset": "4467808830e4d15fcf6e7051a9b00582894a75ae73a10b687e2a5aab4ebc45f9"
       },
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb",
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae",
       "evidence": "grok plugin list --json: 14/14 skills"
     },
     {
@@ -711,9 +711,9 @@
       "status": "pass",
       "cause": null,
       "exit_code": null,
-      "duration_ms": 790,
+      "duration_ms": 792,
       "hashes": {},
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb",
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae",
       "evidence": "339 installed file(s) all byte-identical to branch; 14/14 SKILL.md matched"
     },
     {
@@ -725,7 +725,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "grok",
@@ -736,7 +736,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "grok",
@@ -747,7 +747,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "grok",
@@ -758,7 +758,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "grok",
@@ -769,7 +769,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "grok",
@@ -780,7 +780,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "grok",
@@ -791,7 +791,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "grok",
@@ -802,7 +802,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "grok",
@@ -813,7 +813,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "grok",
@@ -824,7 +824,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "grok",
@@ -835,7 +835,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "omp",
@@ -844,11 +844,11 @@
       "status": "pass",
       "cause": null,
       "exit_code": null,
-      "duration_ms": 167,
+      "duration_ms": 171,
       "hashes": {
         "skillset": "4467808830e4d15fcf6e7051a9b00582894a75ae73a10b687e2a5aab4ebc45f9"
       },
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb",
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae",
       "evidence": "omp plugin list --json: 14/14 skills"
     },
     {
@@ -858,9 +858,9 @@
       "status": "pass",
       "cause": null,
       "exit_code": null,
-      "duration_ms": 788,
+      "duration_ms": 796,
       "hashes": {},
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb",
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae",
       "evidence": "339 installed file(s) all byte-identical to branch; 14/14 SKILL.md matched"
     },
     {
@@ -872,7 +872,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "omp",
@@ -883,7 +883,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "omp",
@@ -894,7 +894,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "omp",
@@ -905,7 +905,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "omp",
@@ -916,7 +916,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "omp",
@@ -927,7 +927,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "omp",
@@ -938,7 +938,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "omp",
@@ -949,7 +949,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "omp",
@@ -960,7 +960,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "omp",
@@ -971,7 +971,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "omp",
@@ -982,7 +982,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "copilot",
@@ -991,11 +991,11 @@
       "status": "pass",
       "cause": null,
       "exit_code": null,
-      "duration_ms": 402,
+      "duration_ms": 398,
       "hashes": {
         "skillset": "4467808830e4d15fcf6e7051a9b00582894a75ae73a10b687e2a5aab4ebc45f9"
       },
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb",
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae",
       "evidence": "copilot skill list: 14/14 skills"
     },
     {
@@ -1007,7 +1007,7 @@
       "exit_code": null,
       "duration_ms": 797,
       "hashes": {},
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb",
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae",
       "evidence": "339 installed file(s) all byte-identical to branch; 14/14 SKILL.md matched"
     },
     {
@@ -1019,7 +1019,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "copilot",
@@ -1030,7 +1030,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "copilot",
@@ -1041,7 +1041,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "copilot",
@@ -1052,7 +1052,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "copilot",
@@ -1063,7 +1063,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "copilot",
@@ -1074,7 +1074,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "copilot",
@@ -1085,7 +1085,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "copilot",
@@ -1096,7 +1096,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "copilot",
@@ -1107,7 +1107,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "copilot",
@@ -1118,7 +1118,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "copilot",
@@ -1129,7 +1129,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "cursor",
@@ -1140,7 +1140,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "cursor",
@@ -1151,7 +1151,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "cursor",
@@ -1162,7 +1162,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "cursor",
@@ -1173,7 +1173,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "cursor",
@@ -1184,7 +1184,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "cursor",
@@ -1195,7 +1195,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "cursor",
@@ -1206,7 +1206,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "cursor",
@@ -1217,7 +1217,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "cursor",
@@ -1228,7 +1228,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "cursor",
@@ -1239,7 +1239,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "cursor",
@@ -1250,7 +1250,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "cursor",
@@ -1261,7 +1261,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     },
     {
       "host": "cursor",
@@ -1272,7 +1272,7 @@
       "exit_code": null,
       "duration_ms": 0,
       "hashes": null,
-      "source_revision": "b71ce37b052f5ebf77e5fc50c81303b8786d52cb"
+      "source_revision": "f78d8f53ff658d359ce6c2a0a5906a73254c7aae"
     }
   ]
 }

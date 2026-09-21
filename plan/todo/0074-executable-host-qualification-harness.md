@@ -47,7 +47,7 @@ the behavioural evals that previously reported SKIPPED. Reuse the existing
 
 Generated, not hand-written. Provenance: `evals/hosts/results/qualify-2026-09-21.json`
 and its rendered receipt `evals/hosts/results/qualify-2026-09-21.md` at branch
-commit for source revision `b71ce37b052f`.
+commit for source revision `f78d8f53ff658d359ce6c2a0a5906a73254c7aae`.
 
 | Host | Pass | Fail | Blocked | Unrun | Total |
 |------|------|------|---------|-------|-------|
