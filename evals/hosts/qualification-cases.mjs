@@ -16,6 +16,11 @@
 
 import { mkdirSync, readdirSync, readFileSync, statSync, lstatSync, cpSync, existsSync } from 'node:fs';
 import { createHash } from 'node:crypto';
+import {
+  assertTree, assertAbsent, assertFileContains, assertContiguousAdrs,
+  assertIndexSync, assertPlanShipped, assertMigratedToDeclaredShape,
+  assertReferencesRewritten, assertCommandSucceeds,
+} from '../assertions.mjs';
 import { join, relative, sep } from 'node:path';
 
 const here = new URL('.', import.meta.url).pathname;
@@ -50,6 +55,53 @@ function allSkills(repo) {
 async function gitShow(ctx, path) {
   const r = await ctx.run(['git', '-C', ctx.repo, 'show', `HEAD:${path}`], { capture: true });
   return r;
+}
+
+// ── skill-case helpers ───────────────────────────────────────────────────
+
+const EXPRESS_PROMPT =
+  'Use the docflow bootstrap skill in express depth to scaffold the minimal core into this repository. ' +
+  'Project name \'probe\', a single ADR shape, full status lifecycle, single writer, fast-forward integration, ' +
+  'no plan queue, no optional layers, en-GB. Write the files, commit them, then stop.';
+
+async function makeFixture(ctx, name, src) {
+  const dest = join(ctx.scratch, name);
+  if (src) cpSync(src, dest, { recursive: true });
+  else mkdirSync(dest, { recursive: true });
+  await ctx.run(['git', 'init', '-q'], { cwd: dest });
+  await ctx.run(['git', 'config', 'user.email', 'eval@example.invalid'], { cwd: dest });
+  await ctx.run(['git', 'config', 'user.name', 'Eval Fixture'], { cwd: dest });
+  await ctx.run(['git', 'config', 'commit.gpgsign', 'false'], { cwd: dest });
+  await ctx.run(['git', 'add', '-A'], { cwd: dest });
+  await ctx.run(['git', 'commit', '-q', '--allow-empty', '-m', 'fixture base'], { cwd: dest });
+  return dest;
+}
+
+async function hostTurn(ctx, { cwd, prompt, readOnly }) {
+  const spec = ctx.adapter.launch(ctx, { prompt, readOnly });
+  return ctx.run(spec.argv, { cwd, input: spec.input, timeoutMs: ctx.caseTimeout });
+}
+
+function judge(fn, hostResult) {
+  try {
+    fn();
+    return { status: 'pass', evidence: `host exit ${hostResult.exit}` };
+  } catch (e) {
+    return { status: 'fail', cause: `host exit ${hostResult.exit}: ${e.message}` };
+  }
+}
+
+function skillCase(spec) {
+  return {
+    kind: 'skill', id: spec.id, title: spec.title, retires: spec.retires ?? null,
+    run: async (ctx) => {
+      if (!ctx.adapter.launch) return { status: 'blocked', cause: `no non-interactive launcher for ${ctx.adapter.id}` };
+      if (!ctx.modelHosts.includes(ctx.adapter.id)) {
+        return { status: 'blocked', cause: `model tier bounded to ${ctx.modelHosts.join(',')} by the cheap-tier cost rule; launcher is wired for ${ctx.adapter.id} (select with --model-hosts)` };
+      }
+      return spec.run(ctx);
+    },
+  };
 }
 
 export const cases = [
@@ -183,17 +235,126 @@ export const cases = [
   },
 
   // ----------------------------------------------------------------- skill
-  { id: 'bootstrap-full', kind: 'skill', title: 'bootstrap full profile scaffolds the single-writer tree', retires: 'bootstrap: fresh repo gets the full scaffold' },
-  { id: 'bootstrap-express', kind: 'skill', title: 'bootstrap express profile scaffolds the fixed minimal tree', retires: 'bootstrap: express depth scaffolds the fixed minimal profile' },
-  { id: 'new-adr', kind: 'skill', title: 'new-adr records the next contiguous decision and regenerates INDEX', retires: 'new-adr: next contiguous number, INDEX regenerated' },
-  { id: 'new-plan', kind: 'skill', title: 'new-plan queues an item traced to its owning decision', retires: null },
-  { id: 'ship-item', kind: 'skill', title: 'ship-item moves todo to done and advances the owning decision', retires: 'ship-item: todo→done and owning ADR → Implemented' },
-  { id: 'dispatch-brief', kind: 'skill', title: 'workspace-dispatch writes a bounded brief for a current grant', retires: null },
-  { id: 'dispatch-refusal', kind: 'skill', title: 'workspace-dispatch refuses a missing or expired grant', retires: null },
-  { id: 'sync-reconcile', kind: 'skill', title: 'workspace-sync reconciles a returned receipt from native evidence', retires: null },
-  { id: 'sync-prepared-not-complete', kind: 'skill', title: 'workspace-sync never marks an unmerged prepared pull request complete', retires: null },
-  { id: 'audit-coordination', kind: 'skill', title: 'audit migrates legacy coordination preserving live ownership', retires: 'audit: migrate legacy coordination while preserving live ownership' },
-  { id: 'audit-range', kind: 'skill', title: 'audit detects and applies a legacy range migration', retires: 'audit: legacy range detected, migration offered and applied' },
+  skillCase({
+    id: 'bootstrap-full', retires: 'bootstrap: fresh repo gets the full scaffold',
+    title: 'bootstrap full profile scaffolds the single-writer tree',
+    run: async (ctx) => {
+      const dir = await makeFixture(ctx, 'boot-full', null);
+      mkdirSync(join(dir, 'tools'), { recursive: true });
+      cpSync(join(evalsDir, 'fixtures/scratch-gate/verify.mjs'), join(dir, 'tools/verify.mjs'));
+      const r = await hostTurn(ctx, { cwd: dir, readOnly: false, prompt:
+        'Use the docflow bootstrap skill at full depth: single writer, direct integration into main, plan queue enabled, ' +
+        'en-GB, no federation, no domains, and record the verify gate as `node tools/verify.mjs`. ' +
+        'Scaffold the repository, make the seed adoption commit, then stop.' });
+      return judge(() => {
+        assertTree(dir, ['AGENTS.md', 'CLAUDE.md', 'CONVENTIONS.md', 'INDEX.md', 'adr/0000-template.md', 'plan/todo', 'plan/done', 'tools/verify.mjs', '_agent/prompts/autonomous.md']);
+        assertAbsent(dir, ['_agent/ROLES.md', '_agent/LOCKS.md', '_agent/WORKLOG.md', '_agent/CURRENT_FOCUS.md', '_agent/IN_FLIGHT.md', '_agent/HANDOFF.md']);
+        assertFileContains(dir, 'AGENTS.md', 'Picking up this repo');
+        assertFileContains(dir, '_agent/prompts/autonomous.md', 'node tools/verify.mjs');
+        assertCommandSucceeds(dir, 'node tools/verify.mjs');
+      }, r);
+    },
+  }),
+  skillCase({
+    id: 'bootstrap-express', retires: 'bootstrap: express depth scaffolds the fixed minimal profile',
+    title: 'bootstrap express profile scaffolds the fixed minimal tree',
+    run: async (ctx) => {
+      const dir = await makeFixture(ctx, 'boot-express', null);
+      const r = await hostTurn(ctx, { cwd: dir, readOnly: false, prompt: EXPRESS_PROMPT });
+      return judge(() => {
+        const root = join(dir, '.docflow');
+        assertTree(dir, ['AGENTS.md', 'CLAUDE.md', '.docflow/CONVENTIONS.md', '.docflow/INDEX.md', '.docflow/adr/0000-template.md', '.docflow/adr/0001-record-architecture-decisions.md']);
+        assertAbsent(dir, ['.docflow/plan', 'plan', '_agent', '.docflow/GLOSSARY.md', 'GLOSSARY.md', '.docflow/domains', 'domains']);
+        assertFileContains(root, 'CONVENTIONS.md', 'express');
+        assertContiguousAdrs(root);
+        assertIndexSync(root);
+      }, r);
+    },
+  }),
+  skillCase({
+    id: 'new-adr', retires: 'new-adr: next contiguous number, INDEX regenerated',
+    title: 'new-adr records the next contiguous decision and regenerates INDEX',
+    run: async (ctx) => {
+      const dir = await makeFixture(ctx, 'new-adr', join(repoRoot, 'plugins/docflow/workspace/repository-fixtures/cases/default-root'));
+      const r = await hostTurn(ctx, { cwd: dir, readOnly: false, prompt:
+        'Use the docflow new-adr skill to record one new Proposed capability decision titled \'Export a plain text summary\' ' +
+        'with three testable acceptance criteria. Commit it, then stop.' });
+      return judge(() => {
+        const root = join(dir, '.docflow');
+        assertContiguousAdrs(root);
+        assertIndexSync(root);
+        const files = readdirSync(join(root, 'adr'));
+        if (!files.some((f) => f.startsWith('0002-'))) throw Error('no new ADR 0002 file');
+        assertFileContains(root, files.find((f) => f.startsWith('0002-')), 'status: Proposed');
+      }, r);
+    },
+  }),
+  skillCase({
+    id: 'new-plan',
+    title: 'new-plan queues an item traced to its owning decision',
+    run: async (ctx) => {
+      const dir = await makeFixture(ctx, 'new-plan', join(evalsDir, 'fixtures/legacy-range'));
+      const before = readdirSync(join(dir, 'plan/todo'));
+      const r = await hostTurn(ctx, { cwd: dir, readOnly: false, prompt:
+        'Use the docflow new-plan skill to queue one unit of work titled \'Example plan item\', tracing to an existing decision ' +
+        'and with testable exit criteria. Commit it, then stop.' });
+      return judge(() => {
+        const after = readdirSync(join(dir, 'plan/todo'));
+        const added = after.filter((f) => !before.includes(f));
+        if (!added.length) throw Error('no new plan/todo item created');
+        assertFileContains(dir, `plan/todo/${added[0]}`, '## Status');
+        assertFileContains(dir, `plan/todo/${added[0]}`, 'Owning decisions');
+      }, r);
+    },
+  }),
+  skillCase({
+    id: 'ship-item', retires: 'ship-item: todo→done and owning ADR → Implemented',
+    title: 'ship-item moves todo to done and advances the owning decision',
+    run: async (ctx) => {
+      const dir = await makeFixture(ctx, 'ship-item', join(evalsDir, 'fixtures/legacy-range'));
+      const r = await hostTurn(ctx, { cwd: dir, readOnly: false, prompt:
+        'Use the docflow ship-item skill to complete plan item 0001-verify-script-coverage: advance its owning decision, ' +
+        'move the item to plan/done with a completion footer, regenerate INDEX, and commit. Stop after that.' });
+      return judge(() => assertPlanShipped(dir, 'verify-script-coverage'), r);
+    },
+  }),
+  skillCase({
+    id: 'audit-coordination', retires: 'audit: migrate legacy coordination while preserving live ownership',
+    title: 'audit migrates legacy coordination preserving live ownership',
+    run: async (ctx) => {
+      const dir = await makeFixture(ctx, 'audit-coordination', join(evalsDir, 'fixtures/legacy-coordination'));
+      const r = await hostTurn(ctx, { cwd: dir, readOnly: false, prompt:
+        'Use the docflow audit skill to migrate the legacy _agent/ coordination layout to the current derived-state layout, ' +
+        'preserving the live claim. Apply the migration and commit, then stop.' });
+      return judge(() => {
+        assertAbsent(dir, ['.docflow/_agent/WORKLOG.md', '.docflow/_agent/IN_FLIGHT.md', '.docflow/_agent/CURRENT_FOCUS.md', '.docflow/_agent/HANDOFF.md', '.docflow/_agent/LOCKS.md']);
+        assertTree(dir, ['.docflow/_agent/ROLES.md', '.docflow/_agent/prompts/autonomous.md']);
+      }, r);
+    },
+  }),
+  skillCase({
+    id: 'audit-range', retires: 'audit: legacy range detected, migration offered and applied',
+    title: 'audit detects and applies a legacy range migration',
+    run: async (ctx) => {
+      const dir = await makeFixture(ctx, 'audit-range', join(evalsDir, 'fixtures/legacy-range'));
+      const map = { '0101': '0004', '0102': '0005' };
+      const r = await hostTurn(ctx, { cwd: dir, readOnly: false, prompt:
+        'Use the docflow audit skill to detect and apply any legacy range numbering migration in this catalogue, ' +
+        'renumbering technology decisions onto the end of the capability sequence and rewriting references. Commit it, then stop.' });
+      return judge(() => {
+        assertMigratedToDeclaredShape(dir, { map });
+        assertReferencesRewritten(dir, { map });
+      }, r);
+    },
+  }),
+
+  // The workspace brief/receipt lifecycle needs the archived two-host fixture
+  // adapted to the harness; the launcher is wired but the fixture is not, so
+  // each names that specific cause rather than reporting a bare unrun.
+  { id: 'dispatch-brief', kind: 'skill', title: 'workspace-dispatch writes a bounded brief for a current grant', run: async () => ({ status: 'blocked', cause: 'workspace brief/receipt lifecycle fixture not wired: r4 two-host fixture is archived but not adapted; launcher wired' }) },
+  { id: 'dispatch-refusal', kind: 'skill', title: 'workspace-dispatch refuses a missing or expired grant', run: async () => ({ status: 'blocked', cause: 'needs a no-grant workspace fixture: not wired in this round; launcher wired' }) },
+  { id: 'sync-reconcile', kind: 'skill', title: 'workspace-sync reconciles a returned receipt from native evidence', run: async () => ({ status: 'blocked', cause: 'workspace return/receipt fixture not wired: r4 two-host envelope archived but not adapted; launcher wired' }) },
+  { id: 'sync-prepared-not-complete', kind: 'skill', title: 'workspace-sync never marks an unmerged prepared pull request complete', run: async () => ({ status: 'blocked', cause: 'needs a prepared-but-unmerged member fixture: not wired in this round; launcher wired' }) },
 ];
 
 async function authorityAdverse(ctx, id, codes) {

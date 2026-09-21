@@ -12,8 +12,9 @@
 // adapter that cannot run a case declares why in `blocked`; the runner records
 // that as `blocked` rather than silently skipping.
 
-import { readdirSync, statSync } from 'node:fs';
+import { readdirSync, statSync, mkdirSync, copyFileSync, chmodSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
+import { homedir } from 'node:os';
 
 const SKILL_FILE = 'SKILL.md';
 
@@ -63,6 +64,14 @@ export const adapters = [
       ctx.installedRoot = ctx.plugin;
       return ctx.run([ctx.binary, '--version']);
     },
+    launch(ctx, { prompt, readOnly }) {
+      return {
+        argv: [ctx.binary, '--plugin-dir', ctx.plugin, '-p', '--output-format', 'text',
+          '--no-session-persistence', '--permission-mode', readOnly ? 'plan' : 'acceptEdits',
+          '--allowedTools', 'Read,Write,Edit,Bash,Skill,Glob,Grep', '--strict-mcp-config'],
+        input: prompt,
+      };
+    },
     async discover(ctx) {
       const r = await ctx.run([ctx.binary, '--plugin-dir', ctx.plugin, 'plugin', 'list', '--json']);
       let loaded = false;
@@ -82,11 +91,30 @@ export const adapters = [
       XDG_STATE_HOME: join(home, '.local/state'),
       PI_CONFIG_DIR: join(home, '.pi'),
     }),
+    provider: process.env.PI_PROVIDER || 'deepinfra',
+    model: process.env.PI_MODEL || 'deepseek-ai/DeepSeek-V4.1-Flash',
     async install(ctx) {
       ctx.runSync(['mkdir', '-p', join(ctx.home, '.pi')]);
       const r = await ctx.run([ctx.binary, 'install', ctx.stage]);
+      // Stream the operator's provider catalog and credential into the
+      // disposable pi home (never the real one). models.json defines the
+      // provider; auth.json holds the key and is mode 0600 on scratch.
+      const src = join(homedir(), '.pi/agent');
+      const dst = join(ctx.home, '.pi/agent');
+      if (existsSync(src)) {
+        ctx.runSync(['mkdir', '-p', dst]);
+        for (const f of ['models.json', 'settings.json', 'auth.json']) {
+          if (existsSync(join(src, f))) {
+            copyFileSync(join(src, f), join(dst, f));
+            if (f === 'auth.json') chmodSync(join(dst, f), 0o600);
+          }
+        }
+      }
       ctx.installedRoot = ctx.plugin;
       return r;
+    },
+    launch(ctx, { prompt, readOnly }) {
+      return { argv: [ctx.binary, '--no-session', '-p', '--approve', '--provider', this.provider, '--model', this.model], input: prompt, readOnly };
     },
     async discover(ctx) {
       const r = await ctx.run([ctx.binary, 'list']);
@@ -111,6 +139,9 @@ export const adapters = [
       const install = await ctx.run([ctx.binary, 'plugin', 'add', 'docflow@evolvehq']);
       ctx.installedRoot = join(ctx.home, '.codex/plugins/cache');
       return { exit: add.exit || install.exit, stdout: add.stdout + install.stdout, stderr: add.stderr + install.stderr };
+    },
+    launch(ctx, { prompt, readOnly }) {
+      return { argv: [ctx.binary, 'exec', '--sandbox', readOnly ? 'read-only' : 'workspace-write', '--skip-git-repo-check', prompt] };
     },
     async discover(ctx) {
       const r = await ctx.run([ctx.binary, 'plugin', 'list']);
@@ -141,6 +172,9 @@ export const adapters = [
       ctx.installedRoot = join(ctx.plugin, 'skills');
       return { exit: 0, stdout: 'linked 14 skills', stderr: '' };
     },
+    launch(ctx, { prompt }) {
+      return { argv: [ctx.binary, 'run', prompt] };
+    },
     async discover(ctx) {
       const linked = scanSkills(join(ctx.home, '.config/opencode/skills'));
       return { exit: 0, loaded: linked.length === 14, skills: linked, evidence: '~/.config/opencode/skills' };
@@ -163,6 +197,9 @@ export const adapters = [
       const installed = findInstalled(join(ctx.home, '.grok/installed-plugins'), '.claude-plugin');
       ctx.installedRoot = installed[0] ? join(installed[0], '..') : ctx.plugin;
       return r;
+    },
+    launch(ctx, { prompt }) {
+      return { argv: [ctx.binary, '--always-approve', '-p', prompt] };
     },
     async discover(ctx) {
       const r = await ctx.run([ctx.binary, 'plugin', 'list', '--json']);
@@ -188,6 +225,9 @@ export const adapters = [
       ctx.installedRoot = ctx.plugin;
       return { exit: m.exit || i.exit, stdout: m.stdout + i.stdout, stderr: m.stderr + i.stderr };
     },
+    launch(ctx, { prompt }) {
+      return { argv: [ctx.binary, '--auto-approve', '-p', prompt] };
+    },
     async discover(ctx) {
       const r = await ctx.run([ctx.binary, 'plugin', 'list', '--json']);
       const loaded = /docflow/.test(r.stdout);
@@ -208,6 +248,9 @@ export const adapters = [
     async install(ctx) {
       ctx.installedRoot = ctx.plugin;
       return ctx.run([ctx.binary, '--version']);
+    },
+    launch(ctx, { prompt }) {
+      return { argv: [ctx.binary, '-p', prompt, '--allow-all-tools', '--allow-all-paths'] };
     },
     async discover(ctx) {
       const r = await ctx.run([ctx.binary, '--plugin-dir', ctx.plugin, 'skill', 'list']);

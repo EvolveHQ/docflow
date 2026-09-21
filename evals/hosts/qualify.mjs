@@ -27,11 +27,13 @@ const repo = resolve(here, '..', '..');
 const DEFAULT_TIMEOUT_MS = 900_000;
 
 function parseArgs(argv) {
-  const out = { hosts: null, cases: null, scratch: null, out: null, summaryOnly: false };
+  const out = { hosts: null, cases: null, scratch: null, out: null, summaryOnly: false, modelHosts: ['pi'], caseTimeoutMs: 900_000 };
   for (let i = 0; i < argv.length; i += 1) {
     const a = argv[i];
     if (a === '--hosts') out.hosts = argv[++i].split(',').map((s) => s.trim()).filter(Boolean);
     else if (a === '--cases') out.cases = argv[++i].split(',').map((s) => s.trim()).filter(Boolean);
+    else if (a === '--model-hosts') out.modelHosts = argv[++i].split(',').map((s) => s.trim()).filter(Boolean);
+    else if (a === '--case-timeout-ms') out.caseTimeoutMs = Number(argv[++i]);
     else if (a === '--scratch') out.scratch = argv[++i];
     else if (a === '--out') out.out = argv[++i];
     else if (a === '--summary-only') out.summaryOnly = true;
@@ -63,7 +65,7 @@ function makeRun(home, scratch) {
     const env = { ...baseEnv, ...(opts.env || {}), HOME: home };
     const r = spawnSync(argv[0], argv.slice(1), {
       cwd, env, encoding: 'utf8', timeout: opts.timeoutMs || DEFAULT_TIMEOUT_MS,
-      maxBuffer: 64 * 1024 * 1024, windowsHide: true,
+      input: opts.input, maxBuffer: 64 * 1024 * 1024, windowsHide: true,
     });
     return {
       exit: r.error ? (r.error.code === 'ETIMEDOUT' ? 124 : 1) : r.status,
@@ -74,7 +76,7 @@ function makeRun(home, scratch) {
   return { run, runSync, baseEnv };
 }
 
-function buildCtx({ host, adapter, scratch, home, source, node, stage }) {
+function buildCtx({ host, adapter, scratch, home, source, node, stage, modelHosts, caseTimeout }) {
   const { run, runSync } = makeRun(home, scratch);
   const env = adapter?.env ? adapter.env(home) : {};
   const mergeEnv = (extra) => ({ ...env, ...extra });
@@ -83,6 +85,8 @@ function buildCtx({ host, adapter, scratch, home, source, node, stage }) {
     stage: stage || repo,
     plugin: join(stage || repo, 'plugins/docflow'),
     binary: adapter?.binary,
+    modelHosts: modelHosts || ['pi'],
+    caseTimeout: caseTimeout || 900_000,
     installedRoot: null,
     installResult: null,
     get run() { return (argv, opts = {}) => run(argv, { ...opts, env: mergeEnv(opts.env) }); },
@@ -145,7 +149,7 @@ async function main() {
   for (const testCase of productCases().filter(wanted)) {
     const home = join(scratchRoot, '_product-home');
     mkdirSync(home, { recursive: true });
-    const ctx = buildCtx({ host: null, adapter: null, scratch: scratchRoot, home, source, node: process.execPath, stage });
+    const ctx = buildCtx({ host: null, adapter: null, scratch: scratchRoot, home, source, node: process.execPath, stage, modelHosts: args.modelHosts, caseTimeout: args.caseTimeoutMs });
     results.push(await runOne({ ctx, testCase }));
   }
 
@@ -156,7 +160,7 @@ async function main() {
     mkdirSync(home, { recursive: true });
     const hostStage = stageFor(host);
     copyRepo(hostStage);
-    const ctx = buildCtx({ host, adapter, scratch: scratchRoot, home, source, node: process.execPath, stage: hostStage });
+    const ctx = buildCtx({ host, adapter, scratch: scratchRoot, home, source, node: process.execPath, stage: hostStage, modelHosts: args.modelHosts, caseTimeout: args.caseTimeoutMs });
     if (adapter.install) {
       try { ctx.installResult = await adapter.install(ctx); }
       catch (e) { ctx.installResult = { exit: 1, stderr: e.message, stdout: '' }; }

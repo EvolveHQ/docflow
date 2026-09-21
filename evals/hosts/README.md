@@ -20,6 +20,12 @@ hand-written. Case statuses are `pass`, `fail`, `blocked` (adapter cannot run
 it, with the reason) and `unrun` (no launcher yet); blocked and unrun are not
 passes.
 
+Model-driven skill cases run through each adapter's non-interactive launcher
+(Claude Code `-p`, pi `-p --approve`, Codex `exec --sandbox`, OpenCode `run`,
+Grok `-p`, omp `-p`, Copilot `-p`). To respect the cheap-tier cost rule the
+model tier is attempted only on hosts named by `--model-hosts` (default `pi`);
+launchers on other hosts are wired and report a named cause instead.
+
 These tests use actual vendor CLIs in separate Linux Docker containers, or
 native editor/desktop sessions with disposable attached target folders. Record
 the desktop platform and runtime separately from historical container runs.
