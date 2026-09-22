@@ -431,10 +431,10 @@ export const cases = [
     },
   }),
 
-  // Workspace brief/receipt lifecycle. These run on every wired host; the
+  // Workspace brief/receipt lifecycle. These run on selected wired hosts; the
   // assertions are digest/validator facts, never model prose.
-  {
-    id: 'dispatch-brief', kind: 'skill',
+  skillCase({
+    id: 'dispatch-brief',
     title: 'workspace-dispatch writes a bounded brief for a current grant',
     run: async (ctx) => {
       const dir = await makeFixture(ctx, 'dispatch-brief', join(fixtures, 'two-repository'));
@@ -455,9 +455,9 @@ export const cases = [
         if (!diffWorkspace(before, after).length) throw new Error('dispatch created no workspace record');
       }, r);
     },
-  },
-  {
-    id: 'dispatch-refusal', kind: 'skill',
+  }),
+  skillCase({
+    id: 'dispatch-refusal',
     title: 'workspace-dispatch refuses a missing or expired grant',
     run: async (ctx) => {
       const dir = join(ctx.scratch, `${ctx.host}-dispatch-refusal`);
@@ -472,9 +472,9 @@ export const cases = [
         if (changed.length) throw new Error(`dispatch wrote ${changed.length} file(s) despite no authority: ${changed.slice(0, 3)}`);
       }, r);
     },
-  },
-  {
-    id: 'sync-reconcile', kind: 'skill',
+  }),
+  skillCase({
+    id: 'sync-reconcile',
     title: 'workspace-sync reconciles a returned receipt from native evidence',
     run: async (ctx) => {
       const dir = await makeFixture(ctx, 'sync-reconcile', join(fixtures, 'two-repository'));
@@ -493,9 +493,9 @@ export const cases = [
         if (!diffWorkspace(before, after).length) throw new Error('sync recorded no reconciliation');
       }, r);
     },
-  },
-  {
-    id: 'sync-prepared-not-complete', kind: 'skill',
+  }),
+  skillCase({
+    id: 'sync-prepared-not-complete',
     title: 'workspace-sync never marks an unmerged prepared pull request complete',
     run: async (ctx) => {
       const dir = await makeFixture(ctx, 'sync-prepared-not-complete', join(fixtures, 'two-repository'));
@@ -521,7 +521,7 @@ export const cases = [
         }
       }, r);
     },
-  },
+  }),
 ];
 
 async function authorityAdverse(ctx, id, codes) {
