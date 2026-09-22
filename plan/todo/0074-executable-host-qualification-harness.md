@@ -4,8 +4,9 @@ Owning decisions: adr/0062-executable-host-qualification-rounds.md (new).
 
 ## Status
 
-- **Claimed by:** pi, docflow qualification harness, 2026-09-21, branch
-  `kmox83/docflow-v1-qualification-r5`.
+- **Claimed by:** Codex, Bugbot round 2 review, 2026-09-22, branch
+  `kmox83/docflow-v1-qualification-r5`; operator reassignment for local
+  fixes and both gates only, with no push or PR changes.
 - **Blockers:** six genuine model-driven failures remain on codex
   (`bootstrap-full`, `ship-item`, `dispatch-brief`) and opencode
   (`audit-coordination`, `dispatch-brief`, `sync-reconcile`); the model did not
@@ -47,6 +48,13 @@ the behavioural evals that previously reported SKIPPED. Reuse the existing
    (AC7)
 
 ## Receipt
+
+Round 2 review scope: assess all five findings before changing code; repair
+confirmed discovery evidence, model-host selection, workspace case gates,
+range migration assertions and release-checker compatibility. Each repair
+requires a failing-before/passing-after deterministic regression under
+`/tmp/hq-qa/`. Commit locally and require both gates on the final head; no
+paid host turns or new native qualification claims are authorised by this run.
 
 Generated from `evals/hosts/results/qualify-2026-09-21.json`; the rendered
 receipt is `evals/hosts/results/qualify-2026-09-21.md`. One full-matrix run on
