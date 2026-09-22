@@ -49,29 +49,73 @@ function git(args) {
   return spawnSync('git', ['-C', repo, ...args], { encoding: 'utf8' });
 }
 
-// Fingerprint of the operator's real checkout. A host must never be able to
-// write here — the whole run is staged from a copy under the scratch root.
-// HEAD catches a commit, status catches edits and new/deleted files, and the
-// reflog catches a commit that was later reset away. Compared before and after
-// every case; a mismatch aborts the run and fails the offending cell.
-export function checkoutFingerprint(root = repo) {
+// Fingerprint of an operator checkout. A host must never be able to write
+// here — the whole run is staged from a copy under the scratch root. HEAD
+// catches a commit, status catches edits and new/deleted files, and the reflog
+// catches a commit that was later reset away. Git already omits gitignored
+// paths from status. Compared before and after every case; a mismatch aborts
+// the run and fails the offending cell.
+const workspaceRoot = resolve(repo, '..', '..');
+const clarityRoot = join(workspaceRoot, 'repos', 'clarity.docflowhq.com');
+
+function gitIn(root, args) {
+  return spawnSync('git', ['-C', root, ...args], { encoding: 'utf8', maxBuffer: 16 * 1024 * 1024 });
+}
+
+// Working-tree status for one root, or null when the root is not a usable git
+// checkout. For the docflow checkout the harness's own generated results are
+// excluded so writing the receipt never trips the guard.
+export function checkoutStatus(root, ignoreResults = false) {
+  const r = gitIn(root, ['status', '--porcelain=v1', '--untracked-files=all']);
+  if (r.status !== 0) return null;
+  return r.stdout.split('\n')
+    .filter((line) => line && !(ignoreResults && /^.. evals\/hosts\/results\//.test(line)))
+    .join('\n');
+}
+
+export function checkoutFingerprint(root = repo, { ignoreResults = false } = {}) {
   const capture = (args) => {
-    const r = spawnSync('git', ['-C', root, ...args], { encoding: 'utf8', maxBuffer: 16 * 1024 * 1024 });
+    const r = gitIn(root, args);
     return r.status === 0 ? r.stdout : `ERR:${r.status}:${r.stderr}`;
   };
-  // The harness's own generated results live under evals/hosts/results/ in the
-  // real checkout; exclude exactly those paths so writing the receipt never
-  // trips the guard. Everything else must be untouched.
-  const status = capture(['status', '--porcelain=v1', '--untracked-files=all'])
-    .split('\n')
-    .filter((line) => line && !/^.. evals\/hosts\/results\//.test(line))
-    .join('\n');
   return createHash('sha256').update([
     capture(['rev-parse', 'HEAD']),
-    status,
+    checkoutStatus(root, ignoreResults) ?? 'ERR',
     capture(['reflog', '--format=%H %gs', '-n', '5']),
     capture(['stash', 'list']),
   ].join('\u0000')).digest('hex');
+}
+
+// The guard covers the workspace root and the Clarity checkout as well as the
+// docflow checkout: a host must not write into operator state outside its
+// scratch root.
+export const GUARD_ROOTS = [
+  { label: 'docflow', root: repo, ignoreResults: true },
+  { label: 'workspace', root: workspaceRoot, ignoreResults: false },
+  { label: 'clarity', root: clarityRoot, ignoreResults: false },
+];
+
+export function fingerprintRoots(roots) {
+  return roots.map(({ label, root, ignoreResults }) => `${label}:${checkoutFingerprint(root, { ignoreResults })}`).join('\n');
+}
+
+function guardFingerprint() {
+  return fingerprintRoots(GUARD_ROOTS);
+}
+
+// A receipt may only be emitted for the revision it names, from a clean tree.
+function assertReceiptBound(revision) {
+  const head = git(['rev-parse', 'HEAD']).stdout.trim();
+  if (head !== revision) {
+    throw new Error(`receipt refuses to emit: source revision ${revision} is not HEAD ${head}`);
+  }
+  const dirty = GUARD_ROOTS
+    .map(({ label, root, ignoreResults }) => ({ label, status: checkoutStatus(root, ignoreResults) }))
+    .filter(({ status }) => status && status.length > 0)
+    .map(({ label }) => label);
+  if (dirty.length) {
+    throw new Error(`receipt refuses to emit: uncommitted changes in ${dirty.join(', ')}`);
+  }
 }
 
 function assertUnder(root, target, what) {
@@ -184,17 +228,18 @@ async function main() {
   const receiptPath = outPath.replace(/\.json$/, '.md');
   let payload = null;
   const persist = () => {
+    assertReceiptBound(revision);
     payload = { schema: 1, harness: 'docflow-qualify', generated_at: new Date().toISOString(), source_revision: revision, source, scratch: scratchRoot, results };
     writeFileSync(outPath, JSON.stringify(payload, null, 2) + '\n');
     writeFileSync(receiptPath, renderReceipt(payload));
     return payload;
   };
-  const guardBaseline = checkoutFingerprint();
+  const guardBaseline = guardFingerprint();
   const record = (entry) => {
-    const now = checkoutFingerprint();
+    const now = guardFingerprint();
     if (now !== guardBaseline) {
       entry.status = 'fail';
-      entry.cause = `ISOLATION BREACH: the real checkout at ${repo} changed during ` +
+      entry.cause = `ISOLATION BREACH: a guarded checkout changed during ` +
         `${entry.host || 'product'}:${entry.case} (guard ${guardBaseline.slice(0, 12)} -> ${now.slice(0, 12)}); run aborted`;
       results.push(entry);
       persist();

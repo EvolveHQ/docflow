@@ -14,7 +14,7 @@
 //                    fixture and an external checker judges the result. Runs
 //                    only where the adapter can make a non-interactive turn.
 
-import { mkdirSync, readdirSync, readFileSync, statSync, lstatSync, cpSync, existsSync, rmSync } from 'node:fs';
+import { mkdirSync, readdirSync, readFileSync, statSync, lstatSync, cpSync, existsSync, rmSync, writeFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import {
   assertTree, assertAbsent, assertFileContains, assertContiguousAdrs,
@@ -94,6 +94,36 @@ function diffWorkspace(before, after) {
   for (const [k, v] of after) if (before.get(k) !== v) changed.push(k);
   for (const k of before.keys()) if (!after.has(k)) changed.push(k);
   return changed;
+}
+
+// Rewrite one record's JSON front matter in place.
+function rewriteRecord(path, mutate) {
+  const text = readFileSync(path, 'utf8').replace(/\r\n/g, '\n');
+  const m = text.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
+  if (!m) throw new Error(`no JSON front matter in ${path}`);
+  const meta = JSON.parse(m[1]);
+  mutate(meta);
+  writeFileSync(path, `---\n${JSON.stringify(meta, null, 2)}\n---\n${m[2]}`);
+}
+
+// The two-repository fixture ends every grant in a terminal revision (closed
+// or revoked), so workspace-dispatch correctly declines to write and the
+// positive dispatch case cannot pass. Derive a dispatchable tree from it: one
+// active grant, one delivery, a cleared blocker and the one reconciled prior
+// attempt. The refusal path stays covered by dispatch-refusal.
+function makeDispatchable(dir) {
+  const ws = join(dir, '.docflow_workspace');
+  rewriteRecord(join(ws, 'work/deliver-compatible-exports--345678903333.md'), (meta) => {
+    meta.deliveries = meta.deliveries.filter((d) => d.id === 'provider');
+    meta.deliveries[0].observation = { state: 'unknown', complete: false, observed_at: null, source_revision: null, evidence: [] };
+    meta.grants = meta.grants.filter((g) => g.id === 'api-first');
+    meta.grants[0].revisions = meta.grants[0].revisions.filter((r) => r.revision === 1);
+    meta.blockers = [];
+    meta.next_action = 'Dispatch the provider delivery under the current grant.';
+  });
+  rmSync(join(ws, 'runs/api-reassigned--678901236666.md'), { force: true });
+  rmSync(join(ws, 'runs/mobile-revoked--789012347777.md'), { force: true });
+  rewriteRecord(join(ws, 'runs/api-interrupted--567890125555.md'), (meta) => { meta.successors = []; });
 }
 
 async function validatorAt(ctx, dir) {
@@ -389,6 +419,9 @@ export const cases = [
     title: 'workspace-dispatch writes a bounded brief for a current grant',
     run: async (ctx) => {
       const dir = await makeFixture(ctx, 'dispatch-brief', join(fixtures, 'two-repository'));
+      makeDispatchable(dir);
+      await ctx.run(['git', 'add', '-A'], { cwd: dir });
+      await ctx.run(['git', 'commit', '-q', '-m', 'fixture: current dispatchable grant'], { cwd: dir });
       const before = snapshotWorkspace(dir);
       const v0 = await validatorAt(ctx, dir);
       const r = await hostTurn(ctx, { cwd: dir, readOnly: false, prompt:
