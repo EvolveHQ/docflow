@@ -6,9 +6,12 @@ Owning decisions: adr/0062-executable-host-qualification-rounds.md (new).
 
 - **Claimed by:** pi, docflow qualification harness, 2026-09-21, branch
   `kmox83/docflow-v1-qualification-r5`.
-- **Blockers:** the model-driven skill cases have no non-interactive launcher
-  wired yet, so they report `unrun`; Cursor reports `blocked` (authentication).
-  Neither is a pass.
+- **Blockers:** remaining model-driven cases fail for genuine reasons —
+  `dispatch-brief` uniformly (the two-repository fixture's active work carries
+  an unresolved revocation, so a correct skill declines to write), and
+  `audit-range`/`ship-item` on some hosts where the model did not finish.
+  Cursor is fully blocked (authentication) and copilot's skill cases are
+  blocked (OS keyring credential); neither is a pass.
 - **Stopped:**
 
 ## Scope
@@ -45,37 +48,41 @@ the behavioural evals that previously reported SKIPPED. Reuse the existing
 
 ## Receipt
 
-Generated, not hand-written. Provenance: `evals/hosts/results/qualify-2026-09-21.json`
-and its rendered receipt `evals/hosts/results/qualify-2026-09-21.md` at branch
-commit for source revision `f78d8f53ff658d359ce6c2a0a5906a73254c7aae`.
+Generated from `evals/hosts/results/qualify-2026-09-21.json`; the rendered
+receipt is `evals/hosts/results/qualify-2026-09-21.md`. Sharded host runs plus
+two targeted re-runs (codex host-interface after the cache-scope fix;
+codex/opencode `ship-item` and `sync-reconcile` after the idempotency fix)
+compose the one revision `831d09b6e47b9eb23e9ba617541dd8df661d8fa4`.
 
 | Host | Pass | Fail | Blocked | Unrun | Total |
 |------|------|------|---------|-------|-------|
 | product | 8 | 0 | 0 | 0 | 8 |
-| claude | 2 | 0 | 0 | 11 | 13 |
-| pi | 2 | 0 | 0 | 11 | 13 |
-| codex | 2 | 0 | 0 | 11 | 13 |
-| opencode | 2 | 0 | 0 | 11 | 13 |
-| grok | 2 | 0 | 0 | 11 | 13 |
-| omp | 2 | 0 | 0 | 11 | 13 |
-| copilot | 2 | 0 | 0 | 11 | 13 |
+| claude | 12 | 1 | 0 | 0 | 13 |
+| pi | 12 | 1 | 0 | 0 | 13 |
+| codex | 9 | 4 | 0 | 0 | 13 |
+| opencode | 9 | 4 | 0 | 0 | 13 |
+| grok | 10 | 3 | 0 | 0 | 13 |
+| omp | 12 | 1 | 0 | 0 | 13 |
+| copilot | 2 | 0 | 11 | 0 | 13 |
 | cursor | 0 | 0 | 13 | 0 | 13 |
 
-Totals: **22 pass, 0 fail, 13 blocked, 77 unrun**. Every host-interface case
-(discovery of all fourteen skills, install byte-match against the branch) and
-every product case (authority current/missing/expired/conflicting, mandate
-valid/adverse, recovery read-only, scope/new-plan disjointness) passed on every
-adapter that could run, except Cursor which has no disposable credential.
-Retired behavioural evals: bootstrap full, bootstrap express, new-adr,
-ship-item, audit coordination migration and audit range migration.
+Totals: **74 pass, 14 fail, 24 blocked, 0 unrun**. `dispatch-brief` fails on
+every runnable host because the two-repository fixture's active work carries an
+unresolved revocation, so the skill declines to write — a fixture gap, not a
+host fault. `audit-range` and `ship-item` fail on codex, grok and opencode where
+the model did not finish the migration/ship. Bootstrap full and new-plan fail
+on individual hosts. Retired behavioural evals: bootstrap full, bootstrap
+express, new-adr, ship-item, audit coordination migration and audit range
+migration.
 
 ## Status at a glance
 
-- **This run:** shipped the executable harness, adapters and case catalogue;
-  generated results and receipt; retired the six skipped behavioural evals;
-  static gate green.
-- **Overall:** partially verified — 22 cases pass with no failures, but the
-  model-driven skill cases are 77 unrun and 13 blocked, which are not passes.
-- **Yet to do:** wire non-interactive launchers for the skill cases, provide a
-  disposable Cursor credential, then rerun and advance the owning decision when
-  every host is qualified.
+- **This run:** wired non-interactive launchers for all hosts, fixed the
+  opencode PWD escape, the codex discovery parse and cache scope, omp
+  `models.yml` provisioning, and ship-item fixture idempotency; generated
+  results and receipt on the final head; static gates green.
+- **Overall:** the harness runs end to end on eight targets: 74 pass, 14 fail,
+  24 blocked, 0 unrun. Blocked and failing cases are not passes.
+- **Yet to do:** make the dispatch-brief fixture dispatchable, close the
+  remaining model-completeness failures, and provide disposable Cursor and
+  Copilot credentials before advancing the owning decision.
