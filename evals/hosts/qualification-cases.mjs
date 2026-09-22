@@ -19,7 +19,7 @@ import { createHash } from 'node:crypto';
 import {
   assertTree, assertAbsent, assertFileContains, assertContiguousAdrs,
   assertIndexSync, assertPlanShipped, assertMigratedToDeclaredShape,
-  assertReferencesRewritten, assertCommandSucceeds,
+  assertReferencesRewritten, assertHistoryPreserved, assertCommandSucceeds,
 } from '../assertions.mjs';
 import { join, relative, sep } from 'node:path';
 
@@ -427,6 +427,9 @@ export const cases = [
       return judge(() => {
         assertMigratedToDeclaredShape(dir, { map });
         assertReferencesRewritten(dir, { map });
+        assertHistoryPreserved(dir, { numbers: ['0101'] });
+        assertFileContains(dir, 'adr/0001-record-architecture-decisions.md', 'shape: technology');
+        assertPlanShipped(dir, 'adopt-the-method');
       }, r);
     },
   }),
