@@ -151,7 +151,7 @@ function makeRun(home, scratch) {
   return { run, runSync, baseEnv };
 }
 
-function buildCtx({ host, adapter, scratch, home, source, node, stage, modelHosts, caseTimeout }) {
+export function buildCtx({ host, adapter, scratch, home, source, node, stage, modelHosts, caseTimeout }) {
   const { run, runSync } = makeRun(home, scratch);
   const env = adapter?.env ? adapter.env(home) : {};
   const mergeEnv = (extra) => ({ ...env, ...extra });
@@ -161,7 +161,7 @@ function buildCtx({ host, adapter, scratch, home, source, node, stage, modelHost
     stage: stage || repo,
     plugin: join(stage || repo, 'plugins/docflow'),
     binary: adapter?.binary,
-    modelHosts: modelHosts || adapters.filter((a) => a.launch).map((a) => a.id),
+    modelHosts: modelHosts ?? ['pi'],
     caseTimeout: caseTimeout || 900_000,
     installedRoot: null,
     installResult: null,
