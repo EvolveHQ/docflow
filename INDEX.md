@@ -67,3 +67,4 @@ ADR change.
 | [0060](adr/0060-v1-package-target-set.md) | V1 package target set — eight coding agents | Accepted | 2026-09-19 | 0009 |
 | [0061](adr/0061-v1-workspace-host-guides.md) | V1 workspace host guide set — seven native guides | Accepted | 2026-09-19 | 0053, 0059 |
 | [0062](adr/0062-executable-host-qualification-rounds.md) | Executable native host qualification rounds | Accepted | 2026-09-21 | 0012, 0060 |
+| [0063](adr/0063-machine-local-checkout-resolution.md) | Machine-local checkout resolution | Proposed | 2026-09-22 | 0051, 0052, 0058 |

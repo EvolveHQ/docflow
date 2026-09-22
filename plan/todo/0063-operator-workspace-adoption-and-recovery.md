@@ -1,6 +1,9 @@
 # 0063 — W5 — Verify operator adoption and recovery
 
-Owning decisions: adr/0053-portable-workspace-operating-skills.md and adr/0055-source-bound-repository-producer-fixtures.md.
+Owning decisions: adr/0059-five-workspace-commands-and-mandate-note.md
+(carries the W3 adoption obligation forward),
+adr/0055-source-bound-repository-producer-fixtures.md and
+adr/0056-public-clarity-installer-handoff.md (Accepted).
 
 ## Status
 
@@ -15,6 +18,16 @@ Owning decisions: adr/0053-portable-workspace-operating-skills.md and adr/0055-s
 
 D4 and W4 passing on the exact combined candidate; paired Clarity release preparation and operator-selected existing repository.
 
+Reviewed gaps 2–3 in
+`../../.docflow_workspace/local/handoffs/workspace-gaps-review.md` extend the
+remaining acceptance, following design document 14 §4 W5/C7–C10 and §8.
+Items 0061/0062 must qualify the final pair after applicable 0075–0077 repairs.
+The controller selects the paired candidate and existing pilot repository;
+neither is inferred from earlier pins. Clarity owns signed/notarised builds,
+three-platform lifecycle evidence and native trust prerequisites. Item 0064
+owns the separately authorised public handoff/download check. Current local
+member delivery does not authorise pushing, a PR or publication.
+
 ## Scope
 
 Prepare and run the operator's installation/setup/Clarity-resume journey on the pinned package. Verify upgrades and removal preserve canonical workspace records, templates, member repositories and native methods. Include reference-only data boundaries and source-bound receipt reconciliation. The operator supplies his final acceptance result; agents do not invent signatures or independent adoption.
@@ -24,6 +37,27 @@ Prepare and run the operator's installation/setup/Clarity-resume journey on the 
 1. Operator reports the actual agreed journey result; two product revisions, package/artifact hashes, host evidence and recovery checks are pinned. Final-main completion, D5/family freeze and publication remain separately authorised.
 2. Record exact source, host version/platform/mode, commands/output/exits, native versus simulated scope and outstanding cases.
 3. Follow single-writer ownership, signed commits, native acceptance and checked PR integration. No implicit release/version-bump authority.
+4. Repeat the installation/setup/resume journey on the final paired artefacts,
+   recording both versions and hashes. Require Clarity's native trust and
+   lifecycle/workspace results for Windows, macOS and Linux; an earlier Linux
+   success, launch workaround or unrun platform cannot satisfy the complete
+   paired result. (0055 AC5; document 14 C7–C10/W5)
+5. Upgrade, removal and recovery preserve canonical workspace memory, local
+   checkout configuration, independent member repositories and native methods.
+   Exercise an interrupted handoff with unknown outcome, reconciliation and
+   resumed work; receipt import never implies authority or completion by itself.
+   Record the operator's actual recovery acceptance, not an agent attestation.
+   (0059 AC2; carried W3 upgrade/removal obligation; document 14 W5)
+6. Bind final adoption to the approved public bytes after 0064's unauthenticated
+   download/hash verification. Before separately authorised publication, this
+   criterion remains pending; local preparation is not trusted public delivery.
+   (0056 AC3/8)
+
+## Size estimate
+
+M — 2–3 focused preparation/recovery verification days plus the operator's
+journey and native-platform scheduling; substantive lifecycle verification,
+not a new receipt-only increment.
 
 ## Receipt (2026-09-16)
 
@@ -51,4 +85,3 @@ operator result is claimed. Item stays todo; decisions 0053/0055 stay Accepted.
   operator journey, Clarity resume and every native host step.
 - **Yet to do:** operator journey result, combined Clarity pairing, final-main
   completion.
-

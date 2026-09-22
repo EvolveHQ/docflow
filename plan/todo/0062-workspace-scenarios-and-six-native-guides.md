@@ -1,6 +1,10 @@
-# 0062 — W4 — Qualify workspace scenarios and six native guides
+# 0062 — W4 — Qualify paired workspace journeys and seven native guides
 
-Owning decisions: adr/0051-portable-workspace-memory-contract.md, adr/0052-workspace-authority-and-attempt-records.md and adr/0053-portable-workspace-operating-skills.md.
+Owning decisions: adr/0051-portable-workspace-memory-contract.md,
+adr/0052-workspace-authority-and-attempt-records.md,
+adr/0059-five-workspace-commands-and-mandate-note.md,
+adr/0061-v1-workspace-host-guides.md and
+adr/0062-executable-host-qualification-rounds.md (Accepted).
 
 ## Status
 
@@ -13,6 +17,75 @@ Owning decisions: adr/0051-portable-workspace-memory-contract.md, adr/0052-works
 - **Stopped:**
 
 
+## Current scope (reviewed 2026-09-22)
+
+Qualify the paired V1 journeys against all eighteen scenarios in design
+document 14 §5 and the seven-guide set from the 19 September mandate. Reviewed
+gap 2 in `../../.docflow_workspace/local/handoffs/workspace-gaps-review.md`
+owns this extension. Claude Code, Codex App, Cursor, DeepSeek harness, Herdr,
+VS Code agent mode and Orca are the current guides. Herdr and Orca require
+native evidence and VS Code qualification must be assigned; the older
+September 15 narrowing and retired ZCode entry below do not waive them.
+
+Use observable canonical/native state and applicable Clarity observations,
+not model summaries alone. Extend the existing scenario fixtures/checkers for
+missing coverage and route demonstrated product defects to their owning
+increments. Item 0074 owns harness mechanisms; this item owns combined journey
+acceptance. Clarity edits and the operator's own final acceptance remain
+separate member/operator work.
+
+## Dependencies
+
+- Select the exact paired Docflow/Clarity revisions and artefact hashes with
+  the controller. PR #25 is integrated at `119509e`; its older native receipt
+  is not evidence on the subsequently repaired harness.
+- Integrate 0075 claim identity, accepted-and-implemented 0076 local paths and
+  0077 starter catalogue, plus the corresponding Clarity claim/path and
+  navigation/context repairs, before their final scenario runs. These are
+  forward dependencies for acceptance, not a renumbering of the queue.
+- Coordinate 0074 harness repairs and 0061 package qualification; prepare
+  scenarios in parallel only where native ownership/access permits. No new
+  parallel implementation authority is supplied by this item.
+- Controller supplies permitted host/platform access and routes the Clarity
+  acceptance work. Item 0063 supplies the final operator journey result.
+
+## Exit criteria
+
+1. WV01–WV18 have passing source-bound native observations and every applicable
+   Clarity view/handoff result on the same paired candidate. Re-execute the
+   previously deterministic-only WV05/08/11/13 and partial WV15/18 as native
+   journeys; historical category coverage is not combined acceptance.
+   (0051 AC2–5; 0052 AC2–6; 0059 AC2–3)
+2. WV05 uses separate checkouts of one repository plus alias/distinct-member
+   controls; WV08 retains exclusive-resource conflicts. Unknown ownership,
+   stale evidence, changed grants and reference-only preservation retain
+   explicit failure/stopping outcomes. (0052 AC3–5)
+3. Baseline WV14 passes with absent and stale indexes using ordinary canonical
+   file search; obsolete results cannot override current authority. QMD remains
+   optional/experimental and does not block this baseline. If retrieval is
+   advertised as supported, its versioned rebuild/removal controls also pass.
+   (0059 carried W3 file-search obligation; document 09 §§12–14)
+4. Each of the seven guides completes a bounded native brief/check/receipt
+   smoke, including Herdr, Orca and VS Code agent mode, with entry-point version
+   and actual outcomes recorded; two different hosts complete continuation.
+   Desktop evidence is not inferred from CLI tests. (0061 AC1–6)
+5. Clarity selection/context, outcome dependencies, authority, partial delivery,
+   dispatch preparation, reconciliation request and refresh are exercised;
+   read/copy/handoff actions leave canonical files unchanged. Authorised Docflow
+   sync applies checked evidence and regenerates the workspace's dated INDEX.
+   INDEX never substitutes for its source records. (0059 AC2; document 14 WV12)
+6. Both local gates pass; one concise receipt maps scenarios and guide results
+   to paired sources, exact commands/exits and externally retained evidence
+   hashes. Failing, blocked, unknown and unrun remain open; hand off the passing
+   pair to 0063 for operator recovery/adoption acceptance. (0052 AC6; 0062 AC5)
+
+## Size estimate
+
+L — 4–6 focused scenario/guide verification days with both products available;
+external access, consumer repairs and operator scheduling are additional.
+
+## Historical dispatch and receipts
+
 Operator decisions (2026-09-15) recorded in the ledger: Cowork is a best-effort
 unqualified target for V1 with open cases not required; only the Claude Code and
 Orca guides require evidence, with ZCode/Codex App/Cursor/DeepSeek Harness
@@ -22,7 +95,7 @@ recorded a bounded native Claude Code full-depth bootstrap plus Proposed
 decision 0002 (221 seconds, gate unchanged and passing, clean repository, no
 push).
 
-## Dependencies
+## Historical dependencies
 
 Qualification checkpoint: source-bound audit (`DocflowHQ/.docflow_workspace/local/archive/member-audits/docflow/2026-09-15-host-qualification/README.md`)
 records fresh native orientation, no-grant recovery, an external Claude Code
@@ -63,7 +136,7 @@ closed; no new runtime or executor receipt exists. Native WV08 blocked on a
 shared reservation across distinct members with all canonical/native roots
 unchanged. Its readiness report is not a canonical attempt receipt.
 
-## Scope
+## Historical scope
 
 Use the same immutable Docflow source/package freeze as item 0061.
 Clarity `8ef84b8cdccaec4891a3fbf338d3e7c1840c6c65` lacks C12;
@@ -76,7 +149,7 @@ parent-document writes are authorised.
 
 Execute WV01–WV18 from parent document 14 revision 0.15, including fresh orientation, mixed methods, no grant after selection, valid resume, cross-workspace shared claims, partial delivery/accepted agreement, unknown/stale evidence, resources, reference-only preservation, manual native coordination, roles without setup, external receipt/two-host handoff, identities/collisions, file fallback, contextual recommendations, selection without authority, host changes and stale/declined source choices. Run one actual bounded brief/receipt smoke each in Orca, Cursor, Claude Code, DeepSeek Harness, ZCode and Codex App, plus continuation between two different hosts. Do not infer desktop success from CLI help or static prose.
 
-## Exit criteria
+## Historical exit criteria
 
 1. Eighteen source-bound scenario receipts, all six native guide smokes and a two-host continuation pass with actual Clarity views/handoffs; unsupported/denied/changed-source variants retain honest diagnostics. Experimental retrieval needs its own rebuild/removal evidence before support claims.
 2. Record exact source, host version/platform/mode, commands/output/exits, native versus simulated scope and outstanding cases.

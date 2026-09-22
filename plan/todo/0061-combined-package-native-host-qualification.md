@@ -1,6 +1,9 @@
-# 0061 — D4 — Qualify the combined thirteen-skill package
+# 0061 — D4 — Qualify the combined fourteen-skill package
 
-Owning decisions: adr/0053-portable-workspace-operating-skills.md and adr/0054-reuse-supplied-choices-and-current-authority.md.
+Owning decisions: adr/0059-five-workspace-commands-and-mandate-note.md,
+adr/0060-v1-package-target-set.md,
+adr/0062-executable-host-qualification-rounds.md and
+adr/0054-reuse-supplied-choices-and-current-authority.md (Accepted).
 
 ## Status
 
@@ -13,6 +16,64 @@ Owning decisions: adr/0053-portable-workspace-operating-skills.md and adr/0054-r
 - **Stopped:**
 
 
+## Current scope (reviewed 2026-09-22)
+
+Complete package and native lifecycle qualification on paired Docflow/Clarity
+candidate revisions. The current package has fourteen skills and eight targets:
+Claude Code, pi, Codex, OpenCode, Grok, Cursor, omp and Copilot. This section
+governs the next run; the older dispatch and receipts below are historical.
+The superseded five-target/thirteen-skill scope cannot reduce current coverage.
+
+Reviewed gap 2 in `../../.docflow_workspace/local/handoffs/workspace-gaps-review.md`
+is the scope source; design document 14 §4 D4, §5 and §7 supplies the combined
+acceptance obligation. Item 0074 owns executable harness repairs and regression
+controls; this item owns the full native package result. Product defects must
+be repaired in bounded owning items before affected reruns, not hidden by a
+weaker checker or support claim. No release or host configuration in the
+operator's real home is authorised by this plan revision.
+
+## Dependencies
+
+- Reviewed integration `119509e` includes PR #25 and its two Bugbot repair
+  rounds. Select the next exact paired source/package freeze with the
+  controller; the older receipt does not qualify the repaired harness.
+- Complete 0074's discovery and behavioural runner repairs, plus applicable
+  0075–0077 product increments before final qualification; rerun affected cases
+  whenever candidate bytes change. These forward dependencies take precedence
+  over lower-number-first queue ordering for final acceptance.
+- Operator/controller supplies permitted disposable target credentials, host
+  access and paired Clarity source/artifact. Cursor authentication and Copilot
+  keyring access remain unresolved; this task does not provision them.
+- Coordinate with 0062; its combined scenarios/guides and 0063's actual operator
+  acceptance are required before a final family acceptance claim.
+
+## Exit criteria
+
+1. Every declared target resolves all fourteen skills through its native load
+   path and proves installed byte parity with the frozen package, including
+   complete detached-copy assets where applicable. A manifest or local copy
+   alone is not native discovery proof. (0060 AC1–5; 0062 AC2–4)
+2. The full applicable native authority/mandate/recovery/dispatch/sync and
+   lifecycle matrix passes on current bytes, including the six recorded
+   Codex/OpenCode failures and previously blocked target cases. Fresh setup,
+   read-only status and scope behaviour have direct native checks; older W4
+   coverage or product-only validator tests cannot stand in for host turns.
+   (0059 AC1–3/5; 0054 AC1–3; 0062 AC4–7)
+3. Receipts bind both product revisions and artefact hashes, host/platform/mode,
+   actual commands/exits and independent observable checks. Fails, blocked,
+   unrun, simulated and stale evidence remain distinct; a source change triggers
+   affected reruns. (0062 AC5; paired acceptance in design document 14 §5)
+4. Upgrade/removal and retained-skill regressions preserve adopter memory and
+   native history; pass the exact candidate to 0063 for final adoption/recovery.
+   Both local gates pass without weakening checks or changing support scope.
+
+## Size estimate
+
+L — 3–5 focused native qualification days after repairs and access are ready;
+credential/platform wait and product repairs are additional, not receipt work.
+
+## Historical dispatch and receipts
+
 Operator decisions (2026-09-15) recorded in the ledger: Cowork is a best-effort
 unqualified target for V1 with open cases not required; only the Claude Code and
 Orca guides require evidence, with ZCode/Codex App/Cursor/DeepSeek Harness
@@ -22,7 +83,7 @@ recorded a bounded native Claude Code full-depth bootstrap plus Proposed
 decision 0002 (221 seconds, gate unchanged and passing, clean repository, no
 push).
 
-## Dependencies
+## Historical dependencies
 
 Qualification checkpoint: source-bound audit (`DocflowHQ/.docflow_workspace/local/archive/member-audits/docflow/2026-09-15-host-qualification/README.md`)
 and its assertion ledger retain four native inventories/setup cases, bounded
@@ -52,7 +113,7 @@ closed; no new runtime or executor receipt exists. Native WV08 blocked on a
 shared reservation across distinct members with all canonical/native roots
 unchanged. Its readiness report is not a canonical attempt receipt.
 
-## Scope
+## Historical scope
 
 Qualification starts from reviewed Docflow source
 `f47f4c52313163f1ffe55a97d9c8029602d7c5b4`, development version 0.9.4.
@@ -68,7 +129,7 @@ existing llama-server/qwen3.8-27b-coding route and native high thinking.
 
 Run actual discovery and bounded workflow probes on Claude Code, Cowork, pi, Codex and OpenCode in their supported package modes. Bind installed file hashes and product versions to each receipt; include plugin and detached-copy assets. Execute fully supplied/current-authority, materially missing/expired/conflicting-authority and fresh-session owner/branch/blocker/next-step controls. Count repeated questions, preserve native permission denials and distinguish ready from shipped. Include unchanged-skill regressions and report every actual/simulated/unrun case.
 
-## Exit criteria
+## Historical exit criteria
 
 1. All five targets have current installed-source discovery and behavioural receipts; D2 positive/negative/recovery cases pass; exact logs and native source hashes reviewed; failed/unavailable cases stay open. This is not authorised in the W3 development dispatch.
 2. Record exact source, host version/platform/mode, commands/output/exits, native versus simulated scope and outstanding cases.

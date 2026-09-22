@@ -1,6 +1,6 @@
 # 0074 — Executable native host qualification harness
 
-Owning decisions: adr/0062-executable-host-qualification-rounds.md (new).
+Owning decision: adr/0062-executable-host-qualification-rounds.md (Accepted).
 
 ## Status
 
@@ -25,6 +25,37 @@ the behavioural evals that previously reported SKIPPED. Reuse the existing
 `evals/hosts` fixtures and checkers; build no parallel harness. Keep the static
 `verify` gate fast and hostless.
 
+## Remaining implementation and dependencies (reviewed 2026-09-22)
+
+PR #25, including both Bugbot repair rounds, is integrated at `119509e`.
+Reviewed gap 2 in
+`../../.docflow_workspace/local/handoffs/workspace-gaps-review.md` requires
+executable follow-through, not another replacement harness or receipt-only
+item. Design document 14 §4 D4/W4 and §7 supplies the final qualification
+obligation; items 0061/0062 retain native package and paired-journey acceptance.
+
+- Wire native resolved-skill discovery for the repaired adapters and assert
+  installed source/byte evidence; the pre-repair discovery passes are stale.
+- Reproduce and diagnose Codex `bootstrap-full`, `ship-item`, `dispatch-brief`
+  and OpenCode `audit-coordination`, `dispatch-brief`, `sync-reconcile` under
+  isolation. Repair demonstrated adapter/fixture/checker defects here; route
+  demonstrated skill/validator defects to their owning product items. Genuine
+  model failures remain failures until observable output passes a fresh run.
+- Add direct setup/status/scope native cases where the current harness lacks
+  them, retaining the earlier 0062 native evidence as historical. Do not relabel
+  hostless validator controls as native skill execution.
+- Obtain controller-supplied permitted disposable Cursor authentication and
+  Copilot keyring access for reruns. No login, credential provisioning, paid
+  model turns or real configuration changes are granted by this plan revision.
+- Keep gate behaviour and judged product changes in separate commits unless
+  a named tighten-and-repair exception applies; never weaken a failing checker
+  merely to finish qualification. Bind reruns to the selected integrated source.
+
+The historic matrix is **82 pass, 6 fail, 24 blocked, 0 unrun** at `f98187e`.
+It is not a result on the post-Bugbot harness and must not be promoted to one.
+This item can establish the runner's ACs while reporting blocked cells honestly;
+full V1 native acceptance belongs to 0061/0062 and cannot close with them.
+
 ## Exit criteria
 
 1. `evals/hosts/qualify.mjs` runs `--hosts`, `--cases` and `--out` end to end,
@@ -47,6 +78,16 @@ the behavioural evals that previously reported SKIPPED. Reuse the existing
 6. `node scripts/verify.mjs` and `node evals/run.mjs` exit 0. (AC7)
 7. The harness has been run on the installed hosts and its receipt committed.
    (AC7)
+8. Native discovery and added setup/status/scope assertions reject synthetic
+   listings, missing output and prohibited writes; focused regressions prove
+   each repaired mechanism. Fresh machine-readable results record the six
+   failure reruns and formerly blocked cases with exact source, exit and cause.
+   Any unresolved failure/block remains explicit in 0061/0062. (AC2–5/7)
+
+## Size estimate
+
+M/L — 3–5 focused harness/fixture implementation and regression days, excluding
+target access and native model execution; no duplicate qualification queue item.
 
 ## Receipt
 

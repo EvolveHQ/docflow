@@ -15,6 +15,15 @@ Reviewed integration `1ede7dc93bf367041e2236e20c07f73266823081` and reviewed pub
 producer contract. Operator explicitly selects this item before 0061–0063;
 their identifiers and qualification scope remain unchanged.
 
+That pin and dispatch describe the historical preparation below. For final
+acceptance, reviewed gap 3 in
+`../../.docflow_workspace/local/handoffs/workspace-gaps-review.md` requires a
+new controller-selected paired freeze after 0061/0062 qualification, Clarity's
+trusted final artefact handoff and 0063's operator journey. Design document 14
+§4 D5/C7–C10/W5 and §9 owns this release obligation. Pre-publication operator
+approval precedes the live handoff; 0063's final public-byte check follows it,
+so that check is not a circular publication prerequisite.
+
 ## Scope
 
 Vendor only the five public contract files; implement consumer acceptance,
@@ -23,7 +32,7 @@ disposable boundary controls. Own this task's scripts, workflow, public guidance
 native records and separate gate commits. Private provenance stays in external
 scratch/parent records. All Docflow versions stay at matching 0.9.4.
 
-## Local plan before external mutation
+## Historical preparation plan (not current execution authority)
 
 1. Commit this decision/claim and regenerate INDEX from metadata; run verify/evals,
    push the signed branch and open the authorised draft PR against
@@ -52,6 +61,29 @@ scratch/parent records. All Docflow versions stay at matching 0.9.4.
    pending until separately authorised publication. Native trust and final pilot
    remain separate. Keep this item todo and its decision Accepted until verified
    acceptance and the final checked main completion event.
+7. Reject a payload whose producer/native trust evidence does not identify the
+   exact paired candidate, platform/build configuration, versions and approved
+   digests. Receive signed/notarised three-platform results from Clarity rather
+   than treating a manifest or magic-byte check as native trust. (0056 AC3/8)
+8. After explicit approval of the exact release plan and bytes, verify public
+   downloads without credentials, all platform/profile sets, signatures and
+   hashes, intended product lookup and byte-preserving retry behaviour. Keep
+   private provenance out of the public payload and pass the verified hashes
+   to 0063. No release or credential operation is authorised by this authoring
+   run. (0056 AC2–5/8)
+
+## Current delivery boundary and size estimate
+
+Complete remaining consumer/workflow defects as bounded product repairs under
+this item, with gate-integrity commit separation. Run both local gates and
+focused handoff checks, then commit locally for operator review. The workspace
+member-delivery convention requires a separate explicit instruction before
+push, PR or publication; the historical preparation steps above are not a
+current grant. Required checked integration remains the eventual completion
+event, not this local authoring task.
+
+M — 2–3 focused final-payload/retry/download verification days after producer
+trust and release approval, excluding signing/platform/approval wait.
 
 ## Verification receipt
 
