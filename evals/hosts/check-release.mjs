@@ -4,23 +4,16 @@ import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { resolve, join } from 'node:path';
-import { cases } from '../cases.mjs';
 import { assertAdrStatus, assertPlanShipped } from '../assertions.mjs';
+import { releaseAssertions } from './release-assertions.mjs';
 
 const [key, path, sourcePath] = process.argv.slice(2);
 const repo = resolve(path);
 const source = resolve(sourcePath || join(import.meta.dirname, '../..'));
 const read = (p) => readFileSync(join(repo, p), 'utf8');
 const git = (...args) => execFileSync('git', args, { cwd: repo, encoding: 'utf8' }).trim();
-const names = {
-  'bootstrap-full': 'bootstrap: fresh repo gets the full scaffold',
-  'bootstrap-express': 'bootstrap: express depth scaffolds the fixed minimal profile',
-  'new-adr': 'new-adr: next contiguous number, INDEX regenerated',
-  'legacy-range': 'audit: legacy range detected, migration offered and applied',
-  'legacy-coordination': 'audit: migrate legacy coordination while preserving live ownership',
-};
 try {
-  if (names[key]) cases.find((c) => c.name === names[key]).assert(repo);
+  if (Object.hasOwn(releaseAssertions, key)) releaseAssertions[key](repo);
   else assert(['legacy-range-detect', 'ship-item'].includes(key), 'unknown release case');
   if (key === 'bootstrap-express') {
     assert(!existsSync(join(repo, '.docflow/_agent')), 'express created coordination');
