@@ -227,8 +227,10 @@ async function main() {
   mkdirSync(dirname(outPath), { recursive: true });
   const receiptPath = outPath.replace(/\.json$/, '.md');
   let payload = null;
-  const persist = () => {
-    assertReceiptBound(revision);
+  const persist = (force = false) => {
+    // A breach leaves the tree dirty or HEAD moved; still write the breach
+    // evidence, bypassing the binding check.
+    if (!force) assertReceiptBound(revision);
     payload = { schema: 1, harness: 'docflow-qualify', generated_at: new Date().toISOString(), source_revision: revision, source, scratch: scratchRoot, results };
     writeFileSync(outPath, JSON.stringify(payload, null, 2) + '\n');
     writeFileSync(receiptPath, renderReceipt(payload));
@@ -242,7 +244,7 @@ async function main() {
       entry.cause = `ISOLATION BREACH: a guarded checkout changed during ` +
         `${entry.host || 'product'}:${entry.case} (guard ${guardBaseline.slice(0, 12)} -> ${now.slice(0, 12)}); run aborted`;
       results.push(entry);
-      persist();
+      persist(true);
       throw new Error(entry.cause);
     }
     results.push(entry);

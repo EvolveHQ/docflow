@@ -251,6 +251,7 @@ export const cases = [
       const missing = expected.filter((s) => !d.skills.includes(s));
       const extra = d.skills.filter((s) => !expected.includes(s));
       if (d.exit !== 0) return { status: 'fail', cause: `discover exit ${d.exit}` };
+      if (!d.loaded) return { status: 'fail', cause: `host did not report docflow loaded (${d.evidence || 'no evidence'})` };
       if (d.skills.length !== 14 || missing.length || extra.length) {
         return { status: 'fail', cause: `discovered ${d.skills.length}/14, missing [${missing}], extra [${extra}]` };
       }
@@ -393,6 +394,23 @@ export const cases = [
       return judge(() => {
         assertAbsent(dir, ['.docflow/_agent/WORKLOG.md', '.docflow/_agent/IN_FLIGHT.md', '.docflow/_agent/CURRENT_FOCUS.md', '.docflow/_agent/HANDOFF.md', '.docflow/_agent/LOCKS.md']);
         assertTree(dir, ['.docflow/_agent/ROLES.md', '.docflow/_agent/prompts/autonomous.md']);
+        // The migration must preserve the live claim in the derived plan
+        // Status, keep the gate recording, and drop the stale coordination
+        // rules (the retired behavioural eval's checks).
+        assertFileContains(dir, '.docflow/plan/todo/0001-example.md', '## Status');
+        assertFileContains(dir, '.docflow/plan/todo/0001-example.md', 'executor-live');
+        assertFileContains(dir, '.docflow/plan/todo/0001-example.md', 'Awaiting fixture data');
+        assertFileContains(dir, 'AGENTS.md', 'Picking up this repo');
+        assertFileContains(dir, 'AGENTS.md', '.docflow/');
+        assertFileContains(dir, 'OPERATIONS.md', 'operator sign-off');
+        assertFileContains(dir, '.docflow/_agent/prompts/autonomous.md', 'node tools/verify.mjs');
+        for (const [path, stale] of [['.gitattributes', 'merge=union'], ['.gitignore', 'CURRENT_FOCUS.md']]) {
+          let text = '';
+          try { text = readFileSync(join(dir, path), 'utf8'); }
+          catch (e) { if (e.code !== 'ENOENT') throw e; }
+          if (text.includes(stale)) throw new Error(`legacy coordination rule remains in ${path}`);
+        }
+        assertCommandSucceeds(dir, 'node tools/verify.mjs');
       }, r);
     },
   }),
@@ -487,11 +505,19 @@ export const cases = [
         'Record it as prepared, never complete, and refresh INDEX.' });
       const after = snapshotWorkspace(dir);
       const v1 = await validatorAt(ctx, dir);
-      const expected = JSON.parse(readFileSync(join(fixtures, 'manifest.json'), 'utf8')).expected;
       return judge(() => {
         if (v0.exit !== 0) throw new Error(`fixture invalid before sync (exit ${v0.exit})`);
         if (v1.exit !== 0) throw new Error(`workspace invalid after sync: exit ${v1.exit}`);
-        if (expected.consumer_complete !== false) throw new Error('fixture expectation changed');
+        // Inspect the post-run workspace: a no-op is not a pass, and the
+        // unmerged prepared delivery must never be recorded complete.
+        if (!diffWorkspace(before, after).length) throw new Error('sync recorded nothing (no-op)');
+        const work = join(dir, '.docflow_workspace/work/deliver-compatible-exports--345678903333.md');
+        const meta = JSON.parse(readFileSync(work, 'utf8').match(/^---\n([\s\S]*?)\n---/)[1]);
+        const consumer = meta.deliveries.find((d) => d.id === 'consumer');
+        if (!consumer) throw new Error('consumer delivery missing after sync');
+        if (consumer.observation.complete || consumer.observation.state === 'merged') {
+          throw new Error('unmerged prepared delivery recorded as complete');
+        }
       }, r);
     },
   },

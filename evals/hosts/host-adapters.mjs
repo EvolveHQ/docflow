@@ -147,10 +147,11 @@ export const adapters = [
     model: process.env.PI_MODEL || 'deepseek-ai/DeepSeek-V4.1-Flash',
     async install(ctx) {
       ctx.runSync(['mkdir', '-p', join(ctx.home, '.pi')]);
-      const r = await ctx.run([ctx.binary, 'install', ctx.stage]);
       // Stream the operator's provider catalog and credential into the
       // disposable pi home (never the real one). models.json defines the
-      // provider; auth.json holds the key and is mode 0600 on scratch.
+      // provider; auth.json holds the key and is mode 0600 on scratch. Copy
+      // before `pi install`, which appends the staged package to the
+      // disposable settings.json — copying afterwards overwrites it.
       const src = join(homedir(), '.pi/agent');
       const dst = join(ctx.home, '.pi/agent');
       if (existsSync(src)) {
@@ -162,6 +163,9 @@ export const adapters = [
           }
         }
       }
+      const r = await ctx.run([ctx.binary, 'install', ctx.stage]);
+      // pi loads a local package in place (no cache copy), so the staged
+      // plugin tree is the loaded root; discovery proves it was registered.
       ctx.installedRoot = ctx.plugin;
       return r;
     },
@@ -283,7 +287,13 @@ export const adapters = [
       ctx.runSync(['mkdir', '-p', join(ctx.home, '.omp')]);
       const m = await ctx.run([ctx.binary, 'plugin', 'marketplace', 'add', ctx.stage, '--json']);
       const i = await ctx.run([ctx.binary, 'plugin', 'install', 'docflow@evolvehq', '--json']);
-      ctx.installedRoot = ctx.plugin;
+      // omp caches the installed plugin; hash the real cache, not the staged
+      // source, so a missing or stale cache fails byte-match.
+      const cacheRoot = join(ctx.home, '.omp/plugins/cache/plugins');
+      const cached = existsSync(cacheRoot)
+        ? readdirSync(cacheRoot).filter((n) => n.startsWith('evolvehq___docflow___')).sort()
+        : [];
+      ctx.installedRoot = cached.length ? join(cacheRoot, cached[cached.length - 1]) : ctx.plugin;
       return { exit: m.exit || i.exit, stdout: m.stdout + i.stdout, stderr: m.stderr + i.stderr };
     },
     launch(ctx, { prompt }) {
