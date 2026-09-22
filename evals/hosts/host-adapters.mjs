@@ -189,7 +189,11 @@ export const adapters = [
       ctx.runSync(['mkdir', '-p', join(ctx.home, '.codex')]);
       const add = await ctx.run([ctx.binary, 'plugin', 'marketplace', 'add', ctx.stage]);
       const install = await ctx.run([ctx.binary, 'plugin', 'add', 'docflow@evolvehq']);
-      ctx.installedRoot = join(ctx.home, '.codex/plugins/cache');
+      const cacheRoot = join(ctx.home, '.codex/plugins/cache/evolvehq/docflow');
+      const cached = existsSync(cacheRoot) ? readdirSync(cacheRoot).sort() : [];
+      // The cache also holds unrelated marketplace plugins; compare only the
+      // docflow plugin tree, not the whole cache.
+      ctx.installedRoot = cached.length ? join(cacheRoot, cached[cached.length - 1]) : join(ctx.home, '.codex/plugins/cache');
       return { exit: add.exit || install.exit, stdout: add.stdout + install.stdout, stderr: add.stderr + install.stderr };
     },
     launch(ctx, { prompt, readOnly }) {

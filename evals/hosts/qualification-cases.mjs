@@ -14,7 +14,7 @@
 //                    fixture and an external checker judges the result. Runs
 //                    only where the adapter can make a non-interactive turn.
 
-import { mkdirSync, readdirSync, readFileSync, statSync, lstatSync, cpSync, existsSync } from 'node:fs';
+import { mkdirSync, readdirSync, readFileSync, statSync, lstatSync, cpSync, existsSync, rmSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import {
   assertTree, assertAbsent, assertFileContains, assertContiguousAdrs,
@@ -337,6 +337,9 @@ export const cases = [
     title: 'ship-item moves todo to done and advances the owning decision',
     run: async (ctx) => {
       const base = join(ctx.scratch, `${ctx.host}-ship-item`);
+      // Make the case idempotent: a stale or concurrently prepared fixture must
+      // not turn into a misleading "refuse to overwrite" failure.
+      rmSync(base, { recursive: true, force: true });
       const prep = await ctx.run([ctx.python, join(evalsDir, 'hosts/prepare-ship.py'), base], { env: { DOCFLOW_PLUGIN_ROOT: ctx.plugin } });
       if (prep.exit !== 0) return { status: 'fail', cause: `prepare-ship exit ${prep.exit}: ${(prep.stderr || prep.stdout).slice(0, 180)}` };
       const dir = join(base, 'repo');
