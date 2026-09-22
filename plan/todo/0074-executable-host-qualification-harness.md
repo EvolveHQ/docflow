@@ -6,12 +6,12 @@ Owning decisions: adr/0062-executable-host-qualification-rounds.md (new).
 
 - **Claimed by:** pi, docflow qualification harness, 2026-09-21, branch
   `kmox83/docflow-v1-qualification-r5`.
-- **Blockers:** remaining model-driven cases fail for genuine reasons —
-  `dispatch-brief` uniformly (the two-repository fixture's active work carries
-  an unresolved revocation, so a correct skill declines to write), and
-  `audit-range`/`ship-item` on some hosts where the model did not finish.
-  Cursor is fully blocked (authentication) and copilot's skill cases are
-  blocked (OS keyring credential); neither is a pass.
+- **Blockers:** six genuine model-driven failures remain on codex
+  (`bootstrap-full`, `ship-item`, `dispatch-brief`) and opencode
+  (`audit-coordination`, `dispatch-brief`, `sync-reconcile`); the model did not
+  finish or produced an invalid record. Cursor is fully blocked
+  (authentication) and copilot's skill cases are blocked (OS keyring
+  credential); neither is a pass.
 - **Stopped:**
 
 ## Scope
@@ -49,31 +49,31 @@ the behavioural evals that previously reported SKIPPED. Reuse the existing
 ## Receipt
 
 Generated from `evals/hosts/results/qualify-2026-09-21.json`; the rendered
-receipt is `evals/hosts/results/qualify-2026-09-21.md`. Sharded host runs plus
-two targeted re-runs (codex host-interface after the cache-scope fix;
-codex/opencode `ship-item` and `sync-reconcile` after the idempotency fix)
-compose the one revision `831d09b6e47b9eb23e9ba617541dd8df661d8fa4`.
+receipt is `evals/hosts/results/qualify-2026-09-21.md`. One full-matrix run on
+the clean committed head `f98187e9547c9d4233808a4f13a1e81069fa10bf`; the
+receipt generator refuses to emit when the tree is dirty or the source
+revision differs from HEAD.
 
 | Host | Pass | Fail | Blocked | Unrun | Total |
 |------|------|------|---------|-------|-------|
 | product | 8 | 0 | 0 | 0 | 8 |
-| claude | 12 | 1 | 0 | 0 | 13 |
-| pi | 12 | 1 | 0 | 0 | 13 |
-| codex | 9 | 4 | 0 | 0 | 13 |
-| opencode | 9 | 4 | 0 | 0 | 13 |
-| grok | 10 | 3 | 0 | 0 | 13 |
-| omp | 12 | 1 | 0 | 0 | 13 |
+| claude | 13 | 0 | 0 | 0 | 13 |
+| pi | 13 | 0 | 0 | 0 | 13 |
+| codex | 10 | 3 | 0 | 0 | 13 |
+| opencode | 10 | 3 | 0 | 0 | 13 |
+| grok | 13 | 0 | 0 | 0 | 13 |
+| omp | 13 | 0 | 0 | 0 | 13 |
 | copilot | 2 | 0 | 11 | 0 | 13 |
 | cursor | 0 | 0 | 13 | 0 | 13 |
 
-Totals: **74 pass, 14 fail, 24 blocked, 0 unrun**. `dispatch-brief` fails on
-every runnable host because the two-repository fixture's active work carries an
-unresolved revocation, so the skill declines to write — a fixture gap, not a
-host fault. `audit-range` and `ship-item` fail on codex, grok and opencode where
-the model did not finish the migration/ship. Bootstrap full and new-plan fail
-on individual hosts. Retired behavioural evals: bootstrap full, bootstrap
-express, new-adr, ship-item, audit coordination migration and audit range
-migration.
+Totals: **82 pass, 6 fail, 24 blocked, 0 unrun**. The six failures are genuine
+model-completeness defects, not harness wiring: codex `bootstrap-full`,
+`ship-item` and `dispatch-brief`; opencode `audit-coordination`,
+`dispatch-brief` and `sync-reconcile`. The dispatch-brief fixture now carries a
+current unrevoked grant and passes on claude, pi, grok and omp; refusal stays
+covered by dispatch-refusal. Retired behavioural evals: bootstrap full,
+bootstrap express, new-adr, ship-item, audit coordination migration and audit
+range migration.
 
 ## Status at a glance
 
@@ -81,8 +81,9 @@ migration.
   opencode PWD escape, the codex discovery parse and cache scope, omp
   `models.yml` provisioning, and ship-item fixture idempotency; generated
   results and receipt on the final head; static gates green.
-- **Overall:** the harness runs end to end on eight targets: 74 pass, 14 fail,
-  24 blocked, 0 unrun. Blocked and failing cases are not passes.
-- **Yet to do:** make the dispatch-brief fixture dispatchable, close the
-  remaining model-completeness failures, and provide disposable Cursor and
-  Copilot credentials before advancing the owning decision.
+- **Overall:** the harness runs end to end on eight targets: 82 pass, 6 fail,
+  24 blocked, 0 unrun, on the clean committed head `f98187e`. Blocked and
+  failing cases are not passes.
+- **Yet to do:** close the six codex/opencode model-completeness failures and
+  provide disposable Cursor and Copilot credentials before advancing the owning
+  decision.
