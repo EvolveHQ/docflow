@@ -41,7 +41,8 @@ the behavioural evals that previously reported SKIPPED. Reuse the existing
    code, duration, hashes and source revision, and the harness emits the
    receipt. (AC5)
 5. `node evals/run.mjs` exposes `--qualify`; the deterministic suite reports
-   `11 passed, 0 failed, 0 skipped` and the six retired cases are owned by the
+   `12 passed, 0 failed, 0 skipped` (including hostless harness regressions)
+   and the six retired cases are owned by the
    harness. (AC6)
 6. `node scripts/verify.mjs` and `node evals/run.mjs` exit 0. (AC7)
 7. The harness has been run on the installed hosts and its receipt committed.
@@ -55,6 +56,9 @@ range migration assertions and release-checker compatibility. Each repair
 requires a failing-before/passing-after deterministic regression under
 `/tmp/hq-qa/`. Commit locally and require both gates on the final head; no
 paid host turns or new native qualification claims are authorised by this run.
+The receipt below is historical: the corrected discovery adapters now report
+blocked until native resolved-skill listing is wired. The original discovery
+passes do not qualify the repaired harness; no new receipt was generated.
 
 Generated from `evals/hosts/results/qualify-2026-09-21.json`; the rendered
 receipt is `evals/hosts/results/qualify-2026-09-21.md`. One full-matrix run on
