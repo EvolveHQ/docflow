@@ -252,6 +252,7 @@ export const cases = [
       const extra = d.skills.filter((s) => !expected.includes(s));
       if (d.exit !== 0) return { status: 'fail', cause: `discover exit ${d.exit}` };
       if (!d.loaded) return { status: 'fail', cause: `host did not report docflow loaded (${d.evidence || 'no evidence'})` };
+      if (d.blocked) return { status: 'blocked', cause: d.blocked };
       if (d.skills.length !== 14 || missing.length || extra.length) {
         return { status: 'fail', cause: `discovered ${d.skills.length}/14, missing [${missing}], extra [${extra}]` };
       }

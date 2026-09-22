@@ -10,7 +10,7 @@
 
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
-import { readFileSync } from 'node:fs';
+import { readFileSync, readdirSync } from 'node:fs';
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
 import { assertStatusReports } from './reporting.mjs';
@@ -42,6 +42,19 @@ const LEGACY_MAP = { '0101': '0004', '0102': '0005' };
 const LEGACY_DONE_NUMBERS = ['0101'];
 
 export const cases = [
+  {
+    name: 'qualification harness: hostless regression controls',
+    skill: null,
+    agentDependent: false,
+    assert() {
+      const tests = readdirSync(join(evalsDir, 'hosts'))
+        .filter((f) => /^test-qualification-.*\.mjs$/.test(f))
+        .map((f) => join(evalsDir, 'hosts', f));
+      assert(tests.length, 'no qualification regression tests');
+      const result = spawnSync(process.execPath, ['--test', ...tests], { encoding: 'utf8', timeout: 120000 });
+      assert.equal(result.status, 0, result.error?.message || result.stdout + result.stderr);
+    },
+  },
   {
     name: 'repository producer: source renders and native compatibility',
     skill: null,

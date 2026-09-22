@@ -83,6 +83,14 @@ export function scanSkills(root) {
 
 function lines(text) { return String(text || '').split('\n').map((l) => l.trim()).filter(Boolean); }
 
+// These package listings prove registration only. Never substitute source
+// files for resolved skill names; discovery stays blocked until a native
+// skill-list operation is available for the adapter.
+function packageDiscovery(result, loaded, evidence) {
+  return { exit: result.exit, loaded, skills: [], evidence,
+    blocked: `${evidence} does not provide resolved skill names; native skill discovery is not wired` };
+}
+
 function findInstalled(root, marker) {
   const found = [];
   const visit = (dir) => {
@@ -129,7 +137,7 @@ export const adapters = [
       let loaded = false;
       try { loaded = JSON.parse(r.stdout).some((p) => String(p.id || p.name || '').startsWith('docflow')); }
       catch { loaded = false; }
-      return { exit: r.exit, loaded, skills: scanSkills(join(ctx.plugin, 'skills')), evidence: 'claude plugin list --json' };
+      return packageDiscovery(r, loaded, 'claude plugin list --json');
     },
   },
   {
@@ -174,8 +182,8 @@ export const adapters = [
     },
     async discover(ctx) {
       const r = await ctx.run([ctx.binary, 'list']);
-      const loaded = /docflow|repo/i.test(r.stdout);
-      return { exit: r.exit, loaded, skills: scanSkills(join(ctx.plugin, 'skills')), evidence: 'pi list' };
+      const loaded = lines(r.stdout).includes(ctx.stage);
+      return packageDiscovery(r, loaded, 'pi list');
     },
   },
   {
@@ -209,8 +217,7 @@ export const adapters = [
       // sibling plugin's "not installed" never marks docflow unloaded.
       const row = r.stdout.split('\n').find((l) => /docflow@evolvehq/.test(l)) || '';
       const loaded = /installed/.test(row) && !/not installed/.test(row);
-      const skills = loaded ? scanSkills(join(ctx.plugin, 'skills')) : [];
-      return { exit: r.exit, loaded, skills, evidence: 'codex plugin list' };
+      return packageDiscovery(r, loaded, 'codex plugin list');
     },
   },
   {
@@ -269,7 +276,7 @@ export const adapters = [
     async discover(ctx) {
       const r = await ctx.run([ctx.binary, 'plugin', 'list', '--json']);
       const loaded = /docflow/.test(r.stdout);
-      return { exit: r.exit, loaded, skills: scanSkills(join(ctx.plugin, 'skills')), evidence: 'grok plugin list --json' };
+      return packageDiscovery(r, loaded, 'grok plugin list --json');
     },
   },
   {
@@ -302,7 +309,7 @@ export const adapters = [
     async discover(ctx) {
       const r = await ctx.run([ctx.binary, 'plugin', 'list', '--json']);
       const loaded = /docflow/.test(r.stdout);
-      return { exit: r.exit, loaded, skills: scanSkills(join(ctx.plugin, 'skills')), evidence: 'omp plugin list --json' };
+      return packageDiscovery(r, loaded, 'omp plugin list --json');
     },
   },
   {
