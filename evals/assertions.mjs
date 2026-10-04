@@ -288,3 +288,119 @@ export function assertPlanShipped(root, slugFragment) {
     throw new Error(`plan item "${slugFragment}" not found in plan/done`);
   }
 }
+
+// ── Glossary structure ──────────────────────────────────────────────
+//
+// Canonical shape: an optional H1 heading and optional introductory prose,
+// then exactly one two-column Markdown table whose header is
+// `Term | Definition`, every entry its own row. Terms are never recorded as
+// headings, bullets or paragraphs, and there is never a second table. This
+// is a bounded line reader, not a general Markdown parser.
+
+const stripGlossaryBlocks = (text) => text
+  .replace(/<!--[\s\S]*?-->/g, '')
+  .replace(/```[\s\S]*?```/g, '')
+  .replace(/~~~[\s\S]*?~~~/g, '');
+
+const isTableLine = (line) => /^\s*\|.*\|\s*$/.test(line);
+const isBulletLine = (line) => /^\s*(?:[-*+]|\d+\.)\s+\S/.test(line);
+const isHeadingLine = (line) => /^#{1,6}\s+\S/.test(line);
+const splitGlossaryRow = (line) =>
+  line.trim().replace(/^\|/, '').replace(/\|$/, '').split(/(?<!\\)\|/);
+
+// Classify a glossary's entry structure without rewriting it. Returns
+// issues as a set of shape names; `canonical` is true only for the single
+// optional-heading/prose + one `Term | Definition`-table form.
+export function classifyGlossary(text) {
+  const clean = stripGlossaryBlocks(text.replace(/\r\n/g, '\n'));
+  const lines = clean.split('\n');
+  const tables = [];
+  let current = null, headingCount = 0, firstHeadingLevel = null, hasProse = false;
+  for (const line of lines) {
+    if (!line.trim()) continue;
+    if (isTableLine(line)) {
+      if (!current) { current = []; tables.push(current); }
+      current.push(line);
+      continue;
+    }
+    current = null;
+    if (isHeadingLine(line)) {
+      headingCount += 1;
+      if (firstHeadingLevel === null) firstHeadingLevel = line.match(/^(#+)/)[1].length;
+    } else if (!isBulletLine(line)) {
+      hasProse = true;
+    }
+  }
+
+  const issues = new Set();
+  if (headingCount > 1 || (headingCount === 1 && firstHeadingLevel !== 1)) issues.add('headings');
+  if (tables.length > 1) issues.add('multiple-tables');
+  if (lines.some((l) => l.trim() && isBulletLine(l))) issues.add('bullets');
+  if (hasProse && tables.length === 0) issues.add('prose');
+
+  // Prose that follows the table is an entry outside it.
+  let seenTable = false, strayProse = false;
+  for (const line of lines) {
+    if (!line.trim()) continue;
+    if (isTableLine(line)) { seenTable = true; continue; }
+    if (seenTable && !isHeadingLine(line) && !isBulletLine(line)) strayProse = true;
+  }
+  if (strayProse) issues.add('prose');
+
+  const entries = [], duplicates = [];
+  let emptyRow = false;
+  if (tables.length) {
+    const rows = tables[0];
+    const header = splitGlossaryRow(rows[0]).map((c) => c.trim().toLowerCase());
+    if (!(header.length === 2 && header[0] === 'term' && header[1] === 'definition')) {
+      issues.add('header');
+    }
+    const dataRows = rows.slice(1).filter((r) => !/^\s*\|[\s|:-]+\|\s*$/.test(r));
+    const seen = new Set();
+    for (const row of dataRows) {
+      const cells = splitGlossaryRow(row);
+      const term = (cells[0] || '').trim();
+      const definition = (cells[1] || '').trim();
+      if (!term || !definition) { emptyRow = true; continue; }
+      entries.push({ term, definition });
+      const key = term.toLowerCase();
+      if (seen.has(key)) duplicates.push(term);
+      seen.add(key);
+    }
+  }
+  if (emptyRow) issues.add('empty-row');
+
+  return {
+    present: true,
+    canonical: issues.size === 0 && tables.length === 1,
+    issues: [...issues],
+    tables: tables.length,
+    entries,
+    duplicates,
+  };
+}
+
+// Read and classify a glossary. An absent file is valid and canonical-by-
+// omission; it must never be created to satisfy a check.
+export function glossaryShape(root, file = 'GLOSSARY.md') {
+  if (!existsSync(join(root, file))) {
+    return { present: false, canonical: true, issues: [], tables: 0, entries: [], duplicates: [] };
+  }
+  return classifyGlossary(read(root, file));
+}
+
+// Absence passes; a present file must be the single canonical table with no
+// duplicate terms. Duplicates are flagged for user resolution, never merged.
+export function assertCanonicalGlossary(root, file = 'GLOSSARY.md') {
+  const shape = glossaryShape(root, file);
+  if (!shape.present) return shape;
+  if (!shape.canonical) {
+    throw new Error(
+      `${file}: non-canonical glossary structure (${shape.issues.join(', ') || 'not a single Term | Definition table'})`,
+    );
+  }
+  if (shape.duplicates.length) {
+    throw new Error(`${file}: duplicate terms need resolution: ${[...new Set(shape.duplicates)].join(', ')}`);
+  }
+  return shape;
+}

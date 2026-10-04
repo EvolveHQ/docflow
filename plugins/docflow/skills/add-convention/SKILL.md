@@ -88,7 +88,14 @@ Decide the home, and explain the choice:
   Use for "how we do things" that informs but doesn't gate.
 - **Shared term / definition** → `GLOSSARY.md` (create it if absent —
   adding the first term enables the glossary layer; place it at the
-  recorded artefact root).
+  recorded artefact root). **Observe the canonical structure** recorded in
+  the repo's `CONVENTIONS.md` §Glossary: an optional H1 heading and
+  optional introductory prose, then exactly one two-column Markdown table
+  whose header is `Term | Definition`. Every term is its own row. Never
+  record a term as a heading, a bullet or a paragraph, and never add a
+  second table or a different column shape. An absent `GLOSSARY.md`
+  remains a valid state; this skill creates one only because a term is
+  actually being added.
 - **It is actually a decision, not a convention** (an architectural,
   product, or technology choice with alternatives and consequences) →
   this is an ADR. Stop and offer the **new-adr** skill; do not bury a
@@ -110,6 +117,33 @@ Apply the edit(s). If a convention rises to a hard rule, ensure
 `AGENTS.md` and `CONVENTIONS.md` stay consistent. Conventional Commit
 (`docs: ...`); no ADR touched means no `Rationale:` footer is required,
 but add one if the repo's contract asks for it on convention changes.
+
+**Adding or extending a glossary.** Follow the canonical structure read
+from `CONVENTIONS.md` §Glossary and the rules below; the shape must not
+drift between runs.
+
+- **Creating the file.** Write the optional `# Glossary` heading and any
+  short introductory prose the repo needs, then the single two-column
+  table with header `Term | Definition` and the new term as its first
+  row. Do not invent placeholder terms.
+- **Extending an existing file.** Preserve the heading, introductory
+  prose, entry order and every existing row byte for byte. Append the new
+  term as one new row; never rebuild, re-sort or reformat the file, and
+  never introduce a second table.
+- **Preserve meaning.** Keep the term's spelling, aliases, links and
+  inline code exactly as supplied. Escape a literal pipe as `\|`. If a
+  definition is genuinely multiline, keep it in one cell with `<br>` for
+  the hard break rather than spilling into extra rows.
+- **Duplicates and ambiguity.** If the term already exists, show the
+  existing and proposed definitions and ask whether to update or leave the
+  existing row. Never silently merge, replace or add a second row for the
+  same term, and never guess a definition.
+- **Non-canonical file.** If the existing `GLOSSARY.md` is bullets, prose,
+  headings or a mixed shape, do not append a competing row and do not
+  rewrite the file as a side effect of adding a term. Surface the
+  non-canonical structure and offer the audit skill's consented migration;
+  apply it only if the user accepts the concrete diff. A declined
+  migration leaves the file as the user keeps it.
 
 Name the rule and propagation performed; list repositories not updated.
 

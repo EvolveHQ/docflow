@@ -355,6 +355,14 @@ no the first time doesn't lose you the option:
 - **`new-adr`** offers to create a `domains/<slug>/README.md` grouping when
   you file an ADR under a domain that doesn't exist yet.
 
+A glossary keeps one canonical shape: an optional heading and intro
+prose, then a single `Term | Definition` table. `add-convention` creates
+and extends it in that shape without reformatting existing rows. If an
+existing `GLOSSARY.md` uses another or a mixed shape, `audit` reports it
+read-only and offers a migration with a concrete proposed diff; it
+rewrites nothing without your explicit consent, and declining leaves the
+file exactly as it was.
+
 ### Enabling an optional convention later (worked example: TDD)
 
 docflow's bootstrap is deliberately lean — practices such as

@@ -112,6 +112,13 @@ ADR catalogue.
 Omitting any optional layer leaves a valid repo; a lifecycle skill that
 needs an absent layer refuses cleanly and says what's missing.
 
+`GLOSSARY.md` has one canonical shape: an optional heading and short
+introductory prose, then a single two-column `Term | Definition` table.
+`add-convention` creates it on your first shared term and appends later
+terms in that shape; if an existing glossary uses bullets, prose or a
+mixed shape, `audit` reports it read-only and offers a migration with a
+concrete proposed diff — nothing is rewritten without your consent.
+
 **Enable a deferred layer later:** re-run **bootstrap** on the repo — it
 detects your existing setup, skips the settled questions, and offers only
 the optional layers you don't have yet, adding the chosen ones by merge.

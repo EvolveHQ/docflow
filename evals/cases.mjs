@@ -21,6 +21,7 @@ import {
   assertPlanShipped, assertAbsent, assertFileContains, assertCommandSucceeds,
   assertLegacyRange, assertMigratedToDeclaredShape,
   assertReferencesRewritten, assertHistoryPreserved,
+  classifyGlossary, glossaryShape, assertCanonicalGlossary,
 } from './assertions.mjs';
 
 const evalsDir = dirname(fileURLToPath(import.meta.url));
@@ -187,6 +188,47 @@ export const cases = [
         'adr/0002-searchable-decision-catalogue.md');
       assertFileContains(repo, 'plan/todo/0001-verify-script-coverage.md',
         'adr/0102-static-verify-script.md');
+    },
+  },
+  {
+    // Deterministic policy controls for the canonical glossary shape. No
+    // agent is involved: the checked-in fixtures are classified and the
+    // absence case proves a missing optional layer is never a failure.
+    name: 'glossary: canonical shape passes and non-canonical shapes classify',
+    skill: null,
+    agentDependent: false,
+    assert() {
+      const dir = join(evalsDir, 'fixtures/glossary');
+      const shape = (f) => classifyGlossary(readFileSync(join(dir, f), 'utf8'));
+
+      const canonical = shape('canonical.md');
+      assert.ok(canonical.canonical, `canonical fixture rejected: ${canonical.issues.join(', ')}`);
+      assert.equal(canonical.entries.length, 5, 'canonical entries');
+      assert.ok(canonical.entries.some((e) => e.definition.includes('\\|')), 'escaped pipe preserved');
+      assert.ok(canonical.entries.some((e) => e.definition.includes('<br>')), 'multiline cell preserved');
+      assert.equal(canonical.duplicates.length, 0, 'no duplicate terms');
+
+      assert.ok(shape('bullets.md').issues.includes('bullets'), 'bullets classified');
+      assert.ok(shape('prose.md').issues.includes('prose'), 'prose classified');
+      assert.ok(shape('headings.md').issues.includes('headings'), 'headings classified');
+
+      const mixed = shape('mixed.md');
+      assert.ok(!mixed.canonical, 'mixed fixture must not be canonical');
+      for (const issue of ['bullets', 'multiple-tables', 'header']) {
+        assert.ok(mixed.issues.includes(issue), `mixed fixture missing ${issue}`);
+      }
+
+      const duplicate = shape('duplicate.md');
+      assert.ok(duplicate.canonical, 'a single table with duplicate terms is still one shape');
+      assert.deepEqual(duplicate.duplicates, ['Delivery']);
+      assert.ok(shape('ambiguous.md').issues.includes('empty-row'), 'empty definition flagged');
+
+      // Absence is valid and must not be created to satisfy the check.
+      assert.equal(glossaryShape(dir, 'missing.md').present, false);
+      assert.doesNotThrow(() => assertCanonicalGlossary(dir, 'canonical.md'));
+      assert.throws(() => assertCanonicalGlossary(dir, 'mixed.md'));
+      assert.throws(() => assertCanonicalGlossary(dir, 'duplicate.md'));
+      assert.doesNotThrow(() => assertCanonicalGlossary(dir, 'missing.md'));
     },
   },
 ];
