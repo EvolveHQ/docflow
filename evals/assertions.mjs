@@ -404,3 +404,40 @@ export function assertCanonicalGlossary(root, file = 'GLOSSARY.md') {
   }
   return shape;
 }
+
+// The heading anchors a glossary exposes to incoming links: the GitHub-style
+// slug of every heading below the optional H1 title, kept verbatim rather than
+// recomputed, so a migration can preserve the targets other files link to.
+const slugifyHeading = (text) => text.toLowerCase()
+  .replace(/[`*_~[\]#!]/g, '')
+  .replace(/[^a-z0-9\s-]/g, '')
+  .trim()
+  .replace(/\s+/g, '-');
+
+export function glossaryHeadingAnchors(text) {
+  const clean = stripGlossaryBlocks(text.replace(/\r\n/g, '\n'));
+  const anchors = [];
+  for (const line of clean.split('\n')) {
+    const heading = line.match(/^(#{1,6})\s+(.+?)\s*$/);
+    if (!heading || heading[1].length === 1) continue;
+    anchors.push(slugifyHeading(heading[2]));
+  }
+  return anchors;
+}
+
+// An explicit anchor a migrated cell carries, e.g. `<a id="delivery"></a>`.
+function explicitAnchors(text) {
+  return [...text.matchAll(/<a\s+id="([^"]+)"\s*><\/a>/g)].map((m) => m[1]);
+}
+
+// A migration is lossless only if every heading anchor the original glossary
+// exposed still resolves in the result — by an explicit anchor or a retained
+// heading. Dropping the heading while keeping only the link text is a loss.
+export function assertGlossaryAnchorsPreserved(before, after) {
+  const wanted = [...new Set(glossaryHeadingAnchors(before))];
+  const retained = new Set([...explicitAnchors(after), ...glossaryHeadingAnchors(after)]);
+  const missing = wanted.filter((anchor) => !retained.has(anchor));
+  if (missing.length) {
+    throw new Error(`glossary migration dropped heading anchors: ${missing.join(', ')}`);
+  }
+}

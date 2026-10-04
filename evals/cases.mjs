@@ -22,6 +22,7 @@ import {
   assertLegacyRange, assertMigratedToDeclaredShape,
   assertReferencesRewritten, assertHistoryPreserved,
   classifyGlossary, glossaryShape, assertCanonicalGlossary,
+  glossaryHeadingAnchors, assertGlossaryAnchorsPreserved,
 } from './assertions.mjs';
 
 const evalsDir = dirname(fileURLToPath(import.meta.url));
@@ -229,6 +230,19 @@ export const cases = [
       assert.throws(() => assertCanonicalGlossary(dir, 'mixed.md'));
       assert.throws(() => assertCanonicalGlossary(dir, 'duplicate.md'));
       assert.doesNotThrow(() => assertCanonicalGlossary(dir, 'missing.md'));
+
+      // Heading entries expose link anchors; a migration that keeps only the
+      // link text loses the target and must fail, while an explicit anchor
+      // preserves it.
+      const linked = readFileSync(join(dir, 'headings-linked.md'), 'utf8');
+      assert.deepEqual(glossaryHeadingAnchors(linked), ['delivery', 'workspace']);
+      assert.ok(shape('headings-linked.md').issues.includes('headings'), 'heading entries classified');
+      const migrated = '# Glossary\n\n| Term | Definition |\n|------|------------|\n' +
+        '| <a id="delivery"></a>Delivery | A native repository contribution. |\n' +
+        '| <a id="workspace"></a>`workspace` | The coordination layer. |\n';
+      assert.doesNotThrow(() => assertGlossaryAnchorsPreserved(linked, migrated));
+      assert.throws(() => assertGlossaryAnchorsPreserved(linked, migrated.replace('<a id="delivery"></a>', '')));
+      assert.throws(() => assertGlossaryAnchorsPreserved(linked, '# Glossary\n\n| Term | Definition |\n|------|------------|\n| Delivery | A contribution. |\n'));
     },
   },
 ];

@@ -3,7 +3,9 @@
 Shared terms for the fixture repository. Entries predate the canonical
 shape.
 
-Delivery: a native repository contribution.
+## Delivery
+
+A native repository contribution.
 
 | Term | Meaning |
 |------|---------|

@@ -62,7 +62,7 @@ export function migrateGlossaryFixture(root) {
     'Shared terms for the fixture repository. Entries predate the canonical\n' +
     'shape. See the [member index](federation-index.md) for repositories.\n\n' +
     '| Term | Definition |\n|------|------------|\n' +
-    '| Delivery | A native repository contribution. |\n' +
+    '| <a id="delivery"></a>Delivery | A native repository contribution. |\n' +
     '| Federation | A multi-repo product. |\n' +
     '| `workspace` | The coordination layer. |\n' +
     '| Pipe | A literal \\| inside a definition. |\n');
