@@ -113,8 +113,10 @@ export function renderRepositoryFixtures(sources, revision) {
   emit('optional-layers', optional('_agent/prompts/autonomous.md'), source(tpl + '_agent-prompts-autonomous.md'),
     [tpl + '_agent-prompts-autonomous.md'], 'Exact portable run prompt copy; no run invoked.');
   emit('optional-layers', optional('GLOSSARY.md'),
-    '# Glossary\n\n| Term | Meaning |\n|---|---|\n| Delivery | A native repository contribution to the shared outcome. |\n',
-    ['plugins/docflow/skills/add-convention/SKILL.md'], 'Author a synthetic shared term under the documented glossary rule.');
+    source(tpl + 'GLOSSARY.md').replace(/<!--[\s\S]*?-->\n\n/, '') +
+      '| Delivery | A native repository contribution to the shared outcome. |\n',
+    [tpl + 'GLOSSARY.md', 'plugins/docflow/skills/add-convention/SKILL.md'],
+    'Render the canonical glossary template and append one synthetic shared term under the documented rule.');
   emit('optional-layers', optional('domains/platform/README.md'),
     '# Platform\n\n## Decisions\n\n- [Synthetic capability](../../adr/0001-synthetic-capability.md)\n',
     ['plugins/docflow/skills/new-adr/SKILL.md'], 'Author the optional domain grouping over the unchanged flat catalogue.');
