@@ -20,6 +20,7 @@ import {
   assertTree, assertAbsent, assertFileContains, assertContiguousAdrs,
   assertIndexSync, assertPlanShipped, assertMigratedToDeclaredShape,
   assertReferencesRewritten, assertHistoryPreserved, assertCommandSucceeds,
+  assertCanonicalGlossary,
 } from '../assertions.mjs';
 import { join, relative, sep } from 'node:path';
 
@@ -430,6 +431,29 @@ export const cases = [
         assertHistoryPreserved(dir, { numbers: ['0101'] });
         assertFileContains(dir, 'adr/0001-record-architecture-decisions.md', 'shape: technology');
         assertPlanShipped(dir, 'adopt-the-method');
+      }, r);
+    },
+  }),
+
+  skillCase({
+    id: 'audit-glossary', retires: 'audit: non-canonical glossary detected, migration offered and applied',
+    title: 'audit migrates a mixed glossary to the canonical Term | Definition table',
+    run: async (ctx) => {
+      const dir = await makeFixture(ctx, 'audit-glossary', join(evalsDir, 'fixtures/glossary-mixed'));
+      const r = await hostTurn(ctx, { cwd: dir, readOnly: false, prompt:
+        'Use the docflow audit skill to audit this repository. Its GLOSSARY.md uses a mixed, non-canonical shape. ' +
+        'Show the concrete proposed diff, then — with operator consent recorded as approved — apply the lossless migration ' +
+        'to the canonical Term | Definition table, preserving every term, the escaped pipe, the member-index link and the ' +
+        'introductory prose. Commit it, then stop. Operator consent: approved as displayed.' });
+      return judge(() => {
+        assertCanonicalGlossary(dir);
+        const text = readFileSync(join(dir, 'GLOSSARY.md'), 'utf8');
+        for (const term of ['Delivery', 'Federation', 'workspace', 'Pipe']) {
+          if (!text.includes(term)) throw new Error('migrated glossary lost term ' + term);
+        }
+        if (!text.includes('\\|')) throw new Error('escaped pipe not preserved');
+        if (!text.includes('[member index](federation-index.md)')) throw new Error('member-index link not preserved');
+        if (!text.includes('Shared terms for the fixture repository')) throw new Error('introductory prose not preserved');
       }, r);
     },
   }),

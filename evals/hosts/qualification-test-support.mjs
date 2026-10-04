@@ -51,3 +51,19 @@ export function migrateRangeFixture(root) {
   const index = join(root, 'INDEX.md');
   writeFileSync(index, readFileSync(index, 'utf8').replace('| ADR |', '| Shape | ADR |'));
 }
+
+// A synthetic lossless glossary migration for checker controls, never
+// native-host evidence. Preserves every term, the escaped pipe, the
+// member-index link, the intro prose and the original entry order.
+export function migrateGlossaryFixture(root) {
+  assert(resolve(root).startsWith('/tmp/hq-qa/'), 'isolation: fixture escaped /tmp/hq-qa');
+  writeFileSync(join(root, 'GLOSSARY.md'),
+    '# Glossary\n\n' +
+    'Shared terms for the fixture repository. Entries predate the canonical\n' +
+    'shape. See the [member index](federation-index.md) for repositories.\n\n' +
+    '| Term | Definition |\n|------|------------|\n' +
+    '| Delivery | A native repository contribution. |\n' +
+    '| Federation | A multi-repo product. |\n' +
+    '| `workspace` | The coordination layer. |\n' +
+    '| Pipe | A literal \\| inside a definition. |\n');
+}
