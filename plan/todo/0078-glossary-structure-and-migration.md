@@ -10,7 +10,7 @@ format choice; no new ADR is required.
 
 - Claimed by: Codex bounded FB026 repair, fix/glossary-structure (sole Docflow writer, 2026-10-04)
 - Blockers:
-- Stopped:
+- Stopped: 2026-10-04 — bounded FB026 repair complete locally; controller review pending. See the receipt below. No integration performed.
 
 ## Scope
 
@@ -49,8 +49,8 @@ An independent review of `458a836` raised six findings: a legacy
 inclusion, a canonical checker that accepted malformed tables and
 anchored duplicates, lossless qualification that permitted rewrites and
 reordering, H1 term headings dropped from the anchor obligation, and
-consent/decline preservation not exercised. This repair closes all six
-with focused positive/negative controls; the scope and exit criteria
+consent/decline preservation not exercised. The first repair targeted all
+six with focused positive/negative controls; the scope and exit criteria
 above stand unchanged.
 
 The independent recheck at signed `b182f970831166b505af0acc563406d87170e688`
@@ -98,3 +98,33 @@ hosts, installed-skill or real-repository edits, push, PR or integration.
 
 M — skill/template/docs consistency plus deterministic fixtures and one
 host qualification case; no model runs performed locally.
+
+## Bounded FB026 final repair receipt (2026-10-04)
+
+Verified work: `0610f6779183c004afbccd811844c0dd86e06980` (signed).
+The acceptance checks now require the exact approved diff after a no-write
+review, complete ordered file content, the first no-title H1 target, and
+exact definitions plus unchanged conventions on both maintenance turns.
+Product skills, generator sources and generated fixtures were unchanged.
+Evidence and individual logs remain outside this repository in
+`DocflowHQ/.docflow_workspace/local/handoffs/feedback-glossary-final-repair-20261004.md`.
+
+- `node --test evals/hosts/test-qualification-glossary.mjs`: exit 0; 63/63.
+- `node scripts/verify.mjs`: exit 0; `verify: OK`.
+- `node evals/run.mjs`: exit 0; 13 passed, 0 failed, 0 skipped.
+- `node --test evals/repository-producer.test.mjs`: exit 0; 27/27.
+- `node scripts/verify-mutations.mjs`: exit 0; 15 rejected mutations.
+- `python /tmp/hq-qa/clarity-feedback-20261004/final-repair-oracle-mutations.py`:
+  exit 0; 9 checker regressions rejected; baseline/restored 63/63.
+- Broader hostless controls: 134/134, exit 0. The initial wildcard invocation
+  exited 1 by including an argument-requiring CLI helper; the corrected suite
+  runs that helper with its required fixture through its existing wrapper.
+
+**Status at a glance**
+
+- **This run:** repaired all four reported oracle gaps and adjacent controls;
+  focused, verify, evals, producer and mutation checks pass as recorded above.
+- **Overall:** verified for this bounded hostless repair; item remains in todo,
+  unmerged and unshipped. No native-host qualification was performed.
+- **Yet to do:** controller review/recheck and any separately authorised native
+  qualification, integration and item completion. Writer stops on this branch.
