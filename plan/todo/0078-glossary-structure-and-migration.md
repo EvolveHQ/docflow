@@ -42,6 +42,17 @@ skill writes, Clarity rendering, a new Markdown parser or dependency,
 pushes, PRs, releases, and any change to the required gate except a named
 tighten-and-repair that also ships the repairs it surfaces.
 
+## Review repair (FB026, 2026-10-04)
+
+An independent review of `458a836` raised six findings: a legacy
+§Glossary title treated as adoption, inverted producer glossary
+inclusion, a canonical checker that accepted malformed tables and
+anchored duplicates, lossless qualification that permitted rewrites and
+reordering, H1 term headings dropped from the anchor obligation, and
+consent/decline preservation not exercised. This repair closes all six
+with focused positive/negative controls; the scope and exit criteria
+above stand unchanged.
+
 ## Dependencies and queue position
 
 - Sole Docflow writer on `fix/glossary-structure`; nothing else may claim

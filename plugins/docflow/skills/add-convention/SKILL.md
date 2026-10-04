@@ -88,14 +88,17 @@ Decide the home, and explain the choice:
   Use for "how we do things" that informs but doesn't gate.
 - **Shared term / definition** → `GLOSSARY.md` (create it if absent —
   adding the first term enables the glossary layer; place it at the
-  recorded artefact root). **Observe the canonical structure** recorded in
-  the repo's `CONVENTIONS.md` §Glossary: an optional H1 heading and
-  optional introductory prose, then exactly one two-column Markdown table
-  whose header is `Term | Definition`. Every term is its own row. Never
-  record a term as a heading, a bullet or a paragraph, and never add a
-  second table or a different column shape. An absent `GLOSSARY.md`
-  remains a valid state; this skill creates one only because a term is
-  actually being added.
+  recorded artefact root). Read the repo's `CONVENTIONS.md` §Glossary and
+  inspect the rule it actually declares; the canonical structure is an
+  optional H1 heading and optional introductory prose, then exactly one
+  two-column Markdown table whose header is `Term | Definition`. Every
+  term is its own row. Never record a term as a heading, a bullet or a
+  paragraph, and never add a second table or a different column shape. A
+  §Glossary that states an older or unrelated glossary convention is not
+  adoption of this table: use the canonical shape and offer the audit
+  skill's separately consented rule-and-file migration rather than copying
+  the old shape. An absent `GLOSSARY.md` remains a valid state; this skill
+  creates one only because a term is actually being added.
 - **It is actually a decision, not a convention** (an architectural,
   product, or technology choice with alternatives and consequences) →
   this is an ADR. Stop and offer the **new-adr** skill; do not bury a
@@ -118,9 +121,8 @@ Apply the edit(s). If a convention rises to a hard rule, ensure
 (`docs: ...`); no ADR touched means no `Rationale:` footer is required,
 but add one if the repo's contract asks for it on convention changes.
 
-**Adding or extending a glossary.** Follow the canonical structure read
-from `CONVENTIONS.md` §Glossary and the rules below; the shape must not
-drift between runs.
+**Adding or extending a glossary.** Use the canonical structure defined
+below and the declared-rule checks; the shape must not drift between runs.
 
 - **Where the rule comes from.** If `CONVENTIONS.md` has no §Glossary
   section (a legacy repo that predates it, or a layer enabled before the
@@ -128,14 +130,21 @@ drift between runs.
   above: optional `# Glossary` heading and intro prose, then one
   `Term | Definition` table. Do not invent a different shape for that
   repo, and do not silently edit unrelated conventions.
+- **Reading the declared rule.** When a §Glossary exists, read what it
+  actually declares. If it describes the canonical two-column
+  `Term | Definition` table, follow it and change it only on an explicit
+  request. If it states a different or older glossary convention (bullets,
+  prose, another column shape), the repo has **not** adopted this table:
+  do not copy the old shape, and do not silently rewrite the rule. Use the
+  canonical shape for the term and offer the audit skill's migration, which
+  covers the rule and the file together as one separately consented diff.
 - **Recording the convention.** When a §Glossary is absent, offer — as its
   own confirmed edit, separate from the term being added — to record a
   `## Glossary` section in `CONVENTIONS.md` stating the shape actually
   used. Show that diff and write it only if the user accepts; never rewrite
   or reorder other `CONVENTIONS.md` sections to make room, and if the user
   declines, keep the glossary canonical but leave `CONVENTIONS.md`
-  unchanged. If a §Glossary already exists, follow it and change it only on
-  an explicit request.
+  unchanged.
 - **Creating the file.** Write the optional `# Glossary` heading and any
   short introductory prose the repo needs, then the single two-column
   table with header `Term | Definition` and the new term as its first
