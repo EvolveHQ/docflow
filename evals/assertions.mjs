@@ -307,64 +307,89 @@ const isBulletLine = (line) => /^\s*(?:[-*+]|\d+\.)\s+\S/.test(line);
 const isHeadingLine = (line) => /^#{1,6}\s+\S/.test(line);
 const splitGlossaryRow = (line) =>
   line.trim().replace(/^\|/, '').replace(/\|$/, '').split(/(?<!\\)\|/);
+const isDelimiterRow = (cells) =>
+  cells.length === 2 && cells.every((c) => /^:?-+:?$/.test(c));
+
+// The visible term behind a preserved cell. Migration anchors are
+// presentation, not identity, so `<a id="alpha"></a>Alpha` and `Alpha`
+// name the same term and collide.
+const visibleTerm = (cell) => cell
+  .replace(/<a\s+id="[^"]+"\s*><\/a>/g, '')
+  .replace(/[`*_~]/g, '')
+  .trim();
 
 // Classify a glossary's entry structure without rewriting it. Returns
 // issues as a set of shape names; `canonical` is true only for the single
-// optional-heading/prose + one `Term | Definition`-table form.
+// optional-heading/prose + one `Term | Definition`-table form, with a
+// well-formed contiguous table.
 export function classifyGlossary(text) {
   const clean = stripGlossaryBlocks(text.replace(/\r\n/g, '\n'));
   const lines = clean.split('\n');
+  const issues = new Set();
+
+  // Maximal contiguous runs of table lines. Any other line — including a
+  // blank line — breaks a run, so a table split by a blank line registers
+  // as two tables rather than one.
   const tables = [];
-  let current = null, headingCount = 0, firstHeadingLevel = null, hasProse = false;
+  let current = null;
   for (const line of lines) {
-    if (!line.trim()) continue;
     if (isTableLine(line)) {
       if (!current) { current = []; tables.push(current); }
       current.push(line);
-      continue;
-    }
-    current = null;
-    if (isHeadingLine(line)) {
-      headingCount += 1;
-      if (firstHeadingLevel === null) firstHeadingLevel = line.match(/^(#+)/)[1].length;
-    } else if (!isBulletLine(line)) {
-      hasProse = true;
+    } else {
+      current = null;
     }
   }
 
-  const issues = new Set();
-  if (headingCount > 1 || (headingCount === 1 && firstHeadingLevel !== 1)) issues.add('headings');
+  // Heading shape: at most one H1, no other heading level, and it must be
+  // the first non-empty content. A heading after the table is an entry
+  // outside the table, not a title.
+  const content = lines.filter((l) => l.trim());
+  const headings = content.filter(isHeadingLine);
+  const firstIsTopH1 = isHeadingLine(content[0] || '') && /^#\s+/.test(content[0]);
+  if (headings.length > 1 || (headings.length === 1 && !firstIsTopH1)
+      || headings.some((h) => !/^#\s+/.test(h))) {
+    issues.add('headings');
+  }
+
   if (tables.length > 1) issues.add('multiple-tables');
-  if (lines.some((l) => l.trim() && isBulletLine(l))) issues.add('bullets');
-  if (hasProse && tables.length === 0) issues.add('prose');
+  if (content.some(isBulletLine)) issues.add('bullets');
 
-  // Prose that follows the table is an entry outside it.
-  let seenTable = false, strayProse = false;
-  for (const line of lines) {
-    if (!line.trim()) continue;
-    if (isTableLine(line)) { seenTable = true; continue; }
-    if (seenTable && !isHeadingLine(line) && !isBulletLine(line)) strayProse = true;
+  // Optional introductory prose is allowed before the table; prose with no
+  // table, or prose after the table, is an entry outside the shape.
+  const tableLineCount = tables.reduce((n, t) => n + t.length, 0);
+  const proseLines = content.filter((l) => !isTableLine(l) && !isHeadingLine(l) && !isBulletLine(l));
+  if (proseLines.length && tableLineCount === 0) issues.add('prose');
+  const lastTable = content.map(isTableLine).lastIndexOf(true);
+  if (lastTable !== -1
+      && content.slice(lastTable + 1).some((l) => !isHeadingLine(l) && !isBulletLine(l))) {
+    issues.add('prose');
   }
-  if (strayProse) issues.add('prose');
 
   const entries = [], duplicates = [];
   let emptyRow = false;
   if (tables.length) {
     const rows = tables[0];
-    const header = splitGlossaryRow(rows[0]).map((c) => c.trim().toLowerCase());
+    // Header, then a delimiter row, then data rows: every row splits into
+    // exactly two cells. A missing delimiter, a three-cell row or a
+    // malformed header is a structural failure, never canonical.
+    const split = rows.map(splitGlossaryRow);
+    const header = (split[0] || []).map((c) => c.trim().toLowerCase());
     if (!(header.length === 2 && header[0] === 'term' && header[1] === 'definition')) {
       issues.add('header');
     }
-    const dataRows = rows.slice(1).filter((r) => !/^\s*\|[\s|:-]+\|\s*$/.test(r));
+    if (!isDelimiterRow((split[1] || []).map((c) => c.trim()))) issues.add('delimiter');
+    if (split.some((cells) => cells.length !== 2)) issues.add('row-arity');
     const seen = new Set();
-    for (const row of dataRows) {
-      const cells = splitGlossaryRow(row);
-      const term = (cells[0] || '').trim();
-      const definition = (cells[1] || '').trim();
+    for (let i = 2; i < rows.length; i += 1) {
+      const cells = split[i];
+      if (cells.length !== 2) { emptyRow = true; continue; }
+      const term = cells[0].trim();
+      const definition = cells[1].trim();
       if (!term || !definition) { emptyRow = true; continue; }
       entries.push({ term, definition });
-      const key = term.toLowerCase();
-      if (seen.has(key)) duplicates.push(term);
+      const key = visibleTerm(term).toLowerCase();
+      if (seen.has(key)) duplicates.push(visibleTerm(term));
       seen.add(key);
     }
   }
@@ -416,12 +441,23 @@ const slugifyHeading = (text) => text.toLowerCase()
 
 export function glossaryHeadingAnchors(text) {
   const clean = stripGlossaryBlocks(text.replace(/\r\n/g, '\n'));
+  const content = clean.split('\n').filter((l) => l.trim());
+  const headings = content
+    .map((line, index) => ({ line, index }))
+    .filter(({ line }) => isHeadingLine(line));
   const anchors = [];
-  for (const line of clean.split('\n')) {
-    const heading = line.match(/^(#{1,6})\s+(.+?)\s*$/);
-    if (!heading || heading[1].length === 1) continue;
-    anchors.push(slugifyHeading(heading[2]));
-  }
+  headings.forEach(({ line, index }, i) => {
+    const level = line.match(/^(#+)/)[1].length;
+    const slug = slugifyHeading(line.replace(/^#+\s+/, ''));
+    const isFirst = index === 0 && i === 0;
+    const hasFollowingHeading = i < headings.length - 1;
+    // The optional document title is the first heading, an H1 at the very
+    // top, only when it is the canonical `# Glossary` title or another
+    // heading follows it. A lone non-title H1 is ambiguous, so its anchor
+    // is treated as a term target and must be preserved.
+    if (isFirst && level === 1 && (slug === 'glossary' || hasFollowingHeading)) return;
+    anchors.push(slug);
+  });
   return anchors;
 }
 
@@ -440,4 +476,68 @@ export function assertGlossaryAnchorsPreserved(before, after) {
   if (missing.length) {
     throw new Error(`glossary migration dropped heading anchors: ${missing.join(', ')}`);
   }
+}
+
+// The glossary rule a repository actually records in CONVENTIONS.md. The
+// presence of a §Glossary section is not adoption of the canonical table
+// shape: it can record an older or unrelated glossary convention. Only a
+// section that names the two-column `Term` / `Definition` table counts as
+// canonical.
+export function glossaryDeclaredRule(conventionsText) {
+  const clean = stripGlossaryBlocks(conventionsText.replace(/\r\n/g, '\n'));
+  const section = clean.match(/^##\s+Glossary\s*$([\s\S]*?)(?=^##\s|$(?![\s\S]))/m);
+  if (!section) return { declared: false, canonical: false, text: null };
+  const body = section[1];
+  const canonical = /two-column/i.test(body) && /Term/.test(body) && /Definition/.test(body);
+  return { declared: true, canonical, text: body.trim() };
+}
+
+// How a repository relates to the canonical glossary shape. A non-canonical
+// file under an older declared rule is not drift against the canonical table
+// the repo never adopted: the rule and the file migrate together under one
+// separate consent.
+export function classifyGlossaryAdoption(conventionsText, glossaryText) {
+  const shape = classifyGlossary(glossaryText);
+  const rule = glossaryDeclaredRule(conventionsText);
+  if (shape.present && shape.duplicates.length) {
+    return { status: 'duplicate', shape, rule, duplicates: shape.duplicates };
+  }
+  if (shape.canonical) return { status: 'canonical', shape, rule };
+  if (!rule.declared) return { status: 'migration-available', shape, rule };
+  if (rule.canonical) return { status: 'drift', shape, rule };
+  return { status: 'rule-migration-available', shape, rule };
+}
+
+// An ordered, complete comparison of a migrated glossary against an explicit
+// expected mapping: every term and definition must match verbatim and in
+// order, and every prose/link/code fragment must survive. Only the structural
+// escaping already present in the expected strings is allowed; a definition
+// rewrite, a deletion or a reordering fails.
+export function assertGlossaryLossless(afterText, expected) {
+  const shape = classifyGlossary(afterText);
+  if (!shape.canonical) {
+    throw new Error(`migrated glossary is not canonical: ${shape.issues.join(', ') || 'no single table'}`);
+  }
+  if (shape.duplicates.length) {
+    throw new Error(`migrated glossary repeats terms: ${[...new Set(shape.duplicates)].join(', ')}`);
+  }
+  if (shape.entries.length !== expected.entries.length) {
+    throw new Error(
+      `migrated glossary has ${shape.entries.length} entries, expected ${expected.entries.length}`,
+    );
+  }
+  shape.entries.forEach((entry, i) => {
+    const want = expected.entries[i];
+    if (entry.term !== want.term || entry.definition !== want.definition) {
+      throw new Error(
+        `entry ${i + 1} changed: got ${JSON.stringify(entry)}, expected ${JSON.stringify(want)}`,
+      );
+    }
+  });
+  for (const fragment of expected.prose || []) {
+    if (!afterText.includes(fragment)) {
+      throw new Error(`glossary migration dropped prose: ${fragment}`);
+    }
+  }
+  return shape;
 }

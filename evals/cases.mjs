@@ -23,6 +23,7 @@ import {
   assertReferencesRewritten, assertHistoryPreserved,
   classifyGlossary, glossaryShape, assertCanonicalGlossary,
   glossaryHeadingAnchors, assertGlossaryAnchorsPreserved,
+  glossaryDeclaredRule, classifyGlossaryAdoption, assertGlossaryLossless,
 } from './assertions.mjs';
 
 const evalsDir = dirname(fileURLToPath(import.meta.url));
@@ -224,6 +225,35 @@ export const cases = [
       assert.deepEqual(duplicate.duplicates, ['Delivery']);
       assert.ok(shape('ambiguous.md').issues.includes('empty-row'), 'empty definition flagged');
 
+      // Malformed tables are never canonical: a missing delimiter, a row
+      // that is not exactly two cells, a blank line splitting the data rows
+      // and a trailing H1 all fail.
+      const malformed = {
+        missingDelimiter: '# Glossary\n\n| Term | Definition |\n| Alpha | One. |\n',
+        threeCellRow: '# Glossary\n\n| Term | Definition |\n|------|------------|\n| Alpha | One. | extra |\n',
+        splitTable: '# Glossary\n\n| Term | Definition |\n|------|------------|\n| Alpha | One. |\n\n| Beta | Two. |\n',
+        trailingHeading: '# Glossary\n\n| Term | Definition |\n|------|------------|\n| Alpha | One. |\n\n# Extra\n',
+      };
+      for (const [name, text] of Object.entries(malformed)) {
+        assert.ok(!classifyGlossary(text).canonical, `${name} must not be canonical`);
+      }
+      assert.ok(classifyGlossary(malformed.missingDelimiter).issues.includes('delimiter'), 'missing delimiter flagged');
+      assert.ok(classifyGlossary(malformed.threeCellRow).issues.includes('row-arity'), 'three-cell row flagged');
+      assert.ok(classifyGlossary(malformed.splitTable).issues.includes('multiple-tables'), 'blank-split table flagged');
+      assert.ok(classifyGlossary(malformed.trailingHeading).issues.includes('headings'), 'trailing H1 flagged');
+
+      // Duplicate identity ignores the preserved migration anchor: an anchored
+      // Delivery row plus a plain Delivery row is a duplicate.
+      const anchoredDuplicate = classifyGlossary(
+        '# Glossary\n\n| Term | Definition |\n|------|------------|\n' +
+        '| <a id="delivery"></a>Delivery | One. |\n| Delivery | Two. |\n');
+      assert.deepEqual(anchoredDuplicate.duplicates, ['Delivery'], 'anchored duplicate detected');
+      assert.throws(() => assertGlossaryLossless(
+        '# Glossary\n\n| Term | Definition |\n|------|------------|\n' +
+        '| <a id="delivery"></a>Delivery | One. |\n| Delivery | Two. |\n',
+        { entries: [{ term: '<a id="delivery"></a>Delivery', definition: 'One.' }] }),
+      /repeats terms/, 'lossless rejects a duplicate');
+
       // Absence is valid and must not be created to satisfy the check.
       assert.equal(glossaryShape(dir, 'missing.md').present, false);
       assert.doesNotThrow(() => assertCanonicalGlossary(dir, 'canonical.md'));
@@ -243,6 +273,43 @@ export const cases = [
       assert.doesNotThrow(() => assertGlossaryAnchorsPreserved(linked, migrated));
       assert.throws(() => assertGlossaryAnchorsPreserved(linked, migrated.replace('<a id="delivery"></a>', '')));
       assert.throws(() => assertGlossaryAnchorsPreserved(linked, '# Glossary\n\n| Term | Definition |\n|------|------------|\n| Delivery | A contribution. |\n'));
+
+      // An H1 term heading after the optional title is a link target too; a
+      // migration that drops its anchor loses the target.
+      const h1Linked = readFileSync(join(dir, 'headings-h1-linked.md'), 'utf8');
+      assert.deepEqual(glossaryHeadingAnchors(h1Linked), ['delivery', 'federation'], 'H1 term anchors');
+      const h1Migrated = '# Glossary\n\n| Term | Definition |\n|------|------------|\n' +
+        '| <a id="delivery"></a>Delivery | A native repository contribution. |\n' +
+        '| <a id="federation"></a>Federation | A multi-repo product. |\n';
+      assert.doesNotThrow(() => assertGlossaryAnchorsPreserved(h1Linked, h1Migrated));
+      assert.throws(() => assertGlossaryAnchorsPreserved(h1Linked, h1Migrated.replace('<a id="federation"></a>', '')));
+
+      // The declared rule is a separate axis from the file shape: an older
+      // glossary rule is not adoption of the canonical table.
+      const canonicalRule = readFileSync(join(repoRoot, 'plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md'), 'utf8');
+      assert.deepEqual(glossaryDeclaredRule('## Other\n\nNo glossary here.'), { declared: false, canonical: false, text: null });
+      assert.equal(glossaryDeclaredRule(canonicalRule).canonical, true, 'template declares the canonical shape');
+      const oldRule = '## Glossary\n\nUse one bullet per term.\n';
+      assert.equal(glossaryDeclaredRule(oldRule).canonical, false, 'older rule is not the table rule');
+      const bulletFile = '# Glossary\n\n- Delivery — a native contribution.\n';
+      assert.equal(classifyGlossaryAdoption('', bulletFile).status, 'migration-available', 'never declared stays a migration offer');
+      assert.equal(classifyGlossaryAdoption(oldRule, bulletFile).status, 'rule-migration-available', 'older rule is not drift against the table');
+      assert.equal(classifyGlossaryAdoption(canonicalRule, bulletFile).status, 'drift', 'adopted table rule + non-canonical is drift');
+      assert.equal(classifyGlossaryAdoption(oldRule, '# Glossary\n\n| Term | Definition |\n|------|------------|\n| Delivery | One. |\n').status, 'canonical', 'canonical file short-circuits');
+
+      // An ordered, complete lossless comparison: a rewrite, deletion or
+      // reordering is rejected while the unchanged migration passes.
+      const expected2 = { prose: ['Shared terms'], entries: [
+        { term: 'Delivery', definition: 'One.' },
+        { term: 'Federation', definition: 'Two.' },
+      ] };
+      const good2 = '# Glossary\n\nShared terms.\n\n| Term | Definition |\n|------|------------|\n' +
+        '| Delivery | One. |\n| Federation | Two. |\n';
+      assert.doesNotThrow(() => assertGlossaryLossless(good2, expected2));
+      assert.throws(() => assertGlossaryLossless(good2.replace('| Delivery | One. |\n| Federation | Two. |',
+        '| Federation | Two. |\n| Delivery | One. |'), expected2), 'reordering fails');
+      assert.throws(() => assertGlossaryLossless(good2.replace('| Federation | Two. |\n', ''), expected2), 'deletion fails');
+      assert.throws(() => assertGlossaryLossless(good2.replace('One.', 'A rewrite.'), expected2), 'rewrite fails');
     },
   },
 ];

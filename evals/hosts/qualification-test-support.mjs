@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { mkdirSync, mkdtempSync, rmSync, readFileSync, readdirSync, renameSync, writeFileSync } from 'node:fs';
 import { join, resolve, sep } from 'node:path';
 import { GUARD_ROOTS, fingerprintRoots } from './qualify.mjs';
+import { renderCanonicalMixedGlossary } from './glossary-expected.mjs';
 
 export function scratchFixture(t) {
   const base = '/tmp/hq-qa';
@@ -54,16 +55,24 @@ export function migrateRangeFixture(root) {
 
 // A synthetic lossless glossary migration for checker controls, never
 // native-host evidence. Preserves every term, the escaped pipe, the
-// member-index link, the intro prose and the original entry order.
+// member-index link, the intro prose and the original entry order and
+// wording byte for byte (see glossary-expected.mjs).
 export function migrateGlossaryFixture(root) {
   assert(resolve(root).startsWith('/tmp/hq-qa/'), 'isolation: fixture escaped /tmp/hq-qa');
+  writeFileSync(join(root, 'GLOSSARY.md'), renderCanonicalMixedGlossary());
+}
+
+// Synthetic add-convention maintenance for checker controls, never
+// native-host evidence.
+export function writeFirstGlossaryTerm(root) {
+  assert(resolve(root).startsWith('/tmp/hq-qa/'), 'isolation: fixture escaped /tmp/hq-qa');
   writeFileSync(join(root, 'GLOSSARY.md'),
-    '# Glossary\n\n' +
-    'Shared terms for the fixture repository. Entries predate the canonical\n' +
-    'shape. See the [member index](federation-index.md) for repositories.\n\n' +
-    '| Term | Definition |\n|------|------------|\n' +
-    '| <a id="delivery"></a>Delivery | A native repository contribution. |\n' +
-    '| Federation | A multi-repo product. |\n' +
-    '| `workspace` | The coordination layer. |\n' +
-    '| Pipe | A literal \\| inside a definition. |\n');
+    '# Glossary\n\n| Term | Definition |\n|------|------------|\n' +
+    '| Delivery | A native repository contribution. |\n');
+}
+
+export function appendGlossaryTerm(root) {
+  assert(resolve(root).startsWith('/tmp/hq-qa/'), 'isolation: fixture escaped /tmp/hq-qa');
+  const path = join(root, 'GLOSSARY.md');
+  writeFileSync(path, readFileSync(path, 'utf8') + '| Federation | A multi-repo product. |\n');
 }

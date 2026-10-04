@@ -20,9 +20,11 @@ import {
   assertTree, assertAbsent, assertFileContains, assertContiguousAdrs,
   assertIndexSync, assertPlanShipped, assertMigratedToDeclaredShape,
   assertReferencesRewritten, assertHistoryPreserved, assertCommandSucceeds,
-  assertCanonicalGlossary,
+  assertCanonicalGlossary, assertGlossaryLossless, assertGlossaryAnchorsPreserved,
+  classifyGlossary,
 } from '../assertions.mjs';
 import { join, relative, sep } from 'node:path';
+import { GLOSSARY_MIXED_EXPECTED } from './glossary-expected.mjs';
 
 const here = new URL('.', import.meta.url).pathname;
 const evalsDir = join(here, '..');
@@ -91,6 +93,25 @@ function snapshotWorkspace(dir) {
 }
 
 function diffWorkspace(before, after) {
+  const changed = [];
+  for (const [k, v] of after) if (before.get(k) !== v) changed.push(k);
+  for (const k of before.keys()) if (!after.has(k)) changed.push(k);
+  return changed;
+}
+
+// Whole-checkout byte snapshot excluding Git's own object/index state, used
+// to prove a declined migration changed no file.
+function snapshotTree(dir) {
+  const map = new Map();
+  for (const f of walkFiles(dir).sort()) {
+    const rel = relative(dir, f).split(sep).join('/');
+    if (rel === '.git' || rel.startsWith('.git/')) continue;
+    map.set(rel, sha256(readFileSync(f)));
+  }
+  return map;
+}
+
+function diffTree(before, after) {
   const changed = [];
   for (const [k, v] of after) if (before.get(k) !== v) changed.push(k);
   for (const k of before.keys()) if (!after.has(k)) changed.push(k);
@@ -443,20 +464,78 @@ export const cases = [
       const r = await hostTurn(ctx, { cwd: dir, readOnly: false, prompt:
         'Use the docflow audit skill to audit this repository. Its GLOSSARY.md uses a mixed, non-canonical shape. ' +
         'Show the concrete proposed diff, then — with operator consent recorded as approved — apply the lossless migration ' +
-        'to the canonical Term | Definition table, preserving every term, the escaped pipe, the member-index link, the ' +
-        'introductory prose and the #delivery heading anchor that AGENTS.md links to. Commit it, then stop. ' +
+        'to the canonical Term | Definition table. Preserve every term verbatim, the escaped pipe, the member-index link, ' +
+        'the introductory prose and the #delivery heading anchor that AGENTS.md links to. Do not reword a definition or ' +
+        'reorder entries. Commit it, then stop. ' +
         'Operator consent: approved as displayed.' });
       return judge(() => {
         assertCanonicalGlossary(dir);
-        const text = readFileSync(join(dir, 'GLOSSARY.md'), 'utf8');
-        for (const term of ['Delivery', 'Federation', 'workspace', 'Pipe']) {
-          if (!text.includes(term)) throw new Error('migrated glossary lost term ' + term);
-        }
-        if (!text.includes('id="delivery"')) throw new Error('heading link anchor not preserved');
-        if (!text.includes('\\|')) throw new Error('escaped pipe not preserved');
-        if (!text.includes('[member index](federation-index.md)')) throw new Error('member-index link not preserved');
-        if (!text.includes('Shared terms for the fixture repository')) throw new Error('introductory prose not preserved');
+        // Complete, ordered comparison against the explicit expected mapping:
+        // a definition rewrite, deletion, reordering or duplicate fails, and
+        // every heading anchor the original file exposed must still resolve.
+        const after = readFileSync(join(dir, 'GLOSSARY.md'), 'utf8');
+        assertGlossaryAnchorsPreserved(readFileSync(join(evalsDir, 'fixtures/glossary-mixed/GLOSSARY.md'), 'utf8'), after);
+        assertGlossaryLossless(after, GLOSSARY_MIXED_EXPECTED);
       }, r);
+    },
+  }),
+  skillCase({
+    id: 'audit-glossary-decline',
+    title: 'a declined glossary migration leaves the file and tree byte-identical',
+    run: async (ctx) => {
+      const dir = await makeFixture(ctx, 'audit-glossary-decline', join(evalsDir, 'fixtures/glossary-mixed'));
+      const beforeGlossary = readFileSync(join(dir, 'GLOSSARY.md'), 'utf8');
+      const beforeTree = snapshotTree(dir);
+      const r = await hostTurn(ctx, { cwd: dir, readOnly: false, prompt:
+        'Use the docflow audit skill to audit this repository and show the concrete proposed glossary migration diff. ' +
+        'The operator declines that migration. Apply nothing: keep GLOSSARY.md byte for byte as it is and add no ' +
+        'alternative shape. Report the declined offer, then stop.' });
+      return judge(() => {
+        const afterGlossary = readFileSync(join(dir, 'GLOSSARY.md'), 'utf8');
+        if (afterGlossary !== beforeGlossary) throw new Error('declined migration rewrote GLOSSARY.md');
+        const changed = diffTree(beforeTree, snapshotTree(dir));
+        if (changed.length) throw new Error(`declined migration changed: ${changed.slice(0, 3).join(', ')}`);
+      }, r);
+    },
+  }),
+
+  skillCase({
+    id: 'add-convention-maintenance',
+    title: 'add-convention creates the first canonical term and appends a later one',
+    run: async (ctx) => {
+      const dir = await makeFixture(ctx, 'add-convention', join(evalsDir, 'fixtures/glossary-add'));
+      rmSync(join(dir, 'GLOSSARY.md'), { force: true });
+      const conventionsBefore = readFileSync(join(dir, 'CONVENTIONS.md'), 'utf8');
+      const first = await hostTurn(ctx, { cwd: dir, readOnly: false, prompt:
+        'Use the docflow add-convention skill to add the shared term \'Delivery\' defined as ' +
+        '\'A native repository contribution.\' There is no GLOSSARY.md yet: create the first canonical ' +
+        'Term | Definition row. Do not record or edit any CONVENTIONS.md rule. Stop after that.' });
+      const firstJudge = judge(() => {
+        const shape = classifyGlossary(readFileSync(join(dir, 'GLOSSARY.md'), 'utf8'));
+        if (!shape.canonical) throw new Error('first-term glossary not canonical: ' + shape.issues.join(', '));
+        if (shape.entries.length !== 1 || shape.entries[0].term !== 'Delivery') {
+          throw new Error('first term not created exactly');
+        }
+        if (readFileSync(join(dir, 'CONVENTIONS.md'), 'utf8') !== conventionsBefore) {
+          throw new Error('declined rule edit still changed CONVENTIONS.md');
+        }
+      }, first);
+      if (firstJudge.status !== 'pass') return firstJudge;
+      const beforeAppend = readFileSync(join(dir, 'GLOSSARY.md'), 'utf8');
+      const second = await hostTurn(ctx, { cwd: dir, readOnly: false, prompt:
+        'Use the docflow add-convention skill to append the shared term \'Federation\' defined as ' +
+        '\'A multi-repo product.\' to the existing canonical GLOSSARY.md. Preserve every existing row ' +
+        'and the single table. Stop after that.' });
+      return judge(() => {
+        const after = readFileSync(join(dir, 'GLOSSARY.md'), 'utf8');
+        const shape = classifyGlossary(after);
+        if (!shape.canonical) throw new Error('appended glossary not canonical: ' + shape.issues.join(', '));
+        if (shape.tables !== 1) throw new Error('append added a second table');
+        if (shape.entries.map((e) => e.term).join(',') !== 'Delivery,Federation') {
+          throw new Error('append changed order or entries');
+        }
+        if (!after.startsWith(beforeAppend)) throw new Error('append rewrote existing rows');
+      }, second);
     },
   }),
 
