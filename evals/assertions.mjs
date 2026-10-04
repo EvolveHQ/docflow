@@ -450,20 +450,24 @@ export function glossaryHeadingAnchors(text) {
     const level = line.match(/^(#+)/)[1].length;
     const slug = slugifyHeading(line.replace(/^#+\s+/, ''));
     const isFirst = index === 0 && i === 0;
-    const hasFollowingHeading = i < headings.length - 1;
     // The optional document title is the first heading, an H1 at the very
-    // top, only when it is the canonical `# Glossary` title or another
-    // heading follows it. A lone non-title H1 is ambiguous, so its anchor
-    // is treated as a term target and must be preserved.
-    if (isFirst && level === 1 && (slug === 'glossary' || hasFollowingHeading)) return;
+    // top, only when it is the explicit canonical `# Glossary` title.
+    // A following heading says nothing about whether the first H1 is a term.
+    // Preserve all other first-heading targets, including ambiguous titles.
+    if (isFirst && level === 1 && slug === 'glossary') return;
     anchors.push(slug);
   });
   return anchors;
 }
 
-// An explicit anchor a migrated cell carries, e.g. `<a id="delivery"></a>`.
+// Bounded migration form: explicit anchors lead the term cell. Do not count
+// examples inside inline code, comments, fences, definitions or other prose
+// as live row targets. Other forms need an explicit fixture contract.
 function explicitAnchors(text) {
-  return [...text.matchAll(/<a\s+id="([^"]+)"\s*><\/a>/g)].map((m) => m[1]);
+  return classifyGlossary(text).entries.flatMap(({ term }) => {
+    const prefix = term.match(/^(?:<a\s+id="[^"]+"\s*><\/a>\s*)+/)?.[0] || '';
+    return [...prefix.matchAll(/<a\s+id="([^"]+)"\s*><\/a>/g)].map((m) => m[1]);
+  });
 }
 
 // A migration is lossless only if every heading anchor the original glossary
@@ -510,9 +514,10 @@ export function classifyGlossaryAdoption(conventionsText, glossaryText) {
 
 // An ordered, complete comparison of a migrated glossary against an explicit
 // expected mapping: every term and definition must match verbatim and in
-// order, and every prose/link/code fragment must survive. Only the structural
-// escaping already present in the expected strings is allowed; a definition
-// rewrite, a deletion or a reordering fails.
+// order. The complete approved artifact also fixes every prose word and its
+// position, including title, links, code and anchors. There is deliberately no
+// fragment whitelist or semantic Markdown equivalence: only CRLF/LF transport
+// differences are allowed. Callers must supply the exact artifact to the host.
 export function assertGlossaryLossless(afterText, expected) {
   const shape = classifyGlossary(afterText);
   if (!shape.canonical) {
@@ -534,10 +539,11 @@ export function assertGlossaryLossless(afterText, expected) {
       );
     }
   });
-  for (const fragment of expected.prose || []) {
-    if (!afterText.includes(fragment)) {
-      throw new Error(`glossary migration dropped prose: ${fragment}`);
-    }
+  if (typeof expected.artifact !== 'string') {
+    throw new Error('lossless check requires a complete expected artifact');
+  }
+  if (afterText.replace(/\r\n/g, '\n') !== expected.artifact.replace(/\r\n/g, '\n')) {
+    throw new Error('glossary differs from complete approved artifact (prose, structure or content)');
   }
   return shape;
 }

@@ -14,17 +14,19 @@
 //                    fixture and an external checker judges the result. Runs
 //                    only where the adapter can make a non-interactive turn.
 
-import { mkdirSync, readdirSync, readFileSync, statSync, lstatSync, cpSync, existsSync, rmSync, writeFileSync } from 'node:fs';
+import { mkdirSync, readdirSync, readFileSync, readlinkSync, statSync, lstatSync, cpSync, existsSync, rmSync, writeFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import {
   assertTree, assertAbsent, assertFileContains, assertContiguousAdrs,
   assertIndexSync, assertPlanShipped, assertMigratedToDeclaredShape,
   assertReferencesRewritten, assertHistoryPreserved, assertCommandSucceeds,
   assertCanonicalGlossary, assertGlossaryLossless, assertGlossaryAnchorsPreserved,
-  classifyGlossary,
 } from '../assertions.mjs';
-import { join, relative, sep } from 'node:path';
-import { GLOSSARY_MIXED_EXPECTED } from './glossary-expected.mjs';
+import { join, relative } from 'node:path';
+import {
+  GLOSSARY_MIXED_BEFORE, GLOSSARY_MIXED_EXPECTED, GLOSSARY_MIXED_APPROVED_DIFF,
+  GLOSSARY_FIRST_EXPECTED, GLOSSARY_APPEND_EXPECTED,
+} from './glossary-expected.mjs';
 
 const here = new URL('.', import.meta.url).pathname;
 const evalsDir = join(here, '..');
@@ -103,11 +105,19 @@ function diffWorkspace(before, after) {
 // to prove a declined migration changed no file.
 function snapshotTree(dir) {
   const map = new Map();
-  for (const f of walkFiles(dir).sort()) {
-    const rel = relative(dir, f).split(sep).join('/');
-    if (rel === '.git' || rel.startsWith('.git/')) continue;
-    map.set(rel, sha256(readFileSync(f)));
-  }
+  const visit = (rel = '') => {
+    for (const name of readdirSync(join(dir, rel)).sort()) {
+      const child = rel ? `${rel}/${name}` : name;
+      if (child === '.git') continue;
+      const path = join(dir, child), st = lstatSync(path);
+      if (st.isSymbolicLink()) map.set(child, `link:${readlinkSync(path)}`);
+      else if (st.isDirectory()) {
+        map.set(child, `directory:${st.mode}`);
+        visit(child);
+      } else map.set(child, `file:${st.mode}:${sha256(readFileSync(path))}`);
+    }
+  };
+  visit();
   return map;
 }
 
@@ -461,21 +471,37 @@ export const cases = [
     title: 'audit migrates a mixed glossary to the canonical Term | Definition table',
     run: async (ctx) => {
       const dir = await makeFixture(ctx, 'audit-glossary', join(evalsDir, 'fixtures/glossary-mixed'));
+      const before = readFileSync(join(dir, 'GLOSSARY.md'), 'utf8');
+      if (before !== GLOSSARY_MIXED_BEFORE) {
+        return { status: 'fail', cause: 'glossary source fixture differs from the reviewed before/after contract' };
+      }
+      const beforeTree = snapshotTree(dir);
+      // No session/resume API is required: the later authorised turn carries
+      // the exact diff again. First prove that an unapproved review is read-only.
+      const proposal = await hostTurn(ctx, { cwd: dir, readOnly: true, prompt:
+        'Use the docflow audit skill to review this concrete proposed glossary migration. ' +
+        'No migration or other edit is authorised yet. Report the proposal for approval and stop without writing.\n\n' +
+        GLOSSARY_MIXED_APPROVED_DIFF });
+      const proposalJudge = judge(() => {
+        if (proposal.exit !== 0) throw new Error('unapproved glossary review did not complete');
+        const changed = diffTree(beforeTree, snapshotTree(dir));
+        if (changed.length) throw new Error(`unapproved glossary review changed: ${changed.slice(0, 3).join(', ')}`);
+      }, proposal);
+      if (proposalJudge.status !== 'pass') return proposalJudge;
       const r = await hostTurn(ctx, { cwd: dir, readOnly: false, prompt:
-        'Use the docflow audit skill to audit this repository. Its GLOSSARY.md uses a mixed, non-canonical shape. ' +
-        'Show the concrete proposed diff, then — with operator consent recorded as approved — apply the lossless migration ' +
-        'to the canonical Term | Definition table. Preserve every term verbatim, the escaped pipe, the member-index link, ' +
-        'the introductory prose and the #delivery heading anchor that AGENTS.md links to. Do not reword a definition or ' +
-        'reorder entries. Commit it, then stop. ' +
-        'Operator consent: approved as displayed.' });
+        'Use the docflow audit skill to apply only the following exact approved diff to GLOSSARY.md. ' +
+        'Operator authorisation: I approve this concrete diff, including relocation of the member-index prose ' +
+        'into the introduction and preservation of the delivery anchor. All other files must stay unchanged. ' +
+        'Preserve the exact complete result shown here, commit it, then stop.\n\n' +
+        GLOSSARY_MIXED_APPROVED_DIFF });
       return judge(() => {
+        if (r.exit !== 0) throw new Error('approved glossary migration did not complete');
         assertCanonicalGlossary(dir);
-        // Complete, ordered comparison against the explicit expected mapping:
-        // a definition rewrite, deletion, reordering or duplicate fails, and
-        // every heading anchor the original file exposed must still resolve.
         const after = readFileSync(join(dir, 'GLOSSARY.md'), 'utf8');
-        assertGlossaryAnchorsPreserved(readFileSync(join(evalsDir, 'fixtures/glossary-mixed/GLOSSARY.md'), 'utf8'), after);
+        assertGlossaryAnchorsPreserved(before, after);
         assertGlossaryLossless(after, GLOSSARY_MIXED_EXPECTED);
+        const unrelated = diffTree(beforeTree, snapshotTree(dir)).filter((path) => path !== 'GLOSSARY.md');
+        if (unrelated.length) throw new Error(`approved glossary migration changed unrelated paths: ${unrelated.slice(0, 3).join(', ')}`);
       }, r);
     },
   }),
@@ -491,6 +517,7 @@ export const cases = [
         'The operator declines that migration. Apply nothing: keep GLOSSARY.md byte for byte as it is and add no ' +
         'alternative shape. Report the declined offer, then stop.' });
       return judge(() => {
+        if (r.exit !== 0) throw new Error('declined glossary review did not complete');
         const afterGlossary = readFileSync(join(dir, 'GLOSSARY.md'), 'utf8');
         if (afterGlossary !== beforeGlossary) throw new Error('declined migration rewrote GLOSSARY.md');
         const changed = diffTree(beforeTree, snapshotTree(dir));
@@ -509,13 +536,11 @@ export const cases = [
       const first = await hostTurn(ctx, { cwd: dir, readOnly: false, prompt:
         'Use the docflow add-convention skill to add the shared term \'Delivery\' defined as ' +
         '\'A native repository contribution.\' There is no GLOSSARY.md yet: create the first canonical ' +
-        'Term | Definition row. Do not record or edit any CONVENTIONS.md rule. Stop after that.' });
+        'Term | Definition row. Do not record or edit any CONVENTIONS.md rule. ' +
+        'Use this exact complete GLOSSARY.md content and stop:\n\n' + GLOSSARY_FIRST_EXPECTED.artifact });
       const firstJudge = judge(() => {
-        const shape = classifyGlossary(readFileSync(join(dir, 'GLOSSARY.md'), 'utf8'));
-        if (!shape.canonical) throw new Error('first-term glossary not canonical: ' + shape.issues.join(', '));
-        if (shape.entries.length !== 1 || shape.entries[0].term !== 'Delivery') {
-          throw new Error('first term not created exactly');
-        }
+        if (first.exit !== 0) throw new Error('first-term creation did not complete');
+        assertGlossaryLossless(readFileSync(join(dir, 'GLOSSARY.md'), 'utf8'), GLOSSARY_FIRST_EXPECTED);
         if (readFileSync(join(dir, 'CONVENTIONS.md'), 'utf8') !== conventionsBefore) {
           throw new Error('declined rule edit still changed CONVENTIONS.md');
         }
@@ -525,16 +550,16 @@ export const cases = [
       const second = await hostTurn(ctx, { cwd: dir, readOnly: false, prompt:
         'Use the docflow add-convention skill to append the shared term \'Federation\' defined as ' +
         '\'A multi-repo product.\' to the existing canonical GLOSSARY.md. Preserve every existing row ' +
-        'and the single table. Stop after that.' });
+        'and the single table. Do not record or edit any CONVENTIONS.md rule. ' +
+        'Use this exact complete GLOSSARY.md content and stop:\n\n' + GLOSSARY_APPEND_EXPECTED.artifact });
       return judge(() => {
         const after = readFileSync(join(dir, 'GLOSSARY.md'), 'utf8');
-        const shape = classifyGlossary(after);
-        if (!shape.canonical) throw new Error('appended glossary not canonical: ' + shape.issues.join(', '));
-        if (shape.tables !== 1) throw new Error('append added a second table');
-        if (shape.entries.map((e) => e.term).join(',') !== 'Delivery,Federation') {
-          throw new Error('append changed order or entries');
-        }
+        if (second.exit !== 0) throw new Error('glossary append did not complete');
+        assertGlossaryLossless(after, GLOSSARY_APPEND_EXPECTED);
         if (!after.startsWith(beforeAppend)) throw new Error('append rewrote existing rows');
+        if (readFileSync(join(dir, 'CONVENTIONS.md'), 'utf8') !== conventionsBefore) {
+          throw new Error('append changed CONVENTIONS.md without consent');
+        }
       }, second);
     },
   }),

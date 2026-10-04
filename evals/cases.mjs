@@ -284,6 +284,12 @@ export const cases = [
       assert.doesNotThrow(() => assertGlossaryAnchorsPreserved(h1Linked, h1Migrated));
       assert.throws(() => assertGlossaryAnchorsPreserved(h1Linked, h1Migrated.replace('<a id="federation"></a>', '')));
 
+      const noTitle = readFileSync(join(dir, 'headings-h1-no-title.md'), 'utf8');
+      assert.deepEqual(glossaryHeadingAnchors(noTitle), ['delivery', 'federation']);
+      assert.doesNotThrow(() => assertGlossaryAnchorsPreserved(noTitle, h1Migrated));
+      assert.throws(() => assertGlossaryAnchorsPreserved(noTitle,
+        h1Migrated.replace('<a id="delivery"></a>', '')), /delivery/);
+
       // The declared rule is a separate axis from the file shape: an older
       // glossary rule is not adoption of the canonical table.
       const canonicalRule = readFileSync(join(repoRoot, 'plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md'), 'utf8');
@@ -299,17 +305,20 @@ export const cases = [
 
       // An ordered, complete lossless comparison: a rewrite, deletion or
       // reordering is rejected while the unchanged migration passes.
-      const expected2 = { prose: ['Shared terms'], entries: [
+      const expected2 = { entries: [
         { term: 'Delivery', definition: 'One.' },
         { term: 'Federation', definition: 'Two.' },
       ] };
       const good2 = '# Glossary\n\nShared terms.\n\n| Term | Definition |\n|------|------------|\n' +
         '| Delivery | One. |\n| Federation | Two. |\n';
+      expected2.artifact = good2;
       assert.doesNotThrow(() => assertGlossaryLossless(good2, expected2));
       assert.throws(() => assertGlossaryLossless(good2.replace('| Delivery | One. |\n| Federation | Two. |',
         '| Federation | Two. |\n| Delivery | One. |'), expected2), 'reordering fails');
       assert.throws(() => assertGlossaryLossless(good2.replace('| Federation | Two. |\n', ''), expected2), 'deletion fails');
       assert.throws(() => assertGlossaryLossless(good2.replace('One.', 'A rewrite.'), expected2), 'rewrite fails');
+      assert.throws(() => assertGlossaryLossless(good2.replace('Shared terms.', 'Shared.'), expected2), /artifact/);
+      assert.throws(() => assertGlossaryLossless(good2.replace('Shared terms.', '<!-- Shared terms. -->'), expected2), /artifact/);
     },
   },
 ];
