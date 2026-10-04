@@ -46,6 +46,14 @@ an untouched target complete merely because a scratch mirror passed.
   coordination files an earlier scaffold wrote keeps them: leave them in
   place here and let the audit skill report the layout.
 
+  **Enabling `GLOSSARY.md` writes the canonical shell, never a rewrite.**
+  When the layer is chosen and the file is absent, write it from
+  `templates/GLOSSARY.md` — the optional heading and prose, then the one
+  `Term | Definition` table recorded in the generated `CONVENTIONS.md`
+  §Glossary. If the file already exists, leave it untouched: enabling the
+  layer adds nothing, and `add-convention` extends the existing file in the
+  canonical shape or `audit` offers a consented migration.
+
   **Enabling the second ADR shape is a scheme switch, not a file copy.**
   It is the one deferred layer that changes a choice already recorded, so
   write all of it in one pass or none of it: replace §ADR Shapes in
@@ -417,8 +425,11 @@ default (the operator may decline it — see Step 5 item 5b).
      the project has distinct areas (e.g. auth, billing, search) or you
      expect the catalogue to grow past ~20 ADRs**; defer for a small,
      single-area repo. Cheap to add later.
-   - **`GLOSSARY.md`** — shared term definitions. *Defer; add on
-     terminology drift.*
+   - **`GLOSSARY.md`** — shared term definitions, in the canonical
+     structure recorded in the generated `CONVENTIONS.md` §Glossary (an
+     optional heading and prose, then one `Term | Definition` table).
+     *Defer; add on terminology drift.* The layer is opt-in and its
+     absence stays valid.
    - **technology-ADR template** (`adr/0000-template-technology.md`, the
      second ADR shape) — *defer unless technology decisions split from
      product decisions.* Enabling it is the same choice as Q2's second
@@ -634,6 +645,11 @@ Keep the pointer in sync if a later re-run migrates the root.
    a missing reference or unconfirmed merge remains explicitly unverified.
 6. `plan/README.md` — from `templates/plan-README.md`. Create empty
    `plan/todo/.gitkeep` and `plan/done/.gitkeep`.
+6b. `GLOSSARY.md` — from `templates/GLOSSARY.md`, only if Q7 enabled the
+   shared-terms layer. Write the canonical shell (optional heading and
+   prose, then one `Term | Definition` table) and the matching §Glossary
+   section in `CONVENTIONS.md`. Never overwrite an existing `GLOSSARY.md`:
+   leave it for `add-convention` or `audit` to extend or offer a migration.
 7. **`_agent/` — write exactly what Q5, Q8 and Q4a prescribe, and
    nothing else.** The run prompt is written only when the repo is
    **eligible** for it: Q8 recorded a real verify gate **and** Q4a kept

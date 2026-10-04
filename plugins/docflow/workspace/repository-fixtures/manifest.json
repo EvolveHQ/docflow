@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "format": "docflow-repository-producer-fixtures-1",
-  "producer_revision": "c57f91738158ce5db719f80412ff7e77b837bf60",
+  "producer_revision": "08b360f844b14ae6776d54b0b310503f0786f479",
   "evidence_scope": "Exact template rendering plus retained legacy producer files; plan bodies follow authoring rules. Synthetic authority, SHA and PR examples are not execution/integration evidence.",
   "sources": {
     "evals/fixtures/legacy-range/AGENTS.md": {
@@ -62,7 +62,10 @@
       "sha256": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49"
     },
     "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md": {
-      "sha256": "2a15da40de46a45aa9111d261f308987c130efe065deed3a155edfbe41f82b70"
+      "sha256": "d5b8695615da19d6729eef16845f142ab3b1918f132ef38aa1283e34d5370154"
+    },
+    "plugins/docflow/skills/bootstrap/templates/GLOSSARY.md": {
+      "sha256": "eaf1039288301f733687d350b98cd4d910e7719cffd01f7363c5d2f3a58b9466"
     },
     "plugins/docflow/skills/bootstrap/templates/_agent-LOCKS.md": {
       "sha256": "d489163b3d809f583ed4f400d5f16d5edead61bbc6f3934e1fee85b6e49f26eb"
@@ -92,7 +95,7 @@
       "sha256": "d6fb25d7b7ac6da6f4ff3f3e074ce6e8025d0733551a5a171cf7768022a4f6d8"
     },
     "plugins/docflow/skills/bootstrap/SKILL.md": {
-      "sha256": "5a4551e47a5bb635098a1891fc3dadce61add75e8b94b210c7e9a5be0e07287f"
+      "sha256": "35ca8f9609e167d03a80ffd529815718436c908dcc153b66f21709b2a340de78"
     },
     "plugins/docflow/skills/new-plan/SKILL.md": {
       "sha256": "8a2690887cf3f5068c0a24184b4f4fee0c84ddd7021880c0b4e21b22231a64e6"
@@ -101,13 +104,13 @@
       "sha256": "b929994d4bf1549db452a0b2e08349a9981e1a13fa5060d9422abde8b128114f"
     },
     "plugins/docflow/skills/add-convention/SKILL.md": {
-      "sha256": "9f27f42a0070ff43f1d924ed46e6097183dd1c890841a25e62a25e9cfdc1dde4"
+      "sha256": "12f1132859f22b35881d1601c95750214579224afb8ebbf28410f4f33650cac0"
     },
     "plugins/docflow/skills/new-adr/SKILL.md": {
       "sha256": "3b8ac8e05f48e599f07b3e590776841736f82f61d00e994ae0ef3a48f2f9f005"
     },
     "scripts/produce-repository-fixtures.mjs": {
-      "sha256": "5bcd1cdd2aaa03088ff17b0c06f72a3a93f32bc29070844291e3f8c4c21b6944"
+      "sha256": "785e5e8f2f8d022a5a6b3dd1bc5b8d2a62b11c0607471cdbc9de51ed53fce9fb"
     }
   },
   "cases": [
@@ -355,7 +358,7 @@
   ],
   "files": {
     "cases/default-root/.docflow/CONVENTIONS.md": {
-      "sha256": "e14bf4543ff15a6aa76d75482ce4c799f8cace6cd8d9d6313cf43d0a9cebc12f",
+      "sha256": "e8340acc0c2b87362dc5fd6357c0d2711e15cb5e873162e4d82d5a33fc28c5bf",
       "origins": [
         "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md"
       ],
@@ -405,7 +408,7 @@
       "rendering": "Exact pointer form; root choice = ."
     },
     "cases/root-pointer/CONVENTIONS.md": {
-      "sha256": "70e8696b6cb91f88109de9681aa7cdaed9db558a664409cb18d7b785ac88ac27",
+      "sha256": "0261ce520536ee2d94efff750efaf295075e8431780844b8f8d0e054f11ba824",
       "origins": [
         "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md"
       ],
@@ -455,7 +458,7 @@
       "rendering": "Exact pointer form; root choice = docs"
     },
     "cases/docs-pointer/docs/CONVENTIONS.md": {
-      "sha256": "bc8a32e4cdb79940a74d92add226baca37e5ebfda9cdf231f2dedf72a5afe71c",
+      "sha256": "20dda91491427a44c1968fa5c263d5e3f551cbadcd2e3022a3b94c61c2c2579f",
       "origins": [
         "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md"
       ],
@@ -505,7 +508,7 @@
       "rendering": "Exact pointer form; root choice = governance/decisions/current"
     },
     "cases/nested-pointer/governance/decisions/current/CONVENTIONS.md": {
-      "sha256": "0d484a60299d6976d833b63c621404088eccb80c138539d852536ba1037a0fa6",
+      "sha256": "9d5f93f4a320b3e441d1f281c5e79621d62229453f7eda09ef13c64d3757efc2",
       "origins": [
         "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md"
       ],
@@ -548,7 +551,7 @@
       "rendering": "Derive INDEX rows from the rendered metadata; bootstrap output rule, not a host-run receipt."
     },
     "cases/legacy-no-manifest/CONVENTIONS.md": {
-      "sha256": "70e8696b6cb91f88109de9681aa7cdaed9db558a664409cb18d7b785ac88ac27",
+      "sha256": "0261ce520536ee2d94efff750efaf295075e8431780844b8f8d0e054f11ba824",
       "origins": [
         "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md"
       ],
@@ -719,11 +722,12 @@
       "rendering": "Exact portable run prompt copy; no run invoked."
     },
     "cases/optional-layers/.docflow/GLOSSARY.md": {
-      "sha256": "f7354c08c22c6bf9e35527c7f2347f9d4ae75bc37ad4abf4e13531f51d11aa1a",
+      "sha256": "687979d5886c77ed9ee0495788accd00f2142148238564c26c8c1c32f9f7c5e6",
       "origins": [
+        "plugins/docflow/skills/bootstrap/templates/GLOSSARY.md",
         "plugins/docflow/skills/add-convention/SKILL.md"
       ],
-      "rendering": "Author a synthetic shared term under the documented glossary rule."
+      "rendering": "Render the canonical glossary template and append one synthetic shared term under the documented rule."
     },
     "cases/optional-layers/.docflow/domains/platform/README.md": {
       "sha256": "1656c1f56768019b4b10d450e2a7c274de982c3de3f42eaa759a970bdfadc418",
@@ -740,7 +744,7 @@
       "rendering": "Exact pointer form; root choice = ."
     },
     "cases/status-claimed/CONVENTIONS.md": {
-      "sha256": "4cdbdae9957d132bd95b227a9e07635d4133b7623535bd2cf82be94bc1cadb2d",
+      "sha256": "91ffb112e04c1491fea9cde148ea78c33b28c4cf20bd45243606ce6097830828",
       "origins": [
         "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md"
       ],
@@ -806,7 +810,7 @@
       "rendering": "Exact pointer form; root choice = ."
     },
     "cases/status-blocked/CONVENTIONS.md": {
-      "sha256": "4cdbdae9957d132bd95b227a9e07635d4133b7623535bd2cf82be94bc1cadb2d",
+      "sha256": "91ffb112e04c1491fea9cde148ea78c33b28c4cf20bd45243606ce6097830828",
       "origins": [
         "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md"
       ],
@@ -872,7 +876,7 @@
       "rendering": "Exact pointer form; root choice = ."
     },
     "cases/status-stopped/CONVENTIONS.md": {
-      "sha256": "4cdbdae9957d132bd95b227a9e07635d4133b7623535bd2cf82be94bc1cadb2d",
+      "sha256": "91ffb112e04c1491fea9cde148ea78c33b28c4cf20bd45243606ce6097830828",
       "origins": [
         "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md"
       ],
@@ -938,7 +942,7 @@
       "rendering": "Exact pointer form; root choice = ."
     },
     "cases/status-resumed/CONVENTIONS.md": {
-      "sha256": "4cdbdae9957d132bd95b227a9e07635d4133b7623535bd2cf82be94bc1cadb2d",
+      "sha256": "91ffb112e04c1491fea9cde148ea78c33b28c4cf20bd45243606ce6097830828",
       "origins": [
         "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md"
       ],
@@ -1004,7 +1008,7 @@
       "rendering": "Exact pointer form; root choice = ."
     },
     "cases/completion-prepared/CONVENTIONS.md": {
-      "sha256": "4cdbdae9957d132bd95b227a9e07635d4133b7623535bd2cf82be94bc1cadb2d",
+      "sha256": "91ffb112e04c1491fea9cde148ea78c33b28c4cf20bd45243606ce6097830828",
       "origins": [
         "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md"
       ],
@@ -1070,7 +1074,7 @@
       "rendering": "Exact pointer form; root choice = ."
     },
     "cases/completion-integrated/CONVENTIONS.md": {
-      "sha256": "4cdbdae9957d132bd95b227a9e07635d4133b7623535bd2cf82be94bc1cadb2d",
+      "sha256": "91ffb112e04c1491fea9cde148ea78c33b28c4cf20bd45243606ce6097830828",
       "origins": [
         "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md"
       ],
@@ -1269,7 +1273,7 @@
       "rendering": "Exact pointer form; root choice = ."
     },
     "cases/federation-home/CONVENTIONS.md": {
-      "sha256": "70e8696b6cb91f88109de9681aa7cdaed9db558a664409cb18d7b785ac88ac27",
+      "sha256": "0261ce520536ee2d94efff750efaf295075e8431780844b8f8d0e054f11ba824",
       "origins": [
         "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md"
       ],
@@ -1333,7 +1337,7 @@
       "rendering": "Exact pointer form; root choice = docs"
     },
     "cases/federation-member/docs/CONVENTIONS.md": {
-      "sha256": "bc8a32e4cdb79940a74d92add226baca37e5ebfda9cdf231f2dedf72a5afe71c",
+      "sha256": "20dda91491427a44c1968fa5c263d5e3f551cbadcd2e3022a3b94c61c2c2579f",
       "origins": [
         "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md"
       ],
@@ -1390,7 +1394,7 @@
       "rendering": "Exact pointer form; root choice = . Adverse mutation: invalid-pointer"
     },
     "cases/invalid-pointer/CONVENTIONS.md": {
-      "sha256": "70e8696b6cb91f88109de9681aa7cdaed9db558a664409cb18d7b785ac88ac27",
+      "sha256": "0261ce520536ee2d94efff750efaf295075e8431780844b8f8d0e054f11ba824",
       "origins": [
         "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md"
       ],
@@ -1440,7 +1444,7 @@
       "rendering": "Exact pointer form; root choice = . Adverse mutation: invalid-pointer"
     },
     "cases/invalid-pointer-syntax/CONVENTIONS.md": {
-      "sha256": "70e8696b6cb91f88109de9681aa7cdaed9db558a664409cb18d7b785ac88ac27",
+      "sha256": "0261ce520536ee2d94efff750efaf295075e8431780844b8f8d0e054f11ba824",
       "origins": [
         "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md"
       ],
@@ -1490,7 +1494,7 @@
       "rendering": "Exact pointer form; root choice = . Adverse mutation: root-disagreement"
     },
     "cases/disagreeing-pointer/CONVENTIONS.md": {
-      "sha256": "b80dad238246373713ad96277123cfec186c6f3e1edd01de094f5cef10d6aac7",
+      "sha256": "070af44624ef934b9ed1bbd11d25512bdcc280d4fe2a524c2f531e67dc0e5b69",
       "origins": [
         "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md"
       ],
@@ -1540,7 +1544,7 @@
       "rendering": "Exact pointer form; root choice = ."
     },
     "cases/duplicate-number/CONVENTIONS.md": {
-      "sha256": "70e8696b6cb91f88109de9681aa7cdaed9db558a664409cb18d7b785ac88ac27",
+      "sha256": "0261ce520536ee2d94efff750efaf295075e8431780844b8f8d0e054f11ba824",
       "origins": [
         "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md"
       ],
@@ -1597,7 +1601,7 @@
       "rendering": "Exact pointer form; root choice = ."
     },
     "cases/unknown-status/CONVENTIONS.md": {
-      "sha256": "70e8696b6cb91f88109de9681aa7cdaed9db558a664409cb18d7b785ac88ac27",
+      "sha256": "0261ce520536ee2d94efff750efaf295075e8431780844b8f8d0e054f11ba824",
       "origins": [
         "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md"
       ],
@@ -1647,7 +1651,7 @@
       "rendering": "Exact pointer form; root choice = ."
     },
     "cases/unknown-shape/CONVENTIONS.md": {
-      "sha256": "70e8696b6cb91f88109de9681aa7cdaed9db558a664409cb18d7b785ac88ac27",
+      "sha256": "0261ce520536ee2d94efff750efaf295075e8431780844b8f8d0e054f11ba824",
       "origins": [
         "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md"
       ],
