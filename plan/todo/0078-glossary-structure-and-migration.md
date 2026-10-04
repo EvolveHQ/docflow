@@ -8,7 +8,7 @@ format choice; no new ADR is required.
 
 ## Status
 
-- Claimed by: fix/glossary-structure (sole Docflow writer, 2026-10-04)
+- Claimed by: Codex bounded FB026 repair, fix/glossary-structure (sole Docflow writer, 2026-10-04)
 - Blockers:
 - Stopped:
 
@@ -52,6 +52,14 @@ reordering, H1 term headings dropped from the anchor obligation, and
 consent/decline preservation not exercised. This repair closes all six
 with focused positive/negative controls; the scope and exit criteria
 above stand unchanged.
+
+The independent recheck at signed `b182f970831166b505af0acc563406d87170e688`
+found four remaining P2 oracle gaps. This bounded local-only continuation
+repairs concrete migration authorisation, complete prose preservation,
+no-title first-H1 anchors, and exact first/append definitions with unchanged
+conventions on both turns. Add independent adverse controls and inspect
+adjacent bypasses. Keep generator/fixture consistency separate; no paid
+hosts, installed-skill or real-repository edits, push, PR or integration.
 
 ## Dependencies and queue position
 
