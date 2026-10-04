@@ -19,11 +19,23 @@ export function renderRepositoryFixtures(sources, revision) {
   }
   const uncomment = s => s.replace(/<!--[\s\S]*?-->/g, '').replace(/\n{3,}/g, '\n\n');
   const section = (s, heading) => s.match(new RegExp('^## ' + heading + '\\n([\\s\\S]*?)(?=^## |$(?![\\s\\S]))', 'm'))?.[0] || '';
-  function conventions(root, two, queue) {
+  const GLOSSARY_MARK = '<!-- If GLOSSARY.md is enabled (Q7):';
+  function conventions(root, two, queue, glossary) {
     let s = source(tpl + 'CONVENTIONS.md');
     if (two) {
       const twoBlock = s.match(/<!-- Two shapes \(Q2\): -->\n<!--\n([\s\S]*?)\n-->/)[1];
-      s = s.replace(/<!-- Single shape \(Q2\): -->[\s\S]*?<!-- Q10/, twoBlock + '\n\n<!-- Q10');
+      // Narrow boundary: replace only the ADR-shape block. The optional
+      // §Glossary section must be governed by the glossary choice, not by
+      // the shape choice, or a two-shape repo silently loses the rule.
+      s = s.replace(/<!-- Single shape \(Q2\): -->[\s\S]*?(?=<!-- If GLOSSARY\.md is enabled)/,
+        twoBlock + '\n\n');
+    }
+    if (glossary) {
+      s = s.replace(/<!-- If GLOSSARY\.md is enabled \(Q7\):[\s\S]*?-->\n\n/, '');
+    } else {
+      const start = s.indexOf(GLOSSARY_MARK);
+      const end = s.indexOf('<!-- Q10');
+      if (start !== -1 && end > start) s = s.slice(0, start) + s.slice(end);
     }
     const pr = s.match(/PR-based:\n([\s\S]*?)\n-->/)[1];
     s = uncomment(s).replace('<name>', 'synthetic-producer')
@@ -53,12 +65,13 @@ export function renderRepositoryFixtures(sources, revision) {
       .replace(/^3\. \.\.\.$/m, '3. The fixture remains readable without migration.');
     return s;
   }
-  function base(id, root = '.docflow', { two = false, queue = false, pointer = true } = {}) {
+  function base(id, root = '.docflow', { two = false, queue = false, pointer = true, glossary = false } = {}) {
     const rel = p => root === '.' ? p : root + '/' + p;
     if (root !== '.docflow' && pointer) emit(id, '.docflow', 'root: ' + root + '\n',
       ['plugins/docflow/skills/bootstrap/SKILL.md'], 'Exact pointer form; root choice = ' + root);
-    emit(id, rel('CONVENTIONS.md'), conventions(root, two, queue), [tpl + 'CONVENTIONS.md'],
-      'Select single-writer, PR integration, ' + (two ? 'two shapes' : 'single shape') + ', queue=' + queue + '; fill supplied fixture choices.');
+    emit(id, rel('CONVENTIONS.md'), conventions(root, two, queue, glossary), [tpl + 'CONVENTIONS.md'],
+      'Select single-writer, PR integration, ' + (two ? 'two shapes' : 'single shape') + ', queue=' + queue +
+      ', glossary=' + glossary + '; fill supplied fixture choices.');
     let agents = '# AGENTS.md\n\n' + section(uncomment(source(tpl + 'AGENTS.md')), 'What this repository is') +
       section(uncomment(source(tpl + 'AGENTS.md')), 'Picking up this repo');
     agents = agents.replace(/<One paragraph\.[\s\S]*?>/g, 'Synthetic repository for producer compatibility');
@@ -88,7 +101,7 @@ export function renderRepositoryFixtures(sources, revision) {
       ['plugins/docflow/skills/bootstrap/SKILL.md', tpl + 'adr-capability.md'],
       'Derive INDEX rows from the rendered metadata; bootstrap output rule, not a host-run receipt.');
     if (queue) emit(id, rel('plan/README.md'), source(tpl + 'plan-README.md'), [tpl + 'plan-README.md'], 'Exact template copy.');
-    cases.push({ id, root, encoding: two ? 'explicit-two-shape' : 'single-shape', queue, expected_diagnostics: [],
+    cases.push({ id, root, encoding: two ? 'explicit-two-shape' : 'single-shape', queue, glossary, expected_diagnostics: [],
       native_integration: 'unverified', evidence_kind: 'deterministic template rendering' });
     return rel;
   }
@@ -109,7 +122,7 @@ export function renderRepositoryFixtures(sources, revision) {
   base('nested-pointer', 'governance/decisions/current');
   base('legacy-no-manifest', '.', { pointer: false });
   base('explicit-two-shape', '.docflow', { two: true });
-  const optional = base('optional-layers', '.docflow', { two: true, queue: true });
+  const optional = base('optional-layers', '.docflow', { two: true, queue: true, glossary: true });
   emit('optional-layers', optional('_agent/prompts/autonomous.md'), source(tpl + '_agent-prompts-autonomous.md'),
     [tpl + '_agent-prompts-autonomous.md'], 'Exact portable run prompt copy; no run invoked.');
   emit('optional-layers', optional('GLOSSARY.md'),
