@@ -77,6 +77,16 @@ for (const c of manifest.cases) test('native producer semantics: '+c.id, () => {
   assert.deepEqual([...new Set(result.diagnostics)].sort(),c.expected_diagnostics.sort());
   if (!c.expected_diagnostics.includes('invalid-pointer')) assert.equal(result.root,c.root);
   if (c.encoding === 'explicit-two-shape') assert.deepEqual(result.records.map(r=>r.shape).sort(),['capability','technology']);
+  if (result.root) {
+    const conventionsPath = c.root === '.' ? 'CONVENTIONS.md' : c.root + '/CONVENTIONS.md';
+    if (existsSync(join(root, conventionsPath))) {
+      const hasRule = /^## Glossary$/m.test(read(join(root, conventionsPath)));
+      assert.equal(hasRule, Boolean(c.glossary), `${c.id}: §Glossary rule presence must match the selected layer`);
+    }
+    if (c.glossary) {
+      assert.ok(existsSync(join(root, c.root === '.' ? 'GLOSSARY.md' : c.root + '/GLOSSARY.md')), `${c.id}: glossary file`);
+    }
+  }
   if (c.id === 'default-root') assert.equal(existsSync(join(root,'.docflow/plan')),false);
   if (c.id === 'optional-layers') {
     for (const path of ['plan/README.md','_agent/prompts/autonomous.md','GLOSSARY.md','domains/platform/README.md']) assert.ok(existsSync(join(root,'.docflow',path)));

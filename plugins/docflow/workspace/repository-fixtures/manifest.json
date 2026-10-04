@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "format": "docflow-repository-producer-fixtures-1",
-  "producer_revision": "201469547b4d2607123bc59878c3749623f4a578",
+  "producer_revision": "0d232202d1ece04f857a04095fe1bbb38387ae59",
   "evidence_scope": "Exact template rendering plus retained legacy producer files; plan bodies follow authoring rules. Synthetic authority, SHA and PR examples are not execution/integration evidence.",
   "sources": {
     "evals/fixtures/legacy-range/AGENTS.md": {
@@ -104,13 +104,13 @@
       "sha256": "b929994d4bf1549db452a0b2e08349a9981e1a13fa5060d9422abde8b128114f"
     },
     "plugins/docflow/skills/add-convention/SKILL.md": {
-      "sha256": "1a2016bf989d6fa7bca7c1d304ae1a8ce246212f5079f56b2ff09e5f9df9c184"
+      "sha256": "badc78678c4bfa91adad5c8ca82814c691bbd6388ee9096d216bbdd82e91eb24"
     },
     "plugins/docflow/skills/new-adr/SKILL.md": {
       "sha256": "3b8ac8e05f48e599f07b3e590776841736f82f61d00e994ae0ef3a48f2f9f005"
     },
     "scripts/produce-repository-fixtures.mjs": {
-      "sha256": "785e5e8f2f8d022a5a6b3dd1bc5b8d2a62b11c0607471cdbc9de51ed53fce9fb"
+      "sha256": "971ae16abb7be172281d98b10c32fdb0cd34afef3f0cdac4912df825005a5f7e"
     }
   },
   "cases": [
@@ -119,6 +119,7 @@
       "root": ".docflow",
       "encoding": "single-shape",
       "queue": false,
+      "glossary": false,
       "expected_diagnostics": [],
       "native_integration": "unverified",
       "evidence_kind": "deterministic template rendering"
@@ -128,6 +129,7 @@
       "root": ".",
       "encoding": "single-shape",
       "queue": false,
+      "glossary": false,
       "expected_diagnostics": [],
       "native_integration": "unverified",
       "evidence_kind": "deterministic template rendering"
@@ -137,6 +139,7 @@
       "root": "docs",
       "encoding": "single-shape",
       "queue": false,
+      "glossary": false,
       "expected_diagnostics": [],
       "native_integration": "unverified",
       "evidence_kind": "deterministic template rendering"
@@ -146,6 +149,7 @@
       "root": "governance/decisions/current",
       "encoding": "single-shape",
       "queue": false,
+      "glossary": false,
       "expected_diagnostics": [],
       "native_integration": "unverified",
       "evidence_kind": "deterministic template rendering"
@@ -155,6 +159,7 @@
       "root": ".",
       "encoding": "single-shape",
       "queue": false,
+      "glossary": false,
       "expected_diagnostics": [],
       "native_integration": "unverified",
       "evidence_kind": "deterministic template rendering"
@@ -164,6 +169,7 @@
       "root": ".docflow",
       "encoding": "explicit-two-shape",
       "queue": false,
+      "glossary": false,
       "expected_diagnostics": [],
       "native_integration": "unverified",
       "evidence_kind": "deterministic template rendering"
@@ -173,6 +179,7 @@
       "root": ".docflow",
       "encoding": "explicit-two-shape",
       "queue": true,
+      "glossary": true,
       "expected_diagnostics": [],
       "native_integration": "unverified",
       "evidence_kind": "deterministic template rendering"
@@ -182,6 +189,7 @@
       "root": ".",
       "encoding": "single-shape",
       "queue": true,
+      "glossary": false,
       "expected_diagnostics": [],
       "native_integration": "unverified",
       "evidence_kind": "deterministic template rendering",
@@ -196,6 +204,7 @@
       "root": ".",
       "encoding": "single-shape",
       "queue": true,
+      "glossary": false,
       "expected_diagnostics": [],
       "native_integration": "unverified",
       "evidence_kind": "deterministic template rendering",
@@ -210,6 +219,7 @@
       "root": ".",
       "encoding": "single-shape",
       "queue": true,
+      "glossary": false,
       "expected_diagnostics": [],
       "native_integration": "unverified",
       "evidence_kind": "deterministic template rendering",
@@ -224,6 +234,7 @@
       "root": ".",
       "encoding": "single-shape",
       "queue": true,
+      "glossary": false,
       "expected_diagnostics": [],
       "native_integration": "unverified",
       "evidence_kind": "deterministic template rendering",
@@ -238,6 +249,7 @@
       "root": ".",
       "encoding": "single-shape",
       "queue": true,
+      "glossary": false,
       "expected_diagnostics": [],
       "native_integration": "unverified without accompanying Git history",
       "evidence_kind": "deterministic template rendering",
@@ -249,6 +261,7 @@
       "root": ".",
       "encoding": "single-shape",
       "queue": true,
+      "glossary": false,
       "expected_diagnostics": [],
       "native_integration": "unverified without accompanying Git history",
       "evidence_kind": "deterministic template rendering",
@@ -274,6 +287,7 @@
       "root": ".",
       "encoding": "single-shape",
       "queue": false,
+      "glossary": false,
       "expected_diagnostics": [],
       "native_integration": "unverified",
       "evidence_kind": "deterministic template rendering",
@@ -284,6 +298,7 @@
       "root": "docs",
       "encoding": "single-shape",
       "queue": false,
+      "glossary": false,
       "expected_diagnostics": [],
       "native_integration": "unverified",
       "evidence_kind": "deterministic template rendering",
@@ -294,6 +309,7 @@
       "root": ".",
       "encoding": "single-shape",
       "queue": false,
+      "glossary": false,
       "expected_diagnostics": [
         "invalid-pointer"
       ],
@@ -305,6 +321,7 @@
       "root": ".",
       "encoding": "single-shape",
       "queue": false,
+      "glossary": false,
       "expected_diagnostics": [
         "invalid-pointer"
       ],
@@ -316,6 +333,7 @@
       "root": ".",
       "encoding": "single-shape",
       "queue": false,
+      "glossary": false,
       "expected_diagnostics": [
         "root-disagreement"
       ],
@@ -327,6 +345,7 @@
       "root": ".",
       "encoding": "single-shape",
       "queue": false,
+      "glossary": false,
       "expected_diagnostics": [
         "duplicate-number"
       ],
@@ -338,6 +357,7 @@
       "root": ".",
       "encoding": "single-shape",
       "queue": false,
+      "glossary": false,
       "expected_diagnostics": [
         "unknown-status"
       ],
@@ -349,6 +369,7 @@
       "root": ".",
       "encoding": "single-shape",
       "queue": false,
+      "glossary": false,
       "expected_diagnostics": [
         "unknown-shape"
       ],
@@ -358,11 +379,11 @@
   ],
   "files": {
     "cases/default-root/.docflow/CONVENTIONS.md": {
-      "sha256": "e8340acc0c2b87362dc5fd6357c0d2711e15cb5e873162e4d82d5a33fc28c5bf",
+      "sha256": "e14bf4543ff15a6aa76d75482ce4c799f8cace6cd8d9d6313cf43d0a9cebc12f",
       "origins": [
         "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md"
       ],
-      "rendering": "Select single-writer, PR integration, single shape, queue=false; fill supplied fixture choices."
+      "rendering": "Select single-writer, PR integration, single shape, queue=false, glossary=false; fill supplied fixture choices."
     },
     "cases/default-root/AGENTS.md": {
       "sha256": "17a6e985a53e428d323f05849dac3659f2d4940ff53796ea67b141e354a0d98c",
@@ -408,11 +429,11 @@
       "rendering": "Exact pointer form; root choice = ."
     },
     "cases/root-pointer/CONVENTIONS.md": {
-      "sha256": "0261ce520536ee2d94efff750efaf295075e8431780844b8f8d0e054f11ba824",
+      "sha256": "70e8696b6cb91f88109de9681aa7cdaed9db558a664409cb18d7b785ac88ac27",
       "origins": [
         "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md"
       ],
-      "rendering": "Select single-writer, PR integration, single shape, queue=false; fill supplied fixture choices."
+      "rendering": "Select single-writer, PR integration, single shape, queue=false, glossary=false; fill supplied fixture choices."
     },
     "cases/root-pointer/AGENTS.md": {
       "sha256": "3b1503f2de63a03a758d0cddd454642c61e7ea3ba6685300c8cce3b83347410c",
@@ -458,11 +479,11 @@
       "rendering": "Exact pointer form; root choice = docs"
     },
     "cases/docs-pointer/docs/CONVENTIONS.md": {
-      "sha256": "20dda91491427a44c1968fa5c263d5e3f551cbadcd2e3022a3b94c61c2c2579f",
+      "sha256": "bc8a32e4cdb79940a74d92add226baca37e5ebfda9cdf231f2dedf72a5afe71c",
       "origins": [
         "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md"
       ],
-      "rendering": "Select single-writer, PR integration, single shape, queue=false; fill supplied fixture choices."
+      "rendering": "Select single-writer, PR integration, single shape, queue=false, glossary=false; fill supplied fixture choices."
     },
     "cases/docs-pointer/AGENTS.md": {
       "sha256": "c3d54885b50f868b42f7745a421892cb82b1d2ecf562cff93ff6084897288b4e",
@@ -508,11 +529,11 @@
       "rendering": "Exact pointer form; root choice = governance/decisions/current"
     },
     "cases/nested-pointer/governance/decisions/current/CONVENTIONS.md": {
-      "sha256": "9d5f93f4a320b3e441d1f281c5e79621d62229453f7eda09ef13c64d3757efc2",
+      "sha256": "0d484a60299d6976d833b63c621404088eccb80c138539d852536ba1037a0fa6",
       "origins": [
         "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md"
       ],
-      "rendering": "Select single-writer, PR integration, single shape, queue=false; fill supplied fixture choices."
+      "rendering": "Select single-writer, PR integration, single shape, queue=false, glossary=false; fill supplied fixture choices."
     },
     "cases/nested-pointer/AGENTS.md": {
       "sha256": "3b5947c2384829ca561850deb4b2ee23d7e074799e32dc88e2ec52f0fec6ea0c",
@@ -551,11 +572,11 @@
       "rendering": "Derive INDEX rows from the rendered metadata; bootstrap output rule, not a host-run receipt."
     },
     "cases/legacy-no-manifest/CONVENTIONS.md": {
-      "sha256": "0261ce520536ee2d94efff750efaf295075e8431780844b8f8d0e054f11ba824",
+      "sha256": "70e8696b6cb91f88109de9681aa7cdaed9db558a664409cb18d7b785ac88ac27",
       "origins": [
         "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md"
       ],
-      "rendering": "Select single-writer, PR integration, single shape, queue=false; fill supplied fixture choices."
+      "rendering": "Select single-writer, PR integration, single shape, queue=false, glossary=false; fill supplied fixture choices."
     },
     "cases/legacy-no-manifest/AGENTS.md": {
       "sha256": "3b1503f2de63a03a758d0cddd454642c61e7ea3ba6685300c8cce3b83347410c",
@@ -598,7 +619,7 @@
       "origins": [
         "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md"
       ],
-      "rendering": "Select single-writer, PR integration, two shapes, queue=false; fill supplied fixture choices."
+      "rendering": "Select single-writer, PR integration, two shapes, queue=false, glossary=false; fill supplied fixture choices."
     },
     "cases/explicit-two-shape/AGENTS.md": {
       "sha256": "17a6e985a53e428d323f05849dac3659f2d4940ff53796ea67b141e354a0d98c",
@@ -651,11 +672,11 @@
       "rendering": "Derive INDEX rows from the rendered metadata; bootstrap output rule, not a host-run receipt."
     },
     "cases/optional-layers/.docflow/CONVENTIONS.md": {
-      "sha256": "7f0c2c6e1d39e7c6e183ed1368c5f9257518fb3d1ff9a2a9edc2eb83a259f7b0",
+      "sha256": "3144fe04c5de40f76eccfd23ad23dfad471521331eb4f1a2d7681193ce7bbeaa",
       "origins": [
         "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md"
       ],
-      "rendering": "Select single-writer, PR integration, two shapes, queue=true; fill supplied fixture choices."
+      "rendering": "Select single-writer, PR integration, two shapes, queue=true, glossary=true; fill supplied fixture choices."
     },
     "cases/optional-layers/AGENTS.md": {
       "sha256": "31a3846d7124caf1061fbff90111f464ae8392ed590dc49fed9e1feb6246488b",
@@ -744,11 +765,11 @@
       "rendering": "Exact pointer form; root choice = ."
     },
     "cases/status-claimed/CONVENTIONS.md": {
-      "sha256": "91ffb112e04c1491fea9cde148ea78c33b28c4cf20bd45243606ce6097830828",
+      "sha256": "4cdbdae9957d132bd95b227a9e07635d4133b7623535bd2cf82be94bc1cadb2d",
       "origins": [
         "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md"
       ],
-      "rendering": "Select single-writer, PR integration, single shape, queue=true; fill supplied fixture choices."
+      "rendering": "Select single-writer, PR integration, single shape, queue=true, glossary=false; fill supplied fixture choices."
     },
     "cases/status-claimed/AGENTS.md": {
       "sha256": "117e7efd258ed0d63635afe0101574777f5ca73f73d6a980e9971ec05a3ff221",
@@ -810,11 +831,11 @@
       "rendering": "Exact pointer form; root choice = ."
     },
     "cases/status-blocked/CONVENTIONS.md": {
-      "sha256": "91ffb112e04c1491fea9cde148ea78c33b28c4cf20bd45243606ce6097830828",
+      "sha256": "4cdbdae9957d132bd95b227a9e07635d4133b7623535bd2cf82be94bc1cadb2d",
       "origins": [
         "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md"
       ],
-      "rendering": "Select single-writer, PR integration, single shape, queue=true; fill supplied fixture choices."
+      "rendering": "Select single-writer, PR integration, single shape, queue=true, glossary=false; fill supplied fixture choices."
     },
     "cases/status-blocked/AGENTS.md": {
       "sha256": "117e7efd258ed0d63635afe0101574777f5ca73f73d6a980e9971ec05a3ff221",
@@ -876,11 +897,11 @@
       "rendering": "Exact pointer form; root choice = ."
     },
     "cases/status-stopped/CONVENTIONS.md": {
-      "sha256": "91ffb112e04c1491fea9cde148ea78c33b28c4cf20bd45243606ce6097830828",
+      "sha256": "4cdbdae9957d132bd95b227a9e07635d4133b7623535bd2cf82be94bc1cadb2d",
       "origins": [
         "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md"
       ],
-      "rendering": "Select single-writer, PR integration, single shape, queue=true; fill supplied fixture choices."
+      "rendering": "Select single-writer, PR integration, single shape, queue=true, glossary=false; fill supplied fixture choices."
     },
     "cases/status-stopped/AGENTS.md": {
       "sha256": "117e7efd258ed0d63635afe0101574777f5ca73f73d6a980e9971ec05a3ff221",
@@ -942,11 +963,11 @@
       "rendering": "Exact pointer form; root choice = ."
     },
     "cases/status-resumed/CONVENTIONS.md": {
-      "sha256": "91ffb112e04c1491fea9cde148ea78c33b28c4cf20bd45243606ce6097830828",
+      "sha256": "4cdbdae9957d132bd95b227a9e07635d4133b7623535bd2cf82be94bc1cadb2d",
       "origins": [
         "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md"
       ],
-      "rendering": "Select single-writer, PR integration, single shape, queue=true; fill supplied fixture choices."
+      "rendering": "Select single-writer, PR integration, single shape, queue=true, glossary=false; fill supplied fixture choices."
     },
     "cases/status-resumed/AGENTS.md": {
       "sha256": "117e7efd258ed0d63635afe0101574777f5ca73f73d6a980e9971ec05a3ff221",
@@ -1008,11 +1029,11 @@
       "rendering": "Exact pointer form; root choice = ."
     },
     "cases/completion-prepared/CONVENTIONS.md": {
-      "sha256": "91ffb112e04c1491fea9cde148ea78c33b28c4cf20bd45243606ce6097830828",
+      "sha256": "4cdbdae9957d132bd95b227a9e07635d4133b7623535bd2cf82be94bc1cadb2d",
       "origins": [
         "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md"
       ],
-      "rendering": "Select single-writer, PR integration, single shape, queue=true; fill supplied fixture choices."
+      "rendering": "Select single-writer, PR integration, single shape, queue=true, glossary=false; fill supplied fixture choices."
     },
     "cases/completion-prepared/AGENTS.md": {
       "sha256": "117e7efd258ed0d63635afe0101574777f5ca73f73d6a980e9971ec05a3ff221",
@@ -1074,11 +1095,11 @@
       "rendering": "Exact pointer form; root choice = ."
     },
     "cases/completion-integrated/CONVENTIONS.md": {
-      "sha256": "91ffb112e04c1491fea9cde148ea78c33b28c4cf20bd45243606ce6097830828",
+      "sha256": "4cdbdae9957d132bd95b227a9e07635d4133b7623535bd2cf82be94bc1cadb2d",
       "origins": [
         "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md"
       ],
-      "rendering": "Select single-writer, PR integration, single shape, queue=true; fill supplied fixture choices."
+      "rendering": "Select single-writer, PR integration, single shape, queue=true, glossary=false; fill supplied fixture choices."
     },
     "cases/completion-integrated/AGENTS.md": {
       "sha256": "117e7efd258ed0d63635afe0101574777f5ca73f73d6a980e9971ec05a3ff221",
@@ -1273,11 +1294,11 @@
       "rendering": "Exact pointer form; root choice = ."
     },
     "cases/federation-home/CONVENTIONS.md": {
-      "sha256": "0261ce520536ee2d94efff750efaf295075e8431780844b8f8d0e054f11ba824",
+      "sha256": "70e8696b6cb91f88109de9681aa7cdaed9db558a664409cb18d7b785ac88ac27",
       "origins": [
         "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md"
       ],
-      "rendering": "Select single-writer, PR integration, single shape, queue=false; fill supplied fixture choices."
+      "rendering": "Select single-writer, PR integration, single shape, queue=false, glossary=false; fill supplied fixture choices."
     },
     "cases/federation-home/AGENTS.md": {
       "sha256": "3b1503f2de63a03a758d0cddd454642c61e7ea3ba6685300c8cce3b83347410c",
@@ -1337,11 +1358,11 @@
       "rendering": "Exact pointer form; root choice = docs"
     },
     "cases/federation-member/docs/CONVENTIONS.md": {
-      "sha256": "20dda91491427a44c1968fa5c263d5e3f551cbadcd2e3022a3b94c61c2c2579f",
+      "sha256": "bc8a32e4cdb79940a74d92add226baca37e5ebfda9cdf231f2dedf72a5afe71c",
       "origins": [
         "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md"
       ],
-      "rendering": "Select single-writer, PR integration, single shape, queue=false; fill supplied fixture choices."
+      "rendering": "Select single-writer, PR integration, single shape, queue=false, glossary=false; fill supplied fixture choices."
     },
     "cases/federation-member/AGENTS.md": {
       "sha256": "c3d54885b50f868b42f7745a421892cb82b1d2ecf562cff93ff6084897288b4e",
@@ -1394,11 +1415,11 @@
       "rendering": "Exact pointer form; root choice = . Adverse mutation: invalid-pointer"
     },
     "cases/invalid-pointer/CONVENTIONS.md": {
-      "sha256": "0261ce520536ee2d94efff750efaf295075e8431780844b8f8d0e054f11ba824",
+      "sha256": "70e8696b6cb91f88109de9681aa7cdaed9db558a664409cb18d7b785ac88ac27",
       "origins": [
         "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md"
       ],
-      "rendering": "Select single-writer, PR integration, single shape, queue=false; fill supplied fixture choices."
+      "rendering": "Select single-writer, PR integration, single shape, queue=false, glossary=false; fill supplied fixture choices."
     },
     "cases/invalid-pointer/AGENTS.md": {
       "sha256": "3b1503f2de63a03a758d0cddd454642c61e7ea3ba6685300c8cce3b83347410c",
@@ -1444,11 +1465,11 @@
       "rendering": "Exact pointer form; root choice = . Adverse mutation: invalid-pointer"
     },
     "cases/invalid-pointer-syntax/CONVENTIONS.md": {
-      "sha256": "0261ce520536ee2d94efff750efaf295075e8431780844b8f8d0e054f11ba824",
+      "sha256": "70e8696b6cb91f88109de9681aa7cdaed9db558a664409cb18d7b785ac88ac27",
       "origins": [
         "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md"
       ],
-      "rendering": "Select single-writer, PR integration, single shape, queue=false; fill supplied fixture choices."
+      "rendering": "Select single-writer, PR integration, single shape, queue=false, glossary=false; fill supplied fixture choices."
     },
     "cases/invalid-pointer-syntax/AGENTS.md": {
       "sha256": "3b1503f2de63a03a758d0cddd454642c61e7ea3ba6685300c8cce3b83347410c",
@@ -1494,11 +1515,11 @@
       "rendering": "Exact pointer form; root choice = . Adverse mutation: root-disagreement"
     },
     "cases/disagreeing-pointer/CONVENTIONS.md": {
-      "sha256": "070af44624ef934b9ed1bbd11d25512bdcc280d4fe2a524c2f531e67dc0e5b69",
+      "sha256": "b80dad238246373713ad96277123cfec186c6f3e1edd01de094f5cef10d6aac7",
       "origins": [
         "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md"
       ],
-      "rendering": "Select single-writer, PR integration, single shape, queue=false; fill supplied fixture choices."
+      "rendering": "Select single-writer, PR integration, single shape, queue=false, glossary=false; fill supplied fixture choices."
     },
     "cases/disagreeing-pointer/AGENTS.md": {
       "sha256": "3b1503f2de63a03a758d0cddd454642c61e7ea3ba6685300c8cce3b83347410c",
@@ -1544,11 +1565,11 @@
       "rendering": "Exact pointer form; root choice = ."
     },
     "cases/duplicate-number/CONVENTIONS.md": {
-      "sha256": "0261ce520536ee2d94efff750efaf295075e8431780844b8f8d0e054f11ba824",
+      "sha256": "70e8696b6cb91f88109de9681aa7cdaed9db558a664409cb18d7b785ac88ac27",
       "origins": [
         "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md"
       ],
-      "rendering": "Select single-writer, PR integration, single shape, queue=false; fill supplied fixture choices."
+      "rendering": "Select single-writer, PR integration, single shape, queue=false, glossary=false; fill supplied fixture choices."
     },
     "cases/duplicate-number/AGENTS.md": {
       "sha256": "3b1503f2de63a03a758d0cddd454642c61e7ea3ba6685300c8cce3b83347410c",
@@ -1601,11 +1622,11 @@
       "rendering": "Exact pointer form; root choice = ."
     },
     "cases/unknown-status/CONVENTIONS.md": {
-      "sha256": "0261ce520536ee2d94efff750efaf295075e8431780844b8f8d0e054f11ba824",
+      "sha256": "70e8696b6cb91f88109de9681aa7cdaed9db558a664409cb18d7b785ac88ac27",
       "origins": [
         "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md"
       ],
-      "rendering": "Select single-writer, PR integration, single shape, queue=false; fill supplied fixture choices."
+      "rendering": "Select single-writer, PR integration, single shape, queue=false, glossary=false; fill supplied fixture choices."
     },
     "cases/unknown-status/AGENTS.md": {
       "sha256": "3b1503f2de63a03a758d0cddd454642c61e7ea3ba6685300c8cce3b83347410c",
@@ -1651,11 +1672,11 @@
       "rendering": "Exact pointer form; root choice = ."
     },
     "cases/unknown-shape/CONVENTIONS.md": {
-      "sha256": "0261ce520536ee2d94efff750efaf295075e8431780844b8f8d0e054f11ba824",
+      "sha256": "70e8696b6cb91f88109de9681aa7cdaed9db558a664409cb18d7b785ac88ac27",
       "origins": [
         "plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md"
       ],
-      "rendering": "Select single-writer, PR integration, single shape, queue=false; fill supplied fixture choices."
+      "rendering": "Select single-writer, PR integration, single shape, queue=false, glossary=false; fill supplied fixture choices."
     },
     "cases/unknown-shape/AGENTS.md": {
       "sha256": "3b1503f2de63a03a758d0cddd454642c61e7ea3ba6685300c8cce3b83347410c",

@@ -90,6 +90,25 @@ Technology ADR Rationale must name alternatives considered and give
 specific reasons they were rejected. Generic rationale such as
 "simpler" or "more idiomatic" is not sufficient.
 
+## Glossary
+
+`GLOSSARY.md` is the optional shared-terms layer. Its canonical structure
+is an optional H1 heading and optional introductory prose, then exactly
+one two-column Markdown table whose header row is `Term` and `Definition`:
+
+```markdown
+| Term | Definition |
+|------|------------|
+| <term> | <definition>. |
+```
+
+Every term gets its own row. Keep each term's spelling, meaning, aliases,
+links and inline code as the team writes them; escape a literal pipe as
+`\|`; keep a multiline definition in one cell, using `<br>` for a hard
+line break. Do not record terms as headings, bullets or prose paragraphs,
+and do not keep a second table or an ad-hoc shape beside the canonical
+table. An absent `GLOSSARY.md` is a valid state, not an error.
+
 ## ADR Privacy
 
 ADRs are internal artefacts. ADR numbers, ADR titles, and the
