@@ -122,6 +122,20 @@ but add one if the repo's contract asks for it on convention changes.
 from `CONVENTIONS.md` §Glossary and the rules below; the shape must not
 drift between runs.
 
+- **Where the rule comes from.** If `CONVENTIONS.md` has no §Glossary
+  section (a legacy repo that predates it, or a layer enabled before the
+  rule was recorded), fall back to the product default canonical shape
+  above: optional `# Glossary` heading and intro prose, then one
+  `Term | Definition` table. Do not invent a different shape for that
+  repo, and do not silently edit unrelated conventions.
+- **Recording the convention.** When a §Glossary is absent, offer — as its
+  own confirmed edit, separate from the term being added — to record a
+  `## Glossary` section in `CONVENTIONS.md` stating the shape actually
+  used. Show that diff and write it only if the user accepts; never rewrite
+  or reorder other `CONVENTIONS.md` sections to make room, and if the user
+  declines, keep the glossary canonical but leave `CONVENTIONS.md`
+  unchanged. If a §Glossary already exists, follow it and change it only on
+  an explicit request.
 - **Creating the file.** Write the optional `# Glossary` heading and any
   short introductory prose the repo needs, then the single two-column
   table with header `Term | Definition` and the new term as its first
@@ -130,6 +144,10 @@ drift between runs.
   prose, entry order and every existing row byte for byte. Append the new
   term as one new row; never rebuild, re-sort or reformat the file, and
   never introduce a second table.
+- **Anchors.** If the new term's row is reachable from a heading anchor an
+  incoming link already uses, keep that anchor on the row rather than
+  dropping the target; if the anchor cannot be preserved, stop and flag it
+  instead of guessing.
 - **Preserve meaning.** Keep the term's spelling, aliases, links and
   inline code exactly as supplied. Escape a literal pipe as `\|`. If a
   definition is genuinely multiline, keep it in one cell with `<br>` for

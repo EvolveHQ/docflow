@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "format": "docflow-repository-producer-fixtures-1",
-  "producer_revision": "08b360f844b14ae6776d54b0b310503f0786f479",
+  "producer_revision": "201469547b4d2607123bc59878c3749623f4a578",
   "evidence_scope": "Exact template rendering plus retained legacy producer files; plan bodies follow authoring rules. Synthetic authority, SHA and PR examples are not execution/integration evidence.",
   "sources": {
     "evals/fixtures/legacy-range/AGENTS.md": {
@@ -104,7 +104,7 @@
       "sha256": "b929994d4bf1549db452a0b2e08349a9981e1a13fa5060d9422abde8b128114f"
     },
     "plugins/docflow/skills/add-convention/SKILL.md": {
-      "sha256": "12f1132859f22b35881d1601c95750214579224afb8ebbf28410f4f33650cac0"
+      "sha256": "1a2016bf989d6fa7bca7c1d304ae1a8ce246212f5079f56b2ff09e5f9df9c184"
     },
     "plugins/docflow/skills/new-adr/SKILL.md": {
       "sha256": "3b8ac8e05f48e599f07b3e590776841736f82f61d00e994ae0ef3a48f2f9f005"
