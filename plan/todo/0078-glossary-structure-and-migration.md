@@ -55,14 +55,19 @@ tighten-and-repair that also ships the repairs it surfaces.
    Q7 enables the layer, by merge on a re-run; absence remains valid.
    (0016 AC2, AC5)
 2. `add-convention` creates the first term and appends later terms in the
-   canonical table, preserving existing rows and prose. (0016 AC5)
+   canonical table, preserving existing rows and prose. When no `§Glossary`
+   rule is recorded it uses the canonical default and offers to record the
+   agreed shape as its own confirmed edit, without rewriting unrelated
+   conventions. (0016 AC5)
 3. The generated `CONVENTIONS.md` guidance states the canonical shape once
    and `AGENTS.md`/`README`/`USAGE` stay consistent with it, with no ADR
    identifiers in user-visible strings. (0007)
-4. `audit` detects bullets/prose/heading/mixed entry structure and offers
-   a migration showing a concrete diff, leaving the repo unchanged until
-   the target user consents; ambiguous mapping flags for resolution.
-   (0007)
+4. `audit` distinguishes a non-canonical glossary under an adopted
+   `§Glossary` rule (drift) from one where the rule was never adopted
+   (migration available), fails duplicate terms, and offers a migration
+   showing a concrete diff that preserves heading anchors (or stops for
+   resolution) and leaves the repo unchanged until the target user
+   consents; ambiguous mapping flags for resolution. (0007)
 5. Deterministic fixtures and evals cover fresh canonical, absent/deferred,
    uniform, non-canonical/mixed, escaped-pipe/multiline/link, ambiguous/
    duplicate, decline/no-mutation, accepted lossless migration, and repeat
