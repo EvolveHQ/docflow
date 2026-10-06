@@ -478,3 +478,11 @@ Final skill results report This run, Overall and Yet to do under Status at a gla
 Live ownership, blockers and stop reasons are recorded on the queue item.
 Wave width adapts to host capabilities; unavailable delegation uses sequential
 execution. Ready PRs remain live until their checked merge.
+
+## Complete adoption workflows
+
+Use the [workflow guide hub]({{ '/workflows/' | relative_url }}) for existing
+repositories, existing workspace memory, mixed setups and new projects, plus
+daily dispatch, receipt checking and recovery. The
+[release notes]({{ '/release-notes/' | relative_url }}) distinguish package
+checks from pending native qualification.

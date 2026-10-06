@@ -27,6 +27,7 @@
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
   <header class="hero{% if page.url != '/' %} hero--slim{% endif %}">
     <div class="wrap">
       <a class="brand" href="{{ '/' | relative_url }}">
@@ -39,13 +40,14 @@
           <a class="btn btn--primary" href="https://github.com/EvolveHQ/docflow">View on GitHub</a>
           <a class="btn" href="{{ '/methodology/' | relative_url }}">Methodology</a>
           <a class="btn" href="{{ '/examples/' | relative_url }}">Examples</a>
+          <a class="btn" href="{{ '/workflows/' | relative_url }}">Workflow guides</a>
           <a class="btn" href="#install">Install</a>
         </div>
       {% endif %}
     </div>
   </header>
 
-  <main class="wrap content">
+  <main id="main-content" class="wrap content">
     {{ content }}
   </main>
 
@@ -56,6 +58,8 @@
         <a href="{{ '/' | relative_url }}">Home</a>
         <a href="{{ '/methodology/' | relative_url }}">Methodology</a>
         <a href="{{ '/workspace/' | relative_url }}">Workspace</a>
+        <a href="{{ '/workflows/' | relative_url }}">Guides</a>
+        <a href="{{ '/release-notes/' | relative_url }}">Release notes</a>
         <a href="{{ '/examples/' | relative_url }}">Examples</a>
         <a href="{{ '/privacy/' | relative_url }}">Privacy</a>
         <a href="https://github.com/EvolveHQ/docflow">GitHub</a>

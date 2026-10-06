@@ -35,4 +35,4 @@ digests before and after the consumer session and pin the Docflow source SHA.
 - **This run:** Provides source-controlled synthetic producer inputs and expected outcomes.
 - **Overall:** partially verified — supplied facts are deterministic examples, not native evidence.
 - **Yet to do:** Consume the pinned fixtures in Clarity and qualify actual
-  workspace skills, eighteen scenarios and six host guides separately.
+  workspace skills, eighteen scenarios and seven host guides separately.

@@ -174,6 +174,6 @@ explicit owner/scope; canonical memory is not an index or plugin cache.
 
 
 - **This run:** Supplies portable installation and operating instructions.
-- **Overall:** partially verified â€” deterministic asset tests are separate from native qualification.
+- **Overall:** partially verified — deterministic asset tests are separate from native qualification.
 - **Yet to do:** Author actual scoped records, verify current native authority
   and complete native host and consumer qualification.

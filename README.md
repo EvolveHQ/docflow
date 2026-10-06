@@ -45,10 +45,17 @@ and point you at `/bootstrap`.
 
 ## Portable workspaces
 
+Start with the [step-by-step workflow guides](docs/workflows.md) and
+[0.10.0 release notes](docs/release-notes.md). The
+[Pages guide hub](https://evolvehq.github.io/docflow/workflows/) covers
+existing repositories, existing workspaces, mixed setups and new projects.
+
+
 The five workspace skills — setup, status, scope, dispatch and sync — keep
 cross-repository memory in an adopter-owned
 Git workspace. Members retain their native methods, instructions and histories.
-Clarity views, copies and prepares handoffs; authorised Docflow sessions edit
+The workspace can be used through ordinary files without a companion app.
+Clarity integration is parked for 0.10.0; authorised Docflow sessions edit
 canonical records and reconcile native evidence. Selection and agreement grant
 no execution authority, and delivery completion leaves the agreement accepted.
 
@@ -359,7 +366,7 @@ for plugin/npm installations. For standalone skill copies, also copy the
 complete `workspace/` directory as `docflow-workspace/` beside the host's
 `skills/` directory; this applies to shared Codex/OpenCode copies too.
 See the [installation and assembly guide](plugins/docflow/workspace/README.md).
-The four [workspace operating skills](#skills) act on those assets; native
+The five [workspace operating skills](#skills) act on those assets; native
 host and Clarity qualification stay separate from the deterministic package
 checks.
 

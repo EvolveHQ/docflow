@@ -1,4 +1,15 @@
+---
+permalink: /clarity-releases/
+title: Clarity release preparation (parked)
+---
+
 # Clarity downloads and release preparation
+
+Clarity integration and installer publication are parked for Docflow 0.10.0.
+This page describes a separately authorised future release procedure; it is
+not a download-availability or compatibility claim. Use Docflow’s
+[ordinary-file workspace workflows]({{ '/workflows/' | relative_url }})
+without a Clarity installation.
 
 Clarity installers are intended for public releases in
 [EvolveHQ/docflow](https://github.com/EvolveHQ/docflow/releases). Release
@@ -85,13 +96,18 @@ canonical filenames/JSON, complete matrices, text screening, exact byte counts,
 hashes and checksum equality. Text screening is a bounded defence; the producer
 and reviewer must still check that public notices contain no private material.
 
+Replace `<current-docflow-version>` with the version in this checkout’s
+`package.json` (0.10.0 for this candidate), and use the separately approved
+Clarity version and public target commit. These examples do not establish
+compatibility or authorise publication.
+
 ```sh
-node scripts/release-handoff/cli.mjs plan --directory ./public-candidate --version 1.0.0 --counterpart 0.9.4 --target <public-40-character-commit> --output ./release-plan.json
+node scripts/release-handoff/cli.mjs plan --directory ./public-candidate --version 1.0.0 --counterpart <current-docflow-version> --target <public-40-character-commit> --output ./release-plan.json
 ```
 
 The target is a reviewed **public Docflow commit**, never a private build ref.
-The counterpart must equal the three matching package versions in the trusted
-checkout. The command performs no network calls and creates its optional output
+The counterpart must equal the package version in the trusted checkout.
+Run `node scripts/verify.mjs` first to check all six distribution manifests. The command performs no network calls and creates its optional output
 only if the output path does not already exist. Candidate files stay unchanged.
 
 `payloadSha256` is the SHA-256 of UTF-8, two-space-indented JSON plus a final LF
@@ -127,7 +143,7 @@ that approval and existing narrowly scoped publishing access supplied as
 `GH_TOKEN`, the future operator may run:
 
 ```sh
-node scripts/release-handoff/cli.mjs publish --directory ./public-candidate --version 1.0.0 --counterpart 0.9.4 --target <public-40-character-commit> --approval ./release-approval.json
+node scripts/release-handoff/cli.mjs publish --directory ./public-candidate --version 1.0.0 --counterpart <current-docflow-version> --target <public-40-character-commit> --approval ./release-approval.json
 ```
 
 The adapter uses GitHub's release/asset APIs, creates a draft with fixed public
@@ -184,7 +200,7 @@ never rerun with clobber, delete/recreate, or silently treat a partial set as do
 Retain the reviewed candidate and its approval, then run:
 
 ```sh
-node scripts/release-handoff/cli.mjs verify-public --directory ./public-candidate --version 1.0.0 --counterpart 0.9.4 --target <public-40-character-commit> --approval ./release-approval.json
+node scripts/release-handoff/cli.mjs verify-public --directory ./public-candidate --version 1.0.0 --counterpart <current-docflow-version> --target <public-40-character-commit> --approval ./release-approval.json
 ```
 
 This deliberately ignores ambient credentials, selects the exact Clarity tag,

@@ -1,4 +1,5 @@
 ---
+permalink: /workspace/
 title: Portable workspaces
 mermaid: true
 ---
@@ -24,9 +25,9 @@ to look for no benefit.
 An adopter creates the workspace deliberately (the `workspace-setup` command).
 It owns `README.md`, `AGENTS.md` and `.docflow_workspace/` with
 `workspace.yaml`, `CONVENTIONS.md`, `INDEX.md`, the record folders and curated
-`agents`, `profiles` and `integrations` directories. Checkouts live under
-`/repos/`, and private local state under `/.docflow_workspace/local/`; both are
-ignored by Git and never canonical.
+`agents`, `profiles` and `integrations` directories. Independent checkouts may live in ignored
+`repos/`, at sibling paths or at explicitly registered absolute paths. Private local state lives under `/.docflow_workspace/local/`. Ignore that local directory and the optional
+`/repos/` checkout directory in the workspace Git home; neither is canonical.
 
 <div class="mermaid">
 graph LR
@@ -82,11 +83,16 @@ stateDiagram-v2
     backlog --> rejected
     backlog --> discarded
     selected --> backlog
+    selected --> rejected
+    selected --> discarded
+    rejected --> backlog
+    discarded --> backlog
   }
   state "Decision" as D {
     [*] --> proposed
     proposed --> accepted
     proposed --> rejected
+    proposed --> superseded
     accepted --> superseded
     rejected --> superseded
   }
@@ -94,6 +100,7 @@ stateDiagram-v2
     [*] --> planned
     planned --> active
     active --> review
+    review --> active
     review --> done
     planned --> cancelled
     active --> cancelled
@@ -106,6 +113,7 @@ stateDiagram-v2
     running --> stopped
     running --> unknown
     unknown --> succeeded
+    unknown --> failed
     unknown --> stopped
   }
 </div>
@@ -143,7 +151,8 @@ graph TD
 </div>
 
 - **workspace-setup** creates or deliberately adopts the workspace home and
-  registry. It is the only command that writes the home itself.
+  registry. It establishes the home; scope, dispatch and sync maintain their own
+  canonical records within it.
 - **workspace-status** gives a read-only briefing and fresh-session recovery:
   priorities, owners, current authority, delivery progress, blockers and next
   actions. It never writes.
@@ -252,7 +261,8 @@ structurally valid planned workspace can pass and still have no execution
 authority. Native-host, consumer and operator qualification remain separate
 from a green package check.
 
-Ready to start? See the
+Ready to start? Follow the [step-by-step workflow guides]({{ '/workflows/' | relative_url }})
+for existing, mixed and new setups. See the
 [methodology]({{ '/methodology/' | relative_url }}) for the repository
 conventions and [Examples]({{ '/examples/' | relative_url }}) for worked
 skill-by-skill flows.

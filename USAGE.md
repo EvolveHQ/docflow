@@ -615,6 +615,10 @@ migration onto the declared `shape:` field instead of the second-shape
 layer (that repo already has both shapes) — see §5b. It shows the
 old-to-new number map and writes nothing until you confirm it.
 
+For complete adoption paths, see the [workflow guides](docs/workflows.md):
+existing repositories/workspaces, mixed members and new projects. See also
+the [0.10.0 release notes](docs/release-notes.md) for scope and support limits.
+
 ## 8. Updating the plugin
 
 ### As a recipient (someone who installed the plugin)
@@ -665,11 +669,18 @@ To remove the plugin entirely:
    minor for new questions / templates, major for breaking changes to the
    skill flow. `node scripts/verify.mjs` fails if they diverge.
 3. Update this `USAGE.md` and `README.md` if behaviour changed.
-4. Commit with a Conventional Commit message
-   (`feat(skill): ...`, `fix(template): ...`, `docs: ...`).
-5. Push to `origin/main`. Recipients refresh per the section above.
+4. Run `node scripts/verify.mjs` and `node evals/run.mjs` locally. Record
+   exact exits and skipped behavioural cases; deterministic success does not
+   establish native host qualification. Commit with a signed Conventional
+   Commit message (`feat(skill): ...`, `fix(template): ...`, `docs: ...`).
+5. Push the work branch and open or update a pull request into `main`. Require
+   the `verify` CI check on the current PR head, then obtain merge authority
+   and integrate with a standard merge commit. A ready PR is not shipped.
+6. Release only the reviewed, merged revision under separate release authority:
+   its `vX.Y.Z` tag and published npm version must match all six manifests.
+   Recipients refresh per the section above after integration/publication.
 
-If you tag releases, use `git tag vX.Y.Z` matching `plugin.json`.
+Release tags use `vX.Y.Z` matching every version manifest.
 Tags help recipients pin to a specific version via
 `/plugin install docflow@evolvehq@vX.Y.Z` (when supported by their
 Claude Code version).

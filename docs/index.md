@@ -2,6 +2,8 @@
 title: docflow
 ---
 
+# docflow
+
 ![docflow — ADR-driven documentation workflow](preview.png)
 
 **docflow** turns any repository into a **documentation-led, ADR-driven**
@@ -18,6 +20,11 @@ repository to a **multi-repo product**. See the
 why they help, and where they fall short, and
 [Portable workspaces]({{ '/workspace/' | relative_url }}) for the
 cross-repository model.
+
+Choose a [step-by-step workflow]({{ '/workflows/' | relative_url }}) for
+your starting setup, or read the [0.10.0 release notes]({{ '/release-notes/' | relative_url }}).
+The workspace package is usable through ordinary files; full native host
+qualification remains pending and Clarity integration is parked.
 
 ## Skills
 
