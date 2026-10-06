@@ -1,0 +1,558 @@
+{
+  "schema": 1,
+  "cases": [
+    {
+      "id": "unsupported-schema",
+      "expected_codes": [
+        "schema"
+      ],
+      "operations": [
+        {
+          "file": ".docflow_workspace/workspace.yaml",
+          "pointer": "/schema",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "id": "invalid-agreement-state",
+      "expected_codes": [
+        "schema"
+      ],
+      "operations": [
+        {
+          "file": ".docflow_workspace/decisions/preserve-legacy-response--234567892222.md",
+          "pointer": "/state",
+          "value": "implemented"
+        }
+      ]
+    },
+    {
+      "id": "invalid-field-type",
+      "expected_codes": [
+        "schema"
+      ],
+      "operations": [
+        {
+          "file": ".docflow_workspace/work/deliver-compatible-exports--345678903333.md",
+          "pointer": "/deliveries/0/scope_revision",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "id": "unknown-field",
+      "expected_codes": [
+        "schema"
+      ],
+      "operations": [
+        {
+          "file": ".docflow_workspace/work/deliver-compatible-exports--345678903333.md",
+          "pointer": "/allow_everything",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "malformed-uuid",
+      "expected_codes": [
+        "schema"
+      ],
+      "operations": [
+        {
+          "file": ".docflow_workspace/ideas/reliable-exports--123456781111.md",
+          "pointer": "/id",
+          "value": "short-id"
+        }
+      ]
+    },
+    {
+      "id": "short-durable-reference",
+      "expected_codes": [
+        "schema"
+      ],
+      "operations": [
+        {
+          "file": ".docflow_workspace/work/deliver-compatible-exports--345678903333.md",
+          "pointer": "/links/0/id",
+          "value": "123456781111"
+        }
+      ]
+    },
+    {
+      "id": "missing-member",
+      "expected_codes": [
+        "member-path"
+      ],
+      "operations": [
+        {
+          "file": ".docflow_workspace/workspace.yaml",
+          "pointer": "/repositories/0/path",
+          "value": "repos/not-present"
+        }
+      ]
+    },
+    {
+      "id": "escaping-native-path",
+      "expected_codes": [
+        "native-path"
+      ],
+      "operations": [
+        {
+          "file": ".docflow_workspace/work/deliver-compatible-exports--345678903333.md",
+          "pointer": "/deliveries/0/native_work/path",
+          "value": "../README.md"
+        }
+      ]
+    },
+    {
+      "id": "escaping-instruction",
+      "expected_codes": [
+        "member-path"
+      ],
+      "operations": [
+        {
+          "file": ".docflow_workspace/workspace.yaml",
+          "pointer": "/repositories/0/instructions/0",
+          "value": "../../README.md"
+        }
+      ]
+    },
+    {
+      "id": "ambiguous-member-alias",
+      "expected_codes": [
+        "alias"
+      ],
+      "operations": [
+        {
+          "file": ".docflow_workspace/workspace.yaml",
+          "pointer": "/repositories/1/aliases",
+          "value": [
+            "old-example/api"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "illegal-transition",
+      "expected_codes": [
+        "transition"
+      ],
+      "operations": [
+        {
+          "file": ".docflow_workspace/work/deliver-compatible-exports--345678903333.md",
+          "pointer": "/history/1/state",
+          "value": "done"
+        }
+      ]
+    },
+    {
+      "id": "selection-without-authority",
+      "expected_codes": [
+        "authority"
+      ],
+      "operations": [
+        {
+          "file": ".docflow_workspace/work/deliver-compatible-exports--345678903333.md",
+          "pointer": "/grants",
+          "value": []
+        }
+      ]
+    },
+    {
+      "id": "actor-mismatch",
+      "expected_codes": [
+        "authority"
+      ],
+      "operations": [
+        {
+          "file": ".docflow_workspace/runs/api-reassigned--678901236666.md",
+          "pointer": "/brief/actor",
+          "value": "agent:unapproved"
+        }
+      ]
+    },
+    {
+      "id": "scope-mismatch",
+      "expected_codes": [
+        "authority"
+      ],
+      "operations": [
+        {
+          "file": ".docflow_workspace/runs/api-reassigned--678901236666.md",
+          "pointer": "/brief/scope_revision",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "id": "grant-revision-mismatch",
+      "expected_codes": [
+        "authority"
+      ],
+      "operations": [
+        {
+          "file": ".docflow_workspace/runs/api-reassigned--678901236666.md",
+          "pointer": "/brief/grant/revision",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "id": "expired-authority",
+      "expected_codes": [
+        "authority"
+      ],
+      "operations": [
+        {
+          "file": ".docflow_workspace/work/deliver-compatible-exports--345678903333.md",
+          "pointer": "/grants/1/revisions/0/expires_at",
+          "value": "2026-09-15T10:00:00Z"
+        }
+      ]
+    },
+    {
+      "id": "revoked-action",
+      "expected_codes": [
+        "authority"
+      ],
+      "operations": [
+        {
+          "file": ".docflow_workspace/runs/mobile-revoked--789012347777.md",
+          "pointer": "/actions/1/at",
+          "value": "2026-09-15T12:00:00Z"
+        }
+      ]
+    },
+    {
+      "id": "suspended-authority",
+      "expected_codes": [
+        "authority"
+      ],
+      "operations": [
+        {
+          "file": ".docflow_workspace/work/deliver-compatible-exports--345678903333.md",
+          "pointer": "/grants/1/revisions/0/state",
+          "value": "suspended"
+        }
+      ]
+    },
+    {
+      "id": "ungranted-action",
+      "expected_codes": [
+        "authority-action"
+      ],
+      "operations": [
+        {
+          "file": ".docflow_workspace/runs/api-reassigned--678901236666.md",
+          "pointer": "/actions/1/action",
+          "value": "release"
+        }
+      ]
+    },
+    {
+      "id": "missing-native-work",
+      "expected_codes": [
+        "native-work"
+      ],
+      "operations": [
+        {
+          "file": ".docflow_workspace/runs/api-reassigned--678901236666.md",
+          "pointer": "/brief/native_work",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "unknown-native-claim",
+      "expected_codes": [
+        "claim"
+      ],
+      "operations": [
+        {
+          "file": ".docflow_workspace/runs/api-reassigned--678901236666.md",
+          "pointer": "/brief/claim/state",
+          "value": "unknown"
+        }
+      ]
+    },
+    {
+      "id": "expired-native-claim",
+      "expected_codes": [
+        "claim"
+      ],
+      "operations": [
+        {
+          "file": ".docflow_workspace/runs/api-reassigned--678901236666.md",
+          "pointer": "/brief/claim/expires_at",
+          "value": "2026-09-15T10:00:00Z"
+        }
+      ]
+    },
+    {
+      "id": "serial-without-evidence",
+      "expected_codes": [
+        "claim"
+      ],
+      "operations": [
+        {
+          "file": ".docflow_workspace/runs/mobile-revoked--789012347777.md",
+          "pointer": "/brief/claim/source/outcome",
+          "value": "unknown"
+        }
+      ]
+    },
+    {
+      "id": "unreconciled-reassignment",
+      "expected_codes": [
+        "reassignment"
+      ],
+      "operations": [
+        {
+          "file": ".docflow_workspace/runs/api-interrupted--567890125555.md",
+          "pointer": "/reconciliation",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "lost-contact-reassignment",
+      "expected_codes": [
+        "reassignment"
+      ],
+      "operations": [
+        {
+          "file": ".docflow_workspace/runs/api-interrupted--567890125555.md",
+          "pointer": "/state",
+          "value": "unknown"
+        },
+        {
+          "file": ".docflow_workspace/runs/api-interrupted--567890125555.md",
+          "pointer": "/history/1/state",
+          "value": "unknown"
+        },
+        {
+          "file": ".docflow_workspace/runs/api-interrupted--567890125555.md",
+          "pointer": "/ended_at",
+          "value": null
+        },
+        {
+          "file": ".docflow_workspace/runs/api-interrupted--567890125555.md",
+          "pointer": "/receipt",
+          "value": null
+        },
+        {
+          "file": ".docflow_workspace/runs/api-interrupted--567890125555.md",
+          "pointer": "/reconciliation",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "self-work-cycle",
+      "expected_codes": [
+        "cycle"
+      ],
+      "operations": [
+        {
+          "file": ".docflow_workspace/work/deliver-compatible-exports--345678903333.md",
+          "pointer": "/dependencies",
+          "value": [
+            {
+              "home": "example/platform",
+              "id": "34567890-3333-4333-8333-333333333333",
+              "path": ".docflow_workspace/work/deliver-compatible-exports--345678903333.md"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "delivery-cycle",
+      "expected_codes": [
+        "cycle"
+      ],
+      "operations": [
+        {
+          "file": ".docflow_workspace/work/deliver-compatible-exports--345678903333.md",
+          "pointer": "/deliveries/0/depends_on",
+          "value": [
+            "consumer"
+          ]
+        },
+        {
+          "file": ".docflow_workspace/work/deliver-compatible-exports--345678903333.md",
+          "pointer": "/deliveries/1/depends_on",
+          "value": [
+            "provider"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "partial-as-done",
+      "expected_codes": [
+        "completion"
+      ],
+      "operations": [
+        {
+          "file": ".docflow_workspace/work/deliver-compatible-exports--345678903333.md",
+          "pointer": "/state",
+          "value": "done"
+        },
+        {
+          "file": ".docflow_workspace/work/deliver-compatible-exports--345678903333.md",
+          "pointer": "/history",
+          "value": [
+            {
+              "state": "planned",
+              "at": "2026-09-15T08:00:00Z",
+              "actor": "human:owner",
+              "reason": "Synthetic transition"
+            },
+            {
+              "state": "active",
+              "at": "2026-09-15T09:00:00Z",
+              "actor": "human:owner",
+              "reason": "Synthetic transition"
+            },
+            {
+              "state": "review",
+              "at": "2026-09-15T12:00:00Z",
+              "actor": "human:owner",
+              "reason": "Synthetic transition"
+            },
+            {
+              "state": "done",
+              "at": "2026-09-15T13:00:00Z",
+              "actor": "human:owner",
+              "reason": "Synthetic transition"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skipped-check-as-success",
+      "expected_codes": [
+        "completion"
+      ],
+      "operations": [
+        {
+          "file": ".docflow_workspace/runs/api-reassigned--678901236666.md",
+          "pointer": "/receipt/checks/0/outcome",
+          "value": "skipped"
+        },
+        {
+          "file": ".docflow_workspace/runs/api-reassigned--678901236666.md",
+          "pointer": "/receipt/checks/0/exit_code",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "nonzero-check-as-pass",
+      "expected_codes": [
+        "check-evidence"
+      ],
+      "operations": [
+        {
+          "file": ".docflow_workspace/runs/api-reassigned--678901236666.md",
+          "pointer": "/receipt/checks/0/exit_code",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "wrong-evidence-revision",
+      "expected_codes": [
+        "check-evidence"
+      ],
+      "operations": [
+        {
+          "file": ".docflow_workspace/runs/api-reassigned--678901236666.md",
+          "pointer": "/receipt/checks/0/evidence/0/revision",
+          "value": "3333333333333333333333333333333333333333"
+        }
+      ]
+    },
+    {
+      "id": "stale-completion",
+      "expected_codes": [
+        "completion"
+      ],
+      "operations": [
+        {
+          "file": ".docflow_workspace/work/deliver-compatible-exports--345678903333.md",
+          "pointer": "/deliveries/0/observation/evidence/0/outcome",
+          "value": "stale"
+        }
+      ]
+    },
+    {
+      "id": "reference-only-mutation",
+      "expected_codes": [
+        "reference-only"
+      ],
+      "operations": [
+        {
+          "file": ".docflow_workspace/workspace.yaml",
+          "pointer": "/repositories/0/role",
+          "value": "reference"
+        }
+      ]
+    },
+    {
+      "id": "changed-source-revision",
+      "expected_codes": [
+        "asset"
+      ],
+      "operations": [
+        {
+          "file": ".docflow_workspace/agents/reviewer.md",
+          "pointer": "/skills/0/revision",
+          "value": "missing-revision"
+        }
+      ]
+    },
+    {
+      "id": "escaping-return-path",
+      "expected_codes": [
+        "return-path"
+      ],
+      "operations": [
+        {
+          "file": ".docflow_workspace/runs/api-reassigned--678901236666.md",
+          "pointer": "/brief/return_path",
+          "value": "../../outside.md"
+        }
+      ]
+    },
+    {
+      "id": "postdated-delivery-evidence",
+      "expected_codes": [
+        "completion"
+      ],
+      "operations": [
+        {
+          "file": ".docflow_workspace/work/deliver-compatible-exports--345678903333.md",
+          "pointer": "/deliveries/0/observation/evidence/0/observed_at",
+          "value": "2026-09-15T12:00:00Z"
+        }
+      ]
+    },
+    {
+      "id": "historical-claim-expired-before-action",
+      "expected_codes": [
+        "claim"
+      ],
+      "operations": [
+        {
+          "file": ".docflow_workspace/runs/api-reassigned--678901236666.md",
+          "pointer": "/brief/claim/expires_at",
+          "value": "2026-09-15T10:05:01Z"
+        }
+      ]
+    }
+  ]
+}

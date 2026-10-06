@@ -99,11 +99,11 @@ does not prove attachment, model execution or target Git access.
 - adr/0011-static-skill-validation.md
 - adr/0007-lifecycle-skills.md
 - `evals/hosts/README.md` (explicit six-case plus wave mapping)
-- `audits/2026-09-13-host-verification.md` (results, original failures and limits)
-- `audits/2026-09-13-pi-qwen-continuation.md` (native Pi repair/retry and temporal assertion controls)
-- `audits/2026-09-14-cowork-continuation.md` (native target lifecycle, signed concurrent wave, seed-reference regression and retained permission failures)
+- `DocflowHQ/.docflow_workspace/local/archive/member-audits/docflow/2026-09-13-host-verification.md` (results, original failures and limits)
+- `DocflowHQ/.docflow_workspace/local/archive/member-audits/docflow/2026-09-13-pi-qwen-continuation.md` (native Pi repair/retry and temporal assertion controls)
+- `DocflowHQ/.docflow_workspace/local/archive/member-audits/docflow/2026-09-14-cowork-continuation.md` (native target lifecycle, signed concurrent wave, seed-reference regression and retained permission failures)
 
-- `audits/2026-09-14-release-verification.md` (operator continuation: exact Git-byte installs, claim/denial regressions, native release cases and isolated existing-repository pilot)
+- `DocflowHQ/.docflow_workspace/local/archive/member-audits/docflow/2026-09-14-release-verification.md` (operator continuation: exact Git-byte installs, claim/denial regressions, native release cases and isolated existing-repository pilot)
 
 ## Revision History
 

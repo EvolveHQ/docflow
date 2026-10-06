@@ -3,12 +3,12 @@
 This document explains how the `bootstrap` skill behaves end-to-end,
 what each of the 10 assessment questions (asked in full depth) actually changes in the
 output, and how to customise or extend the templates. The lifecycle
-skills are covered in §5a.
+skills are covered in §5a and the portable-workspace skills in §5c.
 
 ## Install (per platform)
 
 docflow runs from **one skill source** (`plugins/docflow/skills/`) on
-five coding agents. The
+eight coding agents. The
 scaffolded **output** (`AGENTS.md`, the ADR catalogue, `plan/`, `_agent/`)
 is plain Markdown read natively by any agent that loads `AGENTS.md`; the
 **skills** are `SKILL.md` files the host discovers.
@@ -16,20 +16,25 @@ is plain Markdown read natively by any agent that loads `AGENTS.md`; the
 | Agent | Install | Invoke |
 |-------|---------|--------|
 | **Claude Code** | `/plugin marketplace add EvolveHQ/docflow` then `/plugin install docflow@evolvehq` | `/bootstrap` |
-| **Claude Cowork** | the same plugin bundle, uploaded through Customise → Plugins → Add | `/bootstrap` |
 | **pi** | `pi install npm:@evolvehq/docflow` (or `pi install git:github.com/EvolveHQ/docflow`) | `/skill:bootstrap` |
 | **Codex** | `codex plugin marketplace add EvolveHQ/docflow` then `codex plugin add docflow@evolvehq` (native plugin) | `$bootstrap` / `/skills` |
 | **OpenCode** | auto-discovers `.claude`/`.agents`/`.opencode` skills (so a Claude Code / Codex install is picked up), or symlink into `~/.config/opencode/skills` | auto, by description |
+| **Grok** | `grok plugin marketplace add EvolveHQ/docflow` then `grok plugin install docflow --trust` (native plugin) | `/bootstrap` |
+| **Cursor** | `cursor-agent --plugin-dir <repo>/plugins/docflow` (native `.cursor-plugin/` for repository installs) | `/bootstrap` |
+| **omp (oh-my-pi)** | `omp plugin install npm:@evolvehq/docflow` (reads the pi manifest) | `/skill:bootstrap` |
+| **GitHub Copilot CLI** | `copilot plugin marketplace add EvolveHQ/docflow` then `copilot plugin install docflow@evolvehq`, or `copilot --plugin-dir <repo>/plugins/docflow` | `/bootstrap` |
 
 Notes:
 
-- **Codex** ships a native plugin (`.codex-plugin/`), so it's a one-command
-  install like Claude Code. **OpenCode** has no marketplace command for
+- **Codex** and **Grok** ship native plugins (`.codex-plugin/`,
+  `.grok-plugin/`), so they are one-command installs like Claude Code.
+  **Cursor**, **omp** and **Copilot CLI** load a local plugin directory or
+  the npm/pi manifest. **OpenCode** has no marketplace command for
   `SKILL.md` skills (its plugin system is npm JS plugins), so it relies on
   skills-directory auto-discovery or a symlink.
-- A **shared skills directory** can serve two agents: `~/.agents/skills/`
-  is read by Codex and OpenCode; `~/.claude/skills/` by Claude Code and
-  OpenCode.
+- A **shared skills directory** can serve several agents: `~/.agents/skills/`
+  is read by Codex, OpenCode and omp; `~/.claude/skills/` by Claude Code,
+  OpenCode and omp.
 - The scaffolded output needs no porting on any of them — it is read
   natively wherever `AGENTS.md` is the instruction file.
 
@@ -43,10 +48,10 @@ in any repo. Invocation differs per agent:
 
 | Agent | Slash / mention | Auto-trigger from description |
 |-------|-----------------|-------------------------------|
-| Claude Code / Cowork | `/bootstrap`, `/new-adr`, … | yes |
-| pi | `/skill:bootstrap`, `/skill:new-adr`, … | no — invoke explicitly |
+| Claude Code | `/bootstrap`, `/new-adr`, … | yes |
+| pi / omp | `/skill:bootstrap`, `/skill:new-adr`, … | no — invoke explicitly |
 | Codex | `$bootstrap` / `/skills` | yes |
-| OpenCode | (loaded by name) | yes, by description |
+| OpenCode / Grok / Cursor / Copilot | (loaded by name / slash menu) | yes, by description |
 
 On agents that **auto-trigger**, natural-language matching the skill's
 description also works, e.g.:
@@ -94,8 +99,9 @@ how deep to go:
 At any question you can answer **"defaults from here"** (finish with
 recommended defaults) or **"go deeper"** (escalate to the fuller
 tier). The chosen depth is recorded in `CONVENTIONS.md` and offered as
-the pre-selected recommendation next time — the selector always still
-appears. Express and guided never set up multi-repo federation; that
+the pre-selected recommendation next time when depth is unresolved.
+Applicable supplied choices, including depth, are reused; only material
+missing or conflicting choices need a question. Express and guided never set up multi-repo federation; that
 is a full-depth choice only.
 
 At full depth the skill asks the 10 assessment questions **one at a
@@ -257,7 +263,8 @@ acting — the same pattern bootstrap uses (§3):
   recorded in your `CONVENTIONS.md` if present — otherwise it flips on
   context: *full* when you invoked the skill with little detail,
   *express* when your request already specifies everything. The
-  selector always appears; a recorded depth is never applied silently,
+  selector appears when depth is unresolved and material choices remain;
+  supplied answers are reused, while a recorded depth is never applied silently,
   and at any question you can say "defaults from here" or "go deeper".
 - Questions are asked **one at a time**, each with a **recommended
   option** you can accept, override, or replace.
@@ -347,6 +354,14 @@ no the first time doesn't lose you the option:
   your first shared term.
 - **`new-adr`** offers to create a `domains/<slug>/README.md` grouping when
   you file an ADR under a domain that doesn't exist yet.
+
+A glossary keeps one canonical shape: an optional heading and intro
+prose, then a single `Term | Definition` table. `add-convention` creates
+and extends it in that shape without reformatting existing rows. If an
+existing `GLOSSARY.md` uses another or a mixed shape, `audit` reports it
+read-only and offers a migration with a concrete proposed diff; it
+rewrites nothing without your explicit consent, and declining leaves the
+file exactly as it was.
 
 ### Enabling an optional convention later (worked example: TDD)
 
@@ -514,6 +529,56 @@ exactly as they would for any renumbering; fix them in the referring repo.
 **Declining is fine.** The repo keeps the range scheme and keeps passing;
 the offer comes back on the next audit.
 
+## 5c. Portable workspaces (cross-repository coordination)
+
+An **operator mandate note** committed under `.docflow_workspace/mandates/` records who, when, the exact scope and what is authorised or accepted; decisions and grants cite it as source-bound evidence. A **federation** (§5a) keeps one product's decisions consistent across
+several repositories. A **portable workspace** is the layer above that: an
+adopter-owned Git home — registry, conventions and canonical records —
+that coordinates work across independent member repositories without
+writing into any of them. Members keep their own instructions, methods
+and histories; the workspace holds only what no single member can see.
+
+The workspace is plain files: a `workspace.yaml` registry and a
+`.docflow_workspace/` memory directory holding five kinds of record —
+**ideas, decisions, work, knowledge** and **runs** — plus overviews you
+regenerate after changes. It is not a scheduler, an authentication layer
+or a live ownership service. A deterministic validator checks the supplied
+facts; native hosts still do the work.
+
+| Skill | Use it to |
+|-------|-----------|
+| `/workspace-setup` | Deliberately create or adopt a workspace home and registry. |
+| `/workspace-status` | Read priorities, owners, current authority, blockers and next actions — including in a fresh session. |
+| `/workspace-scope` | Record a cross-repository outcome, its deliveries and recommendations. |
+| `/workspace-dispatch` | Check current grants, claims, dependencies and resources, then hand off a bounded brief. |
+| `/workspace-sync` | Reconcile returned receipts and member state from checked native evidence and refresh INDEX; never completes from a prepared PR or unmerged plan/done file. |
+
+**Authority is separate from agreement.** Selecting work and agreeing a
+scope grant no execution rights. A native assignment runs only under a
+current grant, a native claim and an explicit brief; an expired, revoked,
+conflicting or denied authority stops the dependent action rather than
+falling back to another route. A **readiness report** for which no assigned
+attempt started is not a completed receipt, and only a real returned
+receipt with its evidence can support "done".
+
+**Install the complete assets.** The five skills are not self-contained;
+they read the schema, validator, fixtures, roles, profiles and native
+guides in `plugins/docflow/workspace/`. Keep that `workspace/` directory
+beside `skills/` for plugin and npm installs. For a standalone skill
+copy, also copy the whole `workspace/` directory as `docflow-workspace/`
+beside the host's `skills/` directory — this includes shared
+Codex/OpenCode copies. See the
+[workspace asset guide](plugins/docflow/workspace/README.md) and the
+[seven native guides](plugins/docflow/workspace/guides/README.md) for
+host-specific guidance; the guides document existing host commands and
+UI, and Docflow supplies no launcher of its own.
+
+**Qualification limits.** Deterministic tests cover the distributed
+files, the validator and representative producers on every packaging
+layout. They do **not** establish native host discovery or behaviour,
+combined views with a Clarity workspace, or real operator adoption.
+Those remain outstanding and are not implied by a green package check.
+
 ## 6. Customising or extending
 
 The templates are deliberately small and self-contained. To customise:
@@ -550,6 +615,10 @@ migration onto the declared `shape:` field instead of the second-shape
 layer (that repo already has both shapes) — see §5b. It shows the
 old-to-new number map and writes nothing until you confirm it.
 
+For complete adoption paths, see the [workflow guides](docs/workflows.md):
+existing repositories/workspaces, mixed members and new projects. See also
+the [0.10.0 release notes](docs/release-notes.md) for scope and support limits.
+
 ## 8. Updating the plugin
 
 ### As a recipient (someone who installed the plugin)
@@ -581,11 +650,12 @@ To remove the plugin entirely:
 
 **Other agents:**
 
-- **Cowork** — update through the desktop Plugins interface; the CLI flow (`/plugin marketplace update` →
-  install).
 - **pi** — re-run `pi install npm:@evolvehq/docflow` (or the `git:` form).
 - **Codex** — `codex plugin marketplace upgrade`, then re-add with
   `codex plugin add docflow@evolvehq`.
+- **Grok** — `grok plugin marketplace update`, then `grok plugin update docflow`.
+- **Cursor / omp / Copilot CLI** — reload the plugin directory or re-run the
+  install command; Grok and Codex-style marketplaces update in place.
 - **OpenCode** — if installed via a clone/symlink, `git pull` the clone;
   skills reload on the next session.
 
@@ -593,18 +663,33 @@ To remove the plugin entirely:
 
 1. Edit a skill body (`plugins/docflow/skills/<name>/SKILL.md`), the bootstrap templates
    (`plugins/docflow/skills/bootstrap/templates/*.md`), or supporting docs.
-2. Bump the `version` field in `.claude-plugin/plugin.json` following
-   semver — patch for fixes, minor for new questions / templates,
-   major for breaking changes to the skill flow.
+2. Bump the `version` field in every plugin manifest together
+   (`package.json`, `.claude-plugin/`, `.codex-plugin/`, `.grok-plugin/`,
+   `.cursor-plugin/`, `.omp-plugin/`) following semver — patch for fixes,
+   minor for new questions / templates, major for breaking changes to the
+   skill flow. `node scripts/verify.mjs` fails if they diverge.
 3. Update this `USAGE.md` and `README.md` if behaviour changed.
-4. Commit with a Conventional Commit message
-   (`feat(skill): ...`, `fix(template): ...`, `docs: ...`).
-5. Push to `origin/main`. Recipients refresh per the section above.
+4. Run `node scripts/verify.mjs` and `node evals/run.mjs` locally. Record
+   exact exits and skipped behavioural cases; deterministic success does not
+   establish native host qualification. Commit with a signed Conventional
+   Commit message (`feat(skill): ...`, `fix(template): ...`, `docs: ...`).
+5. Push the work branch and open or update a pull request into `main`. Require
+   the `verify` CI check on the current PR head, then obtain merge authority
+   and integrate with a standard merge commit. A ready PR is not shipped.
+6. Release only the reviewed, merged revision under separate release authority:
+   its `vX.Y.Z` tag and published npm version must match all six manifests.
+   Recipients refresh per the section above after integration/publication.
 
-If you tag releases, use `git tag vX.Y.Z` matching `plugin.json`.
+Release tags use `vX.Y.Z` matching every version manifest.
 Tags help recipients pin to a specific version via
 `/plugin install docflow@evolvehq@vX.Y.Z` (when supported by their
 Claude Code version).
+
+Clarity desktop releases use `clarity-v<version>` in this same repository and
+record their compatible Docflow version. They do not change the Docflow package
+or its `v<version>` tags. Filter release discovery by product; avoid the generic
+GitHub latest-release alias. See [Clarity releases](docs/clarity-releases.md) for
+product-specific lookup/download commands and separately approved publication.
 
 ## 9. Troubleshooting
 

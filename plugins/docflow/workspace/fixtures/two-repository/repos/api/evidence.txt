@@ -1,0 +1,1 @@
+Synthetic immutable fixture evidence. No command actually ran at these fabricated Git revisions.

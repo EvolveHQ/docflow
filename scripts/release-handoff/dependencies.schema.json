@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Clarity public dependency list version 1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "packages"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "packages": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["ecosystem", "name", "version", "licenses"],
+        "properties": {
+          "ecosystem": { "enum": ["npm", "cargo"] },
+          "name": { "type": "string", "pattern": "^(?:@[a-z0-9._-]+/)?[A-Za-z0-9._-]+$" },
+          "version": { "type": "string", "pattern": "^[A-Za-z0-9.+-]{1,100}$" },
+          "licenses": { "type": "array", "minItems": 1, "items": { "type": "string", "pattern": "^[A-Za-z0-9.+ -]{1,100}$" } }
+        }
+      }
+    }
+  }
+}

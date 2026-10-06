@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "files": {
+    "contract.mjs": {
+      "sha256": "357797a6a8f35886e6c6c90042b2c68624bdc70f15371bc5c5e61f45dd2bc57f",
+      "bytes": 10370
+    },
+    "public-fixtures.mjs": {
+      "sha256": "7dd621907673243c03bc577393f7de59fb01e8fbbbb6389a36f2e4d07cb2cae0",
+      "bytes": 2083
+    },
+    "contract.test.mjs": {
+      "sha256": "04b6897c6e3d5c920e25108e06ed67b818a19c0310f855338c920a8b82bfd0bf",
+      "bytes": 4765
+    },
+    "release.schema.json": {
+      "sha256": "9745f84da1c00b81e6f673631754ef928449c5e183cb5e4f00267d789cb6a1aa",
+      "bytes": 1906
+    },
+    "dependencies.schema.json": {
+      "sha256": "8dca68a6cc14e34ec8baf79fc28512cd8aa1e90728b95548cbad1c3ce8970bfa",
+      "bytes": 873
+    }
+  }
+}

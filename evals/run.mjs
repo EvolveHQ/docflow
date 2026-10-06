@@ -8,6 +8,16 @@
 import { cases } from './cases.mjs';
 import { runCase } from './harness.mjs';
 
+// Opt-in native-host tier (ADR 0062). The static gate stays fast and hostless;
+// `node evals/run.mjs --qualify [qualify args]` runs the executable host matrix.
+if (process.argv.includes('--qualify')) {
+  const { spawnSync } = await import('node:child_process');
+  const passthrough = process.argv.slice(2).filter((a) => a !== '--qualify');
+  const qualify = new URL('./hosts/qualify.mjs', import.meta.url).pathname;
+  const r = spawnSync(process.execPath, [qualify, ...passthrough], { stdio: 'inherit' });
+  process.exit(r.status ?? 1);
+}
+
 const results = [];
 for (const c of cases) results.push(await runCase(c));
 
@@ -22,11 +32,10 @@ const pass = results.filter((r) => r.status === 'PASS').length;
 const fail = results.filter((r) => r.status === 'FAIL').length;
 const skip = results.filter((r) => r.status === 'SKIPPED').length;
 console.log(`\n${pass} passed, ${fail} failed, ${skip} skipped`);
-if (skip) {
-  console.log(
-    'SKIPPED cases were not executed by this deterministic command. ' +
-    'Use the opt-in workflow or the vendor-host Docker harness in evals/hosts; ' +
-    'retain independent assertions and a source-pinned receipt for every run.',
-  );
-}
+console.log(
+  'This deterministic suite is hostless. Native host qualification ' +
+  '(discovery, install byte-match, authority matrix, mandate, recovery, ' +
+  'scope, dispatch, sync and the bootstrap/new-plan/ship regressions) runs ' +
+  'as the opt-in tier: `node evals/run.mjs --qualify` (ADR 0062).',
+);
 process.exit(fail ? 1 : 0);

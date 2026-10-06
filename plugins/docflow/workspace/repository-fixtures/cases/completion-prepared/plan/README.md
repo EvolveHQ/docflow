@@ -1,0 +1,81 @@
+# Plan
+
+This folder holds the project's implementation queue — one file per
+unit of work. The queue mirrors the ADR catalogue (`INDEX.md`) but
+tracks the human ordering of work, not the ADR catalogue ordering.
+
+## Layout
+
+- `plan/todo/NNNN-<slug>.md` — pending work, ordered by priority
+  (lower numbers run first). Each file names the owning ADR(s), the
+  scope, the exit criteria, and any dependencies.
+- `plan/done/<YYYY-MM-DD>-<slug>.md` — shipped work, ordered
+  chronologically. The file's body is amended with a "Shipped" footer:
+  under direct-to-main integration it names the verified implementation HEAD
+  recorded before the completion commit and any
+  artefact id; under pull-request integration it names the pull request
+  and any artefact id.
+
+Under direct integration, the bootstrap seed adoption entry may instead use
+this form, with its exact
+repository-relative path and host-appropriate quoting:
+
+```text
+Shipped by bootstrap introduction: `<repository-relative done path>`.
+Resolve: `git log --follow --diff-filter=A --format=%H -- "<repository-relative done path>"`
+```
+
+This seed-only reference resolves after creation to one reachable,
+verified scaffold commit containing the record and Implemented seed. Verify
+its signature when required; report missing or ambiguous evidence. It does
+not permit generic labels, future/self SHAs or this shortcut for ordinary work.
+
+## Convention
+
+- A pending item gets a `plan/todo/` file BEFORE work starts.
+- Numbers are never reused. The next `todo/` number is one above the
+  highest number across `todo/` filenames and `done/` titles; an empty
+  queue does not restart the sequence.
+- When work ships under direct-to-main integration, the completion
+  commit moves the file to `plan/done/` with a new date prefix, amends
+  the body with the shipped footer, advances the owning ADR(s), and
+  regenerates `INDEX.md`; the successful push is the completion event.
+- When work ships under pull-request integration, those completion
+  changes are the final branch commit before the pull request is
+  marked ready; the footer names the pull request, the merge is the
+  completion event, and no follow-up commit is made on the integration
+  branch.
+- A small fix that doesn't justify a plan file (a typo, a one-line
+  tweak, a dependency bump) skips the ceremony. Use judgement.
+- The status of the owning ADR(s) advances when the work ships:
+  `Accepted` → `Implemented`.
+
+## Status semantics on the owning ADRs
+
+| ADR status | Meaning |
+|---|---|
+| Proposed | Draft; decision authored but not yet approved. |
+| Accepted | Decision approved; implementation authorised. Sits in `plan/todo/`. |
+| Implemented | Shipped per the project's completion event. Sits in `plan/done/`. |
+| Superseded | Replaced by another ADR (named in `superseded-by:`). |
+| Deprecated | Was real; the world moved on; no successor. |
+
+See `CONVENTIONS.md` §Status lifecycle for the canonical definition.
+
+## Item status
+
+Every new queue item carries this section, initially empty:
+
+```markdown
+## Status
+
+- Claimed by:
+- Blockers:
+- Stopped:
+```
+
+At start, record actor, date and actual branch in Claimed by (no invented
+claim branch for shared checkouts or single writers). The owner maintains
+Blockers. On stop, record date and reason in Stopped with the three Status
+at a glance labels. Commit status with the work. Remove the section in
+the completion move to plan/done; the shipped footer replaces it.

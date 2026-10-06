@@ -1,6 +1,6 @@
 # ADR Index
 
-Generated from ADR metadata. Do not hand-edit — regenerate after any
+Generated from ADR metadata. Do not hand-edit â€” regenerate after any
 ADR change.
 
 | ADR | Title | Status | Date | Depends on |
@@ -19,7 +19,7 @@ ADR change.
 | [0012](adr/0012-skill-behavioural-evals.md) | Behavioural and end-to-end evaluation of skill outcomes | Implemented | 2026-06-01 | 0001, 0011 |
 | [0013](adr/0013-interactive-assessment-protocol.md) | Standard interactive assessment protocol for skills | Implemented | 2026-06-02 | 0006, 0007 |
 | [0014](adr/0014-concurrency-guardrails.md) | Concurrency guardrails for ADR and plan creation | Implemented | 2026-06-02 | 0001, 0006, 0010, 0013 |
-| [0015](adr/0015-multi-target-portability.md) | Multi-target portability — one skill source, many coding agents | Implemented | 2026-06-03 | 0001, 0007, 0009 |
+| [0015](adr/0015-multi-target-portability.md) | Multi-target portability — one skill source, many coding agents | Superseded | 2026-06-03 | 0001, 0007, 0009 |
 | [0016](adr/0016-layered-artifact-model.md) | Layered artifact model — minimal core, opt-in layers | Implemented | 2026-06-17 | 0001 |
 | [0017](adr/0017-configurable-artifact-root.md) | Configurable artifact root — control the repo footprint | Implemented | 2026-06-17 | 0013, 0016 |
 | [0018](adr/0018-wip-stays-out-of-catalogue.md) | Work-in-progress stays out of the ADR catalogue | Implemented | 2026-06-17 | 0001, 0013, 0014 |
@@ -55,3 +55,16 @@ ADR change.
 | [0048](adr/0048-wave-resumes-by-replanning-from-git.md) | A wave resumes by re-planning from git | Implemented | 2026-09-04 | 0013, 0031, 0037, 0038, 0039, 0045, 0046 |
 | [0049](adr/0049-skill-directories-carry-declarative-host-interface-files-only.md) | Skill directories carry SKILL.md plus declarative host interface files only | Implemented | 2026-09-04 | 0004, 0011, 0013, 0015 |
 | [0050](adr/0050-repository-changes-integrate-through-checked-pull-requests.md) | Repository changes integrate through checked pull requests | Implemented | 2026-09-11 | 0006, 0011, 0044 |
+| [0051](adr/0051-portable-workspace-memory-contract.md) | Portable workspace memory contract | Accepted | 2026-09-15 | 0015, 0016, 0049 |
+| [0052](adr/0052-workspace-authority-and-attempt-records.md) | Workspace authority and attempt records | Accepted | 2026-09-15 | 0051 |
+| [0053](adr/0053-portable-workspace-operating-skills.md) | Portable workspace operating skills | Superseded | 2026-09-15 | 0015, 0049, 0051, 0052 |
+| [0054](adr/0054-reuse-supplied-choices-and-current-authority.md) | Reuse supplied choices and current authority | Accepted | 2026-09-15 | 0013, 0031, 0039, 0042, 0052 |
+| [0055](adr/0055-source-bound-repository-producer-fixtures.md) | Source-bound repository producer fixtures | Accepted | 2026-09-15 | 0033, 0034, 0035, 0039, 0054 |
+| [0056](adr/0056-public-clarity-installer-handoff.md) | Public Clarity installer handoff | Accepted | 2026-09-15 | 0004, 0009, 0015, 0050 |
+| [0057](adr/0057-bounded-verification-evidence.md) | Bounded verification evidence in the product repository | Accepted | 2026-09-16 | 0011, 0012, 0043 |
+| [0058](adr/0058-workspace-contract-r2.md) | Workspace contract revision 2 — external sources, remote members, revision existence, derived documents and imported history | Accepted | 2026-09-18 | 0051, 0052, 0053 |
+| [0059](adr/0059-five-workspace-commands-and-mandate-note.md) | Five workspace commands and a committed operator mandate note | Accepted | 2026-09-18 | 0051, 0052, 0054 |
+| [0060](adr/0060-v1-package-target-set.md) | V1 package target set — eight coding agents | Accepted | 2026-09-19 | 0009 |
+| [0061](adr/0061-v1-workspace-host-guides.md) | V1 workspace host guide set — seven native guides | Accepted | 2026-09-19 | 0053, 0059 |
+| [0062](adr/0062-executable-host-qualification-rounds.md) | Executable native host qualification rounds | Accepted | 2026-09-21 | 0012, 0060 |
+| [0063](adr/0063-machine-local-checkout-resolution.md) | Machine-local checkout resolution | Proposed | 2026-09-22 | 0051, 0052, 0058 |

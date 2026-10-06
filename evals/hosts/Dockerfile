@@ -26,12 +26,19 @@ FROM base AS opencode
 RUN npm install --global opencode-ai@1.18.30 && npm cache clean --force
 USER node
 
-FROM base AS cowork
-RUN curl -fsSLo /usr/share/keyrings/claude-desktop-archive-keyring.asc https://downloads.claude.ai/claude-desktop/key.asc \
-    && gpg --show-keys --with-colons /usr/share/keyrings/claude-desktop-archive-keyring.asc | rg '31DDDE24DDFAB679F42D7BD2BAA929FF1A7ECACE'
-RUN echo 'deb [signed-by=/usr/share/keyrings/claude-desktop-archive-keyring.asc] https://downloads.claude.ai/claude-desktop/apt/stable stable main' > /etc/apt/sources.list.d/claude-desktop.list \
-    && apt-get update && apt-get install -y --no-install-recommends claude-desktop xvfb dbus-x11 xauth \
-    && rm -rf /var/lib/apt/lists/*
-ENV DISPLAY=:99
+FROM base AS grok
+RUN npm install --global @xai-org/grok-cli@latest && npm cache clean --force
+USER node
+
+FROM base AS cursor
+RUN npm install --global cursor-agent@latest && npm cache clean --force
+USER node
+
+FROM base AS omp
+RUN npm install --global @can1357/oh-my-pi@18.2.4 && npm cache clean --force
+USER node
+
+FROM base AS copilot
+RUN npm install --global @github/copilot@1.0.85 && npm cache clean --force
 USER node
 

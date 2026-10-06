@@ -3,12 +3,12 @@ import assert from 'node:assert/strict';
 import { cpSync, mkdtempSync, readFileSync, writeFileSync, rmSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { tmpdir } from 'node:os';
-import { cases } from '../cases.mjs';
+import { releaseAssertions } from './release-assertions.mjs';
 
 const source = resolve(process.argv[2]);
 const sourceFile = join(source, '.docflow/CONVENTIONS.md');
 const original = readFileSync(sourceFile, 'utf8');
-const check = cases.find(c => c.name === 'bootstrap: express depth scaffolds the fixed minimal profile').assert;
+const check = releaseAssertions['bootstrap-express'];
 const temporary = mkdtempSync(join(tmpdir(), 'docflow-express-assertions-'));
 const results = [];
 try {

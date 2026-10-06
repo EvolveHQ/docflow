@@ -46,14 +46,15 @@ questions, References, Revision History, Approvals.
 
 ## Multi-Target Parity
 
-docflow ships for five coding agents — Claude Code, Claude Cowork, pi,
-Codex, and OpenCode — from the **same** skill files under
+docflow ships for eight coding agents — Claude Code, pi, Codex, OpenCode,
+Grok, Cursor, omp and Copilot — from the **same** skill files under
 `plugins/docflow/skills/`. Only the manifests differ:
 `.claude-plugin/plugin.json` + `.claude-plugin/marketplace.json` for
-Claude Code / Cowork, `package.json` (`pi.skills`) for pi, and
+Claude Code / Copilot, `package.json` (`pi.skills`) for pi and omp,
 `.codex-plugin/plugin.json` + `.agents/plugins/marketplace.json` for
-Codex. OpenCode auto-discovers the same skill files and needs no
-manifest of its own.
+Codex, `.grok-plugin/` for Grok, and `.cursor-plugin/` for Cursor.
+OpenCode auto-discovers the same skill files and needs no manifest of its
+own.
 
 Any change to a skill, template, or the skill set must keep **every**
 target working. Skill prose stays agent-neutral; agent-specific
@@ -63,18 +64,23 @@ one agent is a defect until the other agents are handled too.
 
 ## Version-Sync Invariant
 
-The package version is declared in three manifests and they must always
+The package version is declared in six manifests and they must always
 agree:
 
-- `package.json` → `version` (npm / pi)
-- `.claude-plugin/plugin.json` → `version` (Claude Code / Cowork)
+- `package.json` → `version` (npm / pi / omp)
+- `.claude-plugin/plugin.json` → `version` (Claude Code / Copilot)
 - `.codex-plugin/plugin.json` → `version` (Codex)
+- `.grok-plugin/plugin.json` → `version` (Grok)
+- `.cursor-plugin/plugin.json` → `version` (Cursor)
+- `.omp-plugin/plugin.json` → `version` (omp)
 
 Bump them together in the same commit. The verify gate
 (`node scripts/verify.mjs`) fails if any diverge. The git tag `vX.Y.Z`
 and the published npm version must match this same number. Each
 marketplace manifest (`.claude-plugin/marketplace.json`,
-`.agents/plugins/marketplace.json`) must list the plugin by name.
+`.agents/plugins/marketplace.json`, `.grok-plugin/marketplace.json`,
+`.cursor-plugin/marketplace.json`, `.omp-plugin/marketplace.json`) must list
+the plugin by name.
 
 ## Gate Integrity
 
@@ -190,6 +196,27 @@ Integration model: PR-based integration into `main`, using standard merge commit
 `node scripts/verify.mjs` and `node evals/run.mjs` locally before pushing;
 the required `verify` CI check must pass on the current PR head. Constituent
 commits are signed. Updating a PR does not authorise merging or releasing it.
+
+## Verification Evidence
+
+A product repository does not carry run artefacts. A plan item's committed
+evidence is **at most one concise receipt**, held in the plan item and repeated
+in its pull-request body:
+
+- the **Status at a glance** block (This run / Overall / Yet to do);
+- the exact command(s) run, each with its exit code;
+- content hashes (source revision, package or artifact digests) and links.
+
+Committing raw run transcripts, logs, JSON dumps, archives, screenshots or
+long verification narratives is forbidden. The product repository commits
+**zero audit files**: nothing under `audits/` is added, modified, moved,
+restored or referenced by any change. External or historical evidence lives
+outside the repository in the workspace archive at
+`DocflowHQ/.docflow_workspace/local/archive/member-audits/` and is referenced
+by content hash; when it is unavailable, the receipt says so. The audit
+material committed before this rule is removed by plan 0069, which also clears
+every reference to it — never inside an unrelated change. See
+adr/0057-bounded-verification-evidence.md.
 
 ## Reporting
 Final skill results and persisted verification, PR, wave and stop reports

@@ -1,12 +1,18 @@
 // Eval case definitions (ADR 0012). Each case names a skill, optional
 // scripted inputs, and a deterministic `assert(repo)` over the resulting
-// state. Cases marked agentDependent require the (not-yet-configured)
-// runner and will report SKIPPED until runAgent() is implemented.
+// state. This suite is deterministic and hostless.
+//
+// The six agent-dependent cases that used to report SKIPPED here are retired
+// to the opt-in native-host qualification harness (ADR 0062):
+// evals/hosts/qualify.mjs now owns bootstrap full/express, new-plan,
+// ship-item and the two audit migrations as `skill` cases, and the authority
+// matrix, mandate, recovery and scope assertions as `product` cases.
 
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
-import { readFileSync } from 'node:fs';
+import { readFileSync, readdirSync } from 'node:fs';
 import assert from 'node:assert/strict';
+import { spawnSync } from 'node:child_process';
 import { assertStatusReports } from './reporting.mjs';
 import { assertClaimAcquisition } from './claim-race.mjs';
 import { assertClaimCleanupContract } from './claim-cleanup.mjs';
@@ -15,6 +21,9 @@ import {
   assertPlanShipped, assertAbsent, assertFileContains, assertCommandSucceeds,
   assertLegacyRange, assertMigratedToDeclaredShape,
   assertReferencesRewritten, assertHistoryPreserved,
+  classifyGlossary, glossaryShape, assertCanonicalGlossary,
+  glossaryHeadingAnchors, assertGlossaryAnchorsPreserved,
+  glossaryDeclaredRule, classifyGlossaryAdoption, assertGlossaryLossless,
 } from './assertions.mjs';
 
 const evalsDir = dirname(fileURLToPath(import.meta.url));
@@ -36,6 +45,64 @@ const LEGACY_MAP = { '0101': '0004', '0102': '0005' };
 const LEGACY_DONE_NUMBERS = ['0101'];
 
 export const cases = [
+  {
+    name: 'qualification harness: hostless regression controls',
+    skill: null,
+    agentDependent: false,
+    assert() {
+      const tests = readdirSync(join(evalsDir, 'hosts'))
+        .filter((f) => /^test-qualification-.*\.mjs$/.test(f))
+        .map((f) => join(evalsDir, 'hosts', f));
+      assert(tests.length, 'no qualification regression tests');
+      const result = spawnSync(process.execPath, ['--test', ...tests], { encoding: 'utf8', timeout: 120000 });
+      assert.equal(result.status, 0, result.error?.message || result.stdout + result.stderr);
+    },
+  },
+  {
+    name: 'repository producer: source renders and native compatibility',
+    skill: null,
+    agentDependent: false,
+    assert() {
+      const result = spawnSync(process.execPath, ['--test', join(evalsDir, 'repository-producer.test.mjs')], { encoding: 'utf8', timeout: 120000 });
+      assert.equal(result.status, 0, result.error?.message || result.stdout + result.stderr);
+    },
+  },
+  {
+    name: 'workspace history: local objects and environment isolation',
+    skill: null,
+    agentDependent: false,
+    assert() {
+      const result = spawnSync(process.execPath, ['--test', join(evalsDir, 'workspace-history.test.mjs')], { encoding: 'utf8', timeout: 120000 });
+      assert.equal(result.status, 0, result.error?.message || result.stdout + result.stderr);
+    },
+  },
+  {
+    name: 'workspace skills: packaged discovery and declarative contracts',
+    skill: null,
+    agentDependent: false,
+    assert() {
+      const result = spawnSync(process.execPath, ['--test', join(evalsDir, 'workspace-skills.test.mjs')], { encoding: 'utf8', timeout: 120000 });
+      assert.equal(result.status, 0, result.error?.message || result.stdout + result.stderr);
+    },
+  },
+  {
+    name: 'workspace: real validator, adverse inputs and portable assets',
+    skill: null,
+    agentDependent: false,
+    assert() {
+      const result = spawnSync(process.execPath, ['--test', join(evalsDir, 'workspace.test.mjs')], { encoding: 'utf8', timeout: 120000 });
+      assert.equal(result.status, 0, result.error?.message || result.stdout + result.stderr);
+    },
+  },
+  {
+    name: 'workspace contract r2: external sources, remote members, revisions, documents, imports',
+    skill: null,
+    agentDependent: false,
+    assert() {
+      const result = spawnSync(process.execPath, ['--test', join(evalsDir, 'workspace-contract-r2.test.mjs')], { encoding: 'utf8', timeout: 120000 });
+      assert.equal(result.status, 0, result.error?.message || result.stdout + result.stderr);
+    },
+  },
   {
     name: 'reports: missing blocks and invalid overall verdicts fail',
     skill: null,
@@ -75,30 +142,6 @@ export const cases = [
       assertFileContains(repo, '.docflow/_agent/CURRENT_FOCUS.md', 'Queue empty');
       assertFileContains(repo, '.gitattributes', 'merge=union');
       assertFileContains(repo, '.gitignore', '.docflow/_agent/CURRENT_FOCUS.md');
-      assertCommandSucceeds(repo, 'node tools/verify.mjs');
-    },
-  },
-  {
-    name: 'audit: migrate legacy coordination while preserving live ownership',
-    skill: 'audit',
-    inputs: { fixture: 'evals/fixtures/legacy-coordination', confirm: 'cleanup and migration approved; preserve the live claim' },
-    assert(repo) {
-      assertAbsent(repo, ['.docflow/_agent/WORKLOG.md', '.docflow/_agent/IN_FLIGHT.md',
-        '.docflow/_agent/CURRENT_FOCUS.md', '.docflow/_agent/HANDOFF.md', '.docflow/_agent/LOCKS.md']);
-      assertTree(repo, ['.docflow/_agent/ROLES.md', '.docflow/_agent/prompts/autonomous.md']);
-      assertFileContains(repo, '.docflow/plan/todo/0001-example.md', '## Status');
-      assertFileContains(repo, '.docflow/plan/todo/0001-example.md', 'executor-live');
-      assertFileContains(repo, '.docflow/plan/todo/0001-example.md', 'Awaiting fixture data');
-      assertFileContains(repo, 'AGENTS.md', 'Picking up this repo');
-      assertFileContains(repo, 'AGENTS.md', '.docflow/');
-      assertFileContains(repo, 'OPERATIONS.md', 'operator sign-off');
-      assertFileContains(repo, '.docflow/_agent/prompts/autonomous.md', 'node tools/verify.mjs');
-      for (const [path, stale] of [['.gitattributes', 'merge=union'], ['.gitignore', 'CURRENT_FOCUS.md']]) {
-        let text = '';
-        try { text = readFileSync(join(repo, path), 'utf8'); }
-        catch (e) { if (e.code !== 'ENOENT') throw e; }
-        if (text.includes(stale)) throw Error(`Legacy coordination rule remains in ${path}`);
-      }
       assertCommandSucceeds(repo, 'node tools/verify.mjs');
     },
   },
@@ -150,102 +193,132 @@ export const cases = [
     },
   },
   {
-    // Detection, the offer, the migration, and the post-migration audit.
-    // The subagent works on a COPY of the fixture (see the behavioural
-    // workflow); `repo` is that copy's path at assert time.
-    name: 'audit: legacy range detected, migration offered and applied',
-    skill: 'audit',
-    inputs: { fixture: 'evals/fixtures/legacy-range', confirm: 'yes' },
-    assert(repo) {
-      // AC4/AC5/AC6/AC7: renumbered in order, field on every ADR, boundary
-      // template retired, conventions rewritten, INDEX with Shape column.
-      assertMigratedToDeclaredShape(repo, { map: LEGACY_MAP });
-      // AC5: every in-catalogue reference followed the renumbering...
-      assertReferencesRewritten(repo, { map: LEGACY_MAP });
-      // ...and plan/done footers did not.
-      assertHistoryPreserved(repo, { numbers: LEGACY_DONE_NUMBERS });
-      // The seed keeps its number and declares the shape it always had.
-      assertFileContains(repo, 'adr/0001-record-architecture-decisions.md',
-        'shape: technology');
-      assertPlanShipped(repo, 'adopt-the-method');
-    },
-  },
-  {
-    // Full depth, single writer, a plan queue AND a real verify gate: the
-    // coordination directory holds the run prompt and nothing else — no
-    // roles list (there is one writer), no lock ledger, and none of the
-    // derived files the former scaffold wrote.
-    //
-    // The gate is the fixture script the case copies to tools/verify.mjs
-    // BEFORE bootstrap runs. A scaffolded repo has no scripts/verify.mjs
-    // of its own, so a gate naming this checkout's would record a command
-    // the scratch repo cannot execute — and an autonomous prompt built on
-    // an unrunnable gate is exactly what the prompt must never be.
-    name: 'bootstrap: fresh repo gets the full scaffold',
-    skill: 'bootstrap',
-    inputs: {
-      /* the 10 assessment answers, scripted */
-      gate: 'node tools/verify.mjs',
-      gateFixture: gateFixture,
-    },
-    assert(repo) {
-      assertTree(repo, [
-        'AGENTS.md', 'CLAUDE.md', 'CONVENTIONS.md', 'INDEX.md',
-        'adr/0000-template.md', 'plan/todo', 'plan/done',
-        'tools/verify.mjs', '_agent/prompts/autonomous.md',
-      ]);
-      assertAbsent(repo, [
-        '_agent/ROLES.md', '_agent/LOCKS.md', '_agent/WORKLOG.md',
-        '_agent/CURRENT_FOCUS.md', '_agent/IN_FLIGHT.md',
-        '_agent/HANDOFF.md',
-      ]);
-      // The read order lives in AGENTS.md, not a hand-off file.
-      assertFileContains(repo, 'AGENTS.md', 'Picking up this repo');
-      // The prompt records the scripted gate, and that gate runs here.
-      assertFileContains(repo, '_agent/prompts/autonomous.md', 'node tools/verify.mjs');
-      assertCommandSucceeds(repo, 'node tools/verify.mjs');
-    },
-  },
-  {
-    name: 'bootstrap: express depth scaffolds the fixed minimal profile',
-    skill: 'bootstrap',
-    inputs: { depth: 'express', name: 'scratch-express', description: 'eval fixture' },
-    assert(repo) {
-      // Entry points at the root; artefacts under the default root.
-      assertTree(repo, [
-        'AGENTS.md', 'CLAUDE.md',
-        '.docflow/CONVENTIONS.md', '.docflow/INDEX.md',
-        '.docflow/adr/0000-template.md',
-        '.docflow/adr/0001-record-architecture-decisions.md',
-      ]);
-      // Optional layers stay off in the express profile.
-      assertAbsent(repo, [
-        '.docflow/plan', 'plan', '_agent', '.docflow/GLOSSARY.md',
-        'GLOSSARY.md', '.docflow/domains', 'domains',
-        '.docflow/federation.md', 'federation.md',
-      ]);
-      const conventions = readFileSync(join(repo, '.docflow/CONVENTIONS.md'), 'utf8');
-      assert.match(conventions.replace(/[`*]/g, ''), /^Assessment depth:\s*express\b/m,
-        'expected the express assessment depth');
-      assertFileContains(repo, '.docflow/CONVENTIONS.md', 'fast-forward');
-    },
-  },
-  {
-    name: 'new-adr: next contiguous number, INDEX regenerated',
-    skill: 'new-adr',
-    inputs: { title: 'Example decision' },
-    assert(repo) {
-      assertContiguousAdrs(repo);
-      assertIndexSync(repo);
-    },
-  },
-  {
-    name: 'ship-item: todo→done and owning ADR → Implemented',
-    skill: 'ship-item',
-    inputs: { item: '0001-example' },
-    assert(repo) {
-      assertPlanShipped(repo, 'example');
-      assertAdrStatus(repo, 1, 'Implemented');
+    // Deterministic policy controls for the canonical glossary shape. No
+    // agent is involved: the checked-in fixtures are classified and the
+    // absence case proves a missing optional layer is never a failure.
+    name: 'glossary: canonical shape passes and non-canonical shapes classify',
+    skill: null,
+    agentDependent: false,
+    assert() {
+      const dir = join(evalsDir, 'fixtures/glossary');
+      const shape = (f) => classifyGlossary(readFileSync(join(dir, f), 'utf8'));
+
+      const canonical = shape('canonical.md');
+      assert.ok(canonical.canonical, `canonical fixture rejected: ${canonical.issues.join(', ')}`);
+      assert.equal(canonical.entries.length, 5, 'canonical entries');
+      assert.ok(canonical.entries.some((e) => e.definition.includes('\\|')), 'escaped pipe preserved');
+      assert.ok(canonical.entries.some((e) => e.definition.includes('<br>')), 'multiline cell preserved');
+      assert.equal(canonical.duplicates.length, 0, 'no duplicate terms');
+
+      assert.ok(shape('bullets.md').issues.includes('bullets'), 'bullets classified');
+      assert.ok(shape('prose.md').issues.includes('prose'), 'prose classified');
+      assert.ok(shape('headings.md').issues.includes('headings'), 'headings classified');
+
+      const mixed = shape('mixed.md');
+      assert.ok(!mixed.canonical, 'mixed fixture must not be canonical');
+      for (const issue of ['bullets', 'multiple-tables', 'header']) {
+        assert.ok(mixed.issues.includes(issue), `mixed fixture missing ${issue}`);
+      }
+
+      const duplicate = shape('duplicate.md');
+      assert.ok(duplicate.canonical, 'a single table with duplicate terms is still one shape');
+      assert.deepEqual(duplicate.duplicates, ['Delivery']);
+      assert.ok(shape('ambiguous.md').issues.includes('empty-row'), 'empty definition flagged');
+
+      // Malformed tables are never canonical: a missing delimiter, a row
+      // that is not exactly two cells, a blank line splitting the data rows
+      // and a trailing H1 all fail.
+      const malformed = {
+        missingDelimiter: '# Glossary\n\n| Term | Definition |\n| Alpha | One. |\n',
+        threeCellRow: '# Glossary\n\n| Term | Definition |\n|------|------------|\n| Alpha | One. | extra |\n',
+        splitTable: '# Glossary\n\n| Term | Definition |\n|------|------------|\n| Alpha | One. |\n\n| Beta | Two. |\n',
+        trailingHeading: '# Glossary\n\n| Term | Definition |\n|------|------------|\n| Alpha | One. |\n\n# Extra\n',
+      };
+      for (const [name, text] of Object.entries(malformed)) {
+        assert.ok(!classifyGlossary(text).canonical, `${name} must not be canonical`);
+      }
+      assert.ok(classifyGlossary(malformed.missingDelimiter).issues.includes('delimiter'), 'missing delimiter flagged');
+      assert.ok(classifyGlossary(malformed.threeCellRow).issues.includes('row-arity'), 'three-cell row flagged');
+      assert.ok(classifyGlossary(malformed.splitTable).issues.includes('multiple-tables'), 'blank-split table flagged');
+      assert.ok(classifyGlossary(malformed.trailingHeading).issues.includes('headings'), 'trailing H1 flagged');
+
+      // Duplicate identity ignores the preserved migration anchor: an anchored
+      // Delivery row plus a plain Delivery row is a duplicate.
+      const anchoredDuplicate = classifyGlossary(
+        '# Glossary\n\n| Term | Definition |\n|------|------------|\n' +
+        '| <a id="delivery"></a>Delivery | One. |\n| Delivery | Two. |\n');
+      assert.deepEqual(anchoredDuplicate.duplicates, ['Delivery'], 'anchored duplicate detected');
+      assert.throws(() => assertGlossaryLossless(
+        '# Glossary\n\n| Term | Definition |\n|------|------------|\n' +
+        '| <a id="delivery"></a>Delivery | One. |\n| Delivery | Two. |\n',
+        { entries: [{ term: '<a id="delivery"></a>Delivery', definition: 'One.' }] }),
+      /repeats terms/, 'lossless rejects a duplicate');
+
+      // Absence is valid and must not be created to satisfy the check.
+      assert.equal(glossaryShape(dir, 'missing.md').present, false);
+      assert.doesNotThrow(() => assertCanonicalGlossary(dir, 'canonical.md'));
+      assert.throws(() => assertCanonicalGlossary(dir, 'mixed.md'));
+      assert.throws(() => assertCanonicalGlossary(dir, 'duplicate.md'));
+      assert.doesNotThrow(() => assertCanonicalGlossary(dir, 'missing.md'));
+
+      // Heading entries expose link anchors; a migration that keeps only the
+      // link text loses the target and must fail, while an explicit anchor
+      // preserves it.
+      const linked = readFileSync(join(dir, 'headings-linked.md'), 'utf8');
+      assert.deepEqual(glossaryHeadingAnchors(linked), ['delivery', 'workspace']);
+      assert.ok(shape('headings-linked.md').issues.includes('headings'), 'heading entries classified');
+      const migrated = '# Glossary\n\n| Term | Definition |\n|------|------------|\n' +
+        '| <a id="delivery"></a>Delivery | A native repository contribution. |\n' +
+        '| <a id="workspace"></a>`workspace` | The coordination layer. |\n';
+      assert.doesNotThrow(() => assertGlossaryAnchorsPreserved(linked, migrated));
+      assert.throws(() => assertGlossaryAnchorsPreserved(linked, migrated.replace('<a id="delivery"></a>', '')));
+      assert.throws(() => assertGlossaryAnchorsPreserved(linked, '# Glossary\n\n| Term | Definition |\n|------|------------|\n| Delivery | A contribution. |\n'));
+
+      // An H1 term heading after the optional title is a link target too; a
+      // migration that drops its anchor loses the target.
+      const h1Linked = readFileSync(join(dir, 'headings-h1-linked.md'), 'utf8');
+      assert.deepEqual(glossaryHeadingAnchors(h1Linked), ['delivery', 'federation'], 'H1 term anchors');
+      const h1Migrated = '# Glossary\n\n| Term | Definition |\n|------|------------|\n' +
+        '| <a id="delivery"></a>Delivery | A native repository contribution. |\n' +
+        '| <a id="federation"></a>Federation | A multi-repo product. |\n';
+      assert.doesNotThrow(() => assertGlossaryAnchorsPreserved(h1Linked, h1Migrated));
+      assert.throws(() => assertGlossaryAnchorsPreserved(h1Linked, h1Migrated.replace('<a id="federation"></a>', '')));
+
+      const noTitle = readFileSync(join(dir, 'headings-h1-no-title.md'), 'utf8');
+      assert.deepEqual(glossaryHeadingAnchors(noTitle), ['delivery', 'federation']);
+      assert.doesNotThrow(() => assertGlossaryAnchorsPreserved(noTitle, h1Migrated));
+      assert.throws(() => assertGlossaryAnchorsPreserved(noTitle,
+        h1Migrated.replace('<a id="delivery"></a>', '')), /delivery/);
+
+      // The declared rule is a separate axis from the file shape: an older
+      // glossary rule is not adoption of the canonical table.
+      const canonicalRule = readFileSync(join(repoRoot, 'plugins/docflow/skills/bootstrap/templates/CONVENTIONS.md'), 'utf8');
+      assert.deepEqual(glossaryDeclaredRule('## Other\n\nNo glossary here.'), { declared: false, canonical: false, text: null });
+      assert.equal(glossaryDeclaredRule(canonicalRule).canonical, true, 'template declares the canonical shape');
+      const oldRule = '## Glossary\n\nUse one bullet per term.\n';
+      assert.equal(glossaryDeclaredRule(oldRule).canonical, false, 'older rule is not the table rule');
+      const bulletFile = '# Glossary\n\n- Delivery — a native contribution.\n';
+      assert.equal(classifyGlossaryAdoption('', bulletFile).status, 'migration-available', 'never declared stays a migration offer');
+      assert.equal(classifyGlossaryAdoption(oldRule, bulletFile).status, 'rule-migration-available', 'older rule is not drift against the table');
+      assert.equal(classifyGlossaryAdoption(canonicalRule, bulletFile).status, 'drift', 'adopted table rule + non-canonical is drift');
+      assert.equal(classifyGlossaryAdoption(oldRule, '# Glossary\n\n| Term | Definition |\n|------|------------|\n| Delivery | One. |\n').status, 'canonical', 'canonical file short-circuits');
+
+      // An ordered, complete lossless comparison: a rewrite, deletion or
+      // reordering is rejected while the unchanged migration passes.
+      const expected2 = { entries: [
+        { term: 'Delivery', definition: 'One.' },
+        { term: 'Federation', definition: 'Two.' },
+      ] };
+      const good2 = '# Glossary\n\nShared terms.\n\n| Term | Definition |\n|------|------------|\n' +
+        '| Delivery | One. |\n| Federation | Two. |\n';
+      expected2.artifact = good2;
+      assert.doesNotThrow(() => assertGlossaryLossless(good2, expected2));
+      assert.throws(() => assertGlossaryLossless(good2.replace('| Delivery | One. |\n| Federation | Two. |',
+        '| Federation | Two. |\n| Delivery | One. |'), expected2), 'reordering fails');
+      assert.throws(() => assertGlossaryLossless(good2.replace('| Federation | Two. |\n', ''), expected2), 'deletion fails');
+      assert.throws(() => assertGlossaryLossless(good2.replace('One.', 'A rewrite.'), expected2), 'rewrite fails');
+      assert.throws(() => assertGlossaryLossless(good2.replace('Shared terms.', 'Shared.'), expected2), /artifact/);
+      assert.throws(() => assertGlossaryLossless(good2.replace('Shared terms.', '<!-- Shared terms. -->'), expected2), /artifact/);
     },
   },
 ];

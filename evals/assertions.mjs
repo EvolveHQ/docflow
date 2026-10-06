@@ -288,3 +288,262 @@ export function assertPlanShipped(root, slugFragment) {
     throw new Error(`plan item "${slugFragment}" not found in plan/done`);
   }
 }
+
+// ── Glossary structure ──────────────────────────────────────────────
+//
+// Canonical shape: an optional H1 heading and optional introductory prose,
+// then exactly one two-column Markdown table whose header is
+// `Term | Definition`, every entry its own row. Terms are never recorded as
+// headings, bullets or paragraphs, and there is never a second table. This
+// is a bounded line reader, not a general Markdown parser.
+
+const stripGlossaryBlocks = (text) => text
+  .replace(/<!--[\s\S]*?-->/g, '')
+  .replace(/```[\s\S]*?```/g, '')
+  .replace(/~~~[\s\S]*?~~~/g, '');
+
+const isTableLine = (line) => /^\s*\|.*\|\s*$/.test(line);
+const isBulletLine = (line) => /^\s*(?:[-*+]|\d+\.)\s+\S/.test(line);
+const isHeadingLine = (line) => /^#{1,6}\s+\S/.test(line);
+const splitGlossaryRow = (line) =>
+  line.trim().replace(/^\|/, '').replace(/\|$/, '').split(/(?<!\\)\|/);
+const isDelimiterRow = (cells) =>
+  cells.length === 2 && cells.every((c) => /^:?-+:?$/.test(c));
+
+// The visible term behind a preserved cell. Migration anchors are
+// presentation, not identity, so `<a id="alpha"></a>Alpha` and `Alpha`
+// name the same term and collide.
+const visibleTerm = (cell) => cell
+  .replace(/<a\s+id="[^"]+"\s*><\/a>/g, '')
+  .replace(/[`*_~]/g, '')
+  .trim();
+
+// Classify a glossary's entry structure without rewriting it. Returns
+// issues as a set of shape names; `canonical` is true only for the single
+// optional-heading/prose + one `Term | Definition`-table form, with a
+// well-formed contiguous table.
+export function classifyGlossary(text) {
+  const clean = stripGlossaryBlocks(text.replace(/\r\n/g, '\n'));
+  const lines = clean.split('\n');
+  const issues = new Set();
+
+  // Maximal contiguous runs of table lines. Any other line — including a
+  // blank line — breaks a run, so a table split by a blank line registers
+  // as two tables rather than one.
+  const tables = [];
+  let current = null;
+  for (const line of lines) {
+    if (isTableLine(line)) {
+      if (!current) { current = []; tables.push(current); }
+      current.push(line);
+    } else {
+      current = null;
+    }
+  }
+
+  // Heading shape: at most one H1, no other heading level, and it must be
+  // the first non-empty content. A heading after the table is an entry
+  // outside the table, not a title.
+  const content = lines.filter((l) => l.trim());
+  const headings = content.filter(isHeadingLine);
+  const firstIsTopH1 = isHeadingLine(content[0] || '') && /^#\s+/.test(content[0]);
+  if (headings.length > 1 || (headings.length === 1 && !firstIsTopH1)
+      || headings.some((h) => !/^#\s+/.test(h))) {
+    issues.add('headings');
+  }
+
+  if (tables.length > 1) issues.add('multiple-tables');
+  if (content.some(isBulletLine)) issues.add('bullets');
+
+  // Optional introductory prose is allowed before the table; prose with no
+  // table, or prose after the table, is an entry outside the shape.
+  const tableLineCount = tables.reduce((n, t) => n + t.length, 0);
+  const proseLines = content.filter((l) => !isTableLine(l) && !isHeadingLine(l) && !isBulletLine(l));
+  if (proseLines.length && tableLineCount === 0) issues.add('prose');
+  const lastTable = content.map(isTableLine).lastIndexOf(true);
+  if (lastTable !== -1
+      && content.slice(lastTable + 1).some((l) => !isHeadingLine(l) && !isBulletLine(l))) {
+    issues.add('prose');
+  }
+
+  const entries = [], duplicates = [];
+  let emptyRow = false;
+  if (tables.length) {
+    const rows = tables[0];
+    // Header, then a delimiter row, then data rows: every row splits into
+    // exactly two cells. A missing delimiter, a three-cell row or a
+    // malformed header is a structural failure, never canonical.
+    const split = rows.map(splitGlossaryRow);
+    const header = (split[0] || []).map((c) => c.trim().toLowerCase());
+    if (!(header.length === 2 && header[0] === 'term' && header[1] === 'definition')) {
+      issues.add('header');
+    }
+    if (!isDelimiterRow((split[1] || []).map((c) => c.trim()))) issues.add('delimiter');
+    if (split.some((cells) => cells.length !== 2)) issues.add('row-arity');
+    const seen = new Set();
+    for (let i = 2; i < rows.length; i += 1) {
+      const cells = split[i];
+      if (cells.length !== 2) { emptyRow = true; continue; }
+      const term = cells[0].trim();
+      const definition = cells[1].trim();
+      if (!term || !definition) { emptyRow = true; continue; }
+      entries.push({ term, definition });
+      const key = visibleTerm(term).toLowerCase();
+      if (seen.has(key)) duplicates.push(visibleTerm(term));
+      seen.add(key);
+    }
+  }
+  if (emptyRow) issues.add('empty-row');
+
+  return {
+    present: true,
+    canonical: issues.size === 0 && tables.length === 1,
+    issues: [...issues],
+    tables: tables.length,
+    entries,
+    duplicates,
+  };
+}
+
+// Read and classify a glossary. An absent file is valid and canonical-by-
+// omission; it must never be created to satisfy a check.
+export function glossaryShape(root, file = 'GLOSSARY.md') {
+  if (!existsSync(join(root, file))) {
+    return { present: false, canonical: true, issues: [], tables: 0, entries: [], duplicates: [] };
+  }
+  return classifyGlossary(read(root, file));
+}
+
+// Absence passes; a present file must be the single canonical table with no
+// duplicate terms. Duplicates are flagged for user resolution, never merged.
+export function assertCanonicalGlossary(root, file = 'GLOSSARY.md') {
+  const shape = glossaryShape(root, file);
+  if (!shape.present) return shape;
+  if (!shape.canonical) {
+    throw new Error(
+      `${file}: non-canonical glossary structure (${shape.issues.join(', ') || 'not a single Term | Definition table'})`,
+    );
+  }
+  if (shape.duplicates.length) {
+    throw new Error(`${file}: duplicate terms need resolution: ${[...new Set(shape.duplicates)].join(', ')}`);
+  }
+  return shape;
+}
+
+// The heading anchors a glossary exposes to incoming links: the GitHub-style
+// slug of every heading below the optional H1 title, kept verbatim rather than
+// recomputed, so a migration can preserve the targets other files link to.
+const slugifyHeading = (text) => text.toLowerCase()
+  .replace(/[`*_~[\]#!]/g, '')
+  .replace(/[^a-z0-9\s-]/g, '')
+  .trim()
+  .replace(/\s+/g, '-');
+
+export function glossaryHeadingAnchors(text) {
+  const clean = stripGlossaryBlocks(text.replace(/\r\n/g, '\n'));
+  const content = clean.split('\n').filter((l) => l.trim());
+  const headings = content
+    .map((line, index) => ({ line, index }))
+    .filter(({ line }) => isHeadingLine(line));
+  const anchors = [];
+  headings.forEach(({ line, index }, i) => {
+    const level = line.match(/^(#+)/)[1].length;
+    const slug = slugifyHeading(line.replace(/^#+\s+/, ''));
+    const isFirst = index === 0 && i === 0;
+    // The optional document title is the first heading, an H1 at the very
+    // top, only when it is the explicit canonical `# Glossary` title.
+    // A following heading says nothing about whether the first H1 is a term.
+    // Preserve all other first-heading targets, including ambiguous titles.
+    if (isFirst && level === 1 && slug === 'glossary') return;
+    anchors.push(slug);
+  });
+  return anchors;
+}
+
+// Bounded migration form: explicit anchors lead the term cell. Do not count
+// examples inside inline code, comments, fences, definitions or other prose
+// as live row targets. Other forms need an explicit fixture contract.
+function explicitAnchors(text) {
+  return classifyGlossary(text).entries.flatMap(({ term }) => {
+    const prefix = term.match(/^(?:<a\s+id="[^"]+"\s*><\/a>\s*)+/)?.[0] || '';
+    return [...prefix.matchAll(/<a\s+id="([^"]+)"\s*><\/a>/g)].map((m) => m[1]);
+  });
+}
+
+// A migration is lossless only if every heading anchor the original glossary
+// exposed still resolves in the result — by an explicit anchor or a retained
+// heading. Dropping the heading while keeping only the link text is a loss.
+export function assertGlossaryAnchorsPreserved(before, after) {
+  const wanted = [...new Set(glossaryHeadingAnchors(before))];
+  const retained = new Set([...explicitAnchors(after), ...glossaryHeadingAnchors(after)]);
+  const missing = wanted.filter((anchor) => !retained.has(anchor));
+  if (missing.length) {
+    throw new Error(`glossary migration dropped heading anchors: ${missing.join(', ')}`);
+  }
+}
+
+// The glossary rule a repository actually records in CONVENTIONS.md. The
+// presence of a §Glossary section is not adoption of the canonical table
+// shape: it can record an older or unrelated glossary convention. Only a
+// section that names the two-column `Term` / `Definition` table counts as
+// canonical.
+export function glossaryDeclaredRule(conventionsText) {
+  const clean = stripGlossaryBlocks(conventionsText.replace(/\r\n/g, '\n'));
+  const section = clean.match(/^##\s+Glossary\s*$([\s\S]*?)(?=^##\s|$(?![\s\S]))/m);
+  if (!section) return { declared: false, canonical: false, text: null };
+  const body = section[1];
+  const canonical = /two-column/i.test(body) && /Term/.test(body) && /Definition/.test(body);
+  return { declared: true, canonical, text: body.trim() };
+}
+
+// How a repository relates to the canonical glossary shape. A non-canonical
+// file under an older declared rule is not drift against the canonical table
+// the repo never adopted: the rule and the file migrate together under one
+// separate consent.
+export function classifyGlossaryAdoption(conventionsText, glossaryText) {
+  const shape = classifyGlossary(glossaryText);
+  const rule = glossaryDeclaredRule(conventionsText);
+  if (shape.present && shape.duplicates.length) {
+    return { status: 'duplicate', shape, rule, duplicates: shape.duplicates };
+  }
+  if (shape.canonical) return { status: 'canonical', shape, rule };
+  if (!rule.declared) return { status: 'migration-available', shape, rule };
+  if (rule.canonical) return { status: 'drift', shape, rule };
+  return { status: 'rule-migration-available', shape, rule };
+}
+
+// An ordered, complete comparison of a migrated glossary against an explicit
+// expected mapping: every term and definition must match verbatim and in
+// order. The complete approved artifact also fixes every prose word and its
+// position, including title, links, code and anchors. There is deliberately no
+// fragment whitelist or semantic Markdown equivalence: only CRLF/LF transport
+// differences are allowed. Callers must supply the exact artifact to the host.
+export function assertGlossaryLossless(afterText, expected) {
+  const shape = classifyGlossary(afterText);
+  if (!shape.canonical) {
+    throw new Error(`migrated glossary is not canonical: ${shape.issues.join(', ') || 'no single table'}`);
+  }
+  if (shape.duplicates.length) {
+    throw new Error(`migrated glossary repeats terms: ${[...new Set(shape.duplicates)].join(', ')}`);
+  }
+  if (shape.entries.length !== expected.entries.length) {
+    throw new Error(
+      `migrated glossary has ${shape.entries.length} entries, expected ${expected.entries.length}`,
+    );
+  }
+  shape.entries.forEach((entry, i) => {
+    const want = expected.entries[i];
+    if (entry.term !== want.term || entry.definition !== want.definition) {
+      throw new Error(
+        `entry ${i + 1} changed: got ${JSON.stringify(entry)}, expected ${JSON.stringify(want)}`,
+      );
+    }
+  });
+  if (typeof expected.artifact !== 'string') {
+    throw new Error('lossless check requires a complete expected artifact');
+  }
+  if (afterText.replace(/\r\n/g, '\n') !== expected.artifact.replace(/\r\n/g, '\n')) {
+    throw new Error('glossary differs from complete approved artifact (prose, structure or content)');
+  }
+  return shape;
+}

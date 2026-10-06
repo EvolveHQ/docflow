@@ -2,6 +2,8 @@
 title: docflow
 ---
 
+# docflow
+
 ![docflow — ADR-driven documentation workflow](preview.png)
 
 **docflow** turns any repository into a **documentation-led, ADR-driven**
@@ -11,11 +13,18 @@ conventions, and the agent operating contract — the small set of canonical
 files a repo can be driven from by humans and coding agents alike. A set of
 **lifecycle skills** then author, queue, ship, and audit ADRs.
 
-It runs on **five coding agents** — Claude Code, Claude Cowork, pi, Codex,
-and OpenCode — from the same skill files, and scales from a single
+It runs on **eight coding agents** — Claude Code, pi, Codex, OpenCode, Grok,
+Cursor, omp and Copilot — from the same skill files, and scales from a single
 repository to a **multi-repo product**. See the
 [methodology]({{ '/methodology/' | relative_url }}) for the formal definition of the conventions,
-why they help, and where they fall short.
+why they help, and where they fall short, and
+[Portable workspaces]({{ '/workspace/' | relative_url }}) for the
+cross-repository model.
+
+Choose a [step-by-step workflow]({{ '/workflows/' | relative_url }}) for
+your starting setup, or read the [0.10.0 release notes]({{ '/release-notes/' | relative_url }}).
+The workspace package is usable through ordinary files; full native host
+qualification remains pending and Clarity integration is parked.
 
 ## Skills
 
@@ -30,6 +39,33 @@ why they help, and where they fall short.
 | `brainstorm` | Decompose a problem into candidate ADRs + plan items (proposes drafts; writes nothing until approved). |
 | `agent-wave` | Orchestrate a wave of parallel worktree subagents over the queue, with checkpoint or continuous supervision. |
 | `rollup` | For a multi-repo product: aggregate every member repo's ADRs into one derived, product-wide roll-up (run from the home repo). |
+| `workspace-setup` | Create or adopt a portable workspace home and registry. |
+| `workspace-status` | Read priorities, owners, authority, blockers and next actions. |
+| `workspace-scope` | Record shared outcomes and native deliveries without granting execution. |
+| `workspace-dispatch` | Check current grants, claims, dependencies and resources, then hand off a bounded brief. |
+| `workspace-sync` | Reconcile returned receipts and member state from checked native evidence; refresh INDEX. |
+
+## Portable workspaces
+
+The five workspace skills coordinate a product across independent
+repositories from an adopter-owned Git workspace. `workspace-setup`
+creates or adopts the home and registry; `workspace-status` reads
+priorities, owners, current authority and blockers; `workspace-scope`
+records a shared outcome and its native deliveries; `workspace-dispatch`
+checks current grants, claims, dependencies and resources and hands off a
+bounded brief; `workspace-sync` reconciles returned receipts and member state
+from checked native evidence and refreshes INDEX. Decisions and grants cite a
+committed operator mandate note as source-bound evidence. Canonical memory
+stays in the adopter's workspace,
+while member repositories keep their own methods, instructions and histories.
+
+The records are plain files checked by a deterministic validator, not a
+scheduler, an authentication layer or a live ownership service. Selecting
+work and agreeing a scope grant no execution authority, and a readiness
+report for which no attempt started is not a completed receipt. Installing
+the workspace skills also requires the complete workspace assets, including
+for detached skill copies; native-host and Clarity qualification remain
+separate from the package checks.
 
 ## Install
 
@@ -52,14 +88,15 @@ pi install npm:@evolvehq/docflow
 (or, from source, `pi install git:github.com/EvolveHQ/docflow`.)
 Invoke as `/skill:bootstrap`, `/skill:new-adr`, …
 
-### Also: Claude Cowork, Codex, OpenCode
+### Also: Codex, OpenCode, Grok, Cursor, omp, Copilot
 
-docflow runs from the same skill files on **Claude Cowork** (the Claude
-Code plugin), **Codex** (`codex plugin marketplace add EvolveHQ/docflow`;
-invoke `$bootstrap`), and **OpenCode** (reads `.claude`/`.agents`/
-`.opencode` skills — auto-discovered; OpenCode-compatible forks like
-Xiaomi's *mimocode* inherit this via the same path). See the
-[full install matrix](https://github.com/EvolveHQ/docflow#install).
+docflow runs from the same skill files on **Codex** (`codex plugin marketplace add EvolveHQ/docflow`; invoke `$bootstrap`), **OpenCode**
+(reads `.claude`/`.agents`/`.opencode` skills — auto-discovered), **Grok**
+(`grok plugin marketplace add EvolveHQ/docflow` → `grok plugin install docflow --trust`), **Cursor** (`cursor-agent --plugin-dir <repo>/plugins/docflow`), **omp**
+(`omp plugin install npm:@evolvehq/docflow`; invoke `/skill:bootstrap`), and
+**GitHub Copilot CLI** (`copilot plugin marketplace add EvolveHQ/docflow`).
+OpenCode-compatible forks like Xiaomi's *mimocode* inherit this via the same
+path. See the [full install matrix](https://github.com/EvolveHQ/docflow#install).
 
 ## Why
 
@@ -72,6 +109,7 @@ handover. It works on fresh repos (scaffolds from zero) and existing ones
 ## Links
 
 - [Methodology — the formal definition]({{ '/methodology/' | relative_url }})
+- [Portable workspaces]({{ '/workspace/' | relative_url }})
 - [Source on GitHub](https://github.com/EvolveHQ/docflow)
 - [README](https://github.com/EvolveHQ/docflow/blob/main/README.md)
 - [Full usage & customisation guide (USAGE.md)](https://github.com/EvolveHQ/docflow/blob/main/USAGE.md)

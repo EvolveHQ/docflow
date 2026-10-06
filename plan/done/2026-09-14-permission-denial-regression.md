@@ -28,7 +28,7 @@ The historical cross-tool continuation fails the new regression. Twelve
 positive/negative controls pass; the fresh native Cowork case passes seven
 independent assertions, with no tool call after denial and all 20 destination
 files unchanged. Exact installed bytes, expanded native request/error and
-original failures are recorded in the [release audit](../../audits/2026-09-14-release-verification.md)
+original failures are recorded in the release audit (`DocflowHQ/.docflow_workspace/local/archive/member-audits/docflow/2026-09-14-release-verification.md`)
 and its sanitised receipt. The broader Git-lock probe failure is retained;
 this focused success is not a general permission boundary.
 

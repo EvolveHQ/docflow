@@ -1,0 +1,86 @@
+---
+{
+  "schema": 1,
+  "id": "56789012-5555-4555-8555-555555555555",
+  "home": "example/platform",
+  "kind": "runs",
+  "title": "Api interrupted",
+  "owner": "human:owner",
+  "created_at": "2026-09-15T09:00:00Z",
+  "links": [],
+  "state": "running",
+  "history": [
+    {
+      "state": "running",
+      "at": "2026-09-15T09:00:00Z",
+      "actor": "human:owner",
+      "reason": "Dispatch within current synthetic authority"
+    }
+  ],
+  "started_at": "2026-09-15T09:00:00Z",
+  "ended_at": null,
+  "brief": {
+    "work": {
+      "home": "example/platform",
+      "id": "34567890-3333-4333-8333-333333333333",
+      "path": ".docflow_workspace/work/deliver-compatible-exports--345678903333.md"
+    },
+    "delivery": "provider",
+    "scope_revision": 1,
+    "scope": "Prepare the compatible change under native rules.",
+    "exclusions": [
+      "No merge, release or deployment by the executor."
+    ],
+    "actor": "agent:api-first",
+    "host": "synthetic-native-host",
+    "grant": {
+      "work": {
+        "home": "example/platform",
+        "id": "34567890-3333-4333-8333-333333333333",
+        "path": ".docflow_workspace/work/deliver-compatible-exports--345678903333.md"
+      },
+      "id": "api-first",
+      "revision": 1
+    },
+    "workspace_revision": "1111111111111111111111111111111111111111",
+    "base_revision": "1111111111111111111111111111111111111111",
+    "native_work": {
+      "repository": "example/api",
+      "path": "work.md",
+      "revision": "1111111111111111111111111111111111111111"
+    },
+    "claim": {
+      "mode": "native",
+      "owner": "agent:api-first",
+      "state": "held",
+      "source": {
+        "repository": "example/api",
+        "path": "evidence.txt",
+        "revision": "1111111111111111111111111111111111111111",
+        "observed_at": "2026-09-15T09:00:00Z",
+        "outcome": "passed",
+        "summary": "Synthetic source-bound observation; not a real host result."
+      },
+      "observed_at": "2026-09-15T09:00:00Z",
+      "expires_at": "2026-09-15T20:00:00Z"
+    },
+    "dependencies": [],
+    "resources": [],
+    "required_checks": [
+      "native-check"
+    ],
+    "stop_at": "draft-pr-and-checks-reported",
+    "return_path": ".docflow_workspace/runs/api-interrupted--567890125555.md",
+    "selected_assets": []
+  },
+  "actions": [],
+  "receipt": null,
+  "reconciliation": null,
+  "predecessors": [],
+  "successors": []
+}
+---
+
+# Api interrupted
+
+Template form: mint a new UUIDv4 and supply the actual canonical home, owner and UTC times. Replace synthetic references with scoped facts. Do not invent authority or evidence; see the separate grant/brief/receipt forms and populated producer fixture. Create a run only for an authorised assignment.

@@ -17,6 +17,8 @@ This is the enforcement `AGENTS.md` cannot guarantee on its own.
    read), or the **legacy range encoding** described in item 4 — status
    lifecycle, integration model, multi-agent mode,
    language mandate, optional artefacts present (GLOSSARY, domains/),
+   the canonical glossary shape recorded in §Glossary (optional heading
+   and prose, then one `Term | Definition` table),
    and any Q10 domain hard rules, and the **artefact root** (default:
    repository root) — resolve `adr/`, `plan/`, `INDEX.md`, `_agent/` against it and
    honour it in the cross-reference and INDEX-sync checks.
@@ -304,6 +306,55 @@ the same way: it is a template, not the first technology ADR.
     blocks are drift; inaccessible reports are unverifiable. Draft PRs may
     report verification as not run; they must never imply success.
 
+17. **Glossary structure.** N/A when `GLOSSARY.md` is absent — an absent
+    optional layer is valid and the audit must never create one to satisfy
+    this check. Otherwise read `CONVENTIONS.md` §Glossary and inspect what
+    rule it **actually declares**, not merely whether the section exists.
+    A repo can carry a §Glossary that states an older or unrelated glossary
+    convention; that is not adoption of this canonical table. The canonical
+    rule is the one this product records: an optional H1 heading and optional
+    introductory prose, then exactly one two-column table whose header is
+    `Term` and `Definition`, with every entry as its own row. **PASS** only
+    when the file is a single canonical table with optional heading/prose, no
+    term recorded as a heading, bullet or paragraph, **and no duplicate
+    term**. Check the duplicate condition as part of the pass test, not after
+    it, so a canonical table that repeats a term can never report PASS.
+
+    - **Duplicate term** (any structure) — report a **drift** finding
+      naming the repeated term(s). A repeated term is identified by its
+      visible name, so `<a id="alpha"></a>Alpha` and a plain `Alpha` row
+      count as the same term. There is no mechanical fix: a duplicate
+      needs user resolution, is never merged automatically, and is never
+      counted as clean.
+    - **Non-canonical shape with no §Glossary section** (a legacy or
+      opt-in-later repo that never adopted any glossary rule) — report
+      **one** finding at severity **migration available**, naming every
+      shape found and the file. The glossary is valid, just non-canonical;
+      it does not fail the audit or count as an issue, exactly like the
+      legacy range encoding.
+    - **Non-canonical shape whose §Glossary declares a different or older
+      glossary convention** (bullets, prose, or another column shape — not
+      the canonical two-column table). The repo declared a glossary rule,
+      but not **this** table rule, so its file is not drift against a rule
+      it never adopted. Report **one** finding at severity **migration
+      available** that covers the rule and the file together: the Step 5
+      dry run shows both the `GLOSSARY.md` migration and the proposed
+      §Glossary replacement, and the repo may accept either or both. It
+      does not fail the audit or count as an issue.
+    - **Non-canonical shape whose §Glossary declares the canonical
+      two-column table** (the repo adopted this shape and its own file
+      drifted from it) — report the same finding as **drift**, naming every
+      shape found and citing the declared §Glossary as the rule it broke.
+      It counts as an issue and lowers the verdict, but it is still fixed
+      only through the consented migration in Step 5 — never silently
+      rewritten.
+
+    In every non-canonical case, name any entry whose mapping cannot be
+    preserved without guessing and mark it for user resolution; those are
+    never migrated automatically, and where lossless preservation (for
+    example a heading anchor an incoming link points at) is uncertain, stop
+    for resolution instead of guessing.
+
 ## Step 2 — Report
 
 Translate the audit verdict into the closing block's Overall vocabulary:
@@ -319,9 +370,13 @@ fails. Put the successful migration outcome under This run instead.
 Lead with a one-line verdict (clean / N issues). Then the punch list,
 grouped by severity: **blocking** (privacy leaks, status/lifecycle
 violations, broken cross-refs), **drift** (INDEX out of sync, missing
-plan files), **hygiene** (evidenced stale locks, uncertain lock rows
-awaiting confirmation, formatting), and **migration
-available** (a superseded scheme the repo can move off — check 15).
+plan files, duplicate glossary terms, or a non-canonical glossary whose
+§Glossary declares the canonical table it drifted from), **hygiene**
+(evidenced stale locks,
+uncertain lock rows awaiting confirmation, formatting), and **migration
+available** (a superseded scheme the repo can move off — check 15 — or a
+non-canonical glossary with no §Glossary rule, or one whose §Glossary
+declares a different glossary rule — check 17).
 A migration-available finding does not count towards the issue count in
 the verdict and never makes the run dirty: a repo whose only finding is
 that one is **clean, with a migration available**.
@@ -348,6 +403,11 @@ acceptance criteria, or remove suspected privacy leaks without the
 user confirming each — those need judgement. Commit fixes as
 `fix(adr): ...` / `docs: ...` with a `Rationale:` footer where an ADR
 is touched.
+
+The glossary migration is **not** one of these mechanical fixes: never
+bundle it into a "fix everything" confirmation, never convert a glossary
+without the concrete diff and explicit consent in Step 5, and never create
+an absent `GLOSSARY.md` to satisfy the check.
 
 If check 15 fired, offer the **legacy range migration** here too — as
 its own offer, separate from the mechanical fixes above, and never
@@ -456,6 +516,79 @@ identity for coverage and reference checks using the commit map, as checks
 3 and 7 prescribe. A decision's preserved rationale describing the former
 scheme is historical context; only the active shape rules and metadata
 change. Do not treat this required preservation as an incomplete migration.
+
+## Step 5 — Offer the glossary migration (only when check 17 fired)
+
+This is a separate, consented offer. Like the range migration it is
+**offered, never forced**, and it rewrites nothing without the explicit
+confirmation in 5.2. Accepting the audit report is not accepting this
+migration; a decline keeps the file byte for byte and never adds a second
+shape, and the offer returns on the next audit. When the declared §Glossary
+itself states an older glossary convention, the offer covers the rule and the
+file together: the repo may accept the file migration, the rule replacement,
+both or neither, and declining any part leaves that part unchanged.
+
+### 5.1 — Dry run: show the concrete proposed diff
+
+Render the exact change before touching the file:
+
+- show the current glossary as it is, and the proposed canonical file
+  beside it;
+- map each non-table entry to a proposed `Term | Definition` row. Compare
+  the result against an explicit ordered list of the original entries and
+  prose: every term and its **complete definition wording** is preserved
+  verbatim — do not recase, reword, summarise or reorder an entry. Only the
+  structural escaping (a literal pipe as `\|`, a hard break as `<br>`) and
+  the table packaging change;
+- when the declared §Glossary states a different or older glossary rule,
+  show the proposed replacement `## Glossary` section as a second, labelled
+  part of the same diff, and state plainly that it is a separate choice;
+- preserve term spelling and meaning, aliases, links and inline code,
+  entry order, and all meaningful introductory prose;
+- **preserve heading entry anchors.** A term recorded as a heading
+  (`## Delivery`, or an H1 term heading after the optional `# Glossary`
+  title) exposes an anchor (`#delivery`) that other files may link
+  to. Converting the heading to a table row removes that target, and
+  preserving the link text alone is not enough. Keep the exact existing
+  slug as an explicit anchor on the row (for example
+  `<a id="delivery"></a>Delivery`), using the slug the heading already has
+  rather than recomputing it. List every heading entry and the incoming
+  links that reach it in the dry run, and if an anchor cannot be preserved
+  — an unknown or ambiguous slug, a link that targets a fragment the file
+  never defined, or two headings that collide — **stop and flag it for user
+  resolution** instead of guessing;
+- escape every literal pipe as `\|`, and keep a genuinely multiline
+  definition in one cell with `<br>` rather than extra rows;
+- list every entry whose mapping is ambiguous or duplicated and leave it
+  for user resolution — do not invent a definition, merge duplicate terms,
+  drop unexplained prose, or force a row the file does not support.
+
+State plainly that nothing has been written. This is a Markdown shape
+change only; it introduces no parser or dependency.
+
+### 5.2 — Confirm
+
+Ask for an explicit confirmation of **that diff**. Write nothing without
+it; take silence or ambiguity as a no. If the user declines, keep the
+file untouched, report the declined migration, and add no alternative
+shape.
+
+### 5.3 — Apply, as one commit
+
+On confirmation, rewrite the file to the canonical structure exactly as
+shown, preserving every term, its exact definition wording, the entry order,
+all meaningful prose, and every heading anchor an incoming link resolves to.
+If the accepted diff also replaced the declared §Glossary, write that
+replacement in the same commit; if the rule was declined, leave
+`CONVENTIONS.md` unchanged. If any entry or anchor cannot be
+preserved losslessly — including an anchor target the dry run could not
+confirm — stop and flag it for user resolution rather than committing a
+partial migration. Commit once with a `docs:` or `fix:`
+Conventional Commit whose message names the glossary migration; add the
+`Rationale:` footer only if the repo's git contract requires it for the
+files touched. Then re-run check 17: the file must pass as canonical with
+no manual edit. A half-migrated file is the one state neither shape
+describes — finish it in the same commit.
 
 ## Coordination migration
 

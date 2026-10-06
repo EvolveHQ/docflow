@@ -1,0 +1,6 @@
+# Preserve the reviewed portable public contract bytes on every checkout.
+scripts/release-handoff/contract.mjs -text
+scripts/release-handoff/public-fixtures.mjs -text
+scripts/release-handoff/contract.test.mjs -text
+scripts/release-handoff/release.schema.json -text
+scripts/release-handoff/dependencies.schema.json -text

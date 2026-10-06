@@ -10,6 +10,7 @@
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join, extname } from 'node:path';
+import { validateWorkspace, parseRecord, parseMetadata, checkShape } from '../plugins/docflow/workspace/validate.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const errors = [];
@@ -41,18 +42,29 @@ function frontmatter(text) {
 }
 
 // ── A. Manifests + version sync (folds in the original verify gate) ──
-// Three manifests carry the version — Claude Code, npm/pi, and Codex —
-// and must all match (CONVENTIONS.md §Version-Sync Invariant).
+// Every native target manifest carries the version — npm/pi, Claude Code,
+// Codex, Grok, Cursor and omp — and must all match
+// (CONVENTIONS.md §Version-Sync Invariant). Copilot loads the Claude Code
+// plugin and shares its manifest; OpenCode auto-discovers and carries none.
 const pkg = readJSON('package.json');
 const plugin = readJSON('plugins/docflow/.claude-plugin/plugin.json');
 const marketplace = readJSON('.claude-plugin/marketplace.json');
 const codexPlugin = readJSON('plugins/docflow/.codex-plugin/plugin.json');
 const codexMarket = readJSON('.agents/plugins/marketplace.json');
+const grokPlugin = readJSON('plugins/docflow/.grok-plugin/plugin.json');
+const grokMarket = readJSON('.grok-plugin/marketplace.json');
+const cursorPlugin = readJSON('plugins/docflow/.cursor-plugin/plugin.json');
+const cursorMarket = readJSON('.cursor-plugin/marketplace.json');
+const ompPlugin = readJSON('plugins/docflow/.omp-plugin/plugin.json');
+const ompMarket = readJSON('.omp-plugin/marketplace.json');
 
 const versioned = [
   ['package.json', pkg],
   ['plugins/docflow/.claude-plugin/plugin.json', plugin],
   ['plugins/docflow/.codex-plugin/plugin.json', codexPlugin],
+  ['plugins/docflow/.grok-plugin/plugin.json', grokPlugin],
+  ['plugins/docflow/.cursor-plugin/plugin.json', cursorPlugin],
+  ['plugins/docflow/.omp-plugin/plugin.json', ompPlugin],
 ].filter(([, m]) => m);
 const versions = [...new Set(versioned.map(([, m]) => m.version))];
 if (versions.length > 1) {
@@ -65,6 +77,9 @@ if (versions.length > 1) {
 for (const [mfile, mkt, pluginName] of [
   ['.claude-plugin/marketplace.json', marketplace, plugin?.name],
   ['.agents/plugins/marketplace.json', codexMarket, codexPlugin?.name],
+  ['.grok-plugin/marketplace.json', grokMarket, grokPlugin?.name],
+  ['.cursor-plugin/marketplace.json', cursorMarket, cursorPlugin?.name],
+  ['.omp-plugin/marketplace.json', ompMarket, ompPlugin?.name],
 ]) {
   if (mkt && pluginName) {
     const names = (mkt.plugins ?? []).map((p) => p.name);
@@ -73,12 +88,41 @@ for (const [mfile, mkt, pluginName] of [
     }
   }
 }
+// Target parity: every named package target must ship a manifest and a
+// marketplace source. OpenCode and Copilot resolve through the Claude Code
+// packaging (auto-discovery / Claude-compatible plugin), so they add no file.
+for (const [target, files] of [
+  ['Claude Code', ['plugins/docflow/.claude-plugin/plugin.json', '.claude-plugin/marketplace.json']],
+  ['pi', ['package.json']],
+  ['Codex', ['plugins/docflow/.codex-plugin/plugin.json', '.agents/plugins/marketplace.json']],
+  ['Grok', ['plugins/docflow/.grok-plugin/plugin.json', '.grok-plugin/marketplace.json']],
+  ['Cursor', ['plugins/docflow/.cursor-plugin/plugin.json', '.cursor-plugin/marketplace.json']],
+  ['omp', ['plugins/docflow/.omp-plugin/plugin.json', '.omp-plugin/marketplace.json']],
+  ['Copilot', ['plugins/docflow/.claude-plugin/plugin.json', '.claude-plugin/marketplace.json']],
+]) {
+  for (const f of files) {
+    if (!existsSync(join(root, f))) fail(`target ${target}: missing packaging file ${f}`);
+  }
+}
 
 // ── B. Skills: frontmatter, body shape, multi-target parity ──
 const skillsDir = join(root, 'plugins/docflow/skills');
 const skillDirs = readdirSync(skillsDir, { withFileTypes: true })
   .filter((d) => d.isDirectory())
   .map((d) => d.name);
+
+const requiredSkills = ['bootstrap', 'new-adr', 'new-plan', 'ship-item',
+  'add-convention', 'audit', 'brainstorm', 'agent-wave', 'rollup',
+  'workspace-setup', 'workspace-status', 'workspace-scope', 'workspace-dispatch',
+  'workspace-sync'];
+for (const name of requiredSkills) {
+  if (!skillDirs.includes(name)) fail('missing required portable skill: ' + name);
+}
+for (const name of skillDirs) {
+  if (name !== 'bootstrap' && existsSync(join(skillsDir, name, 'templates'))) {
+    fail(name + ': only bootstrap carries templates');
+  }
+}
 
 // Agent-specific invocation syntax that must not appear in skill BODIES
 // (descriptions may carry trigger hints; bodies must stay agent-neutral).
@@ -248,7 +292,7 @@ function scanLeaks(rel) {
   }
 }
 
-const textSurfaceExts = new Set(['.css', '.html', '.md', '.mdx', '.svg', '.yml', '.yaml']);
+const textSurfaceExts = new Set(['.css', '.html', '.md', '.mdx', '.svg', '.yml', '.yaml', '.json', '.mjs', '.txt']);
 function scanLeakTree(rel) {
   if (!existsSync(join(root, rel))) return;
   for (const entry of readdirSync(join(root, rel), { withFileTypes: true })) {
@@ -285,6 +329,7 @@ for (const f of ['README.md', 'USAGE.md']) scanLeaks(f);
 // The docs site is public/user-visible too; scan text-like site files
 // while skipping binary assets such as PNG/ICO previews.
 scanLeakTree('docs');
+scanLeakTree('plugins/docflow/workspace');
 // Bootstrap templates are user-visible (they ship into target repos).
 const tplDir = join(root, 'plugins/docflow/skills/bootstrap/templates');
 if (existsSync(tplDir)) {
@@ -305,6 +350,25 @@ if (existsSync(doneDir)) {
     }
   }
 }
+
+// ── F. Portable workspace foundation: structure, templates and producer ──
+if (!pkg?.files?.includes('plugins/docflow/workspace/')) {
+  fail('package.json: portable workspace assets must be distributed');
+}
+for (const kind of ['ideas', 'decisions', 'work', 'knowledge', 'runs', 'role', 'profile']) {
+  const rel = `plugins/docflow/skills/bootstrap/templates/workspace-${kind}.md`;
+  try { checkShape(parseRecord(read(rel)), kind).forEach(e => fail(`${rel}: ${e}`)); }
+  catch (e) { fail(`${rel}: ${e.message}`); }
+}
+for (const [file, definition] of [['registry.yaml', 'registry'], ['sources.yaml', 'sources'], ['grant.json', 'grant'], ['brief.json', 'brief'], ['receipt.json', 'receipt'], ['recommendation.json', 'recommendation']]) {
+  const rel = `plugins/docflow/skills/bootstrap/templates/workspace-${file}`;
+  try { checkShape(parseMetadata(read(rel)), definition).forEach(e => fail(`${rel}: ${e}`)); }
+  catch (e) { fail(`${rel}: ${e.message}`); }
+}
+try {
+  const result = validateWorkspace(join(root, 'plugins/docflow/workspace/fixtures/two-repository'), { at: '2026-09-15T13:00:00Z' });
+  result.diagnostics.forEach(d => fail(`workspace fixture ${d.path}: ${d.code}: ${d.message}`));
+} catch (e) { fail(`workspace fixture: ${e.message}`); }
 
 // ── Report ──
 if (errors.length) {

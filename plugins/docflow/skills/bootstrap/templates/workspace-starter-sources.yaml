@@ -1,0 +1,100 @@
+{
+  "schema": 1,
+  "sources": [
+    {
+      "id": "docflow/operating-skills",
+      "assets": [
+        {
+          "id": "workspace-setup",
+          "asset_kind": "skill",
+          "revision": "operating-procedure-1",
+          "location": "../skills/workspace-setup/SKILL.md",
+          "licence": "MIT",
+          "selection": "candidate",
+          "compatibility": "proposed",
+          "owner": "adopter-selected-owner",
+          "requires": [
+            "Resolve the actual installed skill and record its package Git revision/content hash.",
+            "Read current workspace and member authority."
+          ],
+          "effects": [
+            "Canonical writes or native actions only under the skill operating contract and current authority."
+          ],
+          "replacement": null
+        },
+        {
+          "id": "workspace-status",
+          "asset_kind": "skill",
+          "revision": "operating-procedure-1",
+          "location": "../skills/workspace-status/SKILL.md",
+          "licence": "MIT",
+          "selection": "candidate",
+          "compatibility": "proposed",
+          "owner": "adopter-selected-owner",
+          "requires": [
+            "Resolve the actual installed skill and record its package Git revision/content hash.",
+            "Read current workspace and member authority."
+          ],
+          "effects": [
+            "Read scoped files and report."
+          ],
+          "replacement": null
+        },
+        {
+          "id": "workspace-scope",
+          "asset_kind": "skill",
+          "revision": "operating-procedure-1",
+          "location": "../skills/workspace-scope/SKILL.md",
+          "licence": "MIT",
+          "selection": "candidate",
+          "compatibility": "proposed",
+          "owner": "adopter-selected-owner",
+          "requires": [
+            "Resolve the actual installed skill and record its package Git revision/content hash.",
+            "Read current workspace and member authority."
+          ],
+          "effects": [
+            "Canonical writes or native actions only under the skill operating contract and current authority."
+          ],
+          "replacement": null
+        },
+        {
+          "id": "workspace-dispatch",
+          "asset_kind": "skill",
+          "revision": "operating-procedure-1",
+          "location": "../skills/workspace-dispatch/SKILL.md",
+          "licence": "MIT",
+          "selection": "candidate",
+          "compatibility": "proposed",
+          "owner": "adopter-selected-owner",
+          "requires": [
+            "Resolve the actual installed skill and record its package Git revision/content hash.",
+            "Read current workspace and member authority."
+          ],
+          "effects": [
+            "Canonical writes or native actions only under the skill operating contract and current authority."
+          ],
+          "replacement": null
+        },
+        {
+          "id": "workspace-sync",
+          "asset_kind": "skill",
+          "revision": "operating-procedure-1",
+          "location": "../skills/workspace-sync/SKILL.md",
+          "licence": "MIT",
+          "selection": "candidate",
+          "compatibility": "proposed",
+          "owner": "adopter-selected-owner",
+          "requires": [
+            "Resolve the actual installed skill and record its package Git revision/content hash.",
+            "Read current workspace and member authority."
+          ],
+          "effects": [
+            "Reconcile returns and maintain delivery state from checked native evidence; refresh INDEX; canonical writes only under current authority."
+          ],
+          "replacement": null
+        }
+      ]
+    }
+  ]
+}

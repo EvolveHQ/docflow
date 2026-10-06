@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "relative_to": "resolved bootstrap skill directory",
+  "candidates": [
+    "../../workspace",
+    "../../docflow-workspace"
+  ],
+  "required": [
+    "CONTRACT.md",
+    "schema.json",
+    "validate.mjs",
+    "fixtures/README.md"
+  ],
+  "skill_only_install": "Copy the entire packaged workspace directory to docflow-workspace beside the host skills directory, or supply an explicit asset root. Never assume copying skills installs these assets."
+}

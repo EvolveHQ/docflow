@@ -1,0 +1,92 @@
+name: Clarity public release
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Exact approved Clarity version
+        required: true
+        type: string
+      counterpart:
+        description: Exact compatible Docflow package version
+        required: true
+        type: string
+      payload_sha256:
+        description: SHA-256 of the approved public payload descriptor list
+        required: true
+        type: string
+      candidate_run_id:
+        description: Successful same-repository run at this main commit
+        required: true
+        type: string
+      candidate_artifact_id:
+        description: Immutable clarity-public-handoff artifact ID from that run
+        required: true
+        type: string
+
+permissions:
+  contents: read
+concurrency:
+  group: clarity-publication
+  cancel-in-progress: false
+env:
+  CLARITY_VERSION: ${{ inputs.version }}
+  DOCFLOW_VERSION: ${{ inputs.counterpart }}
+  APPROVED_PAYLOAD: ${{ inputs.payload_sha256 }}
+  CANDIDATE_RUN_ID: ${{ inputs.candidate_run_id }}
+  CANDIDATE_ARTIFACT_ID: ${{ inputs.candidate_artifact_id }}
+  PUBLIC_TARGET: ${{ github.sha }}
+
+jobs:
+  preview:
+    if: github.repository == 'EvolveHQ/docflow' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        with:
+          node-version: '22'
+      - name: Fetch inert public data and prepare exact local plan
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          node scripts/release-handoff/stage.mjs "$RUNNER_TEMP/candidate.zip"
+          python3 -B scripts/release-handoff/extract.py "$RUNNER_TEMP/candidate.zip" "$RUNNER_TEMP/candidate"
+          node scripts/release-handoff/cli.mjs plan --directory "$RUNNER_TEMP/candidate" --version "$CLARITY_VERSION" --counterpart "$DOCFLOW_VERSION" --target "$PUBLIC_TARGET" --output "$RUNNER_TEMP/plan.json"
+          node scripts/release-handoff/workflow-plan.mjs "$RUNNER_TEMP/plan.json"
+
+  publish:
+    needs: preview
+    if: github.repository == 'EvolveHQ/docflow' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    # Configure independent required reviewers, prevent self-review, and main-only
+    # deployment before use. The runtime guard fails if reviewers are absent.
+    environment: clarity-publication
+    permissions:
+      contents: write
+      actions: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        with:
+          node-version: '22'
+      - name: Check independent approval and revalidate the approved payload
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          node scripts/release-handoff/cli.mjs check-environment
+          node scripts/release-handoff/stage.mjs "$RUNNER_TEMP/candidate.zip"
+          python3 -B scripts/release-handoff/extract.py "$RUNNER_TEMP/candidate.zip" "$RUNNER_TEMP/candidate"
+          node scripts/release-handoff/cli.mjs plan --directory "$RUNNER_TEMP/candidate" --version "$CLARITY_VERSION" --counterpart "$DOCFLOW_VERSION" --target "$PUBLIC_TARGET" --output "$RUNNER_TEMP/plan.json"
+          node scripts/release-handoff/workflow-plan.mjs "$RUNNER_TEMP/plan.json" "$RUNNER_TEMP/approval.json"
+          node scripts/release-handoff/cli.mjs publish --directory "$RUNNER_TEMP/candidate" --version "$CLARITY_VERSION" --counterpart "$DOCFLOW_VERSION" --target "$PUBLIC_TARGET" --approval "$RUNNER_TEMP/approval.json"
+      - name: Verify every public asset without authentication
+        run: node scripts/release-handoff/cli.mjs verify-public --directory "$RUNNER_TEMP/candidate" --version "$CLARITY_VERSION" --counterpart "$DOCFLOW_VERSION" --target "$PUBLIC_TARGET" --approval "$RUNNER_TEMP/approval.json"

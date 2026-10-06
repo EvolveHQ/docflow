@@ -39,7 +39,7 @@ gate records npm `EAI_AGAIN`, exit 1; signed recoverable work remains on its
 local branch. The disposable private signer and four unused pilot volumes
 were removed; public verification material and fixture histories remain.
 
-See the [release audit](../../audits/2026-09-14-release-verification.md) and
+See the release audit (`DocflowHQ/.docflow_workspace/local/archive/member-audits/docflow/2026-09-14-release-verification.md`) and
 sanitised receipt for exact commits, commands and evidence limits. No accepted
 criterion requires a named external participant. This is controlled existing-
 repository verification, not independent human adoption or unattended-host

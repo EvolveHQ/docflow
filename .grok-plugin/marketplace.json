@@ -1,0 +1,19 @@
+{
+  "name": "evolvehq",
+  "description": "EvolveHQ plugins for documentation-led, ADR-driven development. Install docflow to scaffold (or retrofit) an Architecture Decision Record (ADR) catalogue, a plan/ work queue, and AGENTS.md conventions into any repo, then author, queue, ship, and audit ADRs with lifecycle skills.",
+  "owner": {
+    "name": "EvolveHQ",
+    "url": "https://github.com/EvolveHQ"
+  },
+  "plugins": [
+    {
+      "name": "docflow",
+      "description": "ADR-driven documentation workflow: scaffold an Architecture Decision Record (ADR) catalogue, a plan/ queue, and AGENTS.md conventions into any repo, then author, queue, ship, audit, and roll up ADRs with lifecycle skills — across one repo or a multi-repo product.",
+      "category": "documentation",
+      "source": {
+        "type": "local",
+        "path": "./plugins/docflow"
+      }
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Clarity public release handoff version 1",
+  "$comment": "contract.mjs additionally enforces canonical JSON bytes, complete matrix, canonical names, exact bytes, content screening and checksum equality.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "product", "repository", "version", "tag", "compatibleDocflowVersion", "assets"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "product": { "const": "docflow-clarity" },
+    "repository": { "const": "EvolveHQ/docflow" },
+    "version": { "$ref": "#/$defs/version" },
+    "tag": { "type": "string", "pattern": "^clarity-v[0-9]" },
+    "compatibleDocflowVersion": { "$ref": "#/$defs/version" },
+    "assets": { "type": "array", "minItems": 12, "items": { "$ref": "#/$defs/asset" } }
+  },
+  "$defs": {
+    "version": { "type": "string", "maxLength": 100, "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-[0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*)?(?:\\+[0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*)?$" },
+    "asset": {
+      "type": "object", "additionalProperties": false,
+      "required": ["name", "role", "os", "arch", "buildConfiguration", "size", "sha256"],
+      "properties": {
+        "name": { "type": "string", "pattern": "^docflow-clarity_[A-Za-z0-9_.+-]+$" },
+        "role": { "enum": ["nsis", "msi", "dmg", "appimage", "deb", "rpm", "notices", "dependencies"] },
+        "os": { "enum": ["windows", "macos", "linux"] },
+        "arch": { "enum": ["x64", "arm64"] },
+        "buildConfiguration": { "enum": ["minimal", "ai", "plugins", "ai-plugins", "terminal", "ai-terminal", "plugins-terminal", "ai-plugins-terminal", "remote", "ai-remote", "plugins-remote", "full"] },
+        "size": { "type": "integer", "minimum": 1 },
+        "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+      }
+    }
+  }
+}

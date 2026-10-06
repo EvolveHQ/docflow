@@ -1,0 +1,5 @@
+interface:
+  display_name: "docflow: workspace-setup"
+  short_description: "Establish the operator-selected canonical workspace home."
+  default_prompt: "Use workspace-setup for the supplied workspace scope and preserve native authority and source evidence."
+
