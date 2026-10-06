@@ -50,7 +50,7 @@ for (const mode of ['claude-code-plugin', 'copilot-plugin', 'pi-package', 'codex
       if (manifestDir) {
         const manifest = JSON.parse(read(join(install, `${manifestDir}/plugin.json`)));
         assert.equal(manifest.name, 'docflow');
-        assert.equal(manifest.version, '0.9.4');
+        assert.equal(manifest.version, JSON.parse(read(join(root, 'package.json'))).version);
       }
       if (mode === 'codex-plugin') {
         const manifest = JSON.parse(read(join(install, '.codex-plugin/plugin.json')));
