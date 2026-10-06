@@ -29,8 +29,8 @@ Example: `/work/acme/acme-workspace/.docflow_workspace/workspace.yaml` already d
 
 Prompt: “Treat `/work/acme/acme-workspace` and its existing `.docflow_workspace/` as the canonical home. Read current records and registered native instructions, validate with matching installed assets at the current UTC time, and give a source-backed `workspace-status`. Preserve home identity, record IDs, mandate/grant history and member Git histories. Propose exact merge repairs only for missing setup files.”
 
-Continue with [daily work]({{ '/workflows/day-to-day/' | relative_url }}),
-[recovery]({{ '/workflows/recovery/' | relative_url }}) or the
-[worked example]({{ '/workflows/worked-example/' | relative_url }});
-return to the [workflow hub]({{ '/workflows/' | relative_url }}).
+Continue with [daily work](https://evolvehq.github.io/docflow/workflows/day-to-day/),
+[recovery](https://evolvehq.github.io/docflow/workflows/recovery/) or the
+[worked example](https://evolvehq.github.io/docflow/workflows/worked-example/);
+return to the [workflow hub](https://evolvehq.github.io/docflow/workflows/).
 

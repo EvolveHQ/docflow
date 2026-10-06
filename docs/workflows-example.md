@@ -85,6 +85,6 @@ Read the diagnostic and unchanged sibling records. A failing workspace stays
 readable, while dependent writes stop. This rejection is an expected learning
 result, not a package test failure.
 
-Continue with [daily work]({{ '/workflows/day-to-day/' | relative_url }}) or
-[recovery]({{ '/workflows/recovery/' | relative_url }}), or return to the
-[workflow hub]({{ '/workflows/' | relative_url }}).
+Continue with [daily work](https://evolvehq.github.io/docflow/workflows/day-to-day/) or
+[recovery](https://evolvehq.github.io/docflow/workflows/recovery/), or return to the
+[workflow hub](https://evolvehq.github.io/docflow/workflows/).

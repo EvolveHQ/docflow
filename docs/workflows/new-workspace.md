@@ -82,8 +82,8 @@ separately under the operator's explicit Git authority and chosen branch rules;
 workspace setup does not implicitly initialise a parent container.
 
 
-Continue with [daily work]({{ '/workflows/day-to-day/' | relative_url }}),
-[recovery]({{ '/workflows/recovery/' | relative_url }}) or the
-[worked example]({{ '/workflows/worked-example/' | relative_url }});
-return to the [workflow hub]({{ '/workflows/' | relative_url }}).
+Continue with [daily work](https://evolvehq.github.io/docflow/workflows/day-to-day/),
+[recovery](https://evolvehq.github.io/docflow/workflows/recovery/) or the
+[worked example](https://evolvehq.github.io/docflow/workflows/worked-example/);
+return to the [workflow hub](https://evolvehq.github.io/docflow/workflows/).
 

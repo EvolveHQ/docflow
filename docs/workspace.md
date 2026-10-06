@@ -261,8 +261,8 @@ structurally valid planned workspace can pass and still have no execution
 authority. Native-host, consumer and operator qualification remain separate
 from a green package check.
 
-Ready to start? Follow the [step-by-step workflow guides]({{ '/workflows/' | relative_url }})
+Ready to start? Follow the [step-by-step workflow guides](https://evolvehq.github.io/docflow/workflows/)
 for existing, mixed and new setups. See the
-[methodology]({{ '/methodology/' | relative_url }}) for the repository
-conventions and [Examples]({{ '/examples/' | relative_url }}) for worked
+[methodology](https://evolvehq.github.io/docflow/methodology/) for the repository
+conventions and [Examples](https://evolvehq.github.io/docflow/examples/) for worked
 skill-by-skill flows.

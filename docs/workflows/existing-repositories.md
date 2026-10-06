@@ -15,8 +15,8 @@ Use this path when two or more repositories already cooperate and there is no sh
 
 Prompt: “Read these two repositories and their native instructions without changing either. Establish a separate workspace at `<path>` for shared outcomes. Register their real identities and paths, validate at the actual UTC time, and list missing evidence. Keep each native queue and completion rule.”
 
-Continue with [daily work]({{ '/workflows/day-to-day/' | relative_url }}),
-[recovery]({{ '/workflows/recovery/' | relative_url }}) or the
-[worked example]({{ '/workflows/worked-example/' | relative_url }});
-return to the [workflow hub]({{ '/workflows/' | relative_url }}).
+Continue with [daily work](https://evolvehq.github.io/docflow/workflows/day-to-day/),
+[recovery](https://evolvehq.github.io/docflow/workflows/recovery/) or the
+[worked example](https://evolvehq.github.io/docflow/workflows/worked-example/);
+return to the [workflow hub](https://evolvehq.github.io/docflow/workflows/).
 

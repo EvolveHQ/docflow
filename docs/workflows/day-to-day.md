@@ -16,8 +16,8 @@ Start in the selected workspace root for the shared view. Switch to the member r
 
 The validator command is `node <installed-assets>/validate.mjs <workspace-root> --at <actual-UTC-time>`. It checks format and consistency, not host permission, approver identity or whether an external action happened. An accepted shared decision can remain accepted after work completes; member decisions follow their own native lifecycle.
 
-Continue with [daily work]({{ '/workflows/day-to-day/' | relative_url }}),
-[recovery]({{ '/workflows/recovery/' | relative_url }}) or the
-[worked example]({{ '/workflows/worked-example/' | relative_url }});
-return to the [workflow hub]({{ '/workflows/' | relative_url }}).
+Continue with [daily work](https://evolvehq.github.io/docflow/workflows/day-to-day/),
+[recovery](https://evolvehq.github.io/docflow/workflows/recovery/) or the
+[worked example](https://evolvehq.github.io/docflow/workflows/worked-example/);
+return to the [workflow hub](https://evolvehq.github.io/docflow/workflows/).
 

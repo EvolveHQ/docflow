@@ -36,8 +36,8 @@ used independently. A ready candidate or green local check does not mean the
 release is published: the checked PR must be merged, the exact version tagged
 and the npm package published under the release controller's authority.
 
-For adoption, use the [workflow guides]({{ '/workflows/' | relative_url }})
-and [portable workspace overview]({{ '/workspace/' | relative_url }}).
+For adoption, use the [workflow guides](https://evolvehq.github.io/docflow/workflows/)
+and [portable workspace overview](https://evolvehq.github.io/docflow/workspace/).
 
 ### Upgrade
 

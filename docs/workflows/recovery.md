@@ -17,8 +17,8 @@ A fresh session starts from current files and native sources, not an earlier con
 
 Prompt: “Resume work `{home, id}` in `<workspace-root>` from current sources. Use `workspace-status` first, without edits. Identify the last grant, native owner/claim, run/receipt state and member integration evidence. Name the single permitted next action and keep unknown outcomes unknown.”
 
-Continue with [daily work]({{ '/workflows/day-to-day/' | relative_url }}),
-[recovery]({{ '/workflows/recovery/' | relative_url }}) or the
-[worked example]({{ '/workflows/worked-example/' | relative_url }});
-return to the [workflow hub]({{ '/workflows/' | relative_url }}).
+Continue with [daily work](https://evolvehq.github.io/docflow/workflows/day-to-day/),
+[recovery](https://evolvehq.github.io/docflow/workflows/recovery/) or the
+[worked example](https://evolvehq.github.io/docflow/workflows/worked-example/);
+return to the [workflow hub](https://evolvehq.github.io/docflow/workflows/).
 

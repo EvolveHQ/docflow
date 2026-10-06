@@ -11,15 +11,15 @@ Choose the path that matches what already exists:
 
 | Starting point | Guide | First decision |
 |---|---|---|
-| Several existing repositories, no workspace | [Adopt existing repositories]({{ '/workflows/existing-repositories/' | relative_url }}) | Which outcomes are shared? |
-| An ordinary folder of repositories or existing workspace memory | [Adopt or resume a workspace]({{ '/workflows/existing-workspace/' | relative_url }}) | Is `.docflow_workspace/` already present and valid? |
-| Governed and ungoverned, existing and new members together | [Mixed members]({{ '/workflows/mixed-members/' | relative_url }}) | Which checkouts and native rules exist now? |
-| A new workspace around existing members | [New workspace]({{ '/workflows/new-workspace/' | relative_url }}) | Where will the adopter-owned home live? |
-| New repositories and a new workspace | [New repositories]({{ '/workflows/new-repositories/' | relative_url }}) | Which repositories need their own method? |
+| Several existing repositories, no workspace | [Adopt existing repositories](https://evolvehq.github.io/docflow/workflows/existing-repositories/) | Which outcomes are shared? |
+| An ordinary folder of repositories or existing workspace memory | [Adopt or resume a workspace](https://evolvehq.github.io/docflow/workflows/existing-workspace/) | Is `.docflow_workspace/` already present and valid? |
+| Governed and ungoverned, existing and new members together | [Mixed members](https://evolvehq.github.io/docflow/workflows/mixed-members/) | Which checkouts and native rules exist now? |
+| A new workspace around existing members | [New workspace](https://evolvehq.github.io/docflow/workflows/new-workspace/) | Where will the adopter-owned home live? |
+| New repositories and a new workspace | [New repositories](https://evolvehq.github.io/docflow/workflows/new-repositories/) | Which repositories need their own method? |
 
 For a concrete two-member record and interrupted-delivery example, read the
-[worked example]({{ '/workflows/worked-example/' | relative_url }}).
-For the record model and limits, read [Portable workspaces]({{ '/workspace/' | relative_url }}). The guides below include a [repeatable scratch setup]({{ '/workflows/new-workspace/' | relative_url }}#try-an-empty-workspace-in-scratch), [daily cycle]({{ '/workflows/day-to-day/' | relative_url }}) and [recovery path]({{ '/workflows/recovery/' | relative_url }}).
+[worked example](https://evolvehq.github.io/docflow/workflows/worked-example/).
+For the record model and limits, read [Portable workspaces](https://evolvehq.github.io/docflow/workspace/). The guides below include a [repeatable scratch setup](https://evolvehq.github.io/docflow/workflows/new-workspace/#try-an-empty-workspace-in-scratch), [daily cycle](https://evolvehq.github.io/docflow/workflows/day-to-day/) and [recovery path](https://evolvehq.github.io/docflow/workflows/recovery/).
 
 ## Before you start
 
@@ -64,13 +64,13 @@ Run `workspace-setup`, `workspace-status`, `workspace-scope`, `workspace-dispatc
 4. **Do native work:** The executor reads the member's rules and works inside the assigned boundary. A read-only executor can return an external receipt without editing the workspace. Preserve actual command outputs, exit codes, observations, source revisions, blockers and return time.
 5. **Reconcile:** `workspace-sync` checks a returned receipt and/or native member state at exact revisions, updates observations and criteria only from checked evidence, and refreshes `INDEX.md`. It can observe work that was never dispatched by this workspace. A prepared PR or a plan/done file on an unmerged branch is still pending. One successful run does not complete all required deliveries.
 
-Use the [daily checklist]({{ '/workflows/day-to-day/' | relative_url }}) for concrete prompts and the [recovery guide]({{ '/workflows/recovery/' | relative_url }}) after interruption or host change.
+Use the [daily checklist](https://evolvehq.github.io/docflow/workflows/day-to-day/) for concrete prompts and the [recovery guide](https://evolvehq.github.io/docflow/workflows/recovery/) after interruption or host change.
 
 ## Qualification limits
 
 Version 0.10.0 supplies portable files and deterministic package checks. The
 seven host guides document entry points; full native qualification on the
 combined eight-target package remains pending. Clarity integration and
-installer publication are parked. See the [release notes]({{ '/release-notes/' | relative_url }})
+installer publication are parked. See the [release notes](https://evolvehq.github.io/docflow/release-notes/)
 for the exact scope.
 

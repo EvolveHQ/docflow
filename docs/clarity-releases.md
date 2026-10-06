@@ -8,7 +8,7 @@ title: Clarity release preparation (parked)
 Clarity integration and installer publication are parked for Docflow 0.10.0.
 This page describes a separately authorised future release procedure; it is
 not a download-availability or compatibility claim. Use Docflow’s
-[ordinary-file workspace workflows]({{ '/workflows/' | relative_url }})
+[ordinary-file workspace workflows](https://evolvehq.github.io/docflow/workflows/)
 without a Clarity installation.
 
 Clarity installers are intended for public releases in

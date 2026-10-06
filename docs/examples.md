@@ -481,8 +481,8 @@ execution. Ready PRs remain live until their checked merge.
 
 ## Complete adoption workflows
 
-Use the [workflow guide hub]({{ '/workflows/' | relative_url }}) for existing
+Use the [workflow guide hub](https://evolvehq.github.io/docflow/workflows/) for existing
 repositories, existing workspace memory, mixed setups and new projects, plus
 daily dispatch, receipt checking and recovery. The
-[release notes]({{ '/release-notes/' | relative_url }}) distinguish package
+[release notes](https://evolvehq.github.io/docflow/release-notes/) distinguish package
 checks from pending native qualification.

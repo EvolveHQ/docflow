@@ -22,8 +22,8 @@ A single workspace can contain **already governed** repositories (including Docf
 
 Prompt: “In `<workspace-root>`, scope an outcome spanning existing Docflow `api/`, existing issue-led `mobile/` and a future `web/`. Read both existing members' instructions and preserve their queues. Keep `web/` blocked until its own repository and instructions exist. After `web/` is created, run its chosen native setup from `web/`, then register it from the workspace. Show each delivery's native completion rule and the current authority check before any dispatch.”
 
-Continue with [daily work]({{ '/workflows/day-to-day/' | relative_url }}),
-[recovery]({{ '/workflows/recovery/' | relative_url }}) or the
-[worked example]({{ '/workflows/worked-example/' | relative_url }});
-return to the [workflow hub]({{ '/workflows/' | relative_url }}).
+Continue with [daily work](https://evolvehq.github.io/docflow/workflows/day-to-day/),
+[recovery](https://evolvehq.github.io/docflow/workflows/recovery/) or the
+[worked example](https://evolvehq.github.io/docflow/workflows/worked-example/);
+return to the [workflow hub](https://evolvehq.github.io/docflow/workflows/).
 
