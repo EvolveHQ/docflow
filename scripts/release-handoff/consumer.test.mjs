@@ -15,13 +15,17 @@ import { GitHub } from './github.mjs';
 import { selectRelease } from './lookup.mjs';
 import { stage } from './stage.mjs';
 
+const counterpart = JSON.parse(readFileSync(new URL('../../package.json', import.meta.url), 'utf8')).version;
 const target = 'a'.repeat(40);
 const cli = fileURLToPath(new URL('./cli.mjs', import.meta.url));
 function fixture(t) {
   const root = mkdtempSync(join(tmpdir(), 'docflow-public-test-'));
   t.after(() => rmSync(root, { recursive: true, force: true }));
   const dir = join(root, 'candidate'); const doc = publicFixture(dir);
-  return { root, dir, doc, approval: join(root, 'approval.json') };
+  doc.compatibleDocflowVersion = counterpart;
+  const f = { root, dir, doc, approval: join(root, 'approval.json') };
+  seal(f);
+  return f;
 }
 function seal(f) {
   const metadata = jsonBytes(f.doc);
@@ -32,12 +36,12 @@ function update(f, asset, bytes) {
   asset.size = bytes.length; asset.sha256 = sha256(bytes); writeFileSync(join(f.dir, asset.name), bytes); seal(f);
 }
 function approve(f) {
-  const candidate = prepare(f.dir, f.doc.version, '0.9.4', target);
+  const candidate = prepare(f.dir, f.doc.version, counterpart, target);
   writeFileSync(f.approval, jsonBytes({ plan: candidate.plan, authorisation: 'approve-publication-after-private-producer-and-native-trust-review' }));
   return candidate;
 }
 const argv = (f, command = 'publish') => [command, '--directory', f.dir, '--version', f.doc.version,
-  '--counterpart', '0.9.4', '--target', target, ...(command === 'plan' ? [] : ['--approval', f.approval])];
+  '--counterpart', counterpart, '--target', target, ...(command === 'plan' ? [] : ['--approval', f.approval])];
 
 class HttpFixture {
   constructor(candidate, existing = false) {
