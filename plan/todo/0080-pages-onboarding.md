@@ -6,7 +6,7 @@ Owning decisions: adr/0051-portable-workspace-memory-contract.md (AC 1, native b
 
 - Claimed by: Codex, GPT-6 Astra xhigh, sole Docflow writer, 2026-10-14, branch `docs/pages-onboarding`.
 - Blockers: None for the accepted local documentation scope.
-- Stopped:
+- Stopped: 2026-10-14 — operator-requested visual restoration ready for review. This run: restored the previous style and retained the new content/navigation; Overall: verified locally, unshipped; Yet to do: operator review and separately authorised integration/publication.
 
 ## Scope
 
@@ -31,14 +31,15 @@ Clean released main `f0799fd87ad580b4e6a29c762709288cf3752c86`; accepted proposa
 
 ## Receipt
 
-Verified rendered work: `4ab79089bf5a7ea7b2d76a6065f16f3e632fd718`.
+Verified rendered work: `99d856595877ec7a5f07c35e3ba96633bab15f21`.
 
 - `node scripts/verify.mjs`: `verify: OK (version 0.10.0, 14 skills, 63 ADRs, 69 shipped plan items)`, exit 0. `node evals/run.mjs`: `13 passed, 0 failed, 0 skipped`, exit 0; explicitly hostless.
-- Jekyll 3.10 safe build, exit 0. External `check-links.py`, exit 0: 24 pages, 953 local links/assets/anchors, all baseline fragments retained. External `review.cjs`, exit 0: 72 page/viewport checks, 25 interactions; `journeys.cjs`, exit 0: 23 checks. Actual Chromium 200% zoom and deep-link refresh regression passed. Scratch assembly/frozen fixture exits 0; deliberately invalid fixture exits 1 as expected.
-- Live preview: `http://localhost:52447/docflow/`, persistent user service `docflow-pages-preview-20261014.service`. External operator-selected handoff holds screenshots, exact process/restart details, command evidence and source-bound final result. No product, schema, gate or version changes; no push/PR/publication.
+- Jekyll 3.10 safe build, exit 0. External `check-links.py`, exit 0: 24 pages, 955 local links/assets/anchors, all baseline fragments retained. External `review.cjs`, exit 0: 72 page/viewport checks, 25 interactions; `journeys.cjs`, exit 0: 23 checks. Actual Chromium 200% zoom and deep-link refresh regression passed. Scratch assembly/frozen fixture exits 0; deliberately invalid fixture exits 1 as expected.
+- Visual identity restored from released source after operator review; new guide content, navigation data and host-selection JavaScript unchanged.
+- Tailnet preview: `https://omkrgb.tail1a701.ts.net:8443/docflow/`; local preview: `http://localhost:52447/docflow/`, persistent user service `docflow-pages-preview-20261014.service`. External operator-selected handoff holds screenshots, exact process/restart details, command evidence and source-bound final result. No product, schema, gate or version changes; no push/PR/publication.
 
 ## Status at a glance
 
-- **This run:** implemented the accepted documentation scope and left a working, validated local preview; signed local commits.
+- **This run:** implemented the accepted documentation scope, restored the previous visual style at operator request and left a working, validated local/tailnet preview; signed local commits.
 - **Overall:** verified locally, unshipped. This item remains in todo; no completion move or owning-decision advancement is prepared without the next integration phase.
 - **Yet to do:** operator review, then separately authorised integration/publication. Grok install resolution and full native/Clarity qualification remain outside this item and retain their existing limits.
