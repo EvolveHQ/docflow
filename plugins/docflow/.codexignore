@@ -1,0 +1,14 @@
+# Plugin-root development and generated files only.
+# Keep skills/templates, workspace/schema, validators, fixtures and host guides.
+/.git/
+/.github/
+/tests/
+/evals/
+/node_modules/
+/coverage/
+/dist/
+/build/
+/package-lock.json
+*.log
+*.tmp
+.DS_Store
