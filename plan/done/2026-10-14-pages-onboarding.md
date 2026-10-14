@@ -2,11 +2,6 @@
 
 Owning decisions: adr/0051-portable-workspace-memory-contract.md (AC 1, native boundaries), adr/0059-five-workspace-commands-and-mandate-note.md (AC 2, 4), adr/0060-v1-package-target-set.md (AC 1–3), adr/0061-v1-workspace-host-guides.md (AC 2, 5–6). Federation explanation also traces to adr/0019-multirepo-topology.md (AC 3–6), adr/0024-federated-rollup-catalogue.md (AC 1–5) and adr/0025-cross-repo-plan-ownership.md (AC 1–6). Existing distribution decision: adr/0009-distribution-marketplace-npm.md. This item documents their released behaviour; broader native qualification stays in its existing items.
 
-## Status
-
-- Claimed by: Codex, GPT-6 Astra xhigh, sole Docflow writer, 2026-10-14, branch `docs/pages-onboarding`.
-- Blockers: None for the accepted documentation and bounded PR-submission scope.
-- Stopped: —; operator accepted the documentation on 2026-10-14 and authorised this existing sole writer to push `docs/pages-onboarding`, open a ready non-draft PR and prepare its native completion record. No merge or publication authority.
 
 ## Scope
 
@@ -31,22 +26,26 @@ Clean released main `f0799fd87ad580b4e6a29c762709288cf3752c86`; accepted proposa
 3. Persistent header, breadcrumbs, desktop section navigation and keyboard-accessible mobile disclosure work. All existing permalinks and important fragments resolve; reference retains manual assembly, validator/schema, fourteen skills, seven distinct host guides and qualification limits.
 4. Actual Jekyll 3.10 safe build and rendered checks at 1440, 390 and 320px pass: no document overflow, readable prompts, obvious first action, keyboard/skip/menu/focus and 200% zoom; local links/anchors and source-bound commands checked. Screenshots and logs are external.
 5. `node scripts/verify.mjs` and `node evals/run.mjs` exit 0 with unmodified gates; record actual results and limits. Signed local commits leave a clean branch.
-6. Local server serves the rendered site at `/docflow/`, survives the agent/tab, and remains running. External result records exact SHA, plan status, exits, screenshots, URL, PID/port/restart/log and remaining review/publication steps. The local-only phase retained this item in todo. Following operator acceptance, completion may be prepared on the authorised PR branch; no shipped claim before checked merge.
+6. Local server serves the rendered site at `/docflow/`, survives the agent/tab, and remains running. External result records exact SHA, plan status, exits, screenshots, URL, PID/port/restart/log and remaining review/publication steps. Operator acceptance permits prepared completion on the authorised PR branch; no shipped claim before checked merge.
 
 7. Methodology includes a readable, accessible visual comparison at 1440, 390 and 320px: federation is optional, workspaces do not require it, both can coexist, native ownership remains local. A linked FAQ groups concise source-faithful answers by topic, works with keyboard and without JavaScript, and remains readable at 200% zoom.
 
 ## Receipt
 
-Verified rendered work: `a253c30e623292e423c84e0accd78d9f4334a116`.
+Operator accepted the documentation at `0ef8aa296bbe11442d42a2b526edc60d0f310917`. Verified work HEAD before completion: `06be1340805591a52f3b8bb48c263eb581e2371f`; accepted documentation, README and USAGE are unchanged in this submission phase.
 
-- `node scripts/verify.mjs`: `verify: OK (version 0.10.0, 14 skills, 63 ADRs, 69 shipped plan items)`, exit 0. `node evals/run.mjs`: `13 passed, 0 failed, 0 skipped`, exit 0; explicitly hostless.
-- Jekyll 3.10 safe build, exit 0. External `check-links.py`, exit 0: 25 pages, 1,073 local links/assets/anchors, every baseline fragment retained. External `review.cjs`, exit 0: 75 page/viewport checks at 1440/390/320px, 25 interactions; `journeys.cjs`, exit 0: 23 checks. New `focused.cjs`, exit 0: 47 checks covering diagram reflow, FAQ topic navigation, all fourteen answers, keyboard disclosure/focus and JavaScript-free operation. Actual Chromium 200% zoom, exit 0: nine checks including the diagrams and FAQ.
-- Operator-requested federation/workspace comparison explains independent use, coexistence and native ownership. Four FAQ groups retain source-bound command/qualification limits. Released palette, brand artwork and restored visual style retained; no new dependency or product change.
-- Tailnet preview: `https://omkrgb.tail1a701.ts.net:8443/docflow/`; local preview: `http://localhost:52447/docflow/`, persistent user service `docflow-pages-preview-20261014.service`. New methodology and FAQ HTTP 200. External operator-selected handoff retains screenshots, source mapping, exact process/restart details and final clean SHA; prior recipe/command evidence remains unchanged.
-- No product, schema, gate or version changes; no push/PR/merge/publication. The native gates are rerun on the final receipt SHA and their actual exits are bound to that SHA in the external result.
+- At verified work HEAD, `node scripts/verify.mjs`: `verify: OK (version 0.10.0, 14 skills, 63 ADRs, 69 shipped plan items)`, exit 0. `node evals/run.mjs`: `13 passed, 0 failed, 0 skipped`, exit 0; explicitly hostless. Both gates are rerun after this completion commit before its push; exact final-head outcomes are repeated in the PR and external result.
+- Jekyll 3.10 safe build: exit 0. Rendered checks: 25 pages, 1,073 local links/assets/anchors with all baseline fragments retained; 75 page/viewport checks at 1440/390/320px, 25 navigation interactions, 23 existing journeys, 47 FAQ/diagram checks and nine actual 200% zoom checks; all exit 0. Keyboard, JavaScript-free access and no document overflow verified. Operator-selected external handoff retains screenshots and source-bound evidence.
+- This completion changes only the native plan. No ADR advances or INDEX changes: broader owning criteria, native/Grok qualification and parked Clarity remain in their existing items. The required current-head verify check and Cursor review are tracked on the PR; no host/platform acceptance is claimed.
+- Accepted preview remains running independently of the agent. Its rendered directory and a final-SHA source snapshot are preserved outside the worktree for controller-owned cleanup. No merge, deployment, release, version or npm publication action is authorised.
+
+## Shipped footer (prepared for checked merge)
+
+Shipped on checked merge of [PR #28](https://github.com/EvolveHQ/docflow/pull/28); verified work HEAD `06be1340805591a52f3b8bb48c263eb581e2371f`.
+This is prepared completion on `docs/pages-onboarding`, not a claim that the PR has merged. Completion takes effect only when PR #28 is merged into main with required checks green. No future merge SHA or release is asserted.
 
 ## Status at a glance
 
-- **This run:** resumed the accepted item for the authorised non-draft PR submission; documentation and preview preserved.
-- **Overall:** documentation accepted and verified locally, unshipped; PR preparation in progress.
-- **Yet to do:** create the ready PR, prepare its completion record and validate the final head; merge/publication require separate authority. Existing native/Grok/Clarity qualification limits remain outside this item.
+- **This run:** operator accepted the documentation; opened actual ready PR #28 and prepared only plan 0080 completion, with verified-work gates exit 0. Accepted source, owning ADR states and gates remain unchanged.
+- **Overall:** verified documentation with prepared completion on an unmerged PR; unshipped and unpublished.
+- **Yet to do:** final-head gates/push and current-head verify/Cursor checks are recorded in the PR and external result; review and separately authorised merge/publication remain. Controller owns agent/worktree/tab cleanup; preview and branch are preserved. Existing native/Grok/Clarity qualification limits remain outside this item.
