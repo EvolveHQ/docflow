@@ -206,7 +206,7 @@ another delegation run or an uninterrupted initial pass.
 
 ## Current claim and denial assertions
 
-The separate `DocflowHQ/.docflow_workspace/local/archive/member-audits/docflow/repo-hygiene-20261014/2026-09-14-release-verification.json; [immutable historical Git blob](https://github.com/EvolveHQ/docflow/blob/e8d487a80d40dfa6db1688f18b5aaa71385391fd/evals/hosts/results/2026-09-14-release-verification.json)` (SHA-256 `257b381627de6723b485cef9a9c64cf478dc42e223d0d4050412556a6075a21b`) and release audit
+The separate `DocflowHQ/.docflow_workspace/local/archive/member-audits/docflow/repo-hygiene-20261014/2026-09-14-release-verification.json`; [immutable historical Git blob](https://github.com/EvolveHQ/docflow/blob/e8d487a80d40dfa6db1688f18b5aaa71385391fd/evals/hosts/results/2026-09-14-release-verification.json) (SHA-256 `257b381627de6723b485cef9a9c64cf478dc42e223d0d4050412556a6075a21b`) and release audit
 record the operator's next continuation on exact Git-blob plugin bytes from
 `bef25d8`; the earlier source-pinned observations above remain historical.
 Fresh target-state success is scoped separately from native tool chronology,
@@ -242,7 +242,7 @@ unperformed capabilities. Keep raw logs and bundles outside the repository.
 After collecting evidence, stop/remove only the named test containers so tmpfs
 authentication is discarded. Never prune unrelated Docker resources.
 
-Results are recorded in `DocflowHQ/.docflow_workspace/local/archive/member-audits/docflow/repo-hygiene-20261014/2026-09-13.json; [immutable historical Git blob](https://github.com/EvolveHQ/docflow/blob/e8d487a80d40dfa6db1688f18b5aaa71385391fd/evals/hosts/results/2026-09-13.json)` (SHA-256 `62882ec9016e68f94e0d47da2edd235f346d4e2ebd41b8ce1566cbd3b50700cc`) and the separate continuation
+Results are recorded in `DocflowHQ/.docflow_workspace/local/archive/member-audits/docflow/repo-hygiene-20261014/2026-09-13.json`; [immutable historical Git blob](https://github.com/EvolveHQ/docflow/blob/e8d487a80d40dfa6db1688f18b5aaa71385391fd/evals/hosts/results/2026-09-13.json) (SHA-256 `62882ec9016e68f94e0d47da2edd235f346d4e2ebd41b8ce1566cbd3b50700cc`) and the separate continuation
 `results/2026-09-13-pi-qwen.json`, with corresponding internal audits. Pi's
 original gate-command omission and sequential stop failure remain failures;
 native bootstrap repair and a fresh wave retry passed independently with
@@ -258,9 +258,9 @@ match only after CRLF-to-LF normalisation. Both digests and comparisons are reco
 Passing a subset does not establish a green release suite. Signed local pushes and
 native delegation have bounded evidence; hosted GitHub permissions remain
 unverified. These statements describe the earlier five-target snapshots;
-`DocflowHQ/.docflow_workspace/local/archive/member-audits/docflow/repo-hygiene-20261014/2026-09-11.json; [immutable historical Git blob](https://github.com/EvolveHQ/docflow/blob/e8d487a80d40dfa6db1688f18b5aaa71385391fd/evals/hosts/results/2026-09-11.json)` (SHA-256 `a410d630d5a9eb1c9a7aa1b22044d52d6cb3cc0954d06022c8d309dbc02c84e1`) is also historical.
+`DocflowHQ/.docflow_workspace/local/archive/member-audits/docflow/repo-hygiene-20261014/2026-09-11.json`; [immutable historical Git blob](https://github.com/EvolveHQ/docflow/blob/e8d487a80d40dfa6db1688f18b5aaa71385391fd/evals/hosts/results/2026-09-11.json) (SHA-256 `a410d630d5a9eb1c9a7aa1b22044d52d6cb3cc0954d06022c8d309dbc02c84e1`) is also historical.
 
-The final `DocflowHQ/.docflow_workspace/local/archive/member-audits/docflow/repo-hygiene-20261014/2026-09-14-release-verification.json; [immutable historical Git blob](https://github.com/EvolveHQ/docflow/blob/e8d487a80d40dfa6db1688f18b5aaa71385391fd/evals/hosts/results/2026-09-14-release-verification.json)` (SHA-256 `257b381627de6723b485cef9a9c64cf478dc42e223d0d4050412556a6075a21b`) assessment covers all
+The final `DocflowHQ/.docflow_workspace/local/archive/member-audits/docflow/repo-hygiene-20261014/2026-09-14-release-verification.json`; [immutable historical Git blob](https://github.com/EvolveHQ/docflow/blob/e8d487a80d40dfa6db1688f18b5aaa71385391fd/evals/hosts/results/2026-09-14-release-verification.json) (SHA-256 `257b381627de6723b485cef9a9c64cf478dc42e223d0d4050412556a6075a21b`) assessment covers all
 five hosts on exact Git bytes from `bef25d8`. Fresh native-high Pi bootstrap,
 normal completion and bootstrap-derived blocked execution pass independent
 initial-publication, completed-event, signed-state, persisted-report and

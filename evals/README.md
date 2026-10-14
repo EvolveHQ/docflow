@@ -26,7 +26,7 @@ especially when a host caches an installation or a working tree has edits.
 
 Final reports are checked by `reporting.mjs`; missing blocks fail independently
 of a model's verdict. The current continuation is recorded in
-`DocflowHQ/.docflow_workspace/local/archive/member-audits/docflow/repo-hygiene-20261014/2026-09-14-release-verification.json; [immutable historical Git blob](https://github.com/EvolveHQ/docflow/blob/e8d487a80d40dfa6db1688f18b5aaa71385391fd/evals/hosts/results/2026-09-14-release-verification.json)` (SHA-256 `257b381627de6723b485cef9a9c64cf478dc42e223d0d4050412556a6075a21b`) and the corresponding
+`DocflowHQ/.docflow_workspace/local/archive/member-audits/docflow/repo-hygiene-20261014/2026-09-14-release-verification.json`; [immutable historical Git blob](https://github.com/EvolveHQ/docflow/blob/e8d487a80d40dfa6db1688f18b5aaa71385391fd/evals/hosts/results/2026-09-14-release-verification.json) (SHA-256 `257b381627de6723b485cef9a9c64cf478dc42e223d0d4050412556a6075a21b`) and the corresponding
 release audit; earlier receipts remain historical evidence. The six skipped
 model cases are mapped to independently checked native-host runs, plus the
 Workflow wrapper's additional wave case. These receipts are separate from the
