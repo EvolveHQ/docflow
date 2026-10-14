@@ -27,7 +27,9 @@
     "docs/",
     "README.md",
     "USAGE.md",
-    "LICENSE"
+    "LICENSE",
+    "SECURITY.md",
+    "plugins/docflow/SECURITY.md"
   ],
   "publishConfig": {
     "access": "public"
