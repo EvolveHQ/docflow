@@ -12,13 +12,13 @@ from unittest.mock import patch
 
 
 class PiSelectionTests(unittest.TestCase):
-    def launch(self, *selection):
+    def launch(self, *selection, host='pi'):
         with tempfile.TemporaryDirectory(prefix='docflow-pi-selection-') as scratch:
             root = Path(scratch)
             prompt = root / 'prompt.txt'
             prompt.write_text('Disposable test prompt', encoding='utf-8')
             output = root / 'results'
-            args = ['run-host.py', '--host', 'pi', '--container', 'docflow-test',
+            args = ['run-host.py', '--host', host, '--container', 'docflow-test',
                     '--fixture', '/workspace/test', '--prompt', str(prompt),
                     '--output', str(output), *selection]
             with patch('sys.argv', args), patch('subprocess.Popen') as launch, patch('builtins.print'):
@@ -27,6 +27,19 @@ class PiSelectionTests(unittest.TestCase):
                     runpy.run_path(str(Path(__file__).with_name('run-host.py')), run_name='__main__')
                 self.assertEqual(stopped.exception.code, 0)
             return launch.call_args.args[0], json.loads((output / 'process.json').read_text())
+
+    def test_codex_confines_writes_by_default(self):
+        command, receipt = self.launch(host='codex')
+        self.assertEqual(command[command.index('-s') + 1], 'workspace-write')
+        self.assertNotIn('danger-full-access', command)
+        self.assertIn('workspace-write sandbox', receipt['permission_context'])
+        self.assertIn('--ephemeral', command)
+
+    def test_codex_session_storage_keeps_the_same_sandbox(self):
+        command, receipt = self.launch('--codex-persist-session', host='codex')
+        self.assertEqual(command[command.index('-s') + 1], 'workspace-write')
+        self.assertNotIn('--ephemeral', command)
+        self.assertEqual(receipt['codex_session_storage'], 'native tmpfs home')
 
     def test_omitted_flags_leave_native_defaults_intact(self):
         command, receipt = self.launch()

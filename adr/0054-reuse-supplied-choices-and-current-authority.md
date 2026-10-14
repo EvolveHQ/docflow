@@ -47,7 +47,7 @@ None blocking the bounded implementation; qualification remains separately queue
 - adr/0013-interactive-assessment-protocol.md
 - adr/0031-tiered-assessment-depth.md
 - adr/0039-plan-item-carries-its-own-status.md
-- evals/hosts/results/2026-09-14-release-verification.json
+- DocflowHQ/.docflow_workspace/local/archive/member-audits/docflow/repo-hygiene-20261014/2026-09-14-release-verification.json; [immutable historical Git blob](https://github.com/EvolveHQ/docflow/blob/e8d487a80d40dfa6db1688f18b5aaa71385391fd/evals/hosts/results/2026-09-14-release-verification.json) (SHA-256 257b381627de6723b485cef9a9c64cf478dc42e223d0d4050412556a6075a21b)
 - Parent DocflowHQ docs/14-docflow-clarity-v1-delivery-plan.md, revision 0.15.
 - Operator dispatch task_b2132a3cb8c3 / ctx_06d7b40b0d52, 2026-09-15.
 - plan/todo/0058-supplied-choice-and-recovery-usability.md

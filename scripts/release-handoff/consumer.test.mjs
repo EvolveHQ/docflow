@@ -75,7 +75,7 @@ class HttpFixture {
     if (method === 'PATCH' && path === '/releases/7') { Object.assign(this.releases[0], JSON.parse(init.body)); this.tag = target; return json(this.releases[0]); }
     throw new Error(`Unexpected fixture request ${method} ${path}`);
   };
-  run(f, command = 'publish') { return main(argv(f, command), { apiFactory: this.apiFactory, env: { GH_TOKEN: 'test-credential' }, output() {} }); }
+  run(f, command = 'publish') { return main(argv(f, command), { apiFactory: this.apiFactory, env: { GH_TOKEN: '<fake-test-token>' }, output() {} }); }
 }
 
 test('five portable files retain pinned raw hashes and lengths', () => {
@@ -230,7 +230,7 @@ test('HTTP pagination visits all pages', async () => {
 });
 test('binary download redirect strips credentials and preserves bytes', async () => {
   const requests = []; const bytes = Buffer.from([0, 255, 13, 10, 128]);
-  const api = new GitHub({ token: 'test-credential', fetchImpl: async (url, init) => {
+  const api = new GitHub({ token: '<fake-test-token>', fetchImpl: async (url, init) => {
     requests.push({ url, init }); return requests.length === 1 ? new Response(null, { status: 302, headers: { location: 'https://release-assets.githubusercontent.com/asset' } }) : new Response(bytes);
   } });
   assert.deepEqual(await api.downloadAsset(1), bytes); assert(!requests[1].init.headers.Authorization);
