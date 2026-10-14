@@ -5,10 +5,12 @@ Owning decisions: adr/0051-portable-workspace-memory-contract.md (AC 1, native b
 ## Status
 
 - Claimed by: Codex, GPT-6 Astra xhigh, sole Docflow writer, 2026-10-14, branch `docs/pages-onboarding`.
-- Blockers: None for the accepted local documentation scope.
-- Stopped: 2026-10-14 — methodology visual and grouped FAQ ready for operator review in the running local/tailnet preview. Existing sole-writer claim retained; unshipped, local-only scope unchanged.
+- Blockers: None for the accepted documentation and bounded PR-submission scope.
+- Stopped: —; operator accepted the documentation on 2026-10-14 and authorised this existing sole writer to push `docs/pages-onboarding`, open a ready non-draft PR and prepare its native completion record. No merge or publication authority.
 
 ## Scope
+
+PR-submission amendment, 2026-10-14: operator accepted the final documentation at `0ef8aa296bbe11442d42a2b526edc60d0f310917` and explicitly authorised signed commits, branch push and a non-draft PR to main. Preserve the accepted documentation and running preview. Prepare completion with the verified work HEAD and actual PR URL; it takes effect only on checked merge. No unrelated owning-decision advancement. This supersedes the prior local-only restriction solely for this PR phase.
 
 Operator follow-up, 2026-10-14: add a visual explanation of federation versus portable workspaces to the methodology, with a grouped FAQ. Explain their distinct purposes and coexistence using existing released behaviour; retain the restored visual style, all existing anchors and the running local/tailnet preview. No new product decision or support claim.
 
@@ -16,7 +18,7 @@ Operator review amendment, 2026-10-14: restore the previous visual style while k
 
 Implement the operator-accepted 2026-10-13 Pages proposal: compact Jekyll home; Start here definitions, single-repository and multi-repository paths; minimal host-specific setup; prompt-first workflow guides; persistent navigation and breadcrumbs; reference for assembly, schema, skills and qualification; README/USAGE alignment. Preserve scenario URLs and important anchors. Keep command uncertainty explicit, including Grok. Evidence stays in the operator-selected external workspace handoff.
 
-No skill/runtime/schema/version changes, expanded support claims, installed configuration changes, Clarity work, push, PR, merge, npm publication or Pages deployment. The operator's local-only instruction overrides the autonomous contract's draft-PR step. No other existing claim is acquired.
+No skill/runtime/schema/version changes, expanded support claims, installed configuration changes, Clarity work, merge, release, npm publication or Pages deployment. The operator explicitly requires a ready non-draft PR, overriding the autonomous contract's draft default. No other existing claim is acquired.
 
 ## Dependencies
 
@@ -29,7 +31,7 @@ Clean released main `f0799fd87ad580b4e6a29c762709288cf3752c86`; accepted proposa
 3. Persistent header, breadcrumbs, desktop section navigation and keyboard-accessible mobile disclosure work. All existing permalinks and important fragments resolve; reference retains manual assembly, validator/schema, fourteen skills, seven distinct host guides and qualification limits.
 4. Actual Jekyll 3.10 safe build and rendered checks at 1440, 390 and 320px pass: no document overflow, readable prompts, obvious first action, keyboard/skip/menu/focus and 200% zoom; local links/anchors and source-bound commands checked. Screenshots and logs are external.
 5. `node scripts/verify.mjs` and `node evals/run.mjs` exit 0 with unmodified gates; record actual results and limits. Signed local commits leave a clean branch.
-6. Local server serves the rendered site at `/docflow/`, survives the agent/tab, and remains running. External result records exact SHA, plan status, exits, screenshots, URL, PID/port/restart/log and remaining review/publication steps. Item remains todo for this local-only phase; no shipped claim.
+6. Local server serves the rendered site at `/docflow/`, survives the agent/tab, and remains running. External result records exact SHA, plan status, exits, screenshots, URL, PID/port/restart/log and remaining review/publication steps. The local-only phase retained this item in todo. Following operator acceptance, completion may be prepared on the authorised PR branch; no shipped claim before checked merge.
 
 7. Methodology includes a readable, accessible visual comparison at 1440, 390 and 320px: federation is optional, workspaces do not require it, both can coexist, native ownership remains local. A linked FAQ groups concise source-faithful answers by topic, works with keyboard and without JavaScript, and remains readable at 200% zoom.
 
@@ -45,6 +47,6 @@ Verified rendered work: `a253c30e623292e423c84e0accd78d9f4334a116`.
 
 ## Status at a glance
 
-- **This run:** implemented the accepted Pages scope, restored the previous visual style and added the requested methodology visual and grouped FAQ; validated local/tailnet preview remains running with signed local commits.
-- **Overall:** verified locally, unshipped. This item remains in todo; no completion move or owning-decision advancement is prepared without the next integration phase.
-- **Yet to do:** operator review, then separately authorised integration/publication. Grok install resolution and full native/Clarity qualification remain outside this item and retain their existing limits.
+- **This run:** resumed the accepted item for the authorised non-draft PR submission; documentation and preview preserved.
+- **Overall:** documentation accepted and verified locally, unshipped; PR preparation in progress.
+- **Yet to do:** create the ready PR, prepare its completion record and validate the final head; merge/publication require separate authority. Existing native/Grok/Clarity qualification limits remain outside this item.
