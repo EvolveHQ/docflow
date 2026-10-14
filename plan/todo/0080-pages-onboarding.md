@@ -6,7 +6,7 @@ Owning decisions: adr/0051-portable-workspace-memory-contract.md (AC 1, native b
 
 - Claimed by: Codex, GPT-6 Astra xhigh, sole Docflow writer, 2026-10-14, branch `docs/pages-onboarding`.
 - Blockers: None for the accepted local documentation scope.
-- Stopped: —; resumed 2026-10-14 for the operator-requested methodology visual and grouped FAQ. Existing sole-writer claim retained; local-only scope unchanged.
+- Stopped: 2026-10-14 — methodology visual and grouped FAQ ready for operator review in the running local/tailnet preview. Existing sole-writer claim retained; unshipped, local-only scope unchanged.
 
 ## Scope
 
@@ -33,17 +33,18 @@ Clean released main `f0799fd87ad580b4e6a29c762709288cf3752c86`; accepted proposa
 
 7. Methodology includes a readable, accessible visual comparison at 1440, 390 and 320px: federation is optional, workspaces do not require it, both can coexist, native ownership remains local. A linked FAQ groups concise source-faithful answers by topic, works with keyboard and without JavaScript, and remains readable at 200% zoom.
 
-## Prior receipt (superseded when this follow-up is verified)
+## Receipt
 
-Verified rendered work: `99d856595877ec7a5f07c35e3ba96633bab15f21`.
+Verified rendered work: `a253c30e623292e423c84e0accd78d9f4334a116`.
 
 - `node scripts/verify.mjs`: `verify: OK (version 0.10.0, 14 skills, 63 ADRs, 69 shipped plan items)`, exit 0. `node evals/run.mjs`: `13 passed, 0 failed, 0 skipped`, exit 0; explicitly hostless.
-- Jekyll 3.10 safe build, exit 0. External `check-links.py`, exit 0: 24 pages, 955 local links/assets/anchors, all baseline fragments retained. External `review.cjs`, exit 0: 72 page/viewport checks, 25 interactions; `journeys.cjs`, exit 0: 23 checks. Actual Chromium 200% zoom and deep-link refresh regression passed. Scratch assembly/frozen fixture exits 0; deliberately invalid fixture exits 1 as expected.
-- Visual identity restored from released source after operator review; new guide content, navigation data and host-selection JavaScript unchanged.
-- Tailnet preview: `https://omkrgb.tail1a701.ts.net:8443/docflow/`; local preview: `http://localhost:52447/docflow/`, persistent user service `docflow-pages-preview-20261014.service`. External operator-selected handoff holds screenshots, exact process/restart details, command evidence and source-bound final result. No product, schema, gate or version changes; no push/PR/publication.
+- Jekyll 3.10 safe build, exit 0. External `check-links.py`, exit 0: 25 pages, 1,073 local links/assets/anchors, every baseline fragment retained. External `review.cjs`, exit 0: 75 page/viewport checks at 1440/390/320px, 25 interactions; `journeys.cjs`, exit 0: 23 checks. New `focused.cjs`, exit 0: 47 checks covering diagram reflow, FAQ topic navigation, all fourteen answers, keyboard disclosure/focus and JavaScript-free operation. Actual Chromium 200% zoom, exit 0: nine checks including the diagrams and FAQ.
+- Operator-requested federation/workspace comparison explains independent use, coexistence and native ownership. Four FAQ groups retain source-bound command/qualification limits. Released palette, brand artwork and restored visual style retained; no new dependency or product change.
+- Tailnet preview: `https://omkrgb.tail1a701.ts.net:8443/docflow/`; local preview: `http://localhost:52447/docflow/`, persistent user service `docflow-pages-preview-20261014.service`. New methodology and FAQ HTTP 200. External operator-selected handoff retains screenshots, source mapping, exact process/restart details and final clean SHA; prior recipe/command evidence remains unchanged.
+- No product, schema, gate or version changes; no push/PR/merge/publication. The native gates are rerun on the final receipt SHA and their actual exits are bound to that SHA in the external result.
 
 ## Status at a glance
 
-- **This run:** resuming the owned item for the requested visual explanation and grouped FAQ; the restored preview remains available while work proceeds.
+- **This run:** implemented the accepted Pages scope, restored the previous visual style and added the requested methodology visual and grouped FAQ; validated local/tailnet preview remains running with signed local commits.
 - **Overall:** verified locally, unshipped. This item remains in todo; no completion move or owning-decision advancement is prepared without the next integration phase.
 - **Yet to do:** operator review, then separately authorised integration/publication. Grok install resolution and full native/Clarity qualification remain outside this item and retain their existing limits.
