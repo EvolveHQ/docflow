@@ -6,9 +6,11 @@ Owning decisions: adr/0051-portable-workspace-memory-contract.md (AC 1, native b
 
 - Claimed by: Codex, GPT-6 Astra xhigh, sole Docflow writer, 2026-10-14, branch `docs/pages-onboarding`.
 - Blockers: None for the accepted local documentation scope.
-- Stopped: 2026-10-14 — local implementation and preview ready for operator review. This run: implemented and validated; Overall: verified locally, unshipped; Yet to do: operator review and a separately authorised publication/integration phase.
+- Stopped:
 
 ## Scope
+
+Operator review amendment, 2026-10-14: restore the previous visual style while keeping the new content and navigation. Reuse the released palette, serif headings, amber buttons, brand treatment and artwork; preserve the current accessibility and responsive behaviour. This is a continuation of this owned item, not another implementation claim.
 
 Implement the operator-accepted 2026-10-13 Pages proposal: compact Jekyll home; Start here definitions, single-repository and multi-repository paths; minimal host-specific setup; prompt-first workflow guides; persistent navigation and breadcrumbs; reference for assembly, schema, skills and qualification; README/USAGE alignment. Preserve scenario URLs and important anchors. Keep command uncertainty explicit, including Grok. Evidence stays in the operator-selected external workspace handoff.
 
