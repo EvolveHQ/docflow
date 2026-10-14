@@ -1,10 +1,13 @@
 ---
+section: Reference
 title: Examples
 layout: default
 permalink: /examples/
 ---
 
 # Examples
+
+For a guided first task, [Start here]({{ '/start/' | relative_url }}) or [choose a workflow]({{ '/workflows/' | relative_url }}). This page is the detailed reference.
 
 Two end-to-end flows and three examples per skill. The walkthroughs use a
 small sample project — **linkfold**, a URL shortener — so the decisions feel

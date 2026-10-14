@@ -1,0 +1,6 @@
+<div class="prompt" data-skill="{{ include.skill }}">
+<p class="prompt-label">In your agent</p>
+<p class="prompt-text"><span class="invocation">Use <code>{{ include.skill }}</code></span> {{ include.text }}</p>
+<details class="invocation-help"><summary>How to invoke this skill</summary>
+<p>Claude Code: <code>/{{ include.skill }}</code> (or <code>/docflow:{{ include.skill }}</code> when exposed). pi / omp: <code>/skill:{{ include.skill }}</code>. Codex: <code>${{ include.skill }}</code> or find it in <code>/skills</code>. OpenCode, Grok, Cursor and Copilot: select the discovered <code>{{ include.skill }}</code> skill. Add the task text above. These are agent inputs, not terminal commands.</p>
+</details></div>

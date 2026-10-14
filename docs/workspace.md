@@ -1,10 +1,13 @@
 ---
+section: Reference
 permalink: /workspace/
 title: Portable workspaces
 mermaid: true
 ---
 
 # Portable workspaces
+
+For a guided first task, [Start here]({{ '/start/' | relative_url }}) or [choose a workflow]({{ '/workflows/' | relative_url }}). This page is the detailed reference.
 
 A **workspace** is an adopter-owned Git repository that holds the shared,
 cross-repository memory for a product made of several independent

@@ -1,36 +1,44 @@
 ---
-title: Adopt or resume an existing workspace
+title: Resume an existing workspace
 permalink: /workflows/existing-workspace/
+section: Guides
 ---
 
-# Adopt or resume an existing workspace
+<span id="adopt-or-resume-an-existing-workspace" class="anchor-alias"></span>
 
-First inspect the selected folder. Two starting states need different handling:
+# Resume an existing workspace
 
-### An ordinary existing folder of repositories
+Use this when a workspace already has shared records, or when you need to establish whether an ordinary folder is a workspace at all.
 
-Example: `/work/acme/` contains independent `api/` and `web/` Git repositories, but no `.docflow_workspace/workspace.yaml`. It is a useful container, not yet a canonical workspace. Do not silently turn `/work/acme/` into a Git repository or assume a home identity.
+<p class="root-note"><strong>Open in your agent:</strong> The existing workspace root for status; the ordinary parent folder only for read-only inspection.</p>
 
-1. From `/work/acme/`, inspect the folder, each repository's `AGENTS.md` or declared instructions, and Git boundaries. Decide whether the operator wants a new separate home such as `/work/acme/acme-workspace/`, or wants to adopt a specifically selected existing Git directory as the home. Record the preservation plan first.
-2. From the **selected home directory**, run `workspace-setup` with the explicit `new` or `adopt` choice, canonical home identity, purpose, owner and allowed file scope. Register `../api` and `../web` only if those relative paths resolve to the real permitted checkouts from the chosen home. Absolute paths also work. Keep the two member `.git/` histories intact.
-3. Validate the new memory from a context that can read both assets and home. Run `workspace-status`, then `workspace-scope` for shared outcomes. Existing member issues, ADRs or plan items remain native; do not copy them into workspace `work/` as if they were the same record.
+## Before you start
 
-Prompt: “Inspect `/work/acme/` as an ordinary container with `api/` and `web/`. Do not initialise or convert the container. Propose a separate canonical workspace home and a file-by-file preservation plan. After the chosen home is confirmed, run `workspace-setup` there, register the actual member paths, and validate at the current UTC time.”
+Locate `.docflow_workspace/workspace.yaml`. Preserve the existing home identity, record IDs, aliases, grants and Git histories. Check the actual host paths and matching assets; a dated INDEX is an aid, not the current authority.
 
-### An existing `.docflow_workspace/` memory
+{% include host-picker.html %}
 
-Example: `/work/acme/acme-workspace/.docflow_workspace/workspace.yaml` already declares home `acme/workspace`, and canonical records exist. Reopen that **same** home; do not mint a second identity or duplicate records.
+## Prompt {#an-existing-docflow_workspace-memory}
 
-1. From the **existing workspace root**, read `README.md`, `AGENTS.md`, registry, conventions, the five record folders, `INDEX.md` and selected `agents/`, `profiles/`, `integrations/` entries. Inspect Git state and the actual operator mandate. Treat INDEX as a dated aid; live records and native sources take precedence.
-2. Read each relevant registered member's native instructions. Resolve local paths from this execution context, including symlinks. If a checkout is unavailable, keep its registry entry and report the diagnostic. Do not fetch or delete it merely to make validation green.
-3. Run `workspace-status` for a dated read-only briefing. Compare current grants, owners, claims, dependencies, resources, branches, receipts and member completion evidence with the last overview. A valid older snapshot does not authorise today's action. Keep full `{home, id}` identities and all existing grant history.
-4. If the format is incomplete, ask `workspace-setup` for a **scoped adoption/merge** of missing home files from the matching pinned assets. Preserve `.gitignore`, instructions, records, aliases, identity and selected configuration. Validate with actual UTC and inspect the diff before recording changes under the home's own Git rules.
-5. Continue with `workspace-scope` for planning, `workspace-dispatch` only under current compatible authority and native claims, and `workspace-sync` for returned or observed native evidence. Do not recreate records because a session was lost.
+{% include prompt.html skill="workspace-status" text="in &lt;workspace path&gt;. Treat the existing .docflow_workspace as canonical. Read current records and registered member instructions. Tell me what is underway, what is blocked and the next permitted action, with source paths and revisions. Preserve the existing home identity and record history. Make no edits." %}
 
-Prompt: “Treat `/work/acme/acme-workspace` and its existing `.docflow_workspace/` as the canonical home. Read current records and registered native instructions, validate with matching installed assets at the current UTC time, and give a source-backed `workspace-status`. Preserve home identity, record IDs, mandate/grant history and member Git histories. Propose exact merge repairs only for missing setup files.”
+## Expected result
 
-Continue with [daily work](https://evolvehq.github.io/docflow/workflows/day-to-day/),
-[recovery](https://evolvehq.github.io/docflow/workflows/recovery/) or the
-[worked example](https://evolvehq.github.io/docflow/workflows/worked-example/);
-return to the [workflow hub](https://evolvehq.github.io/docflow/workflows/).
+A dated briefing covering owners, native claims and branches, current grants, dependencies, receipts, integration evidence and unknowns. No duplicate home, new grant or dispatch is created. Unavailable members remain visible.
 
+## Check it
+
+Compare the briefing with current Git state and canonical records. Yesterday's valid snapshot does not authorise today's action. Keep full home/record identities. Missing returns and inaccessible evidence stay unknown.
+
+For incomplete setup, ask `workspace-setup` to **propose** a scoped merge of missing home files from matching assets. Review the diff before authorising writes; preserve `.gitignore`, instructions, records and selected configuration. Validate at current UTC after approved repairs.
+
+## An ordinary existing folder of repositories
+
+A folder containing `api/` and `web/` without `.docflow_workspace/workspace.yaml` is a container, not a canonical workspace. Inspect its Git boundaries read-only. Choose a separate home, such as `acme-workspace/`, or explicitly select an existing Git directory to adopt. Do not initialise or convert the container silently.
+
+Follow [adopt existing repositories]({{ '/workflows/existing-repositories/' | relative_url }}) from that chosen home. Paths such as `../api` must actually resolve there.
+
+
+## Next step
+
+[Plan and check daily work →]({{ '/workflows/day-to-day/' | relative_url }})

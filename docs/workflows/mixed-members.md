@@ -1,29 +1,38 @@
 ---
 title: Coordinate mixed members
 permalink: /workflows/mixed-members/
+section: Guides
 ---
 
 # Coordinate mixed members
 
-A single workspace can contain **already governed** repositories (including Docflow members with a decision catalogue and plan queue), **not-yet-governed** repositories with their own native rules, **existing** checkouts and **newly created** checkouts. These are two independent choices. Do not bootstrap an existing member just to make it look like another member. A planned repository with no checkout cannot be treated as a validated local delivery source.
+Use this when repositories follow different methods, or when some members exist and others are still planned. Having Docflow conventions and having a real checkout are separate questions.
 
-| Example member | Exists now? | Governing method | What the workspace does |
-|---|---|---|---|
-| `api/` with Docflow decisions and plan queue | Yes | Existing Docflow rules | Register and reference its native task and completion event. |
-| `mobile/` with `AGENTS.md` and issue/PR workflow | Yes | Existing non-Docflow rules | Register and preserve that workflow; no forced bootstrap. |
-| `web/` newly created with Docflow | After separate creation | Bootstrap inside `web/` | Register only after its paths and instructions exist. |
-| `ops/` newly created with its own rules | After separate creation | Its own native setup | Register real instructions and completion event, without Docflow repository bootstrap. |
+<p class="root-note"><strong>Open in your agent:</strong> The workspace home for shared planning; each member root for that member’s own setup and work.</p>
 
-1. From the **workspace root**, run `workspace-status` or `workspace-setup` as appropriate. List each member's real state, stable ID, aliases, role, local path and instruction path. From **each existing member root**, read its own instructions and native work/claim source. Keep existing Docflow and non-Docflow methods as they are.
-2. For **planned new** members, record the intended identity and dependency in shared planning but do not declare a local path or native instruction file until the independent checkout and files exist. A remote-only entry is appropriate only for an actual `role: reference` member with a supplied remote, never as a stand-in for a future writable delivery.
-3. From the **workspace root**, use `workspace-scope` to define one shared outcome with distinct native deliveries and testable criteria. Example: API contract in `api/`, UI integration in future `web/`, mobile review in `mobile/`. Mark unavailable sources blocked or unknown. A selected idea and accepted agreement do not assign an executor.
-4. Create a new repository under its own owner and Git rules. From **that new member root**, run `bootstrap` only if Docflow governance is chosen; otherwise establish its actual native instructions. Create its native task/claim under that member's method.
-5. Return to the **workspace root** to register the now-real checkout, instructions and completion event. Validate at current UTC; inspect current mandate/grant and native claims before dispatch. `workspace-sync` observes each member's completion independently. Parent work remains open until every required delivery and criterion has passed evidence.
+## Before you start
 
-Prompt: “In `<workspace-root>`, scope an outcome spanning existing Docflow `api/`, existing issue-led `mobile/` and a future `web/`. Read both existing members' instructions and preserve their queues. Keep `web/` blocked until its own repository and instructions exist. After `web/` is created, run its chosen native setup from `web/`, then register it from the workspace. Show each delivery's native completion rule and the current authority check before any dispatch.”
+Create or resume the home. Read the existing members’ instructions and native work/claim sources. An issue/PR-led member does not need Docflow bootstrap to join.
 
-Continue with [daily work](https://evolvehq.github.io/docflow/workflows/day-to-day/),
-[recovery](https://evolvehq.github.io/docflow/workflows/recovery/) or the
-[worked example](https://evolvehq.github.io/docflow/workflows/worked-example/);
-return to the [workflow hub](https://evolvehq.github.io/docflow/workflows/).
+{% include host-picker.html %}
 
+## Prompt
+
+{% include prompt.html skill="workspace-scope" text="to plan &lt;outcome&gt; across our existing Docflow API repository, issue-led mobile repository and future web repository. Preserve both existing methods. Propose each delivery and acceptance check; keep execution unauthorised. Keep web blocked until its independent checkout and native instructions exist. Show each member’s native completion rule and missing evidence." %}
+
+## Expected result
+
+One shared plan with distinct native deliveries: for example an API contract, mobile review and future web integration. Existing members retain their own tasks and rules. The unavailable web source remains blocked or unknown, with no invented local path or instruction file.
+
+## Check it
+
+- Register real existing members with stable IDs, aliases, roles and actual paths.
+- A remote-only `role: reference` entry needs a supplied remote and is not a substitute for a future delivery checkout.
+- Create future repositories separately under their owners’ Git rules. Run `bootstrap` inside a new member only if Docflow governance is chosen; otherwise retain its native setup.
+- Once a checkout and instructions exist, register them from the workspace and validate at current UTC. Native tasks and claims remain member-owned.
+- An accepted agreement does not assign an executor. Check current mandate, grant, claims, dependencies and resources before dispatch. Parent work remains open until every required delivery and criterion is verified.
+
+
+## Next step
+
+[Plan and check daily work →]({{ '/workflows/day-to-day/' | relative_url }})

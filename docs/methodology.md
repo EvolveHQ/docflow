@@ -1,4 +1,5 @@
 ---
+section: Reference
 title: Methodology
 layout: default
 permalink: /methodology/
@@ -6,10 +7,14 @@ permalink: /methodology/
 
 # The docflow methodology
 
+For a guided first task, [Start here]({{ '/start/' | relative_url }}) or [choose a workflow]({{ '/workflows/' | relative_url }}). This page is the detailed reference.
+
 A formal definition of the documentation-led, ADR-driven method that
 docflow installs and maintains — the artefacts, the conventions that
 govern them, a normative specification precise enough to implement against,
 why the method is useful, and where it is weak.
+
+Working across repositories? Jump to [federation versus portable workspaces](#federation-vs-workspace), or browse the [FAQ by topic]({{ '/faq/' | relative_url }}).
 
 ## 1. Definition
 
@@ -292,8 +297,66 @@ catalogue.
 
 ## 5. Scaling to many repositories
 
-A single product spread across several repositories runs as a
-**federation**, applying §4 unchanged:
+For a product spread across repositories, **federation** is an optional
+way to connect its decision catalogues. A **portable workspace** coordinates
+shared work across independent members. Neither requires the other; they
+can also be used together.
+
+### Federation versus portable workspaces {#federation-vs-workspace}
+
+Federation answers **“Where does this product's decision belong?”** A
+workspace answers **“What shared work is agreed, who may act, and what has
+actually been delivered?”**
+
+<div class="coordination-comparison">
+  <figure class="coordination-diagram" aria-labelledby="federation-diagram-title">
+    <h4 id="federation-diagram-title">Federation</h4>
+    <p class="diagram-purpose">Connect a product's decisions</p>
+    <div class="diagram-node diagram-home"><strong>Product home repository</strong><span>Product-wide decisions</span></div>
+    <p class="diagram-connection">Members reference these decisions</p>
+    <div class="diagram-members">
+      <div class="diagram-node"><strong>API repo</strong><span>Local decisions<br>Native plan</span></div>
+      <div class="diagram-node"><strong>Web repo</strong><span>Local decisions<br>Native plan</span></div>
+    </div>
+    <p class="diagram-result"><strong>Roll-up</strong><br>A derived view of the catalogues</p>
+    <figcaption>Shown: home + local topology. Central and distributed topologies are also available. Each plan stays in the repository it changes.</figcaption>
+  </figure>
+  <figure class="coordination-diagram" aria-labelledby="workspace-diagram-title">
+    <h4 id="workspace-diagram-title">Portable workspace</h4>
+    <p class="diagram-purpose">Coordinate work across members</p>
+    <div class="diagram-node diagram-home"><strong>Workspace home</strong><span>Registry, shared records and mandate</span></div>
+    <p class="diagram-connection">Bounded briefs out; checked receipts back</p>
+    <div class="diagram-members">
+      <div class="diagram-node"><strong>API repo</strong><span>Docflow method<br>Native work</span></div>
+      <div class="diagram-node"><strong>Design repo</strong><span>Its own method<br>Native work</span></div>
+    </div>
+    <p class="diagram-result"><strong>Shared progress</strong><br>Reconciled from native evidence</p>
+    <figcaption>Shown: two delivery members with different methods. The workspace links their work; each member keeps its instructions, history and completion rules.</figcaption>
+  </figure>
+</div>
+
+The connecting lines show references and handoffs, not permission to write
+into another repository. A federation home owns the product-wide decisions
+in the illustrated topology; a workspace home owns the shared coordination
+records. These are different responsibilities.
+
+**For example, a new checkout flow could use:**
+
+- **Federation only:** record the product decision once and link the API
+  and web repositories' native plan items to it.
+- **Workspace only:** agree the outcome, track dependencies and authorised
+  deliveries across API, web and design members using their own methods.
+- **Both:** keep the product decision and native plans in the federation,
+  and use workspace records to coordinate the wider delivery. Link to the
+  native evidence rather than copying its decisions or queues.
+
+Use the [repository examples]({{ '/examples/' | relative_url }}) for
+federation setup or [choose a workspace guide]({{ '/workflows/' | relative_url }})
+for shared coordination. One repository can start with neither.
+
+### How federation works
+
+Federation applies §4 unchanged:
 
 - A repository declares, at set-up, whether it is **standalone** or part of
   a **multi-repo product**, and if so whether it is **establishing** a
@@ -327,7 +390,8 @@ enforced by audit, not by remote control.**
 ### 5.1 Portable workspaces
 
 Federation keeps a product's decisions consistent across repositories. A
-**portable workspace** adds the coordination layer above it: an
+**portable workspace** provides a separate coordination layer, usable with
+or without federation: an
 adopter-owned Git home — a registry, conventions and five kinds of canonical
 record (ideas, decisions, work, knowledge and runs), plus committed operator
 mandate notes — that links independent members without writing into any of
