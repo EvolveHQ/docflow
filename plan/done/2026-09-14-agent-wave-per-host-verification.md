@@ -133,7 +133,7 @@ These are the earlier 2026-09-11 observations, not the current outcomes.
 ## Current evidence — 2026-09-13
 
 See `DocflowHQ/.docflow_workspace/local/archive/member-audits/docflow/2026-09-13-host-verification.md` and
-`evals/hosts/results/2026-09-13.json` for exact source hashes, commands,
+`DocflowHQ/.docflow_workspace/local/archive/member-audits/docflow/repo-hygiene-20261014/2026-09-13.json (SHA-256 62882ec9016e68f94e0d47da2edd235f346d4e2ebd41b8ce1566cbd3b50700cc)` for exact source hashes, commands,
 assertion exits, native calls/child threads, original failures and repairs.
 
 - Claude Code: real opted-in Workflow rung 1 and worktree Agent rung 2;
