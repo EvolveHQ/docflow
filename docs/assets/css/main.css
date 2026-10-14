@@ -520,6 +520,111 @@ summary {
 .anchor-alias {
   scroll-margin-top:6rem
 }
+
+/* Static diagrams keep the methodology readable without scripts or images. */
+.coordination-comparison {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:20px;
+  margin:28px 0;
+}
+.coordination-diagram {
+  margin:0;
+  padding:20px;
+  border:1px solid var(--line);
+  border-top:3px solid var(--amber);
+  border-radius:var(--radius);
+  background:var(--card);
+  font-size:15px;
+  line-height:1.55;
+}
+.coordination-diagram h4 {
+  margin:0 0 8px;
+  color:var(--ink);
+  font:700 23px/1.2 var(--heading-font);
+}
+.diagram-purpose { margin:0 0 20px; }
+.diagram-node {
+  padding:12px 8px;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:var(--paper);
+  text-align:center;
+}
+.diagram-node strong, .diagram-node span { display:block; }
+.diagram-node strong { margin-bottom:4px; }
+.diagram-home { background:var(--wash); }
+.diagram-connection {
+  margin:0;
+  text-align:center;
+  font-size:14px;
+}
+.diagram-connection::before, .diagram-connection::after {
+  content:"";
+  display:block;
+  width:1px;
+  height:16px;
+  margin:0 auto;
+  background:var(--accent);
+}
+.diagram-connection::before { margin-bottom:6px; }
+.diagram-connection::after { margin-top:6px; }
+.diagram-members {
+  position:relative;
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+  padding-top:12px;
+}
+.diagram-members::before {
+  content:"";
+  position:absolute;
+  left:calc(25% - 2.5px);
+  right:calc(25% - 2.5px);
+  top:0;
+  height:12px;
+  border:1px solid var(--accent);
+  border-bottom:0;
+}
+.diagram-result {
+  margin:18px 0;
+  padding:12px 0;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  text-align:center;
+}
+.coordination-diagram figcaption { font-size:14px; }
+.faq-topics {
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin:24px 0 30px;
+}
+.faq-topics a {
+  padding:6px 14px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  background:var(--card);
+  font-size:14px;
+}
+.faq-question {
+  border-bottom:1px solid var(--line);
+  padding:16px 0;
+}
+.faq-question summary {
+  color:var(--ink);
+  font-weight:650;
+  cursor:pointer;
+  padding:4px 0;
+}
+.faq-question summary::marker { color:var(--accent); }
+.faq-question[open] summary { margin-bottom:14px; }
+.faq-question p:last-child { margin-bottom:4px; }
+.faq-question:last-of-type { margin-bottom:30px; }
+@media(max-width:700px) {
+  .coordination-comparison { grid-template-columns:minmax(0,1fr); }
+}
+
 .site-footer {
   border-top:1px solid var(--line);
   font-size:13px;

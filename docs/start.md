@@ -146,4 +146,4 @@ Do you already have a Docflow workspace?
 
 Workspace validation needs **Node.js 22+** in the agent's execution environment. Checking cited historical member files needs **Git 2.45+**. Ask the agent to report missing prerequisites and inaccessible paths before it writes. A companion app is not required.
 
-[Browse all guides →]({{ '/workflows/' | relative_url }})
+[Browse all guides →]({{ '/workflows/' | relative_url }}) · [Frequently asked questions]({{ '/faq/' | relative_url }})

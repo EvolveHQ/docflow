@@ -9,6 +9,7 @@ section: Reference
 Use these pages when you need the details behind a guide. For the first task, [Start here]({{ '/start/' | relative_url }}).
 
 <ul class="route-list">
+<li><a href="{{ '/faq/' | relative_url }}">Frequently asked questions →</a><p>Getting started, federation and workspaces, everyday work and installation.</p></li>
 <li><a href="{{ '/reference/skills/' | relative_url }}">All fourteen skills →</a><p>Repository and workspace operations, with their correct roots.</p></li>
 <li><a href="{{ '/reference/installation/' | relative_url }}">Installation details →</a><p>Complete assets, detached copies, local development and command limits.</p></li>
 <li><a href="{{ '/reference/workspace-format/' | relative_url }}">Workspace format and validation →</a><p>Registry, canonical records, schemas, identities and validator boundaries.</p></li>

@@ -2,6 +2,8 @@
 
 New to Docflow? [Start here](https://evolvehq.github.io/docflow/start/) explains the terms, helps you choose one repository or several, and shows setup for your coding agent. Follow the [prompt-first guides](https://evolvehq.github.io/docflow/workflows/) for a first task and expected result.
 
+Browse the [FAQ by topic](https://evolvehq.github.io/docflow/faq/) or the [visual explanation of federation and workspaces](https://evolvehq.github.io/docflow/methodology/#federation-vs-workspace).
+
 This document explains how the `bootstrap` skill behaves end-to-end,
 what each of the 10 assessment questions (asked in full depth) actually changes in the
 output, and how to customise or extend the templates. The lifecycle
