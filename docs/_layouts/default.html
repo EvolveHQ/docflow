@@ -30,7 +30,7 @@
 <body>
 <a class="skip-link" href="#main-content">Skip to content</a>
 <header class="site-header"><div class="header-inner">
-  <a class="brand" href="{{ '/' | relative_url }}"><img src="{{ '/assets/repository_hub_logo.png' | relative_url }}" alt="" width="28" height="28">docflow</a>
+  <a class="brand" href="{{ '/' | relative_url }}"><span class="brand-logo" aria-hidden="true"><img src="{{ '/assets/repository_hub_logo.png' | relative_url }}" alt="" width="40" height="40"></span><span class="brand-word">docflow</span></a>
   <nav aria-label="Main navigation">{% for item in site.data.navigation %}<a href="{{ item.url | relative_url }}"{% if page.url == item.url %} aria-current="page"{% elsif page.section == item.title %} aria-current="location"{% endif %}>{{ item.title }}</a>{% endfor %}</nav>
   <a class="source-link" href="https://github.com/EvolveHQ/docflow">GitHub</a>
 </div></header>

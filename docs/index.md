@@ -2,10 +2,15 @@
 title: docflow
 ---
 
+<div class="home-introduction">
+<span class="home-mark" aria-hidden="true"><img src="{{ '/assets/repository_hub_logo.png' | relative_url }}" alt="" width="80" height="80"></span>
 <h1 id="docflow">Decisions, plans and progress.<br>In your repositories.</h1>
 <p class="intro">Docflow helps your coding agent record project decisions, plan work and check what is complete. You use its skills through prompts in your agent. The results live in ordinary files in your repositories.</p>
 <span id="claude-code--from-this-marketplace" class="anchor-alias"></span><span id="pi-coding-agent" class="anchor-alias"></span><span id="also-codex-opencode-grok-cursor-omp-copilot" class="anchor-alias"></span>
 <div class="home-actions"><a class="button" href="{{ '/start/' | relative_url }}">Start here</a><a id="install" href="{{ '/start/#install' | relative_url }}">Install for your agent →</a></div>
+</div>
+<div class="home-reading" markdown="1">
+<figure class="home-artwork"><img src="{{ '/preview.png' | relative_url }}" alt="Repository hubs connected by project decision records" width="1736" height="906"></figure>
 <div class="home-steps">
 <section><h2>1. Choose your scope</h2><p>Start with one repository. Add a workspace when work spans several.</p></section>
 <section><h2>2. Give your agent a task</h2><p>Use a named skill to record a decision, plan work or read current progress.</p></section>
@@ -23,3 +28,5 @@ Open your repository in your coding agent after installing Docflow.
 <p class="support-note">The 0.10.0 package provides fourteen skills for eight coding agents. Full native qualification remains pending; Clarity integration is parked. Read the <a href="{{ '/release-notes/' | relative_url }}">release scope</a>.</p>
 
 <p class="legacy-links"><a id="skills" href="{{ '/reference/skills/' | relative_url }}">Skill catalogue</a> · <a id="portable-workspaces" href="{{ '/workspace/' | relative_url }}">Workspace model</a> · <a id="why" href="{{ '/methodology/' | relative_url }}">Why this method?</a> · <a id="links" href="{{ '/reference/' | relative_url }}">Reference</a></p>
+
+</div>
