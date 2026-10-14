@@ -23,7 +23,15 @@
     });
     try { if (selected) localStorage.setItem('docflow-agent', selected); else localStorage.removeItem('docflow-agent'); } catch (_) {}
   }
-  if (picker) { picker.closest('.host-picker').hidden = false; picker.addEventListener('change', () => update(picker.value)); }
+  if (picker) {
+    picker.closest('.host-picker').hidden = false;
+    picker.addEventListener('change', () => {
+      update(picker.value);
+      if (panels.length && hashHost()) {
+        history.replaceState(null, '', selected ? '#host-' + selected : '#install');
+      }
+    });
+  }
   window.addEventListener('hashchange', () => { if (labels[hashHost()]) update(hashHost()); });
   document.querySelectorAll('.host-links a').forEach(a => a.addEventListener('click', () => update(a.hash.slice(6))));
   update(selected);
