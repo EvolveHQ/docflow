@@ -6,7 +6,7 @@ Owning decisions: adr/0051-portable-workspace-memory-contract.md (AC 1, native b
 
 - Claimed by: Codex, GPT-6 Astra xhigh, sole Docflow writer, 2026-10-14, branch `docs/pages-onboarding`.
 - Blockers: None for the accepted local documentation scope.
-- Stopped:
+- Stopped: 2026-10-14 — local implementation and preview ready for operator review. This run: implemented and validated; Overall: verified locally, unshipped; Yet to do: operator review and a separately authorised publication/integration phase.
 
 ## Scope
 
@@ -26,3 +26,17 @@ Clean released main `f0799fd87ad580b4e6a29c762709288cf3752c86`; accepted proposa
 4. Actual Jekyll 3.10 safe build and rendered checks at 1440, 390 and 320px pass: no document overflow, readable prompts, obvious first action, keyboard/skip/menu/focus and 200% zoom; local links/anchors and source-bound commands checked. Screenshots and logs are external.
 5. `node scripts/verify.mjs` and `node evals/run.mjs` exit 0 with unmodified gates; record actual results and limits. Signed local commits leave a clean branch.
 6. Local server serves the rendered site at `/docflow/`, survives the agent/tab, and remains running. External result records exact SHA, plan status, exits, screenshots, URL, PID/port/restart/log and remaining review/publication steps. Item remains todo for this local-only phase; no shipped claim.
+
+## Receipt
+
+Verified rendered work: `4ab79089bf5a7ea7b2d76a6065f16f3e632fd718`.
+
+- `node scripts/verify.mjs`: `verify: OK (version 0.10.0, 14 skills, 63 ADRs, 69 shipped plan items)`, exit 0. `node evals/run.mjs`: `13 passed, 0 failed, 0 skipped`, exit 0; explicitly hostless.
+- Jekyll 3.10 safe build, exit 0. External `check-links.py`, exit 0: 24 pages, 953 local links/assets/anchors, all baseline fragments retained. External `review.cjs`, exit 0: 72 page/viewport checks, 25 interactions; `journeys.cjs`, exit 0: 23 checks. Actual Chromium 200% zoom and deep-link refresh regression passed. Scratch assembly/frozen fixture exits 0; deliberately invalid fixture exits 1 as expected.
+- Live preview: `http://localhost:52447/docflow/`, persistent user service `docflow-pages-preview-20261014.service`. External operator-selected handoff holds screenshots, exact process/restart details, command evidence and source-bound final result. No product, schema, gate or version changes; no push/PR/publication.
+
+## Status at a glance
+
+- **This run:** implemented the accepted documentation scope and left a working, validated local preview; signed local commits.
+- **Overall:** verified locally, unshipped. This item remains in todo; no completion move or owning-decision advancement is prepared without the next integration phase.
+- **Yet to do:** operator review, then separately authorised integration/publication. Grok install resolution and full native/Clarity qualification remain outside this item and retain their existing limits.
