@@ -103,14 +103,14 @@ installs the existing Claude Code plugin.
 - adr/0008-dual-target-packaging.md (superseded by this ADR)
 - adr/0009-distribution-marketplace-npm.md (the Claude Code / npm channels)
 - adr/0007-lifecycle-skills.md
-- `DocflowHQ/.docflow_workspace/local/archive/member-audits/docflow/2026-09-13-host-verification.md` and `DocflowHQ/.docflow_workspace/local/archive/member-audits/docflow/repo-hygiene-20261014/2026-09-13.json; [immutable historical Git blob](https://github.com/EvolveHQ/docflow/blob/e8d487a80d40dfa6db1688f18b5aaa71385391fd/evals/hosts/results/2026-09-13.json) (SHA-256 62882ec9016e68f94e0d47da2edd235f346d4e2ebd41b8ce1566cbd3b50700cc)`
+- `DocflowHQ/.docflow_workspace/local/archive/member-audits/docflow/2026-09-13-host-verification.md` and `DocflowHQ/.docflow_workspace/local/archive/member-audits/docflow/repo-hygiene-20261014/2026-09-13.json`; [immutable historical Git blob](https://github.com/EvolveHQ/docflow/blob/e8d487a80d40dfa6db1688f18b5aaa71385391fd/evals/hosts/results/2026-09-13.json) (SHA-256 `62882ec9016e68f94e0d47da2edd235f346d4e2ebd41b8ce1566cbd3b50700cc`)
   (earlier bounded observations, including retained pi/Cowork blockers)
 - `DocflowHQ/.docflow_workspace/local/archive/member-audits/docflow/2026-09-13-pi-qwen-continuation.md` and `evals/hosts/results/2026-09-13-pi-qwen.json`
   (Pi local-provider continuation; full Pi/Cowork acceptance remains outstanding)
 - `DocflowHQ/.docflow_workspace/local/archive/member-audits/docflow/2026-09-14-cowork-continuation.md` and `evals/hosts/results/2026-09-14-cowork.json`
   (native Windows actual-target signing/lifecycle/Workflow wave, repaired seed bootstrap and retained permission/source limitations)
 
-- `DocflowHQ/.docflow_workspace/local/archive/member-audits/docflow/2026-09-14-release-verification.md` and `DocflowHQ/.docflow_workspace/local/archive/member-audits/docflow/repo-hygiene-20261014/2026-09-14-release-verification.json; [immutable historical Git blob](https://github.com/EvolveHQ/docflow/blob/e8d487a80d40dfa6db1688f18b5aaa71385391fd/evals/hosts/results/2026-09-14-release-verification.json) (SHA-256 257b381627de6723b485cef9a9c64cf478dc42e223d0d4050412556a6075a21b)`
+- `DocflowHQ/.docflow_workspace/local/archive/member-audits/docflow/2026-09-14-release-verification.md` and `DocflowHQ/.docflow_workspace/local/archive/member-audits/docflow/repo-hygiene-20261014/2026-09-14-release-verification.json`; [immutable historical Git blob](https://github.com/EvolveHQ/docflow/blob/e8d487a80d40dfa6db1688f18b5aaa71385391fd/evals/hosts/results/2026-09-14-release-verification.json) (SHA-256 `257b381627de6723b485cef9a9c64cf478dc42e223d0d4050412556a6075a21b`)
   (fresh exact-Git-byte installations and scoped native outcomes; original failures and infrastructure interruption retained)
 
 ## Revision History
