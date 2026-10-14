@@ -1,4 +1,5 @@
 ---
+section: Reference
 permalink: /release-notes/
 title: Release notes
 ---

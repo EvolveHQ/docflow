@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{% if page.url == "/" %}docflow — ADR-driven documentation workflow{% else %}{{ page.title }} · docflow{% endif %}</title>
+  <title>{% if page.url == "/" %}docflow — decisions, plans and progress{% else %}{{ page.title }} · docflow{% endif %}</title>
   <meta name="description" content="{{ site.description }}">
   <link rel="canonical" href="{{ page.url | absolute_url }}">
   <!-- Open Graph / Twitter card (social previews) -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="docflow">
-  <meta property="og:title" content="{% if page.url == '/' %}docflow — ADR-driven documentation workflow{% else %}{{ page.title }} · docflow{% endif %}">
+  <meta property="og:title" content="{% if page.url == '/' %}docflow — decisions, plans and progress{% else %}{{ page.title }} · docflow{% endif %}">
   <meta property="og:description" content="{{ site.description }}">
   <meta property="og:url" content="{{ page.url | absolute_url }}">
   <meta property="og:image" content="{{ '/preview.png' | absolute_url }}?v=2">
@@ -17,7 +17,7 @@
   <meta property="og:image:height" content="906">
   <meta property="og:image:alt" content="docflow — repository hubs linked by Architecture Decision Records">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{% if page.url == '/' %}docflow — ADR-driven documentation workflow{% else %}{{ page.title }} · docflow{% endif %}">
+  <meta name="twitter:title" content="{% if page.url == '/' %}docflow — decisions, plans and progress{% else %}{{ page.title }} · docflow{% endif %}">
   <meta name="twitter:description" content="{{ site.description }}">
   <meta name="twitter:image" content="{{ '/preview.png' | absolute_url }}?v=2">
   <link rel="icon" type="image/svg+xml" href="{{ '/assets/favicon.svg' | relative_url }}">
@@ -26,53 +26,30 @@
   <link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/favicon-180.png' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
 </head>
+{% assign site_local_root = "/" | relative_url %}
 <body>
-  <a class="skip-link" href="#main-content">Skip to content</a>
-  <header class="hero{% if page.url != '/' %} hero--slim{% endif %}">
-    <div class="wrap">
-      <a class="brand" href="{{ '/' | relative_url }}">
-        <span class="brand-logo" aria-hidden="true"><img src="{{ '/assets/repository_hub_logo.png' | relative_url }}" alt=""></span>
-        <span class="brand-word">docflow</span>
-      </a>
-      {% if page.url == "/" %}
-        <p class="tagline">{{ site.description }}</p>
-        <div class="cta">
-          <a class="btn btn--primary" href="https://github.com/EvolveHQ/docflow">View on GitHub</a>
-          <a class="btn" href="{{ '/methodology/' | relative_url }}">Methodology</a>
-          <a class="btn" href="{{ '/examples/' | relative_url }}">Examples</a>
-          <a class="btn" href="{{ '/workflows/' | relative_url }}">Workflow guides</a>
-          <a class="btn" href="#install">Install</a>
-        </div>
-      {% endif %}
-    </div>
-  </header>
-
-  <main id="main-content" class="wrap content">
-    {{ content }}
-  </main>
-
-  <footer class="site-footer">
-    <div class="wrap">
-      <span>MIT licensed · maintained by <a href="https://github.com/EvolveHQ">EvolveHQ</a></span>
-      <span class="footer-links">
-        <a href="{{ '/' | relative_url }}">Home</a>
-        <a href="{{ '/methodology/' | relative_url }}">Methodology</a>
-        <a href="{{ '/workspace/' | relative_url }}">Workspace</a>
-        <a href="{{ '/workflows/' | relative_url }}">Guides</a>
-        <a href="{{ '/release-notes/' | relative_url }}">Release notes</a>
-        <a href="{{ '/examples/' | relative_url }}">Examples</a>
-        <a href="{{ '/privacy/' | relative_url }}">Privacy</a>
-        <a href="https://github.com/EvolveHQ/docflow">GitHub</a>
-      </span>
-    </div>
-  </footer>
-  {% if page.mermaid %}
-  <!-- Mermaid is loaded only on pages that opt in with `mermaid: true` in
-       frontmatter; pinned so GitHub Pages renders a stable version. -->
-  <script type="module">
-    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.esm.min.mjs';
-    mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
-  </script>
-  {% endif %}
-</body>
-</html>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+  <a class="brand" href="{{ '/' | relative_url }}"><img src="{{ '/assets/repository_hub_logo.png' | relative_url }}" alt="" width="28" height="28">docflow</a>
+  <nav aria-label="Main navigation">{% for item in site.data.navigation %}<a href="{{ item.url | relative_url }}"{% if page.url == item.url %} aria-current="page"{% elsif page.section == item.title %} aria-current="location"{% endif %}>{{ item.title }}</a>{% endfor %}</nav>
+  <a class="source-link" href="https://github.com/EvolveHQ/docflow">GitHub</a>
+</div></header>
+{% if page.url == '/' %}
+<main id="main-content" class="content home" tabindex="-1">{{ content | replace: 'https://evolvehq.github.io/docflow/', site_local_root }}</main>
+{% else %}
+<div class="page-shell">
+  <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="{{ '/' | relative_url }}">Home</a><span aria-hidden="true">/</span>{% if page.section == 'Guides' and page.url != '/workflows/' %}<a href="{{ '/workflows/' | relative_url }}">Guides</a><span aria-hidden="true">/</span>{% elsif page.section == 'Reference' and page.url != '/reference/' %}<a href="{{ '/reference/' | relative_url }}">Reference</a><span aria-hidden="true">/</span>{% endif %}<span aria-current="page">{{ page.title }}</span></nav>
+  <aside class="section-sidebar">{% if page.section == 'Guides' %}{% include guide-nav.html %}{% elsif page.section == 'Start here' %}{% include start-nav.html %}{% else %}{% include reference-nav.html %}{% endif %}</aside>
+  <details class="mobile-navigation"><summary>{% if page.section == 'Guides' %}Guide{% else %}Section{% endif %} navigation</summary>{% if page.section == 'Guides' %}{% include guide-nav.html %}{% elsif page.section == 'Start here' %}{% include start-nav.html %}{% else %}{% include reference-nav.html %}{% endif %}</details>
+  <main id="main-content" class="content article" tabindex="-1">{{ content | replace: 'https://evolvehq.github.io/docflow/', site_local_root }}</main>
+</div>
+{% endif %}
+<footer class="site-footer"><div class="footer-inner"><p>MIT licensed · maintained by <a href="https://github.com/EvolveHQ">EvolveHQ</a></p><nav aria-label="Footer navigation"><a href="{{ '/release-notes/' | relative_url }}">Release notes</a><a href="{{ '/privacy/' | relative_url }}">Privacy</a><a href="https://github.com/EvolveHQ/docflow">GitHub</a></nav></div></footer>
+<script src="{{ '/assets/js/main.js' | relative_url }}" defer></script>
+{% if page.mermaid %}
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.esm.min.mjs';
+mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
+</script>
+{% endif %}
+</body></html>

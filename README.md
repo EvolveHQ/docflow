@@ -1,5 +1,7 @@
 # docflow
 
+New to Docflow? [Start here](https://evolvehq.github.io/docflow/start/) explains the terms, helps you choose one repository or several, and shows setup for your coding agent. Follow the [prompt-first guides](https://evolvehq.github.io/docflow/workflows/) for a first task and expected result.
+
 ![docflow — ADR-driven documentation workflow](docs/preview.png)
 
 A plugin for **ADR-driven, documentation-led projects**, working on
@@ -214,18 +216,20 @@ read natively by any agent that loads `AGENTS.md`; the **skills** are
 |-------|:------:|:------:|---------|--------|
 | Claude Code | native | ✅ | marketplace (below) | `/bootstrap` |
 | pi | native | ✅ | `pi install npm:@evolvehq/docflow` | `/skill:bootstrap` |
-| Codex | native | ✅ | `codex plugin marketplace add EvolveHQ/docflow` | `$bootstrap` / `/skills` |
+| Codex | native | ✅ | `codex plugin marketplace add EvolveHQ/docflow`, then `codex plugin add docflow@evolvehq` | `$bootstrap` / `/skills` |
 | OpenCode | native | ✅ | auto-discovered, or symlink into `~/.config/opencode/skills` | auto, by description |
-| Grok | native | ✅ | `grok plugin marketplace add EvolveHQ/docflow` | `/bootstrap` |
+| Grok | native | ✅ | Bare-name install selector unverified; see Grok below | `/bootstrap` |
 | Cursor | native | ✅ | `cursor-agent --plugin-dir <repo>/plugins/docflow` | `/bootstrap` |
 | omp (oh-my-pi) | native | ✅ | `omp plugin install npm:@evolvehq/docflow` | `/skill:bootstrap` |
-| GitHub Copilot CLI | native | ✅ | `copilot plugin marketplace add EvolveHQ/docflow` | `/bootstrap` |
+| GitHub Copilot CLI | native | ✅ | `copilot plugin marketplace add EvolveHQ/docflow`, then `copilot plugin install docflow@evolvehq` | `/bootstrap` |
 
 Handy: OpenCode and omp also read `~/.claude/skills/` and
 `~/.agents/skills/`, so a shared skills directory can serve several agents
 at once.
 
 ### Claude Code — from this marketplace
+
+**In your agent:**
 
 ```
 /plugin marketplace add EvolveHQ/docflow
@@ -237,7 +241,8 @@ matching requests too).
 
 ### Grok (xAI)
 
-docflow ships a Grok plugin (`.grok-plugin/`) with its own marketplace:
+docflow ships a Grok plugin (`.grok-plugin/`) with its own marketplace.
+The previously documented sequence below is **unverified**, not a tested install recipe: installed Grok 1.0.46 help does not establish bare `docflow` resolution after marketplace registration. `--trust` skips trust confirmation and is not a universal default. No replacement selector is assumed. See the [command evidence](https://evolvehq.github.io/docflow/reference/installation/#grok-command-evidence).
 
 ```
 grok plugin marketplace add EvolveHQ/docflow
@@ -250,7 +255,7 @@ plugins/docflow` checks the manifest.
 
 ### Cursor
 
-Cursor loads a local plugin directory directly — no account marketplace
+With a complete existing Docflow checkout, Cursor Agent CLI loads its local plugin directory directly — no account marketplace
 step is required:
 
 ```
@@ -305,8 +310,7 @@ hierarchical `AGENTS.md` loading — no porting needed.
 
 ### Codex (OpenAI)
 
-docflow ships a Codex plugin (`.codex-plugin/`), so it's a one-command
-install from this repo's marketplace:
+docflow ships a Codex plugin (`.codex-plugin/`), using two terminal commands: register this repo’s marketplace, then install:
 
 ```
 codex plugin marketplace add EvolveHQ/docflow
@@ -325,7 +329,7 @@ OpenCode auto-discovers skills from `.claude/skills`, `.agents/skills`,
 and `.opencode/skills` (project and global) — so **if you already run
 docflow on Claude Code or Codex via a shared skills directory, OpenCode
 picks it up with no extra step.** Standalone, symlink the skills into
-OpenCode's global directory (one command, stays in sync with the clone):
+OpenCode’s global directory using the following three commands. Use this only when the clone path and destination skill names are unused; retain the clone for matching workspace assets:
 
 ```
 git clone https://github.com/EvolveHQ/docflow ~/.docflow-src

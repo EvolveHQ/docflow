@@ -1,24 +1,40 @@
 ---
 title: Recover a workspace session
 permalink: /workflows/recovery/
+section: Guides
 ---
 
 # Recover a workspace session
 
-A fresh session starts from current files and native sources, not an earlier conversation or INDEX snapshot. Keep the same canonical home and full record identities.
+Use this after interruption, a missing return or a host change. Start from current files and native sources, keeping the same canonical identity.
 
-1. Confirm the workspace path, installed package revision, actual host/filesystem and permitted scope. Read `README.md`, `AGENTS.md`, registry, conventions, current canonical records and relevant member instructions. Run validation with the current UTC time and retain exact output and exit.
-2. Ask `workspace-status` for a source-backed account of the focused work: owner, native claim and branch, latest grant and expiry/revocation, dependencies, last reconciled attempt, missing returns, member integration and next action. An inaccessible member or external home is unknown, not absent authority or free ownership.
-3. For interrupted setup, compare actual files and Git state with the selected mapping; merge only missing pieces. Do not blindly rerun setup or overwrite existing records.
-4. For a missing receipt or contact loss, keep the attempt and ownership unknown. Silence, timeout or expired grant does not prove the worker exited and does not permit reassignment. Seek native exit/return evidence. A new run identity with predecessor links follows only after a terminal receipt has been independently reconciled and current claims/authority are rechecked.
-5. For a returned receipt, use `workspace-sync` to check the exact brief, grant, source files/revisions, actual command outcomes and observation times. A readiness report before any attempt is not a receipt. A receipt with unknown or failed checks does not establish success.
-6. For a prepared PR, read the member's own merge and required-check sources. An unmerged plan/done move is prepared completion. Keep the delivery open until the native completion event is checked at the integrated revision. `workspace-sync` then updates only supported observations and refreshes INDEX.
-7. If a write is denied, stop that effect across tools and routes; report the actual partial state and required permission. If the asset path, Node runtime or required member source is missing, report the exact blocker and continue only safe reads.
+<p class="root-note"><strong>Open in your agent:</strong> The existing workspace home in the actual host/filesystem where the next action would run.</p>
 
-Prompt: “Resume work `{home, id}` in `<workspace-root>` from current sources. Use `workspace-status` first, without edits. Identify the last grant, native owner/claim, run/receipt state and member integration evidence. Name the single permitted next action and keep unknown outcomes unknown.”
+## Before you start
 
-Continue with [daily work](https://evolvehq.github.io/docflow/workflows/day-to-day/),
-[recovery](https://evolvehq.github.io/docflow/workflows/recovery/) or the
-[worked example](https://evolvehq.github.io/docflow/workflows/worked-example/);
-return to the [workflow hub](https://evolvehq.github.io/docflow/workflows/).
+Confirm the home path, installed package revision and permitted scope. Read current records, registry, conventions and relevant member instructions. Check matching assets and validate at the actual UTC time; keep exact diagnostics.
 
+{% include host-picker.html %}
+
+## Prompt
+
+{% include prompt.html skill="workspace-status" text="to resume &lt;work home and full ID&gt; in &lt;workspace path&gt; from current sources, without edits. Identify the last grant and expiry or revocation, native owner and claim, branch, run and receipt state, and member integration evidence. Name the single permitted next action. Keep unknown outcomes unknown." %}
+
+## Expected result
+
+A source-backed account of the interrupted work and its next permitted action. A missing return stays unknown; an old conversation or INDEX cannot override current sources.
+
+## Check it
+
+- **Interrupted setup:** compare actual files and Git state with the approved mapping. Propose a scoped merge of missing pieces; do not overwrite records or rerun setup blindly.
+- **Missing receipt or contact loss:** silence, timeout or an expired grant does not prove the worker exited or permit reassignment. Seek native exit/return evidence. A new run follows only after independently reconciling a terminal receipt and rechecking claims and authority.
+- **Returned receipt:** use `workspace-sync` to check the brief, grant, exact source revisions, command outcomes and times. Unknown or failed checks cannot establish success.
+- **Prepared PR:** keep the delivery open until the member’s completion event and required checks at the integrated revision are verified. An unmerged `plan/done` file is prepared work.
+- **Denied write:** stop that effect across tools and routes. Report partial state and the permission needed. Missing assets, runtime or native sources are concrete blockers; continue only safe reads.
+
+Keep successful sibling deliveries and failed attempts visible. Inaccessible members or external homes mean unknown evidence, not free ownership or absent authority.
+
+
+## Next step
+
+[Return to the daily cycle →]({{ '/workflows/day-to-day/' | relative_url }})

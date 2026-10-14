@@ -1,4 +1,5 @@
 ---
+section: Reference
 permalink: /clarity-releases/
 title: Clarity release preparation (parked)
 ---

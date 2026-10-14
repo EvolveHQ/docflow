@@ -2,118 +2,24 @@
 title: docflow
 ---
 
-# docflow
+<h1 id="docflow">Decisions, plans and progress.<br>In your repositories.</h1>
+<p class="intro">Docflow helps your coding agent record project decisions, plan work and check what is complete. You use its skills through prompts in your agent. The results live in ordinary files in your repositories.</p>
+<span id="claude-code--from-this-marketplace" class="anchor-alias"></span><span id="pi-coding-agent" class="anchor-alias"></span><span id="also-codex-opencode-grok-cursor-omp-copilot" class="anchor-alias"></span>
+<div class="home-actions"><a class="button" href="{{ '/start/' | relative_url }}">Start here</a><a id="install" href="{{ '/start/#install' | relative_url }}">Install for your agent →</a></div>
+<div class="home-steps">
+<section><h2>1. Choose your scope</h2><p>Start with one repository. Add a workspace when work spans several.</p></section>
+<section><h2>2. Give your agent a task</h2><p>Use a named skill to record a decision, plan work or read current progress.</p></section>
+<section><h2>3. Inspect the result</h2><p>Review the proposed changes and check the evidence before calling work complete.</p></section>
+</div>
 
-![docflow — ADR-driven documentation workflow](preview.png)
+## Start with a plan you can review
 
-**docflow** turns any repository into a **documentation-led, ADR-driven**
-project. A `bootstrap` skill scaffolds (or retrofits) an **Architecture
-Decision Record (ADR)** catalogue, a `plan/` work queue, `AGENTS.md`
-conventions, and the agent operating contract — the small set of canonical
-files a repo can be driven from by humans and coding agents alike. A set of
-**lifecycle skills** then author, queue, ship, and audit ADRs.
+Open your repository in your coding agent after installing Docflow.
 
-It runs on **eight coding agents** — Claude Code, pi, Codex, OpenCode, Grok,
-Cursor, omp and Copilot — from the same skill files, and scales from a single
-repository to a **multi-repo product**. See the
-[methodology]({{ '/methodology/' | relative_url }}) for the formal definition of the conventions,
-why they help, and where they fall short, and
-[Portable workspaces]({{ '/workspace/' | relative_url }}) for the
-cross-repository model.
+{% include prompt.html skill="bootstrap" text="here in guided mode, including a plan queue. Read existing instructions and preserve our current Git rules. Show the setup plan and stop for my review before writing." %}
 
-Choose a [step-by-step workflow]({{ '/workflows/' | relative_url }}) for
-your starting setup, or read the [0.10.0 release notes]({{ '/release-notes/' | relative_url }}).
-The workspace package is usable through ordinary files; full native host
-qualification remains pending and Clarity integration is parked.
+**You should see:** a summary of what exists, the files Docflow proposes to add or merge, and the working rules it will preserve. The [one-repository guide]({{ '/workflows/single-repository/' | relative_url }}) takes you through the next step.
 
-## Skills
+<p class="support-note">The 0.10.0 package provides fourteen skills for eight coding agents. Full native qualification remains pending; Clarity integration is parked. Read the <a href="{{ '/release-notes/' | relative_url }}">release scope</a>.</p>
 
-| Skill | Purpose |
-|-------|---------|
-| `bootstrap` | Scaffold or retrofit the whole convention set. Start here. Opens with an express / guided / full depth choice — a quick conservative setup needs almost no questions. |
-| `new-adr` | Author one ADR — next contiguous number, right shape, INDEX + domain wiring, supersede linkage. |
-| `new-plan` | Add a `plan/todo` item tracing to its owning ADR(s). |
-| `ship-item` | Run the completion event: verify → completion commit (`todo`→`done`, ADR `Accepted`→`Implemented`, INDEX) → push or PR merge per the recorded model. |
-| `add-convention` | Assess whether a convention is worth codifying, route it to the right home (or to an ADR), then add it — e.g. enable optional practices like TDD on demand. |
-| `audit` | Lint the repo against its own conventions — numbering, INDEX sync, plan coverage, ADR-privacy leaks, and more. |
-| `brainstorm` | Decompose a problem into candidate ADRs + plan items (proposes drafts; writes nothing until approved). |
-| `agent-wave` | Orchestrate a wave of parallel worktree subagents over the queue, with checkpoint or continuous supervision. |
-| `rollup` | For a multi-repo product: aggregate every member repo's ADRs into one derived, product-wide roll-up (run from the home repo). |
-| `workspace-setup` | Create or adopt a portable workspace home and registry. |
-| `workspace-status` | Read priorities, owners, authority, blockers and next actions. |
-| `workspace-scope` | Record shared outcomes and native deliveries without granting execution. |
-| `workspace-dispatch` | Check current grants, claims, dependencies and resources, then hand off a bounded brief. |
-| `workspace-sync` | Reconcile returned receipts and member state from checked native evidence; refresh INDEX. |
-
-## Portable workspaces
-
-The five workspace skills coordinate a product across independent
-repositories from an adopter-owned Git workspace. `workspace-setup`
-creates or adopts the home and registry; `workspace-status` reads
-priorities, owners, current authority and blockers; `workspace-scope`
-records a shared outcome and its native deliveries; `workspace-dispatch`
-checks current grants, claims, dependencies and resources and hands off a
-bounded brief; `workspace-sync` reconciles returned receipts and member state
-from checked native evidence and refreshes INDEX. Decisions and grants cite a
-committed operator mandate note as source-bound evidence. Canonical memory
-stays in the adopter's workspace,
-while member repositories keep their own methods, instructions and histories.
-
-The records are plain files checked by a deterministic validator, not a
-scheduler, an authentication layer or a live ownership service. Selecting
-work and agreeing a scope grant no execution authority, and a readiness
-report for which no attempt started is not a completed receipt. Installing
-the workspace skills also requires the complete workspace assets, including
-for detached skill copies; native-host and Clarity qualification remain
-separate from the package checks.
-
-## Install
-
-### Claude Code — from this marketplace
-
-```
-/plugin marketplace add EvolveHQ/docflow
-/plugin install docflow@evolvehq
-```
-
-Then `/bootstrap`, `/new-adr`, `/ship-item`, … (skills also auto-trigger on
-matching requests).
-
-### pi coding agent
-
-```
-pi install npm:@evolvehq/docflow
-```
-
-(or, from source, `pi install git:github.com/EvolveHQ/docflow`.)
-Invoke as `/skill:bootstrap`, `/skill:new-adr`, …
-
-### Also: Codex, OpenCode, Grok, Cursor, omp, Copilot
-
-docflow runs from the same skill files on **Codex** (`codex plugin marketplace add EvolveHQ/docflow`; invoke `$bootstrap`), **OpenCode**
-(reads `.claude`/`.agents`/`.opencode` skills — auto-discovered), **Grok**
-(`grok plugin marketplace add EvolveHQ/docflow` → `grok plugin install docflow --trust`), **Cursor** (`cursor-agent --plugin-dir <repo>/plugins/docflow`), **omp**
-(`omp plugin install npm:@evolvehq/docflow`; invoke `/skill:bootstrap`), and
-**GitHub Copilot CLI** (`copilot plugin marketplace add EvolveHQ/docflow`).
-OpenCode-compatible forks like Xiaomi's *mimocode* inherit this via the same
-path. See the [full install matrix](https://github.com/EvolveHQ/docflow#install).
-
-## Why
-
-Documentation-led projects rot when conventions live in someone's head.
-docflow makes them explicit, machine-readable, and applied uniformly — so a
-fresh contributor (human or agent) can pick up the repo with no oral
-handover. It works on fresh repos (scaffolds from zero) and existing ones
-(retrofits, preserving and merging rather than overwriting).
-
-## Links
-
-- [Methodology — the formal definition]({{ '/methodology/' | relative_url }})
-- [Portable workspaces]({{ '/workspace/' | relative_url }})
-- [Source on GitHub](https://github.com/EvolveHQ/docflow)
-- [README](https://github.com/EvolveHQ/docflow/blob/main/README.md)
-- [Full usage & customisation guide (USAGE.md)](https://github.com/EvolveHQ/docflow/blob/main/USAGE.md)
-
----
-
-MIT licensed · maintained by [EvolveHQ](https://github.com/EvolveHQ) · [Privacy Policy](privacy/)
+<p class="legacy-links"><a id="skills" href="{{ '/reference/skills/' | relative_url }}">Skill catalogue</a> · <a id="portable-workspaces" href="{{ '/workspace/' | relative_url }}">Workspace model</a> · <a id="why" href="{{ '/methodology/' | relative_url }}">Why this method?</a> · <a id="links" href="{{ '/reference/' | relative_url }}">Reference</a></p>

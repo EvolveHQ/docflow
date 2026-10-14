@@ -1,5 +1,7 @@
 # Using docflow
 
+New to Docflow? [Start here](https://evolvehq.github.io/docflow/start/) explains the terms, helps you choose one repository or several, and shows setup for your coding agent. Follow the [prompt-first guides](https://evolvehq.github.io/docflow/workflows/) for a first task and expected result.
+
 This document explains how the `bootstrap` skill behaves end-to-end,
 what each of the 10 assessment questions (asked in full depth) actually changes in the
 output, and how to customise or extend the templates. The lifecycle
@@ -18,8 +20,8 @@ is plain Markdown read natively by any agent that loads `AGENTS.md`; the
 | **Claude Code** | `/plugin marketplace add EvolveHQ/docflow` then `/plugin install docflow@evolvehq` | `/bootstrap` |
 | **pi** | `pi install npm:@evolvehq/docflow` (or `pi install git:github.com/EvolveHQ/docflow`) | `/skill:bootstrap` |
 | **Codex** | `codex plugin marketplace add EvolveHQ/docflow` then `codex plugin add docflow@evolvehq` (native plugin) | `$bootstrap` / `/skills` |
-| **OpenCode** | auto-discovers `.claude`/`.agents`/`.opencode` skills (so a Claude Code / Codex install is picked up), or symlink into `~/.config/opencode/skills` | auto, by description |
-| **Grok** | `grok plugin marketplace add EvolveHQ/docflow` then `grok plugin install docflow --trust` (native plugin) | `/bootstrap` |
+| **OpenCode** | auto-discovers existing shared `.claude`/`.agents`/`.opencode` skill directories (a marketplace install alone does not guarantee this), or symlink into `~/.config/opencode/skills` | auto, by description |
+| **Grok** | Native plugin supplied; bare-name install selector unverified — see [Grok evidence](https://evolvehq.github.io/docflow/reference/installation/#grok-command-evidence) | `/bootstrap` |
 | **Cursor** | `cursor-agent --plugin-dir <repo>/plugins/docflow` (native `.cursor-plugin/` for repository installs) | `/bootstrap` |
 | **omp (oh-my-pi)** | `omp plugin install npm:@evolvehq/docflow` (reads the pi manifest) | `/skill:bootstrap` |
 | **GitHub Copilot CLI** | `copilot plugin marketplace add EvolveHQ/docflow` then `copilot plugin install docflow@evolvehq`, or `copilot --plugin-dir <repo>/plugins/docflow` | `/bootstrap` |
@@ -27,7 +29,7 @@ is plain Markdown read natively by any agent that loads `AGENTS.md`; the
 Notes:
 
 - **Codex** and **Grok** ship native plugins (`.codex-plugin/`,
-  `.grok-plugin/`), so they are one-command installs like Claude Code.
+  `.grok-plugin/`), with separate marketplace registration and installation steps; Grok’s bare-name install selector remains unverified (see the README).
   **Cursor**, **omp** and **Copilot CLI** load a local plugin directory or
   the npm/pi manifest. **OpenCode** has no marketplace command for
   `SKILL.md` skills (its plugin system is npm JS plugins), so it relies on

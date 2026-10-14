@@ -1,10 +1,13 @@
 ---
+section: Reference
 title: Methodology
 layout: default
 permalink: /methodology/
 ---
 
 # The docflow methodology
+
+For a guided first task, [Start here]({{ '/start/' | relative_url }}) or [choose a workflow]({{ '/workflows/' | relative_url }}). This page is the detailed reference.
 
 A formal definition of the documentation-led, ADR-driven method that
 docflow installs and maintains — the artefacts, the conventions that
