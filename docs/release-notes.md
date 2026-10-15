@@ -31,9 +31,7 @@ family and real operator adoption remains pending. The deterministic suite
 provides hostless evidence only. Earlier native observations apply to their
 recorded snapshots, rather than certifying this release's bytes.
 
-Clarity integration and desktop installer publication are parked and are not
-part of this release. Docflow's ordinary-file workflows and validator can be
-used independently. A ready candidate or green local check does not mean the
+Docflow's ordinary-file workflows and validator can be used independently. A ready candidate or green local check does not mean the
 release is published: the checked PR must be merged, the exact version tagged
 and the npm package published under the release controller's authority.
 

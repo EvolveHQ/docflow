@@ -25,7 +25,7 @@ Open your repository in your coding agent after installing Docflow.
 
 **You should see:** a summary of what exists, the files Docflow proposes to add or merge, and the working rules it will preserve. The [one-repository guide]({{ '/workflows/single-repository/' | relative_url }}) takes you through the next step.
 
-<p class="support-note">The 0.10.0 package provides fourteen skills for eight coding agents. Full native qualification remains pending; Clarity integration is parked. Read the <a href="{{ '/release-notes/' | relative_url }}">release scope</a>.</p>
+<p class="support-note">The 0.10.0 package provides fourteen skills for eight coding agents. Full native qualification remains pending. Read the <a href="{{ '/release-notes/' | relative_url }}">release scope</a>.</p>
 
 <p class="legacy-links"><a id="skills" href="{{ '/reference/skills/' | relative_url }}">Skill catalogue</a> · <a id="portable-workspaces" href="{{ '/workspace/' | relative_url }}">Workspace model</a> · <a id="why" href="{{ '/methodology/' | relative_url }}">Why this method?</a> · <a id="links" href="{{ '/reference/' | relative_url }}">Reference</a></p>
 

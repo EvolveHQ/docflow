@@ -210,7 +210,7 @@ export function renderRepositoryFixtures(sources, revision) {
     evidence_scope: 'Exact template rendering plus retained legacy producer files; plan bodies follow authoring rules. Synthetic authority, SHA and PR examples are not execution/integration evidence.',
     sources: Object.fromEntries(Object.entries(sources).map(([path,content]) => [path,{ sha256:sha256(content) }])),
     cases, files:Object.fromEntries(Object.entries(files).map(([path,file]) => [path,{ sha256:sha256(file.content), origins:file.origins, rendering:file.rendering }])),
-    status_at_a_glance:{this_run:'Rendered versioned producer inputs and expected observations',overall:'partially verified',yet_to_do:'Native host and Clarity compatibility qualification on paired sources'} } };
+    status_at_a_glance:{this_run:'Rendered versioned producer inputs and expected observations',overall:'partially verified',yet_to_do:'Native host qualification on paired sources'} } };
 }
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
