@@ -8,12 +8,8 @@ title: Package releases
 
 Docflow package versions use `v<version>` tags in
 [EvolveHQ/docflow](https://github.com/EvolveHQ/docflow/releases).
-Select the Docflow package explicitly when looking up a release:
-
-```sh
-node scripts/release-handoff/cli.mjs lookup --product docflow
-node scripts/release-handoff/cli.mjs lookup --product docflow --version 0.10.0
-```
+Choose the `v<version>` entry for the Docflow package and read its release
+notes before updating.
 
 Use the [installation guide](https://github.com/EvolveHQ/docflow#install)
 for your coding agent and the [usage guide](https://github.com/EvolveHQ/docflow/blob/main/USAGE.md#8-updating-the-plugin)
