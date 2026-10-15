@@ -46,4 +46,4 @@ Repository setup and workspace setup are separate. A workspace home has a README
 
 ## Qualification limits
 
-The package has deterministic checks; full native qualification remains pending. The seven workspace host guides are distinct from the eight installation targets. Clarity integration is parked. [Read the exact limits]({{ '/reference/qualification/' | relative_url }}).
+The package has deterministic checks; full native qualification remains pending. The seven workspace host guides are distinct from the eight installation targets. [Read the exact limits]({{ '/reference/qualification/' | relative_url }}).

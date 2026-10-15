@@ -43,4 +43,4 @@ local-only pilot. Add nothing when ordinary files suffice.
 - **This run:** Provides seven source-checked entry guides and ordinary-file fallback.
 - **Overall:** partially verified — native host behaviour is unqualified.
 - **Yet to do:** Seven smokes, two-host continuation, eighteen workspace scenarios,
-  eight-target discovery and combined Clarity/operator qualification.
+  eight-target discovery and real operator adoption.

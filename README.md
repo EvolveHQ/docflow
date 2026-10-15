@@ -59,7 +59,7 @@ The five workspace skills — setup, status, scope, dispatch and sync — keep
 cross-repository memory in an adopter-owned
 Git workspace. Members retain their native methods, instructions and histories.
 The workspace can be used through ordinary files without a companion app.
-Clarity integration is parked for 0.10.0; authorised Docflow sessions edit
+Authorised Docflow sessions edit
 canonical records and reconcile native evidence. Selection and agreement grant
 no execution authority, and delivery completion leaves the agreement accepted.
 
@@ -373,7 +373,7 @@ complete `workspace/` directory as `docflow-workspace/` beside the host's
 `skills/` directory; this applies to shared Codex/OpenCode copies too.
 See the [installation and assembly guide](plugins/docflow/workspace/README.md).
 The five [workspace operating skills](#skills) act on those assets; native
-host and Clarity qualification stay separate from the deterministic package
+host qualification stays separate from the deterministic package
 checks.
 
 ## Quick start
@@ -421,12 +421,10 @@ See [USAGE.md §Updating the plugin](USAGE.md#8-updating-the-plugin)
 for the author-side flow (version bumps, release tags) and recipient
 options including `/reload-plugins` for live sessions.
 
-Docflow package releases use `v<version>`. Clarity desktop installers use separate
-`clarity-v<version>` releases in the same repository, with their compatible Docflow
-version recorded in the manifest. Select the product before choosing a release;
-the repository-wide latest release is not a package update signal. See
-[Clarity downloads and release preparation](docs/clarity-releases.md) for exact
-product lookup, installer selection, checksums and current verification limits.
+Docflow package releases use `v<version>`. Select the Docflow package when
+looking up a release; the repository-wide latest release is not a package
+update signal. See [package releases](docs/clarity-releases.md) for lookup
+and installation guidance.
 
 ## Full usage and customisation guide
 

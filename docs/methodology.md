@@ -419,7 +419,7 @@ scheduler, an authentication layer or a live ownership service. Selection
 and agreement grant no execution: a native assignment runs only under a
 current grant, a native claim and an explicit brief, and a readiness report
 for which no attempt started is not a completed receipt. Native host
-behaviour, combined Clarity views and real operator adoption remain outside
+behaviour and real operator adoption remain outside
 what the file-level checks can establish.
 
 ## 6. Domain independence

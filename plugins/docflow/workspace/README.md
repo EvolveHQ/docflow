@@ -6,7 +6,7 @@ Use workspace-setup to establish an adopter home, workspace-status to read
 current state, workspace-scope to record outcomes, workspace-dispatch to
 prepare and hand off authorised native assignments, and workspace-sync to
 reconcile returns and maintain delivery state. Read the
-[seven native guides](guides/README.md); native host/Clarity qualification
+[seven native guides](guides/README.md); native host qualification
 remains separate from deterministic package checks.
 
 ## Install the complete assets
