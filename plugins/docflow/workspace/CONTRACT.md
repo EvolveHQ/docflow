@@ -259,6 +259,6 @@ contract to the same Docflow source SHA; revalidate after producer changes.
 ## Status at a glance
 
 - **This run:** Defines the portable format and deterministic validation boundary.
-- **Overall:** partially verified — native host and Clarity consumer qualification remain separate.
+- **Overall:** partially verified — native host qualification remains separate from deterministic checks.
 - **Yet to do:** Apply current native authority/ownership checks in a real host,
   qualify the operating skills and complete the combined V1 evidence.

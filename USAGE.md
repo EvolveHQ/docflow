@@ -580,7 +580,7 @@ UI, and Docflow supplies no launcher of its own.
 **Qualification limits.** Deterministic tests cover the distributed
 files, the validator and representative producers on every packaging
 layout. They do **not** establish native host discovery or behaviour,
-combined views with a Clarity workspace, or real operator adoption.
+or real operator adoption.
 Those remain outstanding and are not implied by a green package check.
 
 ## 6. Customising or extending
@@ -689,11 +689,9 @@ Tags help recipients pin to a specific version via
 `/plugin install docflow@evolvehq@vX.Y.Z` (when supported by their
 Claude Code version).
 
-Clarity desktop releases use `clarity-v<version>` in this same repository and
-record their compatible Docflow version. They do not change the Docflow package
-or its `v<version>` tags. Filter release discovery by product; avoid the generic
-GitHub latest-release alias. See [Clarity releases](docs/clarity-releases.md) for
-product-specific lookup/download commands and separately approved publication.
+Filter release discovery for the Docflow package; avoid the generic GitHub
+latest-release alias. See [package releases](docs/clarity-releases.md) for
+lookup and installation guidance.
 
 ## 9. Troubleshooting
 

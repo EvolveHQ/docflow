@@ -24,7 +24,7 @@ These guides cover context and bounded brief/receipt handoffs, not package insta
 
 ## What has and has not been established
 
-Version 0.10.0 supplies portable records, fourteen skills and deterministic package checks. The guide entry points have source/help evidence; this does not establish installation or model-driven execution. Full native qualification of the combined eight-target package remains pending. Clarity integration and installer publication are parked.
+Version 0.10.0 supplies portable records, fourteen skills and deterministic package checks. The guide entry points have source/help evidence; this does not establish installation or model-driven execution. Full native qualification of the combined eight-target package remains pending.
 
 The [guide inventory](https://github.com/EvolveHQ/docflow/blob/main/plugins/docflow/workspace/guides/README.md) retains per-host source dates and limits. The [release notes]({{ '/release-notes/' | relative_url }}) describe the released scope. Ordinary-file reading remains available without a companion app.
 

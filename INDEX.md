@@ -1,6 +1,6 @@
 # ADR Index
 
-Generated from ADR metadata. Do not hand-edit â€” regenerate after any
+Generated from ADR metadata. Do not hand-edit — regenerate after any
 ADR change.
 
 | ADR | Title | Status | Date | Depends on |

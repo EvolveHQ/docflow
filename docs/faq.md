@@ -104,7 +104,7 @@ No. Packaged assets, source/help evidence and deterministic checks do not establ
 <details class="faq-question" markdown="1">
 <summary>Do I need Clarity or a background service?</summary>
 
-No. The workspace is ordinary files in Git, readable without a companion app. Docflow's workspace validator checks files; it is not a scheduler, authentication layer or live ownership service. Clarity integration and installer publication remain parked. See the [workspace model]({{ '/workspace/' | relative_url }}) and [format reference]({{ '/reference/workspace-format/' | relative_url }}).
+No. The workspace is ordinary files in Git, readable without a companion app. Docflow's workspace validator checks files; it is not a scheduler, authentication layer or live ownership service. See the [workspace model]({{ '/workspace/' | relative_url }}) and [format reference]({{ '/reference/workspace-format/' | relative_url }}).
 </details>
 
 Next: [choose a guide]({{ '/workflows/' | relative_url }}) for a prompt, expected result and checks, or read the [methodology]({{ '/methodology/' | relative_url }}) for the full method.

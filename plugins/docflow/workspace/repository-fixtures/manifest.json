@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "format": "docflow-repository-producer-fixtures-1",
-  "producer_revision": "0d232202d1ece04f857a04095fe1bbb38387ae59",
+  "producer_revision": "f3b728dcefb882b0fbba4f83048a8c8ecc227790",
   "evidence_scope": "Exact template rendering plus retained legacy producer files; plan bodies follow authoring rules. Synthetic authority, SHA and PR examples are not execution/integration evidence.",
   "sources": {
     "evals/fixtures/legacy-range/AGENTS.md": {
@@ -110,7 +110,7 @@
       "sha256": "3b8ac8e05f48e599f07b3e590776841736f82f61d00e994ae0ef3a48f2f9f005"
     },
     "scripts/produce-repository-fixtures.mjs": {
-      "sha256": "971ae16abb7be172281d98b10c32fdb0cd34afef3f0cdac4912df825005a5f7e"
+      "sha256": "10d7d41f50b35cd80f3552e3c5c4e0b9702fab3744d2877dd7a3eeff9a9daeb6"
     }
   },
   "cases": [
@@ -1718,6 +1718,6 @@
   "status_at_a_glance": {
     "this_run": "Rendered versioned producer inputs and expected observations",
     "overall": "partially verified",
-    "yet_to_do": "Native host and Clarity compatibility qualification on paired sources"
+    "yet_to_do": "Native host qualification on paired sources"
   }
 }
